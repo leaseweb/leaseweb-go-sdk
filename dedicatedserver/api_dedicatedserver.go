@@ -1,7 +1,7 @@
 /*
-Leaseweb API for dedicated servers
+Dedicated Servers API
 
-This documents the rest api dedicatedserver provides.
+This is the description of the Dedicated Server API.  The base url of this API is `https://api.leaseweb.com`.
 
 API version: v2
 */
@@ -24,7 +24,7 @@ import (
 type DedicatedserverAPI interface {
 
 	/*
-	AddServerToPrivateNetwork Add a server to private network
+	AddToPrivateNetwork Add a server to private network
 
 	It takes a few minutes before the server has access to the private network.
 
@@ -38,12 +38,12 @@ Once the server is added to the private network the status changes from
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
 	@param privateNetworkId The ID of a Private Network
-	@return ApiAddServerToPrivateNetworkRequest
+	@return ApiAddToPrivateNetworkRequest
 	*/
-	AddServerToPrivateNetwork(ctx context.Context, serverId string, privateNetworkId string) ApiAddServerToPrivateNetworkRequest
+	AddToPrivateNetwork(ctx context.Context, serverId string, privateNetworkId string) ApiAddToPrivateNetworkRequest
 
-	// AddServerToPrivateNetworkExecute executes the request
-	AddServerToPrivateNetworkExecute(r ApiAddServerToPrivateNetworkRequest) (*http.Response, error)
+	// AddToPrivateNetworkExecute executes the request
+	AddToPrivateNetworkExecute(r ApiAddToPrivateNetworkRequest) (*http.Response, error)
 
 	/*
 	CancelActiveJob Cancel active job
@@ -60,14 +60,13 @@ change `expire` the active job instead.
 	CancelActiveJob(ctx context.Context, serverId string) ApiCancelActiveJobRequest
 
 	// CancelActiveJobExecute executes the request
-	//  @return ServerJob
-	CancelActiveJobExecute(r ApiCancelActiveJobRequest) (*ServerJob, *http.Response, error)
+	//  @return Job
+	CancelActiveJobExecute(r ApiCancelActiveJobRequest) (*Job, *http.Response, error)
 
 	/*
 	CloseNetworkInterface Close network interface
 
 	Close the network interface of this type of this server.
-
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
@@ -84,7 +83,6 @@ change `expire` the active job instead.
 
 	Close all network interfaces for this server.
 
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
 	@return ApiCloseNetworkInterfacesRequest
@@ -95,41 +93,22 @@ change `expire` the active job instead.
 	CloseNetworkInterfacesExecute(r ApiCloseNetworkInterfacesRequest) (*http.Response, error)
 
 	/*
-	CreateNetworkEquipmentCredential Create new network equipment credentials
-
-	Password will NOT be updated on the network equipment. The ability to update
-credentials is for convenience only. It provides a secure way to communicate
-passwords with Leaseweb engineers in case support is required.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@return ApiCreateNetworkEquipmentCredentialRequest
-	*/
-	CreateNetworkEquipmentCredential(ctx context.Context, networkEquipmentId string) ApiCreateNetworkEquipmentCredentialRequest
-
-	// CreateNetworkEquipmentCredentialExecute executes the request
-	//  @return Credential
-	CreateNetworkEquipmentCredentialExecute(r ApiCreateNetworkEquipmentCredentialRequest) (*Credential, *http.Response, error)
-
-	/*
-	CreateServerBandwidthNotificationSetting Create a bandwidth notification setting
+	CreateBandwidthNotificationSetting Create a bandwidth notification setting
 
 	Create a new bandwidth notification setting for this server.
 
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
-	@return ApiCreateServerBandwidthNotificationSettingRequest
+	@return ApiCreateBandwidthNotificationSettingRequest
 	*/
-	CreateServerBandwidthNotificationSetting(ctx context.Context, serverId string) ApiCreateServerBandwidthNotificationSettingRequest
+	CreateBandwidthNotificationSetting(ctx context.Context, serverId string) ApiCreateBandwidthNotificationSettingRequest
 
-	// CreateServerBandwidthNotificationSettingExecute executes the request
+	// CreateBandwidthNotificationSettingExecute executes the request
 	//  @return BandwidthNotificationSetting
-	CreateServerBandwidthNotificationSettingExecute(r ApiCreateServerBandwidthNotificationSettingRequest) (*BandwidthNotificationSetting, *http.Response, error)
+	CreateBandwidthNotificationSettingExecute(r ApiCreateBandwidthNotificationSettingRequest) (*BandwidthNotificationSetting, *http.Response, error)
 
 	/*
-	CreateServerCredential Create new server credentials
+	CreateCredential Create new server credentials
 
 	Password will NOT be updated on the server. The ability to update credentials
 is for convenience only. It provides a secure way to communicate passwords
@@ -138,32 +117,31 @@ with Leaseweb engineers in case support is required.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
-	@return ApiCreateServerCredentialRequest
+	@return ApiCreateCredentialRequest
 	*/
-	CreateServerCredential(ctx context.Context, serverId string) ApiCreateServerCredentialRequest
+	CreateCredential(ctx context.Context, serverId string) ApiCreateCredentialRequest
 
-	// CreateServerCredentialExecute executes the request
+	// CreateCredentialExecute executes the request
 	//  @return Credential
-	CreateServerCredentialExecute(r ApiCreateServerCredentialRequest) (*Credential, *http.Response, error)
+	CreateCredentialExecute(r ApiCreateCredentialRequest) (*Credential, *http.Response, error)
 
 	/*
-	CreateServerDataTrafficNotificationSetting Create a data traffic notification setting
+	CreateDataTrafficNotificationSetting Create a data traffic notification setting
 
 	Create a new data traffic notification setting for this server.
 
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
-	@return ApiCreateServerDataTrafficNotificationSettingRequest
+	@return ApiCreateDataTrafficNotificationSettingRequest
 	*/
-	CreateServerDataTrafficNotificationSetting(ctx context.Context, serverId string) ApiCreateServerDataTrafficNotificationSettingRequest
+	CreateDataTrafficNotificationSetting(ctx context.Context, serverId string) ApiCreateDataTrafficNotificationSettingRequest
 
-	// CreateServerDataTrafficNotificationSettingExecute executes the request
+	// CreateDataTrafficNotificationSettingExecute executes the request
 	//  @return DataTrafficNotificationSetting
-	CreateServerDataTrafficNotificationSettingExecute(r ApiCreateServerDataTrafficNotificationSettingRequest) (*DataTrafficNotificationSetting, *http.Response, error)
+	CreateDataTrafficNotificationSettingExecute(r ApiCreateDataTrafficNotificationSettingRequest) (*DataTrafficNotificationSetting, *http.Response, error)
 
 	/*
-	CreateServerDhcpReservation Create a DHCP reservation
+	CreateDhcpReservation Create a DHCP reservation
 
 	After rebooting your server it will acquire this DHCP reservation and boot
 from the specified `bootfile` url.
@@ -173,49 +151,30 @@ Please note that this API call will not reboot or power cycle your server.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
-	@return ApiCreateServerDhcpReservationRequest
+	@return ApiCreateDhcpReservationRequest
 	*/
-	CreateServerDhcpReservation(ctx context.Context, serverId string) ApiCreateServerDhcpReservationRequest
+	CreateDhcpReservation(ctx context.Context, serverId string) ApiCreateDhcpReservationRequest
 
-	// CreateServerDhcpReservationExecute executes the request
-	CreateServerDhcpReservationExecute(r ApiCreateServerDhcpReservationRequest) (*http.Response, error)
+	// CreateDhcpReservationExecute executes the request
+	CreateDhcpReservationExecute(r ApiCreateDhcpReservationRequest) (*http.Response, error)
 
 	/*
-	DeleteNetworkEquipmentCredential Delete network equipment credentials
-
-	This action is purely administrative and will only remove the username and
-password associated with this resource from our database.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@param type_ The type of the credential.
-	@param username Username
-	@return ApiDeleteNetworkEquipmentCredentialRequest
-	*/
-	DeleteNetworkEquipmentCredential(ctx context.Context, networkEquipmentId string, type_ CredentialType, username string) ApiDeleteNetworkEquipmentCredentialRequest
-
-	// DeleteNetworkEquipmentCredentialExecute executes the request
-	DeleteNetworkEquipmentCredentialExecute(r ApiDeleteNetworkEquipmentCredentialRequest) (*http.Response, error)
-
-	/*
-	DeleteServerBandwidthNotificationSetting Delete a bandwidth notification setting
+	DeleteBandwidthNotificationSetting Delete a bandwidth notification setting
 
 	Remove a Bandwidth Notification setting for this server.
 
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
 	@param notificationSettingId The ID of a notification setting
-	@return ApiDeleteServerBandwidthNotificationSettingRequest
+	@return ApiDeleteBandwidthNotificationSettingRequest
 	*/
-	DeleteServerBandwidthNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiDeleteServerBandwidthNotificationSettingRequest
+	DeleteBandwidthNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiDeleteBandwidthNotificationSettingRequest
 
-	// DeleteServerBandwidthNotificationSettingExecute executes the request
-	DeleteServerBandwidthNotificationSettingExecute(r ApiDeleteServerBandwidthNotificationSettingRequest) (*http.Response, error)
+	// DeleteBandwidthNotificationSettingExecute executes the request
+	DeleteBandwidthNotificationSettingExecute(r ApiDeleteBandwidthNotificationSettingRequest) (*http.Response, error)
 
 	/*
-	DeleteServerCredential Delete server credentials
+	DeleteCredential Delete server credentials
 
 	This action is purely administrative and will only remove the username and
 password associated with this resource from our database.
@@ -225,46 +184,44 @@ password associated with this resource from our database.
 	@param serverId The ID of a server
 	@param type_ The type of the credential.
 	@param username Username
-	@return ApiDeleteServerCredentialRequest
+	@return ApiDeleteCredentialRequest
 	*/
-	DeleteServerCredential(ctx context.Context, serverId string, type_ CredentialType, username string) ApiDeleteServerCredentialRequest
+	DeleteCredential(ctx context.Context, serverId string, type_ CredentialType, username string) ApiDeleteCredentialRequest
 
-	// DeleteServerCredentialExecute executes the request
-	DeleteServerCredentialExecute(r ApiDeleteServerCredentialRequest) (*http.Response, error)
+	// DeleteCredentialExecute executes the request
+	DeleteCredentialExecute(r ApiDeleteCredentialRequest) (*http.Response, error)
 
 	/*
-	DeleteServerDataTrafficNotificationSetting Delete a data traffic notification setting
+	DeleteDataTrafficNotificationSetting Delete a data traffic notification setting
 
 	Delete the given data traffic notification setting for this server.
-
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
 	@param notificationSettingId The ID of a notification setting
-	@return ApiDeleteServerDataTrafficNotificationSettingRequest
+	@return ApiDeleteDataTrafficNotificationSettingRequest
 	*/
-	DeleteServerDataTrafficNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiDeleteServerDataTrafficNotificationSettingRequest
+	DeleteDataTrafficNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiDeleteDataTrafficNotificationSettingRequest
 
-	// DeleteServerDataTrafficNotificationSettingExecute executes the request
-	DeleteServerDataTrafficNotificationSettingExecute(r ApiDeleteServerDataTrafficNotificationSettingRequest) (*http.Response, error)
+	// DeleteDataTrafficNotificationSettingExecute executes the request
+	DeleteDataTrafficNotificationSettingExecute(r ApiDeleteDataTrafficNotificationSettingRequest) (*http.Response, error)
 
 	/*
-	DeleteServerDhcpReservation Delete a DHCP reservation
+	DeleteDhcpReservation Delete a DHCP reservation
 
 	Delete a DHCP reservation for this server.
 
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
-	@return ApiDeleteServerDhcpReservationRequest
+	@return ApiDeleteDhcpReservationRequest
 	*/
-	DeleteServerDhcpReservation(ctx context.Context, serverId string) ApiDeleteServerDhcpReservationRequest
+	DeleteDhcpReservation(ctx context.Context, serverId string) ApiDeleteDhcpReservationRequest
 
-	// DeleteServerDhcpReservationExecute executes the request
-	DeleteServerDhcpReservationExecute(r ApiDeleteServerDhcpReservationRequest) (*http.Response, error)
+	// DeleteDhcpReservationExecute executes the request
+	DeleteDhcpReservationExecute(r ApiDeleteDhcpReservationRequest) (*http.Response, error)
 
 	/*
-	DeleteServerFromPrivateNetwork Delete a server from a private network
+	DeleteFromPrivateNetwork Delete a server from a private network
 
 	This API call will remove the dedicated server from the private network.
 
@@ -280,15 +237,15 @@ While the server is being removed the status changes to `REMOVING`.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
 	@param privateNetworkId The ID of a Private Network
-	@return ApiDeleteServerFromPrivateNetworkRequest
+	@return ApiDeleteFromPrivateNetworkRequest
 	*/
-	DeleteServerFromPrivateNetwork(ctx context.Context, serverId string, privateNetworkId string) ApiDeleteServerFromPrivateNetworkRequest
+	DeleteFromPrivateNetwork(ctx context.Context, serverId string, privateNetworkId string) ApiDeleteFromPrivateNetworkRequest
 
-	// DeleteServerFromPrivateNetworkExecute executes the request
-	DeleteServerFromPrivateNetworkExecute(r ApiDeleteServerFromPrivateNetworkRequest) (*http.Response, error)
+	// DeleteFromPrivateNetworkExecute executes the request
+	DeleteFromPrivateNetworkExecute(r ApiDeleteFromPrivateNetworkRequest) (*http.Response, error)
 
 	/*
-	EnableServerRescueMode Launch rescue mode
+	EnableRescueMode Launch rescue mode
 
 	Rescue mode allows you to trouble shoot your server in case your installed
 operating system is no longer reachable.
@@ -308,13 +265,13 @@ request to `/bareMetals/v2/rescueImages`.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
-	@return ApiEnableServerRescueModeRequest
+	@return ApiEnableRescueModeRequest
 	*/
-	EnableServerRescueMode(ctx context.Context, serverId string) ApiEnableServerRescueModeRequest
+	EnableRescueMode(ctx context.Context, serverId string) ApiEnableRescueModeRequest
 
-	// EnableServerRescueModeExecute executes the request
-	//  @return ServerJob
-	EnableServerRescueModeExecute(r ApiEnableServerRescueModeRequest) (*ServerJob, *http.Response, error)
+	// EnableRescueModeExecute executes the request
+	//  @return Job
+	EnableRescueModeExecute(r ApiEnableRescueModeRequest) (*Job, *http.Response, error)
 
 	/*
 	ExpireActiveJob Expire active job
@@ -333,8 +290,54 @@ case\nuse the `/cancelActiveJob` API call instead.
 	ExpireActiveJob(ctx context.Context, serverId string) ApiExpireActiveJobRequest
 
 	// ExpireActiveJobExecute executes the request
-	//  @return ServerJob
-	ExpireActiveJobExecute(r ApiExpireActiveJobRequest) (*ServerJob, *http.Response, error)
+	//  @return Job
+	ExpireActiveJobExecute(r ApiExpireActiveJobRequest) (*Job, *http.Response, error)
+
+	/*
+	GetBandwidthMetrics Show bandwidth metrics
+
+	At this moment only bandwidth information for the public interface is supported.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@return ApiGetBandwidthMetricsRequest
+	*/
+	GetBandwidthMetrics(ctx context.Context, serverId string) ApiGetBandwidthMetricsRequest
+
+	// GetBandwidthMetricsExecute executes the request
+	//  @return Metrics
+	GetBandwidthMetricsExecute(r ApiGetBandwidthMetricsRequest) (*Metrics, *http.Response, error)
+
+	/*
+	GetBandwidthNotificationSetting Show a bandwidth notification setting
+
+	Get a bandwidth notification setting for this server.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@param notificationSettingId The ID of a notification setting
+	@return ApiGetBandwidthNotificationSettingRequest
+	*/
+	GetBandwidthNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiGetBandwidthNotificationSettingRequest
+
+	// GetBandwidthNotificationSettingExecute executes the request
+	//  @return BandwidthNotificationSetting
+	GetBandwidthNotificationSettingExecute(r ApiGetBandwidthNotificationSettingRequest) (*BandwidthNotificationSetting, *http.Response, error)
+
+	/*
+	GetBandwidthNotificationSettingList List bandwidth notification settings
+
+	List all bandwidth notification settings for this server.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@return ApiGetBandwidthNotificationSettingListRequest
+	*/
+	GetBandwidthNotificationSettingList(ctx context.Context, serverId string) ApiGetBandwidthNotificationSettingListRequest
+
+	// GetBandwidthNotificationSettingListExecute executes the request
+	//  @return GetBandwidthNotificationSettingListResult
+	GetBandwidthNotificationSettingListExecute(r ApiGetBandwidthNotificationSettingListRequest) (*GetBandwidthNotificationSettingListResult, *http.Response, error)
 
 	/*
 	GetControlPanelList List control panels
@@ -377,6 +380,107 @@ control panels which are supported for an operating system use the
 	GetControlPanelListByOperatingSystemIdExecute(r ApiGetControlPanelListByOperatingSystemIdRequest) (*ControlPanelList, *http.Response, error)
 
 	/*
+	GetCredential Show server credentials
+
+	View the password for the given credential, identified by `type` and
+`username`. Auto generated credentials (during a re-install, rescue mode or
+ipmi reset can be found here).
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@param type_ The type of the credential.
+	@param username Username
+	@return ApiGetCredentialRequest
+	*/
+	GetCredential(ctx context.Context, serverId string, type_ CredentialType, username string) ApiGetCredentialRequest
+
+	// GetCredentialExecute executes the request
+	//  @return Credential
+	GetCredentialExecute(r ApiGetCredentialRequest) (*Credential, *http.Response, error)
+
+	/*
+	GetCredentialList List server credentials
+
+	The credentials API allows you to store usernames and passwords securely.
+
+During (re)installations, rescue modes and ipmi resets the newly generated
+passwords are stored and can be retrieved using this API.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@return ApiGetCredentialListRequest
+	*/
+	GetCredentialList(ctx context.Context, serverId string) ApiGetCredentialListRequest
+
+	// GetCredentialListExecute executes the request
+	//  @return CredentialList
+	GetCredentialListExecute(r ApiGetCredentialListRequest) (*CredentialList, *http.Response, error)
+
+	/*
+	GetCredentialListByType List server credentials by type
+
+	List all the credentials filtered by the specified type that are associated with this server.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@param type_ The type of the credential.
+	@return ApiGetCredentialListByTypeRequest
+	*/
+	GetCredentialListByType(ctx context.Context, serverId string, type_ CredentialType) ApiGetCredentialListByTypeRequest
+
+	// GetCredentialListByTypeExecute executes the request
+	//  @return CredentialList
+	GetCredentialListByTypeExecute(r ApiGetCredentialListByTypeRequest) (*CredentialList, *http.Response, error)
+
+	/*
+	GetDataTrafficMetrics Show datatraffic metrics
+
+	At this moment only bandwidth information for the public interface is supported.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@return ApiGetDataTrafficMetricsRequest
+	*/
+	GetDataTrafficMetrics(ctx context.Context, serverId string) ApiGetDataTrafficMetricsRequest
+
+	// GetDataTrafficMetricsExecute executes the request
+	//  @return Metrics
+	GetDataTrafficMetricsExecute(r ApiGetDataTrafficMetricsRequest) (*Metrics, *http.Response, error)
+
+	/*
+	GetDataTrafficNotificationSetting Show a data traffic notification setting
+
+	Get a datatraffic notification setting for this server.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@param notificationSettingId The ID of a notification setting
+	@return ApiGetDataTrafficNotificationSettingRequest
+	*/
+	GetDataTrafficNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiGetDataTrafficNotificationSettingRequest
+
+	// GetDataTrafficNotificationSettingExecute executes the request
+	//  @return DataTrafficNotificationSetting
+	GetDataTrafficNotificationSettingExecute(r ApiGetDataTrafficNotificationSettingRequest) (*DataTrafficNotificationSetting, *http.Response, error)
+
+	/*
+	GetDataTrafficNotificationSettingList List data traffic notification settings
+
+	List all datatraffic notification settings for this server.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@return ApiGetDataTrafficNotificationSettingListRequest
+	*/
+	GetDataTrafficNotificationSettingList(ctx context.Context, serverId string) ApiGetDataTrafficNotificationSettingListRequest
+
+	// GetDataTrafficNotificationSettingListExecute executes the request
+	//  @return GetDataTrafficNotificationSettingListResult
+	GetDataTrafficNotificationSettingListExecute(r ApiGetDataTrafficNotificationSettingListRequest) (*GetDataTrafficNotificationSettingListResult, *http.Response, error)
+
+	/*
 	GetDdosNotificationSetting Inspect DDoS notification settings
 
 	Show all DDoS Protection related notification settings for this server. These
@@ -395,176 +499,103 @@ mitigated.
 	GetDdosNotificationSettingExecute(r ApiGetDdosNotificationSettingRequest) (*GetDdosNotificationSettingResult, *http.Response, error)
 
 	/*
-	GetNetworkEquipment Get network equipment
+	GetDhcpReservationList List DHCP reservations
 
-	Use this API to get information about a single network equipment.
-
+	Please note that this will only show reservations for the public network interface.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@return ApiGetNetworkEquipmentRequest
+	@param serverId The ID of a server
+	@return ApiGetDhcpReservationListRequest
 	*/
-	GetNetworkEquipment(ctx context.Context, networkEquipmentId string) ApiGetNetworkEquipmentRequest
+	GetDhcpReservationList(ctx context.Context, serverId string) ApiGetDhcpReservationListRequest
 
-	// GetNetworkEquipmentExecute executes the request
-	//  @return NetworkEquipment
-	GetNetworkEquipmentExecute(r ApiGetNetworkEquipmentRequest) (*NetworkEquipment, *http.Response, error)
+	// GetDhcpReservationListExecute executes the request
+	//  @return GetDhcpReservationListResult
+	GetDhcpReservationListExecute(r ApiGetDhcpReservationListRequest) (*GetDhcpReservationListResult, *http.Response, error)
 
 	/*
-	GetNetworkEquipmentCredential Show network equipment credentials
+	GetHardware Show hardware information
 
-	View the password for the given credential, identified by `type` and
-`username`.
+	This information is generated when running a hardware scan for your server. A
+hardware scan collects hardware information about your system.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@param type_ The type of the credential.
-	@param username Username
-	@return ApiGetNetworkEquipmentCredentialRequest
+	@param serverId The ID of a server
+	@return ApiGetHardwareRequest
 	*/
-	GetNetworkEquipmentCredential(ctx context.Context, networkEquipmentId string, type_ CredentialType, username string) ApiGetNetworkEquipmentCredentialRequest
+	GetHardware(ctx context.Context, serverId string) ApiGetHardwareRequest
 
-	// GetNetworkEquipmentCredentialExecute executes the request
-	//  @return Credential
-	GetNetworkEquipmentCredentialExecute(r ApiGetNetworkEquipmentCredentialRequest) (*Credential, *http.Response, error)
+	// GetHardwareExecute executes the request
+	//  @return GetHardwareResult
+	GetHardwareExecute(r ApiGetHardwareRequest) (*GetHardwareResult, *http.Response, error)
 
 	/*
-	GetNetworkEquipmentCredentialList List network equipment credentials
+	GetIp Show a server IP
 
-	The credentials API allows you to store usernames and passwords securely.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@return ApiGetNetworkEquipmentCredentialListRequest
-	*/
-	GetNetworkEquipmentCredentialList(ctx context.Context, networkEquipmentId string) ApiGetNetworkEquipmentCredentialListRequest
-
-	// GetNetworkEquipmentCredentialListExecute executes the request
-	//  @return CredentialList
-	GetNetworkEquipmentCredentialListExecute(r ApiGetNetworkEquipmentCredentialListRequest) (*CredentialList, *http.Response, error)
-
-	/*
-	GetNetworkEquipmentCredentialListByType List network equipment credentials by type
-
-	List all the credentials filtered by the specified type that are associated
-with this network equipment.
-
+	Get a single IP address associated with this server.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@param type_ The type of the credential.
-	@return ApiGetNetworkEquipmentCredentialListByTypeRequest
-	*/
-	GetNetworkEquipmentCredentialListByType(ctx context.Context, networkEquipmentId string, type_ CredentialType) ApiGetNetworkEquipmentCredentialListByTypeRequest
-
-	// GetNetworkEquipmentCredentialListByTypeExecute executes the request
-	//  @return CredentialList
-	GetNetworkEquipmentCredentialListByTypeExecute(r ApiGetNetworkEquipmentCredentialListByTypeRequest) (*CredentialList, *http.Response, error)
-
-	/*
-	GetNetworkEquipmentIp Show a network equipment IP
-
-	Get a single IP address associated with this network equipment.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
+	@param serverId The ID of a server
 	@param ip The IP Address
-	@return ApiGetNetworkEquipmentIpRequest
+	@return ApiGetIpRequest
 	*/
-	GetNetworkEquipmentIp(ctx context.Context, networkEquipmentId string, ip string) ApiGetNetworkEquipmentIpRequest
+	GetIp(ctx context.Context, serverId string, ip string) ApiGetIpRequest
 
-	// GetNetworkEquipmentIpExecute executes the request
+	// GetIpExecute executes the request
 	//  @return Ip
-	GetNetworkEquipmentIpExecute(r ApiGetNetworkEquipmentIpRequest) (*Ip, *http.Response, error)
+	GetIpExecute(r ApiGetIpRequest) (*Ip, *http.Response, error)
 
 	/*
-	GetNetworkEquipmentIpList List IPs
+	GetIpList List IPs
 
-	List all IP Addresses associated with this network equipment. Optionally
-filtered.
-
+	List all IP Addresses associated with this server. Optionally filtered.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@return ApiGetNetworkEquipmentIpListRequest
+	@param serverId The ID of a server
+	@return ApiGetIpListRequest
 	*/
-	GetNetworkEquipmentIpList(ctx context.Context, networkEquipmentId string) ApiGetNetworkEquipmentIpListRequest
+	GetIpList(ctx context.Context, serverId string) ApiGetIpListRequest
 
-	// GetNetworkEquipmentIpListExecute executes the request
-	//  @return GetNetworkEquipmentIpListResult
-	GetNetworkEquipmentIpListExecute(r ApiGetNetworkEquipmentIpListRequest) (*GetNetworkEquipmentIpListResult, *http.Response, error)
+	// GetIpListExecute executes the request
+	//  @return IpList
+	GetIpListExecute(r ApiGetIpListRequest) (*IpList, *http.Response, error)
 
 	/*
-	GetNetworkEquipmentList List network equipment
+	GetJob Show a job
 
-	List your Dedicated Network Equipment. This api call supports pagination. Use
-the `limit` and `offset` query string parameters to paginate through all your
-dedicated network equipment.
-
-Every `network equipment` object in the json response lists a few properties
-of a network equipment. Use the single resource api call to get more details
-for a single network equipment.
-
+	Get a single job for this server.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetNetworkEquipmentListRequest
+	@param serverId The ID of a server
+	@param jobId The ID of a Job
+	@return ApiGetJobRequest
 	*/
-	GetNetworkEquipmentList(ctx context.Context) ApiGetNetworkEquipmentListRequest
+	GetJob(ctx context.Context, serverId string, jobId string) ApiGetJobRequest
 
-	// GetNetworkEquipmentListExecute executes the request
-	//  @return GetNetworkEquipmentListResult
-	GetNetworkEquipmentListExecute(r ApiGetNetworkEquipmentListRequest) (*GetNetworkEquipmentListResult, *http.Response, error)
+	// GetJobExecute executes the request
+	//  @return CurrentJob
+	GetJobExecute(r ApiGetJobRequest) (*CurrentJob, *http.Response, error)
 
 	/*
-	GetNetworkEquipmentNullRouteHistory Show null route history
+	GetJobList List jobs
 
-	Show all null route history for any ips associated with this a network
-equipment.
-
+	List all jobs for this server.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@return ApiGetNetworkEquipmentNullRouteHistoryRequest
+	@param serverId The ID of a server
+	@return ApiGetJobListRequest
 	*/
-	GetNetworkEquipmentNullRouteHistory(ctx context.Context, networkEquipmentId string) ApiGetNetworkEquipmentNullRouteHistoryRequest
+	GetJobList(ctx context.Context, serverId string) ApiGetJobListRequest
 
-	// GetNetworkEquipmentNullRouteHistoryExecute executes the request
-	//  @return GetNetworkEquipmentNullRouteHistoryResult
-	GetNetworkEquipmentNullRouteHistoryExecute(r ApiGetNetworkEquipmentNullRouteHistoryRequest) (*GetNetworkEquipmentNullRouteHistoryResult, *http.Response, error)
-
-	/*
-	GetNetworkEquipmentPowerStatus Show power status
-
-	The network equipment can either be `ON` or `OFF`. Network Equipment can be
-powered on or off by using the respective `/powerOn` and `/powerOff` API
-calls. In addition network equipment can also be rebooted using the
-`/powerCycle` API call.
-
-The `pdu` object describes the power status from the power distribution unit
-(PDU) point of view. If your network equipment is connected to multiple PDU
-ports the `status` property will report `on` if at least one PDU port has
-power.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@return ApiGetNetworkEquipmentPowerStatusRequest
-	*/
-	GetNetworkEquipmentPowerStatus(ctx context.Context, networkEquipmentId string) ApiGetNetworkEquipmentPowerStatusRequest
-
-	// GetNetworkEquipmentPowerStatusExecute executes the request
-	//  @return GetNetworkEquipmentPowerStatusResult
-	GetNetworkEquipmentPowerStatusExecute(r ApiGetNetworkEquipmentPowerStatusRequest) (*GetNetworkEquipmentPowerStatusResult, *http.Response, error)
+	// GetJobListExecute executes the request
+	//  @return JobList
+	GetJobListExecute(r ApiGetJobListRequest) (*JobList, *http.Response, error)
 
 	/*
 	GetNetworkInterface Show a network interface
 
-	Show the network interface of the given type of this server, including its
-status.
-
+	Show the network interface of the given type of this server, including its status.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
@@ -582,7 +613,6 @@ status.
 
 	List all network interfaces for this server, including their current status.
 
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
 	@return ApiGetNetworkInterfaceListRequest
@@ -592,6 +622,21 @@ status.
 	// GetNetworkInterfaceListExecute executes the request
 	//  @return GetNetworkInterfaceListResult
 	GetNetworkInterfaceListExecute(r ApiGetNetworkInterfaceListRequest) (*GetNetworkInterfaceListResult, *http.Response, error)
+
+	/*
+	GetNullRouteHistory Show null route history
+
+	Show all null route history for any ips associated with this server.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@return ApiGetNullRouteHistoryRequest
+	*/
+	GetNullRouteHistory(ctx context.Context, serverId string) ApiGetNullRouteHistoryRequest
+
+	// GetNullRouteHistoryExecute executes the request
+	//  @return NullRouteList
+	GetNullRouteHistoryExecute(r ApiGetNullRouteHistoryRequest) (*NullRouteList, *http.Response, error)
 
 	/*
 	GetOperatingSystem Show an operating system
@@ -632,6 +677,34 @@ refer to the API documentation).
 	GetOperatingSystemListExecute(r ApiGetOperatingSystemListRequest) (*GetOperatingSystemListResult, *http.Response, error)
 
 	/*
+	GetPowerStatus Show power status
+
+	The server can either be `ON` or `OFF`. Servers can be powered on or off by
+using the respective `/powerOn` and `/powerOff` API calls. In addition servers
+can also be rebooted using the `/powerCycle` API call.
+
+The `pdu` object describes the power status from the power distribution unit
+(PDU) point of view. If your server is connected to multiple PDU ports the
+`status` property will report `on` if at least one PDU port has power.
+
+The `ipmi` object describes the power status by quering the remote management
+interface of your server.
+
+Note that `pdu.status` can report `on` but your server can still be powered
+off if it was shutdown via `IPMI` for example.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@return ApiGetPowerStatusRequest
+	*/
+	GetPowerStatus(ctx context.Context, serverId string) ApiGetPowerStatusRequest
+
+	// GetPowerStatusExecute executes the request
+	//  @return GetPowerStatusResult
+	GetPowerStatusExecute(r ApiGetPowerStatusRequest) (*GetPowerStatusResult, *http.Response, error)
+
+	/*
 	GetRescueImageList Rescue Images
 
 	Lists all Rescue Images which are available for launching a dedicated server
@@ -661,7 +734,6 @@ server. It will require your server to be rebooted.
 
 	Use this API to get information about a single server.
 
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
 	@return ApiGetServerRequest
@@ -671,261 +743,6 @@ server. It will require your server to be rebooted.
 	// GetServerExecute executes the request
 	//  @return Server
 	GetServerExecute(r ApiGetServerRequest) (*Server, *http.Response, error)
-
-	/*
-	GetServerBandwidthMetrics Show bandwidth metrics
-
-	At this moment only bandwidth information for the public interface is supported.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@return ApiGetServerBandwidthMetricsRequest
-	*/
-	GetServerBandwidthMetrics(ctx context.Context, serverId string) ApiGetServerBandwidthMetricsRequest
-
-	// GetServerBandwidthMetricsExecute executes the request
-	//  @return Metrics
-	GetServerBandwidthMetricsExecute(r ApiGetServerBandwidthMetricsRequest) (*Metrics, *http.Response, error)
-
-	/*
-	GetServerBandwidthNotificationSetting Show a bandwidth notification setting
-
-	Get a bandwidth notification setting for this server.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@param notificationSettingId The ID of a notification setting
-	@return ApiGetServerBandwidthNotificationSettingRequest
-	*/
-	GetServerBandwidthNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiGetServerBandwidthNotificationSettingRequest
-
-	// GetServerBandwidthNotificationSettingExecute executes the request
-	//  @return BandwidthNotificationSetting
-	GetServerBandwidthNotificationSettingExecute(r ApiGetServerBandwidthNotificationSettingRequest) (*BandwidthNotificationSetting, *http.Response, error)
-
-	/*
-	GetServerBandwidthNotificationSettingList List bandwidth notification settings
-
-	List all bandwidth notification settings for this server.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@return ApiGetServerBandwidthNotificationSettingListRequest
-	*/
-	GetServerBandwidthNotificationSettingList(ctx context.Context, serverId string) ApiGetServerBandwidthNotificationSettingListRequest
-
-	// GetServerBandwidthNotificationSettingListExecute executes the request
-	//  @return GetServerBandwidthNotificationSettingListResult
-	GetServerBandwidthNotificationSettingListExecute(r ApiGetServerBandwidthNotificationSettingListRequest) (*GetServerBandwidthNotificationSettingListResult, *http.Response, error)
-
-	/*
-	GetServerCredential Show server credentials
-
-	View the password for the given credential, identified by `type` and
-`username`. Auto generated credentials (during a re-install, rescue mode or
-ipmi reset can be found here).
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@param type_ The type of the credential.
-	@param username Username
-	@return ApiGetServerCredentialRequest
-	*/
-	GetServerCredential(ctx context.Context, serverId string, type_ CredentialType, username string) ApiGetServerCredentialRequest
-
-	// GetServerCredentialExecute executes the request
-	//  @return Credential
-	GetServerCredentialExecute(r ApiGetServerCredentialRequest) (*Credential, *http.Response, error)
-
-	/*
-	GetServerCredentialList List server credentials
-
-	The credentials API allows you to store usernames and passwords securely.
-
-During (re)installations, rescue modes and ipmi resets the newly generated
-passwords are stored and can be retrieved using this API.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@return ApiGetServerCredentialListRequest
-	*/
-	GetServerCredentialList(ctx context.Context, serverId string) ApiGetServerCredentialListRequest
-
-	// GetServerCredentialListExecute executes the request
-	//  @return CredentialList
-	GetServerCredentialListExecute(r ApiGetServerCredentialListRequest) (*CredentialList, *http.Response, error)
-
-	/*
-	GetServerCredentialListByType List server credentials by type
-
-	List all the credentials filtered by the specified type that are associated
-with this server.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@param type_ The type of the credential.
-	@return ApiGetServerCredentialListByTypeRequest
-	*/
-	GetServerCredentialListByType(ctx context.Context, serverId string, type_ CredentialType) ApiGetServerCredentialListByTypeRequest
-
-	// GetServerCredentialListByTypeExecute executes the request
-	//  @return CredentialList
-	GetServerCredentialListByTypeExecute(r ApiGetServerCredentialListByTypeRequest) (*CredentialList, *http.Response, error)
-
-	/*
-	GetServerDataTrafficMetrics Show datatraffic metrics
-
-	At this moment only bandwidth information for the public interface is supported.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@return ApiGetServerDataTrafficMetricsRequest
-	*/
-	GetServerDataTrafficMetrics(ctx context.Context, serverId string) ApiGetServerDataTrafficMetricsRequest
-
-	// GetServerDataTrafficMetricsExecute executes the request
-	//  @return Metrics
-	GetServerDataTrafficMetricsExecute(r ApiGetServerDataTrafficMetricsRequest) (*Metrics, *http.Response, error)
-
-	/*
-	GetServerDataTrafficNotificationSetting Show a data traffic notification setting
-
-	Get a datatraffic notification setting for this server.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@param notificationSettingId The ID of a notification setting
-	@return ApiGetServerDataTrafficNotificationSettingRequest
-	*/
-	GetServerDataTrafficNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiGetServerDataTrafficNotificationSettingRequest
-
-	// GetServerDataTrafficNotificationSettingExecute executes the request
-	//  @return DataTrafficNotificationSetting
-	GetServerDataTrafficNotificationSettingExecute(r ApiGetServerDataTrafficNotificationSettingRequest) (*DataTrafficNotificationSetting, *http.Response, error)
-
-	/*
-	GetServerDataTrafficNotificationSettingList List data traffic notification settings
-
-	List all datatraffic notification settings for this server.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@return ApiGetServerDataTrafficNotificationSettingListRequest
-	*/
-	GetServerDataTrafficNotificationSettingList(ctx context.Context, serverId string) ApiGetServerDataTrafficNotificationSettingListRequest
-
-	// GetServerDataTrafficNotificationSettingListExecute executes the request
-	//  @return GetServerDataTrafficNotificationSettingListResult
-	GetServerDataTrafficNotificationSettingListExecute(r ApiGetServerDataTrafficNotificationSettingListRequest) (*GetServerDataTrafficNotificationSettingListResult, *http.Response, error)
-
-	/*
-	GetServerDhcpReservationList List DHCP reservations
-
-	Please note that this will only show reservations for the public network
-interface.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@return ApiGetServerDhcpReservationListRequest
-	*/
-	GetServerDhcpReservationList(ctx context.Context, serverId string) ApiGetServerDhcpReservationListRequest
-
-	// GetServerDhcpReservationListExecute executes the request
-	//  @return GetServerDhcpReservationListResult
-	GetServerDhcpReservationListExecute(r ApiGetServerDhcpReservationListRequest) (*GetServerDhcpReservationListResult, *http.Response, error)
-
-	/*
-	GetServerHardware Show hardware information
-
-	This information is generated when running a hardware scan for your server. A
-hardware scan collects hardware information about your system.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@return ApiGetServerHardwareRequest
-	*/
-	GetServerHardware(ctx context.Context, serverId string) ApiGetServerHardwareRequest
-
-	// GetServerHardwareExecute executes the request
-	//  @return GetServerHardwareResult
-	GetServerHardwareExecute(r ApiGetServerHardwareRequest) (*GetServerHardwareResult, *http.Response, error)
-
-	/*
-	GetServerIp Show a server IP
-
-	Get a single IP address associated with this server.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@param ip The IP Address
-	@return ApiGetServerIpRequest
-	*/
-	GetServerIp(ctx context.Context, serverId string, ip string) ApiGetServerIpRequest
-
-	// GetServerIpExecute executes the request
-	//  @return Ip
-	GetServerIpExecute(r ApiGetServerIpRequest) (*Ip, *http.Response, error)
-
-	/*
-	GetServerIpList List IPs
-
-	List all IP Addresses associated with this server. Optionally filtered.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@return ApiGetServerIpListRequest
-	*/
-	GetServerIpList(ctx context.Context, serverId string) ApiGetServerIpListRequest
-
-	// GetServerIpListExecute executes the request
-	//  @return Ip
-	GetServerIpListExecute(r ApiGetServerIpListRequest) (*Ip, *http.Response, error)
-
-	/*
-	GetServerJob Show a job
-
-	Get a single job for this server.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@param jobId The ID of a Job
-	@return ApiGetServerJobRequest
-	*/
-	GetServerJob(ctx context.Context, serverId string, jobId string) ApiGetServerJobRequest
-
-	// GetServerJobExecute executes the request
-	//  @return CurrentServerJob
-	GetServerJobExecute(r ApiGetServerJobRequest) (*CurrentServerJob, *http.Response, error)
-
-	/*
-	GetServerJobList List jobs
-
-	List all jobs for this server.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@return ApiGetServerJobListRequest
-	*/
-	GetServerJobList(ctx context.Context, serverId string) ApiGetServerJobListRequest
-
-	// GetServerJobListExecute executes the request
-	//  @return ServerJobList
-	GetServerJobListExecute(r ApiGetServerJobListRequest) (*ServerJobList, *http.Response, error)
 
 	/*
 	GetServerList List servers
@@ -946,50 +763,6 @@ Use the single resource api call to get more details for a single server.
 	// GetServerListExecute executes the request
 	//  @return GetServerListResult
 	GetServerListExecute(r ApiGetServerListRequest) (*GetServerListResult, *http.Response, error)
-
-	/*
-	GetServerNullRouteHistory Show null route history
-
-	Show all null route history for any ips associated with this server.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@return ApiGetServerNullRouteHistoryRequest
-	*/
-	GetServerNullRouteHistory(ctx context.Context, serverId string) ApiGetServerNullRouteHistoryRequest
-
-	// GetServerNullRouteHistoryExecute executes the request
-	//  @return GetServerNullRouteHistoryResult
-	GetServerNullRouteHistoryExecute(r ApiGetServerNullRouteHistoryRequest) (*GetServerNullRouteHistoryResult, *http.Response, error)
-
-	/*
-	GetServerPowerStatus Show power status
-
-	The server can either be `ON` or `OFF`. Servers can be powered on or off by
-using the respective `/powerOn` and `/powerOff` API calls. In addition servers
-can also be rebooted using the `/powerCycle` API call.
-
-The `pdu` object describes the power status from the power distribution unit
-(PDU) point of view. If your server is connected to multiple PDU ports the
-`status` property will report `on` if at least one PDU port has power.
-
-The `ipmi` object describes the power status by quering the remote management
-interface of your server.
-
-Note that `pdu.status` can report `on` but your server can still be powered
-off if it was shutdown via `IPMI` for example.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@return ApiGetServerPowerStatusRequest
-	*/
-	GetServerPowerStatus(ctx context.Context, serverId string) ApiGetServerPowerStatusRequest
-
-	// GetServerPowerStatusExecute executes the request
-	//  @return GetServerPowerStatusResult
-	GetServerPowerStatusExecute(r ApiGetServerPowerStatusRequest) (*GetServerPowerStatusResult, *http.Response, error)
 
 	/*
 	InstallOperatingSystem Launch installation
@@ -1023,7 +796,7 @@ For more information about Dedicated Server installation, [click here](https://k
 	InstallOperatingSystemExecute(r ApiInstallOperatingSystemRequest) (*InstallationJob, *http.Response, error)
 
 	/*
-	IpmiResetServer Launch IPMI reset
+	IpmiReset Launch IPMI reset
 
 	A reset makes sure that your IPMI interface of your server is compatible with
 Leaseweb automation.
@@ -1035,13 +808,13 @@ is booted back into the original operating system.",
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
-	@return ApiIpmiResetServerRequest
+	@return ApiIpmiResetRequest
 	*/
-	IpmiResetServer(ctx context.Context, serverId string) ApiIpmiResetServerRequest
+	IpmiReset(ctx context.Context, serverId string) ApiIpmiResetRequest
 
-	// IpmiResetServerExecute executes the request
-	//  @return ServerJob
-	IpmiResetServerExecute(r ApiIpmiResetServerRequest) (*ServerJob, *http.Response, error)
+	// IpmiResetExecute executes the request
+	//  @return Job
+	IpmiResetExecute(r ApiIpmiResetRequest) (*Job, *http.Response, error)
 
 	/*
 	NullIpRoute Null route an IP
@@ -1062,28 +835,9 @@ propagated across the network.
 	NullIpRouteExecute(r ApiNullIpRouteRequest) (*Ip, *http.Response, error)
 
 	/*
-	NullNetworkEquipmentIpRoute Null route an IP
-
-	Null the given IP address. It might take a few minutes before the change is
-propagated across the network.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@param ip The IP Address
-	@return ApiNullNetworkEquipmentIpRouteRequest
-	*/
-	NullNetworkEquipmentIpRoute(ctx context.Context, networkEquipmentId string, ip string) ApiNullNetworkEquipmentIpRouteRequest
-
-	// NullNetworkEquipmentIpRouteExecute executes the request
-	//  @return Ip
-	NullNetworkEquipmentIpRouteExecute(r ApiNullNetworkEquipmentIpRouteRequest) (*Ip, *http.Response, error)
-
-	/*
 	OpenNetworkInterface Open network interface
 
 	Open all network interfaces of the given type for this server.
-
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
@@ -1100,7 +854,6 @@ propagated across the network.
 
 	Open all network interfaces of this server.
 
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
 	@return ApiOpenNetworkInterfacesRequest
@@ -1111,94 +864,46 @@ propagated across the network.
 	OpenNetworkInterfacesExecute(r ApiOpenNetworkInterfacesRequest) (*http.Response, error)
 
 	/*
-	PowerCycleNetworkEquipment Power cycle a network equipment
-
-	Powercyle the network equipment.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@return ApiPowerCycleNetworkEquipmentRequest
-	*/
-	PowerCycleNetworkEquipment(ctx context.Context, networkEquipmentId string) ApiPowerCycleNetworkEquipmentRequest
-
-	// PowerCycleNetworkEquipmentExecute executes the request
-	PowerCycleNetworkEquipmentExecute(r ApiPowerCycleNetworkEquipmentRequest) (*http.Response, error)
-
-	/*
-	PowerCycleServer Power cycle a server
+	PowerCycle Power cycle a server
 
 	Powercyle the server.
 
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
-	@return ApiPowerCycleServerRequest
+	@return ApiPowerCycleRequest
 	*/
-	PowerCycleServer(ctx context.Context, serverId string) ApiPowerCycleServerRequest
+	PowerCycle(ctx context.Context, serverId string) ApiPowerCycleRequest
 
-	// PowerCycleServerExecute executes the request
-	PowerCycleServerExecute(r ApiPowerCycleServerRequest) (*http.Response, error)
+	// PowerCycleExecute executes the request
+	PowerCycleExecute(r ApiPowerCycleRequest) (*http.Response, error)
 
 	/*
-	PowerNetworkEquipmentOff Power off network equipment
-
-	Power off the given network equipment.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@return ApiPowerNetworkEquipmentOffRequest
-	*/
-	PowerNetworkEquipmentOff(ctx context.Context, networkEquipmentId string) ApiPowerNetworkEquipmentOffRequest
-
-	// PowerNetworkEquipmentOffExecute executes the request
-	PowerNetworkEquipmentOffExecute(r ApiPowerNetworkEquipmentOffRequest) (*http.Response, error)
-
-	/*
-	PowerNetworkEquipmentOn Power on network equipment
-
-	Power on the given network equipment.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@return ApiPowerNetworkEquipmentOnRequest
-	*/
-	PowerNetworkEquipmentOn(ctx context.Context, networkEquipmentId string) ApiPowerNetworkEquipmentOnRequest
-
-	// PowerNetworkEquipmentOnExecute executes the request
-	PowerNetworkEquipmentOnExecute(r ApiPowerNetworkEquipmentOnRequest) (*http.Response, error)
-
-	/*
-	PowerServerOff Power off server
+	PowerOff Power off server
 
 	Power off the given server.
 
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
-	@return ApiPowerServerOffRequest
+	@return ApiPowerOffRequest
 	*/
-	PowerServerOff(ctx context.Context, serverId string) ApiPowerServerOffRequest
+	PowerOff(ctx context.Context, serverId string) ApiPowerOffRequest
 
-	// PowerServerOffExecute executes the request
-	PowerServerOffExecute(r ApiPowerServerOffRequest) (*http.Response, error)
+	// PowerOffExecute executes the request
+	PowerOffExecute(r ApiPowerOffRequest) (*http.Response, error)
 
 	/*
-	PowerServerOn Power on server
+	PowerOn Power on server
 
 	Power on the given server.
 
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
-	@return ApiPowerServerOnRequest
+	@return ApiPowerOnRequest
 	*/
-	PowerServerOn(ctx context.Context, serverId string) ApiPowerServerOnRequest
+	PowerOn(ctx context.Context, serverId string) ApiPowerOnRequest
 
-	// PowerServerOnExecute executes the request
-	PowerServerOnExecute(r ApiPowerServerOnRequest) (*http.Response, error)
+	// PowerOnExecute executes the request
+	PowerOnExecute(r ApiPowerOnRequest) (*http.Response, error)
 
 	/*
 	RemoveNullIpRoute Remove a null route
@@ -1219,21 +924,20 @@ minutes before the change is propagated across the network.
 	RemoveNullIpRouteExecute(r ApiRemoveNullIpRouteRequest) (*Ip, *http.Response, error)
 
 	/*
-	RetryServerJob Retry a job
+	RetryJob Retry a job
 
 	Retry a job for a specific server.
-
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
 	@param jobId The ID of a Job
-	@return ApiRetryServerJobRequest
+	@return ApiRetryJobRequest
 	*/
-	RetryServerJob(ctx context.Context, serverId string, jobId string) ApiRetryServerJobRequest
+	RetryJob(ctx context.Context, serverId string, jobId string) ApiRetryJobRequest
 
-	// RetryServerJobExecute executes the request
-	//  @return CurrentServerJob
-	RetryServerJobExecute(r ApiRetryServerJobRequest) (*CurrentServerJob, *http.Response, error)
+	// RetryJobExecute executes the request
+	//  @return CurrentJob
+	RetryJobExecute(r ApiRetryJobRequest) (*CurrentJob, *http.Response, error)
 
 	/*
 	ScanHardware Launch hardware scan
@@ -1252,32 +956,67 @@ server is booted back into the original operating system.
 	ScanHardware(ctx context.Context, serverId string) ApiScanHardwareRequest
 
 	// ScanHardwareExecute executes the request
-	//  @return ServerJob
-	ScanHardwareExecute(r ApiScanHardwareRequest) (*ServerJob, *http.Response, error)
+	//  @return Job
+	ScanHardwareExecute(r ApiScanHardwareRequest) (*Job, *http.Response, error)
 
 	/*
-	UnNullNetworkEquipmentIpRoute Remove a null route
+	UpdateBandwidthNotificationSetting Update a bandwidth notification setting
 
-	Remove an existing null route for the given IP address. It might take a few
-minutes before the change is propagated across the network.
+	Update an existing bandwidth notification setting for this server.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@param notificationSettingId The ID of a notification setting
+	@return ApiUpdateBandwidthNotificationSettingRequest
+	*/
+	UpdateBandwidthNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiUpdateBandwidthNotificationSettingRequest
+
+	// UpdateBandwidthNotificationSettingExecute executes the request
+	//  @return BandwidthNotificationSetting
+	UpdateBandwidthNotificationSettingExecute(r ApiUpdateBandwidthNotificationSettingRequest) (*BandwidthNotificationSetting, *http.Response, error)
+
+	/*
+	UpdateCredential Update server credentials
+
+	The usernames or types cannot be changed. In order to change those remove this
+credentials and create a new one.
+
+This action is purely administrative and will only update the password
+associated with this resource in our database.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@param ip The IP Address
-	@return ApiUnNullNetworkEquipmentIpRouteRequest
+	@param serverId The ID of a server
+	@param type_ The type of the credential.
+	@param username Username
+	@return ApiUpdateCredentialRequest
 	*/
-	UnNullNetworkEquipmentIpRoute(ctx context.Context, networkEquipmentId string, ip string) ApiUnNullNetworkEquipmentIpRouteRequest
+	UpdateCredential(ctx context.Context, serverId string, type_ CredentialType, username string) ApiUpdateCredentialRequest
 
-	// UnNullNetworkEquipmentIpRouteExecute executes the request
-	//  @return Ip
-	UnNullNetworkEquipmentIpRouteExecute(r ApiUnNullNetworkEquipmentIpRouteRequest) (*Ip, *http.Response, error)
+	// UpdateCredentialExecute executes the request
+	//  @return Credential
+	UpdateCredentialExecute(r ApiUpdateCredentialRequest) (*Credential, *http.Response, error)
+
+	/*
+	UpdateDataTrafficNotificationSetting Update a data traffic notification setting
+
+	Update an existing data traffic notification setting for this server.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serverId The ID of a server
+	@param notificationSettingId The ID of a notification setting
+	@return ApiUpdateDataTrafficNotificationSettingRequest
+	*/
+	UpdateDataTrafficNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiUpdateDataTrafficNotificationSettingRequest
+
+	// UpdateDataTrafficNotificationSettingExecute executes the request
+	//  @return DataTrafficNotificationSettingOpts
+	UpdateDataTrafficNotificationSettingExecute(r ApiUpdateDataTrafficNotificationSettingRequest) (*DataTrafficNotificationSettingOpts, *http.Response, error)
 
 	/*
 	UpdateDdosNotificationSetting Update DDoS notification settings
 
 	Update your DDoS notification settings for this server.
-
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
@@ -1311,158 +1050,42 @@ For more information about DDoS detection profiles [click here](https://kb.lease
 	UpdateIpProfileExecute(r ApiUpdateIpProfileRequest) (*Ip, *http.Response, error)
 
 	/*
-	UpdateNetworkEquipmentCredential Update network equipment credentials
-
-	The usernames or types cannot be changed. In order to change those remove this
-credentials and create a new one.
-
-This action is purely administrative and will only update the password
-associated with this resource in our database.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@param type_ The type of the credential.
-	@param username Username
-	@return ApiUpdateNetworkEquipmentCredentialRequest
-	*/
-	UpdateNetworkEquipmentCredential(ctx context.Context, networkEquipmentId string, type_ CredentialType, username string) ApiUpdateNetworkEquipmentCredentialRequest
-
-	// UpdateNetworkEquipmentCredentialExecute executes the request
-	//  @return Credential
-	UpdateNetworkEquipmentCredentialExecute(r ApiUpdateNetworkEquipmentCredentialRequest) (*Credential, *http.Response, error)
-
-	/*
-	UpdateNetworkEquipmentIp Update an IP
-
-	Update the reverse lookup or DDoS detection profile for the ip address.
-
-DDoS detection profiles can only be changed if the IP address is protected
-using Advanced DDoS protection.
-
-For more information about DDoS detection profiles [click here](https://kb.leaseweb.com/products/cyber-security/ddos-ip-protection#DDOSIPProtection-DDoSIPProtectionAdvancedDetectionprofiles) for our KB related article.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@param ip The IP Address
-	@return ApiUpdateNetworkEquipmentIpRequest
-	*/
-	UpdateNetworkEquipmentIp(ctx context.Context, networkEquipmentId string, ip string) ApiUpdateNetworkEquipmentIpRequest
-
-	// UpdateNetworkEquipmentIpExecute executes the request
-	//  @return Ip
-	UpdateNetworkEquipmentIpExecute(r ApiUpdateNetworkEquipmentIpRequest) (*Ip, *http.Response, error)
-
-	/*
-	UpdateNetworkEquipmentReference Update network equipment
-
-	Update the reference for a network equipment.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param networkEquipmentId The ID of a dedicated network equipment
-	@return ApiUpdateNetworkEquipmentReferenceRequest
-	*/
-	UpdateNetworkEquipmentReference(ctx context.Context, networkEquipmentId string) ApiUpdateNetworkEquipmentReferenceRequest
-
-	// UpdateNetworkEquipmentReferenceExecute executes the request
-	UpdateNetworkEquipmentReferenceExecute(r ApiUpdateNetworkEquipmentReferenceRequest) (*http.Response, error)
-
-	/*
-	UpdateServerBandwidthNotificationSetting Update a bandwidth notification setting
-
-	Update an existing bandwidth notification setting for this server.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@param notificationSettingId The ID of a notification setting
-	@return ApiUpdateServerBandwidthNotificationSettingRequest
-	*/
-	UpdateServerBandwidthNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiUpdateServerBandwidthNotificationSettingRequest
-
-	// UpdateServerBandwidthNotificationSettingExecute executes the request
-	//  @return BandwidthNotificationSetting
-	UpdateServerBandwidthNotificationSettingExecute(r ApiUpdateServerBandwidthNotificationSettingRequest) (*BandwidthNotificationSetting, *http.Response, error)
-
-	/*
-	UpdateServerCredential Update server credentials
-
-	The usernames or types cannot be changed. In order to change those remove this
-credentials and create a new one.
-
-This action is purely administrative and will only update the password
-associated with this resource in our database.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@param type_ The type of the credential.
-	@param username Username
-	@return ApiUpdateServerCredentialRequest
-	*/
-	UpdateServerCredential(ctx context.Context, serverId string, type_ CredentialType, username string) ApiUpdateServerCredentialRequest
-
-	// UpdateServerCredentialExecute executes the request
-	//  @return Credential
-	UpdateServerCredentialExecute(r ApiUpdateServerCredentialRequest) (*Credential, *http.Response, error)
-
-	/*
-	UpdateServerDataTrafficNotificationSetting Update a data traffic notification setting
-
-	Update an existing data traffic notification setting for this server.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId The ID of a server
-	@param notificationSettingId The ID of a notification setting
-	@return ApiUpdateServerDataTrafficNotificationSettingRequest
-	*/
-	UpdateServerDataTrafficNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiUpdateServerDataTrafficNotificationSettingRequest
-
-	// UpdateServerDataTrafficNotificationSettingExecute executes the request
-	//  @return DataTrafficNotificationSettingOpts
-	UpdateServerDataTrafficNotificationSettingExecute(r ApiUpdateServerDataTrafficNotificationSettingRequest) (*DataTrafficNotificationSettingOpts, *http.Response, error)
-
-	/*
-	UpdateServerReference Update server
+	UpdateReference Update server
 
 	Update the reference for a server.
 
-
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param serverId The ID of a server
-	@return ApiUpdateServerReferenceRequest
+	@return ApiUpdateReferenceRequest
 	*/
-	UpdateServerReference(ctx context.Context, serverId string) ApiUpdateServerReferenceRequest
+	UpdateReference(ctx context.Context, serverId string) ApiUpdateReferenceRequest
 
-	// UpdateServerReferenceExecute executes the request
-	UpdateServerReferenceExecute(r ApiUpdateServerReferenceRequest) (*http.Response, error)
+	// UpdateReferenceExecute executes the request
+	UpdateReferenceExecute(r ApiUpdateReferenceRequest) (*http.Response, error)
 }
 
 // DedicatedserverAPIService DedicatedserverAPI service
 type DedicatedserverAPIService service
 
-type ApiAddServerToPrivateNetworkRequest struct {
+type ApiAddToPrivateNetworkRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
 	privateNetworkId string
-	addServerToPrivateNetworkOpts *AddServerToPrivateNetworkOpts
+	addToPrivateNetworkOpts *AddToPrivateNetworkOpts
 }
 
-func (r ApiAddServerToPrivateNetworkRequest) AddServerToPrivateNetworkOpts(addServerToPrivateNetworkOpts AddServerToPrivateNetworkOpts) ApiAddServerToPrivateNetworkRequest {
-	r.addServerToPrivateNetworkOpts = &addServerToPrivateNetworkOpts
+func (r ApiAddToPrivateNetworkRequest) AddToPrivateNetworkOpts(addToPrivateNetworkOpts AddToPrivateNetworkOpts) ApiAddToPrivateNetworkRequest {
+	r.addToPrivateNetworkOpts = &addToPrivateNetworkOpts
 	return r
 }
 
-func (r ApiAddServerToPrivateNetworkRequest) Execute() (*http.Response, error) {
-	return r.ApiService.AddServerToPrivateNetworkExecute(r)
+func (r ApiAddToPrivateNetworkRequest) Execute() (*http.Response, error) {
+	return r.ApiService.AddToPrivateNetworkExecute(r)
 }
 
 /*
-AddServerToPrivateNetwork Add a server to private network
+AddToPrivateNetwork Add a server to private network
 
 It takes a few minutes before the server has access to the private network.
 
@@ -1476,10 +1099,10 @@ Once the server is added to the private network the status changes from
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
  @param privateNetworkId The ID of a Private Network
- @return ApiAddServerToPrivateNetworkRequest
+ @return ApiAddToPrivateNetworkRequest
 */
-func (a *DedicatedserverAPIService) AddServerToPrivateNetwork(ctx context.Context, serverId string, privateNetworkId string) ApiAddServerToPrivateNetworkRequest {
-	return ApiAddServerToPrivateNetworkRequest{
+func (a *DedicatedserverAPIService) AddToPrivateNetwork(ctx context.Context, serverId string, privateNetworkId string) ApiAddToPrivateNetworkRequest {
+	return ApiAddToPrivateNetworkRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -1488,14 +1111,14 @@ func (a *DedicatedserverAPIService) AddServerToPrivateNetwork(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *DedicatedserverAPIService) AddServerToPrivateNetworkExecute(r ApiAddServerToPrivateNetworkRequest) (*http.Response, error) {
+func (a *DedicatedserverAPIService) AddToPrivateNetworkExecute(r ApiAddToPrivateNetworkRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.AddServerToPrivateNetwork")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.AddToPrivateNetwork")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1526,7 +1149,7 @@ func (a *DedicatedserverAPIService) AddServerToPrivateNetworkExecute(r ApiAddSer
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.addServerToPrivateNetworkOpts
+	localVarPostBody = r.addToPrivateNetworkOpts
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1640,7 +1263,7 @@ type ApiCancelActiveJobRequest struct {
 	serverId string
 }
 
-func (r ApiCancelActiveJobRequest) Execute() (*ServerJob, *http.Response, error) {
+func (r ApiCancelActiveJobRequest) Execute() (*Job, *http.Response, error) {
 	return r.ApiService.CancelActiveJobExecute(r)
 }
 
@@ -1665,13 +1288,13 @@ func (a *DedicatedserverAPIService) CancelActiveJob(ctx context.Context, serverI
 }
 
 // Execute executes the request
-//  @return ServerJob
-func (a *DedicatedserverAPIService) CancelActiveJobExecute(r ApiCancelActiveJobRequest) (*ServerJob, *http.Response, error) {
+//  @return Job
+func (a *DedicatedserverAPIService) CancelActiveJobExecute(r ApiCancelActiveJobRequest) (*Job, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServerJob
+		localVarReturnValue  *Job
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.CancelActiveJob")
@@ -1812,7 +1435,6 @@ func (r ApiCloseNetworkInterfaceRequest) Execute() (*http.Response, error) {
 CloseNetworkInterface Close network interface
 
 Close the network interface of this type of this server.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
@@ -1966,7 +1588,6 @@ CloseNetworkInterfaces Close all network interfaces
 
 Close all network interfaces for this server.
 
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
  @return ApiCloseNetworkInterfacesRequest
@@ -2101,205 +1722,33 @@ func (a *DedicatedserverAPIService) CloseNetworkInterfacesExecute(r ApiCloseNetw
 	return localVarHTTPResponse, nil
 }
 
-type ApiCreateNetworkEquipmentCredentialRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	networkEquipmentId string
-	createNetworkEquipmentCredentialOpts *CreateNetworkEquipmentCredentialOpts
-}
-
-func (r ApiCreateNetworkEquipmentCredentialRequest) CreateNetworkEquipmentCredentialOpts(createNetworkEquipmentCredentialOpts CreateNetworkEquipmentCredentialOpts) ApiCreateNetworkEquipmentCredentialRequest {
-	r.createNetworkEquipmentCredentialOpts = &createNetworkEquipmentCredentialOpts
-	return r
-}
-
-func (r ApiCreateNetworkEquipmentCredentialRequest) Execute() (*Credential, *http.Response, error) {
-	return r.ApiService.CreateNetworkEquipmentCredentialExecute(r)
-}
-
-/*
-CreateNetworkEquipmentCredential Create new network equipment credentials
-
-Password will NOT be updated on the network equipment. The ability to update
-credentials is for convenience only. It provides a secure way to communicate
-passwords with Leaseweb engineers in case support is required.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @return ApiCreateNetworkEquipmentCredentialRequest
-*/
-func (a *DedicatedserverAPIService) CreateNetworkEquipmentCredential(ctx context.Context, networkEquipmentId string) ApiCreateNetworkEquipmentCredentialRequest {
-	return ApiCreateNetworkEquipmentCredentialRequest{
-		ApiService: a,
-		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-	}
-}
-
-// Execute executes the request
-//  @return Credential
-func (a *DedicatedserverAPIService) CreateNetworkEquipmentCredentialExecute(r ApiCreateNetworkEquipmentCredentialRequest) (*Credential, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Credential
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.CreateNetworkEquipmentCredential")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.createNetworkEquipmentCredentialOpts
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiCreateServerBandwidthNotificationSettingRequest struct {
+type ApiCreateBandwidthNotificationSettingRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
 	bandwidthNotificationSettingOpts *BandwidthNotificationSettingOpts
 }
 
-func (r ApiCreateServerBandwidthNotificationSettingRequest) BandwidthNotificationSettingOpts(bandwidthNotificationSettingOpts BandwidthNotificationSettingOpts) ApiCreateServerBandwidthNotificationSettingRequest {
+func (r ApiCreateBandwidthNotificationSettingRequest) BandwidthNotificationSettingOpts(bandwidthNotificationSettingOpts BandwidthNotificationSettingOpts) ApiCreateBandwidthNotificationSettingRequest {
 	r.bandwidthNotificationSettingOpts = &bandwidthNotificationSettingOpts
 	return r
 }
 
-func (r ApiCreateServerBandwidthNotificationSettingRequest) Execute() (*BandwidthNotificationSetting, *http.Response, error) {
-	return r.ApiService.CreateServerBandwidthNotificationSettingExecute(r)
+func (r ApiCreateBandwidthNotificationSettingRequest) Execute() (*BandwidthNotificationSetting, *http.Response, error) {
+	return r.ApiService.CreateBandwidthNotificationSettingExecute(r)
 }
 
 /*
-CreateServerBandwidthNotificationSetting Create a bandwidth notification setting
+CreateBandwidthNotificationSetting Create a bandwidth notification setting
 
 Create a new bandwidth notification setting for this server.
 
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
- @return ApiCreateServerBandwidthNotificationSettingRequest
+ @return ApiCreateBandwidthNotificationSettingRequest
 */
-func (a *DedicatedserverAPIService) CreateServerBandwidthNotificationSetting(ctx context.Context, serverId string) ApiCreateServerBandwidthNotificationSettingRequest {
-	return ApiCreateServerBandwidthNotificationSettingRequest{
+func (a *DedicatedserverAPIService) CreateBandwidthNotificationSetting(ctx context.Context, serverId string) ApiCreateBandwidthNotificationSettingRequest {
+	return ApiCreateBandwidthNotificationSettingRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -2308,7 +1757,7 @@ func (a *DedicatedserverAPIService) CreateServerBandwidthNotificationSetting(ctx
 
 // Execute executes the request
 //  @return BandwidthNotificationSetting
-func (a *DedicatedserverAPIService) CreateServerBandwidthNotificationSettingExecute(r ApiCreateServerBandwidthNotificationSettingRequest) (*BandwidthNotificationSetting, *http.Response, error) {
+func (a *DedicatedserverAPIService) CreateBandwidthNotificationSettingExecute(r ApiCreateBandwidthNotificationSettingRequest) (*BandwidthNotificationSetting, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2316,7 +1765,7 @@ func (a *DedicatedserverAPIService) CreateServerBandwidthNotificationSettingExec
 		localVarReturnValue  *BandwidthNotificationSetting
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.CreateServerBandwidthNotificationSetting")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.CreateBandwidthNotificationSetting")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2452,24 +1901,24 @@ func (a *DedicatedserverAPIService) CreateServerBandwidthNotificationSettingExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateServerCredentialRequest struct {
+type ApiCreateCredentialRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
-	createServerCredentialOpts *CreateServerCredentialOpts
+	createCredentialOpts *CreateCredentialOpts
 }
 
-func (r ApiCreateServerCredentialRequest) CreateServerCredentialOpts(createServerCredentialOpts CreateServerCredentialOpts) ApiCreateServerCredentialRequest {
-	r.createServerCredentialOpts = &createServerCredentialOpts
+func (r ApiCreateCredentialRequest) CreateCredentialOpts(createCredentialOpts CreateCredentialOpts) ApiCreateCredentialRequest {
+	r.createCredentialOpts = &createCredentialOpts
 	return r
 }
 
-func (r ApiCreateServerCredentialRequest) Execute() (*Credential, *http.Response, error) {
-	return r.ApiService.CreateServerCredentialExecute(r)
+func (r ApiCreateCredentialRequest) Execute() (*Credential, *http.Response, error) {
+	return r.ApiService.CreateCredentialExecute(r)
 }
 
 /*
-CreateServerCredential Create new server credentials
+CreateCredential Create new server credentials
 
 Password will NOT be updated on the server. The ability to update credentials
 is for convenience only. It provides a secure way to communicate passwords
@@ -2478,10 +1927,10 @@ with Leaseweb engineers in case support is required.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
- @return ApiCreateServerCredentialRequest
+ @return ApiCreateCredentialRequest
 */
-func (a *DedicatedserverAPIService) CreateServerCredential(ctx context.Context, serverId string) ApiCreateServerCredentialRequest {
-	return ApiCreateServerCredentialRequest{
+func (a *DedicatedserverAPIService) CreateCredential(ctx context.Context, serverId string) ApiCreateCredentialRequest {
+	return ApiCreateCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -2490,7 +1939,7 @@ func (a *DedicatedserverAPIService) CreateServerCredential(ctx context.Context, 
 
 // Execute executes the request
 //  @return Credential
-func (a *DedicatedserverAPIService) CreateServerCredentialExecute(r ApiCreateServerCredentialRequest) (*Credential, *http.Response, error) {
+func (a *DedicatedserverAPIService) CreateCredentialExecute(r ApiCreateCredentialRequest) (*Credential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2498,7 +1947,7 @@ func (a *DedicatedserverAPIService) CreateServerCredentialExecute(r ApiCreateSer
 		localVarReturnValue  *Credential
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.CreateServerCredential")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.CreateCredential")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2528,7 +1977,7 @@ func (a *DedicatedserverAPIService) CreateServerCredentialExecute(r ApiCreateSer
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createServerCredentialOpts
+	localVarPostBody = r.createCredentialOpts
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -2623,34 +2072,33 @@ func (a *DedicatedserverAPIService) CreateServerCredentialExecute(r ApiCreateSer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateServerDataTrafficNotificationSettingRequest struct {
+type ApiCreateDataTrafficNotificationSettingRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
 	dataTrafficNotificationSettingOpts *DataTrafficNotificationSettingOpts
 }
 
-func (r ApiCreateServerDataTrafficNotificationSettingRequest) DataTrafficNotificationSettingOpts(dataTrafficNotificationSettingOpts DataTrafficNotificationSettingOpts) ApiCreateServerDataTrafficNotificationSettingRequest {
+func (r ApiCreateDataTrafficNotificationSettingRequest) DataTrafficNotificationSettingOpts(dataTrafficNotificationSettingOpts DataTrafficNotificationSettingOpts) ApiCreateDataTrafficNotificationSettingRequest {
 	r.dataTrafficNotificationSettingOpts = &dataTrafficNotificationSettingOpts
 	return r
 }
 
-func (r ApiCreateServerDataTrafficNotificationSettingRequest) Execute() (*DataTrafficNotificationSetting, *http.Response, error) {
-	return r.ApiService.CreateServerDataTrafficNotificationSettingExecute(r)
+func (r ApiCreateDataTrafficNotificationSettingRequest) Execute() (*DataTrafficNotificationSetting, *http.Response, error) {
+	return r.ApiService.CreateDataTrafficNotificationSettingExecute(r)
 }
 
 /*
-CreateServerDataTrafficNotificationSetting Create a data traffic notification setting
+CreateDataTrafficNotificationSetting Create a data traffic notification setting
 
 Create a new data traffic notification setting for this server.
 
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
- @return ApiCreateServerDataTrafficNotificationSettingRequest
+ @return ApiCreateDataTrafficNotificationSettingRequest
 */
-func (a *DedicatedserverAPIService) CreateServerDataTrafficNotificationSetting(ctx context.Context, serverId string) ApiCreateServerDataTrafficNotificationSettingRequest {
-	return ApiCreateServerDataTrafficNotificationSettingRequest{
+func (a *DedicatedserverAPIService) CreateDataTrafficNotificationSetting(ctx context.Context, serverId string) ApiCreateDataTrafficNotificationSettingRequest {
+	return ApiCreateDataTrafficNotificationSettingRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -2659,7 +2107,7 @@ func (a *DedicatedserverAPIService) CreateServerDataTrafficNotificationSetting(c
 
 // Execute executes the request
 //  @return DataTrafficNotificationSetting
-func (a *DedicatedserverAPIService) CreateServerDataTrafficNotificationSettingExecute(r ApiCreateServerDataTrafficNotificationSettingRequest) (*DataTrafficNotificationSetting, *http.Response, error) {
+func (a *DedicatedserverAPIService) CreateDataTrafficNotificationSettingExecute(r ApiCreateDataTrafficNotificationSettingRequest) (*DataTrafficNotificationSetting, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2667,7 +2115,7 @@ func (a *DedicatedserverAPIService) CreateServerDataTrafficNotificationSettingEx
 		localVarReturnValue  *DataTrafficNotificationSetting
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.CreateServerDataTrafficNotificationSetting")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.CreateDataTrafficNotificationSetting")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2803,24 +2251,24 @@ func (a *DedicatedserverAPIService) CreateServerDataTrafficNotificationSettingEx
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateServerDhcpReservationRequest struct {
+type ApiCreateDhcpReservationRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
-	createServerDhcpReservationOpts *CreateServerDhcpReservationOpts
+	createDhcpReservationOpts *CreateDhcpReservationOpts
 }
 
-func (r ApiCreateServerDhcpReservationRequest) CreateServerDhcpReservationOpts(createServerDhcpReservationOpts CreateServerDhcpReservationOpts) ApiCreateServerDhcpReservationRequest {
-	r.createServerDhcpReservationOpts = &createServerDhcpReservationOpts
+func (r ApiCreateDhcpReservationRequest) CreateDhcpReservationOpts(createDhcpReservationOpts CreateDhcpReservationOpts) ApiCreateDhcpReservationRequest {
+	r.createDhcpReservationOpts = &createDhcpReservationOpts
 	return r
 }
 
-func (r ApiCreateServerDhcpReservationRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CreateServerDhcpReservationExecute(r)
+func (r ApiCreateDhcpReservationRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CreateDhcpReservationExecute(r)
 }
 
 /*
-CreateServerDhcpReservation Create a DHCP reservation
+CreateDhcpReservation Create a DHCP reservation
 
 After rebooting your server it will acquire this DHCP reservation and boot
 from the specified `bootfile` url.
@@ -2830,10 +2278,10 @@ Please note that this API call will not reboot or power cycle your server.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
- @return ApiCreateServerDhcpReservationRequest
+ @return ApiCreateDhcpReservationRequest
 */
-func (a *DedicatedserverAPIService) CreateServerDhcpReservation(ctx context.Context, serverId string) ApiCreateServerDhcpReservationRequest {
-	return ApiCreateServerDhcpReservationRequest{
+func (a *DedicatedserverAPIService) CreateDhcpReservation(ctx context.Context, serverId string) ApiCreateDhcpReservationRequest {
+	return ApiCreateDhcpReservationRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -2841,14 +2289,14 @@ func (a *DedicatedserverAPIService) CreateServerDhcpReservation(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *DedicatedserverAPIService) CreateServerDhcpReservationExecute(r ApiCreateServerDhcpReservationRequest) (*http.Response, error) {
+func (a *DedicatedserverAPIService) CreateDhcpReservationExecute(r ApiCreateDhcpReservationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.CreateServerDhcpReservation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.CreateDhcpReservation")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2878,7 +2326,7 @@ func (a *DedicatedserverAPIService) CreateServerDhcpReservationExecute(r ApiCrea
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createServerDhcpReservationOpts
+	localVarPostBody = r.createDhcpReservationOpts
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -2975,189 +2423,29 @@ func (a *DedicatedserverAPIService) CreateServerDhcpReservationExecute(r ApiCrea
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteNetworkEquipmentCredentialRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	networkEquipmentId string
-	type_ CredentialType
-	username string
-}
-
-func (r ApiDeleteNetworkEquipmentCredentialRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteNetworkEquipmentCredentialExecute(r)
-}
-
-/*
-DeleteNetworkEquipmentCredential Delete network equipment credentials
-
-This action is purely administrative and will only remove the username and
-password associated with this resource from our database.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @param type_ The type of the credential.
- @param username Username
- @return ApiDeleteNetworkEquipmentCredentialRequest
-*/
-func (a *DedicatedserverAPIService) DeleteNetworkEquipmentCredential(ctx context.Context, networkEquipmentId string, type_ CredentialType, username string) ApiDeleteNetworkEquipmentCredentialRequest {
-	return ApiDeleteNetworkEquipmentCredentialRequest{
-		ApiService: a,
-		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-		type_: type_,
-		username: username,
-	}
-}
-
-// Execute executes the request
-func (a *DedicatedserverAPIService) DeleteNetworkEquipmentCredentialExecute(r ApiDeleteNetworkEquipmentCredentialRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.DeleteNetworkEquipmentCredential")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/credentials/{type}/{username}"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiDeleteServerBandwidthNotificationSettingRequest struct {
+type ApiDeleteBandwidthNotificationSettingRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
 	notificationSettingId string
 }
 
-func (r ApiDeleteServerBandwidthNotificationSettingRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteServerBandwidthNotificationSettingExecute(r)
+func (r ApiDeleteBandwidthNotificationSettingRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteBandwidthNotificationSettingExecute(r)
 }
 
 /*
-DeleteServerBandwidthNotificationSetting Delete a bandwidth notification setting
+DeleteBandwidthNotificationSetting Delete a bandwidth notification setting
 
 Remove a Bandwidth Notification setting for this server.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
  @param notificationSettingId The ID of a notification setting
- @return ApiDeleteServerBandwidthNotificationSettingRequest
+ @return ApiDeleteBandwidthNotificationSettingRequest
 */
-func (a *DedicatedserverAPIService) DeleteServerBandwidthNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiDeleteServerBandwidthNotificationSettingRequest {
-	return ApiDeleteServerBandwidthNotificationSettingRequest{
+func (a *DedicatedserverAPIService) DeleteBandwidthNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiDeleteBandwidthNotificationSettingRequest {
+	return ApiDeleteBandwidthNotificationSettingRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -3166,14 +2454,14 @@ func (a *DedicatedserverAPIService) DeleteServerBandwidthNotificationSetting(ctx
 }
 
 // Execute executes the request
-func (a *DedicatedserverAPIService) DeleteServerBandwidthNotificationSettingExecute(r ApiDeleteServerBandwidthNotificationSettingRequest) (*http.Response, error) {
+func (a *DedicatedserverAPIService) DeleteBandwidthNotificationSettingExecute(r ApiDeleteBandwidthNotificationSettingRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.DeleteServerBandwidthNotificationSetting")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.DeleteBandwidthNotificationSetting")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3288,7 +2576,7 @@ func (a *DedicatedserverAPIService) DeleteServerBandwidthNotificationSettingExec
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteServerCredentialRequest struct {
+type ApiDeleteCredentialRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
@@ -3296,12 +2584,12 @@ type ApiDeleteServerCredentialRequest struct {
 	username string
 }
 
-func (r ApiDeleteServerCredentialRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteServerCredentialExecute(r)
+func (r ApiDeleteCredentialRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteCredentialExecute(r)
 }
 
 /*
-DeleteServerCredential Delete server credentials
+DeleteCredential Delete server credentials
 
 This action is purely administrative and will only remove the username and
 password associated with this resource from our database.
@@ -3311,10 +2599,10 @@ password associated with this resource from our database.
  @param serverId The ID of a server
  @param type_ The type of the credential.
  @param username Username
- @return ApiDeleteServerCredentialRequest
+ @return ApiDeleteCredentialRequest
 */
-func (a *DedicatedserverAPIService) DeleteServerCredential(ctx context.Context, serverId string, type_ CredentialType, username string) ApiDeleteServerCredentialRequest {
-	return ApiDeleteServerCredentialRequest{
+func (a *DedicatedserverAPIService) DeleteCredential(ctx context.Context, serverId string, type_ CredentialType, username string) ApiDeleteCredentialRequest {
+	return ApiDeleteCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -3324,14 +2612,14 @@ func (a *DedicatedserverAPIService) DeleteServerCredential(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *DedicatedserverAPIService) DeleteServerCredentialExecute(r ApiDeleteServerCredentialRequest) (*http.Response, error) {
+func (a *DedicatedserverAPIService) DeleteCredentialExecute(r ApiDeleteCredentialRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.DeleteServerCredential")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.DeleteCredential")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3447,30 +2735,29 @@ func (a *DedicatedserverAPIService) DeleteServerCredentialExecute(r ApiDeleteSer
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteServerDataTrafficNotificationSettingRequest struct {
+type ApiDeleteDataTrafficNotificationSettingRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
 	notificationSettingId string
 }
 
-func (r ApiDeleteServerDataTrafficNotificationSettingRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteServerDataTrafficNotificationSettingExecute(r)
+func (r ApiDeleteDataTrafficNotificationSettingRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteDataTrafficNotificationSettingExecute(r)
 }
 
 /*
-DeleteServerDataTrafficNotificationSetting Delete a data traffic notification setting
+DeleteDataTrafficNotificationSetting Delete a data traffic notification setting
 
 Delete the given data traffic notification setting for this server.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
  @param notificationSettingId The ID of a notification setting
- @return ApiDeleteServerDataTrafficNotificationSettingRequest
+ @return ApiDeleteDataTrafficNotificationSettingRequest
 */
-func (a *DedicatedserverAPIService) DeleteServerDataTrafficNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiDeleteServerDataTrafficNotificationSettingRequest {
-	return ApiDeleteServerDataTrafficNotificationSettingRequest{
+func (a *DedicatedserverAPIService) DeleteDataTrafficNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiDeleteDataTrafficNotificationSettingRequest {
+	return ApiDeleteDataTrafficNotificationSettingRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -3479,14 +2766,14 @@ func (a *DedicatedserverAPIService) DeleteServerDataTrafficNotificationSetting(c
 }
 
 // Execute executes the request
-func (a *DedicatedserverAPIService) DeleteServerDataTrafficNotificationSettingExecute(r ApiDeleteServerDataTrafficNotificationSettingRequest) (*http.Response, error) {
+func (a *DedicatedserverAPIService) DeleteDataTrafficNotificationSettingExecute(r ApiDeleteDataTrafficNotificationSettingRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.DeleteServerDataTrafficNotificationSetting")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.DeleteDataTrafficNotificationSetting")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3601,28 +2888,27 @@ func (a *DedicatedserverAPIService) DeleteServerDataTrafficNotificationSettingEx
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteServerDhcpReservationRequest struct {
+type ApiDeleteDhcpReservationRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
 }
 
-func (r ApiDeleteServerDhcpReservationRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteServerDhcpReservationExecute(r)
+func (r ApiDeleteDhcpReservationRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteDhcpReservationExecute(r)
 }
 
 /*
-DeleteServerDhcpReservation Delete a DHCP reservation
+DeleteDhcpReservation Delete a DHCP reservation
 
 Delete a DHCP reservation for this server.
 
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
- @return ApiDeleteServerDhcpReservationRequest
+ @return ApiDeleteDhcpReservationRequest
 */
-func (a *DedicatedserverAPIService) DeleteServerDhcpReservation(ctx context.Context, serverId string) ApiDeleteServerDhcpReservationRequest {
-	return ApiDeleteServerDhcpReservationRequest{
+func (a *DedicatedserverAPIService) DeleteDhcpReservation(ctx context.Context, serverId string) ApiDeleteDhcpReservationRequest {
+	return ApiDeleteDhcpReservationRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -3630,14 +2916,14 @@ func (a *DedicatedserverAPIService) DeleteServerDhcpReservation(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *DedicatedserverAPIService) DeleteServerDhcpReservationExecute(r ApiDeleteServerDhcpReservationRequest) (*http.Response, error) {
+func (a *DedicatedserverAPIService) DeleteDhcpReservationExecute(r ApiDeleteDhcpReservationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.DeleteServerDhcpReservation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.DeleteDhcpReservation")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3751,19 +3037,19 @@ func (a *DedicatedserverAPIService) DeleteServerDhcpReservationExecute(r ApiDele
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteServerFromPrivateNetworkRequest struct {
+type ApiDeleteFromPrivateNetworkRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
 	privateNetworkId string
 }
 
-func (r ApiDeleteServerFromPrivateNetworkRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteServerFromPrivateNetworkExecute(r)
+func (r ApiDeleteFromPrivateNetworkRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteFromPrivateNetworkExecute(r)
 }
 
 /*
-DeleteServerFromPrivateNetwork Delete a server from a private network
+DeleteFromPrivateNetwork Delete a server from a private network
 
 This API call will remove the dedicated server from the private network.
 
@@ -3779,10 +3065,10 @@ While the server is being removed the status changes to `REMOVING`.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
  @param privateNetworkId The ID of a Private Network
- @return ApiDeleteServerFromPrivateNetworkRequest
+ @return ApiDeleteFromPrivateNetworkRequest
 */
-func (a *DedicatedserverAPIService) DeleteServerFromPrivateNetwork(ctx context.Context, serverId string, privateNetworkId string) ApiDeleteServerFromPrivateNetworkRequest {
-	return ApiDeleteServerFromPrivateNetworkRequest{
+func (a *DedicatedserverAPIService) DeleteFromPrivateNetwork(ctx context.Context, serverId string, privateNetworkId string) ApiDeleteFromPrivateNetworkRequest {
+	return ApiDeleteFromPrivateNetworkRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -3791,14 +3077,14 @@ func (a *DedicatedserverAPIService) DeleteServerFromPrivateNetwork(ctx context.C
 }
 
 // Execute executes the request
-func (a *DedicatedserverAPIService) DeleteServerFromPrivateNetworkExecute(r ApiDeleteServerFromPrivateNetworkRequest) (*http.Response, error) {
+func (a *DedicatedserverAPIService) DeleteFromPrivateNetworkExecute(r ApiDeleteFromPrivateNetworkRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.DeleteServerFromPrivateNetwork")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.DeleteFromPrivateNetwork")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3935,24 +3221,24 @@ func (a *DedicatedserverAPIService) DeleteServerFromPrivateNetworkExecute(r ApiD
 	return localVarHTTPResponse, nil
 }
 
-type ApiEnableServerRescueModeRequest struct {
+type ApiEnableRescueModeRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
-	enableServerRescueModeOpts *EnableServerRescueModeOpts
+	enableRescueModeOpts *EnableRescueModeOpts
 }
 
-func (r ApiEnableServerRescueModeRequest) EnableServerRescueModeOpts(enableServerRescueModeOpts EnableServerRescueModeOpts) ApiEnableServerRescueModeRequest {
-	r.enableServerRescueModeOpts = &enableServerRescueModeOpts
+func (r ApiEnableRescueModeRequest) EnableRescueModeOpts(enableRescueModeOpts EnableRescueModeOpts) ApiEnableRescueModeRequest {
+	r.enableRescueModeOpts = &enableRescueModeOpts
 	return r
 }
 
-func (r ApiEnableServerRescueModeRequest) Execute() (*ServerJob, *http.Response, error) {
-	return r.ApiService.EnableServerRescueModeExecute(r)
+func (r ApiEnableRescueModeRequest) Execute() (*Job, *http.Response, error) {
+	return r.ApiService.EnableRescueModeExecute(r)
 }
 
 /*
-EnableServerRescueMode Launch rescue mode
+EnableRescueMode Launch rescue mode
 
 Rescue mode allows you to trouble shoot your server in case your installed
 operating system is no longer reachable.
@@ -3972,10 +3258,10 @@ request to `/bareMetals/v2/rescueImages`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
- @return ApiEnableServerRescueModeRequest
+ @return ApiEnableRescueModeRequest
 */
-func (a *DedicatedserverAPIService) EnableServerRescueMode(ctx context.Context, serverId string) ApiEnableServerRescueModeRequest {
-	return ApiEnableServerRescueModeRequest{
+func (a *DedicatedserverAPIService) EnableRescueMode(ctx context.Context, serverId string) ApiEnableRescueModeRequest {
+	return ApiEnableRescueModeRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -3983,16 +3269,16 @@ func (a *DedicatedserverAPIService) EnableServerRescueMode(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return ServerJob
-func (a *DedicatedserverAPIService) EnableServerRescueModeExecute(r ApiEnableServerRescueModeRequest) (*ServerJob, *http.Response, error) {
+//  @return Job
+func (a *DedicatedserverAPIService) EnableRescueModeExecute(r ApiEnableRescueModeRequest) (*Job, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServerJob
+		localVarReturnValue  *Job
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.EnableServerRescueMode")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.EnableRescueMode")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4022,7 +3308,7 @@ func (a *DedicatedserverAPIService) EnableServerRescueModeExecute(r ApiEnableSer
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.enableServerRescueModeOpts
+	localVarPostBody = r.enableRescueModeOpts
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -4134,7 +3420,7 @@ type ApiExpireActiveJobRequest struct {
 	serverId string
 }
 
-func (r ApiExpireActiveJobRequest) Execute() (*ServerJob, *http.Response, error) {
+func (r ApiExpireActiveJobRequest) Execute() (*Job, *http.Response, error) {
 	return r.ApiService.ExpireActiveJobExecute(r)
 }
 
@@ -4161,13 +3447,13 @@ func (a *DedicatedserverAPIService) ExpireActiveJob(ctx context.Context, serverI
 }
 
 // Execute executes the request
-//  @return ServerJob
-func (a *DedicatedserverAPIService) ExpireActiveJobExecute(r ApiExpireActiveJobRequest) (*ServerJob, *http.Response, error) {
+//  @return Job
+func (a *DedicatedserverAPIService) ExpireActiveJobExecute(r ApiExpireActiveJobRequest) (*Job, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServerJob
+		localVarReturnValue  *Job
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.ExpireActiveJob")
@@ -4182,6 +3468,564 @@ func (a *DedicatedserverAPIService) ExpireActiveJobExecute(r ApiExpireActiveJobR
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetBandwidthMetricsRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+	from *time.Time
+	to *time.Time
+	aggregation *string
+	granularity *string
+}
+
+// Start of date interval in ISO-8601 format. The returned data will include everything up from - and including - the specified date time.
+func (r ApiGetBandwidthMetricsRequest) From(from time.Time) ApiGetBandwidthMetricsRequest {
+	r.from = &from
+	return r
+}
+
+// End of date interval in ISO-8601 format. The returned data will include everything up until - but not including - the specified date time.
+func (r ApiGetBandwidthMetricsRequest) To(to time.Time) ApiGetBandwidthMetricsRequest {
+	r.to = &to
+	return r
+}
+
+// Aggregate each metric using the given aggregation function. When the aggregation type &#x60;95TH&#x60; is specified the granularity parameter should be omitted from the request.
+func (r ApiGetBandwidthMetricsRequest) Aggregation(aggregation string) ApiGetBandwidthMetricsRequest {
+	r.aggregation = &aggregation
+	return r
+}
+
+// Specify the preferred interval for each metric. If granularity is omitted from the request, only one metric is returned.
+func (r ApiGetBandwidthMetricsRequest) Granularity(granularity string) ApiGetBandwidthMetricsRequest {
+	r.granularity = &granularity
+	return r
+}
+
+func (r ApiGetBandwidthMetricsRequest) Execute() (*Metrics, *http.Response, error) {
+	return r.ApiService.GetBandwidthMetricsExecute(r)
+}
+
+/*
+GetBandwidthMetrics Show bandwidth metrics
+
+At this moment only bandwidth information for the public interface is supported.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @return ApiGetBandwidthMetricsRequest
+*/
+func (a *DedicatedserverAPIService) GetBandwidthMetrics(ctx context.Context, serverId string) ApiGetBandwidthMetricsRequest {
+	return ApiGetBandwidthMetricsRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+	}
+}
+
+// Execute executes the request
+//  @return Metrics
+func (a *DedicatedserverAPIService) GetBandwidthMetricsExecute(r ApiGetBandwidthMetricsRequest) (*Metrics, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Metrics
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetBandwidthMetrics")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/metrics/bandwidth"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.aggregation == nil {
+		return localVarReturnValue, nil, reportError("aggregation is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	if r.granularity != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "aggregation", r.aggregation, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetBandwidthNotificationSettingRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+	notificationSettingId string
+}
+
+func (r ApiGetBandwidthNotificationSettingRequest) Execute() (*BandwidthNotificationSetting, *http.Response, error) {
+	return r.ApiService.GetBandwidthNotificationSettingExecute(r)
+}
+
+/*
+GetBandwidthNotificationSetting Show a bandwidth notification setting
+
+Get a bandwidth notification setting for this server.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @param notificationSettingId The ID of a notification setting
+ @return ApiGetBandwidthNotificationSettingRequest
+*/
+func (a *DedicatedserverAPIService) GetBandwidthNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiGetBandwidthNotificationSettingRequest {
+	return ApiGetBandwidthNotificationSettingRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+		notificationSettingId: notificationSettingId,
+	}
+}
+
+// Execute executes the request
+//  @return BandwidthNotificationSetting
+func (a *DedicatedserverAPIService) GetBandwidthNotificationSettingExecute(r ApiGetBandwidthNotificationSettingRequest) (*BandwidthNotificationSetting, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BandwidthNotificationSetting
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetBandwidthNotificationSetting")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/notificationSettings/bandwidth/{notificationSettingId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"notificationSettingId"+"}", url.PathEscape(parameterValueToString(r.notificationSettingId, "notificationSettingId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetBandwidthNotificationSettingListRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+	limit *int32
+	offset *int32
+}
+
+// Limit the number of results returned.
+func (r ApiGetBandwidthNotificationSettingListRequest) Limit(limit int32) ApiGetBandwidthNotificationSettingListRequest {
+	r.limit = &limit
+	return r
+}
+
+// Return results starting from the given offset.
+func (r ApiGetBandwidthNotificationSettingListRequest) Offset(offset int32) ApiGetBandwidthNotificationSettingListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiGetBandwidthNotificationSettingListRequest) Execute() (*GetBandwidthNotificationSettingListResult, *http.Response, error) {
+	return r.ApiService.GetBandwidthNotificationSettingListExecute(r)
+}
+
+/*
+GetBandwidthNotificationSettingList List bandwidth notification settings
+
+List all bandwidth notification settings for this server.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @return ApiGetBandwidthNotificationSettingListRequest
+*/
+func (a *DedicatedserverAPIService) GetBandwidthNotificationSettingList(ctx context.Context, serverId string) ApiGetBandwidthNotificationSettingListRequest {
+	return ApiGetBandwidthNotificationSettingListRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+	}
+}
+
+// Execute executes the request
+//  @return GetBandwidthNotificationSettingListResult
+func (a *DedicatedserverAPIService) GetBandwidthNotificationSettingListExecute(r ApiGetBandwidthNotificationSettingListRequest) (*GetBandwidthNotificationSettingListResult, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetBandwidthNotificationSettingListResult
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetBandwidthNotificationSettingList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/notificationSettings/bandwidth"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -4660,6 +4504,1103 @@ func (a *DedicatedserverAPIService) GetControlPanelListByOperatingSystemIdExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetCredentialRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+	type_ CredentialType
+	username string
+}
+
+func (r ApiGetCredentialRequest) Execute() (*Credential, *http.Response, error) {
+	return r.ApiService.GetCredentialExecute(r)
+}
+
+/*
+GetCredential Show server credentials
+
+View the password for the given credential, identified by `type` and
+`username`. Auto generated credentials (during a re-install, rescue mode or
+ipmi reset can be found here).
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @param type_ The type of the credential.
+ @param username Username
+ @return ApiGetCredentialRequest
+*/
+func (a *DedicatedserverAPIService) GetCredential(ctx context.Context, serverId string, type_ CredentialType, username string) ApiGetCredentialRequest {
+	return ApiGetCredentialRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+		type_: type_,
+		username: username,
+	}
+}
+
+// Execute executes the request
+//  @return Credential
+func (a *DedicatedserverAPIService) GetCredentialExecute(r ApiGetCredentialRequest) (*Credential, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Credential
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetCredential")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/credentials/{type}/{username}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetCredentialListRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+	limit *int32
+	offset *int32
+}
+
+// Limit the number of results returned.
+func (r ApiGetCredentialListRequest) Limit(limit int32) ApiGetCredentialListRequest {
+	r.limit = &limit
+	return r
+}
+
+// Return results starting from the given offset.
+func (r ApiGetCredentialListRequest) Offset(offset int32) ApiGetCredentialListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiGetCredentialListRequest) Execute() (*CredentialList, *http.Response, error) {
+	return r.ApiService.GetCredentialListExecute(r)
+}
+
+/*
+GetCredentialList List server credentials
+
+The credentials API allows you to store usernames and passwords securely.
+
+During (re)installations, rescue modes and ipmi resets the newly generated
+passwords are stored and can be retrieved using this API.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @return ApiGetCredentialListRequest
+*/
+func (a *DedicatedserverAPIService) GetCredentialList(ctx context.Context, serverId string) ApiGetCredentialListRequest {
+	return ApiGetCredentialListRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+	}
+}
+
+// Execute executes the request
+//  @return CredentialList
+func (a *DedicatedserverAPIService) GetCredentialListExecute(r ApiGetCredentialListRequest) (*CredentialList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CredentialList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetCredentialList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/credentials"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetCredentialListByTypeRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+	type_ CredentialType
+	limit *int32
+	offset *int32
+}
+
+// Limit the number of results returned.
+func (r ApiGetCredentialListByTypeRequest) Limit(limit int32) ApiGetCredentialListByTypeRequest {
+	r.limit = &limit
+	return r
+}
+
+// Return results starting from the given offset.
+func (r ApiGetCredentialListByTypeRequest) Offset(offset int32) ApiGetCredentialListByTypeRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiGetCredentialListByTypeRequest) Execute() (*CredentialList, *http.Response, error) {
+	return r.ApiService.GetCredentialListByTypeExecute(r)
+}
+
+/*
+GetCredentialListByType List server credentials by type
+
+List all the credentials filtered by the specified type that are associated with this server.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @param type_ The type of the credential.
+ @return ApiGetCredentialListByTypeRequest
+*/
+func (a *DedicatedserverAPIService) GetCredentialListByType(ctx context.Context, serverId string, type_ CredentialType) ApiGetCredentialListByTypeRequest {
+	return ApiGetCredentialListByTypeRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+		type_: type_,
+	}
+}
+
+// Execute executes the request
+//  @return CredentialList
+func (a *DedicatedserverAPIService) GetCredentialListByTypeExecute(r ApiGetCredentialListByTypeRequest) (*CredentialList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CredentialList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetCredentialListByType")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/credentials/{type}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetDataTrafficMetricsRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+	from *time.Time
+	to *time.Time
+	aggregation *string
+	granularity *string
+}
+
+// Start of date interval in ISO-8601 format. The returned data will include everything up from - and including - the specified date time.
+func (r ApiGetDataTrafficMetricsRequest) From(from time.Time) ApiGetDataTrafficMetricsRequest {
+	r.from = &from
+	return r
+}
+
+// End of date interval in ISO-8601 format. The returned data will include everything up until - but not including - the specified date time.
+func (r ApiGetDataTrafficMetricsRequest) To(to time.Time) ApiGetDataTrafficMetricsRequest {
+	r.to = &to
+	return r
+}
+
+// Aggregate each metric using the given aggregation function.
+func (r ApiGetDataTrafficMetricsRequest) Aggregation(aggregation string) ApiGetDataTrafficMetricsRequest {
+	r.aggregation = &aggregation
+	return r
+}
+
+// Specify the preferred interval for each metric. If granularity is omitted from the request, only one metric is returned.
+func (r ApiGetDataTrafficMetricsRequest) Granularity(granularity string) ApiGetDataTrafficMetricsRequest {
+	r.granularity = &granularity
+	return r
+}
+
+func (r ApiGetDataTrafficMetricsRequest) Execute() (*Metrics, *http.Response, error) {
+	return r.ApiService.GetDataTrafficMetricsExecute(r)
+}
+
+/*
+GetDataTrafficMetrics Show datatraffic metrics
+
+At this moment only bandwidth information for the public interface is supported.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @return ApiGetDataTrafficMetricsRequest
+*/
+func (a *DedicatedserverAPIService) GetDataTrafficMetrics(ctx context.Context, serverId string) ApiGetDataTrafficMetricsRequest {
+	return ApiGetDataTrafficMetricsRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+	}
+}
+
+// Execute executes the request
+//  @return Metrics
+func (a *DedicatedserverAPIService) GetDataTrafficMetricsExecute(r ApiGetDataTrafficMetricsRequest) (*Metrics, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Metrics
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetDataTrafficMetrics")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/metrics/datatraffic"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.aggregation == nil {
+		return localVarReturnValue, nil, reportError("aggregation is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	if r.granularity != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "aggregation", r.aggregation, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetDataTrafficNotificationSettingRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+	notificationSettingId string
+}
+
+func (r ApiGetDataTrafficNotificationSettingRequest) Execute() (*DataTrafficNotificationSetting, *http.Response, error) {
+	return r.ApiService.GetDataTrafficNotificationSettingExecute(r)
+}
+
+/*
+GetDataTrafficNotificationSetting Show a data traffic notification setting
+
+Get a datatraffic notification setting for this server.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @param notificationSettingId The ID of a notification setting
+ @return ApiGetDataTrafficNotificationSettingRequest
+*/
+func (a *DedicatedserverAPIService) GetDataTrafficNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiGetDataTrafficNotificationSettingRequest {
+	return ApiGetDataTrafficNotificationSettingRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+		notificationSettingId: notificationSettingId,
+	}
+}
+
+// Execute executes the request
+//  @return DataTrafficNotificationSetting
+func (a *DedicatedserverAPIService) GetDataTrafficNotificationSettingExecute(r ApiGetDataTrafficNotificationSettingRequest) (*DataTrafficNotificationSetting, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DataTrafficNotificationSetting
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetDataTrafficNotificationSetting")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/notificationSettings/datatraffic/{notificationSettingId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"notificationSettingId"+"}", url.PathEscape(parameterValueToString(r.notificationSettingId, "notificationSettingId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetDataTrafficNotificationSettingListRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+	limit *int32
+	offset *int32
+}
+
+// Limit the number of results returned.
+func (r ApiGetDataTrafficNotificationSettingListRequest) Limit(limit int32) ApiGetDataTrafficNotificationSettingListRequest {
+	r.limit = &limit
+	return r
+}
+
+// Return results starting from the given offset.
+func (r ApiGetDataTrafficNotificationSettingListRequest) Offset(offset int32) ApiGetDataTrafficNotificationSettingListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiGetDataTrafficNotificationSettingListRequest) Execute() (*GetDataTrafficNotificationSettingListResult, *http.Response, error) {
+	return r.ApiService.GetDataTrafficNotificationSettingListExecute(r)
+}
+
+/*
+GetDataTrafficNotificationSettingList List data traffic notification settings
+
+List all datatraffic notification settings for this server.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @return ApiGetDataTrafficNotificationSettingListRequest
+*/
+func (a *DedicatedserverAPIService) GetDataTrafficNotificationSettingList(ctx context.Context, serverId string) ApiGetDataTrafficNotificationSettingListRequest {
+	return ApiGetDataTrafficNotificationSettingListRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+	}
+}
+
+// Execute executes the request
+//  @return GetDataTrafficNotificationSettingListResult
+func (a *DedicatedserverAPIService) GetDataTrafficNotificationSettingListExecute(r ApiGetDataTrafficNotificationSettingListRequest) (*GetDataTrafficNotificationSettingListResult, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetDataTrafficNotificationSettingListResult
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetDataTrafficNotificationSettingList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/notificationSettings/datatraffic"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetDdosNotificationSettingRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
@@ -4834,232 +5775,50 @@ func (a *DedicatedserverAPIService) GetDdosNotificationSettingExecute(r ApiGetDd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetNetworkEquipmentRequest struct {
+type ApiGetDhcpReservationListRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
-	networkEquipmentId string
+	serverId string
 }
 
-func (r ApiGetNetworkEquipmentRequest) Execute() (*NetworkEquipment, *http.Response, error) {
-	return r.ApiService.GetNetworkEquipmentExecute(r)
+func (r ApiGetDhcpReservationListRequest) Execute() (*GetDhcpReservationListResult, *http.Response, error) {
+	return r.ApiService.GetDhcpReservationListExecute(r)
 }
 
 /*
-GetNetworkEquipment Get network equipment
+GetDhcpReservationList List DHCP reservations
 
-Use this API to get information about a single network equipment.
-
+Please note that this will only show reservations for the public network interface.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @return ApiGetNetworkEquipmentRequest
+ @param serverId The ID of a server
+ @return ApiGetDhcpReservationListRequest
 */
-func (a *DedicatedserverAPIService) GetNetworkEquipment(ctx context.Context, networkEquipmentId string) ApiGetNetworkEquipmentRequest {
-	return ApiGetNetworkEquipmentRequest{
+func (a *DedicatedserverAPIService) GetDhcpReservationList(ctx context.Context, serverId string) ApiGetDhcpReservationListRequest {
+	return ApiGetDhcpReservationListRequest{
 		ApiService: a,
 		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
+		serverId: serverId,
 	}
 }
 
 // Execute executes the request
-//  @return NetworkEquipment
-func (a *DedicatedserverAPIService) GetNetworkEquipmentExecute(r ApiGetNetworkEquipmentRequest) (*NetworkEquipment, *http.Response, error) {
+//  @return GetDhcpReservationListResult
+func (a *DedicatedserverAPIService) GetDhcpReservationListExecute(r ApiGetDhcpReservationListRequest) (*GetDhcpReservationListResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *NetworkEquipment
+		localVarReturnValue  *GetDhcpReservationListResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetNetworkEquipment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetDhcpReservationList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNetworkEquipmentCredentialRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	networkEquipmentId string
-	type_ CredentialType
-	username string
-}
-
-func (r ApiGetNetworkEquipmentCredentialRequest) Execute() (*Credential, *http.Response, error) {
-	return r.ApiService.GetNetworkEquipmentCredentialExecute(r)
-}
-
-/*
-GetNetworkEquipmentCredential Show network equipment credentials
-
-View the password for the given credential, identified by `type` and
-`username`.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @param type_ The type of the credential.
- @param username Username
- @return ApiGetNetworkEquipmentCredentialRequest
-*/
-func (a *DedicatedserverAPIService) GetNetworkEquipmentCredential(ctx context.Context, networkEquipmentId string, type_ CredentialType, username string) ApiGetNetworkEquipmentCredentialRequest {
-	return ApiGetNetworkEquipmentCredentialRequest{
-		ApiService: a,
-		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-		type_: type_,
-		username: username,
-	}
-}
-
-// Execute executes the request
-//  @return Credential
-func (a *DedicatedserverAPIService) GetNetworkEquipmentCredentialExecute(r ApiGetNetworkEquipmentCredentialRequest) (*Credential, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Credential
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetNetworkEquipmentCredential")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/credentials/{type}/{username}"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
+	localVarPath := localBasePath + "/servers/{serverId}/leases"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5176,76 +5935,57 @@ func (a *DedicatedserverAPIService) GetNetworkEquipmentCredentialExecute(r ApiGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetNetworkEquipmentCredentialListRequest struct {
+type ApiGetHardwareRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
-	networkEquipmentId string
-	limit *int32
-	offset *int32
+	serverId string
 }
 
-// Limit the number of results returned.
-func (r ApiGetNetworkEquipmentCredentialListRequest) Limit(limit int32) ApiGetNetworkEquipmentCredentialListRequest {
-	r.limit = &limit
-	return r
-}
-
-// Return results starting from the given offset.
-func (r ApiGetNetworkEquipmentCredentialListRequest) Offset(offset int32) ApiGetNetworkEquipmentCredentialListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiGetNetworkEquipmentCredentialListRequest) Execute() (*CredentialList, *http.Response, error) {
-	return r.ApiService.GetNetworkEquipmentCredentialListExecute(r)
+func (r ApiGetHardwareRequest) Execute() (*GetHardwareResult, *http.Response, error) {
+	return r.ApiService.GetHardwareExecute(r)
 }
 
 /*
-GetNetworkEquipmentCredentialList List network equipment credentials
+GetHardware Show hardware information
 
-The credentials API allows you to store usernames and passwords securely.
+This information is generated when running a hardware scan for your server. A
+hardware scan collects hardware information about your system.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @return ApiGetNetworkEquipmentCredentialListRequest
+ @param serverId The ID of a server
+ @return ApiGetHardwareRequest
 */
-func (a *DedicatedserverAPIService) GetNetworkEquipmentCredentialList(ctx context.Context, networkEquipmentId string) ApiGetNetworkEquipmentCredentialListRequest {
-	return ApiGetNetworkEquipmentCredentialListRequest{
+func (a *DedicatedserverAPIService) GetHardware(ctx context.Context, serverId string) ApiGetHardwareRequest {
+	return ApiGetHardwareRequest{
 		ApiService: a,
 		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
+		serverId: serverId,
 	}
 }
 
 // Execute executes the request
-//  @return CredentialList
-func (a *DedicatedserverAPIService) GetNetworkEquipmentCredentialListExecute(r ApiGetNetworkEquipmentCredentialListRequest) (*CredentialList, *http.Response, error) {
+//  @return GetHardwareResult
+func (a *DedicatedserverAPIService) GetHardwareExecute(r ApiGetHardwareRequest) (*GetHardwareResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CredentialList
+		localVarReturnValue  *GetHardwareResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetNetworkEquipmentCredentialList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetHardware")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
+	localVarPath := localBasePath + "/servers/{serverId}/hardwareInfo"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -5298,6 +6038,17 @@ func (a *DedicatedserverAPIService) GetNetworkEquipmentCredentialListExecute(r A
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ErrorResult
@@ -5357,226 +6108,39 @@ func (a *DedicatedserverAPIService) GetNetworkEquipmentCredentialListExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetNetworkEquipmentCredentialListByTypeRequest struct {
+type ApiGetIpRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
-	networkEquipmentId string
-	type_ CredentialType
-	limit *int32
-	offset *int32
-}
-
-// Limit the number of results returned.
-func (r ApiGetNetworkEquipmentCredentialListByTypeRequest) Limit(limit int32) ApiGetNetworkEquipmentCredentialListByTypeRequest {
-	r.limit = &limit
-	return r
-}
-
-// Return results starting from the given offset.
-func (r ApiGetNetworkEquipmentCredentialListByTypeRequest) Offset(offset int32) ApiGetNetworkEquipmentCredentialListByTypeRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiGetNetworkEquipmentCredentialListByTypeRequest) Execute() (*CredentialList, *http.Response, error) {
-	return r.ApiService.GetNetworkEquipmentCredentialListByTypeExecute(r)
-}
-
-/*
-GetNetworkEquipmentCredentialListByType List network equipment credentials by type
-
-List all the credentials filtered by the specified type that are associated
-with this network equipment.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @param type_ The type of the credential.
- @return ApiGetNetworkEquipmentCredentialListByTypeRequest
-*/
-func (a *DedicatedserverAPIService) GetNetworkEquipmentCredentialListByType(ctx context.Context, networkEquipmentId string, type_ CredentialType) ApiGetNetworkEquipmentCredentialListByTypeRequest {
-	return ApiGetNetworkEquipmentCredentialListByTypeRequest{
-		ApiService: a,
-		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-		type_: type_,
-	}
-}
-
-// Execute executes the request
-//  @return CredentialList
-func (a *DedicatedserverAPIService) GetNetworkEquipmentCredentialListByTypeExecute(r ApiGetNetworkEquipmentCredentialListByTypeRequest) (*CredentialList, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetNetworkEquipmentCredentialListByType")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/credentials/{type}"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNetworkEquipmentIpRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	networkEquipmentId string
+	serverId string
 	ip string
 }
 
-func (r ApiGetNetworkEquipmentIpRequest) Execute() (*Ip, *http.Response, error) {
-	return r.ApiService.GetNetworkEquipmentIpExecute(r)
+func (r ApiGetIpRequest) Execute() (*Ip, *http.Response, error) {
+	return r.ApiService.GetIpExecute(r)
 }
 
 /*
-GetNetworkEquipmentIp Show a network equipment IP
+GetIp Show a server IP
 
-Get a single IP address associated with this network equipment.
-
+Get a single IP address associated with this server.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
+ @param serverId The ID of a server
  @param ip The IP Address
- @return ApiGetNetworkEquipmentIpRequest
+ @return ApiGetIpRequest
 */
-func (a *DedicatedserverAPIService) GetNetworkEquipmentIp(ctx context.Context, networkEquipmentId string, ip string) ApiGetNetworkEquipmentIpRequest {
-	return ApiGetNetworkEquipmentIpRequest{
+func (a *DedicatedserverAPIService) GetIp(ctx context.Context, serverId string, ip string) ApiGetIpRequest {
+	return ApiGetIpRequest{
 		ApiService: a,
 		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
+		serverId: serverId,
 		ip: ip,
 	}
 }
 
 // Execute executes the request
 //  @return Ip
-func (a *DedicatedserverAPIService) GetNetworkEquipmentIpExecute(r ApiGetNetworkEquipmentIpRequest) (*Ip, *http.Response, error) {
+func (a *DedicatedserverAPIService) GetIpExecute(r ApiGetIpRequest) (*Ip, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -5584,13 +6148,13 @@ func (a *DedicatedserverAPIService) GetNetworkEquipmentIpExecute(r ApiGetNetwork
 		localVarReturnValue  *Ip
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetNetworkEquipmentIp")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetIp")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/ips/{ip}"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
+	localVarPath := localBasePath + "/servers/{serverId}/ips/{ip}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"ip"+"}", url.PathEscape(parameterValueToString(r.ip, "ip")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -5719,10 +6283,10 @@ func (a *DedicatedserverAPIService) GetNetworkEquipmentIpExecute(r ApiGetNetwork
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetNetworkEquipmentIpListRequest struct {
+type ApiGetIpListRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
-	networkEquipmentId string
+	serverId string
 	networkType *NetworkType
 	version *string
 	nullRouted *string
@@ -5732,81 +6296,79 @@ type ApiGetNetworkEquipmentIpListRequest struct {
 }
 
 // Filter the collection of ip addresses by network type
-func (r ApiGetNetworkEquipmentIpListRequest) NetworkType(networkType NetworkType) ApiGetNetworkEquipmentIpListRequest {
+func (r ApiGetIpListRequest) NetworkType(networkType NetworkType) ApiGetIpListRequest {
 	r.networkType = &networkType
 	return r
 }
 
 // Filter the collection by ip version
-func (r ApiGetNetworkEquipmentIpListRequest) Version(version string) ApiGetNetworkEquipmentIpListRequest {
+func (r ApiGetIpListRequest) Version(version string) ApiGetIpListRequest {
 	r.version = &version
 	return r
 }
 
 // Filter Ips by Nulled-Status
-func (r ApiGetNetworkEquipmentIpListRequest) NullRouted(nullRouted string) ApiGetNetworkEquipmentIpListRequest {
+func (r ApiGetIpListRequest) NullRouted(nullRouted string) ApiGetIpListRequest {
 	r.nullRouted = &nullRouted
 	return r
 }
 
 // Filter the collection of Ips for the comma separated list of Ips
-func (r ApiGetNetworkEquipmentIpListRequest) Ips(ips string) ApiGetNetworkEquipmentIpListRequest {
+func (r ApiGetIpListRequest) Ips(ips string) ApiGetIpListRequest {
 	r.ips = &ips
 	return r
 }
 
 // Limit the number of results returned.
-func (r ApiGetNetworkEquipmentIpListRequest) Limit(limit int32) ApiGetNetworkEquipmentIpListRequest {
+func (r ApiGetIpListRequest) Limit(limit int32) ApiGetIpListRequest {
 	r.limit = &limit
 	return r
 }
 
 // Return results starting from the given offset.
-func (r ApiGetNetworkEquipmentIpListRequest) Offset(offset int32) ApiGetNetworkEquipmentIpListRequest {
+func (r ApiGetIpListRequest) Offset(offset int32) ApiGetIpListRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetNetworkEquipmentIpListRequest) Execute() (*GetNetworkEquipmentIpListResult, *http.Response, error) {
-	return r.ApiService.GetNetworkEquipmentIpListExecute(r)
+func (r ApiGetIpListRequest) Execute() (*IpList, *http.Response, error) {
+	return r.ApiService.GetIpListExecute(r)
 }
 
 /*
-GetNetworkEquipmentIpList List IPs
+GetIpList List IPs
 
-List all IP Addresses associated with this network equipment. Optionally
-filtered.
-
+List all IP Addresses associated with this server. Optionally filtered.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @return ApiGetNetworkEquipmentIpListRequest
+ @param serverId The ID of a server
+ @return ApiGetIpListRequest
 */
-func (a *DedicatedserverAPIService) GetNetworkEquipmentIpList(ctx context.Context, networkEquipmentId string) ApiGetNetworkEquipmentIpListRequest {
-	return ApiGetNetworkEquipmentIpListRequest{
+func (a *DedicatedserverAPIService) GetIpList(ctx context.Context, serverId string) ApiGetIpListRequest {
+	return ApiGetIpListRequest{
 		ApiService: a,
 		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
+		serverId: serverId,
 	}
 }
 
 // Execute executes the request
-//  @return GetNetworkEquipmentIpListResult
-func (a *DedicatedserverAPIService) GetNetworkEquipmentIpListExecute(r ApiGetNetworkEquipmentIpListRequest) (*GetNetworkEquipmentIpListResult, *http.Response, error) {
+//  @return IpList
+func (a *DedicatedserverAPIService) GetIpListExecute(r ApiGetIpListRequest) (*IpList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetNetworkEquipmentIpListResult
+		localVarReturnValue  *IpList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetNetworkEquipmentIpList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetIpList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/ips"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
+	localVarPath := localBasePath + "/servers/{serverId}/ips"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -5941,148 +6503,59 @@ func (a *DedicatedserverAPIService) GetNetworkEquipmentIpListExecute(r ApiGetNet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetNetworkEquipmentListRequest struct {
+type ApiGetJobRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
-	limit *int32
-	offset *int32
-	reference *string
-	ip *string
-	macAddress *string
-	site *string
-	privateRackId *string
-	privateNetworkCapable *string
-	privateNetworkEnabled *string
+	serverId string
+	jobId string
 }
 
-// Limit the number of results returned.
-func (r ApiGetNetworkEquipmentListRequest) Limit(limit int32) ApiGetNetworkEquipmentListRequest {
-	r.limit = &limit
-	return r
-}
-
-// Return results starting from the given offset.
-func (r ApiGetNetworkEquipmentListRequest) Offset(offset int32) ApiGetNetworkEquipmentListRequest {
-	r.offset = &offset
-	return r
-}
-
-// Filter the list of network equipment by reference.
-func (r ApiGetNetworkEquipmentListRequest) Reference(reference string) ApiGetNetworkEquipmentListRequest {
-	r.reference = &reference
-	return r
-}
-
-// Filter the list of network equipment by ip address.
-func (r ApiGetNetworkEquipmentListRequest) Ip(ip string) ApiGetNetworkEquipmentListRequest {
-	r.ip = &ip
-	return r
-}
-
-// Filter the list of network equipment by mac address.
-func (r ApiGetNetworkEquipmentListRequest) MacAddress(macAddress string) ApiGetNetworkEquipmentListRequest {
-	r.macAddress = &macAddress
-	return r
-}
-
-// Filter the list of network equipment by site (location).
-func (r ApiGetNetworkEquipmentListRequest) Site(site string) ApiGetNetworkEquipmentListRequest {
-	r.site = &site
-	return r
-}
-
-// Filter the list of network equipment by dedicated rack id.
-func (r ApiGetNetworkEquipmentListRequest) PrivateRackId(privateRackId string) ApiGetNetworkEquipmentListRequest {
-	r.privateRackId = &privateRackId
-	return r
-}
-
-// Filter the list for private network capable network equipment
-func (r ApiGetNetworkEquipmentListRequest) PrivateNetworkCapable(privateNetworkCapable string) ApiGetNetworkEquipmentListRequest {
-	r.privateNetworkCapable = &privateNetworkCapable
-	return r
-}
-
-// Filter the list for private network enabled network equipment
-func (r ApiGetNetworkEquipmentListRequest) PrivateNetworkEnabled(privateNetworkEnabled string) ApiGetNetworkEquipmentListRequest {
-	r.privateNetworkEnabled = &privateNetworkEnabled
-	return r
-}
-
-func (r ApiGetNetworkEquipmentListRequest) Execute() (*GetNetworkEquipmentListResult, *http.Response, error) {
-	return r.ApiService.GetNetworkEquipmentListExecute(r)
+func (r ApiGetJobRequest) Execute() (*CurrentJob, *http.Response, error) {
+	return r.ApiService.GetJobExecute(r)
 }
 
 /*
-GetNetworkEquipmentList List network equipment
+GetJob Show a job
 
-List your Dedicated Network Equipment. This api call supports pagination. Use
-the `limit` and `offset` query string parameters to paginate through all your
-dedicated network equipment.
-
-Every `network equipment` object in the json response lists a few properties
-of a network equipment. Use the single resource api call to get more details
-for a single network equipment.
-
+Get a single job for this server.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetNetworkEquipmentListRequest
+ @param serverId The ID of a server
+ @param jobId The ID of a Job
+ @return ApiGetJobRequest
 */
-func (a *DedicatedserverAPIService) GetNetworkEquipmentList(ctx context.Context) ApiGetNetworkEquipmentListRequest {
-	return ApiGetNetworkEquipmentListRequest{
+func (a *DedicatedserverAPIService) GetJob(ctx context.Context, serverId string, jobId string) ApiGetJobRequest {
+	return ApiGetJobRequest{
 		ApiService: a,
 		ctx: ctx,
+		serverId: serverId,
+		jobId: jobId,
 	}
 }
 
 // Execute executes the request
-//  @return GetNetworkEquipmentListResult
-func (a *DedicatedserverAPIService) GetNetworkEquipmentListExecute(r ApiGetNetworkEquipmentListRequest) (*GetNetworkEquipmentListResult, *http.Response, error) {
+//  @return CurrentJob
+func (a *DedicatedserverAPIService) GetJobExecute(r ApiGetJobRequest) (*CurrentJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetNetworkEquipmentListResult
+		localVarReturnValue  *CurrentJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetNetworkEquipmentList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/networkEquipments"
+	localVarPath := localBasePath + "/servers/{serverId}/jobs/{jobId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
-	if r.reference != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "reference", r.reference, "form", "")
-	}
-	if r.ip != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ip", r.ip, "form", "")
-	}
-	if r.macAddress != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "macAddress", r.macAddress, "form", "")
-	}
-	if r.site != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "site", r.site, "form", "")
-	}
-	if r.privateRackId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "privateRackId", r.privateRackId, "form", "")
-	}
-	if r.privateNetworkCapable != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "privateNetworkCapable", r.privateNetworkCapable, "form", "")
-	}
-	if r.privateNetworkEnabled != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "privateNetworkEnabled", r.privateNetworkEnabled, "form", "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6194,66 +6667,85 @@ func (a *DedicatedserverAPIService) GetNetworkEquipmentListExecute(r ApiGetNetwo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetNetworkEquipmentNullRouteHistoryRequest struct {
+type ApiGetJobListRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
-	networkEquipmentId string
+	serverId string
 	limit *int32
 	offset *int32
+	type_ *string
+	status *string
+	isRunning *string
 }
 
 // Limit the number of results returned.
-func (r ApiGetNetworkEquipmentNullRouteHistoryRequest) Limit(limit int32) ApiGetNetworkEquipmentNullRouteHistoryRequest {
+func (r ApiGetJobListRequest) Limit(limit int32) ApiGetJobListRequest {
 	r.limit = &limit
 	return r
 }
 
 // Return results starting from the given offset.
-func (r ApiGetNetworkEquipmentNullRouteHistoryRequest) Offset(offset int32) ApiGetNetworkEquipmentNullRouteHistoryRequest {
+func (r ApiGetJobListRequest) Offset(offset int32) ApiGetJobListRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetNetworkEquipmentNullRouteHistoryRequest) Execute() (*GetNetworkEquipmentNullRouteHistoryResult, *http.Response, error) {
-	return r.ApiService.GetNetworkEquipmentNullRouteHistoryExecute(r)
+// Filter the list of jobs by type.
+func (r ApiGetJobListRequest) Type_(type_ string) ApiGetJobListRequest {
+	r.type_ = &type_
+	return r
+}
+
+// Filter the list of jobs by status.
+func (r ApiGetJobListRequest) Status(status string) ApiGetJobListRequest {
+	r.status = &status
+	return r
+}
+
+// Filter the list for running jobs
+func (r ApiGetJobListRequest) IsRunning(isRunning string) ApiGetJobListRequest {
+	r.isRunning = &isRunning
+	return r
+}
+
+func (r ApiGetJobListRequest) Execute() (*JobList, *http.Response, error) {
+	return r.ApiService.GetJobListExecute(r)
 }
 
 /*
-GetNetworkEquipmentNullRouteHistory Show null route history
+GetJobList List jobs
 
-Show all null route history for any ips associated with this a network
-equipment.
-
+List all jobs for this server.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @return ApiGetNetworkEquipmentNullRouteHistoryRequest
+ @param serverId The ID of a server
+ @return ApiGetJobListRequest
 */
-func (a *DedicatedserverAPIService) GetNetworkEquipmentNullRouteHistory(ctx context.Context, networkEquipmentId string) ApiGetNetworkEquipmentNullRouteHistoryRequest {
-	return ApiGetNetworkEquipmentNullRouteHistoryRequest{
+func (a *DedicatedserverAPIService) GetJobList(ctx context.Context, serverId string) ApiGetJobListRequest {
+	return ApiGetJobListRequest{
 		ApiService: a,
 		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
+		serverId: serverId,
 	}
 }
 
 // Execute executes the request
-//  @return GetNetworkEquipmentNullRouteHistoryResult
-func (a *DedicatedserverAPIService) GetNetworkEquipmentNullRouteHistoryExecute(r ApiGetNetworkEquipmentNullRouteHistoryRequest) (*GetNetworkEquipmentNullRouteHistoryResult, *http.Response, error) {
+//  @return JobList
+func (a *DedicatedserverAPIService) GetJobListExecute(r ApiGetJobListRequest) (*JobList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetNetworkEquipmentNullRouteHistoryResult
+		localVarReturnValue  *JobList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetNetworkEquipmentNullRouteHistory")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetJobList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/nullRouteHistory"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
+	localVarPath := localBasePath + "/servers/{serverId}/jobs"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -6265,6 +6757,15 @@ func (a *DedicatedserverAPIService) GetNetworkEquipmentNullRouteHistoryExecute(r
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
+	if r.type_ != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
+	if r.isRunning != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isRunning", r.isRunning, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6317,186 +6818,6 @@ func (a *DedicatedserverAPIService) GetNetworkEquipmentNullRouteHistoryExecute(r
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNetworkEquipmentPowerStatusRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	networkEquipmentId string
-}
-
-func (r ApiGetNetworkEquipmentPowerStatusRequest) Execute() (*GetNetworkEquipmentPowerStatusResult, *http.Response, error) {
-	return r.ApiService.GetNetworkEquipmentPowerStatusExecute(r)
-}
-
-/*
-GetNetworkEquipmentPowerStatus Show power status
-
-The network equipment can either be `ON` or `OFF`. Network Equipment can be
-powered on or off by using the respective `/powerOn` and `/powerOff` API
-calls. In addition network equipment can also be rebooted using the
-`/powerCycle` API call.
-
-The `pdu` object describes the power status from the power distribution unit
-(PDU) point of view. If your network equipment is connected to multiple PDU
-ports the `status` property will report `on` if at least one PDU port has
-power.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @return ApiGetNetworkEquipmentPowerStatusRequest
-*/
-func (a *DedicatedserverAPIService) GetNetworkEquipmentPowerStatus(ctx context.Context, networkEquipmentId string) ApiGetNetworkEquipmentPowerStatusRequest {
-	return ApiGetNetworkEquipmentPowerStatusRequest{
-		ApiService: a,
-		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-	}
-}
-
-// Execute executes the request
-//  @return GetNetworkEquipmentPowerStatusResult
-func (a *DedicatedserverAPIService) GetNetworkEquipmentPowerStatusExecute(r ApiGetNetworkEquipmentPowerStatusRequest) (*GetNetworkEquipmentPowerStatusResult, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetNetworkEquipmentPowerStatusResult
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetNetworkEquipmentPowerStatus")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/powerInfo"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ErrorResult
@@ -6570,9 +6891,7 @@ func (r ApiGetNetworkInterfaceRequest) Execute() (*OperationNetworkInterface, *h
 /*
 GetNetworkInterface Show a network interface
 
-Show the network interface of the given type of this server, including its
-status.
-
+Show the network interface of the given type of this server, including its status.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
@@ -6737,7 +7056,6 @@ GetNetworkInterfaceList List network interfaces
 
 List all network interfaces for this server, including their current status.
 
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
  @return ApiGetNetworkInterfaceListRequest
@@ -6772,6 +7090,186 @@ func (a *DedicatedserverAPIService) GetNetworkInterfaceListExecute(r ApiGetNetwo
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetNullRouteHistoryRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+	limit *int32
+	offset *int32
+}
+
+// Limit the number of results returned.
+func (r ApiGetNullRouteHistoryRequest) Limit(limit int32) ApiGetNullRouteHistoryRequest {
+	r.limit = &limit
+	return r
+}
+
+// Return results starting from the given offset.
+func (r ApiGetNullRouteHistoryRequest) Offset(offset int32) ApiGetNullRouteHistoryRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiGetNullRouteHistoryRequest) Execute() (*NullRouteList, *http.Response, error) {
+	return r.ApiService.GetNullRouteHistoryExecute(r)
+}
+
+/*
+GetNullRouteHistory Show null route history
+
+Show all null route history for any ips associated with this server.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @return ApiGetNullRouteHistoryRequest
+*/
+func (a *DedicatedserverAPIService) GetNullRouteHistory(ctx context.Context, serverId string) ApiGetNullRouteHistoryRequest {
+	return ApiGetNullRouteHistoryRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+	}
+}
+
+// Execute executes the request
+//  @return NullRouteList
+func (a *DedicatedserverAPIService) GetNullRouteHistoryExecute(r ApiGetNullRouteHistoryRequest) (*NullRouteList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *NullRouteList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetNullRouteHistory")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/nullRouteHistory"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -7249,6 +7747,190 @@ func (a *DedicatedserverAPIService) GetOperatingSystemListExecute(r ApiGetOperat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetPowerStatusRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+}
+
+func (r ApiGetPowerStatusRequest) Execute() (*GetPowerStatusResult, *http.Response, error) {
+	return r.ApiService.GetPowerStatusExecute(r)
+}
+
+/*
+GetPowerStatus Show power status
+
+The server can either be `ON` or `OFF`. Servers can be powered on or off by
+using the respective `/powerOn` and `/powerOff` API calls. In addition servers
+can also be rebooted using the `/powerCycle` API call.
+
+The `pdu` object describes the power status from the power distribution unit
+(PDU) point of view. If your server is connected to multiple PDU ports the
+`status` property will report `on` if at least one PDU port has power.
+
+The `ipmi` object describes the power status by quering the remote management
+interface of your server.
+
+Note that `pdu.status` can report `on` but your server can still be powered
+off if it was shutdown via `IPMI` for example.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @return ApiGetPowerStatusRequest
+*/
+func (a *DedicatedserverAPIService) GetPowerStatus(ctx context.Context, serverId string) ApiGetPowerStatusRequest {
+	return ApiGetPowerStatusRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+	}
+}
+
+// Execute executes the request
+//  @return GetPowerStatusResult
+func (a *DedicatedserverAPIService) GetPowerStatusExecute(r ApiGetPowerStatusRequest) (*GetPowerStatusResult, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetPowerStatusResult
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetPowerStatus")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/powerInfo"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetRescueImageListRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
@@ -7451,7 +8133,6 @@ GetServer Get server
 
 Use this API to get information about a single server.
 
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
  @return ApiGetServerRequest
@@ -7562,2777 +8243,6 @@ func (a *DedicatedserverAPIService) GetServerExecute(r ApiGetServerRequest) (*Se
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerBandwidthMetricsRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	from *time.Time
-	to *time.Time
-	aggregation *string
-	granularity *string
-}
-
-// Start of date interval in ISO-8601 format. The returned data will include everything up from - and including - the specified date time.
-func (r ApiGetServerBandwidthMetricsRequest) From(from time.Time) ApiGetServerBandwidthMetricsRequest {
-	r.from = &from
-	return r
-}
-
-// End of date interval in ISO-8601 format. The returned data will include everything up until - but not including - the specified date time.
-func (r ApiGetServerBandwidthMetricsRequest) To(to time.Time) ApiGetServerBandwidthMetricsRequest {
-	r.to = &to
-	return r
-}
-
-// Aggregate each metric using the given aggregation function. When the aggregation type &#x60;95TH&#x60; is specified the granularity parameter should be omitted from the request.
-func (r ApiGetServerBandwidthMetricsRequest) Aggregation(aggregation string) ApiGetServerBandwidthMetricsRequest {
-	r.aggregation = &aggregation
-	return r
-}
-
-// Specify the preferred interval for each metric. If granularity is omitted from the request, only one metric is returned.
-func (r ApiGetServerBandwidthMetricsRequest) Granularity(granularity string) ApiGetServerBandwidthMetricsRequest {
-	r.granularity = &granularity
-	return r
-}
-
-func (r ApiGetServerBandwidthMetricsRequest) Execute() (*Metrics, *http.Response, error) {
-	return r.ApiService.GetServerBandwidthMetricsExecute(r)
-}
-
-/*
-GetServerBandwidthMetrics Show bandwidth metrics
-
-At this moment only bandwidth information for the public interface is supported.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @return ApiGetServerBandwidthMetricsRequest
-*/
-func (a *DedicatedserverAPIService) GetServerBandwidthMetrics(ctx context.Context, serverId string) ApiGetServerBandwidthMetricsRequest {
-	return ApiGetServerBandwidthMetricsRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-	}
-}
-
-// Execute executes the request
-//  @return Metrics
-func (a *DedicatedserverAPIService) GetServerBandwidthMetricsExecute(r ApiGetServerBandwidthMetricsRequest) (*Metrics, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Metrics
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerBandwidthMetrics")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/metrics/bandwidth"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.from == nil {
-		return localVarReturnValue, nil, reportError("from is required and must be specified")
-	}
-	if r.to == nil {
-		return localVarReturnValue, nil, reportError("to is required and must be specified")
-	}
-	if r.aggregation == nil {
-		return localVarReturnValue, nil, reportError("aggregation is required and must be specified")
-	}
-
-	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "aggregation", r.aggregation, "form", "")
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerBandwidthNotificationSettingRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	notificationSettingId string
-}
-
-func (r ApiGetServerBandwidthNotificationSettingRequest) Execute() (*BandwidthNotificationSetting, *http.Response, error) {
-	return r.ApiService.GetServerBandwidthNotificationSettingExecute(r)
-}
-
-/*
-GetServerBandwidthNotificationSetting Show a bandwidth notification setting
-
-Get a bandwidth notification setting for this server.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @param notificationSettingId The ID of a notification setting
- @return ApiGetServerBandwidthNotificationSettingRequest
-*/
-func (a *DedicatedserverAPIService) GetServerBandwidthNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiGetServerBandwidthNotificationSettingRequest {
-	return ApiGetServerBandwidthNotificationSettingRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-		notificationSettingId: notificationSettingId,
-	}
-}
-
-// Execute executes the request
-//  @return BandwidthNotificationSetting
-func (a *DedicatedserverAPIService) GetServerBandwidthNotificationSettingExecute(r ApiGetServerBandwidthNotificationSettingRequest) (*BandwidthNotificationSetting, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BandwidthNotificationSetting
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerBandwidthNotificationSetting")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/notificationSettings/bandwidth/{notificationSettingId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"notificationSettingId"+"}", url.PathEscape(parameterValueToString(r.notificationSettingId, "notificationSettingId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerBandwidthNotificationSettingListRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	limit *int32
-	offset *int32
-}
-
-// Limit the number of results returned.
-func (r ApiGetServerBandwidthNotificationSettingListRequest) Limit(limit int32) ApiGetServerBandwidthNotificationSettingListRequest {
-	r.limit = &limit
-	return r
-}
-
-// Return results starting from the given offset.
-func (r ApiGetServerBandwidthNotificationSettingListRequest) Offset(offset int32) ApiGetServerBandwidthNotificationSettingListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiGetServerBandwidthNotificationSettingListRequest) Execute() (*GetServerBandwidthNotificationSettingListResult, *http.Response, error) {
-	return r.ApiService.GetServerBandwidthNotificationSettingListExecute(r)
-}
-
-/*
-GetServerBandwidthNotificationSettingList List bandwidth notification settings
-
-List all bandwidth notification settings for this server.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @return ApiGetServerBandwidthNotificationSettingListRequest
-*/
-func (a *DedicatedserverAPIService) GetServerBandwidthNotificationSettingList(ctx context.Context, serverId string) ApiGetServerBandwidthNotificationSettingListRequest {
-	return ApiGetServerBandwidthNotificationSettingListRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-	}
-}
-
-// Execute executes the request
-//  @return GetServerBandwidthNotificationSettingListResult
-func (a *DedicatedserverAPIService) GetServerBandwidthNotificationSettingListExecute(r ApiGetServerBandwidthNotificationSettingListRequest) (*GetServerBandwidthNotificationSettingListResult, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetServerBandwidthNotificationSettingListResult
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerBandwidthNotificationSettingList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/notificationSettings/bandwidth"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerCredentialRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	type_ CredentialType
-	username string
-}
-
-func (r ApiGetServerCredentialRequest) Execute() (*Credential, *http.Response, error) {
-	return r.ApiService.GetServerCredentialExecute(r)
-}
-
-/*
-GetServerCredential Show server credentials
-
-View the password for the given credential, identified by `type` and
-`username`. Auto generated credentials (during a re-install, rescue mode or
-ipmi reset can be found here).
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @param type_ The type of the credential.
- @param username Username
- @return ApiGetServerCredentialRequest
-*/
-func (a *DedicatedserverAPIService) GetServerCredential(ctx context.Context, serverId string, type_ CredentialType, username string) ApiGetServerCredentialRequest {
-	return ApiGetServerCredentialRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-		type_: type_,
-		username: username,
-	}
-}
-
-// Execute executes the request
-//  @return Credential
-func (a *DedicatedserverAPIService) GetServerCredentialExecute(r ApiGetServerCredentialRequest) (*Credential, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Credential
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerCredential")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/credentials/{type}/{username}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerCredentialListRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	limit *int32
-	offset *int32
-}
-
-// Limit the number of results returned.
-func (r ApiGetServerCredentialListRequest) Limit(limit int32) ApiGetServerCredentialListRequest {
-	r.limit = &limit
-	return r
-}
-
-// Return results starting from the given offset.
-func (r ApiGetServerCredentialListRequest) Offset(offset int32) ApiGetServerCredentialListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiGetServerCredentialListRequest) Execute() (*CredentialList, *http.Response, error) {
-	return r.ApiService.GetServerCredentialListExecute(r)
-}
-
-/*
-GetServerCredentialList List server credentials
-
-The credentials API allows you to store usernames and passwords securely.
-
-During (re)installations, rescue modes and ipmi resets the newly generated
-passwords are stored and can be retrieved using this API.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @return ApiGetServerCredentialListRequest
-*/
-func (a *DedicatedserverAPIService) GetServerCredentialList(ctx context.Context, serverId string) ApiGetServerCredentialListRequest {
-	return ApiGetServerCredentialListRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-	}
-}
-
-// Execute executes the request
-//  @return CredentialList
-func (a *DedicatedserverAPIService) GetServerCredentialListExecute(r ApiGetServerCredentialListRequest) (*CredentialList, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerCredentialList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerCredentialListByTypeRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	type_ CredentialType
-	limit *int32
-	offset *int32
-}
-
-// Limit the number of results returned.
-func (r ApiGetServerCredentialListByTypeRequest) Limit(limit int32) ApiGetServerCredentialListByTypeRequest {
-	r.limit = &limit
-	return r
-}
-
-// Return results starting from the given offset.
-func (r ApiGetServerCredentialListByTypeRequest) Offset(offset int32) ApiGetServerCredentialListByTypeRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiGetServerCredentialListByTypeRequest) Execute() (*CredentialList, *http.Response, error) {
-	return r.ApiService.GetServerCredentialListByTypeExecute(r)
-}
-
-/*
-GetServerCredentialListByType List server credentials by type
-
-List all the credentials filtered by the specified type that are associated
-with this server.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @param type_ The type of the credential.
- @return ApiGetServerCredentialListByTypeRequest
-*/
-func (a *DedicatedserverAPIService) GetServerCredentialListByType(ctx context.Context, serverId string, type_ CredentialType) ApiGetServerCredentialListByTypeRequest {
-	return ApiGetServerCredentialListByTypeRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-		type_: type_,
-	}
-}
-
-// Execute executes the request
-//  @return CredentialList
-func (a *DedicatedserverAPIService) GetServerCredentialListByTypeExecute(r ApiGetServerCredentialListByTypeRequest) (*CredentialList, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerCredentialListByType")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/credentials/{type}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerDataTrafficMetricsRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	from *time.Time
-	to *time.Time
-	aggregation *string
-	granularity *string
-}
-
-// Start of date interval in ISO-8601 format. The returned data will include everything up from - and including - the specified date time.
-func (r ApiGetServerDataTrafficMetricsRequest) From(from time.Time) ApiGetServerDataTrafficMetricsRequest {
-	r.from = &from
-	return r
-}
-
-// End of date interval in ISO-8601 format. The returned data will include everything up until - but not including - the specified date time.
-func (r ApiGetServerDataTrafficMetricsRequest) To(to time.Time) ApiGetServerDataTrafficMetricsRequest {
-	r.to = &to
-	return r
-}
-
-// Aggregate each metric using the given aggregation function.
-func (r ApiGetServerDataTrafficMetricsRequest) Aggregation(aggregation string) ApiGetServerDataTrafficMetricsRequest {
-	r.aggregation = &aggregation
-	return r
-}
-
-// Specify the preferred interval for each metric. If granularity is omitted from the request, only one metric is returned.
-func (r ApiGetServerDataTrafficMetricsRequest) Granularity(granularity string) ApiGetServerDataTrafficMetricsRequest {
-	r.granularity = &granularity
-	return r
-}
-
-func (r ApiGetServerDataTrafficMetricsRequest) Execute() (*Metrics, *http.Response, error) {
-	return r.ApiService.GetServerDataTrafficMetricsExecute(r)
-}
-
-/*
-GetServerDataTrafficMetrics Show datatraffic metrics
-
-At this moment only bandwidth information for the public interface is supported.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @return ApiGetServerDataTrafficMetricsRequest
-*/
-func (a *DedicatedserverAPIService) GetServerDataTrafficMetrics(ctx context.Context, serverId string) ApiGetServerDataTrafficMetricsRequest {
-	return ApiGetServerDataTrafficMetricsRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-	}
-}
-
-// Execute executes the request
-//  @return Metrics
-func (a *DedicatedserverAPIService) GetServerDataTrafficMetricsExecute(r ApiGetServerDataTrafficMetricsRequest) (*Metrics, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Metrics
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerDataTrafficMetrics")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/metrics/datatraffic"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.from == nil {
-		return localVarReturnValue, nil, reportError("from is required and must be specified")
-	}
-	if r.to == nil {
-		return localVarReturnValue, nil, reportError("to is required and must be specified")
-	}
-	if r.aggregation == nil {
-		return localVarReturnValue, nil, reportError("aggregation is required and must be specified")
-	}
-
-	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "aggregation", r.aggregation, "form", "")
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerDataTrafficNotificationSettingRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	notificationSettingId string
-}
-
-func (r ApiGetServerDataTrafficNotificationSettingRequest) Execute() (*DataTrafficNotificationSetting, *http.Response, error) {
-	return r.ApiService.GetServerDataTrafficNotificationSettingExecute(r)
-}
-
-/*
-GetServerDataTrafficNotificationSetting Show a data traffic notification setting
-
-Get a datatraffic notification setting for this server.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @param notificationSettingId The ID of a notification setting
- @return ApiGetServerDataTrafficNotificationSettingRequest
-*/
-func (a *DedicatedserverAPIService) GetServerDataTrafficNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiGetServerDataTrafficNotificationSettingRequest {
-	return ApiGetServerDataTrafficNotificationSettingRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-		notificationSettingId: notificationSettingId,
-	}
-}
-
-// Execute executes the request
-//  @return DataTrafficNotificationSetting
-func (a *DedicatedserverAPIService) GetServerDataTrafficNotificationSettingExecute(r ApiGetServerDataTrafficNotificationSettingRequest) (*DataTrafficNotificationSetting, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DataTrafficNotificationSetting
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerDataTrafficNotificationSetting")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/notificationSettings/datatraffic/{notificationSettingId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"notificationSettingId"+"}", url.PathEscape(parameterValueToString(r.notificationSettingId, "notificationSettingId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerDataTrafficNotificationSettingListRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	limit *int32
-	offset *int32
-}
-
-// Limit the number of results returned.
-func (r ApiGetServerDataTrafficNotificationSettingListRequest) Limit(limit int32) ApiGetServerDataTrafficNotificationSettingListRequest {
-	r.limit = &limit
-	return r
-}
-
-// Return results starting from the given offset.
-func (r ApiGetServerDataTrafficNotificationSettingListRequest) Offset(offset int32) ApiGetServerDataTrafficNotificationSettingListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiGetServerDataTrafficNotificationSettingListRequest) Execute() (*GetServerDataTrafficNotificationSettingListResult, *http.Response, error) {
-	return r.ApiService.GetServerDataTrafficNotificationSettingListExecute(r)
-}
-
-/*
-GetServerDataTrafficNotificationSettingList List data traffic notification settings
-
-List all datatraffic notification settings for this server.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @return ApiGetServerDataTrafficNotificationSettingListRequest
-*/
-func (a *DedicatedserverAPIService) GetServerDataTrafficNotificationSettingList(ctx context.Context, serverId string) ApiGetServerDataTrafficNotificationSettingListRequest {
-	return ApiGetServerDataTrafficNotificationSettingListRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-	}
-}
-
-// Execute executes the request
-//  @return GetServerDataTrafficNotificationSettingListResult
-func (a *DedicatedserverAPIService) GetServerDataTrafficNotificationSettingListExecute(r ApiGetServerDataTrafficNotificationSettingListRequest) (*GetServerDataTrafficNotificationSettingListResult, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetServerDataTrafficNotificationSettingListResult
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerDataTrafficNotificationSettingList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/notificationSettings/datatraffic"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerDhcpReservationListRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-}
-
-func (r ApiGetServerDhcpReservationListRequest) Execute() (*GetServerDhcpReservationListResult, *http.Response, error) {
-	return r.ApiService.GetServerDhcpReservationListExecute(r)
-}
-
-/*
-GetServerDhcpReservationList List DHCP reservations
-
-Please note that this will only show reservations for the public network
-interface.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @return ApiGetServerDhcpReservationListRequest
-*/
-func (a *DedicatedserverAPIService) GetServerDhcpReservationList(ctx context.Context, serverId string) ApiGetServerDhcpReservationListRequest {
-	return ApiGetServerDhcpReservationListRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-	}
-}
-
-// Execute executes the request
-//  @return GetServerDhcpReservationListResult
-func (a *DedicatedserverAPIService) GetServerDhcpReservationListExecute(r ApiGetServerDhcpReservationListRequest) (*GetServerDhcpReservationListResult, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetServerDhcpReservationListResult
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerDhcpReservationList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/leases"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerHardwareRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-}
-
-func (r ApiGetServerHardwareRequest) Execute() (*GetServerHardwareResult, *http.Response, error) {
-	return r.ApiService.GetServerHardwareExecute(r)
-}
-
-/*
-GetServerHardware Show hardware information
-
-This information is generated when running a hardware scan for your server. A
-hardware scan collects hardware information about your system.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @return ApiGetServerHardwareRequest
-*/
-func (a *DedicatedserverAPIService) GetServerHardware(ctx context.Context, serverId string) ApiGetServerHardwareRequest {
-	return ApiGetServerHardwareRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-	}
-}
-
-// Execute executes the request
-//  @return GetServerHardwareResult
-func (a *DedicatedserverAPIService) GetServerHardwareExecute(r ApiGetServerHardwareRequest) (*GetServerHardwareResult, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetServerHardwareResult
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerHardware")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/hardwareInfo"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerIpRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	ip string
-}
-
-func (r ApiGetServerIpRequest) Execute() (*Ip, *http.Response, error) {
-	return r.ApiService.GetServerIpExecute(r)
-}
-
-/*
-GetServerIp Show a server IP
-
-Get a single IP address associated with this server.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @param ip The IP Address
- @return ApiGetServerIpRequest
-*/
-func (a *DedicatedserverAPIService) GetServerIp(ctx context.Context, serverId string, ip string) ApiGetServerIpRequest {
-	return ApiGetServerIpRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-		ip: ip,
-	}
-}
-
-// Execute executes the request
-//  @return Ip
-func (a *DedicatedserverAPIService) GetServerIpExecute(r ApiGetServerIpRequest) (*Ip, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Ip
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerIp")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/ips/{ip}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"ip"+"}", url.PathEscape(parameterValueToString(r.ip, "ip")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerIpListRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	networkType *NetworkType
-	version *string
-	nullRouted *string
-	ips *string
-	limit *int32
-	offset *int32
-}
-
-// Filter the collection of ip addresses by network type
-func (r ApiGetServerIpListRequest) NetworkType(networkType NetworkType) ApiGetServerIpListRequest {
-	r.networkType = &networkType
-	return r
-}
-
-// Filter the collection by ip version
-func (r ApiGetServerIpListRequest) Version(version string) ApiGetServerIpListRequest {
-	r.version = &version
-	return r
-}
-
-// Filter Ips by Nulled-Status
-func (r ApiGetServerIpListRequest) NullRouted(nullRouted string) ApiGetServerIpListRequest {
-	r.nullRouted = &nullRouted
-	return r
-}
-
-// Filter the collection of Ips for the comma separated list of Ips
-func (r ApiGetServerIpListRequest) Ips(ips string) ApiGetServerIpListRequest {
-	r.ips = &ips
-	return r
-}
-
-// Limit the number of results returned.
-func (r ApiGetServerIpListRequest) Limit(limit int32) ApiGetServerIpListRequest {
-	r.limit = &limit
-	return r
-}
-
-// Return results starting from the given offset.
-func (r ApiGetServerIpListRequest) Offset(offset int32) ApiGetServerIpListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiGetServerIpListRequest) Execute() (*Ip, *http.Response, error) {
-	return r.ApiService.GetServerIpListExecute(r)
-}
-
-/*
-GetServerIpList List IPs
-
-List all IP Addresses associated with this server. Optionally filtered.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @return ApiGetServerIpListRequest
-*/
-func (a *DedicatedserverAPIService) GetServerIpList(ctx context.Context, serverId string) ApiGetServerIpListRequest {
-	return ApiGetServerIpListRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-	}
-}
-
-// Execute executes the request
-//  @return Ip
-func (a *DedicatedserverAPIService) GetServerIpListExecute(r ApiGetServerIpListRequest) (*Ip, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Ip
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerIpList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/ips"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.networkType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "networkType", r.networkType, "form", "")
-	}
-	if r.version != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "version", r.version, "form", "")
-	}
-	if r.nullRouted != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "nullRouted", r.nullRouted, "form", "")
-	}
-	if r.ips != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ips", r.ips, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerJobRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	jobId string
-}
-
-func (r ApiGetServerJobRequest) Execute() (*CurrentServerJob, *http.Response, error) {
-	return r.ApiService.GetServerJobExecute(r)
-}
-
-/*
-GetServerJob Show a job
-
-Get a single job for this server.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @param jobId The ID of a Job
- @return ApiGetServerJobRequest
-*/
-func (a *DedicatedserverAPIService) GetServerJob(ctx context.Context, serverId string, jobId string) ApiGetServerJobRequest {
-	return ApiGetServerJobRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-		jobId: jobId,
-	}
-}
-
-// Execute executes the request
-//  @return CurrentServerJob
-func (a *DedicatedserverAPIService) GetServerJobExecute(r ApiGetServerJobRequest) (*CurrentServerJob, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CurrentServerJob
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerJob")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/jobs/{jobId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerJobListRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	limit *int32
-	offset *int32
-	type_ *string
-	status *string
-	isRunning *string
-}
-
-// Limit the number of results returned.
-func (r ApiGetServerJobListRequest) Limit(limit int32) ApiGetServerJobListRequest {
-	r.limit = &limit
-	return r
-}
-
-// Return results starting from the given offset.
-func (r ApiGetServerJobListRequest) Offset(offset int32) ApiGetServerJobListRequest {
-	r.offset = &offset
-	return r
-}
-
-// Filter the list of jobs by type.
-func (r ApiGetServerJobListRequest) Type_(type_ string) ApiGetServerJobListRequest {
-	r.type_ = &type_
-	return r
-}
-
-// Filter the list of jobs by status.
-func (r ApiGetServerJobListRequest) Status(status string) ApiGetServerJobListRequest {
-	r.status = &status
-	return r
-}
-
-// Filter the list for running jobs
-func (r ApiGetServerJobListRequest) IsRunning(isRunning string) ApiGetServerJobListRequest {
-	r.isRunning = &isRunning
-	return r
-}
-
-func (r ApiGetServerJobListRequest) Execute() (*ServerJobList, *http.Response, error) {
-	return r.ApiService.GetServerJobListExecute(r)
-}
-
-/*
-GetServerJobList List jobs
-
-List all jobs for this server.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @return ApiGetServerJobListRequest
-*/
-func (a *DedicatedserverAPIService) GetServerJobList(ctx context.Context, serverId string) ApiGetServerJobListRequest {
-	return ApiGetServerJobListRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-	}
-}
-
-// Execute executes the request
-//  @return ServerJobList
-func (a *DedicatedserverAPIService) GetServerJobListExecute(r ApiGetServerJobListRequest) (*ServerJobList, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServerJobList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerJobList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/jobs"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
-	if r.type_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
-	}
-	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
-	}
-	if r.isRunning != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "isRunning", r.isRunning, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResult
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -10631,371 +8541,6 @@ func (a *DedicatedserverAPIService) GetServerListExecute(r ApiGetServerListReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetServerNullRouteHistoryRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	limit *int32
-	offset *int32
-}
-
-// Limit the number of results returned.
-func (r ApiGetServerNullRouteHistoryRequest) Limit(limit int32) ApiGetServerNullRouteHistoryRequest {
-	r.limit = &limit
-	return r
-}
-
-// Return results starting from the given offset.
-func (r ApiGetServerNullRouteHistoryRequest) Offset(offset int32) ApiGetServerNullRouteHistoryRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiGetServerNullRouteHistoryRequest) Execute() (*GetServerNullRouteHistoryResult, *http.Response, error) {
-	return r.ApiService.GetServerNullRouteHistoryExecute(r)
-}
-
-/*
-GetServerNullRouteHistory Show null route history
-
-Show all null route history for any ips associated with this server.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @return ApiGetServerNullRouteHistoryRequest
-*/
-func (a *DedicatedserverAPIService) GetServerNullRouteHistory(ctx context.Context, serverId string) ApiGetServerNullRouteHistoryRequest {
-	return ApiGetServerNullRouteHistoryRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-	}
-}
-
-// Execute executes the request
-//  @return GetServerNullRouteHistoryResult
-func (a *DedicatedserverAPIService) GetServerNullRouteHistoryExecute(r ApiGetServerNullRouteHistoryRequest) (*GetServerNullRouteHistoryResult, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetServerNullRouteHistoryResult
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerNullRouteHistory")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/nullRouteHistory"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetServerPowerStatusRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-}
-
-func (r ApiGetServerPowerStatusRequest) Execute() (*GetServerPowerStatusResult, *http.Response, error) {
-	return r.ApiService.GetServerPowerStatusExecute(r)
-}
-
-/*
-GetServerPowerStatus Show power status
-
-The server can either be `ON` or `OFF`. Servers can be powered on or off by
-using the respective `/powerOn` and `/powerOff` API calls. In addition servers
-can also be rebooted using the `/powerCycle` API call.
-
-The `pdu` object describes the power status from the power distribution unit
-(PDU) point of view. If your server is connected to multiple PDU ports the
-`status` property will report `on` if at least one PDU port has power.
-
-The `ipmi` object describes the power status by quering the remote management
-interface of your server.
-
-Note that `pdu.status` can report `on` but your server can still be powered
-off if it was shutdown via `IPMI` for example.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @return ApiGetServerPowerStatusRequest
-*/
-func (a *DedicatedserverAPIService) GetServerPowerStatus(ctx context.Context, serverId string) ApiGetServerPowerStatusRequest {
-	return ApiGetServerPowerStatusRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-	}
-}
-
-// Execute executes the request
-//  @return GetServerPowerStatusResult
-func (a *DedicatedserverAPIService) GetServerPowerStatusExecute(r ApiGetServerPowerStatusRequest) (*GetServerPowerStatusResult, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetServerPowerStatusResult
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.GetServerPowerStatus")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/powerInfo"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiInstallOperatingSystemRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
@@ -11191,24 +8736,24 @@ func (a *DedicatedserverAPIService) InstallOperatingSystemExecute(r ApiInstallOp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIpmiResetServerRequest struct {
+type ApiIpmiResetRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
-	ipmiResetServerOpts *IpmiResetServerOpts
+	ipmiResetOpts *IpmiResetOpts
 }
 
-func (r ApiIpmiResetServerRequest) IpmiResetServerOpts(ipmiResetServerOpts IpmiResetServerOpts) ApiIpmiResetServerRequest {
-	r.ipmiResetServerOpts = &ipmiResetServerOpts
+func (r ApiIpmiResetRequest) IpmiResetOpts(ipmiResetOpts IpmiResetOpts) ApiIpmiResetRequest {
+	r.ipmiResetOpts = &ipmiResetOpts
 	return r
 }
 
-func (r ApiIpmiResetServerRequest) Execute() (*ServerJob, *http.Response, error) {
-	return r.ApiService.IpmiResetServerExecute(r)
+func (r ApiIpmiResetRequest) Execute() (*Job, *http.Response, error) {
+	return r.ApiService.IpmiResetExecute(r)
 }
 
 /*
-IpmiResetServer Launch IPMI reset
+IpmiReset Launch IPMI reset
 
 A reset makes sure that your IPMI interface of your server is compatible with
 Leaseweb automation.
@@ -11220,10 +8765,10 @@ is booted back into the original operating system.",
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
- @return ApiIpmiResetServerRequest
+ @return ApiIpmiResetRequest
 */
-func (a *DedicatedserverAPIService) IpmiResetServer(ctx context.Context, serverId string) ApiIpmiResetServerRequest {
-	return ApiIpmiResetServerRequest{
+func (a *DedicatedserverAPIService) IpmiReset(ctx context.Context, serverId string) ApiIpmiResetRequest {
+	return ApiIpmiResetRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -11231,16 +8776,16 @@ func (a *DedicatedserverAPIService) IpmiResetServer(ctx context.Context, serverI
 }
 
 // Execute executes the request
-//  @return ServerJob
-func (a *DedicatedserverAPIService) IpmiResetServerExecute(r ApiIpmiResetServerRequest) (*ServerJob, *http.Response, error) {
+//  @return Job
+func (a *DedicatedserverAPIService) IpmiResetExecute(r ApiIpmiResetRequest) (*Job, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServerJob
+		localVarReturnValue  *Job
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.IpmiResetServer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.IpmiReset")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -11270,7 +8815,7 @@ func (a *DedicatedserverAPIService) IpmiResetServerExecute(r ApiIpmiResetServerR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.ipmiResetServerOpts
+	localVarPostBody = r.ipmiResetOpts
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -11553,183 +9098,6 @@ func (a *DedicatedserverAPIService) NullIpRouteExecute(r ApiNullIpRouteRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiNullNetworkEquipmentIpRouteRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	networkEquipmentId string
-	ip string
-}
-
-func (r ApiNullNetworkEquipmentIpRouteRequest) Execute() (*Ip, *http.Response, error) {
-	return r.ApiService.NullNetworkEquipmentIpRouteExecute(r)
-}
-
-/*
-NullNetworkEquipmentIpRoute Null route an IP
-
-Null the given IP address. It might take a few minutes before the change is
-propagated across the network.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @param ip The IP Address
- @return ApiNullNetworkEquipmentIpRouteRequest
-*/
-func (a *DedicatedserverAPIService) NullNetworkEquipmentIpRoute(ctx context.Context, networkEquipmentId string, ip string) ApiNullNetworkEquipmentIpRouteRequest {
-	return ApiNullNetworkEquipmentIpRouteRequest{
-		ApiService: a,
-		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-		ip: ip,
-	}
-}
-
-// Execute executes the request
-//  @return Ip
-func (a *DedicatedserverAPIService) NullNetworkEquipmentIpRouteExecute(r ApiNullNetworkEquipmentIpRouteRequest) (*Ip, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Ip
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.NullNetworkEquipmentIpRoute")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/ips/{ip}/null"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"ip"+"}", url.PathEscape(parameterValueToString(r.ip, "ip")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiOpenNetworkInterfaceRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
@@ -11745,7 +9113,6 @@ func (r ApiOpenNetworkInterfaceRequest) Execute() (*http.Response, error) {
 OpenNetworkInterface Open network interface
 
 Open all network interfaces of the given type for this server.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
@@ -11899,7 +9266,6 @@ OpenNetworkInterfaces Open all network interfaces
 
 Open all network interfaces of this server.
 
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
  @return ApiOpenNetworkInterfacesRequest
@@ -12034,189 +9400,27 @@ func (a *DedicatedserverAPIService) OpenNetworkInterfacesExecute(r ApiOpenNetwor
 	return localVarHTTPResponse, nil
 }
 
-type ApiPowerCycleNetworkEquipmentRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	networkEquipmentId string
-}
-
-func (r ApiPowerCycleNetworkEquipmentRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PowerCycleNetworkEquipmentExecute(r)
-}
-
-/*
-PowerCycleNetworkEquipment Power cycle a network equipment
-
-Powercyle the network equipment.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @return ApiPowerCycleNetworkEquipmentRequest
-*/
-func (a *DedicatedserverAPIService) PowerCycleNetworkEquipment(ctx context.Context, networkEquipmentId string) ApiPowerCycleNetworkEquipmentRequest {
-	return ApiPowerCycleNetworkEquipmentRequest{
-		ApiService: a,
-		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-	}
-}
-
-// Execute executes the request
-func (a *DedicatedserverAPIService) PowerCycleNetworkEquipmentExecute(r ApiPowerCycleNetworkEquipmentRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.PowerCycleNetworkEquipment")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/powerCycle"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiPowerCycleServerRequest struct {
+type ApiPowerCycleRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
 }
 
-func (r ApiPowerCycleServerRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PowerCycleServerExecute(r)
+func (r ApiPowerCycleRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PowerCycleExecute(r)
 }
 
 /*
-PowerCycleServer Power cycle a server
+PowerCycle Power cycle a server
 
 Powercyle the server.
 
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
- @return ApiPowerCycleServerRequest
+ @return ApiPowerCycleRequest
 */
-func (a *DedicatedserverAPIService) PowerCycleServer(ctx context.Context, serverId string) ApiPowerCycleServerRequest {
-	return ApiPowerCycleServerRequest{
+func (a *DedicatedserverAPIService) PowerCycle(ctx context.Context, serverId string) ApiPowerCycleRequest {
+	return ApiPowerCycleRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -12224,14 +9428,14 @@ func (a *DedicatedserverAPIService) PowerCycleServer(ctx context.Context, server
 }
 
 // Execute executes the request
-func (a *DedicatedserverAPIService) PowerCycleServerExecute(r ApiPowerCycleServerRequest) (*http.Response, error) {
+func (a *DedicatedserverAPIService) PowerCycleExecute(r ApiPowerCycleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.PowerCycleServer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.PowerCycle")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -12356,350 +9560,27 @@ func (a *DedicatedserverAPIService) PowerCycleServerExecute(r ApiPowerCycleServe
 	return localVarHTTPResponse, nil
 }
 
-type ApiPowerNetworkEquipmentOffRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	networkEquipmentId string
-}
-
-func (r ApiPowerNetworkEquipmentOffRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PowerNetworkEquipmentOffExecute(r)
-}
-
-/*
-PowerNetworkEquipmentOff Power off network equipment
-
-Power off the given network equipment.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @return ApiPowerNetworkEquipmentOffRequest
-*/
-func (a *DedicatedserverAPIService) PowerNetworkEquipmentOff(ctx context.Context, networkEquipmentId string) ApiPowerNetworkEquipmentOffRequest {
-	return ApiPowerNetworkEquipmentOffRequest{
-		ApiService: a,
-		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-	}
-}
-
-// Execute executes the request
-func (a *DedicatedserverAPIService) PowerNetworkEquipmentOffExecute(r ApiPowerNetworkEquipmentOffRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.PowerNetworkEquipmentOff")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/powerOff"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiPowerNetworkEquipmentOnRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	networkEquipmentId string
-}
-
-func (r ApiPowerNetworkEquipmentOnRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PowerNetworkEquipmentOnExecute(r)
-}
-
-/*
-PowerNetworkEquipmentOn Power on network equipment
-
-Power on the given network equipment.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @return ApiPowerNetworkEquipmentOnRequest
-*/
-func (a *DedicatedserverAPIService) PowerNetworkEquipmentOn(ctx context.Context, networkEquipmentId string) ApiPowerNetworkEquipmentOnRequest {
-	return ApiPowerNetworkEquipmentOnRequest{
-		ApiService: a,
-		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-	}
-}
-
-// Execute executes the request
-func (a *DedicatedserverAPIService) PowerNetworkEquipmentOnExecute(r ApiPowerNetworkEquipmentOnRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.PowerNetworkEquipmentOn")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/powerOn"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiPowerServerOffRequest struct {
+type ApiPowerOffRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
 }
 
-func (r ApiPowerServerOffRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PowerServerOffExecute(r)
+func (r ApiPowerOffRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PowerOffExecute(r)
 }
 
 /*
-PowerServerOff Power off server
+PowerOff Power off server
 
 Power off the given server.
 
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
- @return ApiPowerServerOffRequest
+ @return ApiPowerOffRequest
 */
-func (a *DedicatedserverAPIService) PowerServerOff(ctx context.Context, serverId string) ApiPowerServerOffRequest {
-	return ApiPowerServerOffRequest{
+func (a *DedicatedserverAPIService) PowerOff(ctx context.Context, serverId string) ApiPowerOffRequest {
+	return ApiPowerOffRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -12707,14 +9588,14 @@ func (a *DedicatedserverAPIService) PowerServerOff(ctx context.Context, serverId
 }
 
 // Execute executes the request
-func (a *DedicatedserverAPIService) PowerServerOffExecute(r ApiPowerServerOffRequest) (*http.Response, error) {
+func (a *DedicatedserverAPIService) PowerOffExecute(r ApiPowerOffRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.PowerServerOff")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.PowerOff")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -12839,28 +9720,27 @@ func (a *DedicatedserverAPIService) PowerServerOffExecute(r ApiPowerServerOffReq
 	return localVarHTTPResponse, nil
 }
 
-type ApiPowerServerOnRequest struct {
+type ApiPowerOnRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
 }
 
-func (r ApiPowerServerOnRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PowerServerOnExecute(r)
+func (r ApiPowerOnRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PowerOnExecute(r)
 }
 
 /*
-PowerServerOn Power on server
+PowerOn Power on server
 
 Power on the given server.
 
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
- @return ApiPowerServerOnRequest
+ @return ApiPowerOnRequest
 */
-func (a *DedicatedserverAPIService) PowerServerOn(ctx context.Context, serverId string) ApiPowerServerOnRequest {
-	return ApiPowerServerOnRequest{
+func (a *DedicatedserverAPIService) PowerOn(ctx context.Context, serverId string) ApiPowerOnRequest {
+	return ApiPowerOnRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -12868,14 +9748,14 @@ func (a *DedicatedserverAPIService) PowerServerOn(ctx context.Context, serverId 
 }
 
 // Execute executes the request
-func (a *DedicatedserverAPIService) PowerServerOnExecute(r ApiPowerServerOnRequest) (*http.Response, error) {
+func (a *DedicatedserverAPIService) PowerOnExecute(r ApiPowerOnRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.PowerServerOn")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.PowerOn")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -13177,30 +10057,29 @@ func (a *DedicatedserverAPIService) RemoveNullIpRouteExecute(r ApiRemoveNullIpRo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRetryServerJobRequest struct {
+type ApiRetryJobRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
 	jobId string
 }
 
-func (r ApiRetryServerJobRequest) Execute() (*CurrentServerJob, *http.Response, error) {
-	return r.ApiService.RetryServerJobExecute(r)
+func (r ApiRetryJobRequest) Execute() (*CurrentJob, *http.Response, error) {
+	return r.ApiService.RetryJobExecute(r)
 }
 
 /*
-RetryServerJob Retry a job
+RetryJob Retry a job
 
 Retry a job for a specific server.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
  @param jobId The ID of a Job
- @return ApiRetryServerJobRequest
+ @return ApiRetryJobRequest
 */
-func (a *DedicatedserverAPIService) RetryServerJob(ctx context.Context, serverId string, jobId string) ApiRetryServerJobRequest {
-	return ApiRetryServerJobRequest{
+func (a *DedicatedserverAPIService) RetryJob(ctx context.Context, serverId string, jobId string) ApiRetryJobRequest {
+	return ApiRetryJobRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -13209,16 +10088,16 @@ func (a *DedicatedserverAPIService) RetryServerJob(ctx context.Context, serverId
 }
 
 // Execute executes the request
-//  @return CurrentServerJob
-func (a *DedicatedserverAPIService) RetryServerJobExecute(r ApiRetryServerJobRequest) (*CurrentServerJob, *http.Response, error) {
+//  @return CurrentJob
+func (a *DedicatedserverAPIService) RetryJobExecute(r ApiRetryJobRequest) (*CurrentJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CurrentServerJob
+		localVarReturnValue  *CurrentJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.RetryServerJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.RetryJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -13376,7 +10255,7 @@ func (r ApiScanHardwareRequest) ScanHardwareOpts(scanHardwareOpts ScanHardwareOp
 	return r
 }
 
-func (r ApiScanHardwareRequest) Execute() (*ServerJob, *http.Response, error) {
+func (r ApiScanHardwareRequest) Execute() (*Job, *http.Response, error) {
 	return r.ApiService.ScanHardwareExecute(r)
 }
 
@@ -13403,13 +10282,13 @@ func (a *DedicatedserverAPIService) ScanHardware(ctx context.Context, serverId s
 }
 
 // Execute executes the request
-//  @return ServerJob
-func (a *DedicatedserverAPIService) ScanHardwareExecute(r ApiScanHardwareRequest) (*ServerJob, *http.Response, error) {
+//  @return Job
+func (a *DedicatedserverAPIService) ScanHardwareExecute(r ApiScanHardwareRequest) (*Job, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServerJob
+		localVarReturnValue  *Job
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.ScanHardware")
@@ -13548,63 +10427,67 @@ func (a *DedicatedserverAPIService) ScanHardwareExecute(r ApiScanHardwareRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUnNullNetworkEquipmentIpRouteRequest struct {
+type ApiUpdateBandwidthNotificationSettingRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
-	networkEquipmentId string
-	ip string
+	serverId string
+	notificationSettingId string
+	bandwidthNotificationSettingOpts *BandwidthNotificationSettingOpts
 }
 
-func (r ApiUnNullNetworkEquipmentIpRouteRequest) Execute() (*Ip, *http.Response, error) {
-	return r.ApiService.UnNullNetworkEquipmentIpRouteExecute(r)
+func (r ApiUpdateBandwidthNotificationSettingRequest) BandwidthNotificationSettingOpts(bandwidthNotificationSettingOpts BandwidthNotificationSettingOpts) ApiUpdateBandwidthNotificationSettingRequest {
+	r.bandwidthNotificationSettingOpts = &bandwidthNotificationSettingOpts
+	return r
+}
+
+func (r ApiUpdateBandwidthNotificationSettingRequest) Execute() (*BandwidthNotificationSetting, *http.Response, error) {
+	return r.ApiService.UpdateBandwidthNotificationSettingExecute(r)
 }
 
 /*
-UnNullNetworkEquipmentIpRoute Remove a null route
+UpdateBandwidthNotificationSetting Update a bandwidth notification setting
 
-Remove an existing null route for the given IP address. It might take a few
-minutes before the change is propagated across the network.
-
+Update an existing bandwidth notification setting for this server.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @param ip The IP Address
- @return ApiUnNullNetworkEquipmentIpRouteRequest
+ @param serverId The ID of a server
+ @param notificationSettingId The ID of a notification setting
+ @return ApiUpdateBandwidthNotificationSettingRequest
 */
-func (a *DedicatedserverAPIService) UnNullNetworkEquipmentIpRoute(ctx context.Context, networkEquipmentId string, ip string) ApiUnNullNetworkEquipmentIpRouteRequest {
-	return ApiUnNullNetworkEquipmentIpRouteRequest{
+func (a *DedicatedserverAPIService) UpdateBandwidthNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiUpdateBandwidthNotificationSettingRequest {
+	return ApiUpdateBandwidthNotificationSettingRequest{
 		ApiService: a,
 		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-		ip: ip,
+		serverId: serverId,
+		notificationSettingId: notificationSettingId,
 	}
 }
 
 // Execute executes the request
-//  @return Ip
-func (a *DedicatedserverAPIService) UnNullNetworkEquipmentIpRouteExecute(r ApiUnNullNetworkEquipmentIpRouteRequest) (*Ip, *http.Response, error) {
+//  @return BandwidthNotificationSetting
+func (a *DedicatedserverAPIService) UpdateBandwidthNotificationSettingExecute(r ApiUpdateBandwidthNotificationSettingRequest) (*BandwidthNotificationSetting, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Ip
+		localVarReturnValue  *BandwidthNotificationSetting
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.UnNullNetworkEquipmentIpRoute")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.UpdateBandwidthNotificationSetting")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/ips/{ip}/unnull"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"ip"+"}", url.PathEscape(parameterValueToString(r.ip, "ip")), -1)
+	localVarPath := localBasePath + "/servers/{serverId}/notificationSettings/bandwidth/{notificationSettingId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"notificationSettingId"+"}", url.PathEscape(parameterValueToString(r.notificationSettingId, "notificationSettingId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -13620,6 +10503,189 @@ func (a *DedicatedserverAPIService) UnNullNetworkEquipmentIpRouteExecute(r ApiUn
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.bandwidthNotificationSettingOpts
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateCredentialRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+	type_ CredentialType
+	username string
+	updateCredentialOpts *UpdateCredentialOpts
+}
+
+func (r ApiUpdateCredentialRequest) UpdateCredentialOpts(updateCredentialOpts UpdateCredentialOpts) ApiUpdateCredentialRequest {
+	r.updateCredentialOpts = &updateCredentialOpts
+	return r
+}
+
+func (r ApiUpdateCredentialRequest) Execute() (*Credential, *http.Response, error) {
+	return r.ApiService.UpdateCredentialExecute(r)
+}
+
+/*
+UpdateCredential Update server credentials
+
+The usernames or types cannot be changed. In order to change those remove this
+credentials and create a new one.
+
+This action is purely administrative and will only update the password
+associated with this resource in our database.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @param type_ The type of the credential.
+ @param username Username
+ @return ApiUpdateCredentialRequest
+*/
+func (a *DedicatedserverAPIService) UpdateCredential(ctx context.Context, serverId string, type_ CredentialType, username string) ApiUpdateCredentialRequest {
+	return ApiUpdateCredentialRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+		type_: type_,
+		username: username,
+	}
+}
+
+// Execute executes the request
+//  @return Credential
+func (a *DedicatedserverAPIService) UpdateCredentialExecute(r ApiUpdateCredentialRequest) (*Credential, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Credential
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.UpdateCredential")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/credentials/{type}/{username}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.updateCredentialOpts
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -13725,6 +10791,178 @@ func (a *DedicatedserverAPIService) UnNullNetworkEquipmentIpRouteExecute(r ApiUn
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiUpdateDataTrafficNotificationSettingRequest struct {
+	ctx context.Context
+	ApiService DedicatedserverAPI
+	serverId string
+	notificationSettingId string
+	dataTrafficNotificationSettingOpts *DataTrafficNotificationSettingOpts
+}
+
+func (r ApiUpdateDataTrafficNotificationSettingRequest) DataTrafficNotificationSettingOpts(dataTrafficNotificationSettingOpts DataTrafficNotificationSettingOpts) ApiUpdateDataTrafficNotificationSettingRequest {
+	r.dataTrafficNotificationSettingOpts = &dataTrafficNotificationSettingOpts
+	return r
+}
+
+func (r ApiUpdateDataTrafficNotificationSettingRequest) Execute() (*DataTrafficNotificationSettingOpts, *http.Response, error) {
+	return r.ApiService.UpdateDataTrafficNotificationSettingExecute(r)
+}
+
+/*
+UpdateDataTrafficNotificationSetting Update a data traffic notification setting
+
+Update an existing data traffic notification setting for this server.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serverId The ID of a server
+ @param notificationSettingId The ID of a notification setting
+ @return ApiUpdateDataTrafficNotificationSettingRequest
+*/
+func (a *DedicatedserverAPIService) UpdateDataTrafficNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiUpdateDataTrafficNotificationSettingRequest {
+	return ApiUpdateDataTrafficNotificationSettingRequest{
+		ApiService: a,
+		ctx: ctx,
+		serverId: serverId,
+		notificationSettingId: notificationSettingId,
+	}
+}
+
+// Execute executes the request
+//  @return DataTrafficNotificationSettingOpts
+func (a *DedicatedserverAPIService) UpdateDataTrafficNotificationSettingExecute(r ApiUpdateDataTrafficNotificationSettingRequest) (*DataTrafficNotificationSettingOpts, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DataTrafficNotificationSettingOpts
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.UpdateDataTrafficNotificationSetting")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/servers/{serverId}/notificationSettings/datatraffic/{notificationSettingId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"notificationSettingId"+"}", url.PathEscape(parameterValueToString(r.notificationSettingId, "notificationSettingId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.dataTrafficNotificationSettingOpts
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiUpdateDdosNotificationSettingRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
@@ -13745,7 +10983,6 @@ func (r ApiUpdateDdosNotificationSettingRequest) Execute() (*http.Response, erro
 UpdateDdosNotificationSetting Update DDoS notification settings
 
 Update your DDoS notification settings for this server.
-
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
@@ -14083,1114 +11320,33 @@ func (a *DedicatedserverAPIService) UpdateIpProfileExecute(r ApiUpdateIpProfileR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateNetworkEquipmentCredentialRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	networkEquipmentId string
-	type_ CredentialType
-	username string
-	updateNetworkEquipmentCredentialOpts *UpdateNetworkEquipmentCredentialOpts
-}
-
-func (r ApiUpdateNetworkEquipmentCredentialRequest) UpdateNetworkEquipmentCredentialOpts(updateNetworkEquipmentCredentialOpts UpdateNetworkEquipmentCredentialOpts) ApiUpdateNetworkEquipmentCredentialRequest {
-	r.updateNetworkEquipmentCredentialOpts = &updateNetworkEquipmentCredentialOpts
-	return r
-}
-
-func (r ApiUpdateNetworkEquipmentCredentialRequest) Execute() (*Credential, *http.Response, error) {
-	return r.ApiService.UpdateNetworkEquipmentCredentialExecute(r)
-}
-
-/*
-UpdateNetworkEquipmentCredential Update network equipment credentials
-
-The usernames or types cannot be changed. In order to change those remove this
-credentials and create a new one.
-
-This action is purely administrative and will only update the password
-associated with this resource in our database.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @param type_ The type of the credential.
- @param username Username
- @return ApiUpdateNetworkEquipmentCredentialRequest
-*/
-func (a *DedicatedserverAPIService) UpdateNetworkEquipmentCredential(ctx context.Context, networkEquipmentId string, type_ CredentialType, username string) ApiUpdateNetworkEquipmentCredentialRequest {
-	return ApiUpdateNetworkEquipmentCredentialRequest{
-		ApiService: a,
-		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-		type_: type_,
-		username: username,
-	}
-}
-
-// Execute executes the request
-//  @return Credential
-func (a *DedicatedserverAPIService) UpdateNetworkEquipmentCredentialExecute(r ApiUpdateNetworkEquipmentCredentialRequest) (*Credential, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Credential
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.UpdateNetworkEquipmentCredential")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/credentials/{type}/{username}"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.updateNetworkEquipmentCredentialOpts
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiUpdateNetworkEquipmentIpRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	networkEquipmentId string
-	ip string
-	updateNetworkEquipmentIpOpts *UpdateNetworkEquipmentIpOpts
-}
-
-func (r ApiUpdateNetworkEquipmentIpRequest) UpdateNetworkEquipmentIpOpts(updateNetworkEquipmentIpOpts UpdateNetworkEquipmentIpOpts) ApiUpdateNetworkEquipmentIpRequest {
-	r.updateNetworkEquipmentIpOpts = &updateNetworkEquipmentIpOpts
-	return r
-}
-
-func (r ApiUpdateNetworkEquipmentIpRequest) Execute() (*Ip, *http.Response, error) {
-	return r.ApiService.UpdateNetworkEquipmentIpExecute(r)
-}
-
-/*
-UpdateNetworkEquipmentIp Update an IP
-
-Update the reverse lookup or DDoS detection profile for the ip address.
-
-DDoS detection profiles can only be changed if the IP address is protected
-using Advanced DDoS protection.
-
-For more information about DDoS detection profiles [click here](https://kb.leaseweb.com/products/cyber-security/ddos-ip-protection#DDOSIPProtection-DDoSIPProtectionAdvancedDetectionprofiles) for our KB related article.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @param ip The IP Address
- @return ApiUpdateNetworkEquipmentIpRequest
-*/
-func (a *DedicatedserverAPIService) UpdateNetworkEquipmentIp(ctx context.Context, networkEquipmentId string, ip string) ApiUpdateNetworkEquipmentIpRequest {
-	return ApiUpdateNetworkEquipmentIpRequest{
-		ApiService: a,
-		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-		ip: ip,
-	}
-}
-
-// Execute executes the request
-//  @return Ip
-func (a *DedicatedserverAPIService) UpdateNetworkEquipmentIpExecute(r ApiUpdateNetworkEquipmentIpRequest) (*Ip, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Ip
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.UpdateNetworkEquipmentIp")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}/ips/{ip}"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"ip"+"}", url.PathEscape(parameterValueToString(r.ip, "ip")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.updateNetworkEquipmentIpOpts
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiUpdateNetworkEquipmentReferenceRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	networkEquipmentId string
-	updateNetworkEquipmentReferenceOpts *UpdateNetworkEquipmentReferenceOpts
-}
-
-func (r ApiUpdateNetworkEquipmentReferenceRequest) UpdateNetworkEquipmentReferenceOpts(updateNetworkEquipmentReferenceOpts UpdateNetworkEquipmentReferenceOpts) ApiUpdateNetworkEquipmentReferenceRequest {
-	r.updateNetworkEquipmentReferenceOpts = &updateNetworkEquipmentReferenceOpts
-	return r
-}
-
-func (r ApiUpdateNetworkEquipmentReferenceRequest) Execute() (*http.Response, error) {
-	return r.ApiService.UpdateNetworkEquipmentReferenceExecute(r)
-}
-
-/*
-UpdateNetworkEquipmentReference Update network equipment
-
-Update the reference for a network equipment.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param networkEquipmentId The ID of a dedicated network equipment
- @return ApiUpdateNetworkEquipmentReferenceRequest
-*/
-func (a *DedicatedserverAPIService) UpdateNetworkEquipmentReference(ctx context.Context, networkEquipmentId string) ApiUpdateNetworkEquipmentReferenceRequest {
-	return ApiUpdateNetworkEquipmentReferenceRequest{
-		ApiService: a,
-		ctx: ctx,
-		networkEquipmentId: networkEquipmentId,
-	}
-}
-
-// Execute executes the request
-func (a *DedicatedserverAPIService) UpdateNetworkEquipmentReferenceExecute(r ApiUpdateNetworkEquipmentReferenceRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.UpdateNetworkEquipmentReference")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/networkEquipments/{networkEquipmentId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"networkEquipmentId"+"}", url.PathEscape(parameterValueToString(r.networkEquipmentId, "networkEquipmentId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.updateNetworkEquipmentReferenceOpts == nil {
-		return nil, reportError("updateNetworkEquipmentReferenceOpts is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.updateNetworkEquipmentReferenceOpts
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiUpdateServerBandwidthNotificationSettingRequest struct {
+type ApiUpdateReferenceRequest struct {
 	ctx context.Context
 	ApiService DedicatedserverAPI
 	serverId string
-	notificationSettingId string
-	bandwidthNotificationSettingOpts *BandwidthNotificationSettingOpts
+	updateReferenceOpts *UpdateReferenceOpts
 }
 
-func (r ApiUpdateServerBandwidthNotificationSettingRequest) BandwidthNotificationSettingOpts(bandwidthNotificationSettingOpts BandwidthNotificationSettingOpts) ApiUpdateServerBandwidthNotificationSettingRequest {
-	r.bandwidthNotificationSettingOpts = &bandwidthNotificationSettingOpts
+func (r ApiUpdateReferenceRequest) UpdateReferenceOpts(updateReferenceOpts UpdateReferenceOpts) ApiUpdateReferenceRequest {
+	r.updateReferenceOpts = &updateReferenceOpts
 	return r
 }
 
-func (r ApiUpdateServerBandwidthNotificationSettingRequest) Execute() (*BandwidthNotificationSetting, *http.Response, error) {
-	return r.ApiService.UpdateServerBandwidthNotificationSettingExecute(r)
+func (r ApiUpdateReferenceRequest) Execute() (*http.Response, error) {
+	return r.ApiService.UpdateReferenceExecute(r)
 }
 
 /*
-UpdateServerBandwidthNotificationSetting Update a bandwidth notification setting
-
-Update an existing bandwidth notification setting for this server.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @param notificationSettingId The ID of a notification setting
- @return ApiUpdateServerBandwidthNotificationSettingRequest
-*/
-func (a *DedicatedserverAPIService) UpdateServerBandwidthNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiUpdateServerBandwidthNotificationSettingRequest {
-	return ApiUpdateServerBandwidthNotificationSettingRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-		notificationSettingId: notificationSettingId,
-	}
-}
-
-// Execute executes the request
-//  @return BandwidthNotificationSetting
-func (a *DedicatedserverAPIService) UpdateServerBandwidthNotificationSettingExecute(r ApiUpdateServerBandwidthNotificationSettingRequest) (*BandwidthNotificationSetting, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BandwidthNotificationSetting
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.UpdateServerBandwidthNotificationSetting")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/notificationSettings/bandwidth/{notificationSettingId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"notificationSettingId"+"}", url.PathEscape(parameterValueToString(r.notificationSettingId, "notificationSettingId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.bandwidthNotificationSettingOpts
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiUpdateServerCredentialRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	type_ CredentialType
-	username string
-	updateServerCredentialOpts *UpdateServerCredentialOpts
-}
-
-func (r ApiUpdateServerCredentialRequest) UpdateServerCredentialOpts(updateServerCredentialOpts UpdateServerCredentialOpts) ApiUpdateServerCredentialRequest {
-	r.updateServerCredentialOpts = &updateServerCredentialOpts
-	return r
-}
-
-func (r ApiUpdateServerCredentialRequest) Execute() (*Credential, *http.Response, error) {
-	return r.ApiService.UpdateServerCredentialExecute(r)
-}
-
-/*
-UpdateServerCredential Update server credentials
-
-The usernames or types cannot be changed. In order to change those remove this
-credentials and create a new one.
-
-This action is purely administrative and will only update the password
-associated with this resource in our database.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @param type_ The type of the credential.
- @param username Username
- @return ApiUpdateServerCredentialRequest
-*/
-func (a *DedicatedserverAPIService) UpdateServerCredential(ctx context.Context, serverId string, type_ CredentialType, username string) ApiUpdateServerCredentialRequest {
-	return ApiUpdateServerCredentialRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-		type_: type_,
-		username: username,
-	}
-}
-
-// Execute executes the request
-//  @return Credential
-func (a *DedicatedserverAPIService) UpdateServerCredentialExecute(r ApiUpdateServerCredentialRequest) (*Credential, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Credential
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.UpdateServerCredential")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/credentials/{type}/{username}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.updateServerCredentialOpts
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiUpdateServerDataTrafficNotificationSettingRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	notificationSettingId string
-	dataTrafficNotificationSettingOpts *DataTrafficNotificationSettingOpts
-}
-
-func (r ApiUpdateServerDataTrafficNotificationSettingRequest) DataTrafficNotificationSettingOpts(dataTrafficNotificationSettingOpts DataTrafficNotificationSettingOpts) ApiUpdateServerDataTrafficNotificationSettingRequest {
-	r.dataTrafficNotificationSettingOpts = &dataTrafficNotificationSettingOpts
-	return r
-}
-
-func (r ApiUpdateServerDataTrafficNotificationSettingRequest) Execute() (*DataTrafficNotificationSettingOpts, *http.Response, error) {
-	return r.ApiService.UpdateServerDataTrafficNotificationSettingExecute(r)
-}
-
-/*
-UpdateServerDataTrafficNotificationSetting Update a data traffic notification setting
-
-Update an existing data traffic notification setting for this server.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId The ID of a server
- @param notificationSettingId The ID of a notification setting
- @return ApiUpdateServerDataTrafficNotificationSettingRequest
-*/
-func (a *DedicatedserverAPIService) UpdateServerDataTrafficNotificationSetting(ctx context.Context, serverId string, notificationSettingId string) ApiUpdateServerDataTrafficNotificationSettingRequest {
-	return ApiUpdateServerDataTrafficNotificationSettingRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-		notificationSettingId: notificationSettingId,
-	}
-}
-
-// Execute executes the request
-//  @return DataTrafficNotificationSettingOpts
-func (a *DedicatedserverAPIService) UpdateServerDataTrafficNotificationSettingExecute(r ApiUpdateServerDataTrafficNotificationSettingRequest) (*DataTrafficNotificationSettingOpts, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DataTrafficNotificationSettingOpts
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.UpdateServerDataTrafficNotificationSetting")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/servers/{serverId}/notificationSettings/datatraffic/{notificationSettingId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"notificationSettingId"+"}", url.PathEscape(parameterValueToString(r.notificationSettingId, "notificationSettingId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.dataTrafficNotificationSettingOpts
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiUpdateServerReferenceRequest struct {
-	ctx context.Context
-	ApiService DedicatedserverAPI
-	serverId string
-	updateServerReferenceOpts *UpdateServerReferenceOpts
-}
-
-func (r ApiUpdateServerReferenceRequest) UpdateServerReferenceOpts(updateServerReferenceOpts UpdateServerReferenceOpts) ApiUpdateServerReferenceRequest {
-	r.updateServerReferenceOpts = &updateServerReferenceOpts
-	return r
-}
-
-func (r ApiUpdateServerReferenceRequest) Execute() (*http.Response, error) {
-	return r.ApiService.UpdateServerReferenceExecute(r)
-}
-
-/*
-UpdateServerReference Update server
+UpdateReference Update server
 
 Update the reference for a server.
 
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serverId The ID of a server
- @return ApiUpdateServerReferenceRequest
+ @return ApiUpdateReferenceRequest
 */
-func (a *DedicatedserverAPIService) UpdateServerReference(ctx context.Context, serverId string) ApiUpdateServerReferenceRequest {
-	return ApiUpdateServerReferenceRequest{
+func (a *DedicatedserverAPIService) UpdateReference(ctx context.Context, serverId string) ApiUpdateReferenceRequest {
+	return ApiUpdateReferenceRequest{
 		ApiService: a,
 		ctx: ctx,
 		serverId: serverId,
@@ -15198,14 +11354,14 @@ func (a *DedicatedserverAPIService) UpdateServerReference(ctx context.Context, s
 }
 
 // Execute executes the request
-func (a *DedicatedserverAPIService) UpdateServerReferenceExecute(r ApiUpdateServerReferenceRequest) (*http.Response, error) {
+func (a *DedicatedserverAPIService) UpdateReferenceExecute(r ApiUpdateReferenceRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.UpdateServerReference")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.UpdateReference")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -15216,8 +11372,8 @@ func (a *DedicatedserverAPIService) UpdateServerReferenceExecute(r ApiUpdateServ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateServerReferenceOpts == nil {
-		return nil, reportError("updateServerReferenceOpts is required and must be specified")
+	if r.updateReferenceOpts == nil {
+		return nil, reportError("updateReferenceOpts is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -15238,7 +11394,7 @@ func (a *DedicatedserverAPIService) UpdateServerReferenceExecute(r ApiUpdateServ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updateServerReferenceOpts
+	localVarPostBody = r.updateReferenceOpts
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

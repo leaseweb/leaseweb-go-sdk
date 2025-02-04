@@ -1,7 +1,7 @@
 /*
-Leaseweb API for dedicated servers
+Dedicated Servers API
 
-This documents the rest api dedicatedserver provides.
+This is the description of the Dedicated Server API.  The base url of this API is `https://api.leaseweb.com`.
 
 API version: v2
 */
@@ -41,7 +41,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Leaseweb API for dedicated servers API vv2
+// APIClient manages communication with the Dedicated Servers API API vv2
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

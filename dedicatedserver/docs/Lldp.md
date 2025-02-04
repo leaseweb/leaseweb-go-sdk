@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Chassis** | Pointer to [**LldpChassis**](LldpChassis.md) |  | [optional] 
-**Port** | Pointer to [**Port1**](Port1.md) |  | [optional] 
+**Port** | Pointer to [**HardwarePort**](HardwarePort.md) |  | [optional] 
 **Vlan** | Pointer to [**Vlan**](Vlan.md) |  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasChassis returns a boolean if a field has been set.
 
 ### GetPort
 
-`func (o *Lldp) GetPort() Port1`
+`func (o *Lldp) GetPort() HardwarePort`
 
 GetPort returns the Port field if non-nil, zero value otherwise.
 
 ### GetPortOk
 
-`func (o *Lldp) GetPortOk() (*Port1, bool)`
+`func (o *Lldp) GetPortOk() (*HardwarePort, bool)`
 
 GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPort
 
-`func (o *Lldp) SetPort(v Port1)`
+`func (o *Lldp) SetPort(v HardwarePort)`
 
 SetPort sets Port field to given value.
 

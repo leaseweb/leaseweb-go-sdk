@@ -1,7 +1,7 @@
 /*
-Leaseweb API for dedicated servers
+Dedicated Servers API
 
-This documents the rest api dedicatedserver provides.
+This is the description of the Dedicated Server API.  The base url of this API is `https://api.leaseweb.com`.
 
 API version: v2
 */

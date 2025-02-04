@@ -1,7 +1,7 @@
 /*
-Leaseweb API for dedicated servers
+Dedicated Servers API
 
-This documents the rest api dedicatedserver provides.
+This is the description of the Dedicated Server API.  The base url of this API is `https://api.leaseweb.com`.
 
 API version: v2
 */
@@ -20,9 +20,9 @@ var _ MappedNullable = &Result{}
 // Result Hardware info e.g. chassis, cpu, memory and etc.
 type Result struct {
 	Chassis *Chassis `json:"chassis,omitempty"`
-	Cpu []Cpu1 `json:"cpu,omitempty"`
+	Cpu []HardwareCpu `json:"cpu,omitempty"`
 	Disks []Disk `json:"disks,omitempty"`
-	Ipmi *Ipmi1 `json:"ipmi,omitempty"`
+	Ipmi *HardwareIpmi `json:"ipmi,omitempty"`
 	Memory []MemoryBank `json:"memory,omitempty"`
 	Network []Network `json:"network,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -80,9 +80,9 @@ func (o *Result) SetChassis(v Chassis) {
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *Result) GetCpu() []Cpu1 {
+func (o *Result) GetCpu() []HardwareCpu {
 	if o == nil || IsNil(o.Cpu) {
-		var ret []Cpu1
+		var ret []HardwareCpu
 		return ret
 	}
 	return o.Cpu
@@ -90,7 +90,7 @@ func (o *Result) GetCpu() []Cpu1 {
 
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Result) GetCpuOk() ([]Cpu1, bool) {
+func (o *Result) GetCpuOk() ([]HardwareCpu, bool) {
 	if o == nil || IsNil(o.Cpu) {
 		return nil, false
 	}
@@ -106,8 +106,8 @@ func (o *Result) HasCpu() bool {
 	return false
 }
 
-// SetCpu gets a reference to the given []Cpu1 and assigns it to the Cpu field.
-func (o *Result) SetCpu(v []Cpu1) {
+// SetCpu gets a reference to the given []HardwareCpu and assigns it to the Cpu field.
+func (o *Result) SetCpu(v []HardwareCpu) {
 	o.Cpu = v
 }
 
@@ -144,9 +144,9 @@ func (o *Result) SetDisks(v []Disk) {
 }
 
 // GetIpmi returns the Ipmi field value if set, zero value otherwise.
-func (o *Result) GetIpmi() Ipmi1 {
+func (o *Result) GetIpmi() HardwareIpmi {
 	if o == nil || IsNil(o.Ipmi) {
-		var ret Ipmi1
+		var ret HardwareIpmi
 		return ret
 	}
 	return *o.Ipmi
@@ -154,7 +154,7 @@ func (o *Result) GetIpmi() Ipmi1 {
 
 // GetIpmiOk returns a tuple with the Ipmi field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Result) GetIpmiOk() (*Ipmi1, bool) {
+func (o *Result) GetIpmiOk() (*HardwareIpmi, bool) {
 	if o == nil || IsNil(o.Ipmi) {
 		return nil, false
 	}
@@ -170,8 +170,8 @@ func (o *Result) HasIpmi() bool {
 	return false
 }
 
-// SetIpmi gets a reference to the given Ipmi1 and assigns it to the Ipmi field.
-func (o *Result) SetIpmi(v Ipmi1) {
+// SetIpmi gets a reference to the given HardwareIpmi and assigns it to the Ipmi field.
+func (o *Result) SetIpmi(v HardwareIpmi) {
 	o.Ipmi = &v
 }
 

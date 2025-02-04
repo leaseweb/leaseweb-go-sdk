@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Chassis** | Pointer to [**Chassis**](Chassis.md) |  | [optional] 
-**Cpu** | Pointer to [**[]Cpu1**](Cpu1.md) |  | [optional] 
+**Cpu** | Pointer to [**[]HardwareCpu**](HardwareCpu.md) |  | [optional] 
 **Disks** | Pointer to [**[]Disk**](Disk.md) |  | [optional] 
-**Ipmi** | Pointer to [**Ipmi1**](Ipmi1.md) |  | [optional] 
+**Ipmi** | Pointer to [**HardwareIpmi**](HardwareIpmi.md) |  | [optional] 
 **Memory** | Pointer to [**[]MemoryBank**](MemoryBank.md) |  | [optional] 
 **Network** | Pointer to [**[]Network**](Network.md) |  | [optional] 
 
@@ -57,20 +57,20 @@ HasChassis returns a boolean if a field has been set.
 
 ### GetCpu
 
-`func (o *Result) GetCpu() []Cpu1`
+`func (o *Result) GetCpu() []HardwareCpu`
 
 GetCpu returns the Cpu field if non-nil, zero value otherwise.
 
 ### GetCpuOk
 
-`func (o *Result) GetCpuOk() (*[]Cpu1, bool)`
+`func (o *Result) GetCpuOk() (*[]HardwareCpu, bool)`
 
 GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpu
 
-`func (o *Result) SetCpu(v []Cpu1)`
+`func (o *Result) SetCpu(v []HardwareCpu)`
 
 SetCpu sets Cpu field to given value.
 
@@ -107,20 +107,20 @@ HasDisks returns a boolean if a field has been set.
 
 ### GetIpmi
 
-`func (o *Result) GetIpmi() Ipmi1`
+`func (o *Result) GetIpmi() HardwareIpmi`
 
 GetIpmi returns the Ipmi field if non-nil, zero value otherwise.
 
 ### GetIpmiOk
 
-`func (o *Result) GetIpmiOk() (*Ipmi1, bool)`
+`func (o *Result) GetIpmiOk() (*HardwareIpmi, bool)`
 
 GetIpmiOk returns a tuple with the Ipmi field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpmi
 
-`func (o *Result) SetIpmi(v Ipmi1)`
+`func (o *Result) SetIpmi(v HardwareIpmi)`
 
 SetIpmi sets Ipmi field to given value.
 

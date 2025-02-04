@@ -1,7 +1,7 @@
 /*
-Leaseweb API for dedicated servers
+Dedicated Servers API
 
-This documents the rest api dedicatedserver provides.
+This is the description of the Dedicated Server API.  The base url of this API is `https://api.leaseweb.com`.
 
 API version: v2
 */
@@ -20,7 +20,7 @@ var _ MappedNullable = &Lldp{}
 // Lldp struct for Lldp
 type Lldp struct {
 	Chassis *LldpChassis `json:"chassis,omitempty"`
-	Port *Port1 `json:"port,omitempty"`
+	Port *HardwarePort `json:"port,omitempty"`
 	Vlan *Vlan `json:"vlan,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -77,9 +77,9 @@ func (o *Lldp) SetChassis(v LldpChassis) {
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
-func (o *Lldp) GetPort() Port1 {
+func (o *Lldp) GetPort() HardwarePort {
 	if o == nil || IsNil(o.Port) {
-		var ret Port1
+		var ret HardwarePort
 		return ret
 	}
 	return *o.Port
@@ -87,7 +87,7 @@ func (o *Lldp) GetPort() Port1 {
 
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Lldp) GetPortOk() (*Port1, bool) {
+func (o *Lldp) GetPortOk() (*HardwarePort, bool) {
 	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *Lldp) HasPort() bool {
 	return false
 }
 
-// SetPort gets a reference to the given Port1 and assigns it to the Port field.
-func (o *Lldp) SetPort(v Port1) {
+// SetPort gets a reference to the given HardwarePort and assigns it to the Port field.
+func (o *Lldp) SetPort(v HardwarePort) {
 	o.Port = &v
 }
 
