@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Metadata** | Pointer to [**Metadata**](Metadata.md) |  | [optional] 
-**Jobs** | Pointer to [**[]Job**](Job.md) | An array of jobs | [optional] 
+**Jobs** | Pointer to [**[]ServerJob**](ServerJob.md) | An array of jobs | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasMetadata returns a boolean if a field has been set.
 
 ### GetJobs
 
-`func (o *JobList) GetJobs() []Job`
+`func (o *JobList) GetJobs() []ServerJob`
 
 GetJobs returns the Jobs field if non-nil, zero value otherwise.
 
 ### GetJobsOk
 
-`func (o *JobList) GetJobsOk() (*[]Job, bool)`
+`func (o *JobList) GetJobsOk() (*[]ServerJob, bool)`
 
 GetJobsOk returns a tuple with the Jobs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJobs
 
-`func (o *JobList) SetJobs(v []Job)`
+`func (o *JobList) SetJobs(v []ServerJob)`
 
 SetJobs sets Jobs field to given value.
 

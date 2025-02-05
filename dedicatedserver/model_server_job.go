@@ -15,11 +15,11 @@ import (
 	"time"
 )
 
-// checks if the InstallationJob type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &InstallationJob{}
+// checks if the ServerJob type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServerJob{}
 
-// InstallationJob struct for InstallationJob
-type InstallationJob struct {
+// ServerJob struct for ServerJob
+type ServerJob struct {
 	// Id of the server (deprecated, use serverId instead)
 	// Deprecated
 	BareMetalId *string `json:"bareMetalId,omitempty"`
@@ -31,7 +31,7 @@ type InstallationJob struct {
 	IsRunning *bool `json:"isRunning,omitempty"`
 	// Node ID for this server
 	Node *string `json:"node,omitempty"`
-	Payload *InstallationJobPayload `json:"payload,omitempty"`
+	Payload *ServerJobPayload `json:"payload,omitempty"`
 	Progress *Progress `json:"progress,omitempty"`
 	// Id of the server
 	ServerId *string `json:"serverId,omitempty"`
@@ -47,28 +47,28 @@ type InstallationJob struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _InstallationJob InstallationJob
+type _ServerJob ServerJob
 
-// NewInstallationJob instantiates a new InstallationJob object
+// NewServerJob instantiates a new ServerJob object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInstallationJob() *InstallationJob {
-	this := InstallationJob{}
+func NewServerJob() *ServerJob {
+	this := ServerJob{}
 	return &this
 }
 
-// NewInstallationJobWithDefaults instantiates a new InstallationJob object
+// NewServerJobWithDefaults instantiates a new ServerJob object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewInstallationJobWithDefaults() *InstallationJob {
-	this := InstallationJob{}
+func NewServerJobWithDefaults() *ServerJob {
+	this := ServerJob{}
 	return &this
 }
 
 // GetBareMetalId returns the BareMetalId field value if set, zero value otherwise.
 // Deprecated
-func (o *InstallationJob) GetBareMetalId() string {
+func (o *ServerJob) GetBareMetalId() string {
 	if o == nil || IsNil(o.BareMetalId) {
 		var ret string
 		return ret
@@ -79,7 +79,7 @@ func (o *InstallationJob) GetBareMetalId() string {
 // GetBareMetalIdOk returns a tuple with the BareMetalId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *InstallationJob) GetBareMetalIdOk() (*string, bool) {
+func (o *ServerJob) GetBareMetalIdOk() (*string, bool) {
 	if o == nil || IsNil(o.BareMetalId) {
 		return nil, false
 	}
@@ -87,7 +87,7 @@ func (o *InstallationJob) GetBareMetalIdOk() (*string, bool) {
 }
 
 // HasBareMetalId returns a boolean if a field has been set.
-func (o *InstallationJob) HasBareMetalId() bool {
+func (o *ServerJob) HasBareMetalId() bool {
 	if o != nil && !IsNil(o.BareMetalId) {
 		return true
 	}
@@ -97,12 +97,12 @@ func (o *InstallationJob) HasBareMetalId() bool {
 
 // SetBareMetalId gets a reference to the given string and assigns it to the BareMetalId field.
 // Deprecated
-func (o *InstallationJob) SetBareMetalId(v string) {
+func (o *ServerJob) SetBareMetalId(v string) {
 	o.BareMetalId = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *InstallationJob) GetCreatedAt() time.Time {
+func (o *ServerJob) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
@@ -112,7 +112,7 @@ func (o *InstallationJob) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJob) GetCreatedAtOk() (*time.Time, bool) {
+func (o *ServerJob) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -120,7 +120,7 @@ func (o *InstallationJob) GetCreatedAtOk() (*time.Time, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *InstallationJob) HasCreatedAt() bool {
+func (o *ServerJob) HasCreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -129,12 +129,12 @@ func (o *InstallationJob) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *InstallationJob) SetCreatedAt(v time.Time) {
+func (o *ServerJob) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetFlow returns the Flow field value if set, zero value otherwise.
-func (o *InstallationJob) GetFlow() string {
+func (o *ServerJob) GetFlow() string {
 	if o == nil || IsNil(o.Flow) {
 		var ret string
 		return ret
@@ -144,7 +144,7 @@ func (o *InstallationJob) GetFlow() string {
 
 // GetFlowOk returns a tuple with the Flow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJob) GetFlowOk() (*string, bool) {
+func (o *ServerJob) GetFlowOk() (*string, bool) {
 	if o == nil || IsNil(o.Flow) {
 		return nil, false
 	}
@@ -152,7 +152,7 @@ func (o *InstallationJob) GetFlowOk() (*string, bool) {
 }
 
 // HasFlow returns a boolean if a field has been set.
-func (o *InstallationJob) HasFlow() bool {
+func (o *ServerJob) HasFlow() bool {
 	if o != nil && !IsNil(o.Flow) {
 		return true
 	}
@@ -161,12 +161,12 @@ func (o *InstallationJob) HasFlow() bool {
 }
 
 // SetFlow gets a reference to the given string and assigns it to the Flow field.
-func (o *InstallationJob) SetFlow(v string) {
+func (o *ServerJob) SetFlow(v string) {
 	o.Flow = &v
 }
 
 // GetIsRunning returns the IsRunning field value if set, zero value otherwise.
-func (o *InstallationJob) GetIsRunning() bool {
+func (o *ServerJob) GetIsRunning() bool {
 	if o == nil || IsNil(o.IsRunning) {
 		var ret bool
 		return ret
@@ -176,7 +176,7 @@ func (o *InstallationJob) GetIsRunning() bool {
 
 // GetIsRunningOk returns a tuple with the IsRunning field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJob) GetIsRunningOk() (*bool, bool) {
+func (o *ServerJob) GetIsRunningOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsRunning) {
 		return nil, false
 	}
@@ -184,7 +184,7 @@ func (o *InstallationJob) GetIsRunningOk() (*bool, bool) {
 }
 
 // HasIsRunning returns a boolean if a field has been set.
-func (o *InstallationJob) HasIsRunning() bool {
+func (o *ServerJob) HasIsRunning() bool {
 	if o != nil && !IsNil(o.IsRunning) {
 		return true
 	}
@@ -193,12 +193,12 @@ func (o *InstallationJob) HasIsRunning() bool {
 }
 
 // SetIsRunning gets a reference to the given bool and assigns it to the IsRunning field.
-func (o *InstallationJob) SetIsRunning(v bool) {
+func (o *ServerJob) SetIsRunning(v bool) {
 	o.IsRunning = &v
 }
 
 // GetNode returns the Node field value if set, zero value otherwise.
-func (o *InstallationJob) GetNode() string {
+func (o *ServerJob) GetNode() string {
 	if o == nil || IsNil(o.Node) {
 		var ret string
 		return ret
@@ -208,7 +208,7 @@ func (o *InstallationJob) GetNode() string {
 
 // GetNodeOk returns a tuple with the Node field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJob) GetNodeOk() (*string, bool) {
+func (o *ServerJob) GetNodeOk() (*string, bool) {
 	if o == nil || IsNil(o.Node) {
 		return nil, false
 	}
@@ -216,7 +216,7 @@ func (o *InstallationJob) GetNodeOk() (*string, bool) {
 }
 
 // HasNode returns a boolean if a field has been set.
-func (o *InstallationJob) HasNode() bool {
+func (o *ServerJob) HasNode() bool {
 	if o != nil && !IsNil(o.Node) {
 		return true
 	}
@@ -225,14 +225,14 @@ func (o *InstallationJob) HasNode() bool {
 }
 
 // SetNode gets a reference to the given string and assigns it to the Node field.
-func (o *InstallationJob) SetNode(v string) {
+func (o *ServerJob) SetNode(v string) {
 	o.Node = &v
 }
 
 // GetPayload returns the Payload field value if set, zero value otherwise.
-func (o *InstallationJob) GetPayload() InstallationJobPayload {
+func (o *ServerJob) GetPayload() ServerJobPayload {
 	if o == nil || IsNil(o.Payload) {
-		var ret InstallationJobPayload
+		var ret ServerJobPayload
 		return ret
 	}
 	return *o.Payload
@@ -240,7 +240,7 @@ func (o *InstallationJob) GetPayload() InstallationJobPayload {
 
 // GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJob) GetPayloadOk() (*InstallationJobPayload, bool) {
+func (o *ServerJob) GetPayloadOk() (*ServerJobPayload, bool) {
 	if o == nil || IsNil(o.Payload) {
 		return nil, false
 	}
@@ -248,7 +248,7 @@ func (o *InstallationJob) GetPayloadOk() (*InstallationJobPayload, bool) {
 }
 
 // HasPayload returns a boolean if a field has been set.
-func (o *InstallationJob) HasPayload() bool {
+func (o *ServerJob) HasPayload() bool {
 	if o != nil && !IsNil(o.Payload) {
 		return true
 	}
@@ -256,13 +256,13 @@ func (o *InstallationJob) HasPayload() bool {
 	return false
 }
 
-// SetPayload gets a reference to the given InstallationJobPayload and assigns it to the Payload field.
-func (o *InstallationJob) SetPayload(v InstallationJobPayload) {
+// SetPayload gets a reference to the given ServerJobPayload and assigns it to the Payload field.
+func (o *ServerJob) SetPayload(v ServerJobPayload) {
 	o.Payload = &v
 }
 
 // GetProgress returns the Progress field value if set, zero value otherwise.
-func (o *InstallationJob) GetProgress() Progress {
+func (o *ServerJob) GetProgress() Progress {
 	if o == nil || IsNil(o.Progress) {
 		var ret Progress
 		return ret
@@ -272,7 +272,7 @@ func (o *InstallationJob) GetProgress() Progress {
 
 // GetProgressOk returns a tuple with the Progress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJob) GetProgressOk() (*Progress, bool) {
+func (o *ServerJob) GetProgressOk() (*Progress, bool) {
 	if o == nil || IsNil(o.Progress) {
 		return nil, false
 	}
@@ -280,7 +280,7 @@ func (o *InstallationJob) GetProgressOk() (*Progress, bool) {
 }
 
 // HasProgress returns a boolean if a field has been set.
-func (o *InstallationJob) HasProgress() bool {
+func (o *ServerJob) HasProgress() bool {
 	if o != nil && !IsNil(o.Progress) {
 		return true
 	}
@@ -289,12 +289,12 @@ func (o *InstallationJob) HasProgress() bool {
 }
 
 // SetProgress gets a reference to the given Progress and assigns it to the Progress field.
-func (o *InstallationJob) SetProgress(v Progress) {
+func (o *ServerJob) SetProgress(v Progress) {
 	o.Progress = &v
 }
 
 // GetServerId returns the ServerId field value if set, zero value otherwise.
-func (o *InstallationJob) GetServerId() string {
+func (o *ServerJob) GetServerId() string {
 	if o == nil || IsNil(o.ServerId) {
 		var ret string
 		return ret
@@ -304,7 +304,7 @@ func (o *InstallationJob) GetServerId() string {
 
 // GetServerIdOk returns a tuple with the ServerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJob) GetServerIdOk() (*string, bool) {
+func (o *ServerJob) GetServerIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ServerId) {
 		return nil, false
 	}
@@ -312,7 +312,7 @@ func (o *InstallationJob) GetServerIdOk() (*string, bool) {
 }
 
 // HasServerId returns a boolean if a field has been set.
-func (o *InstallationJob) HasServerId() bool {
+func (o *ServerJob) HasServerId() bool {
 	if o != nil && !IsNil(o.ServerId) {
 		return true
 	}
@@ -321,12 +321,12 @@ func (o *InstallationJob) HasServerId() bool {
 }
 
 // SetServerId gets a reference to the given string and assigns it to the ServerId field.
-func (o *InstallationJob) SetServerId(v string) {
+func (o *ServerJob) SetServerId(v string) {
 	o.ServerId = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *InstallationJob) GetStatus() string {
+func (o *ServerJob) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
@@ -336,7 +336,7 @@ func (o *InstallationJob) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJob) GetStatusOk() (*string, bool) {
+func (o *ServerJob) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -344,7 +344,7 @@ func (o *InstallationJob) GetStatusOk() (*string, bool) {
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *InstallationJob) HasStatus() bool {
+func (o *ServerJob) HasStatus() bool {
 	if o != nil && !IsNil(o.Status) {
 		return true
 	}
@@ -353,12 +353,12 @@ func (o *InstallationJob) HasStatus() bool {
 }
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *InstallationJob) SetStatus(v string) {
+func (o *ServerJob) SetStatus(v string) {
 	o.Status = &v
 }
 
 // GetTasks returns the Tasks field value if set, zero value otherwise.
-func (o *InstallationJob) GetTasks() []Task {
+func (o *ServerJob) GetTasks() []Task {
 	if o == nil || IsNil(o.Tasks) {
 		var ret []Task
 		return ret
@@ -368,7 +368,7 @@ func (o *InstallationJob) GetTasks() []Task {
 
 // GetTasksOk returns a tuple with the Tasks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJob) GetTasksOk() ([]Task, bool) {
+func (o *ServerJob) GetTasksOk() ([]Task, bool) {
 	if o == nil || IsNil(o.Tasks) {
 		return nil, false
 	}
@@ -376,7 +376,7 @@ func (o *InstallationJob) GetTasksOk() ([]Task, bool) {
 }
 
 // HasTasks returns a boolean if a field has been set.
-func (o *InstallationJob) HasTasks() bool {
+func (o *ServerJob) HasTasks() bool {
 	if o != nil && !IsNil(o.Tasks) {
 		return true
 	}
@@ -385,12 +385,12 @@ func (o *InstallationJob) HasTasks() bool {
 }
 
 // SetTasks gets a reference to the given []Task and assigns it to the Tasks field.
-func (o *InstallationJob) SetTasks(v []Task) {
+func (o *ServerJob) SetTasks(v []Task) {
 	o.Tasks = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *InstallationJob) GetType() JobType {
+func (o *ServerJob) GetType() JobType {
 	if o == nil || IsNil(o.Type) {
 		var ret JobType
 		return ret
@@ -400,7 +400,7 @@ func (o *InstallationJob) GetType() JobType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJob) GetTypeOk() (*JobType, bool) {
+func (o *ServerJob) GetTypeOk() (*JobType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -408,7 +408,7 @@ func (o *InstallationJob) GetTypeOk() (*JobType, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *InstallationJob) HasType() bool {
+func (o *ServerJob) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -417,12 +417,12 @@ func (o *InstallationJob) HasType() bool {
 }
 
 // SetType gets a reference to the given JobType and assigns it to the Type field.
-func (o *InstallationJob) SetType(v JobType) {
+func (o *ServerJob) SetType(v JobType) {
 	o.Type = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *InstallationJob) GetUpdatedAt() time.Time {
+func (o *ServerJob) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
@@ -432,7 +432,7 @@ func (o *InstallationJob) GetUpdatedAt() time.Time {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJob) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *ServerJob) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -440,7 +440,7 @@ func (o *InstallationJob) GetUpdatedAtOk() (*time.Time, bool) {
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *InstallationJob) HasUpdatedAt() bool {
+func (o *ServerJob) HasUpdatedAt() bool {
 	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
@@ -449,12 +449,12 @@ func (o *InstallationJob) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *InstallationJob) SetUpdatedAt(v time.Time) {
+func (o *ServerJob) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *InstallationJob) GetUuid() string {
+func (o *ServerJob) GetUuid() string {
 	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
@@ -464,7 +464,7 @@ func (o *InstallationJob) GetUuid() string {
 
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJob) GetUuidOk() (*string, bool) {
+func (o *ServerJob) GetUuidOk() (*string, bool) {
 	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
@@ -472,7 +472,7 @@ func (o *InstallationJob) GetUuidOk() (*string, bool) {
 }
 
 // HasUuid returns a boolean if a field has been set.
-func (o *InstallationJob) HasUuid() bool {
+func (o *ServerJob) HasUuid() bool {
 	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
@@ -481,11 +481,11 @@ func (o *InstallationJob) HasUuid() bool {
 }
 
 // SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *InstallationJob) SetUuid(v string) {
+func (o *ServerJob) SetUuid(v string) {
 	o.Uuid = &v
 }
 
-func (o InstallationJob) MarshalJSON() ([]byte, error) {
+func (o ServerJob) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -493,7 +493,7 @@ func (o InstallationJob) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o InstallationJob) ToMap() (map[string]interface{}, error) {
+func (o ServerJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.BareMetalId) {
 		toSerialize["bareMetalId"] = o.BareMetalId
@@ -542,16 +542,16 @@ func (o InstallationJob) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *InstallationJob) UnmarshalJSON(data []byte) (err error) {
-	varInstallationJob := _InstallationJob{}
+func (o *ServerJob) UnmarshalJSON(data []byte) (err error) {
+	varServerJob := _ServerJob{}
 
-	err = json.Unmarshal(data, &varInstallationJob)
+	err = json.Unmarshal(data, &varServerJob)
 
 	if err != nil {
 		return err
 	}
 
-	*o = InstallationJob(varInstallationJob)
+	*o = ServerJob(varServerJob)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -575,38 +575,38 @@ func (o *InstallationJob) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableInstallationJob struct {
-	value *InstallationJob
+type NullableServerJob struct {
+	value *ServerJob
 	isSet bool
 }
 
-func (v NullableInstallationJob) Get() *InstallationJob {
+func (v NullableServerJob) Get() *ServerJob {
 	return v.value
 }
 
-func (v *NullableInstallationJob) Set(val *InstallationJob) {
+func (v *NullableServerJob) Set(val *ServerJob) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableInstallationJob) IsSet() bool {
+func (v NullableServerJob) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableInstallationJob) Unset() {
+func (v *NullableServerJob) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableInstallationJob(val *InstallationJob) *NullableInstallationJob {
-	return &NullableInstallationJob{value: val, isSet: true}
+func NewNullableServerJob(val *ServerJob) *NullableServerJob {
+	return &NullableServerJob{value: val, isSet: true}
 }
 
-func (v NullableInstallationJob) MarshalJSON() ([]byte, error) {
+func (v NullableServerJob) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableInstallationJob) UnmarshalJSON(src []byte) error {
+func (v *NullableServerJob) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

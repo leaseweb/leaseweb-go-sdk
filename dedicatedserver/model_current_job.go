@@ -31,7 +31,7 @@ type CurrentJob struct {
 	IsRunning *bool `json:"isRunning,omitempty"`
 	// Node ID for this server
 	Node *string `json:"node,omitempty"`
-	Payload *JobPayload `json:"payload,omitempty"`
+	Payload *ServerJobPayload `json:"payload,omitempty"`
 	Progress *Progress `json:"progress,omitempty"`
 	// Id of the server
 	ServerId *string `json:"serverId,omitempty"`
@@ -231,9 +231,9 @@ func (o *CurrentJob) SetNode(v string) {
 }
 
 // GetPayload returns the Payload field value if set, zero value otherwise.
-func (o *CurrentJob) GetPayload() JobPayload {
+func (o *CurrentJob) GetPayload() ServerJobPayload {
 	if o == nil || IsNil(o.Payload) {
-		var ret JobPayload
+		var ret ServerJobPayload
 		return ret
 	}
 	return *o.Payload
@@ -241,7 +241,7 @@ func (o *CurrentJob) GetPayload() JobPayload {
 
 // GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CurrentJob) GetPayloadOk() (*JobPayload, bool) {
+func (o *CurrentJob) GetPayloadOk() (*ServerJobPayload, bool) {
 	if o == nil || IsNil(o.Payload) {
 		return nil, false
 	}
@@ -257,8 +257,8 @@ func (o *CurrentJob) HasPayload() bool {
 	return false
 }
 
-// SetPayload gets a reference to the given JobPayload and assigns it to the Payload field.
-func (o *CurrentJob) SetPayload(v JobPayload) {
+// SetPayload gets a reference to the given ServerJobPayload and assigns it to the Payload field.
+func (o *CurrentJob) SetPayload(v ServerJobPayload) {
 	o.Payload = &v
 }
 

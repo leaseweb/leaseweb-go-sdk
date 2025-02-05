@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the InstallationJobPayload type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &InstallationJobPayload{}
+// checks if the ServerJobPayload type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServerJobPayload{}
 
-// InstallationJobPayload struct for InstallationJobPayload
-type InstallationJobPayload struct {
+// ServerJobPayload struct for ServerJobPayload
+type ServerJobPayload struct {
 	FileserverBaseUrl *string `json:"fileserverBaseUrl,omitempty"`
 	Pop *string `json:"pop,omitempty"`
 	PowerCycle *bool `json:"powerCycle,omitempty"`
@@ -38,27 +38,27 @@ type InstallationJobPayload struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _InstallationJobPayload InstallationJobPayload
+type _ServerJobPayload ServerJobPayload
 
-// NewInstallationJobPayload instantiates a new InstallationJobPayload object
+// NewServerJobPayload instantiates a new ServerJobPayload object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInstallationJobPayload() *InstallationJobPayload {
-	this := InstallationJobPayload{}
+func NewServerJobPayload() *ServerJobPayload {
+	this := ServerJobPayload{}
 	return &this
 }
 
-// NewInstallationJobPayloadWithDefaults instantiates a new InstallationJobPayload object
+// NewServerJobPayloadWithDefaults instantiates a new ServerJobPayload object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewInstallationJobPayloadWithDefaults() *InstallationJobPayload {
-	this := InstallationJobPayload{}
+func NewServerJobPayloadWithDefaults() *ServerJobPayload {
+	this := ServerJobPayload{}
 	return &this
 }
 
 // GetFileserverBaseUrl returns the FileserverBaseUrl field value if set, zero value otherwise.
-func (o *InstallationJobPayload) GetFileserverBaseUrl() string {
+func (o *ServerJobPayload) GetFileserverBaseUrl() string {
 	if o == nil || IsNil(o.FileserverBaseUrl) {
 		var ret string
 		return ret
@@ -68,7 +68,7 @@ func (o *InstallationJobPayload) GetFileserverBaseUrl() string {
 
 // GetFileserverBaseUrlOk returns a tuple with the FileserverBaseUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJobPayload) GetFileserverBaseUrlOk() (*string, bool) {
+func (o *ServerJobPayload) GetFileserverBaseUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.FileserverBaseUrl) {
 		return nil, false
 	}
@@ -76,7 +76,7 @@ func (o *InstallationJobPayload) GetFileserverBaseUrlOk() (*string, bool) {
 }
 
 // HasFileserverBaseUrl returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasFileserverBaseUrl() bool {
+func (o *ServerJobPayload) HasFileserverBaseUrl() bool {
 	if o != nil && !IsNil(o.FileserverBaseUrl) {
 		return true
 	}
@@ -85,12 +85,12 @@ func (o *InstallationJobPayload) HasFileserverBaseUrl() bool {
 }
 
 // SetFileserverBaseUrl gets a reference to the given string and assigns it to the FileserverBaseUrl field.
-func (o *InstallationJobPayload) SetFileserverBaseUrl(v string) {
+func (o *ServerJobPayload) SetFileserverBaseUrl(v string) {
 	o.FileserverBaseUrl = &v
 }
 
 // GetPop returns the Pop field value if set, zero value otherwise.
-func (o *InstallationJobPayload) GetPop() string {
+func (o *ServerJobPayload) GetPop() string {
 	if o == nil || IsNil(o.Pop) {
 		var ret string
 		return ret
@@ -100,7 +100,7 @@ func (o *InstallationJobPayload) GetPop() string {
 
 // GetPopOk returns a tuple with the Pop field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJobPayload) GetPopOk() (*string, bool) {
+func (o *ServerJobPayload) GetPopOk() (*string, bool) {
 	if o == nil || IsNil(o.Pop) {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *InstallationJobPayload) GetPopOk() (*string, bool) {
 }
 
 // HasPop returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasPop() bool {
+func (o *ServerJobPayload) HasPop() bool {
 	if o != nil && !IsNil(o.Pop) {
 		return true
 	}
@@ -117,12 +117,12 @@ func (o *InstallationJobPayload) HasPop() bool {
 }
 
 // SetPop gets a reference to the given string and assigns it to the Pop field.
-func (o *InstallationJobPayload) SetPop(v string) {
+func (o *ServerJobPayload) SetPop(v string) {
 	o.Pop = &v
 }
 
 // GetPowerCycle returns the PowerCycle field value if set, zero value otherwise.
-func (o *InstallationJobPayload) GetPowerCycle() bool {
+func (o *ServerJobPayload) GetPowerCycle() bool {
 	if o == nil || IsNil(o.PowerCycle) {
 		var ret bool
 		return ret
@@ -132,7 +132,7 @@ func (o *InstallationJobPayload) GetPowerCycle() bool {
 
 // GetPowerCycleOk returns a tuple with the PowerCycle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJobPayload) GetPowerCycleOk() (*bool, bool) {
+func (o *ServerJobPayload) GetPowerCycleOk() (*bool, bool) {
 	if o == nil || IsNil(o.PowerCycle) {
 		return nil, false
 	}
@@ -140,7 +140,7 @@ func (o *InstallationJobPayload) GetPowerCycleOk() (*bool, bool) {
 }
 
 // HasPowerCycle returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasPowerCycle() bool {
+func (o *ServerJobPayload) HasPowerCycle() bool {
 	if o != nil && !IsNil(o.PowerCycle) {
 		return true
 	}
@@ -149,12 +149,12 @@ func (o *InstallationJobPayload) HasPowerCycle() bool {
 }
 
 // SetPowerCycle gets a reference to the given bool and assigns it to the PowerCycle field.
-func (o *InstallationJobPayload) SetPowerCycle(v bool) {
+func (o *ServerJobPayload) SetPowerCycle(v bool) {
 	o.PowerCycle = &v
 }
 
 // GetIsUnassignedServer returns the IsUnassignedServer field value if set, zero value otherwise.
-func (o *InstallationJobPayload) GetIsUnassignedServer() bool {
+func (o *ServerJobPayload) GetIsUnassignedServer() bool {
 	if o == nil || IsNil(o.IsUnassignedServer) {
 		var ret bool
 		return ret
@@ -164,7 +164,7 @@ func (o *InstallationJobPayload) GetIsUnassignedServer() bool {
 
 // GetIsUnassignedServerOk returns a tuple with the IsUnassignedServer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJobPayload) GetIsUnassignedServerOk() (*bool, bool) {
+func (o *ServerJobPayload) GetIsUnassignedServerOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsUnassignedServer) {
 		return nil, false
 	}
@@ -172,7 +172,7 @@ func (o *InstallationJobPayload) GetIsUnassignedServerOk() (*bool, bool) {
 }
 
 // HasIsUnassignedServer returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasIsUnassignedServer() bool {
+func (o *ServerJobPayload) HasIsUnassignedServer() bool {
 	if o != nil && !IsNil(o.IsUnassignedServer) {
 		return true
 	}
@@ -181,12 +181,12 @@ func (o *InstallationJobPayload) HasIsUnassignedServer() bool {
 }
 
 // SetIsUnassignedServer gets a reference to the given bool and assigns it to the IsUnassignedServer field.
-func (o *InstallationJobPayload) SetIsUnassignedServer(v bool) {
+func (o *ServerJobPayload) SetIsUnassignedServer(v bool) {
 	o.IsUnassignedServer = &v
 }
 
 // GetServerId returns the ServerId field value if set, zero value otherwise.
-func (o *InstallationJobPayload) GetServerId() string {
+func (o *ServerJobPayload) GetServerId() string {
 	if o == nil || IsNil(o.ServerId) {
 		var ret string
 		return ret
@@ -196,7 +196,7 @@ func (o *InstallationJobPayload) GetServerId() string {
 
 // GetServerIdOk returns a tuple with the ServerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJobPayload) GetServerIdOk() (*string, bool) {
+func (o *ServerJobPayload) GetServerIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ServerId) {
 		return nil, false
 	}
@@ -204,7 +204,7 @@ func (o *InstallationJobPayload) GetServerIdOk() (*string, bool) {
 }
 
 // HasServerId returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasServerId() bool {
+func (o *ServerJobPayload) HasServerId() bool {
 	if o != nil && !IsNil(o.ServerId) {
 		return true
 	}
@@ -213,12 +213,12 @@ func (o *InstallationJobPayload) HasServerId() bool {
 }
 
 // SetServerId gets a reference to the given string and assigns it to the ServerId field.
-func (o *InstallationJobPayload) SetServerId(v string) {
+func (o *ServerJobPayload) SetServerId(v string) {
 	o.ServerId = &v
 }
 
 // GetJobType returns the JobType field value if set, zero value otherwise.
-func (o *InstallationJobPayload) GetJobType() string {
+func (o *ServerJobPayload) GetJobType() string {
 	if o == nil || IsNil(o.JobType) {
 		var ret string
 		return ret
@@ -228,7 +228,7 @@ func (o *InstallationJobPayload) GetJobType() string {
 
 // GetJobTypeOk returns a tuple with the JobType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJobPayload) GetJobTypeOk() (*string, bool) {
+func (o *ServerJobPayload) GetJobTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.JobType) {
 		return nil, false
 	}
@@ -236,7 +236,7 @@ func (o *InstallationJobPayload) GetJobTypeOk() (*string, bool) {
 }
 
 // HasJobType returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasJobType() bool {
+func (o *ServerJobPayload) HasJobType() bool {
 	if o != nil && !IsNil(o.JobType) {
 		return true
 	}
@@ -245,12 +245,12 @@ func (o *InstallationJobPayload) HasJobType() bool {
 }
 
 // SetJobType gets a reference to the given string and assigns it to the JobType field.
-func (o *InstallationJobPayload) SetJobType(v string) {
+func (o *ServerJobPayload) SetJobType(v string) {
 	o.JobType = &v
 }
 
 // GetConfigurable returns the Configurable field value if set, zero value otherwise.
-func (o *InstallationJobPayload) GetConfigurable() bool {
+func (o *ServerJobPayload) GetConfigurable() bool {
 	if o == nil || IsNil(o.Configurable) {
 		var ret bool
 		return ret
@@ -260,7 +260,7 @@ func (o *InstallationJobPayload) GetConfigurable() bool {
 
 // GetConfigurableOk returns a tuple with the Configurable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJobPayload) GetConfigurableOk() (*bool, bool) {
+func (o *ServerJobPayload) GetConfigurableOk() (*bool, bool) {
 	if o == nil || IsNil(o.Configurable) {
 		return nil, false
 	}
@@ -268,7 +268,7 @@ func (o *InstallationJobPayload) GetConfigurableOk() (*bool, bool) {
 }
 
 // HasConfigurable returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasConfigurable() bool {
+func (o *ServerJobPayload) HasConfigurable() bool {
 	if o != nil && !IsNil(o.Configurable) {
 		return true
 	}
@@ -277,12 +277,12 @@ func (o *InstallationJobPayload) HasConfigurable() bool {
 }
 
 // SetConfigurable gets a reference to the given bool and assigns it to the Configurable field.
-func (o *InstallationJobPayload) SetConfigurable(v bool) {
+func (o *ServerJobPayload) SetConfigurable(v bool) {
 	o.Configurable = &v
 }
 
 // GetDevice returns the Device field value if set, zero value otherwise.
-func (o *InstallationJobPayload) GetDevice() string {
+func (o *ServerJobPayload) GetDevice() string {
 	if o == nil || IsNil(o.Device) {
 		var ret string
 		return ret
@@ -292,7 +292,7 @@ func (o *InstallationJobPayload) GetDevice() string {
 
 // GetDeviceOk returns a tuple with the Device field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJobPayload) GetDeviceOk() (*string, bool) {
+func (o *ServerJobPayload) GetDeviceOk() (*string, bool) {
 	if o == nil || IsNil(o.Device) {
 		return nil, false
 	}
@@ -300,7 +300,7 @@ func (o *InstallationJobPayload) GetDeviceOk() (*string, bool) {
 }
 
 // HasDevice returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasDevice() bool {
+func (o *ServerJobPayload) HasDevice() bool {
 	if o != nil && !IsNil(o.Device) {
 		return true
 	}
@@ -309,12 +309,12 @@ func (o *InstallationJobPayload) HasDevice() bool {
 }
 
 // SetDevice gets a reference to the given string and assigns it to the Device field.
-func (o *InstallationJobPayload) SetDevice(v string) {
+func (o *ServerJobPayload) SetDevice(v string) {
 	o.Device = &v
 }
 
 // GetNumberOfDisks returns the NumberOfDisks field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InstallationJobPayload) GetNumberOfDisks() int32 {
+func (o *ServerJobPayload) GetNumberOfDisks() int32 {
 	if o == nil || IsNil(o.NumberOfDisks.Get()) {
 		var ret int32
 		return ret
@@ -325,7 +325,7 @@ func (o *InstallationJobPayload) GetNumberOfDisks() int32 {
 // GetNumberOfDisksOk returns a tuple with the NumberOfDisks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InstallationJobPayload) GetNumberOfDisksOk() (*int32, bool) {
+func (o *ServerJobPayload) GetNumberOfDisksOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -333,7 +333,7 @@ func (o *InstallationJobPayload) GetNumberOfDisksOk() (*int32, bool) {
 }
 
 // HasNumberOfDisks returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasNumberOfDisks() bool {
+func (o *ServerJobPayload) HasNumberOfDisks() bool {
 	if o != nil && o.NumberOfDisks.IsSet() {
 		return true
 	}
@@ -342,21 +342,21 @@ func (o *InstallationJobPayload) HasNumberOfDisks() bool {
 }
 
 // SetNumberOfDisks gets a reference to the given NullableInt32 and assigns it to the NumberOfDisks field.
-func (o *InstallationJobPayload) SetNumberOfDisks(v int32) {
+func (o *ServerJobPayload) SetNumberOfDisks(v int32) {
 	o.NumberOfDisks.Set(&v)
 }
 // SetNumberOfDisksNil sets the value for NumberOfDisks to be an explicit nil
-func (o *InstallationJobPayload) SetNumberOfDisksNil() {
+func (o *ServerJobPayload) SetNumberOfDisksNil() {
 	o.NumberOfDisks.Set(nil)
 }
 
 // UnsetNumberOfDisks ensures that no value is present for NumberOfDisks, not even an explicit nil
-func (o *InstallationJobPayload) UnsetNumberOfDisks() {
+func (o *ServerJobPayload) UnsetNumberOfDisks() {
 	o.NumberOfDisks.Unset()
 }
 
 // GetOperatingSystemId returns the OperatingSystemId field value if set, zero value otherwise.
-func (o *InstallationJobPayload) GetOperatingSystemId() string {
+func (o *ServerJobPayload) GetOperatingSystemId() string {
 	if o == nil || IsNil(o.OperatingSystemId) {
 		var ret string
 		return ret
@@ -366,7 +366,7 @@ func (o *InstallationJobPayload) GetOperatingSystemId() string {
 
 // GetOperatingSystemIdOk returns a tuple with the OperatingSystemId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJobPayload) GetOperatingSystemIdOk() (*string, bool) {
+func (o *ServerJobPayload) GetOperatingSystemIdOk() (*string, bool) {
 	if o == nil || IsNil(o.OperatingSystemId) {
 		return nil, false
 	}
@@ -374,7 +374,7 @@ func (o *InstallationJobPayload) GetOperatingSystemIdOk() (*string, bool) {
 }
 
 // HasOperatingSystemId returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasOperatingSystemId() bool {
+func (o *ServerJobPayload) HasOperatingSystemId() bool {
 	if o != nil && !IsNil(o.OperatingSystemId) {
 		return true
 	}
@@ -383,12 +383,12 @@ func (o *InstallationJobPayload) HasOperatingSystemId() bool {
 }
 
 // SetOperatingSystemId gets a reference to the given string and assigns it to the OperatingSystemId field.
-func (o *InstallationJobPayload) SetOperatingSystemId(v string) {
+func (o *ServerJobPayload) SetOperatingSystemId(v string) {
 	o.OperatingSystemId = &v
 }
 
 // GetOs returns the Os field value if set, zero value otherwise.
-func (o *InstallationJobPayload) GetOs() Os {
+func (o *ServerJobPayload) GetOs() Os {
 	if o == nil || IsNil(o.Os) {
 		var ret Os
 		return ret
@@ -398,7 +398,7 @@ func (o *InstallationJobPayload) GetOs() Os {
 
 // GetOsOk returns a tuple with the Os field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJobPayload) GetOsOk() (*Os, bool) {
+func (o *ServerJobPayload) GetOsOk() (*Os, bool) {
 	if o == nil || IsNil(o.Os) {
 		return nil, false
 	}
@@ -406,7 +406,7 @@ func (o *InstallationJobPayload) GetOsOk() (*Os, bool) {
 }
 
 // HasOs returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasOs() bool {
+func (o *ServerJobPayload) HasOs() bool {
 	if o != nil && !IsNil(o.Os) {
 		return true
 	}
@@ -415,12 +415,12 @@ func (o *InstallationJobPayload) HasOs() bool {
 }
 
 // SetOs gets a reference to the given Os and assigns it to the Os field.
-func (o *InstallationJobPayload) SetOs(v Os) {
+func (o *ServerJobPayload) SetOs(v Os) {
 	o.Os = &v
 }
 
 // GetPartitions returns the Partitions field value if set, zero value otherwise.
-func (o *InstallationJobPayload) GetPartitions() []Partition {
+func (o *ServerJobPayload) GetPartitions() []Partition {
 	if o == nil || IsNil(o.Partitions) {
 		var ret []Partition
 		return ret
@@ -430,7 +430,7 @@ func (o *InstallationJobPayload) GetPartitions() []Partition {
 
 // GetPartitionsOk returns a tuple with the Partitions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJobPayload) GetPartitionsOk() ([]Partition, bool) {
+func (o *ServerJobPayload) GetPartitionsOk() ([]Partition, bool) {
 	if o == nil || IsNil(o.Partitions) {
 		return nil, false
 	}
@@ -438,7 +438,7 @@ func (o *InstallationJobPayload) GetPartitionsOk() ([]Partition, bool) {
 }
 
 // HasPartitions returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasPartitions() bool {
+func (o *ServerJobPayload) HasPartitions() bool {
 	if o != nil && !IsNil(o.Partitions) {
 		return true
 	}
@@ -447,12 +447,12 @@ func (o *InstallationJobPayload) HasPartitions() bool {
 }
 
 // SetPartitions gets a reference to the given []Partition and assigns it to the Partitions field.
-func (o *InstallationJobPayload) SetPartitions(v []Partition) {
+func (o *ServerJobPayload) SetPartitions(v []Partition) {
 	o.Partitions = v
 }
 
 // GetRaidLevel returns the RaidLevel field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InstallationJobPayload) GetRaidLevel() int32 {
+func (o *ServerJobPayload) GetRaidLevel() int32 {
 	if o == nil || IsNil(o.RaidLevel.Get()) {
 		var ret int32
 		return ret
@@ -463,7 +463,7 @@ func (o *InstallationJobPayload) GetRaidLevel() int32 {
 // GetRaidLevelOk returns a tuple with the RaidLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InstallationJobPayload) GetRaidLevelOk() (*int32, bool) {
+func (o *ServerJobPayload) GetRaidLevelOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -471,7 +471,7 @@ func (o *InstallationJobPayload) GetRaidLevelOk() (*int32, bool) {
 }
 
 // HasRaidLevel returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasRaidLevel() bool {
+func (o *ServerJobPayload) HasRaidLevel() bool {
 	if o != nil && o.RaidLevel.IsSet() {
 		return true
 	}
@@ -480,21 +480,21 @@ func (o *InstallationJobPayload) HasRaidLevel() bool {
 }
 
 // SetRaidLevel gets a reference to the given NullableInt32 and assigns it to the RaidLevel field.
-func (o *InstallationJobPayload) SetRaidLevel(v int32) {
+func (o *ServerJobPayload) SetRaidLevel(v int32) {
 	o.RaidLevel.Set(&v)
 }
 // SetRaidLevelNil sets the value for RaidLevel to be an explicit nil
-func (o *InstallationJobPayload) SetRaidLevelNil() {
+func (o *ServerJobPayload) SetRaidLevelNil() {
 	o.RaidLevel.Set(nil)
 }
 
 // UnsetRaidLevel ensures that no value is present for RaidLevel, not even an explicit nil
-func (o *InstallationJobPayload) UnsetRaidLevel() {
+func (o *ServerJobPayload) UnsetRaidLevel() {
 	o.RaidLevel.Unset()
 }
 
 // GetTimezone returns the Timezone field value if set, zero value otherwise.
-func (o *InstallationJobPayload) GetTimezone() string {
+func (o *ServerJobPayload) GetTimezone() string {
 	if o == nil || IsNil(o.Timezone) {
 		var ret string
 		return ret
@@ -504,7 +504,7 @@ func (o *InstallationJobPayload) GetTimezone() string {
 
 // GetTimezoneOk returns a tuple with the Timezone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallationJobPayload) GetTimezoneOk() (*string, bool) {
+func (o *ServerJobPayload) GetTimezoneOk() (*string, bool) {
 	if o == nil || IsNil(o.Timezone) {
 		return nil, false
 	}
@@ -512,7 +512,7 @@ func (o *InstallationJobPayload) GetTimezoneOk() (*string, bool) {
 }
 
 // HasTimezone returns a boolean if a field has been set.
-func (o *InstallationJobPayload) HasTimezone() bool {
+func (o *ServerJobPayload) HasTimezone() bool {
 	if o != nil && !IsNil(o.Timezone) {
 		return true
 	}
@@ -521,11 +521,11 @@ func (o *InstallationJobPayload) HasTimezone() bool {
 }
 
 // SetTimezone gets a reference to the given string and assigns it to the Timezone field.
-func (o *InstallationJobPayload) SetTimezone(v string) {
+func (o *ServerJobPayload) SetTimezone(v string) {
 	o.Timezone = &v
 }
 
-func (o InstallationJobPayload) MarshalJSON() ([]byte, error) {
+func (o ServerJobPayload) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -533,7 +533,7 @@ func (o InstallationJobPayload) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o InstallationJobPayload) ToMap() (map[string]interface{}, error) {
+func (o ServerJobPayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.FileserverBaseUrl) {
 		toSerialize["fileserverBaseUrl"] = o.FileserverBaseUrl
@@ -585,16 +585,16 @@ func (o InstallationJobPayload) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *InstallationJobPayload) UnmarshalJSON(data []byte) (err error) {
-	varInstallationJobPayload := _InstallationJobPayload{}
+func (o *ServerJobPayload) UnmarshalJSON(data []byte) (err error) {
+	varServerJobPayload := _ServerJobPayload{}
 
-	err = json.Unmarshal(data, &varInstallationJobPayload)
+	err = json.Unmarshal(data, &varServerJobPayload)
 
 	if err != nil {
 		return err
 	}
 
-	*o = InstallationJobPayload(varInstallationJobPayload)
+	*o = ServerJobPayload(varServerJobPayload)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -619,38 +619,38 @@ func (o *InstallationJobPayload) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableInstallationJobPayload struct {
-	value *InstallationJobPayload
+type NullableServerJobPayload struct {
+	value *ServerJobPayload
 	isSet bool
 }
 
-func (v NullableInstallationJobPayload) Get() *InstallationJobPayload {
+func (v NullableServerJobPayload) Get() *ServerJobPayload {
 	return v.value
 }
 
-func (v *NullableInstallationJobPayload) Set(val *InstallationJobPayload) {
+func (v *NullableServerJobPayload) Set(val *ServerJobPayload) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableInstallationJobPayload) IsSet() bool {
+func (v NullableServerJobPayload) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableInstallationJobPayload) Unset() {
+func (v *NullableServerJobPayload) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableInstallationJobPayload(val *InstallationJobPayload) *NullableInstallationJobPayload {
-	return &NullableInstallationJobPayload{value: val, isSet: true}
+func NewNullableServerJobPayload(val *ServerJobPayload) *NullableServerJobPayload {
+	return &NullableServerJobPayload{value: val, isSet: true}
 }
 
-func (v NullableInstallationJobPayload) MarshalJSON() ([]byte, error) {
+func (v NullableServerJobPayload) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableInstallationJobPayload) UnmarshalJSON(src []byte) error {
+func (v *NullableServerJobPayload) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

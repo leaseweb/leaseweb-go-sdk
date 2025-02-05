@@ -54,8 +54,6 @@ docs/HardwarePort.md
 docs/Hdd.md
 docs/InstallOperatingSystemOpts.md
 docs/InstallOperatingSystemPayload.md
-docs/InstallationJob.md
-docs/InstallationJobPayload.md
 docs/Ip.md
 docs/IpList.md
 docs/Ipmi.md
@@ -111,6 +109,8 @@ docs/RescueImage.md
 docs/Result.md
 docs/ScanHardwareOpts.md
 docs/Server.md
+docs/ServerJob.md
+docs/ServerJobPayload.md
 docs/ServerSpecs.md
 docs/SmartSupport.md
 docs/Smartctl.md
@@ -173,8 +173,6 @@ model_hardware_port.go
 model_hdd.go
 model_install_operating_system_opts.go
 model_install_operating_system_payload.go
-model_installation_job.go
-model_installation_job_payload.go
 model_ip.go
 model_ip_list.go
 model_ipmi.go
@@ -229,6 +227,8 @@ model_rescue_image.go
 model_result.go
 model_scan_hardware_opts.go
 model_server.go
+model_server_job.go
+model_server_job_payload.go
 model_server_specs.go
 model_smart_support.go
 model_smartctl.go

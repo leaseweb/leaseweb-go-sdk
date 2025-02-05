@@ -792,8 +792,8 @@ For more information about Dedicated Server installation, [click here](https://k
 	InstallOperatingSystem(ctx context.Context, serverId string) ApiInstallOperatingSystemRequest
 
 	// InstallOperatingSystemExecute executes the request
-	//  @return InstallationJob
-	InstallOperatingSystemExecute(r ApiInstallOperatingSystemRequest) (*InstallationJob, *http.Response, error)
+	//  @return ServerJob
+	InstallOperatingSystemExecute(r ApiInstallOperatingSystemRequest) (*ServerJob, *http.Response, error)
 
 	/*
 	IpmiReset Launch IPMI reset
@@ -8553,7 +8553,7 @@ func (r ApiInstallOperatingSystemRequest) InstallOperatingSystemOpts(installOper
 	return r
 }
 
-func (r ApiInstallOperatingSystemRequest) Execute() (*InstallationJob, *http.Response, error) {
+func (r ApiInstallOperatingSystemRequest) Execute() (*ServerJob, *http.Response, error) {
 	return r.ApiService.InstallOperatingSystemExecute(r)
 }
 
@@ -8591,13 +8591,13 @@ func (a *DedicatedserverAPIService) InstallOperatingSystem(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return InstallationJob
-func (a *DedicatedserverAPIService) InstallOperatingSystemExecute(r ApiInstallOperatingSystemRequest) (*InstallationJob, *http.Response, error) {
+//  @return ServerJob
+func (a *DedicatedserverAPIService) InstallOperatingSystemExecute(r ApiInstallOperatingSystemRequest) (*ServerJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InstallationJob
+		localVarReturnValue  *ServerJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DedicatedserverAPIService.InstallOperatingSystem")

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Flow** | Pointer to **string** | Job flow | [optional] 
 **IsRunning** | Pointer to **bool** | Describes whether the job is running | [optional] 
 **Node** | Pointer to **string** | Node ID for this server | [optional] 
-**Payload** | Pointer to [**JobPayload**](JobPayload.md) |  | [optional] 
+**Payload** | Pointer to [**ServerJobPayload**](ServerJobPayload.md) |  | [optional] 
 **Progress** | Pointer to [**Progress**](Progress.md) |  | [optional] 
 **ServerId** | Pointer to **string** | Id of the server | [optional] 
 **Status** | Pointer to **string** | Status of the job | [optional] 
@@ -165,20 +165,20 @@ HasNode returns a boolean if a field has been set.
 
 ### GetPayload
 
-`func (o *CurrentJob) GetPayload() JobPayload`
+`func (o *CurrentJob) GetPayload() ServerJobPayload`
 
 GetPayload returns the Payload field if non-nil, zero value otherwise.
 
 ### GetPayloadOk
 
-`func (o *CurrentJob) GetPayloadOk() (*JobPayload, bool)`
+`func (o *CurrentJob) GetPayloadOk() (*ServerJobPayload, bool)`
 
 GetPayloadOk returns a tuple with the Payload field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPayload
 
-`func (o *CurrentJob) SetPayload(v JobPayload)`
+`func (o *CurrentJob) SetPayload(v ServerJobPayload)`
 
 SetPayload sets Payload field to given value.
 

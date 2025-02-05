@@ -21,7 +21,7 @@ var _ MappedNullable = &JobList{}
 type JobList struct {
 	Metadata *Metadata `json:"_metadata,omitempty"`
 	// An array of jobs
-	Jobs []Job `json:"jobs,omitempty"`
+	Jobs []ServerJob `json:"jobs,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,9 +77,9 @@ func (o *JobList) SetMetadata(v Metadata) {
 }
 
 // GetJobs returns the Jobs field value if set, zero value otherwise.
-func (o *JobList) GetJobs() []Job {
+func (o *JobList) GetJobs() []ServerJob {
 	if o == nil || IsNil(o.Jobs) {
-		var ret []Job
+		var ret []ServerJob
 		return ret
 	}
 	return o.Jobs
@@ -87,7 +87,7 @@ func (o *JobList) GetJobs() []Job {
 
 // GetJobsOk returns a tuple with the Jobs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JobList) GetJobsOk() ([]Job, bool) {
+func (o *JobList) GetJobsOk() ([]ServerJob, bool) {
 	if o == nil || IsNil(o.Jobs) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *JobList) HasJobs() bool {
 	return false
 }
 
-// SetJobs gets a reference to the given []Job and assigns it to the Jobs field.
-func (o *JobList) SetJobs(v []Job) {
+// SetJobs gets a reference to the given []ServerJob and assigns it to the Jobs field.
+func (o *JobList) SetJobs(v []ServerJob) {
 	o.Jobs = v
 }
 

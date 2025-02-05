@@ -4985,7 +4985,7 @@ paths:
                 updatedAt: 2021-03-06T21:55:32Z
                 uuid: bcf2bedf-8450-4b22-86a8-f30aeb3a38f9
               schema:
-                $ref: '#/components/schemas/installationJob'
+                $ref: '#/components/schemas/serverJob'
           description: Accepted.
         "400":
           content:
@@ -5352,13 +5352,12 @@ paths:
                     version: "22.04"
                   partitions:
                   - filesystem: swap
-                    size: 4096
+                    size: "4096"
                   pop: AMS-01
                   powerCycle: true
                   raidLevel: null
                   serverId: "99944"
                   timezone: UTC
-                  x: 1
                 progress:
                   canceled: 0
                   expired: 0
@@ -5479,7 +5478,7 @@ paths:
                     version: "22.04"
                   partitions:
                   - filesystem: swap
-                    size: 4096
+                    size: "4096"
                   pop: AMS-01
                   powerCycle: true
                   raidLevel: null
@@ -8615,7 +8614,7 @@ components:
       required:
       - operatingSystemId
       type: object
-    installationJob:
+    serverJob:
       example:
         bareMetalId: bareMetalId
         type: install
@@ -8699,7 +8698,7 @@ components:
           description: Node ID for this server
           type: string
         payload:
-          $ref: '#/components/schemas/installationJobPayload'
+          $ref: '#/components/schemas/serverJobPayload'
         progress:
           $ref: '#/components/schemas/progress'
         serverId:
@@ -8765,7 +8764,7 @@ components:
             isUnassignedServer: true
             pop: pop
             operatingSystemId: operatingSystemId
-            jobType: install
+            jobType: jobType
             numberOfDisks: 0
             fileserverBaseUrl: fileserverBaseUrl
             device: device
@@ -8828,7 +8827,7 @@ components:
             isUnassignedServer: true
             pop: pop
             operatingSystemId: operatingSystemId
-            jobType: install
+            jobType: jobType
             numberOfDisks: 0
             fileserverBaseUrl: fileserverBaseUrl
             device: device
@@ -8874,12 +8873,12 @@ components:
         jobs:
           description: An array of jobs
           items:
-            $ref: '#/components/schemas/job'
+            $ref: '#/components/schemas/serverJob'
           type: array
       type: object
     currentJob:
       allOf:
-      - $ref: '#/components/schemas/job'
+      - $ref: '#/components/schemas/serverJob'
       - properties:
           metadata:
             $ref: '#/components/schemas/jobMetadata'
@@ -8913,7 +8912,7 @@ components:
           isUnassignedServer: true
           pop: pop
           operatingSystemId: operatingSystemId
-          jobType: install
+          jobType: jobType
           numberOfDisks: 0
           fileserverBaseUrl: fileserverBaseUrl
           device: device
@@ -10483,7 +10482,7 @@ components:
           $ref: '#/components/schemas/raidType'
       title: raid
       type: object
-    installationJobPayload:
+    serverJobPayload:
       example:
         partitions:
         - size: size
@@ -10546,7 +10545,7 @@ components:
           description: Timezone represented as Geographical_Area/City
           example: UTC
           type: string
-      title: installationJobPayload
+      title: serverJobPayload
       type: object
     jobMetadata:
       description: The Job Metadata schema
