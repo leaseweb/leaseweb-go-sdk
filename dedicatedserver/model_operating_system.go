@@ -1,5 +1,5 @@
 /*
-Dedicated Servers API
+Dedicated Servers
 
 This is the description of the Dedicated Server API.  The base url of this API is `https://api.leaseweb.com`.
 

@@ -1,5 +1,5 @@
 /*
-LeaseWeb API for IP address management
+IP management
 
 Testing IpmgmtAPIService
 

@@ -1,5 +1,5 @@
 /*
-Leaseweb API for aggregation packs
+Aggregation packs
 
 This documents the rest api aggregation packs provides.
 
@@ -41,7 +41,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Leaseweb API for aggregation packs API vv2
+// APIClient manages communication with the Aggregation packs API vv2
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

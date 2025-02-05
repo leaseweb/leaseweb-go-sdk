@@ -1,5 +1,5 @@
 /*
-Leaseweb API for aggregation packs
+Aggregation packs
 
 Testing AggregationpackAPIService
 

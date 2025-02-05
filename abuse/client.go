@@ -1,5 +1,5 @@
 /*
-Leaseweb API for Abuse Handling
+Abuse Reports
 
 This API provides ways to manage the abuse reports you might receive from Leaseweb. To use this API, please request access via your account manager and/or compliance officer. **LIMITED ACCESS** 
 
@@ -41,7 +41,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Leaseweb API for Abuse Handling API vv1
+// APIClient manages communication with the Abuse Reports API vv1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

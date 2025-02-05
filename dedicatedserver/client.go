@@ -1,5 +1,5 @@
 /*
-Dedicated Servers API
+Dedicated Servers
 
 This is the description of the Dedicated Server API.  The base url of this API is `https://api.leaseweb.com`.
 
@@ -41,7 +41,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Dedicated Servers API API vv2
+// APIClient manages communication with the Dedicated Servers API vv2
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

@@ -1,5 +1,5 @@
 /*
-Dedicated Servers API
+Dedicated Servers
 
 Testing DedicatedserverAPIService
 

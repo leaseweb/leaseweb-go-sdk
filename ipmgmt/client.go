@@ -1,5 +1,5 @@
 /*
-LeaseWeb API for IP address management
+IP management
 
 > The base URL for this API is: **https://api.leaseweb.com/ipMgmt/v2/_**
 
@@ -41,7 +41,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the LeaseWeb API for IP address management API vv2
+// APIClient manages communication with the IP management API vv2
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

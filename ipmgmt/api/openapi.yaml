@@ -5,7 +5,7 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  title: LeaseWeb API for IP address management
+  title: IP management
   version: v2
   x-logo:
     altText: Leaseweb developer documentation

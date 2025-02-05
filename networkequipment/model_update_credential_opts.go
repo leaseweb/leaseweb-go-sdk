@@ -1,5 +1,5 @@
 /*
-Dedicated Network Equipment API
+Dedicated Network Equipments
 
 This is the description of the Dedicated Network Equipment API.  The base url of this API is `https://api.leaseweb.com`.
 

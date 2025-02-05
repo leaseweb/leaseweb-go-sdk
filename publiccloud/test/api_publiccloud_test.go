@@ -1,5 +1,5 @@
 /*
-LeaseWeb API for launching and managing Public Cloud instances
+Public Clouds
 
 Testing PubliccloudAPIService
 

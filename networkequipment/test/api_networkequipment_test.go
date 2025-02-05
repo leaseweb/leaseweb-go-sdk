@@ -1,5 +1,5 @@
 /*
-Dedicated Network Equipment API
+Dedicated Network Equipments
 
 Testing NetworkequipmentAPIService
 

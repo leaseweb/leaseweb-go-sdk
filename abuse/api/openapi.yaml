@@ -6,7 +6,7 @@ info:
   license:
     name: Apache 2.0
     url: http://developer.leaseweb.com
-  title: Leaseweb API for Abuse Handling
+  title: Abuse Reports
   version: v1
   x-logo:
     altText: Leaseweb developer documentation

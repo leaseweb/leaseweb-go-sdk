@@ -1,5 +1,5 @@
 /*
-LeaseWeb API for IP address management
+IP management
 
 > The base URL for this API is: **https://api.leaseweb.com/ipMgmt/v2/_**
 

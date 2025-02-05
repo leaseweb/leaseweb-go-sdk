@@ -1,5 +1,5 @@
 /*
-Leaseweb API for Abuse Handling
+Abuse Reports
 
 Testing AbuseAPIService
 

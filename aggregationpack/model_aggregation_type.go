@@ -1,5 +1,5 @@
 /*
-Leaseweb API for aggregation packs
+Aggregation packs
 
 This documents the rest api aggregation packs provides.
 
