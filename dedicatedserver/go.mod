@@ -1,4 +1,4 @@
-module github.com/leaseweb/leaseweb-go-sdk/dedicatedserver
+module github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2
 
 go 1.18
 
