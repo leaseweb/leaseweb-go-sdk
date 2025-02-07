@@ -6705,6 +6705,9 @@ components:
       - 100
       - 1000
       - 10000
+      - 25000
+      - 40000
+      - 100000
       type: integer
     rackType:
       description: rack type

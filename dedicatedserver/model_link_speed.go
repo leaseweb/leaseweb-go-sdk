@@ -23,6 +23,9 @@ const (
 	LINKSPEED__100 LinkSpeed = 100
 	LINKSPEED__1000 LinkSpeed = 1000
 	LINKSPEED__10000 LinkSpeed = 10000
+	LINKSPEED__25000 LinkSpeed = 25000
+	LINKSPEED__40000 LinkSpeed = 40000
+	LINKSPEED__100000 LinkSpeed = 100000
 )
 
 // All allowed values of LinkSpeed enum
@@ -30,6 +33,9 @@ var AllowedLinkSpeedEnumValues = []LinkSpeed{
 	100,
 	1000,
 	10000,
+	25000,
+	40000,
+	100000,
 }
 
 func (v *LinkSpeed) UnmarshalJSON(src []byte) error {
