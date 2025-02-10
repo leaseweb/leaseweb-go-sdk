@@ -5331,7 +5331,7 @@ paths:
           content:
             application/json:
               example:
-                createdAt: 2021-01-09T10:38:12+0000
+                createdAt: 2021-01-09T10:38:12+00:00
                 flow: tasks
                 isRunning: true
                 metadata:
@@ -5369,7 +5369,7 @@ paths:
                   total: 1
                   waiting: 0
                 serverId: "99944"
-                status: ACTIVE
+                status: FINISHED
                 tasks:
                 - description: dummy
                   errorMessage: null
@@ -5381,7 +5381,7 @@ paths:
                     WAITING: 2021-01-09T10:38:12+00:00
                   uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
                 type: install
-                updatedAt: 2021-01-09T10:38:12+0000
+                updatedAt: 2021-01-09T10:38:12+00:00
                 uuid: 3a867358-5b4b-44ee-88ac-4274603ef641
               schema:
                 $ref: '#/components/schemas/currentJob'
