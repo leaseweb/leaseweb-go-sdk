@@ -5238,7 +5238,7 @@ paths:
                   offset: 0
                   totalCount: 1
                 jobs:
-                - createdAt: 2018-01-09T10:38:12+0000
+                - createdAt: 2018-01-09T10:38:12+00:00
                   flow: tasks
                   isRunning: true
                   node: 80:18:44:E0:AF:C4!JGNTQ92
@@ -5253,9 +5253,9 @@ paths:
                     total: 1
                     waiting: 0
                   serverId: "99944"
-                  status: ACTIVE
+                  status: FINISHED
                   type: install
-                  updatedAt: 2018-01-09T10:38:12+0000
+                  updatedAt: 2018-01-09T10:38:12+00:00
                   uuid: 3a867358-5b4b-44ee-88ac-4274603ef641
               schema:
                 $ref: '#/components/schemas/jobList'
