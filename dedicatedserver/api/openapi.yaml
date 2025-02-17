@@ -5242,6 +5242,37 @@ paths:
                   flow: tasks
                   isRunning: true
                   node: 80:18:44:E0:AF:C4!JGNTQ92
+                  payload:
+                    configurable: true
+                    device: SATA2TB
+                    fileserverBaseUrl: 10.11.20.2
+                    isUnassignedServer: false
+                    jobType: install
+                    numberOfDisks: null
+                    operatingSystemId: UBUNTU_22_04_64BIT
+                    os:
+                      architecture: 64bit
+                      family: ubuntu
+                      name: Ubuntu 22.04 LTS (Jammy Jellyfish) (amd64)
+                      type: linux
+                      version: "22.04"
+                    partitions:
+                    - filesystem: ext2
+                      mountpoint: /boot
+                      size: "1024"
+                    - filesystem: swap
+                      size: "4096"
+                    - filesystem: ext4
+                      mountpoint: /tmp
+                      size: "4096"
+                    - filesystem: ext4
+                      mountpoint: /
+                      size: '*'
+                    pop: AMS-01
+                    powerCycle: true
+                    raidLevel: null
+                    serverId: "12345"
+                    timezone: UTC
                   progress:
                     canceled: 0
                     expired: 0
@@ -5256,7 +5287,7 @@ paths:
                   status: FINISHED
                   type: install
                   updatedAt: 2018-01-09T10:38:12+00:00
-                  uuid: 3a867358-5b4b-44ee-88ac-4274603ef641
+                  uuid: bcf2bedf-8450-4b22-86a8-f30aeb3a38f9
               schema:
                 $ref: '#/components/schemas/jobList'
           description: Ok.
