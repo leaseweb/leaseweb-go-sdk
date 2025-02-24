@@ -55,7 +55,6 @@ tags:
 - name: Metrics
 - name: Snapshots
 - name: IPs
-- name: Private Networks
 - name: Load Balancer
 - name: Auto Scaling Groups
 - name: Reinstall

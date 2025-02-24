@@ -43,7 +43,6 @@ tags:
 - name: Getting Started
 - name: IPs
 - name: Network Interfaces
-- name: Private Networks
 - name: DHCP Leases
 - name: Jobs
 - name: Credentials
