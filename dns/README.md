@@ -79,14 +79,14 @@ All URIs are relative to *https://api.leaseweb.com/hosting/v2*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DnsAPI* | [**CreateResourceRecordSet**](docs/DnsAPI.md#createresourcerecordset) | **Post** /domains/{domainName}/resourceRecordSets | Create a resource record set
-*DnsAPI* | [**DeleteResourceRecordSet**](docs/DnsAPI.md#deleteresourcerecordset) | **Delete** /domains/{domainName}/resourceRecordSets/{name}/{type} | Delete a resource record set
-*DnsAPI* | [**DeleteResourceRecordSets**](docs/DnsAPI.md#deleteresourcerecordsets) | **Delete** /domains/{domainName}/resourceRecordSets | Delete resource record sets
+*DnsAPI* | [**DeleteResourceRecordSet**](docs/DnsAPI.md#deleteresourcerecordset) | **Delete** /domains/{domainName}/resourceRecordSets/{name}/{type} | Delete a specific DNS record
+*DnsAPI* | [**DeleteResourceRecordSets**](docs/DnsAPI.md#deleteresourcerecordsets) | **Delete** /domains/{domainName}/resourceRecordSets | Delete all DNS records
 *DnsAPI* | [**ExportResourceRecordSets**](docs/DnsAPI.md#exportresourcerecordsets) | **Get** /domains/{domainName}/resourceRecordSets/import | Export dns records as a bind file content
 *DnsAPI* | [**GetResourceRecordSet**](docs/DnsAPI.md#getresourcerecordset) | **Get** /domains/{domainName}/resourceRecordSets/{name}/{type} | Inspect resource record set
 *DnsAPI* | [**GetResourceRecordSetList**](docs/DnsAPI.md#getresourcerecordsetlist) | **Get** /domains/{domainName}/resourceRecordSets | List resource record sets
 *DnsAPI* | [**ImportResourceRecordSets**](docs/DnsAPI.md#importresourcerecordsets) | **Post** /domains/{domainName}/resourceRecordSets/import | Import dns records from bind file content
-*DnsAPI* | [**UpdateResourceRecordSet**](docs/DnsAPI.md#updateresourcerecordset) | **Put** /domains/{domainName}/resourceRecordSets/{name}/{type} | Update a resource record set
-*DnsAPI* | [**UpdateResourceRecordSets**](docs/DnsAPI.md#updateresourcerecordsets) | **Put** /domains/{domainName}/resourceRecordSets | Update resource record sets
+*DnsAPI* | [**UpdateResourceRecordSet**](docs/DnsAPI.md#updateresourcerecordset) | **Put** /domains/{domainName}/resourceRecordSets/{name}/{type} | Update a specific DNS record
+*DnsAPI* | [**UpdateResourceRecordSets**](docs/DnsAPI.md#updateresourcerecordsets) | **Put** /domains/{domainName}/resourceRecordSets | Update all DNS records
 *DnsAPI* | [**ValidateResourceRecordSet**](docs/DnsAPI.md#validateresourcerecordset) | **Post** /domains/{domainName}/resourceRecordSets/validateSet | Validate a resource record set
 *DnsAPI* | [**ValidateZone**](docs/DnsAPI.md#validatezone) | **Post** /domains/{domainName}/validateZone | Validate zone
 

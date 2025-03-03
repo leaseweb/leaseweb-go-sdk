@@ -36,7 +36,7 @@ type DnsAPI interface {
 	CreateResourceRecordSetExecute(r ApiCreateResourceRecordSetRequest) (*ResourceRecordSetDetails, *http.Response, error)
 
 	/*
-	DeleteResourceRecordSet Delete a resource record set
+	DeleteResourceRecordSet Delete a specific DNS record
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param domainName Domain name
@@ -50,7 +50,7 @@ type DnsAPI interface {
 	DeleteResourceRecordSetExecute(r ApiDeleteResourceRecordSetRequest) (*http.Response, error)
 
 	/*
-	DeleteResourceRecordSets Delete resource record sets
+	DeleteResourceRecordSets Delete all DNS records
 
 	Delete all editable resource record sets for a domain.
 
@@ -120,7 +120,7 @@ Please note that this action will keep the domain's zone in place.
 	ImportResourceRecordSetsExecute(r ApiImportResourceRecordSetsRequest) (*ImportResourceRecordSetsResult, *http.Response, error)
 
 	/*
-	UpdateResourceRecordSet Update a resource record set
+	UpdateResourceRecordSet Update a specific DNS record
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param domainName Domain name
@@ -135,7 +135,7 @@ Please note that this action will keep the domain's zone in place.
 	UpdateResourceRecordSetExecute(r ApiUpdateResourceRecordSetRequest) (*ResourceRecordSetDetails, *http.Response, error)
 
 	/*
-	UpdateResourceRecordSets Update resource record sets
+	UpdateResourceRecordSets Update all DNS records
 
 	> This is a full replacement of all editable resource records sets for a domain.
 
@@ -386,7 +386,7 @@ func (r ApiDeleteResourceRecordSetRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteResourceRecordSet Delete a resource record set
+DeleteResourceRecordSet Delete a specific DNS record
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param domainName Domain name
@@ -550,7 +550,7 @@ func (r ApiDeleteResourceRecordSetsRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteResourceRecordSets Delete resource record sets
+DeleteResourceRecordSets Delete all DNS records
 
 Delete all editable resource record sets for a domain.
 
@@ -1424,7 +1424,7 @@ func (r ApiUpdateResourceRecordSetRequest) Execute() (*ResourceRecordSetDetails,
 }
 
 /*
-UpdateResourceRecordSet Update a resource record set
+UpdateResourceRecordSet Update a specific DNS record
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param domainName Domain name
@@ -1618,7 +1618,7 @@ func (r ApiUpdateResourceRecordSetsRequest) Execute() (*ResourceRecordSetDetails
 }
 
 /*
-UpdateResourceRecordSets Update resource record sets
+UpdateResourceRecordSets Update all DNS records
 
 > This is a full replacement of all editable resource records sets for a domain.
 

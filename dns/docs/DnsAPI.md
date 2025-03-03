@@ -5,14 +5,14 @@ All URIs are relative to *https://api.leaseweb.com/hosting/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateResourceRecordSet**](DnsAPI.md#CreateResourceRecordSet) | **Post** /domains/{domainName}/resourceRecordSets | Create a resource record set
-[**DeleteResourceRecordSet**](DnsAPI.md#DeleteResourceRecordSet) | **Delete** /domains/{domainName}/resourceRecordSets/{name}/{type} | Delete a resource record set
-[**DeleteResourceRecordSets**](DnsAPI.md#DeleteResourceRecordSets) | **Delete** /domains/{domainName}/resourceRecordSets | Delete resource record sets
+[**DeleteResourceRecordSet**](DnsAPI.md#DeleteResourceRecordSet) | **Delete** /domains/{domainName}/resourceRecordSets/{name}/{type} | Delete a specific DNS record
+[**DeleteResourceRecordSets**](DnsAPI.md#DeleteResourceRecordSets) | **Delete** /domains/{domainName}/resourceRecordSets | Delete all DNS records
 [**ExportResourceRecordSets**](DnsAPI.md#ExportResourceRecordSets) | **Get** /domains/{domainName}/resourceRecordSets/import | Export dns records as a bind file content
 [**GetResourceRecordSet**](DnsAPI.md#GetResourceRecordSet) | **Get** /domains/{domainName}/resourceRecordSets/{name}/{type} | Inspect resource record set
 [**GetResourceRecordSetList**](DnsAPI.md#GetResourceRecordSetList) | **Get** /domains/{domainName}/resourceRecordSets | List resource record sets
 [**ImportResourceRecordSets**](DnsAPI.md#ImportResourceRecordSets) | **Post** /domains/{domainName}/resourceRecordSets/import | Import dns records from bind file content
-[**UpdateResourceRecordSet**](DnsAPI.md#UpdateResourceRecordSet) | **Put** /domains/{domainName}/resourceRecordSets/{name}/{type} | Update a resource record set
-[**UpdateResourceRecordSets**](DnsAPI.md#UpdateResourceRecordSets) | **Put** /domains/{domainName}/resourceRecordSets | Update resource record sets
+[**UpdateResourceRecordSet**](DnsAPI.md#UpdateResourceRecordSet) | **Put** /domains/{domainName}/resourceRecordSets/{name}/{type} | Update a specific DNS record
+[**UpdateResourceRecordSets**](DnsAPI.md#UpdateResourceRecordSets) | **Put** /domains/{domainName}/resourceRecordSets | Update all DNS records
 [**ValidateResourceRecordSet**](DnsAPI.md#ValidateResourceRecordSet) | **Post** /domains/{domainName}/resourceRecordSets/validateSet | Validate a resource record set
 [**ValidateZone**](DnsAPI.md#ValidateZone) | **Post** /domains/{domainName}/validateZone | Validate zone
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 > DeleteResourceRecordSet(ctx, domainName, name, type_).Execute()
 
-Delete a resource record set
+Delete a specific DNS record
 
 ### Example
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 > DeleteResourceRecordSets(ctx, domainName).Execute()
 
-Delete resource record sets
+Delete all DNS records
 
 
 
@@ -510,7 +510,7 @@ Name | Type | Description  | Notes
 
 > ResourceRecordSetDetails UpdateResourceRecordSet(ctx, domainName, name, type_).UpdateResourceRecordSetOpts(updateResourceRecordSetOpts).Execute()
 
-Update a resource record set
+Update a specific DNS record
 
 ### Example
 
@@ -586,7 +586,7 @@ Name | Type | Description  | Notes
 
 > ResourceRecordSetDetails UpdateResourceRecordSets(ctx, domainName).ResultRecordSets(resultRecordSets).Execute()
 
-Update resource record sets
+Update all DNS records
 
 
 

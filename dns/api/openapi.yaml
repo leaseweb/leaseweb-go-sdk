@@ -108,7 +108,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/errorResult'
           description: Service Unavailable.
-      summary: Delete resource record sets
+      summary: Delete all DNS records
       tags:
       - dns
     get:
@@ -707,7 +707,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/errorResult'
           description: Service Unavailable.
-      summary: Update resource record sets
+      summary: Update all DNS records
       tags:
       - dns
   /domains/{domainName}/resourceRecordSets/{name}/{type}:
@@ -806,7 +806,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/errorResult'
           description: Service Unavailable.
-      summary: Delete a resource record set
+      summary: Delete a specific DNS record
       tags:
       - dns
     get:
@@ -1103,7 +1103,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/errorResult'
           description: Service Unavailable.
-      summary: Update a resource record set
+      summary: Update a specific DNS record
       tags:
       - dns
   /domains/{domainName}/resourceRecordSets/import:
