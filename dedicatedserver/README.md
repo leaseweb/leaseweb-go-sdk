@@ -239,6 +239,7 @@ Class | Method | HTTP request | Description
  - [RackType](docs/RackType.md)
  - [Raid](docs/Raid.md)
  - [RaidLevel](docs/RaidLevel.md)
+ - [RaidPayload](docs/RaidPayload.md)
  - [RaidType](docs/RaidType.md)
  - [Ram](docs/Ram.md)
  - [RescueImage](docs/RescueImage.md)

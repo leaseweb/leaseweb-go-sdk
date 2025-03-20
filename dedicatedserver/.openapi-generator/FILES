@@ -103,6 +103,7 @@ docs/Rack.md
 docs/RackType.md
 docs/Raid.md
 docs/RaidLevel.md
+docs/RaidPayload.md
 docs/RaidType.md
 docs/Ram.md
 docs/RescueImage.md
@@ -221,6 +222,7 @@ model_rack.go
 model_rack_type.go
 model_raid.go
 model_raid_level.go
+model_raid_payload.go
 model_raid_type.go
 model_ram.go
 model_rescue_image.go

@@ -35,6 +35,9 @@ type ServerJobPayload struct {
 	RaidLevel NullableInt32 `json:"raidLevel,omitempty"`
 	// Timezone represented as Geographical_Area/City
 	Timezone *string `json:"timezone,omitempty"`
+	Raid NullableRaidPayload `json:"raid,omitempty"`
+	// The hostname of the server
+	Hostname *string `json:"hostname,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -525,6 +528,80 @@ func (o *ServerJobPayload) SetTimezone(v string) {
 	o.Timezone = &v
 }
 
+// GetRaid returns the Raid field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerJobPayload) GetRaid() RaidPayload {
+	if o == nil || IsNil(o.Raid.Get()) {
+		var ret RaidPayload
+		return ret
+	}
+	return *o.Raid.Get()
+}
+
+// GetRaidOk returns a tuple with the Raid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerJobPayload) GetRaidOk() (*RaidPayload, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Raid.Get(), o.Raid.IsSet()
+}
+
+// HasRaid returns a boolean if a field has been set.
+func (o *ServerJobPayload) HasRaid() bool {
+	if o != nil && o.Raid.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRaid gets a reference to the given NullableRaidPayload and assigns it to the Raid field.
+func (o *ServerJobPayload) SetRaid(v RaidPayload) {
+	o.Raid.Set(&v)
+}
+// SetRaidNil sets the value for Raid to be an explicit nil
+func (o *ServerJobPayload) SetRaidNil() {
+	o.Raid.Set(nil)
+}
+
+// UnsetRaid ensures that no value is present for Raid, not even an explicit nil
+func (o *ServerJobPayload) UnsetRaid() {
+	o.Raid.Unset()
+}
+
+// GetHostname returns the Hostname field value if set, zero value otherwise.
+func (o *ServerJobPayload) GetHostname() string {
+	if o == nil || IsNil(o.Hostname) {
+		var ret string
+		return ret
+	}
+	return *o.Hostname
+}
+
+// GetHostnameOk returns a tuple with the Hostname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerJobPayload) GetHostnameOk() (*string, bool) {
+	if o == nil || IsNil(o.Hostname) {
+		return nil, false
+	}
+	return o.Hostname, true
+}
+
+// HasHostname returns a boolean if a field has been set.
+func (o *ServerJobPayload) HasHostname() bool {
+	if o != nil && !IsNil(o.Hostname) {
+		return true
+	}
+
+	return false
+}
+
+// SetHostname gets a reference to the given string and assigns it to the Hostname field.
+func (o *ServerJobPayload) SetHostname(v string) {
+	o.Hostname = &v
+}
+
 func (o ServerJobPayload) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -577,6 +654,12 @@ func (o ServerJobPayload) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Timezone) {
 		toSerialize["timezone"] = o.Timezone
 	}
+	if o.Raid.IsSet() {
+		toSerialize["raid"] = o.Raid.Get()
+	}
+	if !IsNil(o.Hostname) {
+		toSerialize["hostname"] = o.Hostname
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -613,6 +696,8 @@ func (o *ServerJobPayload) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "partitions")
 		delete(additionalProperties, "raidLevel")
 		delete(additionalProperties, "timezone")
+		delete(additionalProperties, "raid")
+		delete(additionalProperties, "hostname")
 		o.AdditionalProperties = additionalProperties
 	}
 

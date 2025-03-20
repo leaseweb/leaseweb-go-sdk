@@ -5272,6 +5272,11 @@ paths:
                     raidLevel: null
                     serverId: "12345"
                     timezone: UTC
+                    raid:
+                      type: SW
+                      level: 0
+                      numberOfDisks: 2
+                    hostname: server.leaseweb.com
                   progress:
                     canceled: 0
                     expired: 0
@@ -5388,6 +5393,11 @@ paths:
                   raidLevel: null
                   serverId: "99944"
                   timezone: UTC
+                  raid:
+                    type: SW
+                    level: 0
+                    numberOfDisks: 2
+                  hostname: server.leaseweb.com
                 progress:
                   canceled: 0
                   expired: 0
@@ -8676,12 +8686,17 @@ components:
           isUnassignedServer: true
           pop: pop
           operatingSystemId: operatingSystemId
+          hostname: hostname
           jobType: jobType
           numberOfDisks: 0
           fileserverBaseUrl: fileserverBaseUrl
           device: device
           powerCycle: true
           configurable: true
+          raid:
+            level: 1
+            type: HW
+            numberOfDisks: 5
         progress:
           canceled: 1
           total: 2
@@ -8797,12 +8812,17 @@ components:
             isUnassignedServer: true
             pop: pop
             operatingSystemId: operatingSystemId
+            hostname: hostname
             jobType: jobType
             numberOfDisks: 0
             fileserverBaseUrl: fileserverBaseUrl
             device: device
             powerCycle: true
             configurable: true
+            raid:
+              level: 1
+              type: HW
+              numberOfDisks: 5
           progress:
             canceled: 1
             total: 2
@@ -8860,12 +8880,17 @@ components:
             isUnassignedServer: true
             pop: pop
             operatingSystemId: operatingSystemId
+            hostname: hostname
             jobType: jobType
             numberOfDisks: 0
             fileserverBaseUrl: fileserverBaseUrl
             device: device
             powerCycle: true
             configurable: true
+            raid:
+              level: 1
+              type: HW
+              numberOfDisks: 5
           progress:
             canceled: 1
             total: 2
@@ -8945,12 +8970,17 @@ components:
           isUnassignedServer: true
           pop: pop
           operatingSystemId: operatingSystemId
+          hostname: hostname
           jobType: jobType
           numberOfDisks: 0
           fileserverBaseUrl: fileserverBaseUrl
           device: device
           powerCycle: true
           configurable: true
+          raid:
+            level: 1
+            type: HW
+            numberOfDisks: 5
         progress:
           canceled: 1
           total: 2
@@ -10515,6 +10545,35 @@ components:
           $ref: '#/components/schemas/raidType'
       title: raid
       type: object
+    raidPayload:
+      example:
+        level: 1
+        type: HW
+        numberOfDisks: 5
+      nullable: true
+      properties:
+        type:
+          description: The type of RAID
+          enum:
+          - HW
+          - SW
+          - NONE
+          type: string
+        level:
+          description: The RAID level
+          enum:
+          - 0
+          - 1
+          - 5
+          - 10
+          nullable: true
+          type: integer
+        numberOfDisks:
+          description: The number of disks in the RAID
+          nullable: true
+          type: integer
+      title: raidPayload
+      type: object
     serverJobPayload:
       example:
         partitions:
@@ -10536,12 +10595,17 @@ components:
         isUnassignedServer: true
         pop: pop
         operatingSystemId: operatingSystemId
+        hostname: hostname
         jobType: jobType
         numberOfDisks: 0
         fileserverBaseUrl: fileserverBaseUrl
         device: device
         powerCycle: true
         configurable: true
+        raid:
+          level: 1
+          type: HW
+          numberOfDisks: 5
       properties:
         fileserverBaseUrl:
           type: string
@@ -10577,6 +10641,11 @@ components:
         timezone:
           description: Timezone represented as Geographical_Area/City
           example: UTC
+          type: string
+        raid:
+          $ref: '#/components/schemas/raidPayload'
+        hostname:
+          description: The hostname of the server
           type: string
       title: serverJobPayload
       type: object

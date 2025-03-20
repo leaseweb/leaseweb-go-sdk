@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **Partitions** | Pointer to [**[]Partition**](Partition.md) |  | [optional] 
 **RaidLevel** | Pointer to **NullableInt32** |  | [optional] 
 **Timezone** | Pointer to **string** | Timezone represented as Geographical_Area/City | [optional] 
+**Raid** | Pointer to [**NullableRaidPayload**](RaidPayload.md) |  | [optional] 
+**Hostname** | Pointer to **string** | The hostname of the server | [optional] 
 
 ## Methods
 
@@ -407,6 +409,66 @@ SetTimezone sets Timezone field to given value.
 `func (o *ServerJobPayload) HasTimezone() bool`
 
 HasTimezone returns a boolean if a field has been set.
+
+### GetRaid
+
+`func (o *ServerJobPayload) GetRaid() RaidPayload`
+
+GetRaid returns the Raid field if non-nil, zero value otherwise.
+
+### GetRaidOk
+
+`func (o *ServerJobPayload) GetRaidOk() (*RaidPayload, bool)`
+
+GetRaidOk returns a tuple with the Raid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRaid
+
+`func (o *ServerJobPayload) SetRaid(v RaidPayload)`
+
+SetRaid sets Raid field to given value.
+
+### HasRaid
+
+`func (o *ServerJobPayload) HasRaid() bool`
+
+HasRaid returns a boolean if a field has been set.
+
+### SetRaidNil
+
+`func (o *ServerJobPayload) SetRaidNil(b bool)`
+
+ SetRaidNil sets the value for Raid to be an explicit nil
+
+### UnsetRaid
+`func (o *ServerJobPayload) UnsetRaid()`
+
+UnsetRaid ensures that no value is present for Raid, not even an explicit nil
+### GetHostname
+
+`func (o *ServerJobPayload) GetHostname() string`
+
+GetHostname returns the Hostname field if non-nil, zero value otherwise.
+
+### GetHostnameOk
+
+`func (o *ServerJobPayload) GetHostnameOk() (*string, bool)`
+
+GetHostnameOk returns a tuple with the Hostname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostname
+
+`func (o *ServerJobPayload) SetHostname(v string)`
+
+SetHostname sets Hostname field to given value.
+
+### HasHostname
+
+`func (o *ServerJobPayload) HasHostname() bool`
+
+HasHostname returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
