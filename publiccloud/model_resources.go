@@ -18,7 +18,7 @@ import (
 // checks if the Resources type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Resources{}
 
-// Resources struct for Resources
+// Resources Available resources
 type Resources struct {
 	Cpu Cpu `json:"cpu"`
 	Memory Memory `json:"memory"`

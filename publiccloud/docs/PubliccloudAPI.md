@@ -2594,7 +2594,7 @@ Name | Type | Description  | Notes
 
 ## GetInstanceList
 
-> GetInstanceListResult GetInstanceList(ctx).Limit(limit).Offset(offset).Ip(ip).Reference(reference).Id(id).ContractType(contractType).ContractState(contractState).ImageId(imageId).State(state).Region(region).Type_(type_).Execute()
+> InstanceList GetInstanceList(ctx).Limit(limit).Offset(offset).Ip(ip).Reference(reference).Id(id).ContractType(contractType).ContractState(contractState).ImageId(imageId).State(state).Region(region).Type_(type_).Execute()
 
 Get instance list
 
@@ -2632,7 +2632,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.GetInstanceList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetInstanceList`: GetInstanceListResult
+	// response from `GetInstanceList`: InstanceList
 	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.GetInstanceList`: %v\n", resp)
 }
 ```
@@ -2662,7 +2662,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetInstanceListResult**](GetInstanceListResult.md)
+[**InstanceList**](InstanceList.md)
 
 ### Authorization
 
@@ -3112,7 +3112,7 @@ Name | Type | Description  | Notes
 
 ## GetLoadBalancerList
 
-> GetLoadBalancerListResult GetLoadBalancerList(ctx).Limit(limit).Offset(offset).Ip(ip).Reference(reference).Id(id).ContractState(contractState).ContractType(contractType).State(state).Region(region).Type_(type_).Execute()
+> LoadBalancers GetLoadBalancerList(ctx).Limit(limit).Offset(offset).Ip(ip).Reference(reference).Id(id).ContractState(contractState).ContractType(contractType).State(state).Region(region).Type_(type_).Execute()
 
 Get load balancer list
 
@@ -3149,7 +3149,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.GetLoadBalancerList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetLoadBalancerList`: GetLoadBalancerListResult
+	// response from `GetLoadBalancerList`: LoadBalancers
 	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.GetLoadBalancerList`: %v\n", resp)
 }
 ```
@@ -3178,7 +3178,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetLoadBalancerListResult**](GetLoadBalancerListResult.md)
+[**LoadBalancers**](LoadBalancers.md)
 
 ### Authorization
 

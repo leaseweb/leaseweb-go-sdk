@@ -14,39 +14,39 @@ import (
 	"encoding/json"
 )
 
-// checks if the GetLoadBalancerListResult type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GetLoadBalancerListResult{}
+// checks if the LoadBalancers type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LoadBalancers{}
 
-// GetLoadBalancerListResult struct for GetLoadBalancerListResult
-type GetLoadBalancerListResult struct {
-	LoadBalancers []LoadBalancerListItem `json:"loadBalancers,omitempty"`
+// LoadBalancers struct for LoadBalancers
+type LoadBalancers struct {
+	LoadBalancers []LoadBalancer `json:"loadBalancers,omitempty"`
 	Metadata *Metadata `json:"_metadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _GetLoadBalancerListResult GetLoadBalancerListResult
+type _LoadBalancers LoadBalancers
 
-// NewGetLoadBalancerListResult instantiates a new GetLoadBalancerListResult object
+// NewLoadBalancers instantiates a new LoadBalancers object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetLoadBalancerListResult() *GetLoadBalancerListResult {
-	this := GetLoadBalancerListResult{}
+func NewLoadBalancers() *LoadBalancers {
+	this := LoadBalancers{}
 	return &this
 }
 
-// NewGetLoadBalancerListResultWithDefaults instantiates a new GetLoadBalancerListResult object
+// NewLoadBalancersWithDefaults instantiates a new LoadBalancers object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetLoadBalancerListResultWithDefaults() *GetLoadBalancerListResult {
-	this := GetLoadBalancerListResult{}
+func NewLoadBalancersWithDefaults() *LoadBalancers {
+	this := LoadBalancers{}
 	return &this
 }
 
 // GetLoadBalancers returns the LoadBalancers field value if set, zero value otherwise.
-func (o *GetLoadBalancerListResult) GetLoadBalancers() []LoadBalancerListItem {
+func (o *LoadBalancers) GetLoadBalancers() []LoadBalancer {
 	if o == nil || IsNil(o.LoadBalancers) {
-		var ret []LoadBalancerListItem
+		var ret []LoadBalancer
 		return ret
 	}
 	return o.LoadBalancers
@@ -54,7 +54,7 @@ func (o *GetLoadBalancerListResult) GetLoadBalancers() []LoadBalancerListItem {
 
 // GetLoadBalancersOk returns a tuple with the LoadBalancers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetLoadBalancerListResult) GetLoadBalancersOk() ([]LoadBalancerListItem, bool) {
+func (o *LoadBalancers) GetLoadBalancersOk() ([]LoadBalancer, bool) {
 	if o == nil || IsNil(o.LoadBalancers) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *GetLoadBalancerListResult) GetLoadBalancersOk() ([]LoadBalancerListItem
 }
 
 // HasLoadBalancers returns a boolean if a field has been set.
-func (o *GetLoadBalancerListResult) HasLoadBalancers() bool {
+func (o *LoadBalancers) HasLoadBalancers() bool {
 	if o != nil && !IsNil(o.LoadBalancers) {
 		return true
 	}
@@ -70,13 +70,13 @@ func (o *GetLoadBalancerListResult) HasLoadBalancers() bool {
 	return false
 }
 
-// SetLoadBalancers gets a reference to the given []LoadBalancerListItem and assigns it to the LoadBalancers field.
-func (o *GetLoadBalancerListResult) SetLoadBalancers(v []LoadBalancerListItem) {
+// SetLoadBalancers gets a reference to the given []LoadBalancer and assigns it to the LoadBalancers field.
+func (o *LoadBalancers) SetLoadBalancers(v []LoadBalancer) {
 	o.LoadBalancers = v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *GetLoadBalancerListResult) GetMetadata() Metadata {
+func (o *LoadBalancers) GetMetadata() Metadata {
 	if o == nil || IsNil(o.Metadata) {
 		var ret Metadata
 		return ret
@@ -86,7 +86,7 @@ func (o *GetLoadBalancerListResult) GetMetadata() Metadata {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetLoadBalancerListResult) GetMetadataOk() (*Metadata, bool) {
+func (o *LoadBalancers) GetMetadataOk() (*Metadata, bool) {
 	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *GetLoadBalancerListResult) GetMetadataOk() (*Metadata, bool) {
 }
 
 // HasMetadata returns a boolean if a field has been set.
-func (o *GetLoadBalancerListResult) HasMetadata() bool {
+func (o *LoadBalancers) HasMetadata() bool {
 	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
@@ -103,11 +103,11 @@ func (o *GetLoadBalancerListResult) HasMetadata() bool {
 }
 
 // SetMetadata gets a reference to the given Metadata and assigns it to the Metadata field.
-func (o *GetLoadBalancerListResult) SetMetadata(v Metadata) {
+func (o *LoadBalancers) SetMetadata(v Metadata) {
 	o.Metadata = &v
 }
 
-func (o GetLoadBalancerListResult) MarshalJSON() ([]byte, error) {
+func (o LoadBalancers) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -115,7 +115,7 @@ func (o GetLoadBalancerListResult) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GetLoadBalancerListResult) ToMap() (map[string]interface{}, error) {
+func (o LoadBalancers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.LoadBalancers) {
 		toSerialize["loadBalancers"] = o.LoadBalancers
@@ -131,16 +131,16 @@ func (o GetLoadBalancerListResult) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *GetLoadBalancerListResult) UnmarshalJSON(data []byte) (err error) {
-	varGetLoadBalancerListResult := _GetLoadBalancerListResult{}
+func (o *LoadBalancers) UnmarshalJSON(data []byte) (err error) {
+	varLoadBalancers := _LoadBalancers{}
 
-	err = json.Unmarshal(data, &varGetLoadBalancerListResult)
+	err = json.Unmarshal(data, &varLoadBalancers)
 
 	if err != nil {
 		return err
 	}
 
-	*o = GetLoadBalancerListResult(varGetLoadBalancerListResult)
+	*o = LoadBalancers(varLoadBalancers)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -153,38 +153,38 @@ func (o *GetLoadBalancerListResult) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableGetLoadBalancerListResult struct {
-	value *GetLoadBalancerListResult
+type NullableLoadBalancers struct {
+	value *LoadBalancers
 	isSet bool
 }
 
-func (v NullableGetLoadBalancerListResult) Get() *GetLoadBalancerListResult {
+func (v NullableLoadBalancers) Get() *LoadBalancers {
 	return v.value
 }
 
-func (v *NullableGetLoadBalancerListResult) Set(val *GetLoadBalancerListResult) {
+func (v *NullableLoadBalancers) Set(val *LoadBalancers) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetLoadBalancerListResult) IsSet() bool {
+func (v NullableLoadBalancers) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetLoadBalancerListResult) Unset() {
+func (v *NullableLoadBalancers) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetLoadBalancerListResult(val *GetLoadBalancerListResult) *NullableGetLoadBalancerListResult {
-	return &NullableGetLoadBalancerListResult{value: val, isSet: true}
+func NewNullableLoadBalancers(val *LoadBalancers) *NullableLoadBalancers {
+	return &NullableLoadBalancers{value: val, isSet: true}
 }
 
-func (v NullableGetLoadBalancerListResult) MarshalJSON() ([]byte, error) {
+func (v NullableLoadBalancers) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetLoadBalancerListResult) UnmarshalJSON(src []byte) error {
+func (v *NullableLoadBalancers) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

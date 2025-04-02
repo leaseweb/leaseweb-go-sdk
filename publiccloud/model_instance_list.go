@@ -14,37 +14,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the GetInstanceListResult type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GetInstanceListResult{}
+// checks if the InstanceList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InstanceList{}
 
-// GetInstanceListResult struct for GetInstanceListResult
-type GetInstanceListResult struct {
+// InstanceList struct for InstanceList
+type InstanceList struct {
 	Instances []Instance `json:"instances,omitempty"`
 	Metadata *Metadata `json:"_metadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _GetInstanceListResult GetInstanceListResult
+type _InstanceList InstanceList
 
-// NewGetInstanceListResult instantiates a new GetInstanceListResult object
+// NewInstanceList instantiates a new InstanceList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetInstanceListResult() *GetInstanceListResult {
-	this := GetInstanceListResult{}
+func NewInstanceList() *InstanceList {
+	this := InstanceList{}
 	return &this
 }
 
-// NewGetInstanceListResultWithDefaults instantiates a new GetInstanceListResult object
+// NewInstanceListWithDefaults instantiates a new InstanceList object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetInstanceListResultWithDefaults() *GetInstanceListResult {
-	this := GetInstanceListResult{}
+func NewInstanceListWithDefaults() *InstanceList {
+	this := InstanceList{}
 	return &this
 }
 
 // GetInstances returns the Instances field value if set, zero value otherwise.
-func (o *GetInstanceListResult) GetInstances() []Instance {
+func (o *InstanceList) GetInstances() []Instance {
 	if o == nil || IsNil(o.Instances) {
 		var ret []Instance
 		return ret
@@ -54,7 +54,7 @@ func (o *GetInstanceListResult) GetInstances() []Instance {
 
 // GetInstancesOk returns a tuple with the Instances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetInstanceListResult) GetInstancesOk() ([]Instance, bool) {
+func (o *InstanceList) GetInstancesOk() ([]Instance, bool) {
 	if o == nil || IsNil(o.Instances) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *GetInstanceListResult) GetInstancesOk() ([]Instance, bool) {
 }
 
 // HasInstances returns a boolean if a field has been set.
-func (o *GetInstanceListResult) HasInstances() bool {
+func (o *InstanceList) HasInstances() bool {
 	if o != nil && !IsNil(o.Instances) {
 		return true
 	}
@@ -71,12 +71,12 @@ func (o *GetInstanceListResult) HasInstances() bool {
 }
 
 // SetInstances gets a reference to the given []Instance and assigns it to the Instances field.
-func (o *GetInstanceListResult) SetInstances(v []Instance) {
+func (o *InstanceList) SetInstances(v []Instance) {
 	o.Instances = v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *GetInstanceListResult) GetMetadata() Metadata {
+func (o *InstanceList) GetMetadata() Metadata {
 	if o == nil || IsNil(o.Metadata) {
 		var ret Metadata
 		return ret
@@ -86,7 +86,7 @@ func (o *GetInstanceListResult) GetMetadata() Metadata {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetInstanceListResult) GetMetadataOk() (*Metadata, bool) {
+func (o *InstanceList) GetMetadataOk() (*Metadata, bool) {
 	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *GetInstanceListResult) GetMetadataOk() (*Metadata, bool) {
 }
 
 // HasMetadata returns a boolean if a field has been set.
-func (o *GetInstanceListResult) HasMetadata() bool {
+func (o *InstanceList) HasMetadata() bool {
 	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
@@ -103,11 +103,11 @@ func (o *GetInstanceListResult) HasMetadata() bool {
 }
 
 // SetMetadata gets a reference to the given Metadata and assigns it to the Metadata field.
-func (o *GetInstanceListResult) SetMetadata(v Metadata) {
+func (o *InstanceList) SetMetadata(v Metadata) {
 	o.Metadata = &v
 }
 
-func (o GetInstanceListResult) MarshalJSON() ([]byte, error) {
+func (o InstanceList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -115,7 +115,7 @@ func (o GetInstanceListResult) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GetInstanceListResult) ToMap() (map[string]interface{}, error) {
+func (o InstanceList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Instances) {
 		toSerialize["instances"] = o.Instances
@@ -131,16 +131,16 @@ func (o GetInstanceListResult) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *GetInstanceListResult) UnmarshalJSON(data []byte) (err error) {
-	varGetInstanceListResult := _GetInstanceListResult{}
+func (o *InstanceList) UnmarshalJSON(data []byte) (err error) {
+	varInstanceList := _InstanceList{}
 
-	err = json.Unmarshal(data, &varGetInstanceListResult)
+	err = json.Unmarshal(data, &varInstanceList)
 
 	if err != nil {
 		return err
 	}
 
-	*o = GetInstanceListResult(varGetInstanceListResult)
+	*o = InstanceList(varInstanceList)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -153,38 +153,38 @@ func (o *GetInstanceListResult) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableGetInstanceListResult struct {
-	value *GetInstanceListResult
+type NullableInstanceList struct {
+	value *InstanceList
 	isSet bool
 }
 
-func (v NullableGetInstanceListResult) Get() *GetInstanceListResult {
+func (v NullableInstanceList) Get() *InstanceList {
 	return v.value
 }
 
-func (v *NullableGetInstanceListResult) Set(val *GetInstanceListResult) {
+func (v *NullableInstanceList) Set(val *InstanceList) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetInstanceListResult) IsSet() bool {
+func (v NullableInstanceList) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetInstanceListResult) Unset() {
+func (v *NullableInstanceList) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetInstanceListResult(val *GetInstanceListResult) *NullableGetInstanceListResult {
-	return &NullableGetInstanceListResult{value: val, isSet: true}
+func NewNullableInstanceList(val *InstanceList) *NullableInstanceList {
+	return &NullableInstanceList{value: val, isSet: true}
 }
 
-func (v NullableGetInstanceListResult) MarshalJSON() ([]byte, error) {
+func (v NullableInstanceList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetInstanceListResult) UnmarshalJSON(src []byte) error {
+func (v *NullableInstanceList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

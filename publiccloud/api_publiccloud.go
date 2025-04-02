@@ -527,8 +527,8 @@ Allowed only one snapshot per instance.
 	GetInstanceList(ctx context.Context) ApiGetInstanceListRequest
 
 	// GetInstanceListExecute executes the request
-	//  @return GetInstanceListResult
-	GetInstanceListExecute(r ApiGetInstanceListRequest) (*GetInstanceListResult, *http.Response, error)
+	//  @return InstanceList
+	GetInstanceListExecute(r ApiGetInstanceListRequest) (*InstanceList, *http.Response, error)
 
 	/*
 	GetInstanceTypeList List instance types
@@ -626,8 +626,8 @@ Allowed only one snapshot per instance.
 	GetLoadBalancerList(ctx context.Context) ApiGetLoadBalancerListRequest
 
 	// GetLoadBalancerListExecute executes the request
-	//  @return GetLoadBalancerListResult
-	GetLoadBalancerListExecute(r ApiGetLoadBalancerListRequest) (*GetLoadBalancerListResult, *http.Response, error)
+	//  @return LoadBalancers
+	GetLoadBalancerListExecute(r ApiGetLoadBalancerListRequest) (*LoadBalancers, *http.Response, error)
 
 	/*
 	GetLoadBalancerListener Get listener details
@@ -7982,7 +7982,7 @@ func (r ApiGetInstanceListRequest) Type_(type_ TypeName) ApiGetInstanceListReque
 	return r
 }
 
-func (r ApiGetInstanceListRequest) Execute() (*GetInstanceListResult, *http.Response, error) {
+func (r ApiGetInstanceListRequest) Execute() (*InstanceList, *http.Response, error) {
 	return r.ApiService.GetInstanceListExecute(r)
 }
 
@@ -8002,13 +8002,13 @@ func (a *PubliccloudAPIService) GetInstanceList(ctx context.Context) ApiGetInsta
 }
 
 // Execute executes the request
-//  @return GetInstanceListResult
-func (a *PubliccloudAPIService) GetInstanceListExecute(r ApiGetInstanceListRequest) (*GetInstanceListResult, *http.Response, error) {
+//  @return InstanceList
+func (a *PubliccloudAPIService) GetInstanceListExecute(r ApiGetInstanceListRequest) (*InstanceList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetInstanceListResult
+		localVarReturnValue  *InstanceList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PubliccloudAPIService.GetInstanceList")
@@ -9364,7 +9364,7 @@ func (r ApiGetLoadBalancerListRequest) Type_(type_ string) ApiGetLoadBalancerLis
 	return r
 }
 
-func (r ApiGetLoadBalancerListRequest) Execute() (*GetLoadBalancerListResult, *http.Response, error) {
+func (r ApiGetLoadBalancerListRequest) Execute() (*LoadBalancers, *http.Response, error) {
 	return r.ApiService.GetLoadBalancerListExecute(r)
 }
 
@@ -9384,13 +9384,13 @@ func (a *PubliccloudAPIService) GetLoadBalancerList(ctx context.Context) ApiGetL
 }
 
 // Execute executes the request
-//  @return GetLoadBalancerListResult
-func (a *PubliccloudAPIService) GetLoadBalancerListExecute(r ApiGetLoadBalancerListRequest) (*GetLoadBalancerListResult, *http.Response, error) {
+//  @return LoadBalancers
+func (a *PubliccloudAPIService) GetLoadBalancerListExecute(r ApiGetLoadBalancerListRequest) (*LoadBalancers, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetLoadBalancerListResult
+		localVarReturnValue  *LoadBalancers
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PubliccloudAPIService.GetLoadBalancerList")

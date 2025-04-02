@@ -894,7 +894,7 @@ paths:
                     createdAt: 2024-04-09T15:11:21+00:00
                     state: ACTIVE
               schema:
-                $ref: '#/components/schemas/getInstanceListResult'
+                $ref: '#/components/schemas/instanceList'
           description: OK.
         "401":
           content:
@@ -4644,7 +4644,6 @@ paths:
                   region: eu-west-3
                   reference: my-load-balancer
                   state: RUNNING
-                  rootDiskSize: 10
                   ips:
                   - ip: 85.99.99.99
                     prefixLength: "28"
@@ -4686,7 +4685,7 @@ paths:
                     warmupTime: null
                     cooldownTime: null
               schema:
-                $ref: '#/components/schemas/getLoadBalancerListResult'
+                $ref: '#/components/schemas/loadBalancers'
           description: OK.
         "401":
           content:
@@ -12112,30 +12111,8 @@ components:
       - value
       title: networkSpeed
       type: object
-    baseResources:
-      description: Available resources
-      properties:
-        cpu:
-          $ref: '#/components/schemas/cpu'
-        memory:
-          $ref: '#/components/schemas/memory'
-        publicNetworkSpeed:
-          $ref: '#/components/schemas/networkSpeed'
-      required:
-      - cpu
-      - memory
-      - publicNetworkSpeed
-      title: resources
-      type: object
     resources:
-      allOf:
-      - $ref: '#/components/schemas/baseResources'
-      - properties:
-          privateNetworkSpeed:
-            $ref: '#/components/schemas/networkSpeed'
-        required:
-        - privateNetworkSpeed
-        type: object
+      description: Available resources
       example:
         memory:
           unit: GiB
@@ -12149,6 +12126,21 @@ components:
         privateNetworkSpeed:
           unit: Gbps
           value: 10
+      properties:
+        cpu:
+          $ref: '#/components/schemas/cpu'
+        memory:
+          $ref: '#/components/schemas/memory'
+        publicNetworkSpeed:
+          $ref: '#/components/schemas/networkSpeed'
+        privateNetworkSpeed:
+          $ref: '#/components/schemas/networkSpeed'
+      required:
+      - cpu
+      - memory
+      - privateNetworkSpeed
+      - publicNetworkSpeed
+      type: object
     storageType:
       description: Storage type
       enum:
@@ -12389,7 +12381,15 @@ components:
       - 6
       - 12
       type: integer
-    baseContract:
+    contract:
+      example:
+        billingFrequency: 1
+        createdAt: 2023-11-30T16:31:28Z
+        term: 6
+        state: ACTIVE
+        renewalsAt: 2023-11-30T16:31:28Z
+        type: HOURLY
+        endsAt: 2023-11-30T16:31:28Z
       properties:
         billingFrequency:
           $ref: '#/components/schemas/billingFrequency'
@@ -12409,35 +12409,21 @@ components:
           type: string
         state:
           $ref: '#/components/schemas/contractState'
+        renewalsAt:
+          description: Date when the contract will be automatically renewed
+          example: 2023-11-30T16:31:28Z
+          format: date-time
+          type: string
       required:
       - billingFrequency
       - createdAt
       - endsAt
+      - renewalsAt
       - state
       - term
       - type
       title: contract
       type: object
-    contract:
-      allOf:
-      - $ref: '#/components/schemas/baseContract'
-      - properties:
-          renewalsAt:
-            description: Date when the contract will be automatically renewed
-            example: 2023-11-30T16:31:28Z
-            format: date-time
-            type: string
-        required:
-        - renewalsAt
-        type: object
-      example:
-        billingFrequency: 1
-        createdAt: 2023-11-30T16:31:28Z
-        term: 6
-        state: ACTIVE
-        renewalsAt: 2023-11-30T16:31:28Z
-        type: HOURLY
-        endsAt: 2023-11-30T16:31:28Z
     autoScalingGroupType:
       description: Auto Scaling Group type
       enum:
@@ -12602,78 +12588,6 @@ components:
       - name
       title: image
       type: object
-    instanceBase:
-      properties:
-        id:
-          description: The unique identifier of the instance
-          format: uuid
-          type: string
-        type:
-          $ref: '#/components/schemas/typeName'
-        resources:
-          $ref: '#/components/schemas/resources'
-        region:
-          $ref: '#/components/schemas/regionName'
-        reference:
-          description: The identifying name set to the instance
-          nullable: true
-          type: string
-        startedAt:
-          description: "Date and time when the instance was started for the first\
-            \ time, right after launching it"
-          format: date-time
-          nullable: true
-          type: string
-        marketAppId:
-          description: Market App ID that must be installed into the instance
-          example: CPANEL
-          nullable: true
-          type: string
-        state:
-          $ref: '#/components/schemas/state'
-        productType:
-          description: The product type
-          type: string
-        hasPublicIpV4:
-          type: boolean
-        hasPrivateNetwork:
-          type: boolean
-        hasUserData:
-          type: boolean
-        rootDiskSize:
-          description: The root disk's size in GB. Must be at least 5 GB for Linux
-            and FreeBSD instances and 50 GB for Windows instances
-          maximum: 1000
-          minimum: 5
-          type: integer
-        rootDiskStorageType:
-          $ref: '#/components/schemas/storageType'
-        contract:
-          $ref: '#/components/schemas/contract'
-        autoScalingGroup:
-          $ref: '#/components/schemas/autoScalingGroup'
-        image:
-          $ref: '#/components/schemas/image'
-      required:
-      - autoScalingGroup
-      - contract
-      - hasPrivateNetwork
-      - hasPublicIpV4
-      - hasUserData
-      - id
-      - image
-      - ips
-      - marketAppId
-      - productType
-      - reference
-      - region
-      - resources
-      - rootDiskSize
-      - rootDiskStorageType
-      - startedAt
-      - state
-      - type
-      type: object
     ipVersion:
       description: Ip version
       enum:
@@ -12727,15 +12641,6 @@ components:
       title: ip
       type: object
     instance:
-      allOf:
-      - $ref: '#/components/schemas/instanceBase'
-      - properties:
-          ips:
-            items:
-              $ref: '#/components/schemas/ip'
-            type: array
-        title: instance
-        type: object
       example:
         image:
           flavour: ubuntu
@@ -12808,7 +12713,82 @@ components:
         region: eu-west-3
         productType: productType
         hasPublicIpV4: true
-    getInstanceListResult:
+      properties:
+        id:
+          description: The unique identifier of the instance
+          format: uuid
+          type: string
+        type:
+          $ref: '#/components/schemas/typeName'
+        resources:
+          $ref: '#/components/schemas/resources'
+        region:
+          $ref: '#/components/schemas/regionName'
+        reference:
+          description: The identifying name set to the instance
+          nullable: true
+          type: string
+        startedAt:
+          description: "Date and time when the instance was started for the first\
+            \ time, right after launching it"
+          format: date-time
+          nullable: true
+          type: string
+        marketAppId:
+          description: Market App ID that must be installed into the instance
+          example: CPANEL
+          nullable: true
+          type: string
+        state:
+          $ref: '#/components/schemas/state'
+        productType:
+          description: The product type
+          type: string
+        hasPublicIpV4:
+          type: boolean
+        hasPrivateNetwork:
+          type: boolean
+        hasUserData:
+          type: boolean
+        rootDiskSize:
+          description: The root disk's size in GB. Must be at least 5 GB for Linux
+            and FreeBSD instances and 50 GB for Windows instances
+          maximum: 1000
+          minimum: 5
+          type: integer
+        rootDiskStorageType:
+          $ref: '#/components/schemas/storageType'
+        contract:
+          $ref: '#/components/schemas/contract'
+        autoScalingGroup:
+          $ref: '#/components/schemas/autoScalingGroup'
+        image:
+          $ref: '#/components/schemas/image'
+        ips:
+          items:
+            $ref: '#/components/schemas/ip'
+          type: array
+      required:
+      - autoScalingGroup
+      - contract
+      - hasPrivateNetwork
+      - hasPublicIpV4
+      - hasUserData
+      - id
+      - image
+      - ips
+      - marketAppId
+      - productType
+      - reference
+      - region
+      - resources
+      - rootDiskSize
+      - rootDiskStorageType
+      - startedAt
+      - state
+      - type
+      type: object
+    instanceList:
       example:
         instances:
         - image:
@@ -13083,22 +13063,6 @@ components:
         networkType: internal
         version: 6
     instanceDetails:
-      allOf:
-      - $ref: '#/components/schemas/instanceBase'
-      - properties:
-          iso:
-            $ref: '#/components/schemas/iso'
-          privateNetwork:
-            $ref: '#/components/schemas/privateNetwork'
-          ips:
-            items:
-              $ref: '#/components/schemas/ipDetails'
-            type: array
-        required:
-        - iso
-        - privateNetwork
-        title: instanceDetails
-        type: object
       example:
         image:
           flavour: ubuntu
@@ -13184,6 +13148,87 @@ components:
         region: eu-west-3
         productType: productType
         hasPublicIpV4: true
+      properties:
+        id:
+          description: The unique identifier of the instance
+          format: uuid
+          type: string
+        type:
+          $ref: '#/components/schemas/typeName'
+        resources:
+          $ref: '#/components/schemas/resources'
+        region:
+          $ref: '#/components/schemas/regionName'
+        reference:
+          description: The identifying name set to the instance
+          nullable: true
+          type: string
+        startedAt:
+          description: "Date and time when the instance was started for the first\
+            \ time, right after launching it"
+          format: date-time
+          nullable: true
+          type: string
+        marketAppId:
+          description: Market App ID that must be installed into the instance
+          example: CPANEL
+          nullable: true
+          type: string
+        state:
+          $ref: '#/components/schemas/state'
+        productType:
+          description: The product type
+          type: string
+        hasPublicIpV4:
+          type: boolean
+        hasPrivateNetwork:
+          type: boolean
+        hasUserData:
+          type: boolean
+        rootDiskSize:
+          description: The root disk's size in GB. Must be at least 5 GB for Linux
+            and FreeBSD instances and 50 GB for Windows instances
+          maximum: 1000
+          minimum: 5
+          type: integer
+        rootDiskStorageType:
+          $ref: '#/components/schemas/storageType'
+        contract:
+          $ref: '#/components/schemas/contract'
+        autoScalingGroup:
+          $ref: '#/components/schemas/autoScalingGroup'
+        image:
+          $ref: '#/components/schemas/image'
+        iso:
+          $ref: '#/components/schemas/iso'
+        privateNetwork:
+          $ref: '#/components/schemas/privateNetwork'
+        ips:
+          items:
+            $ref: '#/components/schemas/ipDetails'
+          type: array
+      required:
+      - autoScalingGroup
+      - contract
+      - hasPrivateNetwork
+      - hasPublicIpV4
+      - hasUserData
+      - id
+      - image
+      - ips
+      - iso
+      - marketAppId
+      - privateNetwork
+      - productType
+      - reference
+      - region
+      - resources
+      - rootDiskSize
+      - rootDiskStorageType
+      - startedAt
+      - state
+      - type
+      type: object
     updateInstanceOpts:
       properties:
         type:
@@ -13818,65 +13863,6 @@ components:
       title: loadBalancerConfiguration
       type: object
     loadBalancer:
-      nullable: true
-      properties:
-        id:
-          description: The load balancer unique identifier
-          format: uuid
-          type: string
-        type:
-          $ref: '#/components/schemas/typeName'
-        resources:
-          $ref: '#/components/schemas/resources'
-        reference:
-          description: The identifying name set to the load balancer
-          nullable: true
-          type: string
-        state:
-          $ref: '#/components/schemas/state'
-        startedAt:
-          description: "Date and time when the load balancer was started for the first\
-            \ time, right after launching it"
-          format: date-time
-          nullable: true
-          type: string
-        region:
-          $ref: '#/components/schemas/regionName'
-        configuration:
-          $ref: '#/components/schemas/loadBalancerConfiguration'
-        autoScalingGroup:
-          $ref: '#/components/schemas/autoScalingGroup'
-        privateNetwork:
-          $ref: '#/components/schemas/privateNetwork'
-        contract:
-          $ref: '#/components/schemas/contract'
-      required:
-      - autoScalingGroup
-      - configuration
-      - contract
-      - id
-      - privateNetwork
-      - reference
-      - region
-      - resources
-      - startedAt
-      - state
-      - type
-      title: loadBalancer
-      type: object
-    loadBalancerListItem:
-      allOf:
-      - $ref: '#/components/schemas/loadBalancer'
-      - nullable: true
-        properties:
-          ips:
-            items:
-              $ref: '#/components/schemas/ip'
-            type: array
-        required:
-        - ips
-        title: loadBalancerDetails
-        type: object
       example:
         reference: reference
         privateNetwork:
@@ -13947,7 +13933,56 @@ components:
           mainIp: true
           networkType: internal
           version: 3
-    getLoadBalancerListResult:
+      properties:
+        id:
+          description: The load balancer unique identifier
+          format: uuid
+          type: string
+        type:
+          $ref: '#/components/schemas/typeName'
+        resources:
+          $ref: '#/components/schemas/resources'
+        reference:
+          description: The identifying name set to the load balancer
+          nullable: true
+          type: string
+        state:
+          $ref: '#/components/schemas/state'
+        startedAt:
+          description: "Date and time when the load balancer was started for the first\
+            \ time, right after launching it"
+          format: date-time
+          nullable: true
+          type: string
+        region:
+          $ref: '#/components/schemas/regionName'
+        configuration:
+          $ref: '#/components/schemas/loadBalancerConfiguration'
+        autoScalingGroup:
+          $ref: '#/components/schemas/autoScalingGroup'
+        privateNetwork:
+          $ref: '#/components/schemas/privateNetwork'
+        contract:
+          $ref: '#/components/schemas/contract'
+        ips:
+          items:
+            $ref: '#/components/schemas/ip'
+          type: array
+      required:
+      - autoScalingGroup
+      - configuration
+      - contract
+      - id
+      - ips
+      - privateNetwork
+      - reference
+      - region
+      - resources
+      - startedAt
+      - state
+      - type
+      type: object
+    loadBalancers:
       example:
         loadBalancers:
         - reference: reference
@@ -14095,7 +14130,7 @@ components:
       properties:
         loadBalancers:
           items:
-            $ref: '#/components/schemas/loadBalancerListItem'
+            $ref: '#/components/schemas/loadBalancer'
           type: array
         _metadata:
           $ref: '#/components/schemas/_metadata'
@@ -14123,18 +14158,6 @@ components:
       - type
       type: object
     loadBalancerDetails:
-      allOf:
-      - $ref: '#/components/schemas/loadBalancer'
-      - nullable: true
-        properties:
-          ips:
-            items:
-              $ref: '#/components/schemas/ipDetails'
-            type: array
-        required:
-        - ips
-        title: loadBalancerDetails
-        type: object
       example:
         reference: reference
         privateNetwork:
@@ -14211,6 +14234,55 @@ components:
             protectionType: STANDARD
           networkType: internal
           version: 6
+      properties:
+        id:
+          description: The load balancer unique identifier
+          format: uuid
+          type: string
+        type:
+          $ref: '#/components/schemas/typeName'
+        resources:
+          $ref: '#/components/schemas/resources'
+        reference:
+          description: The identifying name set to the load balancer
+          nullable: true
+          type: string
+        state:
+          $ref: '#/components/schemas/state'
+        startedAt:
+          description: "Date and time when the load balancer was started for the first\
+            \ time, right after launching it"
+          format: date-time
+          nullable: true
+          type: string
+        region:
+          $ref: '#/components/schemas/regionName'
+        configuration:
+          $ref: '#/components/schemas/loadBalancerConfiguration'
+        autoScalingGroup:
+          $ref: '#/components/schemas/autoScalingGroup'
+        privateNetwork:
+          $ref: '#/components/schemas/privateNetwork'
+        contract:
+          $ref: '#/components/schemas/contract'
+        ips:
+          items:
+            $ref: '#/components/schemas/ipDetails'
+          type: array
+      required:
+      - autoScalingGroup
+      - configuration
+      - contract
+      - id
+      - ips
+      - privateNetwork
+      - reference
+      - region
+      - resources
+      - startedAt
+      - state
+      - type
+      type: object
     updateLoadBalancerOpts:
       properties:
         type:

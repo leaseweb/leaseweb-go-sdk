@@ -5270,7 +5270,7 @@ paths:
                     pop: AMS-01
                     powerCycle: true
                     raidLevel: null
-                    serverId: "12345"
+                    serverId: "99944"
                     timezone: UTC
                     raid:
                       type: SW
@@ -5386,8 +5386,17 @@ paths:
                     type: linux
                     version: "22.04"
                   partitions:
+                  - filesystem: ext2
+                    mountpoint: /boot
+                    size: "1024"
                   - filesystem: swap
                     size: "4096"
+                  - filesystem: ext4
+                    mountpoint: /tmp
+                    size: "4096"
+                  - filesystem: ext4
+                    mountpoint: /
+                    size: '*'
                   pop: AMS-01
                   powerCycle: true
                   raidLevel: null
@@ -5422,7 +5431,7 @@ paths:
                   uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
                 type: install
                 updatedAt: 2021-01-09T10:38:12+00:00
-                uuid: 3a867358-5b4b-44ee-88ac-4274603ef641
+                uuid: bcf2bedf-8450-4b22-86a8-f30aeb3a38f9
               schema:
                 $ref: '#/components/schemas/currentJob'
           description: Ok.

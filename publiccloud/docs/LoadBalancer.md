@@ -15,12 +15,13 @@ Name | Type | Description | Notes
 **AutoScalingGroup** | [**NullableAutoScalingGroup**](AutoScalingGroup.md) |  | 
 **PrivateNetwork** | [**NullablePrivateNetwork**](PrivateNetwork.md) |  | 
 **Contract** | [**Contract**](Contract.md) |  | 
+**Ips** | [**[]Ip**](Ip.md) |  | 
 
 ## Methods
 
 ### NewLoadBalancer
 
-`func NewLoadBalancer(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract Contract, ) *LoadBalancer`
+`func NewLoadBalancer(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract Contract, ips []Ip, ) *LoadBalancer`
 
 NewLoadBalancer instantiates a new LoadBalancer object
 This constructor will assign default values to properties that have it defined,
@@ -303,6 +304,26 @@ and a boolean to check if the value has been set.
 `func (o *LoadBalancer) SetContract(v Contract)`
 
 SetContract sets Contract field to given value.
+
+
+### GetIps
+
+`func (o *LoadBalancer) GetIps() []Ip`
+
+GetIps returns the Ips field if non-nil, zero value otherwise.
+
+### GetIpsOk
+
+`func (o *LoadBalancer) GetIpsOk() (*[]Ip, bool)`
+
+GetIpsOk returns a tuple with the Ips field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIps
+
+`func (o *LoadBalancer) SetIps(v []Ip)`
+
+SetIps sets Ips field to given value.
 
 
 

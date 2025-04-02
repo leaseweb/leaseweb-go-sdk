@@ -35,6 +35,7 @@ type LoadBalancer struct {
 	AutoScalingGroup NullableAutoScalingGroup `json:"autoScalingGroup"`
 	PrivateNetwork NullablePrivateNetwork `json:"privateNetwork"`
 	Contract Contract `json:"contract"`
+	Ips []Ip `json:"ips"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,7 +45,7 @@ type _LoadBalancer LoadBalancer
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLoadBalancer(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract Contract) *LoadBalancer {
+func NewLoadBalancer(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract Contract, ips []Ip) *LoadBalancer {
 	this := LoadBalancer{}
 	this.Id = id
 	this.Type = type_
@@ -57,6 +58,7 @@ func NewLoadBalancer(id string, type_ TypeName, resources Resources, reference N
 	this.AutoScalingGroup = autoScalingGroup
 	this.PrivateNetwork = privateNetwork
 	this.Contract = contract
+	this.Ips = ips
 	return &this
 }
 
@@ -342,6 +344,30 @@ func (o *LoadBalancer) SetContract(v Contract) {
 	o.Contract = v
 }
 
+// GetIps returns the Ips field value
+func (o *LoadBalancer) GetIps() []Ip {
+	if o == nil {
+		var ret []Ip
+		return ret
+	}
+
+	return o.Ips
+}
+
+// GetIpsOk returns a tuple with the Ips field value
+// and a boolean to check if the value has been set.
+func (o *LoadBalancer) GetIpsOk() ([]Ip, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Ips, true
+}
+
+// SetIps sets field value
+func (o *LoadBalancer) SetIps(v []Ip) {
+	o.Ips = v
+}
+
 func (o LoadBalancer) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -363,6 +389,7 @@ func (o LoadBalancer) ToMap() (map[string]interface{}, error) {
 	toSerialize["autoScalingGroup"] = o.AutoScalingGroup.Get()
 	toSerialize["privateNetwork"] = o.PrivateNetwork.Get()
 	toSerialize["contract"] = o.Contract
+	toSerialize["ips"] = o.Ips
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -387,6 +414,7 @@ func (o *LoadBalancer) UnmarshalJSON(data []byte) (err error) {
 		"autoScalingGroup",
 		"privateNetwork",
 		"contract",
+		"ips",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -427,6 +455,7 @@ func (o *LoadBalancer) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "autoScalingGroup")
 		delete(additionalProperties, "privateNetwork")
 		delete(additionalProperties, "contract")
+		delete(additionalProperties, "ips")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **State** | [**State**](State.md) |  | 
 **ProductType** | **string** | The product type | 
 **HasPublicIpV4** | **bool** |  | 
-**IncludesPrivateNetwork** | **bool** |  | 
+**HasPrivateNetwork** | **bool** |  | 
 **HasUserData** | **bool** |  | 
 **RootDiskSize** | **int32** | The root disk&#39;s size in GB. Must be at least 5 GB for Linux and FreeBSD instances and 50 GB for Windows instances | 
 **RootDiskStorageType** | [**StorageType**](StorageType.md) |  | 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewInstanceDetails
 
-`func NewInstanceDetails(id string, type_ TypeName, resources Resources, region RegionName, reference NullableString, startedAt NullableTime, marketAppId NullableString, state State, productType string, hasPublicIpV4 bool, includesPrivateNetwork bool, hasUserData bool, rootDiskSize int32, rootDiskStorageType StorageType, contract Contract, autoScalingGroup NullableAutoScalingGroup, image Image, iso NullableIso, privateNetwork NullablePrivateNetwork, ips []IpDetails, ) *InstanceDetails`
+`func NewInstanceDetails(id string, type_ TypeName, resources Resources, region RegionName, reference NullableString, startedAt NullableTime, marketAppId NullableString, state State, productType string, hasPublicIpV4 bool, hasPrivateNetwork bool, hasUserData bool, rootDiskSize int32, rootDiskStorageType StorageType, contract Contract, autoScalingGroup NullableAutoScalingGroup, image Image, iso NullableIso, privateNetwork NullablePrivateNetwork, ips []IpDetails, ) *InstanceDetails`
 
 NewInstanceDetails instantiates a new InstanceDetails object
 This constructor will assign default values to properties that have it defined,
@@ -274,24 +274,24 @@ and a boolean to check if the value has been set.
 SetHasPublicIpV4 sets HasPublicIpV4 field to given value.
 
 
-### GetIncludesPrivateNetwork
+### GetHasPrivateNetwork
 
-`func (o *InstanceDetails) GetIncludesPrivateNetwork() bool`
+`func (o *InstanceDetails) GetHasPrivateNetwork() bool`
 
-GetIncludesPrivateNetwork returns the IncludesPrivateNetwork field if non-nil, zero value otherwise.
+GetHasPrivateNetwork returns the HasPrivateNetwork field if non-nil, zero value otherwise.
 
-### GetIncludesPrivateNetworkOk
+### GetHasPrivateNetworkOk
 
-`func (o *InstanceDetails) GetIncludesPrivateNetworkOk() (*bool, bool)`
+`func (o *InstanceDetails) GetHasPrivateNetworkOk() (*bool, bool)`
 
-GetIncludesPrivateNetworkOk returns a tuple with the IncludesPrivateNetwork field if it's non-nil, zero value otherwise
+GetHasPrivateNetworkOk returns a tuple with the HasPrivateNetwork field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIncludesPrivateNetwork
+### SetHasPrivateNetwork
 
-`func (o *InstanceDetails) SetIncludesPrivateNetwork(v bool)`
+`func (o *InstanceDetails) SetHasPrivateNetwork(v bool)`
 
-SetIncludesPrivateNetwork sets IncludesPrivateNetwork field to given value.
+SetHasPrivateNetwork sets HasPrivateNetwork field to given value.
 
 
 ### GetHasUserData
