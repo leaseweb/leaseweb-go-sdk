@@ -83,7 +83,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -156,7 +156,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -226,7 +226,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -297,7 +297,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -365,7 +365,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -437,7 +437,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -509,7 +509,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -581,7 +581,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -651,7 +651,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -722,7 +722,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -796,7 +796,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -867,7 +867,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -935,7 +935,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1006,7 +1006,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1078,7 +1078,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1149,7 +1149,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1227,7 +1227,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1300,7 +1300,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1374,7 +1374,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1442,7 +1442,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1516,7 +1516,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1592,7 +1592,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1666,7 +1666,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1744,7 +1744,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1822,7 +1822,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1895,7 +1895,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -1969,7 +1969,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2039,7 +2039,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2109,7 +2109,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2179,7 +2179,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2252,7 +2252,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2334,7 +2334,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2407,7 +2407,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2487,7 +2487,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2560,7 +2560,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2630,7 +2630,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2704,7 +2704,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2776,7 +2776,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2846,7 +2846,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2916,7 +2916,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -2984,7 +2984,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3054,7 +3054,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3136,7 +3136,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3208,7 +3208,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3280,7 +3280,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3353,7 +3353,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3424,7 +3424,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3492,7 +3492,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3560,7 +3560,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3628,7 +3628,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3696,7 +3696,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3769,7 +3769,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3842,7 +3842,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3914,7 +3914,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -3989,7 +3989,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -4067,7 +4067,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -4142,7 +4142,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -4212,7 +4212,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
@@ -4287,7 +4287,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
 )
 
 func main() {
