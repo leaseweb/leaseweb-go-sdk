@@ -99,6 +99,21 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PubliccloudAPIService CreateNotificationSetting", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var instanceId string
+		var notificationSettingId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.CreateNotificationSetting(context.Background(), instanceId, notificationSettingId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PubliccloudAPIService CreateSnapshot", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -173,6 +188,20 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		var listenerId string
 
 		httpRes, err := apiClient.PubliccloudAPI.DeleteLoadBalancerListener(context.Background(), loadBalancerId, listenerId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService DeleteNotificationSetting", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var instanceId string
+		var notificationSettingId string
+
+		httpRes, err := apiClient.PubliccloudAPI.DeleteNotificationSetting(context.Background(), instanceId, notificationSettingId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -637,6 +666,35 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.PubliccloudAPI.GetMarketAppList(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService GetNotificationSetting", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var instanceId string
+		var notificationSettingId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.GetNotificationSetting(context.Background(), instanceId, notificationSettingId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService GetNotificationSettingList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var instanceId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.GetNotificationSettingList(context.Background(), instanceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -1201,6 +1259,21 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		var listenerId string
 
 		resp, httpRes, err := apiClient.PubliccloudAPI.UpdateLoadBalancerListener(context.Background(), loadBalancerId, listenerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService UpdateNotificationSetting", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var instanceId string
+		var notificationSettingId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.UpdateNotificationSetting(context.Background(), instanceId, notificationSettingId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

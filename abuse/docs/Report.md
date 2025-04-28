@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **CustomerId** | Pointer to **string** | The customer ID of your account. | [optional] 
 **LegalEntityId** | Pointer to **string** | The legal entity ID of the customer account. | [optional] 
 **Deadline** | Pointer to **string** | The deadline before when the report needs to be resolved. | [optional] 
+**DetectedIpAddresses** | Pointer to **[]string** | The IP-addresses detected in the report body. | [optional] 
 
 ## Methods
 
@@ -257,6 +258,31 @@ SetDeadline sets Deadline field to given value.
 `func (o *Report) HasDeadline() bool`
 
 HasDeadline returns a boolean if a field has been set.
+
+### GetDetectedIpAddresses
+
+`func (o *Report) GetDetectedIpAddresses() []string`
+
+GetDetectedIpAddresses returns the DetectedIpAddresses field if non-nil, zero value otherwise.
+
+### GetDetectedIpAddressesOk
+
+`func (o *Report) GetDetectedIpAddressesOk() (*[]string, bool)`
+
+GetDetectedIpAddressesOk returns a tuple with the DetectedIpAddresses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDetectedIpAddresses
+
+`func (o *Report) SetDetectedIpAddresses(v []string)`
+
+SetDetectedIpAddresses sets DetectedIpAddresses field to given value.
+
+### HasDetectedIpAddresses
+
+`func (o *Report) HasDetectedIpAddresses() bool`
+
+HasDetectedIpAddresses returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

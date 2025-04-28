@@ -6,6 +6,7 @@ api/openapi.yaml
 api_publiccloud.go
 client.go
 configuration.go
+docs/Action.md
 docs/AttachIsoOpts.md
 docs/AutoScaledInstance.md
 docs/AutoScalingGroup.md
@@ -15,6 +16,7 @@ docs/AutoScalingGroupType.md
 docs/Balance.md
 docs/Billing.md
 docs/BillingFrequency.md
+docs/Channel.md
 docs/Contract.md
 docs/ContractState.md
 docs/ContractTerm.md
@@ -29,6 +31,7 @@ docs/CpuMetricsMetadataSummaryCpuMetrics.md
 docs/CpuMetricsMetadataSummaryPeak.md
 docs/CreateAutoScalingGroupOpts.md
 docs/CreateImageOpts.md
+docs/CreateNotificationSettingOpts.md
 docs/CreateSnapshotOpts.md
 docs/CreateTargetGroupOpts.md
 docs/Credential.md
@@ -58,6 +61,7 @@ docs/GetImageListResult.md
 docs/GetIsoListResult.md
 docs/GetLoadBalancerListenerListResult.md
 docs/GetMarketAppListResult.md
+docs/GetNotificationSettingListResult.md
 docs/GetRegionListResult.md
 docs/GetReinstallImageListResult.md
 docs/GetRequestsMetricsResult.md
@@ -109,6 +113,8 @@ docs/MetricsUnit.md
 docs/MetricsValues.md
 docs/NetworkSpeed.md
 docs/NetworkType.md
+docs/NotificationSetting.md
+docs/NotificationSettingThreshold.md
 docs/NullRouteIPOpts.md
 docs/Peak.md
 docs/Price.md
@@ -136,12 +142,14 @@ docs/Target.md
 docs/TargetGroup.md
 docs/TargetGroupIdOpts.md
 docs/Tier.md
+docs/TimePeriod.md
 docs/Traffic.md
 docs/TrafficMetric.md
 docs/TrafficMetricSummary.md
 docs/TrafficMetricValue.md
 docs/TrafficMetricsMetaData.md
 docs/TypeName.md
+docs/Unit.md
 docs/UpdateAutoScalingGroupOpts.md
 docs/UpdateCredentialOpts.md
 docs/UpdateCredentialResult.md
@@ -149,6 +157,8 @@ docs/UpdateIPOpts.md
 docs/UpdateImageOpts.md
 docs/UpdateInstanceOpts.md
 docs/UpdateLoadBalancerOpts.md
+docs/UpdateNotificationSettingOpts.md
+docs/UpdateNotificationSettingOptsChannelsInner.md
 docs/UpdateTargetGroupOpts.md
 docs/Values.md
 git_push.sh
@@ -156,6 +166,7 @@ go.mod
 go.sum
 model__metadata.go
 model__schemas_health_check_status.go
+model_action.go
 model_attach_iso_opts.go
 model_auto_scaled_instance.go
 model_auto_scaling_group.go
@@ -165,6 +176,7 @@ model_auto_scaling_group_type.go
 model_balance.go
 model_billing.go
 model_billing_frequency.go
+model_channel.go
 model_contract.go
 model_contract_state.go
 model_contract_term.go
@@ -179,6 +191,7 @@ model_cpu_metrics_metadata_summary_cpu_metrics.go
 model_cpu_metrics_metadata_summary_peak.go
 model_create_auto_scaling_group_opts.go
 model_create_image_opts.go
+model_create_notification_setting_opts.go
 model_create_snapshot_opts.go
 model_create_target_group_opts.go
 model_credential.go
@@ -208,6 +221,7 @@ model_get_ip_list_result.go
 model_get_iso_list_result.go
 model_get_load_balancer_listener_list_result.go
 model_get_market_app_list_result.go
+model_get_notification_setting_list_result.go
 model_get_region_list_result.go
 model_get_reinstall_image_list_result.go
 model_get_requests_metrics_result.go
@@ -258,6 +272,8 @@ model_metrics_unit.go
 model_metrics_values.go
 model_network_speed.go
 model_network_type.go
+model_notification_setting.go
+model_notification_setting_threshold.go
 model_null_route_ip_opts.go
 model_peak.go
 model_price.go
@@ -283,12 +299,14 @@ model_target.go
 model_target_group.go
 model_target_group_id_opts.go
 model_tier.go
+model_time_period.go
 model_traffic.go
 model_traffic_metric.go
 model_traffic_metric_summary.go
 model_traffic_metric_value.go
 model_traffic_metrics_meta_data.go
 model_type_name.go
+model_unit.go
 model_update_auto_scaling_group_opts.go
 model_update_credential_opts.go
 model_update_credential_result.go
@@ -296,6 +314,8 @@ model_update_image_opts.go
 model_update_instance_opts.go
 model_update_ip_opts.go
 model_update_load_balancer_opts.go
+model_update_notification_setting_opts.go
+model_update_notification_setting_opts_channels_inner.go
 model_update_target_group_opts.go
 model_values.go
 response.go

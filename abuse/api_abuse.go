@@ -653,6 +653,8 @@ type ApiGetReportListRequest struct {
 	limit *int32
 	offset *int32
 	status *string
+	ticketId *string
+	ip *string
 }
 
 // Limit the number of results returned.
@@ -670,6 +672,18 @@ func (r ApiGetReportListRequest) Offset(offset int32) ApiGetReportListRequest {
 // Comma separated list of report statuses to filter on. 
 func (r ApiGetReportListRequest) Status(status string) ApiGetReportListRequest {
 	r.status = &status
+	return r
+}
+
+// Optional ticket ID to filter results
+func (r ApiGetReportListRequest) TicketId(ticketId string) ApiGetReportListRequest {
+	r.ticketId = &ticketId
+	return r
+}
+
+// Optional IP address to filter results
+func (r ApiGetReportListRequest) Ip(ip string) ApiGetReportListRequest {
+	r.ip = &ip
 	return r
 }
 
@@ -724,6 +738,12 @@ func (a *AbuseAPIService) GetReportListExecute(r ApiGetReportListRequest) (*GetR
 	} else {
 		var defaultValue string = "OPEN,WAITING,CLOSED"
 		r.status = &defaultValue
+	}
+	if r.ticketId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ticketId", r.ticketId, "form", "")
+	}
+	if r.ip != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ip", r.ip, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -88,12 +88,14 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**CreateAutoScalingGroup**](docs/PubliccloudAPI.md#createautoscalinggroup) | **Post** /autoScalingGroups | Create Auto Scaling Group
 *PubliccloudAPI* | [**CreateImage**](docs/PubliccloudAPI.md#createimage) | **Post** /images | Create Custom Image
 *PubliccloudAPI* | [**CreateLoadBalancerListener**](docs/PubliccloudAPI.md#createloadbalancerlistener) | **Post** /loadBalancers/{loadBalancerId}/listeners | Create listener
+*PubliccloudAPI* | [**CreateNotificationSetting**](docs/PubliccloudAPI.md#createnotificationsetting) | **Post** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Create a notification setting
 *PubliccloudAPI* | [**CreateSnapshot**](docs/PubliccloudAPI.md#createsnapshot) | **Post** /instances/{instanceId}/snapshots | Create instance snapshot
 *PubliccloudAPI* | [**CreateTargetGroup**](docs/PubliccloudAPI.md#createtargetgroup) | **Post** /targetGroups | Create Target Group
 *PubliccloudAPI* | [**DeleteAutoScalingGroup**](docs/PubliccloudAPI.md#deleteautoscalinggroup) | **Delete** /autoScalingGroups/{autoScalingGroupId} | Delete Auto Scaling Group
 *PubliccloudAPI* | [**DeleteCredential**](docs/PubliccloudAPI.md#deletecredential) | **Delete** /instances/{instanceId}/credentials/{type}/{username} | Delete Instance credential for a given type and username
 *PubliccloudAPI* | [**DeleteCredentials**](docs/PubliccloudAPI.md#deletecredentials) | **Delete** /instances/{instanceId}/credentials | Delete all credentials associated with a specific Instance
 *PubliccloudAPI* | [**DeleteLoadBalancerListener**](docs/PubliccloudAPI.md#deleteloadbalancerlistener) | **Delete** /loadBalancers/{loadBalancerId}/listeners/{listenerId} | Delete load balancer listener
+*PubliccloudAPI* | [**DeleteNotificationSetting**](docs/PubliccloudAPI.md#deletenotificationsetting) | **Delete** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Delete a notification setting setting
 *PubliccloudAPI* | [**DeleteSnapshot**](docs/PubliccloudAPI.md#deletesnapshot) | **Delete** /instances/{instanceId}/snapshots/{snapshotId} | Delete instance snapshot
 *PubliccloudAPI* | [**DeleteTargetGroup**](docs/PubliccloudAPI.md#deletetargetgroup) | **Delete** /targetGroups/{targetGroupId} | Delete Target Group
 *PubliccloudAPI* | [**DeregisterAutoScalingGroupTargetGroup**](docs/PubliccloudAPI.md#deregisterautoscalinggrouptargetgroup) | **Post** /autoScalingGroups/{autoScalingGroupId}/deregisterTargetGroup | Deregister Target Group
@@ -128,6 +130,8 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**GetLoadBalancerListener**](docs/PubliccloudAPI.md#getloadbalancerlistener) | **Get** /loadBalancers/{loadBalancerId}/listeners/{listenerId} | Get listener details
 *PubliccloudAPI* | [**GetLoadBalancerListenerList**](docs/PubliccloudAPI.md#getloadbalancerlistenerlist) | **Get** /loadBalancers/{loadBalancerId}/listeners | Get listener list
 *PubliccloudAPI* | [**GetMarketAppList**](docs/PubliccloudAPI.md#getmarketapplist) | **Get** /marketApps | Get marketplace apps
+*PubliccloudAPI* | [**GetNotificationSetting**](docs/PubliccloudAPI.md#getnotificationsetting) | **Get** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Get details of a notification Setting
+*PubliccloudAPI* | [**GetNotificationSettingList**](docs/PubliccloudAPI.md#getnotificationsettinglist) | **Get** /instances/{instanceId}/notificationSettings/dataTraffic | List the notification settings of a customer
 *PubliccloudAPI* | [**GetRegionList**](docs/PubliccloudAPI.md#getregionlist) | **Get** /regions | List regions
 *PubliccloudAPI* | [**GetReinstallImageList**](docs/PubliccloudAPI.md#getreinstallimagelist) | **Get** /instances/{instanceId}/reinstall/images | List images available for reinstall
 *PubliccloudAPI* | [**GetRequestsMetrics**](docs/PubliccloudAPI.md#getrequestsmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/requests | Get load balancer requests metrics
@@ -169,11 +173,13 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**UpdateLoadBalancer**](docs/PubliccloudAPI.md#updateloadbalancer) | **Put** /loadBalancers/{loadBalancerId} | Update load balancer
 *PubliccloudAPI* | [**UpdateLoadBalancerIP**](docs/PubliccloudAPI.md#updateloadbalancerip) | **Put** /loadBalancers/{loadBalancerId}/ips/{ip} | Update the IP address for a specific Load Balancer
 *PubliccloudAPI* | [**UpdateLoadBalancerListener**](docs/PubliccloudAPI.md#updateloadbalancerlistener) | **Put** /loadBalancers/{loadBalancerId}/listeners/{listenerId} | Update a listener
+*PubliccloudAPI* | [**UpdateNotificationSetting**](docs/PubliccloudAPI.md#updatenotificationsetting) | **Put** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Update Notification Setting details
 *PubliccloudAPI* | [**UpdateTargetGroup**](docs/PubliccloudAPI.md#updatetargetgroup) | **Put** /targetGroups/{targetGroupId} | Update Target Group
 
 
 ## Documentation For Models
 
+ - [Action](docs/Action.md)
  - [AttachIsoOpts](docs/AttachIsoOpts.md)
  - [AutoScaledInstance](docs/AutoScaledInstance.md)
  - [AutoScalingGroup](docs/AutoScalingGroup.md)
@@ -183,6 +189,7 @@ Class | Method | HTTP request | Description
  - [Balance](docs/Balance.md)
  - [Billing](docs/Billing.md)
  - [BillingFrequency](docs/BillingFrequency.md)
+ - [Channel](docs/Channel.md)
  - [Contract](docs/Contract.md)
  - [ContractState](docs/ContractState.md)
  - [ContractTerm](docs/ContractTerm.md)
@@ -197,6 +204,7 @@ Class | Method | HTTP request | Description
  - [CpuMetricsMetadataSummaryPeak](docs/CpuMetricsMetadataSummaryPeak.md)
  - [CreateAutoScalingGroupOpts](docs/CreateAutoScalingGroupOpts.md)
  - [CreateImageOpts](docs/CreateImageOpts.md)
+ - [CreateNotificationSettingOpts](docs/CreateNotificationSettingOpts.md)
  - [CreateSnapshotOpts](docs/CreateSnapshotOpts.md)
  - [CreateTargetGroupOpts](docs/CreateTargetGroupOpts.md)
  - [Credential](docs/Credential.md)
@@ -226,6 +234,7 @@ Class | Method | HTTP request | Description
  - [GetIsoListResult](docs/GetIsoListResult.md)
  - [GetLoadBalancerListenerListResult](docs/GetLoadBalancerListenerListResult.md)
  - [GetMarketAppListResult](docs/GetMarketAppListResult.md)
+ - [GetNotificationSettingListResult](docs/GetNotificationSettingListResult.md)
  - [GetRegionListResult](docs/GetRegionListResult.md)
  - [GetReinstallImageListResult](docs/GetReinstallImageListResult.md)
  - [GetRequestsMetricsResult](docs/GetRequestsMetricsResult.md)
@@ -277,6 +286,8 @@ Class | Method | HTTP request | Description
  - [MetricsValues](docs/MetricsValues.md)
  - [NetworkSpeed](docs/NetworkSpeed.md)
  - [NetworkType](docs/NetworkType.md)
+ - [NotificationSetting](docs/NotificationSetting.md)
+ - [NotificationSettingThreshold](docs/NotificationSettingThreshold.md)
  - [NullRouteIPOpts](docs/NullRouteIPOpts.md)
  - [Peak](docs/Peak.md)
  - [Price](docs/Price.md)
@@ -303,12 +314,14 @@ Class | Method | HTTP request | Description
  - [TargetGroup](docs/TargetGroup.md)
  - [TargetGroupIdOpts](docs/TargetGroupIdOpts.md)
  - [Tier](docs/Tier.md)
+ - [TimePeriod](docs/TimePeriod.md)
  - [Traffic](docs/Traffic.md)
  - [TrafficMetric](docs/TrafficMetric.md)
  - [TrafficMetricSummary](docs/TrafficMetricSummary.md)
  - [TrafficMetricValue](docs/TrafficMetricValue.md)
  - [TrafficMetricsMetaData](docs/TrafficMetricsMetaData.md)
  - [TypeName](docs/TypeName.md)
+ - [Unit](docs/Unit.md)
  - [UpdateAutoScalingGroupOpts](docs/UpdateAutoScalingGroupOpts.md)
  - [UpdateCredentialOpts](docs/UpdateCredentialOpts.md)
  - [UpdateCredentialResult](docs/UpdateCredentialResult.md)
@@ -316,6 +329,8 @@ Class | Method | HTTP request | Description
  - [UpdateImageOpts](docs/UpdateImageOpts.md)
  - [UpdateInstanceOpts](docs/UpdateInstanceOpts.md)
  - [UpdateLoadBalancerOpts](docs/UpdateLoadBalancerOpts.md)
+ - [UpdateNotificationSettingOpts](docs/UpdateNotificationSettingOpts.md)
+ - [UpdateNotificationSettingOptsChannelsInner](docs/UpdateNotificationSettingOptsChannelsInner.md)
  - [UpdateTargetGroupOpts](docs/UpdateTargetGroupOpts.md)
  - [Values](docs/Values.md)
 

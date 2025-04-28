@@ -37,6 +37,8 @@ type Report struct {
 	LegalEntityId *string `json:"legalEntityId,omitempty"`
 	// The deadline before when the report needs to be resolved.
 	Deadline *string `json:"deadline,omitempty"`
+	// The IP-addresses detected in the report body.
+	DetectedIpAddresses []string `json:"detectedIpAddresses,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -351,6 +353,38 @@ func (o *Report) SetDeadline(v string) {
 	o.Deadline = &v
 }
 
+// GetDetectedIpAddresses returns the DetectedIpAddresses field value if set, zero value otherwise.
+func (o *Report) GetDetectedIpAddresses() []string {
+	if o == nil || IsNil(o.DetectedIpAddresses) {
+		var ret []string
+		return ret
+	}
+	return o.DetectedIpAddresses
+}
+
+// GetDetectedIpAddressesOk returns a tuple with the DetectedIpAddresses field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Report) GetDetectedIpAddressesOk() ([]string, bool) {
+	if o == nil || IsNil(o.DetectedIpAddresses) {
+		return nil, false
+	}
+	return o.DetectedIpAddresses, true
+}
+
+// HasDetectedIpAddresses returns a boolean if a field has been set.
+func (o *Report) HasDetectedIpAddresses() bool {
+	if o != nil && !IsNil(o.DetectedIpAddresses) {
+		return true
+	}
+
+	return false
+}
+
+// SetDetectedIpAddresses gets a reference to the given []string and assigns it to the DetectedIpAddresses field.
+func (o *Report) SetDetectedIpAddresses(v []string) {
+	o.DetectedIpAddresses = v
+}
+
 func (o Report) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -388,6 +422,9 @@ func (o Report) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Deadline) {
 		toSerialize["deadline"] = o.Deadline
 	}
+	if !IsNil(o.DetectedIpAddresses) {
+		toSerialize["detectedIpAddresses"] = o.DetectedIpAddresses
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -419,6 +456,7 @@ func (o *Report) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "customerId")
 		delete(additionalProperties, "legalEntityId")
 		delete(additionalProperties, "deadline")
+		delete(additionalProperties, "detectedIpAddresses")
 		o.AdditionalProperties = additionalProperties
 	}
 

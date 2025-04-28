@@ -72,6 +72,23 @@ paths:
           default: "OPEN,WAITING,CLOSED"
           type: string
         style: form
+      - description: Optional ticket ID to filter results
+        explode: true
+        in: query
+        name: ticketId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Optional IP address to filter results
+        explode: true
+        in: query
+        name: ip
+        required: false
+        schema:
+          format: ipv4
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -91,6 +108,8 @@ paths:
                   customerId: "10000001"
                   legalEntityId: "2000"
                   deadline: 2015-01-01T00:00:00+00:00
+                  detectedIpAddresses:
+                  - 127.0.0.1
                 - id: "000001"
                   subject: Report description
                   status: CLOSED
@@ -100,6 +119,8 @@ paths:
                   customerId: "10000001"
                   legalEntityId: "2600"
                   deadline: 2015-01-01T00:00:00+00:00
+                  detectedIpAddresses:
+                  - 127.0.0.1
               schema:
                 $ref: '#/components/schemas/getReportListResult'
           description: |
@@ -837,6 +858,25 @@ components:
         default: "OPEN,WAITING,CLOSED"
         type: string
       style: form
+    ticketId:
+      description: Optional ticket ID to filter results
+      explode: true
+      in: query
+      name: ticketId
+      required: false
+      schema:
+        type: string
+      style: form
+    ip:
+      description: Optional IP address to filter results
+      explode: true
+      in: query
+      name: ip
+      required: false
+      schema:
+        format: ipv4
+        type: string
+      style: form
     reportId:
       description: Report Id
       example: abc123
@@ -955,6 +995,9 @@ components:
         reports:
         - reportedAt: 2015-01-01T00:00:00+00:00
           legalEntityId: "2000"
+          detectedIpAddresses:
+          - "[\"127.0.0.1\"]"
+          - "[\"127.0.0.1\"]"
           subject: Report description
           notifier: REDACTED_FOR_PRIVACY
           customerId: "10000001"
@@ -964,6 +1007,9 @@ components:
           updatedAt: 2015-01-01T00:00:00+00:00
         - reportedAt: 2015-01-01T00:00:00+00:00
           legalEntityId: "2000"
+          detectedIpAddresses:
+          - "[\"127.0.0.1\"]"
+          - "[\"127.0.0.1\"]"
           subject: Report description
           notifier: REDACTED_FOR_PRIVACY
           customerId: "10000001"
@@ -1286,6 +1332,9 @@ components:
       example:
         reportedAt: 2015-01-01T00:00:00+00:00
         legalEntityId: "2000"
+        detectedIpAddresses:
+        - "[\"127.0.0.1\"]"
+        - "[\"127.0.0.1\"]"
         subject: Report description
         notifier: REDACTED_FOR_PRIVACY
         customerId: "10000001"
@@ -1334,6 +1383,12 @@ components:
           description: The deadline before when the report needs to be resolved.
           example: 2015-01-01T00:00:00+00:00
           type: string
+        detectedIpAddresses:
+          description: The IP-addresses detected in the report body.
+          items:
+            example: "[\"127.0.0.1\"]"
+            type: string
+          type: array
       title: report
       type: object
     detectedDomainNameList:

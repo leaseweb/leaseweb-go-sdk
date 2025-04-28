@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## GetReportList
 
-> GetReportListResult GetReportList(ctx).Limit(limit).Offset(offset).Status(status).Execute()
+> GetReportListResult GetReportList(ctx).Limit(limit).Offset(offset).Status(status).TicketId(ticketId).Ip(ip).Execute()
 
 List reports
 
@@ -252,10 +252,12 @@ func main() {
 	limit := int32(20) // int32 | Limit the number of results returned. (optional)
 	offset := int32(10) // int32 | Return results starting from the given offset. (optional)
 	status := "OPEN,WAITING,CLOSED" // string | Comma separated list of report statuses to filter on.  (optional) (default to "OPEN,WAITING,CLOSED")
+	ticketId := "ticketId_example" // string | Optional ticket ID to filter results (optional)
+	ip := "ip_example" // string | Optional IP address to filter results (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AbuseAPI.GetReportList(context.Background()).Limit(limit).Offset(offset).Status(status).Execute()
+	resp, r, err := apiClient.AbuseAPI.GetReportList(context.Background()).Limit(limit).Offset(offset).Status(status).TicketId(ticketId).Ip(ip).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AbuseAPI.GetReportList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -279,6 +281,8 @@ Name | Type | Description  | Notes
  **limit** | **int32** | Limit the number of results returned. | 
  **offset** | **int32** | Return results starting from the given offset. | 
  **status** | **string** | Comma separated list of report statuses to filter on.  | [default to &quot;OPEN,WAITING,CLOSED&quot;]
+ **ticketId** | **string** | Optional ticket ID to filter results | 
+ **ip** | **string** | Optional IP address to filter results | 
 
 ### Return type
 

@@ -55,6 +55,7 @@ tags:
 - name: Metrics
 - name: Snapshots
 - name: IPs
+- name: Private Networks
 - name: Load Balancer
 - name: Auto Scaling Groups
 - name: Reinstall
@@ -11565,6 +11566,552 @@ paths:
       summary: Deregister Targets
       tags:
       - publiccloud
+  /instances/{instanceId}/notificationSettings/dataTraffic:
+    get:
+      operationId: getNotificationSettingList
+      parameters:
+      - description: Instance's ID
+        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Limit the number of results returned.
+        example: 20
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Return results starting from the given offset.
+        example: 10
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                _metadata:
+                  totalCount: 2
+                  limit: 10
+                  offset: 0
+                notificationSettings:
+                - id: ff6bbd04-c24c-4ecf-b09d-e6c415a65d63
+                  threshold:
+                    unit: GB
+                    value: 2000
+                  type: DATA_TRAFFIC
+                  timePeriod: DAY
+                  action: POWER_OFF
+                  channels:
+                  - type: EMAIL
+                    contactGroup: TECHNICAL
+                    contacts:
+                    - john.doe@example.com
+                - id: cc6bbd04-c24c-4ecf-b09d-e6c415a65d78
+                  threshold:
+                    unit: GB
+                    value: 1000
+                  type: DATA_TRAFFIC
+                  timePeriod: DAY
+                  action: null
+                  channels:
+                  - type: EMAIL
+                    contactGroup: TECHNICAL
+                    contacts:
+                    - jim.doe@example.com
+              schema:
+                $ref: '#/components/schemas/getNotificationSettingListResult'
+          description: OK.
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: List the notification settings of a customer
+      tags:
+      - publiccloud
+  /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId}:
+    delete:
+      operationId: deleteNotificationSetting
+      parameters:
+      - description: Instance's ID
+        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Notification Setting ID
+        example: 3a042956-0689-45dc-8322-8b8325464182
+        explode: false
+        in: path
+        name: notificationSettingId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No content.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Delete a notification setting setting
+      tags:
+      - publiccloud
+    get:
+      operationId: getNotificationSetting
+      parameters:
+      - description: Instance's ID
+        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Notification Setting ID
+        example: 3a042956-0689-45dc-8322-8b8325464182
+        explode: false
+        in: path
+        name: notificationSettingId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                action: POWER_OFF
+                channels:
+                - type: EMAIL
+                  contactGroup: TECHNICAL
+                  contacts:
+                  - john.doe@example.com
+                  - jim.doe@example.com
+                id: ff6bbd04-c24c-4ecf-b09d-e6c415a65d63
+                threshold:
+                  unit: GB
+                  value: 1000
+                timePeriod: DAY
+                type: DATA_TRAFFIC
+              schema:
+                $ref: '#/components/schemas/notificationSetting'
+          description: OK.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Get details of a notification Setting
+      tags:
+      - publiccloud
+    post:
+      description: Create a notification setting
+      operationId: createNotificationSetting
+      parameters:
+      - description: Instance's ID
+        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Notification Setting ID
+        example: 3a042956-0689-45dc-8322-8b8325464182
+        explode: false
+        in: path
+        name: notificationSettingId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              action: POWER_OFF
+              channels:
+              - type: EMAIL
+                contactGroup: GENERAL
+              threshold:
+                unit: GB
+                value: 1000
+              timePeriod: DAY
+            schema:
+              $ref: '#/components/schemas/createNotificationSettingOpts'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              example:
+                action: POWER_OFF
+                channels:
+                - type: EMAIL
+                  contactGroup: TECHNICAL
+                  contacts:
+                  - john.doe@example.com
+                  - jim.doe@example.com
+                id: ff6bbd04-c24c-4ecf-b09d-e6c415a65d63
+                threshold:
+                  unit: GB
+                  value: 1000
+                timePeriod: DAY
+                type: DATA_TRAFFIC
+              schema:
+                $ref: '#/components/schemas/notificationSetting'
+          description: OK.
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Create a notification setting
+      tags:
+      - publiccloud
+    put:
+      operationId: updateNotificationSetting
+      parameters:
+      - description: Instance's ID
+        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Notification Setting ID
+        example: 3a042956-0689-45dc-8322-8b8325464182
+        explode: false
+        in: path
+        name: notificationSettingId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              action: POWER_OFF
+              channels:
+              - type: EMAIL
+                contactGroup: GENERAL
+              threshold:
+                unit: GB
+                value: 1000
+              timePeriod: DAY
+            schema:
+              $ref: '#/components/schemas/updateNotificationSettingOpts'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                action: POWER_OFF
+                channels:
+                - type: EMAIL
+                  contactGroup: TECHNICAL
+                  contacts:
+                  - john.doe@example.com
+                  - jim.doe@example.com
+                id: ff6bbd04-c24c-4ecf-b09d-e6c415a65d63
+                threshold:
+                  unit: GB
+                  value: 1000
+                timePeriod: DAY
+                type: DATA_TRAFFIC
+              schema:
+                $ref: '#/components/schemas/notificationSetting'
+          description: OK.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Update Notification Setting details
+      tags:
+      - publiccloud
 components:
   parameters:
     limit:
@@ -11847,6 +12394,17 @@ components:
       explode: false
       in: path
       name: targetGroupId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    notificationSettingId:
+      description: Notification Setting ID
+      example: 3a042956-0689-45dc-8322-8b8325464182
+      explode: false
+      in: path
+      name: notificationSettingId
       required: true
       schema:
         format: uuid
@@ -15810,6 +16368,188 @@ components:
         format: uuid
         type: string
       type: array
+    unit:
+      enum:
+      - MB
+      - GB
+      - TB
+      type: string
+    timePeriod:
+      description: Frequency of the notification setting
+      enum:
+      - DAY
+      - WEEK
+      - MONTH
+      example: DAY
+      type: string
+    action:
+      description: The action for when the threshold is exceeded
+      enum:
+      - POWER_OFF
+      - null
+      nullable: true
+      type: string
+    channel:
+      example:
+        contactGroup: TECHNICAL
+        type: EMAIL
+        contacts:
+        - contacts
+        - contacts
+      properties:
+        type:
+          example: EMAIL
+          type: string
+        contactGroup:
+          example: TECHNICAL
+          type: string
+        contacts:
+          items:
+            type: string
+          type: array
+      required:
+      - contactGroup
+      - contacts
+      - type
+      title: channel
+      type: object
+    notificationSetting:
+      example:
+        channels:
+        - contactGroup: TECHNICAL
+          type: EMAIL
+          contacts:
+          - contacts
+          - contacts
+        - contactGroup: TECHNICAL
+          type: EMAIL
+          contacts:
+          - contacts
+          - contacts
+        timePeriod: DAY
+        action: POWER_OFF
+        threshold:
+          unit: MB
+          value: 0
+        id: 3a042956-0689-45dc-8322-8b8325464182
+        type: DATA_TRAFFIC
+      properties:
+        id:
+          example: 3a042956-0689-45dc-8322-8b8325464182
+          format: uuid
+          type: string
+        threshold:
+          $ref: '#/components/schemas/notificationSetting_threshold'
+        type:
+          description: Type of the notification
+          enum:
+          - DATA_TRAFFIC
+          type: string
+        timePeriod:
+          $ref: '#/components/schemas/timePeriod'
+        action:
+          $ref: '#/components/schemas/action'
+        channels:
+          items:
+            $ref: '#/components/schemas/channel'
+          type: array
+      required:
+      - action
+      - channels
+      - id
+      - threshold
+      - timePeriod
+      - type
+      title: notificationSetting
+      type: object
+    getNotificationSettingListResult:
+      example:
+        _metadata:
+          offset: 0
+          limit: 5
+          totalCount: 2
+        notificationSettings:
+        - channels:
+          - contactGroup: TECHNICAL
+            type: EMAIL
+            contacts:
+            - contacts
+            - contacts
+          - contactGroup: TECHNICAL
+            type: EMAIL
+            contacts:
+            - contacts
+            - contacts
+          timePeriod: DAY
+          action: POWER_OFF
+          threshold:
+            unit: MB
+            value: 0
+          id: 3a042956-0689-45dc-8322-8b8325464182
+          type: DATA_TRAFFIC
+        - channels:
+          - contactGroup: TECHNICAL
+            type: EMAIL
+            contacts:
+            - contacts
+            - contacts
+          - contactGroup: TECHNICAL
+            type: EMAIL
+            contacts:
+            - contacts
+            - contacts
+          timePeriod: DAY
+          action: POWER_OFF
+          threshold:
+            unit: MB
+            value: 0
+          id: 3a042956-0689-45dc-8322-8b8325464182
+          type: DATA_TRAFFIC
+      properties:
+        notificationSettings:
+          items:
+            $ref: '#/components/schemas/notificationSetting'
+          type: array
+        _metadata:
+          $ref: '#/components/schemas/_metadata'
+      type: object
+    updateNotificationSettingOpts:
+      properties:
+        threshold:
+          $ref: '#/components/schemas/notificationSetting_threshold'
+        timePeriod:
+          $ref: '#/components/schemas/timePeriod'
+        action:
+          $ref: '#/components/schemas/action'
+        channels:
+          items:
+            $ref: '#/components/schemas/updateNotificationSettingOpts_channels_inner'
+          required:
+          - contactGroup
+          - type
+          type: array
+      type: object
+    createNotificationSettingOpts:
+      properties:
+        threshold:
+          $ref: '#/components/schemas/notificationSetting_threshold'
+        timePeriod:
+          $ref: '#/components/schemas/timePeriod'
+        action:
+          $ref: '#/components/schemas/action'
+        channels:
+          items:
+            $ref: '#/components/schemas/updateNotificationSettingOpts_channels_inner'
+          required:
+          - contactGroup
+          - type
+          type: array
+      required:
+      - action
+      - channels
+      - threshold
+      - timePeriod
+      type: object
     region:
       example:
         name: eu-west-3
@@ -16493,6 +17233,27 @@ components:
       - uri
       title: healthCheck
       type: object
+    notificationSetting_threshold:
+      example:
+        unit: MB
+        value: 0
+      properties:
+        value:
+          description: Threshold value for the notification setting
+          type: integer
+        unit:
+          $ref: '#/components/schemas/unit'
+      required:
+      - unit
+      - value
+    updateNotificationSettingOpts_channels_inner:
+      properties:
+        type:
+          example: EMAIL
+          type: string
+        contactGroup:
+          example: TECHNICAL
+          type: string
   securitySchemes:
     BearerAuth:
       scheme: bearer

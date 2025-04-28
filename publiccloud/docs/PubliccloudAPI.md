@@ -10,12 +10,14 @@ Method | HTTP request | Description
 [**CreateAutoScalingGroup**](PubliccloudAPI.md#CreateAutoScalingGroup) | **Post** /autoScalingGroups | Create Auto Scaling Group
 [**CreateImage**](PubliccloudAPI.md#CreateImage) | **Post** /images | Create Custom Image
 [**CreateLoadBalancerListener**](PubliccloudAPI.md#CreateLoadBalancerListener) | **Post** /loadBalancers/{loadBalancerId}/listeners | Create listener
+[**CreateNotificationSetting**](PubliccloudAPI.md#CreateNotificationSetting) | **Post** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Create a notification setting
 [**CreateSnapshot**](PubliccloudAPI.md#CreateSnapshot) | **Post** /instances/{instanceId}/snapshots | Create instance snapshot
 [**CreateTargetGroup**](PubliccloudAPI.md#CreateTargetGroup) | **Post** /targetGroups | Create Target Group
 [**DeleteAutoScalingGroup**](PubliccloudAPI.md#DeleteAutoScalingGroup) | **Delete** /autoScalingGroups/{autoScalingGroupId} | Delete Auto Scaling Group
 [**DeleteCredential**](PubliccloudAPI.md#DeleteCredential) | **Delete** /instances/{instanceId}/credentials/{type}/{username} | Delete Instance credential for a given type and username
 [**DeleteCredentials**](PubliccloudAPI.md#DeleteCredentials) | **Delete** /instances/{instanceId}/credentials | Delete all credentials associated with a specific Instance
 [**DeleteLoadBalancerListener**](PubliccloudAPI.md#DeleteLoadBalancerListener) | **Delete** /loadBalancers/{loadBalancerId}/listeners/{listenerId} | Delete load balancer listener
+[**DeleteNotificationSetting**](PubliccloudAPI.md#DeleteNotificationSetting) | **Delete** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Delete a notification setting setting
 [**DeleteSnapshot**](PubliccloudAPI.md#DeleteSnapshot) | **Delete** /instances/{instanceId}/snapshots/{snapshotId} | Delete instance snapshot
 [**DeleteTargetGroup**](PubliccloudAPI.md#DeleteTargetGroup) | **Delete** /targetGroups/{targetGroupId} | Delete Target Group
 [**DeregisterAutoScalingGroupTargetGroup**](PubliccloudAPI.md#DeregisterAutoScalingGroupTargetGroup) | **Post** /autoScalingGroups/{autoScalingGroupId}/deregisterTargetGroup | Deregister Target Group
@@ -50,6 +52,8 @@ Method | HTTP request | Description
 [**GetLoadBalancerListener**](PubliccloudAPI.md#GetLoadBalancerListener) | **Get** /loadBalancers/{loadBalancerId}/listeners/{listenerId} | Get listener details
 [**GetLoadBalancerListenerList**](PubliccloudAPI.md#GetLoadBalancerListenerList) | **Get** /loadBalancers/{loadBalancerId}/listeners | Get listener list
 [**GetMarketAppList**](PubliccloudAPI.md#GetMarketAppList) | **Get** /marketApps | Get marketplace apps
+[**GetNotificationSetting**](PubliccloudAPI.md#GetNotificationSetting) | **Get** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Get details of a notification Setting
+[**GetNotificationSettingList**](PubliccloudAPI.md#GetNotificationSettingList) | **Get** /instances/{instanceId}/notificationSettings/dataTraffic | List the notification settings of a customer
 [**GetRegionList**](PubliccloudAPI.md#GetRegionList) | **Get** /regions | List regions
 [**GetReinstallImageList**](PubliccloudAPI.md#GetReinstallImageList) | **Get** /instances/{instanceId}/reinstall/images | List images available for reinstall
 [**GetRequestsMetrics**](PubliccloudAPI.md#GetRequestsMetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/requests | Get load balancer requests metrics
@@ -91,6 +95,7 @@ Method | HTTP request | Description
 [**UpdateLoadBalancer**](PubliccloudAPI.md#UpdateLoadBalancer) | **Put** /loadBalancers/{loadBalancerId} | Update load balancer
 [**UpdateLoadBalancerIP**](PubliccloudAPI.md#UpdateLoadBalancerIP) | **Put** /loadBalancers/{loadBalancerId}/ips/{ip} | Update the IP address for a specific Load Balancer
 [**UpdateLoadBalancerListener**](PubliccloudAPI.md#UpdateLoadBalancerListener) | **Put** /loadBalancers/{loadBalancerId}/listeners/{listenerId} | Update a listener
+[**UpdateNotificationSetting**](PubliccloudAPI.md#UpdateNotificationSetting) | **Put** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Update Notification Setting details
 [**UpdateTargetGroup**](PubliccloudAPI.md#UpdateTargetGroup) | **Put** /targetGroups/{targetGroupId} | Update Target Group
 
 
@@ -505,6 +510,81 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CreateNotificationSetting
+
+> NotificationSetting CreateNotificationSetting(ctx, instanceId, notificationSettingId).CreateNotificationSettingOpts(createNotificationSettingOpts).Execute()
+
+Create a notification setting
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
+	notificationSettingId := "3a042956-0689-45dc-8322-8b8325464182" // string | Notification Setting ID
+	createNotificationSettingOpts := *openapiclient.NewCreateNotificationSettingOpts(*openapiclient.NewNotificationSettingThreshold(int32(123), openapiclient.unit("MB")), openapiclient.timePeriod("DAY"), "TODO", []openapiclient.UpdateNotificationSettingOptsChannelsInner{*openapiclient.NewUpdateNotificationSettingOptsChannelsInner()}) // CreateNotificationSettingOpts | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.CreateNotificationSetting(context.Background(), instanceId, notificationSettingId).CreateNotificationSettingOpts(createNotificationSettingOpts).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.CreateNotificationSetting``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateNotificationSetting`: NotificationSetting
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.CreateNotificationSetting`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceId** | **string** | Instance&#39;s ID | 
+**notificationSettingId** | **string** | Notification Setting ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateNotificationSettingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **createNotificationSettingOpts** | [**CreateNotificationSettingOpts**](CreateNotificationSettingOpts.md) |  | 
+
+### Return type
+
+[**NotificationSetting**](NotificationSetting.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateSnapshot
 
 > CreateSnapshot(ctx, instanceId).CreateSnapshotOpts(createSnapshotOpts).Execute()
@@ -893,6 +973,75 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteLoadBalancerListenerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteNotificationSetting
+
+> DeleteNotificationSetting(ctx, instanceId, notificationSettingId).Execute()
+
+Delete a notification setting setting
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
+	notificationSettingId := "3a042956-0689-45dc-8322-8b8325464182" // string | Notification Setting ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PubliccloudAPI.DeleteNotificationSetting(context.Background(), instanceId, notificationSettingId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.DeleteNotificationSetting``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceId** | **string** | Instance&#39;s ID | 
+**notificationSettingId** | **string** | Notification Setting ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteNotificationSettingRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3387,6 +3536,149 @@ Other parameters are passed through a pointer to a apiGetMarketAppListRequest st
 ### Return type
 
 [**GetMarketAppListResult**](GetMarketAppListResult.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetNotificationSetting
+
+> NotificationSetting GetNotificationSetting(ctx, instanceId, notificationSettingId).Execute()
+
+Get details of a notification Setting
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
+	notificationSettingId := "3a042956-0689-45dc-8322-8b8325464182" // string | Notification Setting ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.GetNotificationSetting(context.Background(), instanceId, notificationSettingId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.GetNotificationSetting``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetNotificationSetting`: NotificationSetting
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.GetNotificationSetting`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceId** | **string** | Instance&#39;s ID | 
+**notificationSettingId** | **string** | Notification Setting ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetNotificationSettingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**NotificationSetting**](NotificationSetting.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetNotificationSettingList
+
+> GetNotificationSettingListResult GetNotificationSettingList(ctx, instanceId).Limit(limit).Offset(offset).Execute()
+
+List the notification settings of a customer
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
+	limit := int32(20) // int32 | Limit the number of results returned. (optional)
+	offset := int32(10) // int32 | Return results starting from the given offset. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.GetNotificationSettingList(context.Background(), instanceId).Limit(limit).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.GetNotificationSettingList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetNotificationSettingList`: GetNotificationSettingListResult
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.GetNotificationSettingList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceId** | **string** | Instance&#39;s ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetNotificationSettingListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Limit the number of results returned. | 
+ **offset** | **int32** | Return results starting from the given offset. | 
+
+### Return type
+
+[**GetNotificationSettingListResult**](GetNotificationSettingListResult.md)
 
 ### Authorization
 
@@ -6312,6 +6604,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LoadBalancerListener**](LoadBalancerListener.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateNotificationSetting
+
+> NotificationSetting UpdateNotificationSetting(ctx, instanceId, notificationSettingId).UpdateNotificationSettingOpts(updateNotificationSettingOpts).Execute()
+
+Update Notification Setting details
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
+	notificationSettingId := "3a042956-0689-45dc-8322-8b8325464182" // string | Notification Setting ID
+	updateNotificationSettingOpts := *openapiclient.NewUpdateNotificationSettingOpts() // UpdateNotificationSettingOpts | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.UpdateNotificationSetting(context.Background(), instanceId, notificationSettingId).UpdateNotificationSettingOpts(updateNotificationSettingOpts).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.UpdateNotificationSetting``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateNotificationSetting`: NotificationSetting
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.UpdateNotificationSetting`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceId** | **string** | Instance&#39;s ID | 
+**notificationSettingId** | **string** | Notification Setting ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateNotificationSettingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **updateNotificationSettingOpts** | [**UpdateNotificationSettingOpts**](UpdateNotificationSettingOpts.md) |  | 
+
+### Return type
+
+[**NotificationSetting**](NotificationSetting.md)
 
 ### Authorization
 
