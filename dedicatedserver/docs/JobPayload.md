@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **FeaturesUtilized** | Pointer to **[]string** | The features that are being utilized by the server | [optional] 
 **SshKeys** | Pointer to **NullableString** | SSH keys to be added to the server | [optional] 
 **Database** | Pointer to [**NullableDatabase**](Database.md) |  | [optional] 
+**AiFrameworks** | Pointer to **[]string** | The AI frameworks that are being installed on the server | [optional] 
 **CallbackUrl** | Pointer to **NullableString** | The URL to be called when the job is finished | [optional] 
 **DoEmailNotification** | Pointer to **NullableBool** | Whether to send email notifications | [optional] 
 **Configurable** | Pointer to **NullableBool** | Whether the job is configurable | [optional] 
@@ -552,6 +553,41 @@ HasDatabase returns a boolean if a field has been set.
 `func (o *JobPayload) UnsetDatabase()`
 
 UnsetDatabase ensures that no value is present for Database, not even an explicit nil
+### GetAiFrameworks
+
+`func (o *JobPayload) GetAiFrameworks() []string`
+
+GetAiFrameworks returns the AiFrameworks field if non-nil, zero value otherwise.
+
+### GetAiFrameworksOk
+
+`func (o *JobPayload) GetAiFrameworksOk() (*[]string, bool)`
+
+GetAiFrameworksOk returns a tuple with the AiFrameworks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiFrameworks
+
+`func (o *JobPayload) SetAiFrameworks(v []string)`
+
+SetAiFrameworks sets AiFrameworks field to given value.
+
+### HasAiFrameworks
+
+`func (o *JobPayload) HasAiFrameworks() bool`
+
+HasAiFrameworks returns a boolean if a field has been set.
+
+### SetAiFrameworksNil
+
+`func (o *JobPayload) SetAiFrameworksNil(b bool)`
+
+ SetAiFrameworksNil sets the value for AiFrameworks to be an explicit nil
+
+### UnsetAiFrameworks
+`func (o *JobPayload) UnsetAiFrameworks()`
+
+UnsetAiFrameworks ensures that no value is present for AiFrameworks, not even an explicit nil
 ### GetCallbackUrl
 
 `func (o *JobPayload) GetCallbackUrl() string`

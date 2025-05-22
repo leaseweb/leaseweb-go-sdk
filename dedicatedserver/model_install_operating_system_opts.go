@@ -41,6 +41,8 @@ type InstallOperatingSystemOpts struct {
 	Raid *Raid `json:"raid,omitempty"`
 	// List of public sshKeys to be setup in your installation, separated by new lines
 	SshKeys *string `json:"sshKeys,omitempty"`
+	// The AI frameworks that are being installed on the server
+	AiFrameworks []string `json:"aiFrameworks,omitempty"`
 	// Timezone represented as Geographical_Area/City
 	Timezone *string `json:"timezone,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -410,6 +412,39 @@ func (o *InstallOperatingSystemOpts) SetSshKeys(v string) {
 	o.SshKeys = &v
 }
 
+// GetAiFrameworks returns the AiFrameworks field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstallOperatingSystemOpts) GetAiFrameworks() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.AiFrameworks
+}
+
+// GetAiFrameworksOk returns a tuple with the AiFrameworks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstallOperatingSystemOpts) GetAiFrameworksOk() ([]string, bool) {
+	if o == nil || IsNil(o.AiFrameworks) {
+		return nil, false
+	}
+	return o.AiFrameworks, true
+}
+
+// HasAiFrameworks returns a boolean if a field has been set.
+func (o *InstallOperatingSystemOpts) HasAiFrameworks() bool {
+	if o != nil && !IsNil(o.AiFrameworks) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiFrameworks gets a reference to the given []string and assigns it to the AiFrameworks field.
+func (o *InstallOperatingSystemOpts) SetAiFrameworks(v []string) {
+	o.AiFrameworks = v
+}
+
 // GetTimezone returns the Timezone field value if set, zero value otherwise.
 func (o *InstallOperatingSystemOpts) GetTimezone() string {
 	if o == nil || IsNil(o.Timezone) {
@@ -483,6 +518,9 @@ func (o InstallOperatingSystemOpts) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SshKeys) {
 		toSerialize["sshKeys"] = o.SshKeys
 	}
+	if o.AiFrameworks != nil {
+		toSerialize["aiFrameworks"] = o.AiFrameworks
+	}
 	if !IsNil(o.Timezone) {
 		toSerialize["timezone"] = o.Timezone
 	}
@@ -540,6 +578,7 @@ func (o *InstallOperatingSystemOpts) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "powerCycle")
 		delete(additionalProperties, "raid")
 		delete(additionalProperties, "sshKeys")
+		delete(additionalProperties, "aiFrameworks")
 		delete(additionalProperties, "timezone")
 		o.AdditionalProperties = additionalProperties
 	}

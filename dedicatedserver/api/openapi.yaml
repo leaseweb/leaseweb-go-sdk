@@ -5100,6 +5100,9 @@ paths:
         content:
           application/json:
             example:
+              aiFrameworks:
+              - PYTORCH
+              - XGBOOST
               controlPanelId: PLESK_12
               device: SATA2TB
               hostname: ubuntu22.local
@@ -5620,6 +5623,12 @@ paths:
                     - DB_MARIADB
                     - DB_REDIS
                     - DB_POSTGRESQL
+                    - AI_FRAMEWORK_PYTORCH
+                    - AI_FRAMEWORK_TENSORFLOW
+                    - AI_FRAMEWORK_SCIKIT_LEARN
+                    - AI_FRAMEWORK_XGBOOST
+                    - AI_FRAMEWORK_HUGGING_FACE
+                    - AI_FRAMEWORK_NVIDIA_NGC
                     hostname: s123.dedi.leaseweb.net
                     timezone: UTC
                     partitions:
@@ -5637,6 +5646,11 @@ paths:
                     - size: '*'
                       filesystem: ext4
                       mountpoint: /
+                    aiFrameworks:
+                    - PYTORCH
+                    - TENSORFLOW
+                    - SCIKIT_LEARN
+                    - XGBOOST
                     sshKeys: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMRnDNPjhz3WnGO6EPTj/rWqBGXxTNUrPW1uYXkGfQ3J
                     powerCycle: true
                     callbackUrl: https://leaseweb.com
@@ -9028,6 +9042,12 @@ components:
             $ref: '#/components/schemas/sshKeys'
           database:
             $ref: '#/components/schemas/database'
+          aiFrameworks:
+            description: The AI frameworks that are being installed on the server
+            items:
+              type: string
+            nullable: true
+            type: array
           callbackUrl:
             description: The URL to be called when the job is finished
             nullable: true
@@ -9048,6 +9068,9 @@ components:
         - size: "1024"
           filesystem: ext4
           mountpoint: /home
+        aiFrameworks:
+        - aiFrameworks
+        - aiFrameworks
         os:
           engine: engine
           name: name
@@ -9151,6 +9174,9 @@ components:
           - size: "1024"
             filesystem: ext4
             mountpoint: /home
+          aiFrameworks:
+          - aiFrameworks
+          - aiFrameworks
           os:
             engine: engine
             name: name
@@ -9480,6 +9506,12 @@ components:
           description: "List of public sshKeys to be setup in your installation, separated\
             \ by new lines"
           type: string
+        aiFrameworks:
+          description: The AI frameworks that are being installed on the server
+          items:
+            type: string
+          nullable: true
+          type: array
         timezone:
           description: Timezone represented as Geographical_Area/City
           type: string
@@ -9506,6 +9538,9 @@ components:
           - size: "1024"
             filesystem: ext4
             mountpoint: /home
+          aiFrameworks:
+          - aiFrameworks
+          - aiFrameworks
           os:
             engine: engine
             name: name
@@ -9702,6 +9737,9 @@ components:
             - size: "1024"
               filesystem: ext4
               mountpoint: /home
+            aiFrameworks:
+            - aiFrameworks
+            - aiFrameworks
             os:
               engine: engine
               name: name
@@ -9833,6 +9871,9 @@ components:
             - size: "1024"
               filesystem: ext4
               mountpoint: /home
+            aiFrameworks:
+            - aiFrameworks
+            - aiFrameworks
             os:
               engine: engine
               name: name
@@ -9981,6 +10022,9 @@ components:
           - size: "1024"
             filesystem: ext4
             mountpoint: /home
+          aiFrameworks:
+          - aiFrameworks
+          - aiFrameworks
           os:
             engine: engine
             name: name

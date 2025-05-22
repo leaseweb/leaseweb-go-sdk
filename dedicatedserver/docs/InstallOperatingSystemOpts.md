@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **PowerCycle** | Pointer to **bool** | If true, allows system reboots to happen automatically within the process. Otherwise, you should do them manually | [optional] 
 **Raid** | Pointer to [**Raid**](Raid.md) |  | [optional] 
 **SshKeys** | Pointer to **string** | List of public sshKeys to be setup in your installation, separated by new lines | [optional] 
+**AiFrameworks** | Pointer to **[]string** | The AI frameworks that are being installed on the server | [optional] 
 **Timezone** | Pointer to **string** | Timezone represented as Geographical_Area/City | [optional] 
 
 ## Methods
@@ -306,6 +307,41 @@ SetSshKeys sets SshKeys field to given value.
 
 HasSshKeys returns a boolean if a field has been set.
 
+### GetAiFrameworks
+
+`func (o *InstallOperatingSystemOpts) GetAiFrameworks() []string`
+
+GetAiFrameworks returns the AiFrameworks field if non-nil, zero value otherwise.
+
+### GetAiFrameworksOk
+
+`func (o *InstallOperatingSystemOpts) GetAiFrameworksOk() (*[]string, bool)`
+
+GetAiFrameworksOk returns a tuple with the AiFrameworks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiFrameworks
+
+`func (o *InstallOperatingSystemOpts) SetAiFrameworks(v []string)`
+
+SetAiFrameworks sets AiFrameworks field to given value.
+
+### HasAiFrameworks
+
+`func (o *InstallOperatingSystemOpts) HasAiFrameworks() bool`
+
+HasAiFrameworks returns a boolean if a field has been set.
+
+### SetAiFrameworksNil
+
+`func (o *InstallOperatingSystemOpts) SetAiFrameworksNil(b bool)`
+
+ SetAiFrameworksNil sets the value for AiFrameworks to be an explicit nil
+
+### UnsetAiFrameworks
+`func (o *InstallOperatingSystemOpts) UnsetAiFrameworks()`
+
+UnsetAiFrameworks ensures that no value is present for AiFrameworks, not even an explicit nil
 ### GetTimezone
 
 `func (o *InstallOperatingSystemOpts) GetTimezone() string`

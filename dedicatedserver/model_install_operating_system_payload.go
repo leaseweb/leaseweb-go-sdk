@@ -52,6 +52,8 @@ type InstallOperatingSystemPayload struct {
 	// SSH keys to be added to the server
 	SshKeys NullableString `json:"sshKeys,omitempty"`
 	Database NullableDatabase `json:"database,omitempty"`
+	// The AI frameworks that are being installed on the server
+	AiFrameworks []string `json:"aiFrameworks,omitempty"`
 	// The URL to be called when the job is finished
 	CallbackUrl NullableString `json:"callbackUrl,omitempty"`
 	// Whether to send email notifications
@@ -718,6 +720,39 @@ func (o *InstallOperatingSystemPayload) UnsetDatabase() {
 	o.Database.Unset()
 }
 
+// GetAiFrameworks returns the AiFrameworks field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstallOperatingSystemPayload) GetAiFrameworks() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.AiFrameworks
+}
+
+// GetAiFrameworksOk returns a tuple with the AiFrameworks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstallOperatingSystemPayload) GetAiFrameworksOk() ([]string, bool) {
+	if o == nil || IsNil(o.AiFrameworks) {
+		return nil, false
+	}
+	return o.AiFrameworks, true
+}
+
+// HasAiFrameworks returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasAiFrameworks() bool {
+	if o != nil && !IsNil(o.AiFrameworks) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiFrameworks gets a reference to the given []string and assigns it to the AiFrameworks field.
+func (o *InstallOperatingSystemPayload) SetAiFrameworks(v []string) {
+	o.AiFrameworks = v
+}
+
 // GetCallbackUrl returns the CallbackUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstallOperatingSystemPayload) GetCallbackUrl() string {
 	if o == nil || IsNil(o.CallbackUrl.Get()) {
@@ -911,6 +946,9 @@ func (o InstallOperatingSystemPayload) ToMap() (map[string]interface{}, error) {
 	if o.Database.IsSet() {
 		toSerialize["database"] = o.Database.Get()
 	}
+	if o.AiFrameworks != nil {
+		toSerialize["aiFrameworks"] = o.AiFrameworks
+	}
 	if o.CallbackUrl.IsSet() {
 		toSerialize["callbackUrl"] = o.CallbackUrl.Get()
 	}
@@ -961,6 +999,7 @@ func (o *InstallOperatingSystemPayload) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "featuresUtilized")
 		delete(additionalProperties, "sshKeys")
 		delete(additionalProperties, "database")
+		delete(additionalProperties, "aiFrameworks")
 		delete(additionalProperties, "callbackUrl")
 		delete(additionalProperties, "doEmailNotification")
 		delete(additionalProperties, "configurable")
