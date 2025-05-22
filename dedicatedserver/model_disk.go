@@ -20,11 +20,14 @@ var _ MappedNullable = &Disk{}
 // Disk struct for Disk
 type Disk struct {
 	Description *string `json:"description,omitempty"`
+	// ID of the disk
 	Id *string `json:"id,omitempty"`
 	Product *string `json:"product,omitempty"`
+	// Serial number of the server
 	SerialNumber *string `json:"serial_number,omitempty"`
 	Size *string `json:"size,omitempty"`
 	Smartctl *Smartctl `json:"smartctl,omitempty"`
+	// Vendor of the server
 	Vendor *string `json:"vendor,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

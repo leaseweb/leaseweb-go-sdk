@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **Capabilities** | Pointer to [**CpuCapabilities**](CpuCapabilities.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Hz** | Pointer to **string** |  | [optional] 
-**SerialNumber** | Pointer to **string** |  | [optional] 
+**SerialNumber** | Pointer to **string** | Serial number of the server | [optional] 
 **Settings** | Pointer to [**CpuSettings**](CpuSettings.md) |  | [optional] 
 **Slot** | Pointer to **string** |  | [optional] 
-**Vendor** | Pointer to **string** |  | [optional] 
+**Vendor** | Pointer to **string** | Vendor of the server | [optional] 
 
 ## Methods
 

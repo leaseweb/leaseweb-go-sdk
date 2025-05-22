@@ -4,26 +4,35 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FileserverBaseUrl** | Pointer to **string** |  | [optional] 
-**Pop** | Pointer to **string** |  | [optional] 
-**PowerCycle** | Pointer to **bool** |  | [optional] 
-**IsUnassignedServer** | Pointer to **bool** |  | [optional] 
-**ServerId** | Pointer to **string** | Id of the server | [optional] 
-**JobType** | **string** |  | 
-**Configurable** | Pointer to **bool** |  | [optional] 
-**Device** | Pointer to **string** |  | [optional] 
-**NumberOfDisks** | Pointer to **NullableInt32** |  | [optional] 
-**OperatingSystemId** | Pointer to **string** |  | [optional] 
+**PowerCycle** | Pointer to **bool** | Whether the server should be powered off and on automatically before the job is started | [optional] 
+**Network** | Pointer to [**DefaultPayloadNetwork**](DefaultPayloadNetwork.md) |  | [optional] 
+**Site** | Pointer to **string** | Location of the server | [optional] 
+**InitiatedBy** | Pointer to **string** | Who initiated the job | [optional] 
+**ServerBrand** | Pointer to **string** | The brand of the server | [optional] 
+**ServerChassis** | Pointer to **string** | The chassis of the server | [optional] 
+**FileserverBaseUrl** | Pointer to **string** | The base URL of the fileserver | [optional] 
+**ServerHardwareRaid** | Pointer to **bool** | Whether the server has hardware RAID | [optional] 
 **Os** | Pointer to [**Os**](Os.md) |  | [optional] 
+**Raid** | Pointer to [**NullableRaidPayload**](RaidPayload.md) |  | [optional] 
+**Device** | Pointer to **string** | The installation device | [optional] 
+**Hostname** | Pointer to **string** | The hostname of the server | [optional] 
+**Timezone** | Pointer to **string** | Timezone to be configured on the server | [optional] 
 **Partitions** | Pointer to [**[]Partition**](Partition.md) |  | [optional] 
-**RaidLevel** | Pointer to **NullableInt32** |  | [optional] 
-**Timezone** | Pointer to **string** | Timezone represented as Geographical_Area/City | [optional] 
+**OperatingSystemId** | Pointer to **string** | The ID of the operating system | [optional] 
+**Features** | Pointer to **[]string** | The server&#39;s features | [optional] 
+**FeaturesUtilized** | Pointer to **[]string** | The features that are being utilized by the server | [optional] 
+**SshKeys** | Pointer to **NullableString** | SSH keys to be added to the server | [optional] 
+**Database** | Pointer to [**NullableDatabase**](Database.md) |  | [optional] 
+**CallbackUrl** | Pointer to **NullableString** | The URL to be called when the job is finished | [optional] 
+**DoEmailNotification** | Pointer to **NullableBool** | Whether to send email notifications | [optional] 
+**Configurable** | Pointer to **NullableBool** | Whether the job is configurable | [optional] 
+**RescueImageId** | Pointer to **string** | The ID of the rescue image if job is for rescue mode | [optional] 
 
 ## Methods
 
 ### NewJobPayload
 
-`func NewJobPayload(jobType string, ) *JobPayload`
+`func NewJobPayload() *JobPayload`
 
 NewJobPayload instantiates a new JobPayload object
 This constructor will assign default values to properties that have it defined,
@@ -37,56 +46,6 @@ will change when the set of required properties is changed
 NewJobPayloadWithDefaults instantiates a new JobPayload object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetFileserverBaseUrl
-
-`func (o *JobPayload) GetFileserverBaseUrl() string`
-
-GetFileserverBaseUrl returns the FileserverBaseUrl field if non-nil, zero value otherwise.
-
-### GetFileserverBaseUrlOk
-
-`func (o *JobPayload) GetFileserverBaseUrlOk() (*string, bool)`
-
-GetFileserverBaseUrlOk returns a tuple with the FileserverBaseUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFileserverBaseUrl
-
-`func (o *JobPayload) SetFileserverBaseUrl(v string)`
-
-SetFileserverBaseUrl sets FileserverBaseUrl field to given value.
-
-### HasFileserverBaseUrl
-
-`func (o *JobPayload) HasFileserverBaseUrl() bool`
-
-HasFileserverBaseUrl returns a boolean if a field has been set.
-
-### GetPop
-
-`func (o *JobPayload) GetPop() string`
-
-GetPop returns the Pop field if non-nil, zero value otherwise.
-
-### GetPopOk
-
-`func (o *JobPayload) GetPopOk() (*string, bool)`
-
-GetPopOk returns a tuple with the Pop field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPop
-
-`func (o *JobPayload) SetPop(v string)`
-
-SetPop sets Pop field to given value.
-
-### HasPop
-
-`func (o *JobPayload) HasPop() bool`
-
-HasPop returns a boolean if a field has been set.
 
 ### GetPowerCycle
 
@@ -113,185 +72,180 @@ SetPowerCycle sets PowerCycle field to given value.
 
 HasPowerCycle returns a boolean if a field has been set.
 
-### GetIsUnassignedServer
+### GetNetwork
 
-`func (o *JobPayload) GetIsUnassignedServer() bool`
+`func (o *JobPayload) GetNetwork() DefaultPayloadNetwork`
 
-GetIsUnassignedServer returns the IsUnassignedServer field if non-nil, zero value otherwise.
+GetNetwork returns the Network field if non-nil, zero value otherwise.
 
-### GetIsUnassignedServerOk
+### GetNetworkOk
 
-`func (o *JobPayload) GetIsUnassignedServerOk() (*bool, bool)`
+`func (o *JobPayload) GetNetworkOk() (*DefaultPayloadNetwork, bool)`
 
-GetIsUnassignedServerOk returns a tuple with the IsUnassignedServer field if it's non-nil, zero value otherwise
+GetNetworkOk returns a tuple with the Network field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsUnassignedServer
+### SetNetwork
 
-`func (o *JobPayload) SetIsUnassignedServer(v bool)`
+`func (o *JobPayload) SetNetwork(v DefaultPayloadNetwork)`
 
-SetIsUnassignedServer sets IsUnassignedServer field to given value.
+SetNetwork sets Network field to given value.
 
-### HasIsUnassignedServer
+### HasNetwork
 
-`func (o *JobPayload) HasIsUnassignedServer() bool`
+`func (o *JobPayload) HasNetwork() bool`
 
-HasIsUnassignedServer returns a boolean if a field has been set.
+HasNetwork returns a boolean if a field has been set.
 
-### GetServerId
+### GetSite
 
-`func (o *JobPayload) GetServerId() string`
+`func (o *JobPayload) GetSite() string`
 
-GetServerId returns the ServerId field if non-nil, zero value otherwise.
+GetSite returns the Site field if non-nil, zero value otherwise.
 
-### GetServerIdOk
+### GetSiteOk
 
-`func (o *JobPayload) GetServerIdOk() (*string, bool)`
+`func (o *JobPayload) GetSiteOk() (*string, bool)`
 
-GetServerIdOk returns a tuple with the ServerId field if it's non-nil, zero value otherwise
+GetSiteOk returns a tuple with the Site field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetServerId
+### SetSite
 
-`func (o *JobPayload) SetServerId(v string)`
+`func (o *JobPayload) SetSite(v string)`
 
-SetServerId sets ServerId field to given value.
+SetSite sets Site field to given value.
 
-### HasServerId
+### HasSite
 
-`func (o *JobPayload) HasServerId() bool`
+`func (o *JobPayload) HasSite() bool`
 
-HasServerId returns a boolean if a field has been set.
+HasSite returns a boolean if a field has been set.
 
-### GetJobType
+### GetInitiatedBy
 
-`func (o *JobPayload) GetJobType() string`
+`func (o *JobPayload) GetInitiatedBy() string`
 
-GetJobType returns the JobType field if non-nil, zero value otherwise.
+GetInitiatedBy returns the InitiatedBy field if non-nil, zero value otherwise.
 
-### GetJobTypeOk
+### GetInitiatedByOk
 
-`func (o *JobPayload) GetJobTypeOk() (*string, bool)`
+`func (o *JobPayload) GetInitiatedByOk() (*string, bool)`
 
-GetJobTypeOk returns a tuple with the JobType field if it's non-nil, zero value otherwise
+GetInitiatedByOk returns a tuple with the InitiatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetJobType
+### SetInitiatedBy
 
-`func (o *JobPayload) SetJobType(v string)`
+`func (o *JobPayload) SetInitiatedBy(v string)`
 
-SetJobType sets JobType field to given value.
+SetInitiatedBy sets InitiatedBy field to given value.
 
+### HasInitiatedBy
 
-### GetConfigurable
+`func (o *JobPayload) HasInitiatedBy() bool`
 
-`func (o *JobPayload) GetConfigurable() bool`
+HasInitiatedBy returns a boolean if a field has been set.
 
-GetConfigurable returns the Configurable field if non-nil, zero value otherwise.
+### GetServerBrand
 
-### GetConfigurableOk
+`func (o *JobPayload) GetServerBrand() string`
 
-`func (o *JobPayload) GetConfigurableOk() (*bool, bool)`
+GetServerBrand returns the ServerBrand field if non-nil, zero value otherwise.
 
-GetConfigurableOk returns a tuple with the Configurable field if it's non-nil, zero value otherwise
+### GetServerBrandOk
+
+`func (o *JobPayload) GetServerBrandOk() (*string, bool)`
+
+GetServerBrandOk returns a tuple with the ServerBrand field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConfigurable
+### SetServerBrand
 
-`func (o *JobPayload) SetConfigurable(v bool)`
+`func (o *JobPayload) SetServerBrand(v string)`
 
-SetConfigurable sets Configurable field to given value.
+SetServerBrand sets ServerBrand field to given value.
 
-### HasConfigurable
+### HasServerBrand
 
-`func (o *JobPayload) HasConfigurable() bool`
+`func (o *JobPayload) HasServerBrand() bool`
 
-HasConfigurable returns a boolean if a field has been set.
+HasServerBrand returns a boolean if a field has been set.
 
-### GetDevice
+### GetServerChassis
 
-`func (o *JobPayload) GetDevice() string`
+`func (o *JobPayload) GetServerChassis() string`
 
-GetDevice returns the Device field if non-nil, zero value otherwise.
+GetServerChassis returns the ServerChassis field if non-nil, zero value otherwise.
 
-### GetDeviceOk
+### GetServerChassisOk
 
-`func (o *JobPayload) GetDeviceOk() (*string, bool)`
+`func (o *JobPayload) GetServerChassisOk() (*string, bool)`
 
-GetDeviceOk returns a tuple with the Device field if it's non-nil, zero value otherwise
+GetServerChassisOk returns a tuple with the ServerChassis field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDevice
+### SetServerChassis
 
-`func (o *JobPayload) SetDevice(v string)`
+`func (o *JobPayload) SetServerChassis(v string)`
 
-SetDevice sets Device field to given value.
+SetServerChassis sets ServerChassis field to given value.
 
-### HasDevice
+### HasServerChassis
 
-`func (o *JobPayload) HasDevice() bool`
+`func (o *JobPayload) HasServerChassis() bool`
 
-HasDevice returns a boolean if a field has been set.
+HasServerChassis returns a boolean if a field has been set.
 
-### GetNumberOfDisks
+### GetFileserverBaseUrl
 
-`func (o *JobPayload) GetNumberOfDisks() int32`
+`func (o *JobPayload) GetFileserverBaseUrl() string`
 
-GetNumberOfDisks returns the NumberOfDisks field if non-nil, zero value otherwise.
+GetFileserverBaseUrl returns the FileserverBaseUrl field if non-nil, zero value otherwise.
 
-### GetNumberOfDisksOk
+### GetFileserverBaseUrlOk
 
-`func (o *JobPayload) GetNumberOfDisksOk() (*int32, bool)`
+`func (o *JobPayload) GetFileserverBaseUrlOk() (*string, bool)`
 
-GetNumberOfDisksOk returns a tuple with the NumberOfDisks field if it's non-nil, zero value otherwise
+GetFileserverBaseUrlOk returns a tuple with the FileserverBaseUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNumberOfDisks
+### SetFileserverBaseUrl
 
-`func (o *JobPayload) SetNumberOfDisks(v int32)`
+`func (o *JobPayload) SetFileserverBaseUrl(v string)`
 
-SetNumberOfDisks sets NumberOfDisks field to given value.
+SetFileserverBaseUrl sets FileserverBaseUrl field to given value.
 
-### HasNumberOfDisks
+### HasFileserverBaseUrl
 
-`func (o *JobPayload) HasNumberOfDisks() bool`
+`func (o *JobPayload) HasFileserverBaseUrl() bool`
 
-HasNumberOfDisks returns a boolean if a field has been set.
+HasFileserverBaseUrl returns a boolean if a field has been set.
 
-### SetNumberOfDisksNil
+### GetServerHardwareRaid
 
-`func (o *JobPayload) SetNumberOfDisksNil(b bool)`
+`func (o *JobPayload) GetServerHardwareRaid() bool`
 
- SetNumberOfDisksNil sets the value for NumberOfDisks to be an explicit nil
+GetServerHardwareRaid returns the ServerHardwareRaid field if non-nil, zero value otherwise.
 
-### UnsetNumberOfDisks
-`func (o *JobPayload) UnsetNumberOfDisks()`
+### GetServerHardwareRaidOk
 
-UnsetNumberOfDisks ensures that no value is present for NumberOfDisks, not even an explicit nil
-### GetOperatingSystemId
+`func (o *JobPayload) GetServerHardwareRaidOk() (*bool, bool)`
 
-`func (o *JobPayload) GetOperatingSystemId() string`
-
-GetOperatingSystemId returns the OperatingSystemId field if non-nil, zero value otherwise.
-
-### GetOperatingSystemIdOk
-
-`func (o *JobPayload) GetOperatingSystemIdOk() (*string, bool)`
-
-GetOperatingSystemIdOk returns a tuple with the OperatingSystemId field if it's non-nil, zero value otherwise
+GetServerHardwareRaidOk returns a tuple with the ServerHardwareRaid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOperatingSystemId
+### SetServerHardwareRaid
 
-`func (o *JobPayload) SetOperatingSystemId(v string)`
+`func (o *JobPayload) SetServerHardwareRaid(v bool)`
 
-SetOperatingSystemId sets OperatingSystemId field to given value.
+SetServerHardwareRaid sets ServerHardwareRaid field to given value.
 
-### HasOperatingSystemId
+### HasServerHardwareRaid
 
-`func (o *JobPayload) HasOperatingSystemId() bool`
+`func (o *JobPayload) HasServerHardwareRaid() bool`
 
-HasOperatingSystemId returns a boolean if a field has been set.
+HasServerHardwareRaid returns a boolean if a field has been set.
 
 ### GetOs
 
@@ -318,6 +272,116 @@ SetOs sets Os field to given value.
 
 HasOs returns a boolean if a field has been set.
 
+### GetRaid
+
+`func (o *JobPayload) GetRaid() RaidPayload`
+
+GetRaid returns the Raid field if non-nil, zero value otherwise.
+
+### GetRaidOk
+
+`func (o *JobPayload) GetRaidOk() (*RaidPayload, bool)`
+
+GetRaidOk returns a tuple with the Raid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRaid
+
+`func (o *JobPayload) SetRaid(v RaidPayload)`
+
+SetRaid sets Raid field to given value.
+
+### HasRaid
+
+`func (o *JobPayload) HasRaid() bool`
+
+HasRaid returns a boolean if a field has been set.
+
+### SetRaidNil
+
+`func (o *JobPayload) SetRaidNil(b bool)`
+
+ SetRaidNil sets the value for Raid to be an explicit nil
+
+### UnsetRaid
+`func (o *JobPayload) UnsetRaid()`
+
+UnsetRaid ensures that no value is present for Raid, not even an explicit nil
+### GetDevice
+
+`func (o *JobPayload) GetDevice() string`
+
+GetDevice returns the Device field if non-nil, zero value otherwise.
+
+### GetDeviceOk
+
+`func (o *JobPayload) GetDeviceOk() (*string, bool)`
+
+GetDeviceOk returns a tuple with the Device field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDevice
+
+`func (o *JobPayload) SetDevice(v string)`
+
+SetDevice sets Device field to given value.
+
+### HasDevice
+
+`func (o *JobPayload) HasDevice() bool`
+
+HasDevice returns a boolean if a field has been set.
+
+### GetHostname
+
+`func (o *JobPayload) GetHostname() string`
+
+GetHostname returns the Hostname field if non-nil, zero value otherwise.
+
+### GetHostnameOk
+
+`func (o *JobPayload) GetHostnameOk() (*string, bool)`
+
+GetHostnameOk returns a tuple with the Hostname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostname
+
+`func (o *JobPayload) SetHostname(v string)`
+
+SetHostname sets Hostname field to given value.
+
+### HasHostname
+
+`func (o *JobPayload) HasHostname() bool`
+
+HasHostname returns a boolean if a field has been set.
+
+### GetTimezone
+
+`func (o *JobPayload) GetTimezone() string`
+
+GetTimezone returns the Timezone field if non-nil, zero value otherwise.
+
+### GetTimezoneOk
+
+`func (o *JobPayload) GetTimezoneOk() (*string, bool)`
+
+GetTimezoneOk returns a tuple with the Timezone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimezone
+
+`func (o *JobPayload) SetTimezone(v string)`
+
+SetTimezone sets Timezone field to given value.
+
+### HasTimezone
+
+`func (o *JobPayload) HasTimezone() bool`
+
+HasTimezone returns a boolean if a field has been set.
+
 ### GetPartitions
 
 `func (o *JobPayload) GetPartitions() []Partition`
@@ -343,65 +407,280 @@ SetPartitions sets Partitions field to given value.
 
 HasPartitions returns a boolean if a field has been set.
 
-### GetRaidLevel
+### GetOperatingSystemId
 
-`func (o *JobPayload) GetRaidLevel() int32`
+`func (o *JobPayload) GetOperatingSystemId() string`
 
-GetRaidLevel returns the RaidLevel field if non-nil, zero value otherwise.
+GetOperatingSystemId returns the OperatingSystemId field if non-nil, zero value otherwise.
 
-### GetRaidLevelOk
+### GetOperatingSystemIdOk
 
-`func (o *JobPayload) GetRaidLevelOk() (*int32, bool)`
+`func (o *JobPayload) GetOperatingSystemIdOk() (*string, bool)`
 
-GetRaidLevelOk returns a tuple with the RaidLevel field if it's non-nil, zero value otherwise
+GetOperatingSystemIdOk returns a tuple with the OperatingSystemId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRaidLevel
+### SetOperatingSystemId
 
-`func (o *JobPayload) SetRaidLevel(v int32)`
+`func (o *JobPayload) SetOperatingSystemId(v string)`
 
-SetRaidLevel sets RaidLevel field to given value.
+SetOperatingSystemId sets OperatingSystemId field to given value.
 
-### HasRaidLevel
+### HasOperatingSystemId
 
-`func (o *JobPayload) HasRaidLevel() bool`
+`func (o *JobPayload) HasOperatingSystemId() bool`
 
-HasRaidLevel returns a boolean if a field has been set.
+HasOperatingSystemId returns a boolean if a field has been set.
 
-### SetRaidLevelNil
+### GetFeatures
 
-`func (o *JobPayload) SetRaidLevelNil(b bool)`
+`func (o *JobPayload) GetFeatures() []string`
 
- SetRaidLevelNil sets the value for RaidLevel to be an explicit nil
+GetFeatures returns the Features field if non-nil, zero value otherwise.
 
-### UnsetRaidLevel
-`func (o *JobPayload) UnsetRaidLevel()`
+### GetFeaturesOk
 
-UnsetRaidLevel ensures that no value is present for RaidLevel, not even an explicit nil
-### GetTimezone
+`func (o *JobPayload) GetFeaturesOk() (*[]string, bool)`
 
-`func (o *JobPayload) GetTimezone() string`
-
-GetTimezone returns the Timezone field if non-nil, zero value otherwise.
-
-### GetTimezoneOk
-
-`func (o *JobPayload) GetTimezoneOk() (*string, bool)`
-
-GetTimezoneOk returns a tuple with the Timezone field if it's non-nil, zero value otherwise
+GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTimezone
+### SetFeatures
 
-`func (o *JobPayload) SetTimezone(v string)`
+`func (o *JobPayload) SetFeatures(v []string)`
 
-SetTimezone sets Timezone field to given value.
+SetFeatures sets Features field to given value.
 
-### HasTimezone
+### HasFeatures
 
-`func (o *JobPayload) HasTimezone() bool`
+`func (o *JobPayload) HasFeatures() bool`
 
-HasTimezone returns a boolean if a field has been set.
+HasFeatures returns a boolean if a field has been set.
+
+### GetFeaturesUtilized
+
+`func (o *JobPayload) GetFeaturesUtilized() []string`
+
+GetFeaturesUtilized returns the FeaturesUtilized field if non-nil, zero value otherwise.
+
+### GetFeaturesUtilizedOk
+
+`func (o *JobPayload) GetFeaturesUtilizedOk() (*[]string, bool)`
+
+GetFeaturesUtilizedOk returns a tuple with the FeaturesUtilized field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeaturesUtilized
+
+`func (o *JobPayload) SetFeaturesUtilized(v []string)`
+
+SetFeaturesUtilized sets FeaturesUtilized field to given value.
+
+### HasFeaturesUtilized
+
+`func (o *JobPayload) HasFeaturesUtilized() bool`
+
+HasFeaturesUtilized returns a boolean if a field has been set.
+
+### GetSshKeys
+
+`func (o *JobPayload) GetSshKeys() string`
+
+GetSshKeys returns the SshKeys field if non-nil, zero value otherwise.
+
+### GetSshKeysOk
+
+`func (o *JobPayload) GetSshKeysOk() (*string, bool)`
+
+GetSshKeysOk returns a tuple with the SshKeys field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSshKeys
+
+`func (o *JobPayload) SetSshKeys(v string)`
+
+SetSshKeys sets SshKeys field to given value.
+
+### HasSshKeys
+
+`func (o *JobPayload) HasSshKeys() bool`
+
+HasSshKeys returns a boolean if a field has been set.
+
+### SetSshKeysNil
+
+`func (o *JobPayload) SetSshKeysNil(b bool)`
+
+ SetSshKeysNil sets the value for SshKeys to be an explicit nil
+
+### UnsetSshKeys
+`func (o *JobPayload) UnsetSshKeys()`
+
+UnsetSshKeys ensures that no value is present for SshKeys, not even an explicit nil
+### GetDatabase
+
+`func (o *JobPayload) GetDatabase() Database`
+
+GetDatabase returns the Database field if non-nil, zero value otherwise.
+
+### GetDatabaseOk
+
+`func (o *JobPayload) GetDatabaseOk() (*Database, bool)`
+
+GetDatabaseOk returns a tuple with the Database field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatabase
+
+`func (o *JobPayload) SetDatabase(v Database)`
+
+SetDatabase sets Database field to given value.
+
+### HasDatabase
+
+`func (o *JobPayload) HasDatabase() bool`
+
+HasDatabase returns a boolean if a field has been set.
+
+### SetDatabaseNil
+
+`func (o *JobPayload) SetDatabaseNil(b bool)`
+
+ SetDatabaseNil sets the value for Database to be an explicit nil
+
+### UnsetDatabase
+`func (o *JobPayload) UnsetDatabase()`
+
+UnsetDatabase ensures that no value is present for Database, not even an explicit nil
+### GetCallbackUrl
+
+`func (o *JobPayload) GetCallbackUrl() string`
+
+GetCallbackUrl returns the CallbackUrl field if non-nil, zero value otherwise.
+
+### GetCallbackUrlOk
+
+`func (o *JobPayload) GetCallbackUrlOk() (*string, bool)`
+
+GetCallbackUrlOk returns a tuple with the CallbackUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCallbackUrl
+
+`func (o *JobPayload) SetCallbackUrl(v string)`
+
+SetCallbackUrl sets CallbackUrl field to given value.
+
+### HasCallbackUrl
+
+`func (o *JobPayload) HasCallbackUrl() bool`
+
+HasCallbackUrl returns a boolean if a field has been set.
+
+### SetCallbackUrlNil
+
+`func (o *JobPayload) SetCallbackUrlNil(b bool)`
+
+ SetCallbackUrlNil sets the value for CallbackUrl to be an explicit nil
+
+### UnsetCallbackUrl
+`func (o *JobPayload) UnsetCallbackUrl()`
+
+UnsetCallbackUrl ensures that no value is present for CallbackUrl, not even an explicit nil
+### GetDoEmailNotification
+
+`func (o *JobPayload) GetDoEmailNotification() bool`
+
+GetDoEmailNotification returns the DoEmailNotification field if non-nil, zero value otherwise.
+
+### GetDoEmailNotificationOk
+
+`func (o *JobPayload) GetDoEmailNotificationOk() (*bool, bool)`
+
+GetDoEmailNotificationOk returns a tuple with the DoEmailNotification field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDoEmailNotification
+
+`func (o *JobPayload) SetDoEmailNotification(v bool)`
+
+SetDoEmailNotification sets DoEmailNotification field to given value.
+
+### HasDoEmailNotification
+
+`func (o *JobPayload) HasDoEmailNotification() bool`
+
+HasDoEmailNotification returns a boolean if a field has been set.
+
+### SetDoEmailNotificationNil
+
+`func (o *JobPayload) SetDoEmailNotificationNil(b bool)`
+
+ SetDoEmailNotificationNil sets the value for DoEmailNotification to be an explicit nil
+
+### UnsetDoEmailNotification
+`func (o *JobPayload) UnsetDoEmailNotification()`
+
+UnsetDoEmailNotification ensures that no value is present for DoEmailNotification, not even an explicit nil
+### GetConfigurable
+
+`func (o *JobPayload) GetConfigurable() bool`
+
+GetConfigurable returns the Configurable field if non-nil, zero value otherwise.
+
+### GetConfigurableOk
+
+`func (o *JobPayload) GetConfigurableOk() (*bool, bool)`
+
+GetConfigurableOk returns a tuple with the Configurable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigurable
+
+`func (o *JobPayload) SetConfigurable(v bool)`
+
+SetConfigurable sets Configurable field to given value.
+
+### HasConfigurable
+
+`func (o *JobPayload) HasConfigurable() bool`
+
+HasConfigurable returns a boolean if a field has been set.
+
+### SetConfigurableNil
+
+`func (o *JobPayload) SetConfigurableNil(b bool)`
+
+ SetConfigurableNil sets the value for Configurable to be an explicit nil
+
+### UnsetConfigurable
+`func (o *JobPayload) UnsetConfigurable()`
+
+UnsetConfigurable ensures that no value is present for Configurable, not even an explicit nil
+### GetRescueImageId
+
+`func (o *JobPayload) GetRescueImageId() string`
+
+GetRescueImageId returns the RescueImageId field if non-nil, zero value otherwise.
+
+### GetRescueImageIdOk
+
+`func (o *JobPayload) GetRescueImageIdOk() (*string, bool)`
+
+GetRescueImageIdOk returns a tuple with the RescueImageId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRescueImageId
+
+`func (o *JobPayload) SetRescueImageId(v string)`
+
+SetRescueImageId sets RescueImageId field to given value.
+
+### HasRescueImageId
+
+`func (o *JobPayload) HasRescueImageId() bool`
+
+HasRescueImageId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

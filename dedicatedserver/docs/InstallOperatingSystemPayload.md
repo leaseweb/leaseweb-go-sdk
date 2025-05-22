@@ -4,26 +4,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FileserverBaseUrl** | Pointer to **string** |  | [optional] 
-**Pop** | Pointer to **string** |  | [optional] 
-**PowerCycle** | Pointer to **bool** |  | [optional] 
-**IsUnassignedServer** | Pointer to **bool** |  | [optional] 
-**ServerId** | Pointer to **string** | Id of the server | [optional] 
-**JobType** | **string** |  | 
-**Configurable** | Pointer to **bool** |  | [optional] 
-**Device** | Pointer to **string** |  | [optional] 
-**NumberOfDisks** | Pointer to **NullableInt32** |  | [optional] 
-**OperatingSystemId** | Pointer to **string** |  | [optional] 
+**PowerCycle** | Pointer to **bool** | Whether the server should be powered off and on automatically before the job is started | [optional] 
+**Network** | Pointer to [**DefaultPayloadNetwork**](DefaultPayloadNetwork.md) |  | [optional] 
+**Site** | Pointer to **string** | Location of the server | [optional] 
+**InitiatedBy** | Pointer to **string** | Who initiated the job | [optional] 
+**ServerBrand** | Pointer to **string** | The brand of the server | [optional] 
+**ServerChassis** | Pointer to **string** | The chassis of the server | [optional] 
+**FileserverBaseUrl** | Pointer to **string** | The base URL of the fileserver | [optional] 
+**ServerHardwareRaid** | Pointer to **bool** | Whether the server has hardware RAID | [optional] 
 **Os** | Pointer to [**Os**](Os.md) |  | [optional] 
+**Raid** | Pointer to [**NullableRaidPayload**](RaidPayload.md) |  | [optional] 
+**Device** | Pointer to **string** | The installation device | [optional] 
+**Hostname** | Pointer to **string** | The hostname of the server | [optional] 
+**Timezone** | Pointer to **string** | Timezone to be configured on the server | [optional] 
 **Partitions** | Pointer to [**[]Partition**](Partition.md) |  | [optional] 
-**RaidLevel** | Pointer to **NullableInt32** |  | [optional] 
-**Timezone** | Pointer to **string** | Timezone represented as Geographical_Area/City | [optional] 
+**OperatingSystemId** | Pointer to **string** | The ID of the operating system | [optional] 
+**Features** | Pointer to **[]string** | The server&#39;s features | [optional] 
+**FeaturesUtilized** | Pointer to **[]string** | The features that are being utilized by the server | [optional] 
+**SshKeys** | Pointer to **NullableString** | SSH keys to be added to the server | [optional] 
+**Database** | Pointer to [**NullableDatabase**](Database.md) |  | [optional] 
+**CallbackUrl** | Pointer to **NullableString** | The URL to be called when the job is finished | [optional] 
+**DoEmailNotification** | Pointer to **NullableBool** | Whether to send email notifications | [optional] 
+**Configurable** | Pointer to **NullableBool** | Whether the job is configurable | [optional] 
 
 ## Methods
 
 ### NewInstallOperatingSystemPayload
 
-`func NewInstallOperatingSystemPayload(jobType string, ) *InstallOperatingSystemPayload`
+`func NewInstallOperatingSystemPayload() *InstallOperatingSystemPayload`
 
 NewInstallOperatingSystemPayload instantiates a new InstallOperatingSystemPayload object
 This constructor will assign default values to properties that have it defined,
@@ -37,56 +45,6 @@ will change when the set of required properties is changed
 NewInstallOperatingSystemPayloadWithDefaults instantiates a new InstallOperatingSystemPayload object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetFileserverBaseUrl
-
-`func (o *InstallOperatingSystemPayload) GetFileserverBaseUrl() string`
-
-GetFileserverBaseUrl returns the FileserverBaseUrl field if non-nil, zero value otherwise.
-
-### GetFileserverBaseUrlOk
-
-`func (o *InstallOperatingSystemPayload) GetFileserverBaseUrlOk() (*string, bool)`
-
-GetFileserverBaseUrlOk returns a tuple with the FileserverBaseUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFileserverBaseUrl
-
-`func (o *InstallOperatingSystemPayload) SetFileserverBaseUrl(v string)`
-
-SetFileserverBaseUrl sets FileserverBaseUrl field to given value.
-
-### HasFileserverBaseUrl
-
-`func (o *InstallOperatingSystemPayload) HasFileserverBaseUrl() bool`
-
-HasFileserverBaseUrl returns a boolean if a field has been set.
-
-### GetPop
-
-`func (o *InstallOperatingSystemPayload) GetPop() string`
-
-GetPop returns the Pop field if non-nil, zero value otherwise.
-
-### GetPopOk
-
-`func (o *InstallOperatingSystemPayload) GetPopOk() (*string, bool)`
-
-GetPopOk returns a tuple with the Pop field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPop
-
-`func (o *InstallOperatingSystemPayload) SetPop(v string)`
-
-SetPop sets Pop field to given value.
-
-### HasPop
-
-`func (o *InstallOperatingSystemPayload) HasPop() bool`
-
-HasPop returns a boolean if a field has been set.
 
 ### GetPowerCycle
 
@@ -113,185 +71,180 @@ SetPowerCycle sets PowerCycle field to given value.
 
 HasPowerCycle returns a boolean if a field has been set.
 
-### GetIsUnassignedServer
+### GetNetwork
 
-`func (o *InstallOperatingSystemPayload) GetIsUnassignedServer() bool`
+`func (o *InstallOperatingSystemPayload) GetNetwork() DefaultPayloadNetwork`
 
-GetIsUnassignedServer returns the IsUnassignedServer field if non-nil, zero value otherwise.
+GetNetwork returns the Network field if non-nil, zero value otherwise.
 
-### GetIsUnassignedServerOk
+### GetNetworkOk
 
-`func (o *InstallOperatingSystemPayload) GetIsUnassignedServerOk() (*bool, bool)`
+`func (o *InstallOperatingSystemPayload) GetNetworkOk() (*DefaultPayloadNetwork, bool)`
 
-GetIsUnassignedServerOk returns a tuple with the IsUnassignedServer field if it's non-nil, zero value otherwise
+GetNetworkOk returns a tuple with the Network field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsUnassignedServer
+### SetNetwork
 
-`func (o *InstallOperatingSystemPayload) SetIsUnassignedServer(v bool)`
+`func (o *InstallOperatingSystemPayload) SetNetwork(v DefaultPayloadNetwork)`
 
-SetIsUnassignedServer sets IsUnassignedServer field to given value.
+SetNetwork sets Network field to given value.
 
-### HasIsUnassignedServer
+### HasNetwork
 
-`func (o *InstallOperatingSystemPayload) HasIsUnassignedServer() bool`
+`func (o *InstallOperatingSystemPayload) HasNetwork() bool`
 
-HasIsUnassignedServer returns a boolean if a field has been set.
+HasNetwork returns a boolean if a field has been set.
 
-### GetServerId
+### GetSite
 
-`func (o *InstallOperatingSystemPayload) GetServerId() string`
+`func (o *InstallOperatingSystemPayload) GetSite() string`
 
-GetServerId returns the ServerId field if non-nil, zero value otherwise.
+GetSite returns the Site field if non-nil, zero value otherwise.
 
-### GetServerIdOk
+### GetSiteOk
 
-`func (o *InstallOperatingSystemPayload) GetServerIdOk() (*string, bool)`
+`func (o *InstallOperatingSystemPayload) GetSiteOk() (*string, bool)`
 
-GetServerIdOk returns a tuple with the ServerId field if it's non-nil, zero value otherwise
+GetSiteOk returns a tuple with the Site field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetServerId
+### SetSite
 
-`func (o *InstallOperatingSystemPayload) SetServerId(v string)`
+`func (o *InstallOperatingSystemPayload) SetSite(v string)`
 
-SetServerId sets ServerId field to given value.
+SetSite sets Site field to given value.
 
-### HasServerId
+### HasSite
 
-`func (o *InstallOperatingSystemPayload) HasServerId() bool`
+`func (o *InstallOperatingSystemPayload) HasSite() bool`
 
-HasServerId returns a boolean if a field has been set.
+HasSite returns a boolean if a field has been set.
 
-### GetJobType
+### GetInitiatedBy
 
-`func (o *InstallOperatingSystemPayload) GetJobType() string`
+`func (o *InstallOperatingSystemPayload) GetInitiatedBy() string`
 
-GetJobType returns the JobType field if non-nil, zero value otherwise.
+GetInitiatedBy returns the InitiatedBy field if non-nil, zero value otherwise.
 
-### GetJobTypeOk
+### GetInitiatedByOk
 
-`func (o *InstallOperatingSystemPayload) GetJobTypeOk() (*string, bool)`
+`func (o *InstallOperatingSystemPayload) GetInitiatedByOk() (*string, bool)`
 
-GetJobTypeOk returns a tuple with the JobType field if it's non-nil, zero value otherwise
+GetInitiatedByOk returns a tuple with the InitiatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetJobType
+### SetInitiatedBy
 
-`func (o *InstallOperatingSystemPayload) SetJobType(v string)`
+`func (o *InstallOperatingSystemPayload) SetInitiatedBy(v string)`
 
-SetJobType sets JobType field to given value.
+SetInitiatedBy sets InitiatedBy field to given value.
 
+### HasInitiatedBy
 
-### GetConfigurable
+`func (o *InstallOperatingSystemPayload) HasInitiatedBy() bool`
 
-`func (o *InstallOperatingSystemPayload) GetConfigurable() bool`
+HasInitiatedBy returns a boolean if a field has been set.
 
-GetConfigurable returns the Configurable field if non-nil, zero value otherwise.
+### GetServerBrand
 
-### GetConfigurableOk
+`func (o *InstallOperatingSystemPayload) GetServerBrand() string`
 
-`func (o *InstallOperatingSystemPayload) GetConfigurableOk() (*bool, bool)`
+GetServerBrand returns the ServerBrand field if non-nil, zero value otherwise.
 
-GetConfigurableOk returns a tuple with the Configurable field if it's non-nil, zero value otherwise
+### GetServerBrandOk
+
+`func (o *InstallOperatingSystemPayload) GetServerBrandOk() (*string, bool)`
+
+GetServerBrandOk returns a tuple with the ServerBrand field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConfigurable
+### SetServerBrand
 
-`func (o *InstallOperatingSystemPayload) SetConfigurable(v bool)`
+`func (o *InstallOperatingSystemPayload) SetServerBrand(v string)`
 
-SetConfigurable sets Configurable field to given value.
+SetServerBrand sets ServerBrand field to given value.
 
-### HasConfigurable
+### HasServerBrand
 
-`func (o *InstallOperatingSystemPayload) HasConfigurable() bool`
+`func (o *InstallOperatingSystemPayload) HasServerBrand() bool`
 
-HasConfigurable returns a boolean if a field has been set.
+HasServerBrand returns a boolean if a field has been set.
 
-### GetDevice
+### GetServerChassis
 
-`func (o *InstallOperatingSystemPayload) GetDevice() string`
+`func (o *InstallOperatingSystemPayload) GetServerChassis() string`
 
-GetDevice returns the Device field if non-nil, zero value otherwise.
+GetServerChassis returns the ServerChassis field if non-nil, zero value otherwise.
 
-### GetDeviceOk
+### GetServerChassisOk
 
-`func (o *InstallOperatingSystemPayload) GetDeviceOk() (*string, bool)`
+`func (o *InstallOperatingSystemPayload) GetServerChassisOk() (*string, bool)`
 
-GetDeviceOk returns a tuple with the Device field if it's non-nil, zero value otherwise
+GetServerChassisOk returns a tuple with the ServerChassis field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDevice
+### SetServerChassis
 
-`func (o *InstallOperatingSystemPayload) SetDevice(v string)`
+`func (o *InstallOperatingSystemPayload) SetServerChassis(v string)`
 
-SetDevice sets Device field to given value.
+SetServerChassis sets ServerChassis field to given value.
 
-### HasDevice
+### HasServerChassis
 
-`func (o *InstallOperatingSystemPayload) HasDevice() bool`
+`func (o *InstallOperatingSystemPayload) HasServerChassis() bool`
 
-HasDevice returns a boolean if a field has been set.
+HasServerChassis returns a boolean if a field has been set.
 
-### GetNumberOfDisks
+### GetFileserverBaseUrl
 
-`func (o *InstallOperatingSystemPayload) GetNumberOfDisks() int32`
+`func (o *InstallOperatingSystemPayload) GetFileserverBaseUrl() string`
 
-GetNumberOfDisks returns the NumberOfDisks field if non-nil, zero value otherwise.
+GetFileserverBaseUrl returns the FileserverBaseUrl field if non-nil, zero value otherwise.
 
-### GetNumberOfDisksOk
+### GetFileserverBaseUrlOk
 
-`func (o *InstallOperatingSystemPayload) GetNumberOfDisksOk() (*int32, bool)`
+`func (o *InstallOperatingSystemPayload) GetFileserverBaseUrlOk() (*string, bool)`
 
-GetNumberOfDisksOk returns a tuple with the NumberOfDisks field if it's non-nil, zero value otherwise
+GetFileserverBaseUrlOk returns a tuple with the FileserverBaseUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNumberOfDisks
+### SetFileserverBaseUrl
 
-`func (o *InstallOperatingSystemPayload) SetNumberOfDisks(v int32)`
+`func (o *InstallOperatingSystemPayload) SetFileserverBaseUrl(v string)`
 
-SetNumberOfDisks sets NumberOfDisks field to given value.
+SetFileserverBaseUrl sets FileserverBaseUrl field to given value.
 
-### HasNumberOfDisks
+### HasFileserverBaseUrl
 
-`func (o *InstallOperatingSystemPayload) HasNumberOfDisks() bool`
+`func (o *InstallOperatingSystemPayload) HasFileserverBaseUrl() bool`
 
-HasNumberOfDisks returns a boolean if a field has been set.
+HasFileserverBaseUrl returns a boolean if a field has been set.
 
-### SetNumberOfDisksNil
+### GetServerHardwareRaid
 
-`func (o *InstallOperatingSystemPayload) SetNumberOfDisksNil(b bool)`
+`func (o *InstallOperatingSystemPayload) GetServerHardwareRaid() bool`
 
- SetNumberOfDisksNil sets the value for NumberOfDisks to be an explicit nil
+GetServerHardwareRaid returns the ServerHardwareRaid field if non-nil, zero value otherwise.
 
-### UnsetNumberOfDisks
-`func (o *InstallOperatingSystemPayload) UnsetNumberOfDisks()`
+### GetServerHardwareRaidOk
 
-UnsetNumberOfDisks ensures that no value is present for NumberOfDisks, not even an explicit nil
-### GetOperatingSystemId
+`func (o *InstallOperatingSystemPayload) GetServerHardwareRaidOk() (*bool, bool)`
 
-`func (o *InstallOperatingSystemPayload) GetOperatingSystemId() string`
-
-GetOperatingSystemId returns the OperatingSystemId field if non-nil, zero value otherwise.
-
-### GetOperatingSystemIdOk
-
-`func (o *InstallOperatingSystemPayload) GetOperatingSystemIdOk() (*string, bool)`
-
-GetOperatingSystemIdOk returns a tuple with the OperatingSystemId field if it's non-nil, zero value otherwise
+GetServerHardwareRaidOk returns a tuple with the ServerHardwareRaid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOperatingSystemId
+### SetServerHardwareRaid
 
-`func (o *InstallOperatingSystemPayload) SetOperatingSystemId(v string)`
+`func (o *InstallOperatingSystemPayload) SetServerHardwareRaid(v bool)`
 
-SetOperatingSystemId sets OperatingSystemId field to given value.
+SetServerHardwareRaid sets ServerHardwareRaid field to given value.
 
-### HasOperatingSystemId
+### HasServerHardwareRaid
 
-`func (o *InstallOperatingSystemPayload) HasOperatingSystemId() bool`
+`func (o *InstallOperatingSystemPayload) HasServerHardwareRaid() bool`
 
-HasOperatingSystemId returns a boolean if a field has been set.
+HasServerHardwareRaid returns a boolean if a field has been set.
 
 ### GetOs
 
@@ -318,66 +271,91 @@ SetOs sets Os field to given value.
 
 HasOs returns a boolean if a field has been set.
 
-### GetPartitions
+### GetRaid
 
-`func (o *InstallOperatingSystemPayload) GetPartitions() []Partition`
+`func (o *InstallOperatingSystemPayload) GetRaid() RaidPayload`
 
-GetPartitions returns the Partitions field if non-nil, zero value otherwise.
+GetRaid returns the Raid field if non-nil, zero value otherwise.
 
-### GetPartitionsOk
+### GetRaidOk
 
-`func (o *InstallOperatingSystemPayload) GetPartitionsOk() (*[]Partition, bool)`
+`func (o *InstallOperatingSystemPayload) GetRaidOk() (*RaidPayload, bool)`
 
-GetPartitionsOk returns a tuple with the Partitions field if it's non-nil, zero value otherwise
+GetRaidOk returns a tuple with the Raid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPartitions
+### SetRaid
 
-`func (o *InstallOperatingSystemPayload) SetPartitions(v []Partition)`
+`func (o *InstallOperatingSystemPayload) SetRaid(v RaidPayload)`
 
-SetPartitions sets Partitions field to given value.
+SetRaid sets Raid field to given value.
 
-### HasPartitions
+### HasRaid
 
-`func (o *InstallOperatingSystemPayload) HasPartitions() bool`
+`func (o *InstallOperatingSystemPayload) HasRaid() bool`
 
-HasPartitions returns a boolean if a field has been set.
+HasRaid returns a boolean if a field has been set.
 
-### GetRaidLevel
+### SetRaidNil
 
-`func (o *InstallOperatingSystemPayload) GetRaidLevel() int32`
+`func (o *InstallOperatingSystemPayload) SetRaidNil(b bool)`
 
-GetRaidLevel returns the RaidLevel field if non-nil, zero value otherwise.
+ SetRaidNil sets the value for Raid to be an explicit nil
 
-### GetRaidLevelOk
+### UnsetRaid
+`func (o *InstallOperatingSystemPayload) UnsetRaid()`
 
-`func (o *InstallOperatingSystemPayload) GetRaidLevelOk() (*int32, bool)`
+UnsetRaid ensures that no value is present for Raid, not even an explicit nil
+### GetDevice
 
-GetRaidLevelOk returns a tuple with the RaidLevel field if it's non-nil, zero value otherwise
+`func (o *InstallOperatingSystemPayload) GetDevice() string`
+
+GetDevice returns the Device field if non-nil, zero value otherwise.
+
+### GetDeviceOk
+
+`func (o *InstallOperatingSystemPayload) GetDeviceOk() (*string, bool)`
+
+GetDeviceOk returns a tuple with the Device field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRaidLevel
+### SetDevice
 
-`func (o *InstallOperatingSystemPayload) SetRaidLevel(v int32)`
+`func (o *InstallOperatingSystemPayload) SetDevice(v string)`
 
-SetRaidLevel sets RaidLevel field to given value.
+SetDevice sets Device field to given value.
 
-### HasRaidLevel
+### HasDevice
 
-`func (o *InstallOperatingSystemPayload) HasRaidLevel() bool`
+`func (o *InstallOperatingSystemPayload) HasDevice() bool`
 
-HasRaidLevel returns a boolean if a field has been set.
+HasDevice returns a boolean if a field has been set.
 
-### SetRaidLevelNil
+### GetHostname
 
-`func (o *InstallOperatingSystemPayload) SetRaidLevelNil(b bool)`
+`func (o *InstallOperatingSystemPayload) GetHostname() string`
 
- SetRaidLevelNil sets the value for RaidLevel to be an explicit nil
+GetHostname returns the Hostname field if non-nil, zero value otherwise.
 
-### UnsetRaidLevel
-`func (o *InstallOperatingSystemPayload) UnsetRaidLevel()`
+### GetHostnameOk
 
-UnsetRaidLevel ensures that no value is present for RaidLevel, not even an explicit nil
+`func (o *InstallOperatingSystemPayload) GetHostnameOk() (*string, bool)`
+
+GetHostnameOk returns a tuple with the Hostname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostname
+
+`func (o *InstallOperatingSystemPayload) SetHostname(v string)`
+
+SetHostname sets Hostname field to given value.
+
+### HasHostname
+
+`func (o *InstallOperatingSystemPayload) HasHostname() bool`
+
+HasHostname returns a boolean if a field has been set.
+
 ### GetTimezone
 
 `func (o *InstallOperatingSystemPayload) GetTimezone() string`
@@ -403,6 +381,281 @@ SetTimezone sets Timezone field to given value.
 
 HasTimezone returns a boolean if a field has been set.
 
+### GetPartitions
+
+`func (o *InstallOperatingSystemPayload) GetPartitions() []Partition`
+
+GetPartitions returns the Partitions field if non-nil, zero value otherwise.
+
+### GetPartitionsOk
+
+`func (o *InstallOperatingSystemPayload) GetPartitionsOk() (*[]Partition, bool)`
+
+GetPartitionsOk returns a tuple with the Partitions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartitions
+
+`func (o *InstallOperatingSystemPayload) SetPartitions(v []Partition)`
+
+SetPartitions sets Partitions field to given value.
+
+### HasPartitions
+
+`func (o *InstallOperatingSystemPayload) HasPartitions() bool`
+
+HasPartitions returns a boolean if a field has been set.
+
+### GetOperatingSystemId
+
+`func (o *InstallOperatingSystemPayload) GetOperatingSystemId() string`
+
+GetOperatingSystemId returns the OperatingSystemId field if non-nil, zero value otherwise.
+
+### GetOperatingSystemIdOk
+
+`func (o *InstallOperatingSystemPayload) GetOperatingSystemIdOk() (*string, bool)`
+
+GetOperatingSystemIdOk returns a tuple with the OperatingSystemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperatingSystemId
+
+`func (o *InstallOperatingSystemPayload) SetOperatingSystemId(v string)`
+
+SetOperatingSystemId sets OperatingSystemId field to given value.
+
+### HasOperatingSystemId
+
+`func (o *InstallOperatingSystemPayload) HasOperatingSystemId() bool`
+
+HasOperatingSystemId returns a boolean if a field has been set.
+
+### GetFeatures
+
+`func (o *InstallOperatingSystemPayload) GetFeatures() []string`
+
+GetFeatures returns the Features field if non-nil, zero value otherwise.
+
+### GetFeaturesOk
+
+`func (o *InstallOperatingSystemPayload) GetFeaturesOk() (*[]string, bool)`
+
+GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatures
+
+`func (o *InstallOperatingSystemPayload) SetFeatures(v []string)`
+
+SetFeatures sets Features field to given value.
+
+### HasFeatures
+
+`func (o *InstallOperatingSystemPayload) HasFeatures() bool`
+
+HasFeatures returns a boolean if a field has been set.
+
+### GetFeaturesUtilized
+
+`func (o *InstallOperatingSystemPayload) GetFeaturesUtilized() []string`
+
+GetFeaturesUtilized returns the FeaturesUtilized field if non-nil, zero value otherwise.
+
+### GetFeaturesUtilizedOk
+
+`func (o *InstallOperatingSystemPayload) GetFeaturesUtilizedOk() (*[]string, bool)`
+
+GetFeaturesUtilizedOk returns a tuple with the FeaturesUtilized field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeaturesUtilized
+
+`func (o *InstallOperatingSystemPayload) SetFeaturesUtilized(v []string)`
+
+SetFeaturesUtilized sets FeaturesUtilized field to given value.
+
+### HasFeaturesUtilized
+
+`func (o *InstallOperatingSystemPayload) HasFeaturesUtilized() bool`
+
+HasFeaturesUtilized returns a boolean if a field has been set.
+
+### GetSshKeys
+
+`func (o *InstallOperatingSystemPayload) GetSshKeys() string`
+
+GetSshKeys returns the SshKeys field if non-nil, zero value otherwise.
+
+### GetSshKeysOk
+
+`func (o *InstallOperatingSystemPayload) GetSshKeysOk() (*string, bool)`
+
+GetSshKeysOk returns a tuple with the SshKeys field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSshKeys
+
+`func (o *InstallOperatingSystemPayload) SetSshKeys(v string)`
+
+SetSshKeys sets SshKeys field to given value.
+
+### HasSshKeys
+
+`func (o *InstallOperatingSystemPayload) HasSshKeys() bool`
+
+HasSshKeys returns a boolean if a field has been set.
+
+### SetSshKeysNil
+
+`func (o *InstallOperatingSystemPayload) SetSshKeysNil(b bool)`
+
+ SetSshKeysNil sets the value for SshKeys to be an explicit nil
+
+### UnsetSshKeys
+`func (o *InstallOperatingSystemPayload) UnsetSshKeys()`
+
+UnsetSshKeys ensures that no value is present for SshKeys, not even an explicit nil
+### GetDatabase
+
+`func (o *InstallOperatingSystemPayload) GetDatabase() Database`
+
+GetDatabase returns the Database field if non-nil, zero value otherwise.
+
+### GetDatabaseOk
+
+`func (o *InstallOperatingSystemPayload) GetDatabaseOk() (*Database, bool)`
+
+GetDatabaseOk returns a tuple with the Database field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatabase
+
+`func (o *InstallOperatingSystemPayload) SetDatabase(v Database)`
+
+SetDatabase sets Database field to given value.
+
+### HasDatabase
+
+`func (o *InstallOperatingSystemPayload) HasDatabase() bool`
+
+HasDatabase returns a boolean if a field has been set.
+
+### SetDatabaseNil
+
+`func (o *InstallOperatingSystemPayload) SetDatabaseNil(b bool)`
+
+ SetDatabaseNil sets the value for Database to be an explicit nil
+
+### UnsetDatabase
+`func (o *InstallOperatingSystemPayload) UnsetDatabase()`
+
+UnsetDatabase ensures that no value is present for Database, not even an explicit nil
+### GetCallbackUrl
+
+`func (o *InstallOperatingSystemPayload) GetCallbackUrl() string`
+
+GetCallbackUrl returns the CallbackUrl field if non-nil, zero value otherwise.
+
+### GetCallbackUrlOk
+
+`func (o *InstallOperatingSystemPayload) GetCallbackUrlOk() (*string, bool)`
+
+GetCallbackUrlOk returns a tuple with the CallbackUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCallbackUrl
+
+`func (o *InstallOperatingSystemPayload) SetCallbackUrl(v string)`
+
+SetCallbackUrl sets CallbackUrl field to given value.
+
+### HasCallbackUrl
+
+`func (o *InstallOperatingSystemPayload) HasCallbackUrl() bool`
+
+HasCallbackUrl returns a boolean if a field has been set.
+
+### SetCallbackUrlNil
+
+`func (o *InstallOperatingSystemPayload) SetCallbackUrlNil(b bool)`
+
+ SetCallbackUrlNil sets the value for CallbackUrl to be an explicit nil
+
+### UnsetCallbackUrl
+`func (o *InstallOperatingSystemPayload) UnsetCallbackUrl()`
+
+UnsetCallbackUrl ensures that no value is present for CallbackUrl, not even an explicit nil
+### GetDoEmailNotification
+
+`func (o *InstallOperatingSystemPayload) GetDoEmailNotification() bool`
+
+GetDoEmailNotification returns the DoEmailNotification field if non-nil, zero value otherwise.
+
+### GetDoEmailNotificationOk
+
+`func (o *InstallOperatingSystemPayload) GetDoEmailNotificationOk() (*bool, bool)`
+
+GetDoEmailNotificationOk returns a tuple with the DoEmailNotification field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDoEmailNotification
+
+`func (o *InstallOperatingSystemPayload) SetDoEmailNotification(v bool)`
+
+SetDoEmailNotification sets DoEmailNotification field to given value.
+
+### HasDoEmailNotification
+
+`func (o *InstallOperatingSystemPayload) HasDoEmailNotification() bool`
+
+HasDoEmailNotification returns a boolean if a field has been set.
+
+### SetDoEmailNotificationNil
+
+`func (o *InstallOperatingSystemPayload) SetDoEmailNotificationNil(b bool)`
+
+ SetDoEmailNotificationNil sets the value for DoEmailNotification to be an explicit nil
+
+### UnsetDoEmailNotification
+`func (o *InstallOperatingSystemPayload) UnsetDoEmailNotification()`
+
+UnsetDoEmailNotification ensures that no value is present for DoEmailNotification, not even an explicit nil
+### GetConfigurable
+
+`func (o *InstallOperatingSystemPayload) GetConfigurable() bool`
+
+GetConfigurable returns the Configurable field if non-nil, zero value otherwise.
+
+### GetConfigurableOk
+
+`func (o *InstallOperatingSystemPayload) GetConfigurableOk() (*bool, bool)`
+
+GetConfigurableOk returns a tuple with the Configurable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigurable
+
+`func (o *InstallOperatingSystemPayload) SetConfigurable(v bool)`
+
+SetConfigurable sets Configurable field to given value.
+
+### HasConfigurable
+
+`func (o *InstallOperatingSystemPayload) HasConfigurable() bool`
+
+HasConfigurable returns a boolean if a field has been set.
+
+### SetConfigurableNil
+
+`func (o *InstallOperatingSystemPayload) SetConfigurableNil(b bool)`
+
+ SetConfigurableNil sets the value for Configurable to be an explicit nil
+
+### UnsetConfigurable
+`func (o *InstallOperatingSystemPayload) UnsetConfigurable()`
+
+UnsetConfigurable ensures that no value is present for Configurable, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

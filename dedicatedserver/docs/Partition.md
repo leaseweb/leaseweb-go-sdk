@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Filesystem** | Pointer to **string** | File system in which partition would be mounted | [optional] 
-**Mountpoint** | Pointer to **string** | The partition mount point (eg &#x60;/home&#x60;). Mandatory for the root partition (&#x60;/&#x60;) and not intended to be used in swap partition | [optional] 
-**Size** | Pointer to **string** | Size of the partition (Normally in MB, but this is OS-specific) | [optional] 
+**Mountpoint** | Pointer to **NullableString** | The partition mount point (eg &#x60;/home&#x60;). Mandatory for the root partition (&#x60;/&#x60;) and not intended to be used in swap partition | [optional] 
+**Filesystem** | **string** | File system in which partition would be mounted | 
+**Size** | **string** | Size of the partition (Normally in MB, but this is OS-specific) | 
 
 ## Methods
 
 ### NewPartition
 
-`func NewPartition() *Partition`
+`func NewPartition(filesystem string, size string, ) *Partition`
 
 NewPartition instantiates a new Partition object
 This constructor will assign default values to properties that have it defined,
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewPartitionWithDefaults instantiates a new Partition object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetFilesystem
-
-`func (o *Partition) GetFilesystem() string`
-
-GetFilesystem returns the Filesystem field if non-nil, zero value otherwise.
-
-### GetFilesystemOk
-
-`func (o *Partition) GetFilesystemOk() (*string, bool)`
-
-GetFilesystemOk returns a tuple with the Filesystem field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFilesystem
-
-`func (o *Partition) SetFilesystem(v string)`
-
-SetFilesystem sets Filesystem field to given value.
-
-### HasFilesystem
-
-`func (o *Partition) HasFilesystem() bool`
-
-HasFilesystem returns a boolean if a field has been set.
 
 ### GetMountpoint
 
@@ -77,6 +52,36 @@ SetMountpoint sets Mountpoint field to given value.
 
 HasMountpoint returns a boolean if a field has been set.
 
+### SetMountpointNil
+
+`func (o *Partition) SetMountpointNil(b bool)`
+
+ SetMountpointNil sets the value for Mountpoint to be an explicit nil
+
+### UnsetMountpoint
+`func (o *Partition) UnsetMountpoint()`
+
+UnsetMountpoint ensures that no value is present for Mountpoint, not even an explicit nil
+### GetFilesystem
+
+`func (o *Partition) GetFilesystem() string`
+
+GetFilesystem returns the Filesystem field if non-nil, zero value otherwise.
+
+### GetFilesystemOk
+
+`func (o *Partition) GetFilesystemOk() (*string, bool)`
+
+GetFilesystemOk returns a tuple with the Filesystem field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilesystem
+
+`func (o *Partition) SetFilesystem(v string)`
+
+SetFilesystem sets Filesystem field to given value.
+
+
 ### GetSize
 
 `func (o *Partition) GetSize() string`
@@ -96,11 +101,6 @@ and a boolean to check if the value has been set.
 
 SetSize sets Size field to given value.
 
-### HasSize
-
-`func (o *Partition) HasSize() bool`
-
-HasSize returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Firmware** | Pointer to [**Firmware**](Firmware.md) |  | [optional] 
 **Motherboard** | Pointer to [**Motherboard**](Motherboard.md) |  | [optional] 
 **Product** | Pointer to **string** |  | [optional] 
-**Serial** | Pointer to **string** |  | [optional] 
-**Vendor** | Pointer to **string** |  | [optional] 
+**Serial** | Pointer to **string** | Serial number of the server | [optional] 
+**Vendor** | Pointer to **string** | Vendor of the server | [optional] 
 
 ## Methods
 

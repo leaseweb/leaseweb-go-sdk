@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// JobType the model 'JobType'
+// JobType Type of the job
 type JobType string
 
 // List of jobType

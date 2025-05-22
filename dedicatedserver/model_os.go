@@ -19,16 +19,18 @@ var _ MappedNullable = &Os{}
 
 // Os struct for Os
 type Os struct {
-	// The architecture of the operating system
-	Architecture *string `json:"architecture,omitempty"`
-	// The operating system family
-	Family *string `json:"family,omitempty"`
 	// A human readable name for the operating system
 	Name *string `json:"name,omitempty"`
 	// The type of operating system
 	Type *string `json:"type,omitempty"`
+	// Our engine used to install the operating system
+	Engine *string `json:"engine,omitempty"`
+	// The operating system family
+	Family *string `json:"family,omitempty"`
 	// The version of the operating system
 	Version *string `json:"version,omitempty"`
+	// The architecture of the operating system
+	Architecture *string `json:"architecture,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -49,70 +51,6 @@ func NewOs() *Os {
 func NewOsWithDefaults() *Os {
 	this := Os{}
 	return &this
-}
-
-// GetArchitecture returns the Architecture field value if set, zero value otherwise.
-func (o *Os) GetArchitecture() string {
-	if o == nil || IsNil(o.Architecture) {
-		var ret string
-		return ret
-	}
-	return *o.Architecture
-}
-
-// GetArchitectureOk returns a tuple with the Architecture field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Os) GetArchitectureOk() (*string, bool) {
-	if o == nil || IsNil(o.Architecture) {
-		return nil, false
-	}
-	return o.Architecture, true
-}
-
-// HasArchitecture returns a boolean if a field has been set.
-func (o *Os) HasArchitecture() bool {
-	if o != nil && !IsNil(o.Architecture) {
-		return true
-	}
-
-	return false
-}
-
-// SetArchitecture gets a reference to the given string and assigns it to the Architecture field.
-func (o *Os) SetArchitecture(v string) {
-	o.Architecture = &v
-}
-
-// GetFamily returns the Family field value if set, zero value otherwise.
-func (o *Os) GetFamily() string {
-	if o == nil || IsNil(o.Family) {
-		var ret string
-		return ret
-	}
-	return *o.Family
-}
-
-// GetFamilyOk returns a tuple with the Family field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Os) GetFamilyOk() (*string, bool) {
-	if o == nil || IsNil(o.Family) {
-		return nil, false
-	}
-	return o.Family, true
-}
-
-// HasFamily returns a boolean if a field has been set.
-func (o *Os) HasFamily() bool {
-	if o != nil && !IsNil(o.Family) {
-		return true
-	}
-
-	return false
-}
-
-// SetFamily gets a reference to the given string and assigns it to the Family field.
-func (o *Os) SetFamily(v string) {
-	o.Family = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -179,6 +117,70 @@ func (o *Os) SetType(v string) {
 	o.Type = &v
 }
 
+// GetEngine returns the Engine field value if set, zero value otherwise.
+func (o *Os) GetEngine() string {
+	if o == nil || IsNil(o.Engine) {
+		var ret string
+		return ret
+	}
+	return *o.Engine
+}
+
+// GetEngineOk returns a tuple with the Engine field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Os) GetEngineOk() (*string, bool) {
+	if o == nil || IsNil(o.Engine) {
+		return nil, false
+	}
+	return o.Engine, true
+}
+
+// HasEngine returns a boolean if a field has been set.
+func (o *Os) HasEngine() bool {
+	if o != nil && !IsNil(o.Engine) {
+		return true
+	}
+
+	return false
+}
+
+// SetEngine gets a reference to the given string and assigns it to the Engine field.
+func (o *Os) SetEngine(v string) {
+	o.Engine = &v
+}
+
+// GetFamily returns the Family field value if set, zero value otherwise.
+func (o *Os) GetFamily() string {
+	if o == nil || IsNil(o.Family) {
+		var ret string
+		return ret
+	}
+	return *o.Family
+}
+
+// GetFamilyOk returns a tuple with the Family field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Os) GetFamilyOk() (*string, bool) {
+	if o == nil || IsNil(o.Family) {
+		return nil, false
+	}
+	return o.Family, true
+}
+
+// HasFamily returns a boolean if a field has been set.
+func (o *Os) HasFamily() bool {
+	if o != nil && !IsNil(o.Family) {
+		return true
+	}
+
+	return false
+}
+
+// SetFamily gets a reference to the given string and assigns it to the Family field.
+func (o *Os) SetFamily(v string) {
+	o.Family = &v
+}
+
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *Os) GetVersion() string {
 	if o == nil || IsNil(o.Version) {
@@ -211,6 +213,38 @@ func (o *Os) SetVersion(v string) {
 	o.Version = &v
 }
 
+// GetArchitecture returns the Architecture field value if set, zero value otherwise.
+func (o *Os) GetArchitecture() string {
+	if o == nil || IsNil(o.Architecture) {
+		var ret string
+		return ret
+	}
+	return *o.Architecture
+}
+
+// GetArchitectureOk returns a tuple with the Architecture field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Os) GetArchitectureOk() (*string, bool) {
+	if o == nil || IsNil(o.Architecture) {
+		return nil, false
+	}
+	return o.Architecture, true
+}
+
+// HasArchitecture returns a boolean if a field has been set.
+func (o *Os) HasArchitecture() bool {
+	if o != nil && !IsNil(o.Architecture) {
+		return true
+	}
+
+	return false
+}
+
+// SetArchitecture gets a reference to the given string and assigns it to the Architecture field.
+func (o *Os) SetArchitecture(v string) {
+	o.Architecture = &v
+}
+
 func (o Os) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -221,20 +255,23 @@ func (o Os) MarshalJSON() ([]byte, error) {
 
 func (o Os) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Architecture) {
-		toSerialize["architecture"] = o.Architecture
-	}
-	if !IsNil(o.Family) {
-		toSerialize["family"] = o.Family
-	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
+	if !IsNil(o.Engine) {
+		toSerialize["engine"] = o.Engine
+	}
+	if !IsNil(o.Family) {
+		toSerialize["family"] = o.Family
+	}
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Architecture) {
+		toSerialize["architecture"] = o.Architecture
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -258,11 +295,12 @@ func (o *Os) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "architecture")
-		delete(additionalProperties, "family")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "engine")
+		delete(additionalProperties, "family")
 		delete(additionalProperties, "version")
+		delete(additionalProperties, "architecture")
 		o.AdditionalProperties = additionalProperties
 	}
 

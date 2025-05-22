@@ -27,6 +27,7 @@ type GetHardwareResult struct {
 	Result *Result `json:"result,omitempty"`
 	// Timestamp of hardware scan, the ISO-8601 format
 	ScannedAt *time.Time `json:"scannedAt,omitempty"`
+	// Id of the server
 	ServerId *string `json:"serverId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

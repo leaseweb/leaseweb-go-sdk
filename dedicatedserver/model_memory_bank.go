@@ -20,8 +20,10 @@ var _ MappedNullable = &MemoryBank{}
 // MemoryBank struct for MemoryBank
 type MemoryBank struct {
 	Description *string `json:"description,omitempty"`
+	// ID of the memory
 	Id *string `json:"id,omitempty"`
 	ClockHz *string `json:"clock_hz,omitempty"`
+	// Serial number of the server
 	SerialNumber *string `json:"serial_number,omitempty"`
 	SizeBytes *string `json:"size_bytes,omitempty"`
 	AdditionalProperties map[string]interface{}

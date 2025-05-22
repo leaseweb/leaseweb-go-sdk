@@ -4,15 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalCount** | **int32** | Total amount of elements in this collection | 
-**Offset** | **int32** | The offset used to generate this response | [default to 0]
-**Limit** | **int32** | The limit used to generate this response | [default to 5]
+**BATCH_ID** | Pointer to **NullableString** | The batch ID of the job | [optional] 
 
 ## Methods
 
 ### NewMetadata
 
-`func NewMetadata(totalCount int32, offset int32, limit int32, ) *Metadata`
+`func NewMetadata() *Metadata`
 
 NewMetadata instantiates a new Metadata object
 This constructor will assign default values to properties that have it defined,
@@ -27,66 +25,41 @@ NewMetadataWithDefaults instantiates a new Metadata object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTotalCount
+### GetBATCH_ID
 
-`func (o *Metadata) GetTotalCount() int32`
+`func (o *Metadata) GetBATCH_ID() string`
 
-GetTotalCount returns the TotalCount field if non-nil, zero value otherwise.
+GetBATCH_ID returns the BATCH_ID field if non-nil, zero value otherwise.
 
-### GetTotalCountOk
+### GetBATCH_IDOk
 
-`func (o *Metadata) GetTotalCountOk() (*int32, bool)`
+`func (o *Metadata) GetBATCH_IDOk() (*string, bool)`
 
-GetTotalCountOk returns a tuple with the TotalCount field if it's non-nil, zero value otherwise
+GetBATCH_IDOk returns a tuple with the BATCH_ID field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTotalCount
+### SetBATCH_ID
 
-`func (o *Metadata) SetTotalCount(v int32)`
+`func (o *Metadata) SetBATCH_ID(v string)`
 
-SetTotalCount sets TotalCount field to given value.
+SetBATCH_ID sets BATCH_ID field to given value.
 
+### HasBATCH_ID
 
-### GetOffset
+`func (o *Metadata) HasBATCH_ID() bool`
 
-`func (o *Metadata) GetOffset() int32`
+HasBATCH_ID returns a boolean if a field has been set.
 
-GetOffset returns the Offset field if non-nil, zero value otherwise.
+### SetBATCH_IDNil
 
-### GetOffsetOk
+`func (o *Metadata) SetBATCH_IDNil(b bool)`
 
-`func (o *Metadata) GetOffsetOk() (*int32, bool)`
+ SetBATCH_IDNil sets the value for BATCH_ID to be an explicit nil
 
-GetOffsetOk returns a tuple with the Offset field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
+### UnsetBATCH_ID
+`func (o *Metadata) UnsetBATCH_ID()`
 
-### SetOffset
-
-`func (o *Metadata) SetOffset(v int32)`
-
-SetOffset sets Offset field to given value.
-
-
-### GetLimit
-
-`func (o *Metadata) GetLimit() int32`
-
-GetLimit returns the Limit field if non-nil, zero value otherwise.
-
-### GetLimitOk
-
-`func (o *Metadata) GetLimitOk() (*int32, bool)`
-
-GetLimitOk returns a tuple with the Limit field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLimit
-
-`func (o *Metadata) SetLimit(v int32)`
-
-SetLimit sets Limit field to given value.
-
-
+UnsetBATCH_ID ensures that no value is present for BATCH_ID, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

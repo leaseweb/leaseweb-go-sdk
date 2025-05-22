@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Rpm** | Pointer to **string** |  | [optional] 
 **SataVersion** | Pointer to **string** |  | [optional] 
 **SectorSize** | Pointer to **string** |  | [optional] 
-**SerialNumber** | Pointer to **string** |  | [optional] 
+**SerialNumber** | Pointer to **string** | Serial number of the server | [optional] 
 **SmartErrorLog** | Pointer to **string** |  | [optional] 
 **SmartSupport** | Pointer to [**SmartSupport**](SmartSupport.md) |  | [optional] 
 **SmartctlVersion** | Pointer to **string** |  | [optional] 

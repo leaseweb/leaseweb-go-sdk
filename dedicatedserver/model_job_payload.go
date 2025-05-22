@@ -12,111 +12,79 @@ package dedicatedserver
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
 )
 
-// JobPayload - struct for JobPayload
+
+// JobPayload struct for JobPayload
 type JobPayload struct {
+	GenericPayload *GenericPayload
 	InstallOperatingSystemPayload *InstallOperatingSystemPayload
-	Payload *Payload
+	RescueModePayload *RescueModePayload
 }
 
-// InstallOperatingSystemPayloadAsJobPayload is a convenience function that returns InstallOperatingSystemPayload wrapped in JobPayload
-func InstallOperatingSystemPayloadAsJobPayload(v *InstallOperatingSystemPayload) JobPayload {
-	return JobPayload{
-		InstallOperatingSystemPayload: v,
-	}
-}
-
-// PayloadAsJobPayload is a convenience function that returns Payload wrapped in JobPayload
-func PayloadAsJobPayload(v *Payload) JobPayload {
-	return JobPayload{
-		Payload: v,
-	}
-}
-
-
-// Unmarshal JSON data into one of the pointers in the struct
+// Unmarshal JSON data into any of the pointers in the struct
 func (dst *JobPayload) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into InstallOperatingSystemPayload
-	err = newStrictDecoder(data).Decode(&dst.InstallOperatingSystemPayload)
+	// try to unmarshal JSON data into GenericPayload
+	err = json.Unmarshal(data, &dst.GenericPayload);
+	if err == nil {
+		jsonGenericPayload, _ := json.Marshal(dst.GenericPayload)
+		if string(jsonGenericPayload) == "{}" { // empty struct
+			dst.GenericPayload = nil
+		} else {
+			return nil // data stored in dst.GenericPayload, return on the first match
+		}
+	} else {
+		dst.GenericPayload = nil
+	}
+
+	// try to unmarshal JSON data into InstallOperatingSystemPayload
+	err = json.Unmarshal(data, &dst.InstallOperatingSystemPayload);
 	if err == nil {
 		jsonInstallOperatingSystemPayload, _ := json.Marshal(dst.InstallOperatingSystemPayload)
 		if string(jsonInstallOperatingSystemPayload) == "{}" { // empty struct
 			dst.InstallOperatingSystemPayload = nil
 		} else {
-			if err = validator.Validate(dst.InstallOperatingSystemPayload); err != nil {
-				dst.InstallOperatingSystemPayload = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.InstallOperatingSystemPayload, return on the first match
 		}
 	} else {
 		dst.InstallOperatingSystemPayload = nil
 	}
 
-	// try to unmarshal data into Payload
-	err = newStrictDecoder(data).Decode(&dst.Payload)
+	// try to unmarshal JSON data into RescueModePayload
+	err = json.Unmarshal(data, &dst.RescueModePayload);
 	if err == nil {
-		jsonPayload, _ := json.Marshal(dst.Payload)
-		if string(jsonPayload) == "{}" { // empty struct
-			dst.Payload = nil
+		jsonRescueModePayload, _ := json.Marshal(dst.RescueModePayload)
+		if string(jsonRescueModePayload) == "{}" { // empty struct
+			dst.RescueModePayload = nil
 		} else {
-			if err = validator.Validate(dst.Payload); err != nil {
-				dst.Payload = nil
-			} else {
-				match++
-			}
+			return nil // data stored in dst.RescueModePayload, return on the first match
 		}
 	} else {
-		dst.Payload = nil
+		dst.RescueModePayload = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.InstallOperatingSystemPayload = nil
-		dst.Payload = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(JobPayload)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(JobPayload)")
-	}
+	return fmt.Errorf("data failed to match schemas in anyOf(JobPayload)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src JobPayload) MarshalJSON() ([]byte, error) {
+func (src *JobPayload) MarshalJSON() ([]byte, error) {
+	if src.GenericPayload != nil {
+		return json.Marshal(&src.GenericPayload)
+	}
+
 	if src.InstallOperatingSystemPayload != nil {
 		return json.Marshal(&src.InstallOperatingSystemPayload)
 	}
 
-	if src.Payload != nil {
-		return json.Marshal(&src.Payload)
+	if src.RescueModePayload != nil {
+		return json.Marshal(&src.RescueModePayload)
 	}
 
-	return nil, nil // no data in oneOf schemas
+	return nil, nil // no data in anyOf schemas
 }
 
-// Get the actual instance
-func (obj *JobPayload) GetActualInstance() (interface{}) {
-	if obj == nil {
-		return nil
-	}
-	if obj.InstallOperatingSystemPayload != nil {
-		return obj.InstallOperatingSystemPayload
-	}
-
-	if obj.Payload != nil {
-		return obj.Payload
-	}
-
-	// all schemas are nil
-	return nil
-}
 
 type NullableJobPayload struct {
 	value *JobPayload

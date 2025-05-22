@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Date** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Vendor** | Pointer to **string** |  | [optional] 
+**Vendor** | Pointer to **string** | Vendor of the server | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 
 ## Methods

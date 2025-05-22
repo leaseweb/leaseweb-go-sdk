@@ -20,30 +20,32 @@ var _ MappedNullable = &ServerJob{}
 
 // ServerJob struct for ServerJob
 type ServerJob struct {
+	// Status of the job
+	Status *string `json:"status,omitempty"`
+	// Unique identifier of the job
+	Uuid *string `json:"uuid,omitempty"`
+	Type *JobType `json:"type,omitempty"`
+	// Id of the server
+	ServerId *string `json:"serverId,omitempty"`
 	// Id of the server (deprecated, use serverId instead)
 	// Deprecated
 	BareMetalId *string `json:"bareMetalId,omitempty"`
-	// Creation timestamp
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// Job flow
-	Flow *string `json:"flow,omitempty"`
-	// Describes whether the job is running
-	IsRunning *bool `json:"isRunning,omitempty"`
 	// Node ID for this server
 	Node *string `json:"node,omitempty"`
-	Payload *ServerJobPayload `json:"payload,omitempty"`
-	Progress *Progress `json:"progress,omitempty"`
-	// Id of the server
-	ServerId *string `json:"serverId,omitempty"`
-	// Status of the job
-	Status *string `json:"status,omitempty"`
-	// List of tasks in the job
-	Tasks []Task `json:"tasks,omitempty"`
-	Type *JobType `json:"type,omitempty"`
+	// Creation timestamp
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Update timestamp
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	// Unique identifier of the job
-	Uuid *string `json:"uuid,omitempty"`
+	// Job flow
+	Flow *string `json:"flow,omitempty"`
+	CurrentTask NullableCurrentTask `json:"currentTask,omitempty"`
+	Progress *Progress `json:"progress,omitempty"`
+	// Describes whether the job is running
+	IsRunning *bool `json:"isRunning,omitempty"`
+	Metadata NullableMetadata `json:"metadata,omitempty"`
+	Payload *JobPayload `json:"payload,omitempty"`
+	// List of tasks in the job
+	Tasks []Task `json:"tasks,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -64,6 +66,134 @@ func NewServerJob() *ServerJob {
 func NewServerJobWithDefaults() *ServerJob {
 	this := ServerJob{}
 	return &this
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ServerJob) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerJob) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *ServerJob) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *ServerJob) SetStatus(v string) {
+	o.Status = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *ServerJob) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerJob) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *ServerJob) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *ServerJob) SetUuid(v string) {
+	o.Uuid = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *ServerJob) GetType() JobType {
+	if o == nil || IsNil(o.Type) {
+		var ret JobType
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerJob) GetTypeOk() (*JobType, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *ServerJob) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given JobType and assigns it to the Type field.
+func (o *ServerJob) SetType(v JobType) {
+	o.Type = &v
+}
+
+// GetServerId returns the ServerId field value if set, zero value otherwise.
+func (o *ServerJob) GetServerId() string {
+	if o == nil || IsNil(o.ServerId) {
+		var ret string
+		return ret
+	}
+	return *o.ServerId
+}
+
+// GetServerIdOk returns a tuple with the ServerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerJob) GetServerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ServerId) {
+		return nil, false
+	}
+	return o.ServerId, true
+}
+
+// HasServerId returns a boolean if a field has been set.
+func (o *ServerJob) HasServerId() bool {
+	if o != nil && !IsNil(o.ServerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetServerId gets a reference to the given string and assigns it to the ServerId field.
+func (o *ServerJob) SetServerId(v string) {
+	o.ServerId = &v
 }
 
 // GetBareMetalId returns the BareMetalId field value if set, zero value otherwise.
@@ -101,102 +231,6 @@ func (o *ServerJob) SetBareMetalId(v string) {
 	o.BareMetalId = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *ServerJob) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
-		var ret time.Time
-		return ret
-	}
-	return *o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServerJob) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
-		return nil, false
-	}
-	return o.CreatedAt, true
-}
-
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *ServerJob) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *ServerJob) SetCreatedAt(v time.Time) {
-	o.CreatedAt = &v
-}
-
-// GetFlow returns the Flow field value if set, zero value otherwise.
-func (o *ServerJob) GetFlow() string {
-	if o == nil || IsNil(o.Flow) {
-		var ret string
-		return ret
-	}
-	return *o.Flow
-}
-
-// GetFlowOk returns a tuple with the Flow field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServerJob) GetFlowOk() (*string, bool) {
-	if o == nil || IsNil(o.Flow) {
-		return nil, false
-	}
-	return o.Flow, true
-}
-
-// HasFlow returns a boolean if a field has been set.
-func (o *ServerJob) HasFlow() bool {
-	if o != nil && !IsNil(o.Flow) {
-		return true
-	}
-
-	return false
-}
-
-// SetFlow gets a reference to the given string and assigns it to the Flow field.
-func (o *ServerJob) SetFlow(v string) {
-	o.Flow = &v
-}
-
-// GetIsRunning returns the IsRunning field value if set, zero value otherwise.
-func (o *ServerJob) GetIsRunning() bool {
-	if o == nil || IsNil(o.IsRunning) {
-		var ret bool
-		return ret
-	}
-	return *o.IsRunning
-}
-
-// GetIsRunningOk returns a tuple with the IsRunning field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServerJob) GetIsRunningOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsRunning) {
-		return nil, false
-	}
-	return o.IsRunning, true
-}
-
-// HasIsRunning returns a boolean if a field has been set.
-func (o *ServerJob) HasIsRunning() bool {
-	if o != nil && !IsNil(o.IsRunning) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsRunning gets a reference to the given bool and assigns it to the IsRunning field.
-func (o *ServerJob) SetIsRunning(v bool) {
-	o.IsRunning = &v
-}
-
 // GetNode returns the Node field value if set, zero value otherwise.
 func (o *ServerJob) GetNode() string {
 	if o == nil || IsNil(o.Node) {
@@ -229,196 +263,36 @@ func (o *ServerJob) SetNode(v string) {
 	o.Node = &v
 }
 
-// GetPayload returns the Payload field value if set, zero value otherwise.
-func (o *ServerJob) GetPayload() ServerJobPayload {
-	if o == nil || IsNil(o.Payload) {
-		var ret ServerJobPayload
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *ServerJob) GetCreatedAt() time.Time {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret time.Time
 		return ret
 	}
-	return *o.Payload
+	return *o.CreatedAt
 }
 
-// GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerJob) GetPayloadOk() (*ServerJobPayload, bool) {
-	if o == nil || IsNil(o.Payload) {
+func (o *ServerJob) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.Payload, true
+	return o.CreatedAt, true
 }
 
-// HasPayload returns a boolean if a field has been set.
-func (o *ServerJob) HasPayload() bool {
-	if o != nil && !IsNil(o.Payload) {
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *ServerJob) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetPayload gets a reference to the given ServerJobPayload and assigns it to the Payload field.
-func (o *ServerJob) SetPayload(v ServerJobPayload) {
-	o.Payload = &v
-}
-
-// GetProgress returns the Progress field value if set, zero value otherwise.
-func (o *ServerJob) GetProgress() Progress {
-	if o == nil || IsNil(o.Progress) {
-		var ret Progress
-		return ret
-	}
-	return *o.Progress
-}
-
-// GetProgressOk returns a tuple with the Progress field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServerJob) GetProgressOk() (*Progress, bool) {
-	if o == nil || IsNil(o.Progress) {
-		return nil, false
-	}
-	return o.Progress, true
-}
-
-// HasProgress returns a boolean if a field has been set.
-func (o *ServerJob) HasProgress() bool {
-	if o != nil && !IsNil(o.Progress) {
-		return true
-	}
-
-	return false
-}
-
-// SetProgress gets a reference to the given Progress and assigns it to the Progress field.
-func (o *ServerJob) SetProgress(v Progress) {
-	o.Progress = &v
-}
-
-// GetServerId returns the ServerId field value if set, zero value otherwise.
-func (o *ServerJob) GetServerId() string {
-	if o == nil || IsNil(o.ServerId) {
-		var ret string
-		return ret
-	}
-	return *o.ServerId
-}
-
-// GetServerIdOk returns a tuple with the ServerId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServerJob) GetServerIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ServerId) {
-		return nil, false
-	}
-	return o.ServerId, true
-}
-
-// HasServerId returns a boolean if a field has been set.
-func (o *ServerJob) HasServerId() bool {
-	if o != nil && !IsNil(o.ServerId) {
-		return true
-	}
-
-	return false
-}
-
-// SetServerId gets a reference to the given string and assigns it to the ServerId field.
-func (o *ServerJob) SetServerId(v string) {
-	o.ServerId = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ServerJob) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServerJob) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *ServerJob) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *ServerJob) SetStatus(v string) {
-	o.Status = &v
-}
-
-// GetTasks returns the Tasks field value if set, zero value otherwise.
-func (o *ServerJob) GetTasks() []Task {
-	if o == nil || IsNil(o.Tasks) {
-		var ret []Task
-		return ret
-	}
-	return o.Tasks
-}
-
-// GetTasksOk returns a tuple with the Tasks field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServerJob) GetTasksOk() ([]Task, bool) {
-	if o == nil || IsNil(o.Tasks) {
-		return nil, false
-	}
-	return o.Tasks, true
-}
-
-// HasTasks returns a boolean if a field has been set.
-func (o *ServerJob) HasTasks() bool {
-	if o != nil && !IsNil(o.Tasks) {
-		return true
-	}
-
-	return false
-}
-
-// SetTasks gets a reference to the given []Task and assigns it to the Tasks field.
-func (o *ServerJob) SetTasks(v []Task) {
-	o.Tasks = v
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *ServerJob) GetType() JobType {
-	if o == nil || IsNil(o.Type) {
-		var ret JobType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServerJob) GetTypeOk() (*JobType, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *ServerJob) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given JobType and assigns it to the Type field.
-func (o *ServerJob) SetType(v JobType) {
-	o.Type = &v
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *ServerJob) SetCreatedAt(v time.Time) {
+	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -453,36 +327,248 @@ func (o *ServerJob) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *ServerJob) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
+// GetFlow returns the Flow field value if set, zero value otherwise.
+func (o *ServerJob) GetFlow() string {
+	if o == nil || IsNil(o.Flow) {
 		var ret string
 		return ret
 	}
-	return *o.Uuid
+	return *o.Flow
 }
 
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// GetFlowOk returns a tuple with the Flow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerJob) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
+func (o *ServerJob) GetFlowOk() (*string, bool) {
+	if o == nil || IsNil(o.Flow) {
 		return nil, false
 	}
-	return o.Uuid, true
+	return o.Flow, true
 }
 
-// HasUuid returns a boolean if a field has been set.
-func (o *ServerJob) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
+// HasFlow returns a boolean if a field has been set.
+func (o *ServerJob) HasFlow() bool {
+	if o != nil && !IsNil(o.Flow) {
 		return true
 	}
 
 	return false
 }
 
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *ServerJob) SetUuid(v string) {
-	o.Uuid = &v
+// SetFlow gets a reference to the given string and assigns it to the Flow field.
+func (o *ServerJob) SetFlow(v string) {
+	o.Flow = &v
+}
+
+// GetCurrentTask returns the CurrentTask field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerJob) GetCurrentTask() CurrentTask {
+	if o == nil || IsNil(o.CurrentTask.Get()) {
+		var ret CurrentTask
+		return ret
+	}
+	return *o.CurrentTask.Get()
+}
+
+// GetCurrentTaskOk returns a tuple with the CurrentTask field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerJob) GetCurrentTaskOk() (*CurrentTask, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CurrentTask.Get(), o.CurrentTask.IsSet()
+}
+
+// HasCurrentTask returns a boolean if a field has been set.
+func (o *ServerJob) HasCurrentTask() bool {
+	if o != nil && o.CurrentTask.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentTask gets a reference to the given NullableCurrentTask and assigns it to the CurrentTask field.
+func (o *ServerJob) SetCurrentTask(v CurrentTask) {
+	o.CurrentTask.Set(&v)
+}
+// SetCurrentTaskNil sets the value for CurrentTask to be an explicit nil
+func (o *ServerJob) SetCurrentTaskNil() {
+	o.CurrentTask.Set(nil)
+}
+
+// UnsetCurrentTask ensures that no value is present for CurrentTask, not even an explicit nil
+func (o *ServerJob) UnsetCurrentTask() {
+	o.CurrentTask.Unset()
+}
+
+// GetProgress returns the Progress field value if set, zero value otherwise.
+func (o *ServerJob) GetProgress() Progress {
+	if o == nil || IsNil(o.Progress) {
+		var ret Progress
+		return ret
+	}
+	return *o.Progress
+}
+
+// GetProgressOk returns a tuple with the Progress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerJob) GetProgressOk() (*Progress, bool) {
+	if o == nil || IsNil(o.Progress) {
+		return nil, false
+	}
+	return o.Progress, true
+}
+
+// HasProgress returns a boolean if a field has been set.
+func (o *ServerJob) HasProgress() bool {
+	if o != nil && !IsNil(o.Progress) {
+		return true
+	}
+
+	return false
+}
+
+// SetProgress gets a reference to the given Progress and assigns it to the Progress field.
+func (o *ServerJob) SetProgress(v Progress) {
+	o.Progress = &v
+}
+
+// GetIsRunning returns the IsRunning field value if set, zero value otherwise.
+func (o *ServerJob) GetIsRunning() bool {
+	if o == nil || IsNil(o.IsRunning) {
+		var ret bool
+		return ret
+	}
+	return *o.IsRunning
+}
+
+// GetIsRunningOk returns a tuple with the IsRunning field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerJob) GetIsRunningOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsRunning) {
+		return nil, false
+	}
+	return o.IsRunning, true
+}
+
+// HasIsRunning returns a boolean if a field has been set.
+func (o *ServerJob) HasIsRunning() bool {
+	if o != nil && !IsNil(o.IsRunning) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsRunning gets a reference to the given bool and assigns it to the IsRunning field.
+func (o *ServerJob) SetIsRunning(v bool) {
+	o.IsRunning = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerJob) GetMetadata() Metadata {
+	if o == nil || IsNil(o.Metadata.Get()) {
+		var ret Metadata
+		return ret
+	}
+	return *o.Metadata.Get()
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerJob) GetMetadataOk() (*Metadata, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Metadata.Get(), o.Metadata.IsSet()
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *ServerJob) HasMetadata() bool {
+	if o != nil && o.Metadata.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given NullableMetadata and assigns it to the Metadata field.
+func (o *ServerJob) SetMetadata(v Metadata) {
+	o.Metadata.Set(&v)
+}
+// SetMetadataNil sets the value for Metadata to be an explicit nil
+func (o *ServerJob) SetMetadataNil() {
+	o.Metadata.Set(nil)
+}
+
+// UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+func (o *ServerJob) UnsetMetadata() {
+	o.Metadata.Unset()
+}
+
+// GetPayload returns the Payload field value if set, zero value otherwise.
+func (o *ServerJob) GetPayload() JobPayload {
+	if o == nil || IsNil(o.Payload) {
+		var ret JobPayload
+		return ret
+	}
+	return *o.Payload
+}
+
+// GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerJob) GetPayloadOk() (*JobPayload, bool) {
+	if o == nil || IsNil(o.Payload) {
+		return nil, false
+	}
+	return o.Payload, true
+}
+
+// HasPayload returns a boolean if a field has been set.
+func (o *ServerJob) HasPayload() bool {
+	if o != nil && !IsNil(o.Payload) {
+		return true
+	}
+
+	return false
+}
+
+// SetPayload gets a reference to the given JobPayload and assigns it to the Payload field.
+func (o *ServerJob) SetPayload(v JobPayload) {
+	o.Payload = &v
+}
+
+// GetTasks returns the Tasks field value if set, zero value otherwise.
+func (o *ServerJob) GetTasks() []Task {
+	if o == nil || IsNil(o.Tasks) {
+		var ret []Task
+		return ret
+	}
+	return o.Tasks
+}
+
+// GetTasksOk returns a tuple with the Tasks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerJob) GetTasksOk() ([]Task, bool) {
+	if o == nil || IsNil(o.Tasks) {
+		return nil, false
+	}
+	return o.Tasks, true
+}
+
+// HasTasks returns a boolean if a field has been set.
+func (o *ServerJob) HasTasks() bool {
+	if o != nil && !IsNil(o.Tasks) {
+		return true
+	}
+
+	return false
+}
+
+// SetTasks gets a reference to the given []Task and assigns it to the Tasks field.
+func (o *ServerJob) SetTasks(v []Task) {
+	o.Tasks = v
 }
 
 func (o ServerJob) MarshalJSON() ([]byte, error) {
@@ -495,44 +581,50 @@ func (o ServerJob) MarshalJSON() ([]byte, error) {
 
 func (o ServerJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.BareMetalId) {
-		toSerialize["bareMetalId"] = o.BareMetalId
-	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !IsNil(o.Flow) {
-		toSerialize["flow"] = o.Flow
-	}
-	if !IsNil(o.IsRunning) {
-		toSerialize["isRunning"] = o.IsRunning
-	}
-	if !IsNil(o.Node) {
-		toSerialize["node"] = o.Node
-	}
-	if !IsNil(o.Payload) {
-		toSerialize["payload"] = o.Payload
-	}
-	if !IsNil(o.Progress) {
-		toSerialize["progress"] = o.Progress
-	}
-	if !IsNil(o.ServerId) {
-		toSerialize["serverId"] = o.ServerId
-	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.Tasks) {
-		toSerialize["tasks"] = o.Tasks
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
+	if !IsNil(o.ServerId) {
+		toSerialize["serverId"] = o.ServerId
+	}
+	if !IsNil(o.BareMetalId) {
+		toSerialize["bareMetalId"] = o.BareMetalId
+	}
+	if !IsNil(o.Node) {
+		toSerialize["node"] = o.Node
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
+	if !IsNil(o.Flow) {
+		toSerialize["flow"] = o.Flow
+	}
+	if o.CurrentTask.IsSet() {
+		toSerialize["currentTask"] = o.CurrentTask.Get()
+	}
+	if !IsNil(o.Progress) {
+		toSerialize["progress"] = o.Progress
+	}
+	if !IsNil(o.IsRunning) {
+		toSerialize["isRunning"] = o.IsRunning
+	}
+	if o.Metadata.IsSet() {
+		toSerialize["metadata"] = o.Metadata.Get()
+	}
+	if !IsNil(o.Payload) {
+		toSerialize["payload"] = o.Payload
+	}
+	if !IsNil(o.Tasks) {
+		toSerialize["tasks"] = o.Tasks
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -556,19 +648,21 @@ func (o *ServerJob) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "bareMetalId")
-		delete(additionalProperties, "createdAt")
-		delete(additionalProperties, "flow")
-		delete(additionalProperties, "isRunning")
-		delete(additionalProperties, "node")
-		delete(additionalProperties, "payload")
-		delete(additionalProperties, "progress")
-		delete(additionalProperties, "serverId")
 		delete(additionalProperties, "status")
-		delete(additionalProperties, "tasks")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "updatedAt")
 		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "serverId")
+		delete(additionalProperties, "bareMetalId")
+		delete(additionalProperties, "node")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "updatedAt")
+		delete(additionalProperties, "flow")
+		delete(additionalProperties, "currentTask")
+		delete(additionalProperties, "progress")
+		delete(additionalProperties, "isRunning")
+		delete(additionalProperties, "metadata")
+		delete(additionalProperties, "payload")
+		delete(additionalProperties, "tasks")
 		o.AdditionalProperties = additionalProperties
 	}
 

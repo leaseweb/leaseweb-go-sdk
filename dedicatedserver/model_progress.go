@@ -19,15 +19,28 @@ var _ MappedNullable = &Progress{}
 
 // Progress Describes progress of the jobs on the server
 type Progress struct {
-	Canceled *int32 `json:"canceled,omitempty"`
-	Expired *int32 `json:"expired,omitempty"`
-	Failed *int32 `json:"failed,omitempty"`
-	Finished *int32 `json:"finished,omitempty"`
-	Inprogress *int32 `json:"inprogress,omitempty"`
-	Pending *int32 `json:"pending,omitempty"`
-	Percentage *int32 `json:"percentage,omitempty"`
+	// Total number of tasks
 	Total *int32 `json:"total,omitempty"`
+	// Number of tasks waiting
 	Waiting *int32 `json:"waiting,omitempty"`
+	// Number of tasks pending
+	Pending *int32 `json:"pending,omitempty"`
+	// Number of tasks in progress
+	Inprogress *int32 `json:"inprogress,omitempty"`
+	// Number of tasks finished
+	Finished *int32 `json:"finished,omitempty"`
+	// Number of tasks failed
+	Failed *int32 `json:"failed,omitempty"`
+	// Number of tasks expired
+	Expired *int32 `json:"expired,omitempty"`
+	// Number of tasks canceled
+	Canceled *int32 `json:"canceled,omitempty"`
+	// Number of tasks with warnings
+	Warning *int32 `json:"warning,omitempty"`
+	// Number of tasks skipped
+	Skipped *int32 `json:"skipped,omitempty"`
+	// Percentage of tasks completed
+	Percentage *int32 `json:"percentage,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -48,230 +61,6 @@ func NewProgress() *Progress {
 func NewProgressWithDefaults() *Progress {
 	this := Progress{}
 	return &this
-}
-
-// GetCanceled returns the Canceled field value if set, zero value otherwise.
-func (o *Progress) GetCanceled() int32 {
-	if o == nil || IsNil(o.Canceled) {
-		var ret int32
-		return ret
-	}
-	return *o.Canceled
-}
-
-// GetCanceledOk returns a tuple with the Canceled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Progress) GetCanceledOk() (*int32, bool) {
-	if o == nil || IsNil(o.Canceled) {
-		return nil, false
-	}
-	return o.Canceled, true
-}
-
-// HasCanceled returns a boolean if a field has been set.
-func (o *Progress) HasCanceled() bool {
-	if o != nil && !IsNil(o.Canceled) {
-		return true
-	}
-
-	return false
-}
-
-// SetCanceled gets a reference to the given int32 and assigns it to the Canceled field.
-func (o *Progress) SetCanceled(v int32) {
-	o.Canceled = &v
-}
-
-// GetExpired returns the Expired field value if set, zero value otherwise.
-func (o *Progress) GetExpired() int32 {
-	if o == nil || IsNil(o.Expired) {
-		var ret int32
-		return ret
-	}
-	return *o.Expired
-}
-
-// GetExpiredOk returns a tuple with the Expired field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Progress) GetExpiredOk() (*int32, bool) {
-	if o == nil || IsNil(o.Expired) {
-		return nil, false
-	}
-	return o.Expired, true
-}
-
-// HasExpired returns a boolean if a field has been set.
-func (o *Progress) HasExpired() bool {
-	if o != nil && !IsNil(o.Expired) {
-		return true
-	}
-
-	return false
-}
-
-// SetExpired gets a reference to the given int32 and assigns it to the Expired field.
-func (o *Progress) SetExpired(v int32) {
-	o.Expired = &v
-}
-
-// GetFailed returns the Failed field value if set, zero value otherwise.
-func (o *Progress) GetFailed() int32 {
-	if o == nil || IsNil(o.Failed) {
-		var ret int32
-		return ret
-	}
-	return *o.Failed
-}
-
-// GetFailedOk returns a tuple with the Failed field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Progress) GetFailedOk() (*int32, bool) {
-	if o == nil || IsNil(o.Failed) {
-		return nil, false
-	}
-	return o.Failed, true
-}
-
-// HasFailed returns a boolean if a field has been set.
-func (o *Progress) HasFailed() bool {
-	if o != nil && !IsNil(o.Failed) {
-		return true
-	}
-
-	return false
-}
-
-// SetFailed gets a reference to the given int32 and assigns it to the Failed field.
-func (o *Progress) SetFailed(v int32) {
-	o.Failed = &v
-}
-
-// GetFinished returns the Finished field value if set, zero value otherwise.
-func (o *Progress) GetFinished() int32 {
-	if o == nil || IsNil(o.Finished) {
-		var ret int32
-		return ret
-	}
-	return *o.Finished
-}
-
-// GetFinishedOk returns a tuple with the Finished field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Progress) GetFinishedOk() (*int32, bool) {
-	if o == nil || IsNil(o.Finished) {
-		return nil, false
-	}
-	return o.Finished, true
-}
-
-// HasFinished returns a boolean if a field has been set.
-func (o *Progress) HasFinished() bool {
-	if o != nil && !IsNil(o.Finished) {
-		return true
-	}
-
-	return false
-}
-
-// SetFinished gets a reference to the given int32 and assigns it to the Finished field.
-func (o *Progress) SetFinished(v int32) {
-	o.Finished = &v
-}
-
-// GetInprogress returns the Inprogress field value if set, zero value otherwise.
-func (o *Progress) GetInprogress() int32 {
-	if o == nil || IsNil(o.Inprogress) {
-		var ret int32
-		return ret
-	}
-	return *o.Inprogress
-}
-
-// GetInprogressOk returns a tuple with the Inprogress field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Progress) GetInprogressOk() (*int32, bool) {
-	if o == nil || IsNil(o.Inprogress) {
-		return nil, false
-	}
-	return o.Inprogress, true
-}
-
-// HasInprogress returns a boolean if a field has been set.
-func (o *Progress) HasInprogress() bool {
-	if o != nil && !IsNil(o.Inprogress) {
-		return true
-	}
-
-	return false
-}
-
-// SetInprogress gets a reference to the given int32 and assigns it to the Inprogress field.
-func (o *Progress) SetInprogress(v int32) {
-	o.Inprogress = &v
-}
-
-// GetPending returns the Pending field value if set, zero value otherwise.
-func (o *Progress) GetPending() int32 {
-	if o == nil || IsNil(o.Pending) {
-		var ret int32
-		return ret
-	}
-	return *o.Pending
-}
-
-// GetPendingOk returns a tuple with the Pending field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Progress) GetPendingOk() (*int32, bool) {
-	if o == nil || IsNil(o.Pending) {
-		return nil, false
-	}
-	return o.Pending, true
-}
-
-// HasPending returns a boolean if a field has been set.
-func (o *Progress) HasPending() bool {
-	if o != nil && !IsNil(o.Pending) {
-		return true
-	}
-
-	return false
-}
-
-// SetPending gets a reference to the given int32 and assigns it to the Pending field.
-func (o *Progress) SetPending(v int32) {
-	o.Pending = &v
-}
-
-// GetPercentage returns the Percentage field value if set, zero value otherwise.
-func (o *Progress) GetPercentage() int32 {
-	if o == nil || IsNil(o.Percentage) {
-		var ret int32
-		return ret
-	}
-	return *o.Percentage
-}
-
-// GetPercentageOk returns a tuple with the Percentage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Progress) GetPercentageOk() (*int32, bool) {
-	if o == nil || IsNil(o.Percentage) {
-		return nil, false
-	}
-	return o.Percentage, true
-}
-
-// HasPercentage returns a boolean if a field has been set.
-func (o *Progress) HasPercentage() bool {
-	if o != nil && !IsNil(o.Percentage) {
-		return true
-	}
-
-	return false
-}
-
-// SetPercentage gets a reference to the given int32 and assigns it to the Percentage field.
-func (o *Progress) SetPercentage(v int32) {
-	o.Percentage = &v
 }
 
 // GetTotal returns the Total field value if set, zero value otherwise.
@@ -338,6 +127,294 @@ func (o *Progress) SetWaiting(v int32) {
 	o.Waiting = &v
 }
 
+// GetPending returns the Pending field value if set, zero value otherwise.
+func (o *Progress) GetPending() int32 {
+	if o == nil || IsNil(o.Pending) {
+		var ret int32
+		return ret
+	}
+	return *o.Pending
+}
+
+// GetPendingOk returns a tuple with the Pending field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Progress) GetPendingOk() (*int32, bool) {
+	if o == nil || IsNil(o.Pending) {
+		return nil, false
+	}
+	return o.Pending, true
+}
+
+// HasPending returns a boolean if a field has been set.
+func (o *Progress) HasPending() bool {
+	if o != nil && !IsNil(o.Pending) {
+		return true
+	}
+
+	return false
+}
+
+// SetPending gets a reference to the given int32 and assigns it to the Pending field.
+func (o *Progress) SetPending(v int32) {
+	o.Pending = &v
+}
+
+// GetInprogress returns the Inprogress field value if set, zero value otherwise.
+func (o *Progress) GetInprogress() int32 {
+	if o == nil || IsNil(o.Inprogress) {
+		var ret int32
+		return ret
+	}
+	return *o.Inprogress
+}
+
+// GetInprogressOk returns a tuple with the Inprogress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Progress) GetInprogressOk() (*int32, bool) {
+	if o == nil || IsNil(o.Inprogress) {
+		return nil, false
+	}
+	return o.Inprogress, true
+}
+
+// HasInprogress returns a boolean if a field has been set.
+func (o *Progress) HasInprogress() bool {
+	if o != nil && !IsNil(o.Inprogress) {
+		return true
+	}
+
+	return false
+}
+
+// SetInprogress gets a reference to the given int32 and assigns it to the Inprogress field.
+func (o *Progress) SetInprogress(v int32) {
+	o.Inprogress = &v
+}
+
+// GetFinished returns the Finished field value if set, zero value otherwise.
+func (o *Progress) GetFinished() int32 {
+	if o == nil || IsNil(o.Finished) {
+		var ret int32
+		return ret
+	}
+	return *o.Finished
+}
+
+// GetFinishedOk returns a tuple with the Finished field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Progress) GetFinishedOk() (*int32, bool) {
+	if o == nil || IsNil(o.Finished) {
+		return nil, false
+	}
+	return o.Finished, true
+}
+
+// HasFinished returns a boolean if a field has been set.
+func (o *Progress) HasFinished() bool {
+	if o != nil && !IsNil(o.Finished) {
+		return true
+	}
+
+	return false
+}
+
+// SetFinished gets a reference to the given int32 and assigns it to the Finished field.
+func (o *Progress) SetFinished(v int32) {
+	o.Finished = &v
+}
+
+// GetFailed returns the Failed field value if set, zero value otherwise.
+func (o *Progress) GetFailed() int32 {
+	if o == nil || IsNil(o.Failed) {
+		var ret int32
+		return ret
+	}
+	return *o.Failed
+}
+
+// GetFailedOk returns a tuple with the Failed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Progress) GetFailedOk() (*int32, bool) {
+	if o == nil || IsNil(o.Failed) {
+		return nil, false
+	}
+	return o.Failed, true
+}
+
+// HasFailed returns a boolean if a field has been set.
+func (o *Progress) HasFailed() bool {
+	if o != nil && !IsNil(o.Failed) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailed gets a reference to the given int32 and assigns it to the Failed field.
+func (o *Progress) SetFailed(v int32) {
+	o.Failed = &v
+}
+
+// GetExpired returns the Expired field value if set, zero value otherwise.
+func (o *Progress) GetExpired() int32 {
+	if o == nil || IsNil(o.Expired) {
+		var ret int32
+		return ret
+	}
+	return *o.Expired
+}
+
+// GetExpiredOk returns a tuple with the Expired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Progress) GetExpiredOk() (*int32, bool) {
+	if o == nil || IsNil(o.Expired) {
+		return nil, false
+	}
+	return o.Expired, true
+}
+
+// HasExpired returns a boolean if a field has been set.
+func (o *Progress) HasExpired() bool {
+	if o != nil && !IsNil(o.Expired) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpired gets a reference to the given int32 and assigns it to the Expired field.
+func (o *Progress) SetExpired(v int32) {
+	o.Expired = &v
+}
+
+// GetCanceled returns the Canceled field value if set, zero value otherwise.
+func (o *Progress) GetCanceled() int32 {
+	if o == nil || IsNil(o.Canceled) {
+		var ret int32
+		return ret
+	}
+	return *o.Canceled
+}
+
+// GetCanceledOk returns a tuple with the Canceled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Progress) GetCanceledOk() (*int32, bool) {
+	if o == nil || IsNil(o.Canceled) {
+		return nil, false
+	}
+	return o.Canceled, true
+}
+
+// HasCanceled returns a boolean if a field has been set.
+func (o *Progress) HasCanceled() bool {
+	if o != nil && !IsNil(o.Canceled) {
+		return true
+	}
+
+	return false
+}
+
+// SetCanceled gets a reference to the given int32 and assigns it to the Canceled field.
+func (o *Progress) SetCanceled(v int32) {
+	o.Canceled = &v
+}
+
+// GetWarning returns the Warning field value if set, zero value otherwise.
+func (o *Progress) GetWarning() int32 {
+	if o == nil || IsNil(o.Warning) {
+		var ret int32
+		return ret
+	}
+	return *o.Warning
+}
+
+// GetWarningOk returns a tuple with the Warning field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Progress) GetWarningOk() (*int32, bool) {
+	if o == nil || IsNil(o.Warning) {
+		return nil, false
+	}
+	return o.Warning, true
+}
+
+// HasWarning returns a boolean if a field has been set.
+func (o *Progress) HasWarning() bool {
+	if o != nil && !IsNil(o.Warning) {
+		return true
+	}
+
+	return false
+}
+
+// SetWarning gets a reference to the given int32 and assigns it to the Warning field.
+func (o *Progress) SetWarning(v int32) {
+	o.Warning = &v
+}
+
+// GetSkipped returns the Skipped field value if set, zero value otherwise.
+func (o *Progress) GetSkipped() int32 {
+	if o == nil || IsNil(o.Skipped) {
+		var ret int32
+		return ret
+	}
+	return *o.Skipped
+}
+
+// GetSkippedOk returns a tuple with the Skipped field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Progress) GetSkippedOk() (*int32, bool) {
+	if o == nil || IsNil(o.Skipped) {
+		return nil, false
+	}
+	return o.Skipped, true
+}
+
+// HasSkipped returns a boolean if a field has been set.
+func (o *Progress) HasSkipped() bool {
+	if o != nil && !IsNil(o.Skipped) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipped gets a reference to the given int32 and assigns it to the Skipped field.
+func (o *Progress) SetSkipped(v int32) {
+	o.Skipped = &v
+}
+
+// GetPercentage returns the Percentage field value if set, zero value otherwise.
+func (o *Progress) GetPercentage() int32 {
+	if o == nil || IsNil(o.Percentage) {
+		var ret int32
+		return ret
+	}
+	return *o.Percentage
+}
+
+// GetPercentageOk returns a tuple with the Percentage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Progress) GetPercentageOk() (*int32, bool) {
+	if o == nil || IsNil(o.Percentage) {
+		return nil, false
+	}
+	return o.Percentage, true
+}
+
+// HasPercentage returns a boolean if a field has been set.
+func (o *Progress) HasPercentage() bool {
+	if o != nil && !IsNil(o.Percentage) {
+		return true
+	}
+
+	return false
+}
+
+// SetPercentage gets a reference to the given int32 and assigns it to the Percentage field.
+func (o *Progress) SetPercentage(v int32) {
+	o.Percentage = &v
+}
+
 func (o Progress) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -348,32 +425,38 @@ func (o Progress) MarshalJSON() ([]byte, error) {
 
 func (o Progress) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Canceled) {
-		toSerialize["canceled"] = o.Canceled
-	}
-	if !IsNil(o.Expired) {
-		toSerialize["expired"] = o.Expired
-	}
-	if !IsNil(o.Failed) {
-		toSerialize["failed"] = o.Failed
-	}
-	if !IsNil(o.Finished) {
-		toSerialize["finished"] = o.Finished
-	}
-	if !IsNil(o.Inprogress) {
-		toSerialize["inprogress"] = o.Inprogress
-	}
-	if !IsNil(o.Pending) {
-		toSerialize["pending"] = o.Pending
-	}
-	if !IsNil(o.Percentage) {
-		toSerialize["percentage"] = o.Percentage
-	}
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
 	}
 	if !IsNil(o.Waiting) {
 		toSerialize["waiting"] = o.Waiting
+	}
+	if !IsNil(o.Pending) {
+		toSerialize["pending"] = o.Pending
+	}
+	if !IsNil(o.Inprogress) {
+		toSerialize["inprogress"] = o.Inprogress
+	}
+	if !IsNil(o.Finished) {
+		toSerialize["finished"] = o.Finished
+	}
+	if !IsNil(o.Failed) {
+		toSerialize["failed"] = o.Failed
+	}
+	if !IsNil(o.Expired) {
+		toSerialize["expired"] = o.Expired
+	}
+	if !IsNil(o.Canceled) {
+		toSerialize["canceled"] = o.Canceled
+	}
+	if !IsNil(o.Warning) {
+		toSerialize["warning"] = o.Warning
+	}
+	if !IsNil(o.Skipped) {
+		toSerialize["skipped"] = o.Skipped
+	}
+	if !IsNil(o.Percentage) {
+		toSerialize["percentage"] = o.Percentage
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -397,15 +480,17 @@ func (o *Progress) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "canceled")
-		delete(additionalProperties, "expired")
-		delete(additionalProperties, "failed")
-		delete(additionalProperties, "finished")
-		delete(additionalProperties, "inprogress")
-		delete(additionalProperties, "pending")
-		delete(additionalProperties, "percentage")
 		delete(additionalProperties, "total")
 		delete(additionalProperties, "waiting")
+		delete(additionalProperties, "pending")
+		delete(additionalProperties, "inprogress")
+		delete(additionalProperties, "finished")
+		delete(additionalProperties, "failed")
+		delete(additionalProperties, "expired")
+		delete(additionalProperties, "canceled")
+		delete(additionalProperties, "warning")
+		delete(additionalProperties, "skipped")
+		delete(additionalProperties, "percentage")
 		o.AdditionalProperties = additionalProperties
 	}
 

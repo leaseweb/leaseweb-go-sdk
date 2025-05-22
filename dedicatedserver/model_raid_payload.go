@@ -22,7 +22,7 @@ type RaidPayload struct {
 	// The type of RAID
 	Type *string `json:"type,omitempty"`
 	// The RAID level
-	Level NullableInt32 `json:"level,omitempty"`
+	Level *int32 `json:"level,omitempty"`
 	// The number of disks in the RAID
 	NumberOfDisks NullableInt32 `json:"numberOfDisks,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -79,46 +79,36 @@ func (o *RaidPayload) SetType(v string) {
 	o.Type = &v
 }
 
-// GetLevel returns the Level field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLevel returns the Level field value if set, zero value otherwise.
 func (o *RaidPayload) GetLevel() int32 {
-	if o == nil || IsNil(o.Level.Get()) {
+	if o == nil || IsNil(o.Level) {
 		var ret int32
 		return ret
 	}
-	return *o.Level.Get()
+	return *o.Level
 }
 
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RaidPayload) GetLevelOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Level) {
 		return nil, false
 	}
-	return o.Level.Get(), o.Level.IsSet()
+	return o.Level, true
 }
 
 // HasLevel returns a boolean if a field has been set.
 func (o *RaidPayload) HasLevel() bool {
-	if o != nil && o.Level.IsSet() {
+	if o != nil && !IsNil(o.Level) {
 		return true
 	}
 
 	return false
 }
 
-// SetLevel gets a reference to the given NullableInt32 and assigns it to the Level field.
+// SetLevel gets a reference to the given int32 and assigns it to the Level field.
 func (o *RaidPayload) SetLevel(v int32) {
-	o.Level.Set(&v)
-}
-// SetLevelNil sets the value for Level to be an explicit nil
-func (o *RaidPayload) SetLevelNil() {
-	o.Level.Set(nil)
-}
-
-// UnsetLevel ensures that no value is present for Level, not even an explicit nil
-func (o *RaidPayload) UnsetLevel() {
-	o.Level.Unset()
+	o.Level = &v
 }
 
 // GetNumberOfDisks returns the NumberOfDisks field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -176,8 +166,8 @@ func (o RaidPayload) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.Level.IsSet() {
-		toSerialize["level"] = o.Level.Get()
+	if !IsNil(o.Level) {
+		toSerialize["level"] = o.Level
 	}
 	if o.NumberOfDisks.IsSet() {
 		toSerialize["numberOfDisks"] = o.NumberOfDisks.Get()

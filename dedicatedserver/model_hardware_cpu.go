@@ -22,9 +22,11 @@ type HardwareCpu struct {
 	Capabilities *CpuCapabilities `json:"capabilities,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Hz *string `json:"hz,omitempty"`
+	// Serial number of the server
 	SerialNumber *string `json:"serial_number,omitempty"`
 	Settings *CpuSettings `json:"settings,omitempty"`
 	Slot *string `json:"slot,omitempty"`
+	// Vendor of the server
 	Vendor *string `json:"vendor,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

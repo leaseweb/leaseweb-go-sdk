@@ -19,14 +19,23 @@ var _ MappedNullable = &Attribute{}
 
 // Attribute struct for Attribute
 type Attribute struct {
+	// Flag of the attribute
 	Flag *string `json:"flag,omitempty"`
+	// ID of the attribute
 	Id *string `json:"id,omitempty"`
+	// Raw value of the attribute
 	RawValue *string `json:"raw_value,omitempty"`
+	// Threshold value of the attribute
 	Thresh *string `json:"thresh,omitempty"`
+	// Type of the attribute
 	Type *string `json:"type,omitempty"`
+	// Last updated timestamp of the attribute
 	Updated *string `json:"updated,omitempty"`
+	// Value of the attribute
 	Value *string `json:"value,omitempty"`
+	// Timestamp when the attribute failed
 	WhenFailed *string `json:"when_failed,omitempty"`
+	// Worst value of the attribute
 	Worst *string `json:"worst,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

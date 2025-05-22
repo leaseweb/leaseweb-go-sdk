@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** | ID of the memory | [optional] 
 **ClockHz** | Pointer to **string** |  | [optional] 
-**SerialNumber** | Pointer to **string** |  | [optional] 
+**SerialNumber** | Pointer to **string** | Serial number of the server | [optional] 
 **SizeBytes** | Pointer to **string** |  | [optional] 
 
 ## Methods

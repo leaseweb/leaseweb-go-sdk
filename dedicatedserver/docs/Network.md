@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **MacAddress** | Pointer to **string** | Represents a MAC Address in the standard colon delimited format. Eg. &#x60;01:23:45:67:89:0A&#x60; | [optional] 
 **Product** | Pointer to **string** |  | [optional] 
 **Settings** | Pointer to [**NetworkSettings**](NetworkSettings.md) |  | [optional] 
-**Vendor** | Pointer to **string** |  | [optional] 
+**Vendor** | Pointer to **string** | Vendor of the server | [optional] 
 
 ## Methods
 

@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **Flavour** | [**Flavour**](Flavour.md) |  | 
 **Custom** | **bool** | Standard or Custom image | 
 **StorageSize** | [**NullableStorageSize**](StorageSize.md) |  | 
-**State** | [**NullableImageState**](ImageState.md) |  | 
+**State** | [**NullableImageStateName**](ImageStateName.md) |  | 
 **StateReason** | **NullableString** | The reason in case of failure | 
-**Region** | [**NullableRegionName**](RegionName.md) |  | 
+**Region** | [**NullableImageRegion**](ImageRegion.md) |  | 
 **CreatedAt** | **NullableTime** | Date when the image was created | 
 **UpdatedAt** | **NullableTime** | Date when the image was updated | 
 **Version** | **NullableString** |  | 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewImageDetails
 
-`func NewImageDetails(id string, name string, family string, flavour Flavour, custom bool, storageSize NullableStorageSize, state NullableImageState, stateReason NullableString, region NullableRegionName, createdAt NullableTime, updatedAt NullableTime, version NullableString, architecture NullableString, marketApps []MarketAppId, storageTypes []StorageType, minDiskSize NullableInt32, ) *ImageDetails`
+`func NewImageDetails(id string, name string, family string, flavour Flavour, custom bool, storageSize NullableStorageSize, state NullableImageStateName, stateReason NullableString, region NullableImageRegion, createdAt NullableTime, updatedAt NullableTime, version NullableString, architecture NullableString, marketApps []MarketAppId, storageTypes []StorageType, minDiskSize NullableInt32, ) *ImageDetails`
 
 NewImageDetails instantiates a new ImageDetails object
 This constructor will assign default values to properties that have it defined,
@@ -172,20 +172,20 @@ SetStorageSize sets StorageSize field to given value.
 UnsetStorageSize ensures that no value is present for StorageSize, not even an explicit nil
 ### GetState
 
-`func (o *ImageDetails) GetState() ImageState`
+`func (o *ImageDetails) GetState() ImageStateName`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *ImageDetails) GetStateOk() (*ImageState, bool)`
+`func (o *ImageDetails) GetStateOk() (*ImageStateName, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *ImageDetails) SetState(v ImageState)`
+`func (o *ImageDetails) SetState(v ImageStateName)`
 
 SetState sets State field to given value.
 
@@ -232,20 +232,20 @@ SetStateReason sets StateReason field to given value.
 UnsetStateReason ensures that no value is present for StateReason, not even an explicit nil
 ### GetRegion
 
-`func (o *ImageDetails) GetRegion() RegionName`
+`func (o *ImageDetails) GetRegion() ImageRegion`
 
 GetRegion returns the Region field if non-nil, zero value otherwise.
 
 ### GetRegionOk
 
-`func (o *ImageDetails) GetRegionOk() (*RegionName, bool)`
+`func (o *ImageDetails) GetRegionOk() (*ImageRegion, bool)`
 
 GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegion
 
-`func (o *ImageDetails) SetRegion(v RegionName)`
+`func (o *ImageDetails) SetRegion(v ImageRegion)`
 
 SetRegion sets Region field to given value.
 

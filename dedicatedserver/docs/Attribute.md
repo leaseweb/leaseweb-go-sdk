@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Flag** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
-**RawValue** | Pointer to **string** |  | [optional] 
-**Thresh** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
-**Updated** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to **string** |  | [optional] 
-**WhenFailed** | Pointer to **string** |  | [optional] 
-**Worst** | Pointer to **string** |  | [optional] 
+**Flag** | Pointer to **string** | Flag of the attribute | [optional] 
+**Id** | Pointer to **string** | ID of the attribute | [optional] 
+**RawValue** | Pointer to **string** | Raw value of the attribute | [optional] 
+**Thresh** | Pointer to **string** | Threshold value of the attribute | [optional] 
+**Type** | Pointer to **string** | Type of the attribute | [optional] 
+**Updated** | Pointer to **string** | Last updated timestamp of the attribute | [optional] 
+**Value** | Pointer to **string** | Value of the attribute | [optional] 
+**WhenFailed** | Pointer to **string** | Timestamp when the attribute failed | [optional] 
+**Worst** | Pointer to **string** | Worst value of the attribute | [optional] 
 
 ## Methods
 

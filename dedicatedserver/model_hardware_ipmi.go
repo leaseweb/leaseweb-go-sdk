@@ -26,6 +26,7 @@ type HardwareIpmi struct {
 	// Represents a MAC Address in the standard colon delimited format. Eg. `01:23:45:67:89:0A`
 	Macaddress *string `json:"macaddress,omitempty" validate:"regexp=([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9a-fA-F]{4}\\\\.[0-9a-fA-F]{4}\\\\.[0-9a-fA-F]{4})$"`
 	Subnetmask *string `json:"subnetmask,omitempty"`
+	// Vendor of the server
 	Vendor *string `json:"vendor,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ParserVersion** | Pointer to **string** | Version of the parser used for this hardware info | [optional] 
 **Result** | Pointer to [**Result**](Result.md) |  | [optional] 
 **ScannedAt** | Pointer to **time.Time** | Timestamp of hardware scan, the ISO-8601 format | [optional] 
-**ServerId** | Pointer to **string** |  | [optional] 
+**ServerId** | Pointer to **string** | Id of the server | [optional] 
 
 ## Methods
 

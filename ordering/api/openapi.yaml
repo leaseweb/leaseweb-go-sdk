@@ -1,0 +1,910 @@
+openapi: 3.0.0
+info:
+  contact: {}
+  description: This document outlines the ordering API. The API is only available
+    for customers with invoice payment method.
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: Ordering
+  version: v1
+  x-logo:
+    altText: Leaseweb developer documentation
+    backgroundColor: '#5484c6'
+    href: https://developer.leaseweb.com
+    url: https://developer.leaseweb.com/images/logo.png
+servers:
+- url: https://api.leaseweb.com/ordering/v1
+security:
+- X-LSW-Auth: []
+tags:
+- name: Servers
+paths:
+  /products/dedicatedServers:
+    get:
+      description: |
+        List available dedicated server configurations.
+      operationId: getDedicatedServerList
+      parameters:
+      - explode: true
+        in: query
+        name: location
+        required: false
+        schema:
+          $ref: '#/components/schemas/location'
+        style: form
+      - explode: true
+        in: query
+        name: ram
+        required: false
+        schema:
+          $ref: '#/components/schemas/ramQuery'
+        style: form
+      - explode: true
+        in: query
+        name: diskSize
+        required: false
+        schema:
+          $ref: '#/components/schemas/diskSize'
+        style: form
+      - explode: true
+        in: query
+        name: diskAmount
+        required: false
+        schema:
+          $ref: '#/components/schemas/diskAmount'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                _metadata:
+                  totalCount: 2
+                  limit: 2
+                  offset: 0
+                dedicatedServers:
+                - id: 27f38ef06cf3bf62e21e75401feac6cd
+                  name: Dell R730XD (12xLFF) 2x Intel Xeon E5-2650v4
+                  chassis: Dell R730XD (12xLFF)
+                  cpu:
+                    coresPerCPU: "12"
+                    totalCores: "24"
+                    quantity: Dual
+                    speed: "2,2 GHz"
+                    type: Intel Xeon E5-2650v4
+                  deliveryMethod: 1 hour
+                  hdd:
+                  - amount: "2"
+                    size: SSD480GB
+                  ram:
+                    size: "32"
+                    unit: GB
+                  location:
+                  - AMS-01
+                  - AMS-02
+                - id: e2f0e2f2a3083d9f4b5ca9ebe34ae5d3
+                  name: Dell R7525 (16SFF+8NVMe) 2x AMD EPYC 7543
+                  chassis: Dell R7525 (16SFF+8NVMe)
+                  cpu:
+                    coresPerCPU: "32"
+                    totalCores: "64"
+                    quantity: Dual
+                    speed: "2,8 GHz"
+                    type: AMD EPYC 7543
+                  deliveryMethod: 1 hour
+                  hdd:
+                  - amount: "2"
+                    size: SSD960GB
+                  - amount: "2"
+                    size: U2_3.2TB
+                  ram:
+                    size: "128"
+                    unit: GB
+                  location:
+                  - AMS-01
+              schema:
+                $ref: '#/components/schemas/dedicatedServerList'
+          description: Ok.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: List available dedicated server configurations.
+      tags:
+      - ordering
+  /products/dedicatedServers/{dedicatedServerId}:
+    get:
+      description: |
+        Get a single dedicated server and its price.
+      operationId: getDedicatedServer
+      parameters:
+      - description: The ID of a dedicated server
+        example: 27f38ef06cf3bf62e21e75401feac6cd
+        explode: false
+        in: path
+        name: dedicatedServerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: location
+        required: true
+        schema:
+          $ref: '#/components/schemas/location'
+        style: form
+      - explode: true
+        in: query
+        name: connectedToAggregationPool
+        required: false
+        schema:
+          $ref: '#/components/schemas/connectedToAggregationPool'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                chassis: Dell R730XD (12xLFF)
+                cpu:
+                  coresPerCPU: "12"
+                  totalCores: "24"
+                  quantity: Dual
+                  speed: "2,2 GHz"
+                  type: Intel Xeon E5-2650v4
+                deliveryMethod: 1 hour
+                hdd:
+                - amount: "2"
+                  size: SSD480GB
+                id: dd41f6fa95aa88bcea58eddd15eb0fa0
+                location:
+                - AMS-01
+                name: Dell R730XD (12xLFF) 2x Intel Xeon E5-2650v4
+                price:
+                  currency: EUR
+                  basePrice: 147.5
+                  tax: 1
+                  setupFee: 2
+                  fee: 3
+                  discounts:
+                    total: -30
+                    details:
+                    - description: Black Friday
+                      value: -20
+                    - description: Reseller
+                      value: -10
+                    - description: 1 year (-5%)
+                      value: -6.175
+                  total: 117.32
+                  billingCycle: 1 month
+                  contractTerms:
+                  - key: 1_MONTH
+                    description: 1 month
+                    discount_text: 0%
+                    discount_value: 0
+                    total: 123.5
+                  - key: 3_MONTHS
+                    description: 3 months
+                    discount_text: -1%
+                    discount_value: -1.23
+                    total: 122.26
+                  - key: 6_MONTHS
+                    description: 6 months
+                    discount_text: -3%
+                    discount_value: -3.7
+                    total: 120.93
+                  - key: 1_YEAR
+                    description: 1 year
+                    discount_text: -5%
+                    discount_value: -6.17
+                    total: 117.32
+                  - key: 2_YEARS
+                    description: 2 years
+                    discount_text: -10%
+                    discount_value: -12.35
+                    total: 113.59
+                  - key: 3_YEARS
+                    description: 3 years
+                    discount_text: -15%
+                    discount_value: -18.52
+                    total: 109.86
+                ram:
+                  size: "32"
+                  unit: GB
+              schema:
+                $ref: '#/components/schemas/dedicatedServer'
+          description: Ok.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Get a single dedicated server and its price.
+      tags:
+      - ordering
+  /products/dedicatedServers/{dedicatedServerId}/order:
+    post:
+      description: |
+        Dedicated Server ordering.
+      operationId: orderDedicatedServer
+      parameters:
+      - description: The ID of a dedicated server
+        example: 27f38ef06cf3bf62e21e75401feac6cd
+        explode: false
+        in: path
+        name: dedicatedServerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              connectedToAggregationPool: true
+              contractTerm: 1_MONTH
+              location: AMS-01
+            schema:
+              $ref: '#/components/schemas/orderDedicatedServerOpts'
+      responses:
+        "201":
+          content:
+            application/json:
+              example:
+                orderId: 44011723
+              schema:
+                $ref: '#/components/schemas/dedicatedServerOrder'
+          description: Created.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Dedicated Server ordering.
+      tags:
+      - ordering
+components:
+  parameters:
+    dedicatedServerId:
+      description: The ID of a dedicated server
+      example: 27f38ef06cf3bf62e21e75401feac6cd
+      explode: false
+      in: path
+      name: dedicatedServerId
+      required: true
+      schema:
+        type: string
+      style: simple
+  responses:
+    "401":
+      content:
+        application/json:
+          example:
+            correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+            errorCode: "401"
+            errorMessage: You are not authorized to view this resource.
+          schema:
+            $ref: '#/components/schemas/errorResult'
+      description: Not Authorized.
+    "403":
+      content:
+        application/json:
+          example:
+            correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+            errorCode: "403"
+            errorMessage: Access to the requested resource is forbidden.
+          schema:
+            $ref: '#/components/schemas/errorResult'
+      description: Forbidden.
+    "404":
+      content:
+        application/json:
+          example:
+            correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+            errorCode: "404"
+            errorMessage: Resource not found
+          schema:
+            $ref: '#/components/schemas/errorResult'
+      description: Not Found.
+    "500":
+      content:
+        application/json:
+          example:
+            correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+            errorCode: "500"
+            errorMessage: '''The API could not handle your request at this time.'
+          schema:
+            $ref: '#/components/schemas/errorResult'
+      description: Internal Server Error.
+    "503":
+      content:
+        application/json:
+          example:
+            correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+            errorCode: "503"
+            errorMessage: The API is not available at the moment.
+          schema:
+            $ref: '#/components/schemas/errorResult'
+      description: Service Unavailable.
+  schemas:
+    location:
+      description: The datacenter location
+      example: AMS-01
+      type: string
+    ramQuery:
+      description: The ram information
+      example: 64GB
+      type: string
+    diskSize:
+      description: The disk size information
+      example: SSD480GB
+      type: string
+    diskAmount:
+      description: The amount of disks
+      example: "2"
+      type: string
+    _metadata:
+      description: Metadata about the collection
+      example:
+        offset: 0
+        limit: 5
+        totalCount: 2
+      properties:
+        totalCount:
+          description: Total amount of elements in this collection
+          example: 2
+          minimum: 0
+          type: integer
+        offset:
+          default: 0
+          description: The offset used to generate this response
+          example: 0
+          minimum: 0
+          type: integer
+        limit:
+          default: 5
+          description: The limit used to generate this response
+          example: 5
+          minimum: 0
+          type: integer
+      required:
+      - limit
+      - offset
+      - totalCount
+      title: metadata
+      type: object
+    dedicatedServerDetail:
+      example:
+        deliveryMethod: deliveryMethod
+        name: name
+        cpu:
+          coresPerCPU: coresPerCPU
+          quantity: quantity
+          totalCores: totalCores
+          type: type
+          speed: speed
+        hdd:
+        - amount: amount
+          size: size
+        - amount: amount
+          size: size
+        location:
+        - location
+        - location
+        id: id
+        chassis: chassis
+        ram:
+          unit: unit
+          size: size
+      properties:
+        id:
+          description: Id of the server
+          type: string
+        name:
+          description: Name of the server
+          type: string
+        chassis:
+          description: Chassis of the server
+          type: string
+        cpu:
+          $ref: '#/components/schemas/cpu'
+        deliveryMethod:
+          description: Time to get the server ready
+          type: string
+        hdd:
+          description: HDD info of the server
+          items:
+            $ref: '#/components/schemas/hdd'
+          type: array
+        ram:
+          $ref: '#/components/schemas/ram'
+        location:
+          description: Location of the server
+          items:
+            type: string
+          type: array
+      type: object
+    dedicatedServerList:
+      example:
+        _metadata:
+          offset: 0
+          limit: 5
+          totalCount: 2
+        dedicatedServers:
+        - deliveryMethod: deliveryMethod
+          name: name
+          cpu:
+            coresPerCPU: coresPerCPU
+            quantity: quantity
+            totalCores: totalCores
+            type: type
+            speed: speed
+          hdd:
+          - amount: amount
+            size: size
+          - amount: amount
+            size: size
+          location:
+          - location
+          - location
+          id: id
+          chassis: chassis
+          ram:
+            unit: unit
+            size: size
+        - deliveryMethod: deliveryMethod
+          name: name
+          cpu:
+            coresPerCPU: coresPerCPU
+            quantity: quantity
+            totalCores: totalCores
+            type: type
+            speed: speed
+          hdd:
+          - amount: amount
+            size: size
+          - amount: amount
+            size: size
+          location:
+          - location
+          - location
+          id: id
+          chassis: chassis
+          ram:
+            unit: unit
+            size: size
+      properties:
+        _metadata:
+          $ref: '#/components/schemas/_metadata'
+        dedicatedServers:
+          items:
+            $ref: '#/components/schemas/dedicatedServerDetail'
+          type: array
+      type: object
+    errorResult:
+      example:
+        errorMessage: errorMessage
+        errorCode: errorCode
+        correlationId: correlationId
+        errorDetails:
+          key:
+          - errorDetails
+          - errorDetails
+      properties:
+        correlationId:
+          description: The correlation ID of the current request.
+          type: string
+        errorCode:
+          description: The error code.
+          type: string
+        errorMessage:
+          description: A human friendly description of the error.
+          type: string
+        errorDetails:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          title: errorDetails
+          type: object
+      type: object
+    connectedToAggregationPool:
+      default: false
+      description: To add the dedicated server in the connectivity aggregation pool
+      example: true
+      type: boolean
+    dedicatedServerPrice:
+      properties:
+        price:
+          $ref: '#/components/schemas/dedicatedServerPrice_price'
+    dedicatedServer:
+      allOf:
+      - $ref: '#/components/schemas/dedicatedServerDetail'
+      - $ref: '#/components/schemas/dedicatedServerPrice'
+      example:
+        deliveryMethod: deliveryMethod
+        price:
+          contractTerms:
+          - total: 3.616076749251911
+            description: description
+            discount_value: 9.301444243932576
+            key: key
+            discount_text: discount_text
+          - total: 3.616076749251911
+            description: description
+            discount_value: 9.301444243932576
+            key: key
+            discount_text: discount_text
+          total: 7.061401241503109
+          discounts:
+            total: 5.637376656633329
+            details:
+            - description: description
+              value: 2.3021358869347655
+            - description: description
+              value: 2.3021358869347655
+          billingCycle: billingCycle
+          fee: 5.962133916683182
+          currency: currency
+          tax: 6.027456183070403
+          setupFee: 1.4658129805029452
+          basePrice: 0.8008281904610115
+        name: name
+        cpu:
+          coresPerCPU: coresPerCPU
+          quantity: quantity
+          totalCores: totalCores
+          type: type
+          speed: speed
+        hdd:
+        - amount: amount
+          size: size
+        - amount: amount
+          size: size
+        location:
+        - location
+        - location
+        id: id
+        chassis: chassis
+        ram:
+          unit: unit
+          size: size
+    orderDedicatedServerOpts:
+      properties:
+        location:
+          description: The location of the server
+          example: AMS-01
+          type: string
+        connectedToAggregationPool:
+          default: false
+          description: Whether the server is connected to an aggregation pool
+          example: true
+          type: boolean
+        contractTerm:
+          default: 1_MONTH
+          description: The contract term of the server
+          enum:
+          - 1_MONTH
+          - 3_MONTHS
+          - 6_MONTHS
+          - 1_YEAR
+          - 2_YEARS
+          - 3_YEARS
+          example: 2_YEARS
+          type: string
+      required:
+      - location
+      type: object
+    dedicatedServerOrder:
+      example:
+        orderId: 0
+      properties:
+        orderId:
+          description: Order Id
+          type: integer
+      type: object
+    cpu:
+      description: CPU info of the server
+      example:
+        coresPerCPU: coresPerCPU
+        quantity: quantity
+        totalCores: totalCores
+        type: type
+        speed: speed
+      properties:
+        coresPerCPU:
+          description: Quantity of cores per CPU
+          type: string
+        totalCores:
+          description: Sum of CPU cores
+          nullable: true
+          type: string
+        quantity:
+          description: Quantity of CPUs
+          type: string
+        speed:
+          description: CPU speed
+          type: string
+        type:
+          description: CPU type
+          type: string
+      title: cpu
+      type: object
+    hdd:
+      example:
+        amount: amount
+        size: size
+      properties:
+        amount:
+          description: Amount of disks
+          type: string
+        size:
+          description: Disk size
+          type: string
+      title: hdd
+      type: object
+    ram:
+      description: Ram info of the server
+      example:
+        unit: unit
+        size: size
+      properties:
+        size:
+          description: Ram size
+          type: string
+        unit:
+          description: Unit description
+          type: string
+      title: ram
+      type: object
+    discount:
+      example:
+        description: description
+        value: 2.3021358869347655
+      properties:
+        description:
+          description: Discount description
+          type: string
+        value:
+          description: Discount value
+          type: number
+      title: discount
+      type: object
+    dedicatedServerPrice_price_discounts:
+      example:
+        total: 5.637376656633329
+        details:
+        - description: description
+          value: 2.3021358869347655
+        - description: description
+          value: 2.3021358869347655
+      properties:
+        total:
+          description: Total discounts
+          type: number
+        details:
+          description: Discounts details
+          items:
+            $ref: '#/components/schemas/discount'
+          type: array
+    contractTerm:
+      example:
+        total: 3.616076749251911
+        description: description
+        discount_value: 9.301444243932576
+        key: key
+        discount_text: discount_text
+      properties:
+        key:
+          description: Contract term key
+          type: string
+        description:
+          description: Contract term description
+          type: string
+        discount_text:
+          description: Discount in percentage
+          type: string
+        discount_value:
+          description: Discount value
+          type: number
+        total:
+          description: Total price with discount
+          type: number
+      title: contractTerm
+      type: object
+    dedicatedServerPrice_price:
+      description: Price details of the server
+      example:
+        contractTerms:
+        - total: 3.616076749251911
+          description: description
+          discount_value: 9.301444243932576
+          key: key
+          discount_text: discount_text
+        - total: 3.616076749251911
+          description: description
+          discount_value: 9.301444243932576
+          key: key
+          discount_text: discount_text
+        total: 7.061401241503109
+        discounts:
+          total: 5.637376656633329
+          details:
+          - description: description
+            value: 2.3021358869347655
+          - description: description
+            value: 2.3021358869347655
+        billingCycle: billingCycle
+        fee: 5.962133916683182
+        currency: currency
+        tax: 6.027456183070403
+        setupFee: 1.4658129805029452
+        basePrice: 0.8008281904610115
+      properties:
+        currency:
+          description: Price's currency
+          type: string
+        basePrice:
+          description: Inicial price
+          type: number
+        tax:
+          description: Tax
+          type: number
+        setupFee:
+          description: Setup Fee
+          type: number
+        fee:
+          description: Ram size
+          type: number
+        discounts:
+          $ref: '#/components/schemas/dedicatedServerPrice_price_discounts'
+        total:
+          description: Final price
+          type: number
+        billingCycle:
+          description: Billing periodicity
+          type: string
+        contractTerms:
+          description: Contract terms
+          items:
+            $ref: '#/components/schemas/contractTerm'
+          title: contractTerms
+          type: array
+      type: object
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http
+    X-LSW-Auth:
+      description: API key authentication by setting `X-LSW-Auth` header.
+      in: header
+      name: X-LSW-Auth
+      type: apiKey

@@ -4,19 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BareMetalId** | Pointer to **string** | Id of the server (deprecated, use serverId instead) | [optional] 
-**CreatedAt** | Pointer to **time.Time** | Creation timestamp | [optional] 
-**Flow** | Pointer to **string** | Job flow | [optional] 
-**IsRunning** | Pointer to **bool** | Describes whether the job is running | [optional] 
-**Node** | Pointer to **string** | Node ID for this server | [optional] 
-**Payload** | Pointer to [**JobPayload**](JobPayload.md) |  | [optional] 
-**Progress** | Pointer to [**Progress**](Progress.md) |  | [optional] 
-**ServerId** | Pointer to **string** | Id of the server | [optional] 
 **Status** | Pointer to **string** | Status of the job | [optional] 
-**Tasks** | Pointer to [**[]Task**](Task.md) | List of tasks in the job | [optional] 
-**Type** | Pointer to [**JobType**](JobType.md) |  | [optional] 
-**UpdatedAt** | Pointer to **time.Time** | Update timestamp | [optional] 
 **Uuid** | Pointer to **string** | Unique identifier of the job | [optional] 
+**Type** | Pointer to [**JobType**](JobType.md) |  | [optional] 
+**ServerId** | Pointer to **string** | Id of the server | [optional] 
+**BareMetalId** | Pointer to **string** | Id of the server (deprecated, use serverId instead) | [optional] 
+**Node** | Pointer to **string** | Node ID for this server | [optional] 
+**CreatedAt** | Pointer to **time.Time** | Creation timestamp | [optional] 
+**UpdatedAt** | Pointer to **time.Time** | Update timestamp | [optional] 
+**Flow** | Pointer to **string** | Job flow | [optional] 
+**CurrentTask** | Pointer to [**NullableCurrentTask**](CurrentTask.md) |  | [optional] 
+**Progress** | Pointer to [**Progress**](Progress.md) |  | [optional] 
+**IsRunning** | Pointer to **bool** | Describes whether the job is running | [optional] 
+**Metadata** | Pointer to [**NullableMetadata**](Metadata.md) |  | [optional] 
+**Payload** | Pointer to [**JobPayload**](JobPayload.md) |  | [optional] 
+**Tasks** | Pointer to [**[]Task**](Task.md) | List of tasks in the job | [optional] 
 
 ## Methods
 
@@ -36,206 +38,6 @@ will change when the set of required properties is changed
 NewJobWithDefaults instantiates a new Job object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetBareMetalId
-
-`func (o *Job) GetBareMetalId() string`
-
-GetBareMetalId returns the BareMetalId field if non-nil, zero value otherwise.
-
-### GetBareMetalIdOk
-
-`func (o *Job) GetBareMetalIdOk() (*string, bool)`
-
-GetBareMetalIdOk returns a tuple with the BareMetalId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBareMetalId
-
-`func (o *Job) SetBareMetalId(v string)`
-
-SetBareMetalId sets BareMetalId field to given value.
-
-### HasBareMetalId
-
-`func (o *Job) HasBareMetalId() bool`
-
-HasBareMetalId returns a boolean if a field has been set.
-
-### GetCreatedAt
-
-`func (o *Job) GetCreatedAt() time.Time`
-
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
-
-### GetCreatedAtOk
-
-`func (o *Job) GetCreatedAtOk() (*time.Time, bool)`
-
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedAt
-
-`func (o *Job) SetCreatedAt(v time.Time)`
-
-SetCreatedAt sets CreatedAt field to given value.
-
-### HasCreatedAt
-
-`func (o *Job) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
-
-### GetFlow
-
-`func (o *Job) GetFlow() string`
-
-GetFlow returns the Flow field if non-nil, zero value otherwise.
-
-### GetFlowOk
-
-`func (o *Job) GetFlowOk() (*string, bool)`
-
-GetFlowOk returns a tuple with the Flow field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFlow
-
-`func (o *Job) SetFlow(v string)`
-
-SetFlow sets Flow field to given value.
-
-### HasFlow
-
-`func (o *Job) HasFlow() bool`
-
-HasFlow returns a boolean if a field has been set.
-
-### GetIsRunning
-
-`func (o *Job) GetIsRunning() bool`
-
-GetIsRunning returns the IsRunning field if non-nil, zero value otherwise.
-
-### GetIsRunningOk
-
-`func (o *Job) GetIsRunningOk() (*bool, bool)`
-
-GetIsRunningOk returns a tuple with the IsRunning field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsRunning
-
-`func (o *Job) SetIsRunning(v bool)`
-
-SetIsRunning sets IsRunning field to given value.
-
-### HasIsRunning
-
-`func (o *Job) HasIsRunning() bool`
-
-HasIsRunning returns a boolean if a field has been set.
-
-### GetNode
-
-`func (o *Job) GetNode() string`
-
-GetNode returns the Node field if non-nil, zero value otherwise.
-
-### GetNodeOk
-
-`func (o *Job) GetNodeOk() (*string, bool)`
-
-GetNodeOk returns a tuple with the Node field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNode
-
-`func (o *Job) SetNode(v string)`
-
-SetNode sets Node field to given value.
-
-### HasNode
-
-`func (o *Job) HasNode() bool`
-
-HasNode returns a boolean if a field has been set.
-
-### GetPayload
-
-`func (o *Job) GetPayload() JobPayload`
-
-GetPayload returns the Payload field if non-nil, zero value otherwise.
-
-### GetPayloadOk
-
-`func (o *Job) GetPayloadOk() (*JobPayload, bool)`
-
-GetPayloadOk returns a tuple with the Payload field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPayload
-
-`func (o *Job) SetPayload(v JobPayload)`
-
-SetPayload sets Payload field to given value.
-
-### HasPayload
-
-`func (o *Job) HasPayload() bool`
-
-HasPayload returns a boolean if a field has been set.
-
-### GetProgress
-
-`func (o *Job) GetProgress() Progress`
-
-GetProgress returns the Progress field if non-nil, zero value otherwise.
-
-### GetProgressOk
-
-`func (o *Job) GetProgressOk() (*Progress, bool)`
-
-GetProgressOk returns a tuple with the Progress field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProgress
-
-`func (o *Job) SetProgress(v Progress)`
-
-SetProgress sets Progress field to given value.
-
-### HasProgress
-
-`func (o *Job) HasProgress() bool`
-
-HasProgress returns a boolean if a field has been set.
-
-### GetServerId
-
-`func (o *Job) GetServerId() string`
-
-GetServerId returns the ServerId field if non-nil, zero value otherwise.
-
-### GetServerIdOk
-
-`func (o *Job) GetServerIdOk() (*string, bool)`
-
-GetServerIdOk returns a tuple with the ServerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetServerId
-
-`func (o *Job) SetServerId(v string)`
-
-SetServerId sets ServerId field to given value.
-
-### HasServerId
-
-`func (o *Job) HasServerId() bool`
-
-HasServerId returns a boolean if a field has been set.
 
 ### GetStatus
 
@@ -262,30 +64,30 @@ SetStatus sets Status field to given value.
 
 HasStatus returns a boolean if a field has been set.
 
-### GetTasks
+### GetUuid
 
-`func (o *Job) GetTasks() []Task`
+`func (o *Job) GetUuid() string`
 
-GetTasks returns the Tasks field if non-nil, zero value otherwise.
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
 
-### GetTasksOk
+### GetUuidOk
 
-`func (o *Job) GetTasksOk() (*[]Task, bool)`
+`func (o *Job) GetUuidOk() (*string, bool)`
 
-GetTasksOk returns a tuple with the Tasks field if it's non-nil, zero value otherwise
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTasks
+### SetUuid
 
-`func (o *Job) SetTasks(v []Task)`
+`func (o *Job) SetUuid(v string)`
 
-SetTasks sets Tasks field to given value.
+SetUuid sets Uuid field to given value.
 
-### HasTasks
+### HasUuid
 
-`func (o *Job) HasTasks() bool`
+`func (o *Job) HasUuid() bool`
 
-HasTasks returns a boolean if a field has been set.
+HasUuid returns a boolean if a field has been set.
 
 ### GetType
 
@@ -312,6 +114,106 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### GetServerId
+
+`func (o *Job) GetServerId() string`
+
+GetServerId returns the ServerId field if non-nil, zero value otherwise.
+
+### GetServerIdOk
+
+`func (o *Job) GetServerIdOk() (*string, bool)`
+
+GetServerIdOk returns a tuple with the ServerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerId
+
+`func (o *Job) SetServerId(v string)`
+
+SetServerId sets ServerId field to given value.
+
+### HasServerId
+
+`func (o *Job) HasServerId() bool`
+
+HasServerId returns a boolean if a field has been set.
+
+### GetBareMetalId
+
+`func (o *Job) GetBareMetalId() string`
+
+GetBareMetalId returns the BareMetalId field if non-nil, zero value otherwise.
+
+### GetBareMetalIdOk
+
+`func (o *Job) GetBareMetalIdOk() (*string, bool)`
+
+GetBareMetalIdOk returns a tuple with the BareMetalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBareMetalId
+
+`func (o *Job) SetBareMetalId(v string)`
+
+SetBareMetalId sets BareMetalId field to given value.
+
+### HasBareMetalId
+
+`func (o *Job) HasBareMetalId() bool`
+
+HasBareMetalId returns a boolean if a field has been set.
+
+### GetNode
+
+`func (o *Job) GetNode() string`
+
+GetNode returns the Node field if non-nil, zero value otherwise.
+
+### GetNodeOk
+
+`func (o *Job) GetNodeOk() (*string, bool)`
+
+GetNodeOk returns a tuple with the Node field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNode
+
+`func (o *Job) SetNode(v string)`
+
+SetNode sets Node field to given value.
+
+### HasNode
+
+`func (o *Job) HasNode() bool`
+
+HasNode returns a boolean if a field has been set.
+
+### GetCreatedAt
+
+`func (o *Job) GetCreatedAt() time.Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *Job) GetCreatedAtOk() (*time.Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *Job) SetCreatedAt(v time.Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+### HasCreatedAt
+
+`func (o *Job) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
+
 ### GetUpdatedAt
 
 `func (o *Job) GetUpdatedAt() time.Time`
@@ -337,30 +239,200 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### GetUuid
+### GetFlow
 
-`func (o *Job) GetUuid() string`
+`func (o *Job) GetFlow() string`
 
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
+GetFlow returns the Flow field if non-nil, zero value otherwise.
 
-### GetUuidOk
+### GetFlowOk
 
-`func (o *Job) GetUuidOk() (*string, bool)`
+`func (o *Job) GetFlowOk() (*string, bool)`
 
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+GetFlowOk returns a tuple with the Flow field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUuid
+### SetFlow
 
-`func (o *Job) SetUuid(v string)`
+`func (o *Job) SetFlow(v string)`
 
-SetUuid sets Uuid field to given value.
+SetFlow sets Flow field to given value.
 
-### HasUuid
+### HasFlow
 
-`func (o *Job) HasUuid() bool`
+`func (o *Job) HasFlow() bool`
 
-HasUuid returns a boolean if a field has been set.
+HasFlow returns a boolean if a field has been set.
+
+### GetCurrentTask
+
+`func (o *Job) GetCurrentTask() CurrentTask`
+
+GetCurrentTask returns the CurrentTask field if non-nil, zero value otherwise.
+
+### GetCurrentTaskOk
+
+`func (o *Job) GetCurrentTaskOk() (*CurrentTask, bool)`
+
+GetCurrentTaskOk returns a tuple with the CurrentTask field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrentTask
+
+`func (o *Job) SetCurrentTask(v CurrentTask)`
+
+SetCurrentTask sets CurrentTask field to given value.
+
+### HasCurrentTask
+
+`func (o *Job) HasCurrentTask() bool`
+
+HasCurrentTask returns a boolean if a field has been set.
+
+### SetCurrentTaskNil
+
+`func (o *Job) SetCurrentTaskNil(b bool)`
+
+ SetCurrentTaskNil sets the value for CurrentTask to be an explicit nil
+
+### UnsetCurrentTask
+`func (o *Job) UnsetCurrentTask()`
+
+UnsetCurrentTask ensures that no value is present for CurrentTask, not even an explicit nil
+### GetProgress
+
+`func (o *Job) GetProgress() Progress`
+
+GetProgress returns the Progress field if non-nil, zero value otherwise.
+
+### GetProgressOk
+
+`func (o *Job) GetProgressOk() (*Progress, bool)`
+
+GetProgressOk returns a tuple with the Progress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProgress
+
+`func (o *Job) SetProgress(v Progress)`
+
+SetProgress sets Progress field to given value.
+
+### HasProgress
+
+`func (o *Job) HasProgress() bool`
+
+HasProgress returns a boolean if a field has been set.
+
+### GetIsRunning
+
+`func (o *Job) GetIsRunning() bool`
+
+GetIsRunning returns the IsRunning field if non-nil, zero value otherwise.
+
+### GetIsRunningOk
+
+`func (o *Job) GetIsRunningOk() (*bool, bool)`
+
+GetIsRunningOk returns a tuple with the IsRunning field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsRunning
+
+`func (o *Job) SetIsRunning(v bool)`
+
+SetIsRunning sets IsRunning field to given value.
+
+### HasIsRunning
+
+`func (o *Job) HasIsRunning() bool`
+
+HasIsRunning returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *Job) GetMetadata() Metadata`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *Job) GetMetadataOk() (*Metadata, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *Job) SetMetadata(v Metadata)`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *Job) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
+
+### SetMetadataNil
+
+`func (o *Job) SetMetadataNil(b bool)`
+
+ SetMetadataNil sets the value for Metadata to be an explicit nil
+
+### UnsetMetadata
+`func (o *Job) UnsetMetadata()`
+
+UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
+### GetPayload
+
+`func (o *Job) GetPayload() JobPayload`
+
+GetPayload returns the Payload field if non-nil, zero value otherwise.
+
+### GetPayloadOk
+
+`func (o *Job) GetPayloadOk() (*JobPayload, bool)`
+
+GetPayloadOk returns a tuple with the Payload field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPayload
+
+`func (o *Job) SetPayload(v JobPayload)`
+
+SetPayload sets Payload field to given value.
+
+### HasPayload
+
+`func (o *Job) HasPayload() bool`
+
+HasPayload returns a boolean if a field has been set.
+
+### GetTasks
+
+`func (o *Job) GetTasks() []Task`
+
+GetTasks returns the Tasks field if non-nil, zero value otherwise.
+
+### GetTasksOk
+
+`func (o *Job) GetTasksOk() (*[]Task, bool)`
+
+GetTasksOk returns a tuple with the Tasks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTasks
+
+`func (o *Job) SetTasks(v []Task)`
+
+SetTasks sets Tasks field to given value.
+
+### HasTasks
+
+`func (o *Job) HasTasks() bool`
+
+HasTasks returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

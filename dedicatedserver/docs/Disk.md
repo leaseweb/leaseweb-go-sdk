@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** | ID of the disk | [optional] 
 **Product** | Pointer to **string** |  | [optional] 
-**SerialNumber** | Pointer to **string** |  | [optional] 
+**SerialNumber** | Pointer to **string** | Serial number of the server | [optional] 
 **Size** | Pointer to **string** |  | [optional] 
 **Smartctl** | Pointer to [**Smartctl**](Smartctl.md) |  | [optional] 
-**Vendor** | Pointer to **string** |  | [optional] 
+**Vendor** | Pointer to **string** | Vendor of the server | [optional] 
 
 ## Methods
 

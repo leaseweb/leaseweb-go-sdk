@@ -12,20 +12,15 @@ package dedicatedserver
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the Metadata type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Metadata{}
 
-// Metadata Metadata about the collection
+// Metadata Metadata of the job
 type Metadata struct {
-	// Total amount of elements in this collection
-	TotalCount int32 `json:"totalCount"`
-	// The offset used to generate this response
-	Offset int32 `json:"offset"`
-	// The limit used to generate this response
-	Limit int32 `json:"limit"`
+	// The batch ID of the job
+	BATCH_ID NullableString `json:"BATCH_ID,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,11 +30,8 @@ type _Metadata Metadata
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMetadata(totalCount int32, offset int32, limit int32) *Metadata {
+func NewMetadata() *Metadata {
 	this := Metadata{}
-	this.TotalCount = totalCount
-	this.Offset = offset
-	this.Limit = limit
 	return &this
 }
 
@@ -48,83 +40,49 @@ func NewMetadata(totalCount int32, offset int32, limit int32) *Metadata {
 // but it doesn't guarantee that properties required by API are set
 func NewMetadataWithDefaults() *Metadata {
 	this := Metadata{}
-	var offset int32 = 0
-	this.Offset = offset
-	var limit int32 = 5
-	this.Limit = limit
 	return &this
 }
 
-// GetTotalCount returns the TotalCount field value
-func (o *Metadata) GetTotalCount() int32 {
-	if o == nil {
-		var ret int32
+// GetBATCH_ID returns the BATCH_ID field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Metadata) GetBATCH_ID() string {
+	if o == nil || IsNil(o.BATCH_ID.Get()) {
+		var ret string
 		return ret
 	}
-
-	return o.TotalCount
+	return *o.BATCH_ID.Get()
 }
 
-// GetTotalCountOk returns a tuple with the TotalCount field value
+// GetBATCH_IDOk returns a tuple with the BATCH_ID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Metadata) GetTotalCountOk() (*int32, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Metadata) GetBATCH_IDOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.TotalCount, true
+	return o.BATCH_ID.Get(), o.BATCH_ID.IsSet()
 }
 
-// SetTotalCount sets field value
-func (o *Metadata) SetTotalCount(v int32) {
-	o.TotalCount = v
-}
-
-// GetOffset returns the Offset field value
-func (o *Metadata) GetOffset() int32 {
-	if o == nil {
-		var ret int32
-		return ret
+// HasBATCH_ID returns a boolean if a field has been set.
+func (o *Metadata) HasBATCH_ID() bool {
+	if o != nil && o.BATCH_ID.IsSet() {
+		return true
 	}
 
-	return o.Offset
+	return false
 }
 
-// GetOffsetOk returns a tuple with the Offset field value
-// and a boolean to check if the value has been set.
-func (o *Metadata) GetOffsetOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Offset, true
+// SetBATCH_ID gets a reference to the given NullableString and assigns it to the BATCH_ID field.
+func (o *Metadata) SetBATCH_ID(v string) {
+	o.BATCH_ID.Set(&v)
+}
+// SetBATCH_IDNil sets the value for BATCH_ID to be an explicit nil
+func (o *Metadata) SetBATCH_IDNil() {
+	o.BATCH_ID.Set(nil)
 }
 
-// SetOffset sets field value
-func (o *Metadata) SetOffset(v int32) {
-	o.Offset = v
-}
-
-// GetLimit returns the Limit field value
-func (o *Metadata) GetLimit() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Limit
-}
-
-// GetLimitOk returns a tuple with the Limit field value
-// and a boolean to check if the value has been set.
-func (o *Metadata) GetLimitOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Limit, true
-}
-
-// SetLimit sets field value
-func (o *Metadata) SetLimit(v int32) {
-	o.Limit = v
+// UnsetBATCH_ID ensures that no value is present for BATCH_ID, not even an explicit nil
+func (o *Metadata) UnsetBATCH_ID() {
+	o.BATCH_ID.Unset()
 }
 
 func (o Metadata) MarshalJSON() ([]byte, error) {
@@ -137,9 +95,9 @@ func (o Metadata) MarshalJSON() ([]byte, error) {
 
 func (o Metadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["totalCount"] = o.TotalCount
-	toSerialize["offset"] = o.Offset
-	toSerialize["limit"] = o.Limit
+	if o.BATCH_ID.IsSet() {
+		toSerialize["BATCH_ID"] = o.BATCH_ID.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -149,29 +107,6 @@ func (o Metadata) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *Metadata) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"totalCount",
-		"offset",
-		"limit",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varMetadata := _Metadata{}
 
 	err = json.Unmarshal(data, &varMetadata)
@@ -185,9 +120,7 @@ func (o *Metadata) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "totalCount")
-		delete(additionalProperties, "offset")
-		delete(additionalProperties, "limit")
+		delete(additionalProperties, "BATCH_ID")
 		o.AdditionalProperties = additionalProperties
 	}
 

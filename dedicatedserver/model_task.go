@@ -18,22 +18,31 @@ import (
 // checks if the Task type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Task{}
 
-// Task struct for Task
+// Task A task is a single unit of work that is part of a job
 type Task struct {
+	// Unique ID for this task
+	Uuid *string `json:"uuid,omitempty"`
+	// The status of the task
+	Status *string `json:"status,omitempty"`
 	// Description of the task
 	Description *string `json:"description,omitempty"`
+	// The behaviour if this task fails
+	OnError *string `json:"onError,omitempty"`
 	// An optional error message
 	ErrorMessage NullableString `json:"errorMessage,omitempty"`
 	// The flow this task is part of
 	Flow *string `json:"flow,omitempty"`
-	// The behaviour if this task fails
-	OnError *string `json:"onError,omitempty"`
-	// The status of the task
-	Status *string `json:"status,omitempty"`
-	// Timestamp for each state change
-	StatusTimestamps *map[string]time.Time `json:"statusTimestamps,omitempty"`
-	// Unique ID for this task
-	Uuid *string `json:"uuid,omitempty"`
+	StatusTimestamps *StatusTimestamps `json:"statusTimestamps,omitempty"`
+	// The type of the task
+	Type *string `json:"type,omitempty"`
+	// The actor of the task
+	Actor *string `json:"actor,omitempty"`
+	// Creation timestamp
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	// Update timestamp
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	// The timeout for the task
+	Timeout NullableInt32 `json:"timeout,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -54,6 +63,70 @@ func NewTask() *Task {
 func NewTaskWithDefaults() *Task {
 	this := Task{}
 	return &this
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Task) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Task) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Task) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Task) SetUuid(v string) {
+	o.Uuid = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *Task) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Task) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *Task) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *Task) SetStatus(v string) {
+	o.Status = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -86,6 +159,38 @@ func (o *Task) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Task) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetOnError returns the OnError field value if set, zero value otherwise.
+func (o *Task) GetOnError() string {
+	if o == nil || IsNil(o.OnError) {
+		var ret string
+		return ret
+	}
+	return *o.OnError
+}
+
+// GetOnErrorOk returns a tuple with the OnError field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Task) GetOnErrorOk() (*string, bool) {
+	if o == nil || IsNil(o.OnError) {
+		return nil, false
+	}
+	return o.OnError, true
+}
+
+// HasOnError returns a boolean if a field has been set.
+func (o *Task) HasOnError() bool {
+	if o != nil && !IsNil(o.OnError) {
+		return true
+	}
+
+	return false
+}
+
+// SetOnError gets a reference to the given string and assigns it to the OnError field.
+func (o *Task) SetOnError(v string) {
+	o.OnError = &v
 }
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -162,74 +267,10 @@ func (o *Task) SetFlow(v string) {
 	o.Flow = &v
 }
 
-// GetOnError returns the OnError field value if set, zero value otherwise.
-func (o *Task) GetOnError() string {
-	if o == nil || IsNil(o.OnError) {
-		var ret string
-		return ret
-	}
-	return *o.OnError
-}
-
-// GetOnErrorOk returns a tuple with the OnError field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Task) GetOnErrorOk() (*string, bool) {
-	if o == nil || IsNil(o.OnError) {
-		return nil, false
-	}
-	return o.OnError, true
-}
-
-// HasOnError returns a boolean if a field has been set.
-func (o *Task) HasOnError() bool {
-	if o != nil && !IsNil(o.OnError) {
-		return true
-	}
-
-	return false
-}
-
-// SetOnError gets a reference to the given string and assigns it to the OnError field.
-func (o *Task) SetOnError(v string) {
-	o.OnError = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *Task) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Task) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *Task) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *Task) SetStatus(v string) {
-	o.Status = &v
-}
-
 // GetStatusTimestamps returns the StatusTimestamps field value if set, zero value otherwise.
-func (o *Task) GetStatusTimestamps() map[string]time.Time {
+func (o *Task) GetStatusTimestamps() StatusTimestamps {
 	if o == nil || IsNil(o.StatusTimestamps) {
-		var ret map[string]time.Time
+		var ret StatusTimestamps
 		return ret
 	}
 	return *o.StatusTimestamps
@@ -237,7 +278,7 @@ func (o *Task) GetStatusTimestamps() map[string]time.Time {
 
 // GetStatusTimestampsOk returns a tuple with the StatusTimestamps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Task) GetStatusTimestampsOk() (*map[string]time.Time, bool) {
+func (o *Task) GetStatusTimestampsOk() (*StatusTimestamps, bool) {
 	if o == nil || IsNil(o.StatusTimestamps) {
 		return nil, false
 	}
@@ -253,41 +294,179 @@ func (o *Task) HasStatusTimestamps() bool {
 	return false
 }
 
-// SetStatusTimestamps gets a reference to the given map[string]time.Time and assigns it to the StatusTimestamps field.
-func (o *Task) SetStatusTimestamps(v map[string]time.Time) {
+// SetStatusTimestamps gets a reference to the given StatusTimestamps and assigns it to the StatusTimestamps field.
+func (o *Task) SetStatusTimestamps(v StatusTimestamps) {
 	o.StatusTimestamps = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Task) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *Task) GetType() string {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-	return *o.Uuid
+	return *o.Type
 }
 
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Task) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
+func (o *Task) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return o.Uuid, true
+	return o.Type, true
 }
 
-// HasUuid returns a boolean if a field has been set.
-func (o *Task) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
+// HasType returns a boolean if a field has been set.
+func (o *Task) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
 	return false
 }
 
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Task) SetUuid(v string) {
-	o.Uuid = &v
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *Task) SetType(v string) {
+	o.Type = &v
+}
+
+// GetActor returns the Actor field value if set, zero value otherwise.
+func (o *Task) GetActor() string {
+	if o == nil || IsNil(o.Actor) {
+		var ret string
+		return ret
+	}
+	return *o.Actor
+}
+
+// GetActorOk returns a tuple with the Actor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Task) GetActorOk() (*string, bool) {
+	if o == nil || IsNil(o.Actor) {
+		return nil, false
+	}
+	return o.Actor, true
+}
+
+// HasActor returns a boolean if a field has been set.
+func (o *Task) HasActor() bool {
+	if o != nil && !IsNil(o.Actor) {
+		return true
+	}
+
+	return false
+}
+
+// SetActor gets a reference to the given string and assigns it to the Actor field.
+func (o *Task) SetActor(v string) {
+	o.Actor = &v
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *Task) GetCreatedAt() time.Time {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Task) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *Task) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *Task) SetCreatedAt(v time.Time) {
+	o.CreatedAt = &v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *Task) GetUpdatedAt() time.Time {
+	if o == nil || IsNil(o.UpdatedAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Task) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *Task) HasUpdatedAt() bool {
+	if o != nil && !IsNil(o.UpdatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *Task) SetUpdatedAt(v time.Time) {
+	o.UpdatedAt = &v
+}
+
+// GetTimeout returns the Timeout field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Task) GetTimeout() int32 {
+	if o == nil || IsNil(o.Timeout.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Timeout.Get()
+}
+
+// GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Task) GetTimeoutOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Timeout.Get(), o.Timeout.IsSet()
+}
+
+// HasTimeout returns a boolean if a field has been set.
+func (o *Task) HasTimeout() bool {
+	if o != nil && o.Timeout.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeout gets a reference to the given NullableInt32 and assigns it to the Timeout field.
+func (o *Task) SetTimeout(v int32) {
+	o.Timeout.Set(&v)
+}
+// SetTimeoutNil sets the value for Timeout to be an explicit nil
+func (o *Task) SetTimeoutNil() {
+	o.Timeout.Set(nil)
+}
+
+// UnsetTimeout ensures that no value is present for Timeout, not even an explicit nil
+func (o *Task) UnsetTimeout() {
+	o.Timeout.Unset()
 }
 
 func (o Task) MarshalJSON() ([]byte, error) {
@@ -300,8 +479,17 @@ func (o Task) MarshalJSON() ([]byte, error) {
 
 func (o Task) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.OnError) {
+		toSerialize["onError"] = o.OnError
 	}
 	if o.ErrorMessage.IsSet() {
 		toSerialize["errorMessage"] = o.ErrorMessage.Get()
@@ -309,17 +497,23 @@ func (o Task) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Flow) {
 		toSerialize["flow"] = o.Flow
 	}
-	if !IsNil(o.OnError) {
-		toSerialize["onError"] = o.OnError
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
 	if !IsNil(o.StatusTimestamps) {
 		toSerialize["statusTimestamps"] = o.StatusTimestamps
 	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Actor) {
+		toSerialize["actor"] = o.Actor
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	if o.Timeout.IsSet() {
+		toSerialize["timeout"] = o.Timeout.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -343,13 +537,18 @@ func (o *Task) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "status")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "onError")
 		delete(additionalProperties, "errorMessage")
 		delete(additionalProperties, "flow")
-		delete(additionalProperties, "onError")
-		delete(additionalProperties, "status")
 		delete(additionalProperties, "statusTimestamps")
-		delete(additionalProperties, "uuid")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "actor")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "updatedAt")
+		delete(additionalProperties, "timeout")
 		o.AdditionalProperties = additionalProperties
 	}
 

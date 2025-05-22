@@ -26,6 +26,7 @@ type Network struct {
 	MacAddress *string `json:"mac_address,omitempty" validate:"regexp=([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9a-fA-F]{4}\\\\.[0-9a-fA-F]{4}\\\\.[0-9a-fA-F]{4})$"`
 	Product *string `json:"product,omitempty"`
 	Settings *NetworkSettings `json:"settings,omitempty"`
+	// Vendor of the server
 	Vendor *string `json:"vendor,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

@@ -14083,6 +14083,33 @@ components:
       - PLESK_WEB_ADMIN
       title: marketAppId
       type: string
+    imageStateName:
+      description: Images state
+      enum:
+      - CREATING
+      - READY
+      - DESTROYED
+      - DESTROYING
+      - FAILED
+      - null
+      nullable: true
+      title: imageStateName
+      type: string
+    imageRegion:
+      description: region name
+      enum:
+      - eu-west-3
+      - us-east-1
+      - eu-central-1
+      - ap-southeast-1
+      - us-west-1
+      - eu-west-2
+      - ca-central-1
+      - ap-northeast-1
+      - null
+      nullable: true
+      title: imageRegion
+      type: string
     imageDetails:
       allOf:
       - $ref: '#/components/schemas/image'
@@ -14090,14 +14117,14 @@ components:
           storageSize:
             $ref: '#/components/schemas/storageSize'
           state:
-            $ref: '#/components/schemas/imageState'
+            $ref: '#/components/schemas/imageStateName'
           stateReason:
             description: The reason in case of failure
             example: Could not find configured bucket
             nullable: true
             type: string
           region:
-            $ref: '#/components/schemas/regionName'
+            $ref: '#/components/schemas/imageRegion'
           createdAt:
             description: Date when the image was created
             format: date-time

@@ -29,10 +29,10 @@ type ImageDetails struct {
 	// Standard or Custom image
 	Custom bool `json:"custom"`
 	StorageSize NullableStorageSize `json:"storageSize"`
-	State NullableImageState `json:"state"`
+	State NullableImageStateName `json:"state"`
 	// The reason in case of failure
 	StateReason NullableString `json:"stateReason"`
-	Region NullableRegionName `json:"region"`
+	Region NullableImageRegion `json:"region"`
 	// Date when the image was created
 	CreatedAt NullableTime `json:"createdAt"`
 	// Date when the image was updated
@@ -53,7 +53,7 @@ type _ImageDetails ImageDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImageDetails(id string, name string, family string, flavour Flavour, custom bool, storageSize NullableStorageSize, state NullableImageState, stateReason NullableString, region NullableRegionName, createdAt NullableTime, updatedAt NullableTime, version NullableString, architecture NullableString, marketApps []MarketAppId, storageTypes []StorageType, minDiskSize NullableInt32) *ImageDetails {
+func NewImageDetails(id string, name string, family string, flavour Flavour, custom bool, storageSize NullableStorageSize, state NullableImageStateName, stateReason NullableString, region NullableImageRegion, createdAt NullableTime, updatedAt NullableTime, version NullableString, architecture NullableString, marketApps []MarketAppId, storageTypes []StorageType, minDiskSize NullableInt32) *ImageDetails {
 	this := ImageDetails{}
 	this.Id = id
 	this.Name = name
@@ -229,10 +229,10 @@ func (o *ImageDetails) SetStorageSize(v StorageSize) {
 }
 
 // GetState returns the State field value
-// If the value is explicit nil, the zero value for ImageState will be returned
-func (o *ImageDetails) GetState() ImageState {
+// If the value is explicit nil, the zero value for ImageStateName will be returned
+func (o *ImageDetails) GetState() ImageStateName {
 	if o == nil || o.State.Get() == nil {
-		var ret ImageState
+		var ret ImageStateName
 		return ret
 	}
 
@@ -242,7 +242,7 @@ func (o *ImageDetails) GetState() ImageState {
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ImageDetails) GetStateOk() (*ImageState, bool) {
+func (o *ImageDetails) GetStateOk() (*ImageStateName, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -250,7 +250,7 @@ func (o *ImageDetails) GetStateOk() (*ImageState, bool) {
 }
 
 // SetState sets field value
-func (o *ImageDetails) SetState(v ImageState) {
+func (o *ImageDetails) SetState(v ImageStateName) {
 	o.State.Set(&v)
 }
 
@@ -281,10 +281,10 @@ func (o *ImageDetails) SetStateReason(v string) {
 }
 
 // GetRegion returns the Region field value
-// If the value is explicit nil, the zero value for RegionName will be returned
-func (o *ImageDetails) GetRegion() RegionName {
+// If the value is explicit nil, the zero value for ImageRegion will be returned
+func (o *ImageDetails) GetRegion() ImageRegion {
 	if o == nil || o.Region.Get() == nil {
-		var ret RegionName
+		var ret ImageRegion
 		return ret
 	}
 
@@ -294,7 +294,7 @@ func (o *ImageDetails) GetRegion() RegionName {
 // GetRegionOk returns a tuple with the Region field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ImageDetails) GetRegionOk() (*RegionName, bool) {
+func (o *ImageDetails) GetRegionOk() (*ImageRegion, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -302,7 +302,7 @@ func (o *ImageDetails) GetRegionOk() (*RegionName, bool) {
 }
 
 // SetRegion sets field value
-func (o *ImageDetails) SetRegion(v RegionName) {
+func (o *ImageDetails) SetRegion(v ImageRegion) {
 	o.Region.Set(&v)
 }
 

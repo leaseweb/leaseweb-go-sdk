@@ -29,6 +29,7 @@ type Smartctl struct {
 	Rpm *string `json:"rpm,omitempty"`
 	SataVersion *string `json:"sata_version,omitempty"`
 	SectorSize *string `json:"sector_size,omitempty"`
+	// Serial number of the server
 	SerialNumber *string `json:"serial_number,omitempty"`
 	SmartErrorLog *string `json:"smart_error_log,omitempty"`
 	SmartSupport *SmartSupport `json:"smart_support,omitempty"`

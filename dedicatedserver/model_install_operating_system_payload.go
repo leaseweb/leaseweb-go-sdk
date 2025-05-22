@@ -12,7 +12,6 @@ package dedicatedserver
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the InstallOperatingSystemPayload type satisfies the MappedNullable interface at compile time
@@ -20,22 +19,45 @@ var _ MappedNullable = &InstallOperatingSystemPayload{}
 
 // InstallOperatingSystemPayload struct for InstallOperatingSystemPayload
 type InstallOperatingSystemPayload struct {
-	FileserverBaseUrl *string `json:"fileserverBaseUrl,omitempty"`
-	Pop *string `json:"pop,omitempty"`
+	// Whether the server should be powered off and on automatically before the job is started
 	PowerCycle *bool `json:"powerCycle,omitempty"`
-	IsUnassignedServer *bool `json:"isUnassignedServer,omitempty"`
-	// Id of the server
-	ServerId *string `json:"serverId,omitempty"`
-	JobType string `json:"jobType"`
-	Configurable *bool `json:"configurable,omitempty"`
-	Device *string `json:"device,omitempty"`
-	NumberOfDisks NullableInt32 `json:"numberOfDisks,omitempty"`
-	OperatingSystemId *string `json:"operatingSystemId,omitempty"`
+	Network *DefaultPayloadNetwork `json:"network,omitempty"`
+	// Location of the server
+	Site *string `json:"site,omitempty"`
+	// Who initiated the job
+	InitiatedBy *string `json:"initiatedBy,omitempty"`
+	// The brand of the server
+	ServerBrand *string `json:"serverBrand,omitempty"`
+	// The chassis of the server
+	ServerChassis *string `json:"serverChassis,omitempty"`
+	// The base URL of the fileserver
+	FileserverBaseUrl *string `json:"fileserverBaseUrl,omitempty"`
+	// Whether the server has hardware RAID
+	ServerHardwareRaid *bool `json:"serverHardwareRaid,omitempty"`
 	Os *Os `json:"os,omitempty"`
-	Partitions []Partition `json:"partitions,omitempty"`
-	RaidLevel NullableInt32 `json:"raidLevel,omitempty"`
-	// Timezone represented as Geographical_Area/City
+	Raid NullableRaidPayload `json:"raid,omitempty"`
+	// The installation device
+	Device *string `json:"device,omitempty"`
+	// The hostname of the server
+	Hostname *string `json:"hostname,omitempty"`
+	// Timezone to be configured on the server
 	Timezone *string `json:"timezone,omitempty"`
+	Partitions []Partition `json:"partitions,omitempty"`
+	// The ID of the operating system
+	OperatingSystemId *string `json:"operatingSystemId,omitempty"`
+	// The server's features
+	Features []string `json:"features,omitempty"`
+	// The features that are being utilized by the server
+	FeaturesUtilized []string `json:"featuresUtilized,omitempty"`
+	// SSH keys to be added to the server
+	SshKeys NullableString `json:"sshKeys,omitempty"`
+	Database NullableDatabase `json:"database,omitempty"`
+	// The URL to be called when the job is finished
+	CallbackUrl NullableString `json:"callbackUrl,omitempty"`
+	// Whether to send email notifications
+	DoEmailNotification NullableBool `json:"doEmailNotification,omitempty"`
+	// Whether the job is configurable
+	Configurable NullableBool `json:"configurable,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -45,9 +67,8 @@ type _InstallOperatingSystemPayload InstallOperatingSystemPayload
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInstallOperatingSystemPayload(jobType string) *InstallOperatingSystemPayload {
+func NewInstallOperatingSystemPayload() *InstallOperatingSystemPayload {
 	this := InstallOperatingSystemPayload{}
-	this.JobType = jobType
 	return &this
 }
 
@@ -57,70 +78,6 @@ func NewInstallOperatingSystemPayload(jobType string) *InstallOperatingSystemPay
 func NewInstallOperatingSystemPayloadWithDefaults() *InstallOperatingSystemPayload {
 	this := InstallOperatingSystemPayload{}
 	return &this
-}
-
-// GetFileserverBaseUrl returns the FileserverBaseUrl field value if set, zero value otherwise.
-func (o *InstallOperatingSystemPayload) GetFileserverBaseUrl() string {
-	if o == nil || IsNil(o.FileserverBaseUrl) {
-		var ret string
-		return ret
-	}
-	return *o.FileserverBaseUrl
-}
-
-// GetFileserverBaseUrlOk returns a tuple with the FileserverBaseUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InstallOperatingSystemPayload) GetFileserverBaseUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.FileserverBaseUrl) {
-		return nil, false
-	}
-	return o.FileserverBaseUrl, true
-}
-
-// HasFileserverBaseUrl returns a boolean if a field has been set.
-func (o *InstallOperatingSystemPayload) HasFileserverBaseUrl() bool {
-	if o != nil && !IsNil(o.FileserverBaseUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetFileserverBaseUrl gets a reference to the given string and assigns it to the FileserverBaseUrl field.
-func (o *InstallOperatingSystemPayload) SetFileserverBaseUrl(v string) {
-	o.FileserverBaseUrl = &v
-}
-
-// GetPop returns the Pop field value if set, zero value otherwise.
-func (o *InstallOperatingSystemPayload) GetPop() string {
-	if o == nil || IsNil(o.Pop) {
-		var ret string
-		return ret
-	}
-	return *o.Pop
-}
-
-// GetPopOk returns a tuple with the Pop field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InstallOperatingSystemPayload) GetPopOk() (*string, bool) {
-	if o == nil || IsNil(o.Pop) {
-		return nil, false
-	}
-	return o.Pop, true
-}
-
-// HasPop returns a boolean if a field has been set.
-func (o *InstallOperatingSystemPayload) HasPop() bool {
-	if o != nil && !IsNil(o.Pop) {
-		return true
-	}
-
-	return false
-}
-
-// SetPop gets a reference to the given string and assigns it to the Pop field.
-func (o *InstallOperatingSystemPayload) SetPop(v string) {
-	o.Pop = &v
 }
 
 // GetPowerCycle returns the PowerCycle field value if set, zero value otherwise.
@@ -155,230 +112,228 @@ func (o *InstallOperatingSystemPayload) SetPowerCycle(v bool) {
 	o.PowerCycle = &v
 }
 
-// GetIsUnassignedServer returns the IsUnassignedServer field value if set, zero value otherwise.
-func (o *InstallOperatingSystemPayload) GetIsUnassignedServer() bool {
-	if o == nil || IsNil(o.IsUnassignedServer) {
+// GetNetwork returns the Network field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetNetwork() DefaultPayloadNetwork {
+	if o == nil || IsNil(o.Network) {
+		var ret DefaultPayloadNetwork
+		return ret
+	}
+	return *o.Network
+}
+
+// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallOperatingSystemPayload) GetNetworkOk() (*DefaultPayloadNetwork, bool) {
+	if o == nil || IsNil(o.Network) {
+		return nil, false
+	}
+	return o.Network, true
+}
+
+// HasNetwork returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasNetwork() bool {
+	if o != nil && !IsNil(o.Network) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetwork gets a reference to the given DefaultPayloadNetwork and assigns it to the Network field.
+func (o *InstallOperatingSystemPayload) SetNetwork(v DefaultPayloadNetwork) {
+	o.Network = &v
+}
+
+// GetSite returns the Site field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetSite() string {
+	if o == nil || IsNil(o.Site) {
+		var ret string
+		return ret
+	}
+	return *o.Site
+}
+
+// GetSiteOk returns a tuple with the Site field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallOperatingSystemPayload) GetSiteOk() (*string, bool) {
+	if o == nil || IsNil(o.Site) {
+		return nil, false
+	}
+	return o.Site, true
+}
+
+// HasSite returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasSite() bool {
+	if o != nil && !IsNil(o.Site) {
+		return true
+	}
+
+	return false
+}
+
+// SetSite gets a reference to the given string and assigns it to the Site field.
+func (o *InstallOperatingSystemPayload) SetSite(v string) {
+	o.Site = &v
+}
+
+// GetInitiatedBy returns the InitiatedBy field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetInitiatedBy() string {
+	if o == nil || IsNil(o.InitiatedBy) {
+		var ret string
+		return ret
+	}
+	return *o.InitiatedBy
+}
+
+// GetInitiatedByOk returns a tuple with the InitiatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallOperatingSystemPayload) GetInitiatedByOk() (*string, bool) {
+	if o == nil || IsNil(o.InitiatedBy) {
+		return nil, false
+	}
+	return o.InitiatedBy, true
+}
+
+// HasInitiatedBy returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasInitiatedBy() bool {
+	if o != nil && !IsNil(o.InitiatedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetInitiatedBy gets a reference to the given string and assigns it to the InitiatedBy field.
+func (o *InstallOperatingSystemPayload) SetInitiatedBy(v string) {
+	o.InitiatedBy = &v
+}
+
+// GetServerBrand returns the ServerBrand field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetServerBrand() string {
+	if o == nil || IsNil(o.ServerBrand) {
+		var ret string
+		return ret
+	}
+	return *o.ServerBrand
+}
+
+// GetServerBrandOk returns a tuple with the ServerBrand field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallOperatingSystemPayload) GetServerBrandOk() (*string, bool) {
+	if o == nil || IsNil(o.ServerBrand) {
+		return nil, false
+	}
+	return o.ServerBrand, true
+}
+
+// HasServerBrand returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasServerBrand() bool {
+	if o != nil && !IsNil(o.ServerBrand) {
+		return true
+	}
+
+	return false
+}
+
+// SetServerBrand gets a reference to the given string and assigns it to the ServerBrand field.
+func (o *InstallOperatingSystemPayload) SetServerBrand(v string) {
+	o.ServerBrand = &v
+}
+
+// GetServerChassis returns the ServerChassis field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetServerChassis() string {
+	if o == nil || IsNil(o.ServerChassis) {
+		var ret string
+		return ret
+	}
+	return *o.ServerChassis
+}
+
+// GetServerChassisOk returns a tuple with the ServerChassis field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallOperatingSystemPayload) GetServerChassisOk() (*string, bool) {
+	if o == nil || IsNil(o.ServerChassis) {
+		return nil, false
+	}
+	return o.ServerChassis, true
+}
+
+// HasServerChassis returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasServerChassis() bool {
+	if o != nil && !IsNil(o.ServerChassis) {
+		return true
+	}
+
+	return false
+}
+
+// SetServerChassis gets a reference to the given string and assigns it to the ServerChassis field.
+func (o *InstallOperatingSystemPayload) SetServerChassis(v string) {
+	o.ServerChassis = &v
+}
+
+// GetFileserverBaseUrl returns the FileserverBaseUrl field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetFileserverBaseUrl() string {
+	if o == nil || IsNil(o.FileserverBaseUrl) {
+		var ret string
+		return ret
+	}
+	return *o.FileserverBaseUrl
+}
+
+// GetFileserverBaseUrlOk returns a tuple with the FileserverBaseUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallOperatingSystemPayload) GetFileserverBaseUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.FileserverBaseUrl) {
+		return nil, false
+	}
+	return o.FileserverBaseUrl, true
+}
+
+// HasFileserverBaseUrl returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasFileserverBaseUrl() bool {
+	if o != nil && !IsNil(o.FileserverBaseUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileserverBaseUrl gets a reference to the given string and assigns it to the FileserverBaseUrl field.
+func (o *InstallOperatingSystemPayload) SetFileserverBaseUrl(v string) {
+	o.FileserverBaseUrl = &v
+}
+
+// GetServerHardwareRaid returns the ServerHardwareRaid field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetServerHardwareRaid() bool {
+	if o == nil || IsNil(o.ServerHardwareRaid) {
 		var ret bool
 		return ret
 	}
-	return *o.IsUnassignedServer
+	return *o.ServerHardwareRaid
 }
 
-// GetIsUnassignedServerOk returns a tuple with the IsUnassignedServer field value if set, nil otherwise
+// GetServerHardwareRaidOk returns a tuple with the ServerHardwareRaid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallOperatingSystemPayload) GetIsUnassignedServerOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsUnassignedServer) {
+func (o *InstallOperatingSystemPayload) GetServerHardwareRaidOk() (*bool, bool) {
+	if o == nil || IsNil(o.ServerHardwareRaid) {
 		return nil, false
 	}
-	return o.IsUnassignedServer, true
+	return o.ServerHardwareRaid, true
 }
 
-// HasIsUnassignedServer returns a boolean if a field has been set.
-func (o *InstallOperatingSystemPayload) HasIsUnassignedServer() bool {
-	if o != nil && !IsNil(o.IsUnassignedServer) {
+// HasServerHardwareRaid returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasServerHardwareRaid() bool {
+	if o != nil && !IsNil(o.ServerHardwareRaid) {
 		return true
 	}
 
 	return false
 }
 
-// SetIsUnassignedServer gets a reference to the given bool and assigns it to the IsUnassignedServer field.
-func (o *InstallOperatingSystemPayload) SetIsUnassignedServer(v bool) {
-	o.IsUnassignedServer = &v
-}
-
-// GetServerId returns the ServerId field value if set, zero value otherwise.
-func (o *InstallOperatingSystemPayload) GetServerId() string {
-	if o == nil || IsNil(o.ServerId) {
-		var ret string
-		return ret
-	}
-	return *o.ServerId
-}
-
-// GetServerIdOk returns a tuple with the ServerId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InstallOperatingSystemPayload) GetServerIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ServerId) {
-		return nil, false
-	}
-	return o.ServerId, true
-}
-
-// HasServerId returns a boolean if a field has been set.
-func (o *InstallOperatingSystemPayload) HasServerId() bool {
-	if o != nil && !IsNil(o.ServerId) {
-		return true
-	}
-
-	return false
-}
-
-// SetServerId gets a reference to the given string and assigns it to the ServerId field.
-func (o *InstallOperatingSystemPayload) SetServerId(v string) {
-	o.ServerId = &v
-}
-
-// GetJobType returns the JobType field value
-func (o *InstallOperatingSystemPayload) GetJobType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.JobType
-}
-
-// GetJobTypeOk returns a tuple with the JobType field value
-// and a boolean to check if the value has been set.
-func (o *InstallOperatingSystemPayload) GetJobTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.JobType, true
-}
-
-// SetJobType sets field value
-func (o *InstallOperatingSystemPayload) SetJobType(v string) {
-	o.JobType = v
-}
-
-// GetConfigurable returns the Configurable field value if set, zero value otherwise.
-func (o *InstallOperatingSystemPayload) GetConfigurable() bool {
-	if o == nil || IsNil(o.Configurable) {
-		var ret bool
-		return ret
-	}
-	return *o.Configurable
-}
-
-// GetConfigurableOk returns a tuple with the Configurable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InstallOperatingSystemPayload) GetConfigurableOk() (*bool, bool) {
-	if o == nil || IsNil(o.Configurable) {
-		return nil, false
-	}
-	return o.Configurable, true
-}
-
-// HasConfigurable returns a boolean if a field has been set.
-func (o *InstallOperatingSystemPayload) HasConfigurable() bool {
-	if o != nil && !IsNil(o.Configurable) {
-		return true
-	}
-
-	return false
-}
-
-// SetConfigurable gets a reference to the given bool and assigns it to the Configurable field.
-func (o *InstallOperatingSystemPayload) SetConfigurable(v bool) {
-	o.Configurable = &v
-}
-
-// GetDevice returns the Device field value if set, zero value otherwise.
-func (o *InstallOperatingSystemPayload) GetDevice() string {
-	if o == nil || IsNil(o.Device) {
-		var ret string
-		return ret
-	}
-	return *o.Device
-}
-
-// GetDeviceOk returns a tuple with the Device field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InstallOperatingSystemPayload) GetDeviceOk() (*string, bool) {
-	if o == nil || IsNil(o.Device) {
-		return nil, false
-	}
-	return o.Device, true
-}
-
-// HasDevice returns a boolean if a field has been set.
-func (o *InstallOperatingSystemPayload) HasDevice() bool {
-	if o != nil && !IsNil(o.Device) {
-		return true
-	}
-
-	return false
-}
-
-// SetDevice gets a reference to the given string and assigns it to the Device field.
-func (o *InstallOperatingSystemPayload) SetDevice(v string) {
-	o.Device = &v
-}
-
-// GetNumberOfDisks returns the NumberOfDisks field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InstallOperatingSystemPayload) GetNumberOfDisks() int32 {
-	if o == nil || IsNil(o.NumberOfDisks.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.NumberOfDisks.Get()
-}
-
-// GetNumberOfDisksOk returns a tuple with the NumberOfDisks field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InstallOperatingSystemPayload) GetNumberOfDisksOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.NumberOfDisks.Get(), o.NumberOfDisks.IsSet()
-}
-
-// HasNumberOfDisks returns a boolean if a field has been set.
-func (o *InstallOperatingSystemPayload) HasNumberOfDisks() bool {
-	if o != nil && o.NumberOfDisks.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNumberOfDisks gets a reference to the given NullableInt32 and assigns it to the NumberOfDisks field.
-func (o *InstallOperatingSystemPayload) SetNumberOfDisks(v int32) {
-	o.NumberOfDisks.Set(&v)
-}
-// SetNumberOfDisksNil sets the value for NumberOfDisks to be an explicit nil
-func (o *InstallOperatingSystemPayload) SetNumberOfDisksNil() {
-	o.NumberOfDisks.Set(nil)
-}
-
-// UnsetNumberOfDisks ensures that no value is present for NumberOfDisks, not even an explicit nil
-func (o *InstallOperatingSystemPayload) UnsetNumberOfDisks() {
-	o.NumberOfDisks.Unset()
-}
-
-// GetOperatingSystemId returns the OperatingSystemId field value if set, zero value otherwise.
-func (o *InstallOperatingSystemPayload) GetOperatingSystemId() string {
-	if o == nil || IsNil(o.OperatingSystemId) {
-		var ret string
-		return ret
-	}
-	return *o.OperatingSystemId
-}
-
-// GetOperatingSystemIdOk returns a tuple with the OperatingSystemId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InstallOperatingSystemPayload) GetOperatingSystemIdOk() (*string, bool) {
-	if o == nil || IsNil(o.OperatingSystemId) {
-		return nil, false
-	}
-	return o.OperatingSystemId, true
-}
-
-// HasOperatingSystemId returns a boolean if a field has been set.
-func (o *InstallOperatingSystemPayload) HasOperatingSystemId() bool {
-	if o != nil && !IsNil(o.OperatingSystemId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOperatingSystemId gets a reference to the given string and assigns it to the OperatingSystemId field.
-func (o *InstallOperatingSystemPayload) SetOperatingSystemId(v string) {
-	o.OperatingSystemId = &v
+// SetServerHardwareRaid gets a reference to the given bool and assigns it to the ServerHardwareRaid field.
+func (o *InstallOperatingSystemPayload) SetServerHardwareRaid(v bool) {
+	o.ServerHardwareRaid = &v
 }
 
 // GetOs returns the Os field value if set, zero value otherwise.
@@ -413,78 +368,110 @@ func (o *InstallOperatingSystemPayload) SetOs(v Os) {
 	o.Os = &v
 }
 
-// GetPartitions returns the Partitions field value if set, zero value otherwise.
-func (o *InstallOperatingSystemPayload) GetPartitions() []Partition {
-	if o == nil || IsNil(o.Partitions) {
-		var ret []Partition
+// GetRaid returns the Raid field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstallOperatingSystemPayload) GetRaid() RaidPayload {
+	if o == nil || IsNil(o.Raid.Get()) {
+		var ret RaidPayload
 		return ret
 	}
-	return o.Partitions
+	return *o.Raid.Get()
 }
 
-// GetPartitionsOk returns a tuple with the Partitions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InstallOperatingSystemPayload) GetPartitionsOk() ([]Partition, bool) {
-	if o == nil || IsNil(o.Partitions) {
-		return nil, false
-	}
-	return o.Partitions, true
-}
-
-// HasPartitions returns a boolean if a field has been set.
-func (o *InstallOperatingSystemPayload) HasPartitions() bool {
-	if o != nil && !IsNil(o.Partitions) {
-		return true
-	}
-
-	return false
-}
-
-// SetPartitions gets a reference to the given []Partition and assigns it to the Partitions field.
-func (o *InstallOperatingSystemPayload) SetPartitions(v []Partition) {
-	o.Partitions = v
-}
-
-// GetRaidLevel returns the RaidLevel field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InstallOperatingSystemPayload) GetRaidLevel() int32 {
-	if o == nil || IsNil(o.RaidLevel.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.RaidLevel.Get()
-}
-
-// GetRaidLevelOk returns a tuple with the RaidLevel field value if set, nil otherwise
+// GetRaidOk returns a tuple with the Raid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InstallOperatingSystemPayload) GetRaidLevelOk() (*int32, bool) {
+func (o *InstallOperatingSystemPayload) GetRaidOk() (*RaidPayload, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.RaidLevel.Get(), o.RaidLevel.IsSet()
+	return o.Raid.Get(), o.Raid.IsSet()
 }
 
-// HasRaidLevel returns a boolean if a field has been set.
-func (o *InstallOperatingSystemPayload) HasRaidLevel() bool {
-	if o != nil && o.RaidLevel.IsSet() {
+// HasRaid returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasRaid() bool {
+	if o != nil && o.Raid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRaidLevel gets a reference to the given NullableInt32 and assigns it to the RaidLevel field.
-func (o *InstallOperatingSystemPayload) SetRaidLevel(v int32) {
-	o.RaidLevel.Set(&v)
+// SetRaid gets a reference to the given NullableRaidPayload and assigns it to the Raid field.
+func (o *InstallOperatingSystemPayload) SetRaid(v RaidPayload) {
+	o.Raid.Set(&v)
 }
-// SetRaidLevelNil sets the value for RaidLevel to be an explicit nil
-func (o *InstallOperatingSystemPayload) SetRaidLevelNil() {
-	o.RaidLevel.Set(nil)
+// SetRaidNil sets the value for Raid to be an explicit nil
+func (o *InstallOperatingSystemPayload) SetRaidNil() {
+	o.Raid.Set(nil)
 }
 
-// UnsetRaidLevel ensures that no value is present for RaidLevel, not even an explicit nil
-func (o *InstallOperatingSystemPayload) UnsetRaidLevel() {
-	o.RaidLevel.Unset()
+// UnsetRaid ensures that no value is present for Raid, not even an explicit nil
+func (o *InstallOperatingSystemPayload) UnsetRaid() {
+	o.Raid.Unset()
+}
+
+// GetDevice returns the Device field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetDevice() string {
+	if o == nil || IsNil(o.Device) {
+		var ret string
+		return ret
+	}
+	return *o.Device
+}
+
+// GetDeviceOk returns a tuple with the Device field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallOperatingSystemPayload) GetDeviceOk() (*string, bool) {
+	if o == nil || IsNil(o.Device) {
+		return nil, false
+	}
+	return o.Device, true
+}
+
+// HasDevice returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasDevice() bool {
+	if o != nil && !IsNil(o.Device) {
+		return true
+	}
+
+	return false
+}
+
+// SetDevice gets a reference to the given string and assigns it to the Device field.
+func (o *InstallOperatingSystemPayload) SetDevice(v string) {
+	o.Device = &v
+}
+
+// GetHostname returns the Hostname field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetHostname() string {
+	if o == nil || IsNil(o.Hostname) {
+		var ret string
+		return ret
+	}
+	return *o.Hostname
+}
+
+// GetHostnameOk returns a tuple with the Hostname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallOperatingSystemPayload) GetHostnameOk() (*string, bool) {
+	if o == nil || IsNil(o.Hostname) {
+		return nil, false
+	}
+	return o.Hostname, true
+}
+
+// HasHostname returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasHostname() bool {
+	if o != nil && !IsNil(o.Hostname) {
+		return true
+	}
+
+	return false
+}
+
+// SetHostname gets a reference to the given string and assigns it to the Hostname field.
+func (o *InstallOperatingSystemPayload) SetHostname(v string) {
+	o.Hostname = &v
 }
 
 // GetTimezone returns the Timezone field value if set, zero value otherwise.
@@ -519,6 +506,344 @@ func (o *InstallOperatingSystemPayload) SetTimezone(v string) {
 	o.Timezone = &v
 }
 
+// GetPartitions returns the Partitions field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetPartitions() []Partition {
+	if o == nil || IsNil(o.Partitions) {
+		var ret []Partition
+		return ret
+	}
+	return o.Partitions
+}
+
+// GetPartitionsOk returns a tuple with the Partitions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallOperatingSystemPayload) GetPartitionsOk() ([]Partition, bool) {
+	if o == nil || IsNil(o.Partitions) {
+		return nil, false
+	}
+	return o.Partitions, true
+}
+
+// HasPartitions returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasPartitions() bool {
+	if o != nil && !IsNil(o.Partitions) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartitions gets a reference to the given []Partition and assigns it to the Partitions field.
+func (o *InstallOperatingSystemPayload) SetPartitions(v []Partition) {
+	o.Partitions = v
+}
+
+// GetOperatingSystemId returns the OperatingSystemId field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetOperatingSystemId() string {
+	if o == nil || IsNil(o.OperatingSystemId) {
+		var ret string
+		return ret
+	}
+	return *o.OperatingSystemId
+}
+
+// GetOperatingSystemIdOk returns a tuple with the OperatingSystemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallOperatingSystemPayload) GetOperatingSystemIdOk() (*string, bool) {
+	if o == nil || IsNil(o.OperatingSystemId) {
+		return nil, false
+	}
+	return o.OperatingSystemId, true
+}
+
+// HasOperatingSystemId returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasOperatingSystemId() bool {
+	if o != nil && !IsNil(o.OperatingSystemId) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperatingSystemId gets a reference to the given string and assigns it to the OperatingSystemId field.
+func (o *InstallOperatingSystemPayload) SetOperatingSystemId(v string) {
+	o.OperatingSystemId = &v
+}
+
+// GetFeatures returns the Features field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetFeatures() []string {
+	if o == nil || IsNil(o.Features) {
+		var ret []string
+		return ret
+	}
+	return o.Features
+}
+
+// GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallOperatingSystemPayload) GetFeaturesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Features) {
+		return nil, false
+	}
+	return o.Features, true
+}
+
+// HasFeatures returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasFeatures() bool {
+	if o != nil && !IsNil(o.Features) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatures gets a reference to the given []string and assigns it to the Features field.
+func (o *InstallOperatingSystemPayload) SetFeatures(v []string) {
+	o.Features = v
+}
+
+// GetFeaturesUtilized returns the FeaturesUtilized field value if set, zero value otherwise.
+func (o *InstallOperatingSystemPayload) GetFeaturesUtilized() []string {
+	if o == nil || IsNil(o.FeaturesUtilized) {
+		var ret []string
+		return ret
+	}
+	return o.FeaturesUtilized
+}
+
+// GetFeaturesUtilizedOk returns a tuple with the FeaturesUtilized field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallOperatingSystemPayload) GetFeaturesUtilizedOk() ([]string, bool) {
+	if o == nil || IsNil(o.FeaturesUtilized) {
+		return nil, false
+	}
+	return o.FeaturesUtilized, true
+}
+
+// HasFeaturesUtilized returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasFeaturesUtilized() bool {
+	if o != nil && !IsNil(o.FeaturesUtilized) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeaturesUtilized gets a reference to the given []string and assigns it to the FeaturesUtilized field.
+func (o *InstallOperatingSystemPayload) SetFeaturesUtilized(v []string) {
+	o.FeaturesUtilized = v
+}
+
+// GetSshKeys returns the SshKeys field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstallOperatingSystemPayload) GetSshKeys() string {
+	if o == nil || IsNil(o.SshKeys.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SshKeys.Get()
+}
+
+// GetSshKeysOk returns a tuple with the SshKeys field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstallOperatingSystemPayload) GetSshKeysOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SshKeys.Get(), o.SshKeys.IsSet()
+}
+
+// HasSshKeys returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasSshKeys() bool {
+	if o != nil && o.SshKeys.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSshKeys gets a reference to the given NullableString and assigns it to the SshKeys field.
+func (o *InstallOperatingSystemPayload) SetSshKeys(v string) {
+	o.SshKeys.Set(&v)
+}
+// SetSshKeysNil sets the value for SshKeys to be an explicit nil
+func (o *InstallOperatingSystemPayload) SetSshKeysNil() {
+	o.SshKeys.Set(nil)
+}
+
+// UnsetSshKeys ensures that no value is present for SshKeys, not even an explicit nil
+func (o *InstallOperatingSystemPayload) UnsetSshKeys() {
+	o.SshKeys.Unset()
+}
+
+// GetDatabase returns the Database field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstallOperatingSystemPayload) GetDatabase() Database {
+	if o == nil || IsNil(o.Database.Get()) {
+		var ret Database
+		return ret
+	}
+	return *o.Database.Get()
+}
+
+// GetDatabaseOk returns a tuple with the Database field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstallOperatingSystemPayload) GetDatabaseOk() (*Database, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Database.Get(), o.Database.IsSet()
+}
+
+// HasDatabase returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasDatabase() bool {
+	if o != nil && o.Database.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabase gets a reference to the given NullableDatabase and assigns it to the Database field.
+func (o *InstallOperatingSystemPayload) SetDatabase(v Database) {
+	o.Database.Set(&v)
+}
+// SetDatabaseNil sets the value for Database to be an explicit nil
+func (o *InstallOperatingSystemPayload) SetDatabaseNil() {
+	o.Database.Set(nil)
+}
+
+// UnsetDatabase ensures that no value is present for Database, not even an explicit nil
+func (o *InstallOperatingSystemPayload) UnsetDatabase() {
+	o.Database.Unset()
+}
+
+// GetCallbackUrl returns the CallbackUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstallOperatingSystemPayload) GetCallbackUrl() string {
+	if o == nil || IsNil(o.CallbackUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CallbackUrl.Get()
+}
+
+// GetCallbackUrlOk returns a tuple with the CallbackUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstallOperatingSystemPayload) GetCallbackUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CallbackUrl.Get(), o.CallbackUrl.IsSet()
+}
+
+// HasCallbackUrl returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasCallbackUrl() bool {
+	if o != nil && o.CallbackUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCallbackUrl gets a reference to the given NullableString and assigns it to the CallbackUrl field.
+func (o *InstallOperatingSystemPayload) SetCallbackUrl(v string) {
+	o.CallbackUrl.Set(&v)
+}
+// SetCallbackUrlNil sets the value for CallbackUrl to be an explicit nil
+func (o *InstallOperatingSystemPayload) SetCallbackUrlNil() {
+	o.CallbackUrl.Set(nil)
+}
+
+// UnsetCallbackUrl ensures that no value is present for CallbackUrl, not even an explicit nil
+func (o *InstallOperatingSystemPayload) UnsetCallbackUrl() {
+	o.CallbackUrl.Unset()
+}
+
+// GetDoEmailNotification returns the DoEmailNotification field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstallOperatingSystemPayload) GetDoEmailNotification() bool {
+	if o == nil || IsNil(o.DoEmailNotification.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.DoEmailNotification.Get()
+}
+
+// GetDoEmailNotificationOk returns a tuple with the DoEmailNotification field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstallOperatingSystemPayload) GetDoEmailNotificationOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DoEmailNotification.Get(), o.DoEmailNotification.IsSet()
+}
+
+// HasDoEmailNotification returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasDoEmailNotification() bool {
+	if o != nil && o.DoEmailNotification.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDoEmailNotification gets a reference to the given NullableBool and assigns it to the DoEmailNotification field.
+func (o *InstallOperatingSystemPayload) SetDoEmailNotification(v bool) {
+	o.DoEmailNotification.Set(&v)
+}
+// SetDoEmailNotificationNil sets the value for DoEmailNotification to be an explicit nil
+func (o *InstallOperatingSystemPayload) SetDoEmailNotificationNil() {
+	o.DoEmailNotification.Set(nil)
+}
+
+// UnsetDoEmailNotification ensures that no value is present for DoEmailNotification, not even an explicit nil
+func (o *InstallOperatingSystemPayload) UnsetDoEmailNotification() {
+	o.DoEmailNotification.Unset()
+}
+
+// GetConfigurable returns the Configurable field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstallOperatingSystemPayload) GetConfigurable() bool {
+	if o == nil || IsNil(o.Configurable.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.Configurable.Get()
+}
+
+// GetConfigurableOk returns a tuple with the Configurable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstallOperatingSystemPayload) GetConfigurableOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Configurable.Get(), o.Configurable.IsSet()
+}
+
+// HasConfigurable returns a boolean if a field has been set.
+func (o *InstallOperatingSystemPayload) HasConfigurable() bool {
+	if o != nil && o.Configurable.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigurable gets a reference to the given NullableBool and assigns it to the Configurable field.
+func (o *InstallOperatingSystemPayload) SetConfigurable(v bool) {
+	o.Configurable.Set(&v)
+}
+// SetConfigurableNil sets the value for Configurable to be an explicit nil
+func (o *InstallOperatingSystemPayload) SetConfigurableNil() {
+	o.Configurable.Set(nil)
+}
+
+// UnsetConfigurable ensures that no value is present for Configurable, not even an explicit nil
+func (o *InstallOperatingSystemPayload) UnsetConfigurable() {
+	o.Configurable.Unset()
+}
+
 func (o InstallOperatingSystemPayload) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -529,45 +854,71 @@ func (o InstallOperatingSystemPayload) MarshalJSON() ([]byte, error) {
 
 func (o InstallOperatingSystemPayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FileserverBaseUrl) {
-		toSerialize["fileserverBaseUrl"] = o.FileserverBaseUrl
-	}
-	if !IsNil(o.Pop) {
-		toSerialize["pop"] = o.Pop
-	}
 	if !IsNil(o.PowerCycle) {
 		toSerialize["powerCycle"] = o.PowerCycle
 	}
-	if !IsNil(o.IsUnassignedServer) {
-		toSerialize["isUnassignedServer"] = o.IsUnassignedServer
+	if !IsNil(o.Network) {
+		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.ServerId) {
-		toSerialize["serverId"] = o.ServerId
+	if !IsNil(o.Site) {
+		toSerialize["site"] = o.Site
 	}
-	toSerialize["jobType"] = o.JobType
-	if !IsNil(o.Configurable) {
-		toSerialize["configurable"] = o.Configurable
+	if !IsNil(o.InitiatedBy) {
+		toSerialize["initiatedBy"] = o.InitiatedBy
 	}
-	if !IsNil(o.Device) {
-		toSerialize["device"] = o.Device
+	if !IsNil(o.ServerBrand) {
+		toSerialize["serverBrand"] = o.ServerBrand
 	}
-	if o.NumberOfDisks.IsSet() {
-		toSerialize["numberOfDisks"] = o.NumberOfDisks.Get()
+	if !IsNil(o.ServerChassis) {
+		toSerialize["serverChassis"] = o.ServerChassis
 	}
-	if !IsNil(o.OperatingSystemId) {
-		toSerialize["operatingSystemId"] = o.OperatingSystemId
+	if !IsNil(o.FileserverBaseUrl) {
+		toSerialize["fileserverBaseUrl"] = o.FileserverBaseUrl
+	}
+	if !IsNil(o.ServerHardwareRaid) {
+		toSerialize["serverHardwareRaid"] = o.ServerHardwareRaid
 	}
 	if !IsNil(o.Os) {
 		toSerialize["os"] = o.Os
 	}
-	if !IsNil(o.Partitions) {
-		toSerialize["partitions"] = o.Partitions
+	if o.Raid.IsSet() {
+		toSerialize["raid"] = o.Raid.Get()
 	}
-	if o.RaidLevel.IsSet() {
-		toSerialize["raidLevel"] = o.RaidLevel.Get()
+	if !IsNil(o.Device) {
+		toSerialize["device"] = o.Device
+	}
+	if !IsNil(o.Hostname) {
+		toSerialize["hostname"] = o.Hostname
 	}
 	if !IsNil(o.Timezone) {
 		toSerialize["timezone"] = o.Timezone
+	}
+	if !IsNil(o.Partitions) {
+		toSerialize["partitions"] = o.Partitions
+	}
+	if !IsNil(o.OperatingSystemId) {
+		toSerialize["operatingSystemId"] = o.OperatingSystemId
+	}
+	if !IsNil(o.Features) {
+		toSerialize["features"] = o.Features
+	}
+	if !IsNil(o.FeaturesUtilized) {
+		toSerialize["featuresUtilized"] = o.FeaturesUtilized
+	}
+	if o.SshKeys.IsSet() {
+		toSerialize["sshKeys"] = o.SshKeys.Get()
+	}
+	if o.Database.IsSet() {
+		toSerialize["database"] = o.Database.Get()
+	}
+	if o.CallbackUrl.IsSet() {
+		toSerialize["callbackUrl"] = o.CallbackUrl.Get()
+	}
+	if o.DoEmailNotification.IsSet() {
+		toSerialize["doEmailNotification"] = o.DoEmailNotification.Get()
+	}
+	if o.Configurable.IsSet() {
+		toSerialize["configurable"] = o.Configurable.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -578,27 +929,6 @@ func (o InstallOperatingSystemPayload) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *InstallOperatingSystemPayload) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"jobType",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varInstallOperatingSystemPayload := _InstallOperatingSystemPayload{}
 
 	err = json.Unmarshal(data, &varInstallOperatingSystemPayload)
@@ -612,20 +942,28 @@ func (o *InstallOperatingSystemPayload) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "fileserverBaseUrl")
-		delete(additionalProperties, "pop")
 		delete(additionalProperties, "powerCycle")
-		delete(additionalProperties, "isUnassignedServer")
-		delete(additionalProperties, "serverId")
-		delete(additionalProperties, "jobType")
-		delete(additionalProperties, "configurable")
-		delete(additionalProperties, "device")
-		delete(additionalProperties, "numberOfDisks")
-		delete(additionalProperties, "operatingSystemId")
+		delete(additionalProperties, "network")
+		delete(additionalProperties, "site")
+		delete(additionalProperties, "initiatedBy")
+		delete(additionalProperties, "serverBrand")
+		delete(additionalProperties, "serverChassis")
+		delete(additionalProperties, "fileserverBaseUrl")
+		delete(additionalProperties, "serverHardwareRaid")
 		delete(additionalProperties, "os")
-		delete(additionalProperties, "partitions")
-		delete(additionalProperties, "raidLevel")
+		delete(additionalProperties, "raid")
+		delete(additionalProperties, "device")
+		delete(additionalProperties, "hostname")
 		delete(additionalProperties, "timezone")
+		delete(additionalProperties, "partitions")
+		delete(additionalProperties, "operatingSystemId")
+		delete(additionalProperties, "features")
+		delete(additionalProperties, "featuresUtilized")
+		delete(additionalProperties, "sshKeys")
+		delete(additionalProperties, "database")
+		delete(additionalProperties, "callbackUrl")
+		delete(additionalProperties, "doEmailNotification")
+		delete(additionalProperties, "configurable")
 		o.AdditionalProperties = additionalProperties
 	}
 

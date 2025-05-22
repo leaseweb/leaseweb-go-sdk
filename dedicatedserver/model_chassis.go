@@ -23,7 +23,9 @@ type Chassis struct {
 	Firmware *Firmware `json:"firmware,omitempty"`
 	Motherboard *Motherboard `json:"motherboard,omitempty"`
 	Product *string `json:"product,omitempty"`
+	// Serial number of the server
 	Serial *string `json:"serial,omitempty"`
+	// Vendor of the server
 	Vendor *string `json:"vendor,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

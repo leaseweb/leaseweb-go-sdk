@@ -21,6 +21,7 @@ var _ MappedNullable = &Firmware{}
 type Firmware struct {
 	Date *string `json:"date,omitempty"`
 	Description *string `json:"description,omitempty"`
+	// Vendor of the server
 	Vendor *string `json:"vendor,omitempty"`
 	Version *string `json:"version,omitempty"`
 	AdditionalProperties map[string]interface{}

@@ -78,7 +78,9 @@ docs/HttpMethod.md
 docs/HttpMethodOpt.md
 docs/Image.md
 docs/ImageDetails.md
+docs/ImageRegion.md
 docs/ImageState.md
+docs/ImageStateName.md
 docs/Instance.md
 docs/InstanceDetails.md
 docs/InstanceList.md
@@ -238,7 +240,9 @@ model_http_method.go
 model_http_method_opt.go
 model_image.go
 model_image_details.go
+model_image_region.go
 model_image_state.go
+model_image_state_name.go
 model_instance.go
 model_instance_details.go
 model_instance_list.go

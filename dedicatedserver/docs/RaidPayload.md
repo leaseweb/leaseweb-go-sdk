@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | The type of RAID | [optional] 
-**Level** | Pointer to **NullableInt32** | The RAID level | [optional] 
+**Level** | Pointer to **int32** | The RAID level | [optional] 
 **NumberOfDisks** | Pointer to **NullableInt32** | The number of disks in the RAID | [optional] 
 
 ## Methods
@@ -77,16 +77,6 @@ SetLevel sets Level field to given value.
 
 HasLevel returns a boolean if a field has been set.
 
-### SetLevelNil
-
-`func (o *RaidPayload) SetLevelNil(b bool)`
-
- SetLevelNil sets the value for Level to be an explicit nil
-
-### UnsetLevel
-`func (o *RaidPayload) UnsetLevel()`
-
-UnsetLevel ensures that no value is present for Level, not even an explicit nil
 ### GetNumberOfDisks
 
 `func (o *RaidPayload) GetNumberOfDisks() int32`

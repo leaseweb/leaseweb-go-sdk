@@ -4,18 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FileserverBaseUrl** | Pointer to **string** |  | [optional] 
-**JobType** | **string** |  | 
-**Pop** | Pointer to **string** |  | [optional] 
-**PowerCycle** | Pointer to **bool** |  | [optional] 
-**IsUnassignedServer** | Pointer to **bool** |  | [optional] 
-**ServerId** | Pointer to **string** | Id of the server | [optional] 
+**PowerCycle** | Pointer to **bool** | Whether the server should be powered off and on automatically before the job is started | [optional] 
+**Network** | Pointer to [**DefaultPayloadNetwork**](DefaultPayloadNetwork.md) |  | [optional] 
+**Site** | Pointer to **string** | Location of the server | [optional] 
+**InitiatedBy** | Pointer to **string** | Who initiated the job | [optional] 
+**ServerBrand** | Pointer to **string** | The brand of the server | [optional] 
+**ServerChassis** | Pointer to **string** | The chassis of the server | [optional] 
+**FileserverBaseUrl** | Pointer to **string** | The base URL of the fileserver | [optional] 
+**ServerHardwareRaid** | Pointer to **bool** | Whether the server has hardware RAID | [optional] 
 
 ## Methods
 
 ### NewPayload
 
-`func NewPayload(jobType string, ) *Payload`
+`func NewPayload() *Payload`
 
 NewPayload instantiates a new Payload object
 This constructor will assign default values to properties that have it defined,
@@ -29,76 +31,6 @@ will change when the set of required properties is changed
 NewPayloadWithDefaults instantiates a new Payload object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetFileserverBaseUrl
-
-`func (o *Payload) GetFileserverBaseUrl() string`
-
-GetFileserverBaseUrl returns the FileserverBaseUrl field if non-nil, zero value otherwise.
-
-### GetFileserverBaseUrlOk
-
-`func (o *Payload) GetFileserverBaseUrlOk() (*string, bool)`
-
-GetFileserverBaseUrlOk returns a tuple with the FileserverBaseUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFileserverBaseUrl
-
-`func (o *Payload) SetFileserverBaseUrl(v string)`
-
-SetFileserverBaseUrl sets FileserverBaseUrl field to given value.
-
-### HasFileserverBaseUrl
-
-`func (o *Payload) HasFileserverBaseUrl() bool`
-
-HasFileserverBaseUrl returns a boolean if a field has been set.
-
-### GetJobType
-
-`func (o *Payload) GetJobType() string`
-
-GetJobType returns the JobType field if non-nil, zero value otherwise.
-
-### GetJobTypeOk
-
-`func (o *Payload) GetJobTypeOk() (*string, bool)`
-
-GetJobTypeOk returns a tuple with the JobType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetJobType
-
-`func (o *Payload) SetJobType(v string)`
-
-SetJobType sets JobType field to given value.
-
-
-### GetPop
-
-`func (o *Payload) GetPop() string`
-
-GetPop returns the Pop field if non-nil, zero value otherwise.
-
-### GetPopOk
-
-`func (o *Payload) GetPopOk() (*string, bool)`
-
-GetPopOk returns a tuple with the Pop field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPop
-
-`func (o *Payload) SetPop(v string)`
-
-SetPop sets Pop field to given value.
-
-### HasPop
-
-`func (o *Payload) HasPop() bool`
-
-HasPop returns a boolean if a field has been set.
 
 ### GetPowerCycle
 
@@ -125,55 +57,180 @@ SetPowerCycle sets PowerCycle field to given value.
 
 HasPowerCycle returns a boolean if a field has been set.
 
-### GetIsUnassignedServer
+### GetNetwork
 
-`func (o *Payload) GetIsUnassignedServer() bool`
+`func (o *Payload) GetNetwork() DefaultPayloadNetwork`
 
-GetIsUnassignedServer returns the IsUnassignedServer field if non-nil, zero value otherwise.
+GetNetwork returns the Network field if non-nil, zero value otherwise.
 
-### GetIsUnassignedServerOk
+### GetNetworkOk
 
-`func (o *Payload) GetIsUnassignedServerOk() (*bool, bool)`
+`func (o *Payload) GetNetworkOk() (*DefaultPayloadNetwork, bool)`
 
-GetIsUnassignedServerOk returns a tuple with the IsUnassignedServer field if it's non-nil, zero value otherwise
+GetNetworkOk returns a tuple with the Network field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsUnassignedServer
+### SetNetwork
 
-`func (o *Payload) SetIsUnassignedServer(v bool)`
+`func (o *Payload) SetNetwork(v DefaultPayloadNetwork)`
 
-SetIsUnassignedServer sets IsUnassignedServer field to given value.
+SetNetwork sets Network field to given value.
 
-### HasIsUnassignedServer
+### HasNetwork
 
-`func (o *Payload) HasIsUnassignedServer() bool`
+`func (o *Payload) HasNetwork() bool`
 
-HasIsUnassignedServer returns a boolean if a field has been set.
+HasNetwork returns a boolean if a field has been set.
 
-### GetServerId
+### GetSite
 
-`func (o *Payload) GetServerId() string`
+`func (o *Payload) GetSite() string`
 
-GetServerId returns the ServerId field if non-nil, zero value otherwise.
+GetSite returns the Site field if non-nil, zero value otherwise.
 
-### GetServerIdOk
+### GetSiteOk
 
-`func (o *Payload) GetServerIdOk() (*string, bool)`
+`func (o *Payload) GetSiteOk() (*string, bool)`
 
-GetServerIdOk returns a tuple with the ServerId field if it's non-nil, zero value otherwise
+GetSiteOk returns a tuple with the Site field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetServerId
+### SetSite
 
-`func (o *Payload) SetServerId(v string)`
+`func (o *Payload) SetSite(v string)`
 
-SetServerId sets ServerId field to given value.
+SetSite sets Site field to given value.
 
-### HasServerId
+### HasSite
 
-`func (o *Payload) HasServerId() bool`
+`func (o *Payload) HasSite() bool`
 
-HasServerId returns a boolean if a field has been set.
+HasSite returns a boolean if a field has been set.
+
+### GetInitiatedBy
+
+`func (o *Payload) GetInitiatedBy() string`
+
+GetInitiatedBy returns the InitiatedBy field if non-nil, zero value otherwise.
+
+### GetInitiatedByOk
+
+`func (o *Payload) GetInitiatedByOk() (*string, bool)`
+
+GetInitiatedByOk returns a tuple with the InitiatedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInitiatedBy
+
+`func (o *Payload) SetInitiatedBy(v string)`
+
+SetInitiatedBy sets InitiatedBy field to given value.
+
+### HasInitiatedBy
+
+`func (o *Payload) HasInitiatedBy() bool`
+
+HasInitiatedBy returns a boolean if a field has been set.
+
+### GetServerBrand
+
+`func (o *Payload) GetServerBrand() string`
+
+GetServerBrand returns the ServerBrand field if non-nil, zero value otherwise.
+
+### GetServerBrandOk
+
+`func (o *Payload) GetServerBrandOk() (*string, bool)`
+
+GetServerBrandOk returns a tuple with the ServerBrand field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerBrand
+
+`func (o *Payload) SetServerBrand(v string)`
+
+SetServerBrand sets ServerBrand field to given value.
+
+### HasServerBrand
+
+`func (o *Payload) HasServerBrand() bool`
+
+HasServerBrand returns a boolean if a field has been set.
+
+### GetServerChassis
+
+`func (o *Payload) GetServerChassis() string`
+
+GetServerChassis returns the ServerChassis field if non-nil, zero value otherwise.
+
+### GetServerChassisOk
+
+`func (o *Payload) GetServerChassisOk() (*string, bool)`
+
+GetServerChassisOk returns a tuple with the ServerChassis field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerChassis
+
+`func (o *Payload) SetServerChassis(v string)`
+
+SetServerChassis sets ServerChassis field to given value.
+
+### HasServerChassis
+
+`func (o *Payload) HasServerChassis() bool`
+
+HasServerChassis returns a boolean if a field has been set.
+
+### GetFileserverBaseUrl
+
+`func (o *Payload) GetFileserverBaseUrl() string`
+
+GetFileserverBaseUrl returns the FileserverBaseUrl field if non-nil, zero value otherwise.
+
+### GetFileserverBaseUrlOk
+
+`func (o *Payload) GetFileserverBaseUrlOk() (*string, bool)`
+
+GetFileserverBaseUrlOk returns a tuple with the FileserverBaseUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileserverBaseUrl
+
+`func (o *Payload) SetFileserverBaseUrl(v string)`
+
+SetFileserverBaseUrl sets FileserverBaseUrl field to given value.
+
+### HasFileserverBaseUrl
+
+`func (o *Payload) HasFileserverBaseUrl() bool`
+
+HasFileserverBaseUrl returns a boolean if a field has been set.
+
+### GetServerHardwareRaid
+
+`func (o *Payload) GetServerHardwareRaid() bool`
+
+GetServerHardwareRaid returns the ServerHardwareRaid field if non-nil, zero value otherwise.
+
+### GetServerHardwareRaidOk
+
+`func (o *Payload) GetServerHardwareRaidOk() (*bool, bool)`
+
+GetServerHardwareRaidOk returns a tuple with the ServerHardwareRaid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServerHardwareRaid
+
+`func (o *Payload) SetServerHardwareRaid(v bool)`
+
+SetServerHardwareRaid sets ServerHardwareRaid field to given value.
+
+### HasServerHardwareRaid
+
+`func (o *Payload) HasServerHardwareRaid() bool`
+
+HasServerHardwareRaid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

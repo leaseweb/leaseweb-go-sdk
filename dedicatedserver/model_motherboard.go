@@ -20,7 +20,9 @@ var _ MappedNullable = &Motherboard{}
 // Motherboard struct for Motherboard
 type Motherboard struct {
 	Product *string `json:"product,omitempty"`
+	// Serial number of the server
 	Serial *string `json:"serial,omitempty"`
+	// Vendor of the server
 	Vendor *string `json:"vendor,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

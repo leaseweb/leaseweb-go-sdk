@@ -12,7 +12,6 @@ package dedicatedserver
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the Payload type satisfies the MappedNullable interface at compile time
@@ -20,13 +19,21 @@ var _ MappedNullable = &Payload{}
 
 // Payload struct for Payload
 type Payload struct {
-	FileserverBaseUrl *string `json:"fileserverBaseUrl,omitempty"`
-	JobType string `json:"jobType"`
-	Pop *string `json:"pop,omitempty"`
+	// Whether the server should be powered off and on automatically before the job is started
 	PowerCycle *bool `json:"powerCycle,omitempty"`
-	IsUnassignedServer *bool `json:"isUnassignedServer,omitempty"`
-	// Id of the server
-	ServerId *string `json:"serverId,omitempty"`
+	Network *DefaultPayloadNetwork `json:"network,omitempty"`
+	// Location of the server
+	Site *string `json:"site,omitempty"`
+	// Who initiated the job
+	InitiatedBy *string `json:"initiatedBy,omitempty"`
+	// The brand of the server
+	ServerBrand *string `json:"serverBrand,omitempty"`
+	// The chassis of the server
+	ServerChassis *string `json:"serverChassis,omitempty"`
+	// The base URL of the fileserver
+	FileserverBaseUrl *string `json:"fileserverBaseUrl,omitempty"`
+	// Whether the server has hardware RAID
+	ServerHardwareRaid *bool `json:"serverHardwareRaid,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,9 +43,8 @@ type _Payload Payload
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPayload(jobType string) *Payload {
+func NewPayload() *Payload {
 	this := Payload{}
-	this.JobType = jobType
 	return &this
 }
 
@@ -48,94 +54,6 @@ func NewPayload(jobType string) *Payload {
 func NewPayloadWithDefaults() *Payload {
 	this := Payload{}
 	return &this
-}
-
-// GetFileserverBaseUrl returns the FileserverBaseUrl field value if set, zero value otherwise.
-func (o *Payload) GetFileserverBaseUrl() string {
-	if o == nil || IsNil(o.FileserverBaseUrl) {
-		var ret string
-		return ret
-	}
-	return *o.FileserverBaseUrl
-}
-
-// GetFileserverBaseUrlOk returns a tuple with the FileserverBaseUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Payload) GetFileserverBaseUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.FileserverBaseUrl) {
-		return nil, false
-	}
-	return o.FileserverBaseUrl, true
-}
-
-// HasFileserverBaseUrl returns a boolean if a field has been set.
-func (o *Payload) HasFileserverBaseUrl() bool {
-	if o != nil && !IsNil(o.FileserverBaseUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetFileserverBaseUrl gets a reference to the given string and assigns it to the FileserverBaseUrl field.
-func (o *Payload) SetFileserverBaseUrl(v string) {
-	o.FileserverBaseUrl = &v
-}
-
-// GetJobType returns the JobType field value
-func (o *Payload) GetJobType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.JobType
-}
-
-// GetJobTypeOk returns a tuple with the JobType field value
-// and a boolean to check if the value has been set.
-func (o *Payload) GetJobTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.JobType, true
-}
-
-// SetJobType sets field value
-func (o *Payload) SetJobType(v string) {
-	o.JobType = v
-}
-
-// GetPop returns the Pop field value if set, zero value otherwise.
-func (o *Payload) GetPop() string {
-	if o == nil || IsNil(o.Pop) {
-		var ret string
-		return ret
-	}
-	return *o.Pop
-}
-
-// GetPopOk returns a tuple with the Pop field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Payload) GetPopOk() (*string, bool) {
-	if o == nil || IsNil(o.Pop) {
-		return nil, false
-	}
-	return o.Pop, true
-}
-
-// HasPop returns a boolean if a field has been set.
-func (o *Payload) HasPop() bool {
-	if o != nil && !IsNil(o.Pop) {
-		return true
-	}
-
-	return false
-}
-
-// SetPop gets a reference to the given string and assigns it to the Pop field.
-func (o *Payload) SetPop(v string) {
-	o.Pop = &v
 }
 
 // GetPowerCycle returns the PowerCycle field value if set, zero value otherwise.
@@ -170,68 +88,228 @@ func (o *Payload) SetPowerCycle(v bool) {
 	o.PowerCycle = &v
 }
 
-// GetIsUnassignedServer returns the IsUnassignedServer field value if set, zero value otherwise.
-func (o *Payload) GetIsUnassignedServer() bool {
-	if o == nil || IsNil(o.IsUnassignedServer) {
-		var ret bool
+// GetNetwork returns the Network field value if set, zero value otherwise.
+func (o *Payload) GetNetwork() DefaultPayloadNetwork {
+	if o == nil || IsNil(o.Network) {
+		var ret DefaultPayloadNetwork
 		return ret
 	}
-	return *o.IsUnassignedServer
+	return *o.Network
 }
 
-// GetIsUnassignedServerOk returns a tuple with the IsUnassignedServer field value if set, nil otherwise
+// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Payload) GetIsUnassignedServerOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsUnassignedServer) {
+func (o *Payload) GetNetworkOk() (*DefaultPayloadNetwork, bool) {
+	if o == nil || IsNil(o.Network) {
 		return nil, false
 	}
-	return o.IsUnassignedServer, true
+	return o.Network, true
 }
 
-// HasIsUnassignedServer returns a boolean if a field has been set.
-func (o *Payload) HasIsUnassignedServer() bool {
-	if o != nil && !IsNil(o.IsUnassignedServer) {
+// HasNetwork returns a boolean if a field has been set.
+func (o *Payload) HasNetwork() bool {
+	if o != nil && !IsNil(o.Network) {
 		return true
 	}
 
 	return false
 }
 
-// SetIsUnassignedServer gets a reference to the given bool and assigns it to the IsUnassignedServer field.
-func (o *Payload) SetIsUnassignedServer(v bool) {
-	o.IsUnassignedServer = &v
+// SetNetwork gets a reference to the given DefaultPayloadNetwork and assigns it to the Network field.
+func (o *Payload) SetNetwork(v DefaultPayloadNetwork) {
+	o.Network = &v
 }
 
-// GetServerId returns the ServerId field value if set, zero value otherwise.
-func (o *Payload) GetServerId() string {
-	if o == nil || IsNil(o.ServerId) {
+// GetSite returns the Site field value if set, zero value otherwise.
+func (o *Payload) GetSite() string {
+	if o == nil || IsNil(o.Site) {
 		var ret string
 		return ret
 	}
-	return *o.ServerId
+	return *o.Site
 }
 
-// GetServerIdOk returns a tuple with the ServerId field value if set, nil otherwise
+// GetSiteOk returns a tuple with the Site field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Payload) GetServerIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ServerId) {
+func (o *Payload) GetSiteOk() (*string, bool) {
+	if o == nil || IsNil(o.Site) {
 		return nil, false
 	}
-	return o.ServerId, true
+	return o.Site, true
 }
 
-// HasServerId returns a boolean if a field has been set.
-func (o *Payload) HasServerId() bool {
-	if o != nil && !IsNil(o.ServerId) {
+// HasSite returns a boolean if a field has been set.
+func (o *Payload) HasSite() bool {
+	if o != nil && !IsNil(o.Site) {
 		return true
 	}
 
 	return false
 }
 
-// SetServerId gets a reference to the given string and assigns it to the ServerId field.
-func (o *Payload) SetServerId(v string) {
-	o.ServerId = &v
+// SetSite gets a reference to the given string and assigns it to the Site field.
+func (o *Payload) SetSite(v string) {
+	o.Site = &v
+}
+
+// GetInitiatedBy returns the InitiatedBy field value if set, zero value otherwise.
+func (o *Payload) GetInitiatedBy() string {
+	if o == nil || IsNil(o.InitiatedBy) {
+		var ret string
+		return ret
+	}
+	return *o.InitiatedBy
+}
+
+// GetInitiatedByOk returns a tuple with the InitiatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Payload) GetInitiatedByOk() (*string, bool) {
+	if o == nil || IsNil(o.InitiatedBy) {
+		return nil, false
+	}
+	return o.InitiatedBy, true
+}
+
+// HasInitiatedBy returns a boolean if a field has been set.
+func (o *Payload) HasInitiatedBy() bool {
+	if o != nil && !IsNil(o.InitiatedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetInitiatedBy gets a reference to the given string and assigns it to the InitiatedBy field.
+func (o *Payload) SetInitiatedBy(v string) {
+	o.InitiatedBy = &v
+}
+
+// GetServerBrand returns the ServerBrand field value if set, zero value otherwise.
+func (o *Payload) GetServerBrand() string {
+	if o == nil || IsNil(o.ServerBrand) {
+		var ret string
+		return ret
+	}
+	return *o.ServerBrand
+}
+
+// GetServerBrandOk returns a tuple with the ServerBrand field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Payload) GetServerBrandOk() (*string, bool) {
+	if o == nil || IsNil(o.ServerBrand) {
+		return nil, false
+	}
+	return o.ServerBrand, true
+}
+
+// HasServerBrand returns a boolean if a field has been set.
+func (o *Payload) HasServerBrand() bool {
+	if o != nil && !IsNil(o.ServerBrand) {
+		return true
+	}
+
+	return false
+}
+
+// SetServerBrand gets a reference to the given string and assigns it to the ServerBrand field.
+func (o *Payload) SetServerBrand(v string) {
+	o.ServerBrand = &v
+}
+
+// GetServerChassis returns the ServerChassis field value if set, zero value otherwise.
+func (o *Payload) GetServerChassis() string {
+	if o == nil || IsNil(o.ServerChassis) {
+		var ret string
+		return ret
+	}
+	return *o.ServerChassis
+}
+
+// GetServerChassisOk returns a tuple with the ServerChassis field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Payload) GetServerChassisOk() (*string, bool) {
+	if o == nil || IsNil(o.ServerChassis) {
+		return nil, false
+	}
+	return o.ServerChassis, true
+}
+
+// HasServerChassis returns a boolean if a field has been set.
+func (o *Payload) HasServerChassis() bool {
+	if o != nil && !IsNil(o.ServerChassis) {
+		return true
+	}
+
+	return false
+}
+
+// SetServerChassis gets a reference to the given string and assigns it to the ServerChassis field.
+func (o *Payload) SetServerChassis(v string) {
+	o.ServerChassis = &v
+}
+
+// GetFileserverBaseUrl returns the FileserverBaseUrl field value if set, zero value otherwise.
+func (o *Payload) GetFileserverBaseUrl() string {
+	if o == nil || IsNil(o.FileserverBaseUrl) {
+		var ret string
+		return ret
+	}
+	return *o.FileserverBaseUrl
+}
+
+// GetFileserverBaseUrlOk returns a tuple with the FileserverBaseUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Payload) GetFileserverBaseUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.FileserverBaseUrl) {
+		return nil, false
+	}
+	return o.FileserverBaseUrl, true
+}
+
+// HasFileserverBaseUrl returns a boolean if a field has been set.
+func (o *Payload) HasFileserverBaseUrl() bool {
+	if o != nil && !IsNil(o.FileserverBaseUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileserverBaseUrl gets a reference to the given string and assigns it to the FileserverBaseUrl field.
+func (o *Payload) SetFileserverBaseUrl(v string) {
+	o.FileserverBaseUrl = &v
+}
+
+// GetServerHardwareRaid returns the ServerHardwareRaid field value if set, zero value otherwise.
+func (o *Payload) GetServerHardwareRaid() bool {
+	if o == nil || IsNil(o.ServerHardwareRaid) {
+		var ret bool
+		return ret
+	}
+	return *o.ServerHardwareRaid
+}
+
+// GetServerHardwareRaidOk returns a tuple with the ServerHardwareRaid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Payload) GetServerHardwareRaidOk() (*bool, bool) {
+	if o == nil || IsNil(o.ServerHardwareRaid) {
+		return nil, false
+	}
+	return o.ServerHardwareRaid, true
+}
+
+// HasServerHardwareRaid returns a boolean if a field has been set.
+func (o *Payload) HasServerHardwareRaid() bool {
+	if o != nil && !IsNil(o.ServerHardwareRaid) {
+		return true
+	}
+
+	return false
+}
+
+// SetServerHardwareRaid gets a reference to the given bool and assigns it to the ServerHardwareRaid field.
+func (o *Payload) SetServerHardwareRaid(v bool) {
+	o.ServerHardwareRaid = &v
 }
 
 func (o Payload) MarshalJSON() ([]byte, error) {
@@ -244,21 +322,29 @@ func (o Payload) MarshalJSON() ([]byte, error) {
 
 func (o Payload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FileserverBaseUrl) {
-		toSerialize["fileserverBaseUrl"] = o.FileserverBaseUrl
-	}
-	toSerialize["jobType"] = o.JobType
-	if !IsNil(o.Pop) {
-		toSerialize["pop"] = o.Pop
-	}
 	if !IsNil(o.PowerCycle) {
 		toSerialize["powerCycle"] = o.PowerCycle
 	}
-	if !IsNil(o.IsUnassignedServer) {
-		toSerialize["isUnassignedServer"] = o.IsUnassignedServer
+	if !IsNil(o.Network) {
+		toSerialize["network"] = o.Network
 	}
-	if !IsNil(o.ServerId) {
-		toSerialize["serverId"] = o.ServerId
+	if !IsNil(o.Site) {
+		toSerialize["site"] = o.Site
+	}
+	if !IsNil(o.InitiatedBy) {
+		toSerialize["initiatedBy"] = o.InitiatedBy
+	}
+	if !IsNil(o.ServerBrand) {
+		toSerialize["serverBrand"] = o.ServerBrand
+	}
+	if !IsNil(o.ServerChassis) {
+		toSerialize["serverChassis"] = o.ServerChassis
+	}
+	if !IsNil(o.FileserverBaseUrl) {
+		toSerialize["fileserverBaseUrl"] = o.FileserverBaseUrl
+	}
+	if !IsNil(o.ServerHardwareRaid) {
+		toSerialize["serverHardwareRaid"] = o.ServerHardwareRaid
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -269,27 +355,6 @@ func (o Payload) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *Payload) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"jobType",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varPayload := _Payload{}
 
 	err = json.Unmarshal(data, &varPayload)
@@ -303,12 +368,14 @@ func (o *Payload) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "fileserverBaseUrl")
-		delete(additionalProperties, "jobType")
-		delete(additionalProperties, "pop")
 		delete(additionalProperties, "powerCycle")
-		delete(additionalProperties, "isUnassignedServer")
-		delete(additionalProperties, "serverId")
+		delete(additionalProperties, "network")
+		delete(additionalProperties, "site")
+		delete(additionalProperties, "initiatedBy")
+		delete(additionalProperties, "serverBrand")
+		delete(additionalProperties, "serverChassis")
+		delete(additionalProperties, "fileserverBaseUrl")
+		delete(additionalProperties, "serverHardwareRaid")
 		o.AdditionalProperties = additionalProperties
 	}
 

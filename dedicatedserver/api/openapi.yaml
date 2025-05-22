@@ -3952,58 +3952,136 @@ paths:
           content:
             application/json:
               example:
-                createdAt: 2021-01-09T08:54:06+0000
-                flow: '#stop'
-                isRunning: false
-                node: 80:18:44:E0:AF:C4!JGNTQ92
+                bareMetalId: "123"
+                createdAt: 2025-03-17T13:24:25+00:00
+                currentTask:
+                  uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                  status: CANCELED
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
+                  statusTimestamps:
+                    PENDING: 2025-03-17T13:24:20+00:00
+                    WAITING: 2025-03-17T13:24:30+00:00
+                    CANCELED: 2025-03-17T13:24:40+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:24:25+00:00
+                  updatedAt: 2025-03-17T13:24:40+00:00
+                  timeout: 32400
+                flow: finally
+                isRunning: true
+                metadata:
+                  BATCH_ID: batch-id-123
+                node: 00:11:22:AA:BB:CC
                 payload:
-                  configurable: true
-                  device: SATA2TB
-                  fileserverBaseUrl: ""
-                  jobType: install
-                  numberOfDisks: null
-                  operatingSystemId: UBUNTU_22_04_64BIT
                   os:
-                    architecture: 64bit
-                    family: ubuntu
-                    name: Ubuntu 22.04 LTS (Jammy Jellyfish) (amd64)
                     type: linux
-                    version: "22.04"
+                    name: Ubuntu 24.04 LTS (64bit)
+                    family: ubuntu
+                    version: "24.04"
+                    architecture: 64bit
+                    engine: tarbuilder
+                  device: SSD256GB
                   partitions:
+                  - mountpoint: /boot
+                    filesystem: ext4
+                    size: "1024"
                   - filesystem: swap
-                    size: 4096
-                  pop: AMS-01
-                  powerCycle: true
-                  raidLevel: null
-                  serverId: "99944"
+                    size: "4096"
+                  - mountpoint: /tmp
+                    filesystem: ext4
+                    size: "4096"
+                  - mountpoint: /
+                    filesystem: ext4
+                    size: '*'
+                  configurable: true
                   timezone: UTC
-                  x: 1
+                  powerCycle: true
+                  doEmailNotification: false
+                  operatingSystemId: UBUNTU_24_04_64BIT
+                  raid:
+                    type: SW
+                    level: 0
+                  callbackUrl: http://leaseweb.com
+                  hostname: s123.dedi.leaseweb.net
+                  sshKeys: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKA8HyZ72HYYYtTCjHeN6rvMVkmTY2hb2nouORWMm8vv
+                    noname
+                  network:
+                    public:
+                      ip: 192.168.1.1
+                      mac: 00:AA:BB:CC:DD:EE
+                      cidr: 192.168.1.1/27
+                      prefix: 27
+                      gateway: 192.168.1.1
+                      netmask: 255.255.255.224
+                      network: 192.168.1.0
+                      isCustom: false
+                      broadcast: 192.168.1.31
+                      nameservers:
+                      - 192.168.1.21
+                      - 127.0.0.1
+                      netmask_hex: 0xffffffe0
+                    internal:
+                      mac: 00:11:22:33:44:55
+                  featuresUtilized:
+                  - PARTITIONING
+                  - HOSTNAME
+                  - SSH_KEYS
+                  - SW_RAID
+                  - TIMEZONE
+                  features:
+                  - PARTITIONING
+                  - SW_RAID
+                  - TIMEZONE
+                  - HOSTNAME
+                  - SSH_KEYS
+                  - POST_INSTALL_SCRIPTS
+                  - CONTROL_PANEL
+                  - DB_MARIADB
+                  - DB_REDIS
+                  - DB_MONGODB
+                  - DB_POSTGRESQL
+                  serverBrand: SUPERMICRO
+                  serverChassis: SM 846TQ (24xLFF)
+                  serverHardwareRaid: true
+                  site: AMS-01
+                  fileserverBaseUrl: 192.168.1.123
+                  initiatedBy: EMPLOYEE
                 progress:
-                  canceled: 1
-                  expired: 0
-                  failed: 0
-                  finished: 0
-                  inprogress: 0
-                  pending: 0
-                  percentage: 0
-                  total: 1
+                  total: 0
                   waiting: 0
-                serverId: "99944"
+                  pending: 0
+                  inprogress: 0
+                  finished: 0
+                  failed: 0
+                  expired: 0
+                  canceled: 1
+                  warning: 0
+                  skipped: 0
+                  percentage: 100
+                serverId: "123"
                 status: CANCELED
                 tasks:
-                - description: dummy
-                  errorMessage: The job was canceled by the api consumer
-                  flow: tasks
-                  onError: break
+                - uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
                   status: CANCELED
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
                   statusTimestamps:
-                    CANCELED: 2021-01-09T08:54:15+00:00
-                    PENDING: 2021-01-09T08:54:06+00:00
-                    WAITING: 2021-01-09T08:54:06+00:00
-                  uuid: 085ce145-39bd-4cb3-8e2b-53f17a97a463
+                    PENDING: 2025-03-17T13:24:20+00:00
+                    WAITING: 2025-03-17T13:24:30+00:00
+                    CANCELED: 2025-03-17T13:24:40+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:24:25+00:00
+                  updatedAt: 2025-03-17T13:24:40+00:00
+                  timeout: 32400
                 type: install
-                updatedAt: 2021-01-09T08:54:15+0000
-                uuid: c77d8a6b-d255-4744-8b95-8bf4af6f8b48
+                updatedAt: 2025-03-17T13:24:34+00:00
+                uuid: a1234567-ab0b-4ff1-af43-c4ca551ee3ff
               schema:
                 $ref: '#/components/schemas/job'
           description: Ok.
@@ -4645,58 +4723,136 @@ paths:
           content:
             application/json:
               example:
-                createdAt: 2021-01-09T08:50:45+0000
-                flow: '#stop'
-                isRunning: false
-                node: 80:18:44:E0:AF:C4!JGNTQ92
+                bareMetalId: "123"
+                createdAt: 2025-03-17T13:33:25+00:00
+                currentTask:
+                  uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                  status: EXPIRED
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
+                  statusTimestamps:
+                    PENDING: 2025-03-17T13:33:20+00:00
+                    WAITING: 2025-03-17T13:33:30+00:00
+                    EXPIRED: 2025-03-17T13:33:40+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:33:25+00:00
+                  updatedAt: 2025-03-17T13:33:40+00:00
+                  timeout: 32400
+                flow: finally
+                isRunning: true
+                metadata:
+                  BATCH_ID: batch-id-123
+                node: 00:11:22:AA:BB:CC
                 payload:
-                  configurable: true
-                  device: SATA2TB
-                  fileserverBaseUrl: ""
-                  jobType: install
-                  numberOfDisks: null
-                  operatingSystemId: UBUNTU_22_04_64BIT
                   os:
-                    architecture: 64bit
-                    family: ubuntu
-                    name: Ubuntu 22.04 LTS (Jammy Jellyfish) (amd64)
                     type: linux
-                    version: "22.04"
+                    name: Ubuntu 24.04 LTS (64bit)
+                    family: ubuntu
+                    version: "24.04"
+                    architecture: 64bit
+                    engine: tarbuilder
+                  device: SSD256GB
                   partitions:
+                  - mountpoint: /boot
+                    filesystem: ext4
+                    size: "1024"
                   - filesystem: swap
-                    size: 4096
-                  pop: AMS-01
-                  powerCycle: true
-                  raidLevel: null
-                  serverId: "99944"
+                    size: "4096"
+                  - mountpoint: /tmp
+                    filesystem: ext4
+                    size: "4096"
+                  - mountpoint: /
+                    filesystem: ext4
+                    size: '*'
+                  configurable: true
                   timezone: UTC
-                  x: 1
+                  powerCycle: true
+                  doEmailNotification: false
+                  operatingSystemId: UBUNTU_24_04_64BIT
+                  raid:
+                    type: SW
+                    level: 0
+                  callbackUrl: http://leaseweb.com
+                  hostname: s123.dedi.leaseweb.net
+                  sshKeys: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKA8HyZ72HYYYtTCjHeN6rvMVkmTY2hb2nouORWMm8vv
+                    noname
+                  network:
+                    public:
+                      ip: 192.168.1.1
+                      mac: 00:AA:BB:CC:DD:EE
+                      cidr: 192.168.1.1/27
+                      prefix: 27
+                      gateway: 192.168.1.1
+                      netmask: 255.255.255.224
+                      network: 192.168.1.0
+                      isCustom: false
+                      broadcast: 192.168.1.31
+                      nameservers:
+                      - 192.168.1.21
+                      - 127.0.0.1
+                      netmask_hex: 0xffffffe0
+                    internal:
+                      mac: 00:11:22:33:44:55
+                  featuresUtilized:
+                  - PARTITIONING
+                  - HOSTNAME
+                  - SSH_KEYS
+                  - SW_RAID
+                  - TIMEZONE
+                  features:
+                  - PARTITIONING
+                  - SW_RAID
+                  - TIMEZONE
+                  - HOSTNAME
+                  - SSH_KEYS
+                  - POST_INSTALL_SCRIPTS
+                  - CONTROL_PANEL
+                  - DB_MARIADB
+                  - DB_REDIS
+                  - DB_MONGODB
+                  - DB_POSTGRESQL
+                  serverBrand: SUPERMICRO
+                  serverChassis: SM 846TQ (24xLFF)
+                  serverHardwareRaid: true
+                  site: AMS-01
+                  fileserverBaseUrl: 192.168.1.123
+                  initiatedBy: EMPLOYEE
                 progress:
-                  canceled: 0
-                  expired: 1
-                  failed: 0
-                  finished: 0
-                  inprogress: 0
-                  pending: 0
-                  percentage: 0
                   total: 1
                   waiting: 0
-                serverId: "99944"
+                  pending: 0
+                  inprogress: 0
+                  finished: 0
+                  failed: 0
+                  expired: 1
+                  canceled: 0
+                  warning: 0
+                  skipped: 0
+                  percentage: 100
+                serverId: "123"
                 status: EXPIRED
                 tasks:
-                - description: dummy
-                  errorMessage: The job was expired by the api consumer
-                  flow: tasks
-                  onError: break
+                - uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
                   status: EXPIRED
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
                   statusTimestamps:
-                    EXPIRED: 2021-01-09T08:51:54+00:00
-                    PENDING: 2021-01-09T08:50:45+00:00
-                    WAITING: 2021-01-09T08:50:45+00:00
-                  uuid: 0286423e-06ac-49bf-ace5-35af97bde4b1
+                    PENDING: 2025-03-17T13:33:20+00:00
+                    WAITING: 2025-03-17T13:33:30+00:00
+                    EXPIRED: 2025-03-17T13:33:40+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:33:25+00:00
+                  updatedAt: 2025-03-17T13:33:40+00:00
+                  timeout: 32400
                 type: install
-                updatedAt: 2021-01-09T08:51:54+0000
-                uuid: fe54dd20-a815-47da-bcb4-5550a160dbbe
+                updatedAt: 2025-03-17T13:33:37+00:00
+                uuid: a1b28bfd1-da4c-451b-b82e-b382b9063d94
               schema:
                 $ref: '#/components/schemas/job'
           description: Ok.
@@ -4774,41 +4930,85 @@ paths:
           content:
             application/json:
               example:
-                createdAt: 2018-01-09T09:07:09+0000
-                flow: tasks
+                bareMetalId: "519"
+                createdAt: 2025-03-17T13:37:19+00:00
+                currentTask:
+                  uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                  status: PENDING
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
+                  statusTimestamps:
+                    WAITING: 2025-03-17T13:37:19+00:00
+                    PENDING: 2025-03-17T13:37:19+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:37:19+00:00
+                  updatedAt: 2025-03-17T13:37:19+00:00
+                  timeout: 32400
+                flow: main
                 isRunning: true
-                node: 80:18:44:E0:AF:C4!JGNTQ92
+                metadata:
+                  BATCH_ID: batch-id-123
+                node: 00:11:22:AA:BB:CC
                 payload:
-                  fileserverBaseUrl: ""
-                  jobType: hardwareScan
-                  pop: AMS-01
                   powerCycle: true
-                  serverId: "99944"
+                  network:
+                    public:
+                      ip: 192.168.1.1
+                      mac: 00:AA:BB:CC:DD:EE
+                      cidr: 192.168.1.1/27
+                      prefix: 27
+                      gateway: 192.168.1.1
+                      netmask: 255.255.255.224
+                      network: 192.168.1.0
+                      isCustom: false
+                      broadcast: 192.168.1.31
+                      nameservers:
+                      - 192.168.1.21
+                      - 127.0.0.1
+                      netmask_hex: 0xffffffe0
+                    internal:
+                      mac: 00:11:22:33:44:55
+                  serverBrand: SUPERMICRO
+                  serverChassis: SM 846TQ (24xLFF)
+                  serverHardwareRaid: true
+                  site: AMS-01
+                  fileserverBaseUrl: 192.168.1.123
+                  initiatedBy: EMPLOYEE
                 progress:
-                  canceled: 0
-                  expired: 0
-                  failed: 0
-                  finished: 0
-                  inprogress: 0
+                  total: 1
+                  waiting: 0
                   pending: 1
+                  inprogress: 0
+                  finished: 0
+                  failed: 0
+                  expired: 0
+                  canceled: 0
+                  warning: 0
+                  skipped: 0
                   percentage: 0
-                  total: 5
-                  waiting: 4
-                serverId: "99944"
+                serverId: "519"
                 status: ACTIVE
                 tasks:
-                - description: dummy
-                  errorMessage: null
-                  flow: tasks
-                  onError: break
+                - uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
                   status: PENDING
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
                   statusTimestamps:
-                    PENDING: 2018-01-09T10:38:12+00:00
-                    WAITING: 2018-01-09T10:38:12+00:00
-                  uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                    WAITING: 2025-03-17T13:37:19+00:00
+                    PENDING: 2025-03-17T13:37:19+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:37:19+00:00
+                  updatedAt: 2025-03-17T13:37:19+00:00
+                  timeout: 32400
                 type: hardwareScan
-                updatedAt: 2018-01-09T09:07:09+0000
-                uuid: 2dcca92d-b5df-4837-bd99-b568ac54569a
+                updatedAt: 2025-03-17T13:37:19+00:00
+                uuid: 43758e50-fb34-4c0a-9ab5-772c4e47208c
               schema:
                 $ref: '#/components/schemas/job'
           description: Accepted.
@@ -4924,66 +5124,140 @@ paths:
           content:
             application/json:
               example:
-                createdAt: 2021-03-06T21:55:32Z
-                flow: tasks
+                bareMetalId: "123"
+                createdAt: 2025-03-17T13:44:47+00:00
+                currentTask:
+                  uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                  status: PENDING
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
+                  statusTimestamps:
+                    PENDING: 2025-03-17T13:44:47+00:00
+                    WAITING: 2025-03-17T13:44:47+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:44:47+00:00
+                  updatedAt: 2025-03-17T13:44:47+00:00
+                  timeout: 32400
+                flow: main
                 isRunning: true
-                node: AA:BB:CC:DD:EE:FF!DKFJKD8989
+                metadata:
+                  BATCH_ID: batch-id-123
+                node: 00:11:22:AA:BB:CC
                 payload:
-                  configurable: true
-                  device: SATA2TB
-                  fileserverBaseUrl: 10.11.20.2
-                  isUnassignedServer: false
-                  jobType: install
-                  numberOfDisks: null
-                  operatingSystemId: UBUNTU_22_04_64BIT
                   os:
-                    architecture: 64bit
-                    family: ubuntu
-                    name: Ubuntu 22.04 LTS (Jammy Jellyfish) (amd64)
                     type: linux
-                    version: "22.04"
+                    name: Ubuntu 24.04 LTS (64bit)
+                    family: ubuntu
+                    version: "24.04"
+                    architecture: 64bit
+                    engine: tarbuilder
+                  device: SSD256GB
                   partitions:
-                  - filesystem: ext2
-                    mountpoint: /boot
+                  - mountpoint: /boot
+                    filesystem: ext4
                     size: "1024"
                   - filesystem: swap
                     size: "4096"
-                  - filesystem: ext4
-                    mountpoint: /tmp
+                  - mountpoint: /tmp
+                    filesystem: ext4
                     size: "4096"
-                  - filesystem: ext4
-                    mountpoint: /
+                  - mountpoint: /
+                    filesystem: ext4
                     size: '*'
-                  pop: AMS-01
-                  powerCycle: true
-                  raidLevel: null
-                  serverId: "12345"
+                  configurable: true
                   timezone: UTC
+                  powerCycle: true
+                  doEmailNotification: false
+                  operatingSystemId: UBUNTU_24_04_64BIT
+                  database:
+                    networkType: PUBLIC
+                    dbName: test_db
+                    type: MONGODB
+                  raid:
+                    type: SW
+                    level: 0
+                    numberOfDisks: 2
+                  callbackUrl: https://leaseweb.com
+                  hostname: s123.dedi.leaseweb.net
+                  sshKeys: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKA8HyZ72HYYYtTCjHeN6rvMVkmTY2hb2nouORWMm8vv
+                    noname
+                  network:
+                    public:
+                      ip: 192.168.1.1
+                      mac: 00:AA:BB:CC:DD:EE
+                      cidr: 192.168.1.1/27
+                      prefix: 27
+                      gateway: 192.168.1.1
+                      netmask: 255.255.255.224
+                      network: 192.168.1.0
+                      isCustom: false
+                      broadcast: 192.168.1.31
+                      nameservers:
+                      - 192.168.1.21
+                      - 127.0.0.1
+                      netmask_hex: 0xffffffe0
+                    internal:
+                      mac: 00:11:22:33:44:55
+                  featuresUtilized:
+                  - PARTITIONING
+                  - HOSTNAME
+                  - SSH_KEYS
+                  - DB_MONGODB
+                  - SW_RAID
+                  - TIMEZONE
+                  features:
+                  - PARTITIONING
+                  - SW_RAID
+                  - TIMEZONE
+                  - HOSTNAME
+                  - SSH_KEYS
+                  - POST_INSTALL_SCRIPTS
+                  - CONTROL_PANEL
+                  - DB_MARIADB
+                  - DB_REDIS
+                  - DB_MONGODB
+                  - DB_POSTGRESQL
+                  serverBrand: SUPERMICRO
+                  serverChassis: SM 846TQ (24xLFF)
+                  serverHardwareRaid: true
+                  site: AMS-01
+                  fileserverBaseUrl: 192.168.1.123
+                  initiatedBy: EMPLOYEE
                 progress:
-                  canceled: 0
-                  expired: 0
-                  failed: 0
-                  finished: 0
-                  inprogress: 0
+                  total: 1
+                  waiting: 0
                   pending: 1
+                  inprogress: 0
+                  finished: 0
+                  failed: 0
+                  expired: 0
+                  canceled: 0
+                  warning: 0
+                  skipped: 0
                   percentage: 0
-                  total: 26
-                  waiting: 25
-                serverId: "12345"
+                serverId: "123"
                 status: ACTIVE
                 tasks:
-                - description: dummy
-                  errorMessage: null
-                  flow: tasks
-                  onError: break
+                - uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
                   status: PENDING
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
                   statusTimestamps:
-                    PENDING: 2021-01-09T09:18:06Z
-                    WAITING: 2021-01-09T09:18:06Z
-                  uuid: c1a56a5a-ae38-4b12-acb6-0cba9ceb1016
+                    PENDING: 2018-01-09T10:38:12+00:00
+                    WAITING: 2018-01-09T10:38:12+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:37:19+00:00
+                  updatedAt: 2025-03-17T13:37:19+00:00
+                  timeout: 32400
                 type: install
-                updatedAt: 2021-03-06T21:55:32Z
-                uuid: bcf2bedf-8450-4b22-86a8-f30aeb3a38f9
+                updatedAt: 2025-03-17T13:44:47+00:00
+                uuid: a1b22827-b6aa-47ce-abad-6bc28a70223d
               schema:
                 $ref: '#/components/schemas/serverJob'
           description: Accepted.
@@ -5073,42 +5347,85 @@ paths:
           content:
             application/json:
               example:
-                createdAt: 2018-01-09T09:18:06+0000
-                flow: tasks
+                bareMetalId: "123"
+                createdAt: 2025-03-17T13:48:15+00:00
+                currentTask:
+                  uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                  status: PENDING
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
+                  statusTimestamps:
+                    WAITING: 2025-03-17T13:48:15+00:00
+                    PENDING: 2025-03-17T13:48:15+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:48:15+00:00
+                  updatedAt: 2025-03-17T13:48:15+00:00
+                  timeout: 32400
+                flow: main
                 isRunning: true
-                node: 80:18:44:E0:AF:C4!JGNTQ92
+                metadata:
+                  BATCH_ID: null
+                node: 00:11:22:AA:BB:CC
                 payload:
-                  fileserverBaseUrl: ""
-                  hasPublicIpmiIp: false
-                  jobType: ipmiReset
-                  pop: AMS-01
                   powerCycle: true
-                  serverId: "99944"
+                  network:
+                    public:
+                      ip: 213.227.153.72
+                      mac: 00:11:22:AA:BB:CC
+                      cidr: 213.227.153.72/27
+                      prefix: 27
+                      netmask: 255.255.255.224
+                      netmask_hex: 0xffffffe0
+                      gateway: 213.227.153.94
+                      network: 213.227.153.64
+                      broadcast: 213.227.153.95
+                      nameservers:
+                      - 23.19.53.53
+                      - 23.19.52.52
+                      isCustom: false
+                    internal:
+                      mac: 00:25:90:E6:D3:FD
+                  serverBrand: SUPERMICRO
+                  serverChassis: SM 846TQ (24xLFF)
+                  serverHardwareRaid: true
+                  site: AMS-01
+                  fileserverBaseUrl: 192.168.1.123
+                  initiatedBy: EMPLOYEE
                 progress:
-                  canceled: 0
-                  expired: 0
-                  failed: 0
-                  finished: 0
-                  inprogress: 0
-                  pending: 1
-                  percentage: 0
                   total: 1
                   waiting: 0
-                serverId: "99944"
+                  pending: 1
+                  inprogress: 0
+                  finished: 0
+                  failed: 0
+                  expired: 0
+                  canceled: 0
+                  warning: 0
+                  skipped: 0
+                  percentage: 0
+                serverId: "123"
                 status: ACTIVE
                 tasks:
-                - description: dummy
-                  errorMessage: null
-                  flow: tasks
-                  onError: break
+                - uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
                   status: PENDING
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
                   statusTimestamps:
-                    PENDING: 2018-01-09T09:18:06+00:00
-                    WAITING: 2018-01-09T09:18:06+00:00
-                  uuid: c1a56a5a-ae38-4b12-acb6-0cba9ceb1016
+                    WAITING: 2025-03-17T13:48:15+00:00
+                    PENDING: 2025-03-17T13:48:15+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:48:15+00:00
+                  updatedAt: 2025-03-17T13:48:15+00:00
+                  timeout: 32400
                 type: ipmiReset
-                updatedAt: 2018-01-09T09:18:06+0000
-                uuid: 754154c2-cc7f-4d5f-b8bf-b654084ba4a9
+                updatedAt: 2025-03-17T13:48:15+00:00
+                uuid: 101e3a46-e878-4807-bf03-d3d796f42ecf
               schema:
                 $ref: '#/components/schemas/job'
           description: Accepted.
@@ -5238,61 +5555,104 @@ paths:
                   offset: 0
                   totalCount: 1
                 jobs:
-                - createdAt: 2018-01-09T10:38:12+00:00
-                  flow: tasks
-                  isRunning: true
-                  node: 80:18:44:E0:AF:C4!JGNTQ92
+                - status: FINISHED
+                  uuid: cc2112b7-40fd-2000-b841-04bb1bf5aa1b
+                  type: install
+                  serverId: "123"
+                  bareMetalId: "123"
+                  node: 00:11:22:AA:BB:CC
+                  createdAt: 2025-03-11T09:53:49+00:00
+                  updatedAt: 2025-03-11T09:54:46+00:00
+                  flow: '#stop'
+                  currentTask: null
+                  progress:
+                    total: 13
+                    waiting: 0
+                    pending: 0
+                    inprogress: 0
+                    finished: 11
+                    failed: 1
+                    expired: 0
+                    canceled: 0
+                    warning: 0
+                    skipped: 1
+                    percentage: 100
+                  isRunning: false
                   payload:
-                    configurable: true
-                    device: SATA2TB
-                    fileserverBaseUrl: 10.11.20.2
-                    isUnassignedServer: false
-                    jobType: install
-                    numberOfDisks: null
-                    operatingSystemId: UBUNTU_22_04_64BIT
                     os:
-                      architecture: 64bit
-                      family: ubuntu
-                      name: Ubuntu 22.04 LTS (Jammy Jellyfish) (amd64)
+                      name: Ubuntu 24.04 LTS (Noble Numbat) (64bit)
                       type: linux
-                      version: "22.04"
-                    partitions:
-                    - filesystem: ext2
-                      mountpoint: /boot
-                      size: "1024"
-                    - filesystem: swap
-                      size: "4096"
-                    - filesystem: ext4
-                      mountpoint: /tmp
-                      size: "4096"
-                    - filesystem: ext4
-                      mountpoint: /
-                      size: '*'
-                    pop: AMS-01
-                    powerCycle: true
-                    raidLevel: null
-                    serverId: "99944"
-                    timezone: UTC
+                      engine: tarbuilder
+                      family: ubuntu
+                      version: "24.04"
+                      architecture: 64bit
                     raid:
                       type: SW
-                      level: 0
+                      level: 1
                       numberOfDisks: 2
-                    hostname: server.leaseweb.com
-                  progress:
-                    canceled: 0
-                    expired: 0
-                    failed: 0
-                    finished: 0
-                    inprogress: 0
-                    pending: 1
-                    percentage: 0
-                    total: 1
-                    waiting: 0
-                  serverId: "99944"
-                  status: FINISHED
-                  type: install
-                  updatedAt: 2018-01-09T10:38:12+00:00
-                  uuid: bcf2bedf-8450-4b22-86a8-f30aeb3a38f9
+                    site: AMS-01
+                    device: SSD256GB
+                    network:
+                      public:
+                        ip: 192.168.1.1
+                        mac: 00:AA:BB:CC:DD:EE
+                        cidr: 192.168.1.1/27
+                        prefix: 27
+                        gateway: 192.168.1.1
+                        netmask: 255.255.255.224
+                        network: 192.168.1.0
+                        isCustom: false
+                        broadcast: 192.168.1.31
+                        nameservers:
+                        - 192.168.1.21
+                        - 127.0.0.1
+                        netmask_hex: 0xffffffe0
+                      internal:
+                        mac: 00:11:22:33:44:55
+                    features:
+                    - PARTITIONING
+                    - SW_RAID
+                    - TIMEZONE
+                    - HOSTNAME
+                    - SSH_KEYS
+                    - POST_INSTALL_SCRIPTS
+                    - CONTROL_PANEL
+                    - DB_MARIADB
+                    - DB_REDIS
+                    - DB_POSTGRESQL
+                    hostname: s123.dedi.leaseweb.net
+                    timezone: UTC
+                    partitions:
+                    - size: "1024"
+                      filesystem: ext4
+                      mountpoint: /boot
+                    - size: "4096"
+                      filesystem: swap
+                    - size: "4096"
+                      filesystem: ext4
+                      mountpoint: /tmp
+                    - size: "1024"
+                      filesystem: xfs
+                      mountpoint: /test
+                    - size: '*'
+                      filesystem: ext4
+                      mountpoint: /
+                    sshKeys: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMRnDNPjhz3WnGO6EPTj/rWqBGXxTNUrPW1uYXkGfQ3J
+                    powerCycle: true
+                    callbackUrl: https://leaseweb.com
+                    initiatedBy: EMPLOYEE
+                    serverBrand: SUPERMICRO
+                    configurable: true
+                    serverChassis: SM 846TQ (24xLFF)
+                    featuresUtilized:
+                    - PARTITIONING
+                    - HOSTNAME
+                    - SW_RAID
+                    - TIMEZONE
+                    fileserverBaseUrl: 192.168.1.123
+                    operatingSystemId: UBUNTU_24_04_64BIT
+                    serverHardwareRaid: true
+                    doEmailNotification: true
               schema:
                 $ref: '#/components/schemas/jobList'
           description: Ok.
@@ -5367,72 +5727,142 @@ paths:
           content:
             application/json:
               example:
-                createdAt: 2021-01-09T10:38:12+00:00
-                flow: tasks
+                bareMetalId: "123"
+                createdAt: 2025-03-17T13:44:47+00:00
+                currentTask:
+                  uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                  status: INPROGRESS
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
+                  statusTimestamps:
+                    WAITING: 2025-03-17T13:44:47+00:00
+                    PENDING: 2025-03-17T13:44:52+00:00
+                    INPROGRESS: 2025-03-17T13:44:51+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:44:47+00:00
+                  updatedAt: 2025-03-17T13:44:51+00:00
+                  timeout: 32400
+                flow: main
                 isRunning: true
                 metadata:
-                  BATCH_ID: biannual-os-upgrade-installs
-                node: 80:18:44:E0:AF:C4!JGNTQ92
+                  BATCH_ID: batch-id-123
+                node: 00:11:22:AA:BB:CC
                 payload:
-                  configurable: true
-                  device: SATA2TB
-                  fileserverBaseUrl: ""
-                  jobType: install
-                  numberOfDisks: null
-                  operatingSystemId: UBUNTU_22_04_64BIT
                   os:
-                    architecture: 64bit
-                    family: ubuntu
-                    name: Ubuntu 22.04 LTS (Jammy Jellyfish) (amd64)
                     type: linux
-                    version: "22.04"
+                    name: Ubuntu 24.04 LTS (64bit)
+                    family: ubuntu
+                    version: "24.04"
+                    architecture: 64bit
+                    engine: tarbuilder
+                  device: SSD256GB
                   partitions:
-                  - filesystem: ext2
-                    mountpoint: /boot
+                  - mountpoint: /boot
+                    filesystem: ext4
                     size: "1024"
                   - filesystem: swap
                     size: "4096"
-                  - filesystem: ext4
-                    mountpoint: /tmp
+                  - mountpoint: /tmp
+                    filesystem: ext4
                     size: "4096"
-                  - filesystem: ext4
-                    mountpoint: /
+                  - mountpoint: /
+                    filesystem: ext4
                     size: '*'
-                  pop: AMS-01
-                  powerCycle: true
-                  raidLevel: null
-                  serverId: "99944"
+                  configurable: true
                   timezone: UTC
+                  powerCycle: true
+                  doEmailNotification: false
+                  operatingSystemId: UBUNTU_24_04_64BIT
+                  database:
+                    networkType: PUBLIC
+                    dbName: test_db
+                    type: MONGODB
                   raid:
                     type: SW
                     level: 0
                     numberOfDisks: 2
-                  hostname: server.leaseweb.com
+                  callbackUrl: https://leaseweb.com
+                  hostname: s123.dedi.leaseweb.net
+                  sshKeys: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKA8HyZ72HYYYtTCjHeN6rvMVkmTY2hb2nouORWMm8vv
+                    noname
+                  network:
+                    public:
+                      ip: 192.168.1.1
+                      mac: 00:AA:BB:CC:DD:EE
+                      cidr: 192.168.1.1/27
+                      prefix: 27
+                      gateway: 192.168.1.1
+                      netmask: 255.255.255.224
+                      network: 192.168.1.0
+                      isCustom: false
+                      broadcast: 192.168.1.31
+                      nameservers:
+                      - 192.168.1.21
+                      - 127.0.0.1
+                      netmask_hex: 0xffffffe0
+                    internal:
+                      mac: 00:11:22:33:44:55
+                  featuresUtilized:
+                  - PARTITIONING
+                  - HOSTNAME
+                  - SSH_KEYS
+                  - DB_MONGODB
+                  - SW_RAID
+                  - TIMEZONE
+                  features:
+                  - PARTITIONING
+                  - SW_RAID
+                  - TIMEZONE
+                  - HOSTNAME
+                  - SSH_KEYS
+                  - POST_INSTALL_SCRIPTS
+                  - CONTROL_PANEL
+                  - DB_MARIADB
+                  - DB_REDIS
+                  - DB_MONGODB
+                  - DB_POSTGRESQL
+                  serverBrand: SUPERMICRO
+                  serverChassis: SM 846TQ (24xLFF)
+                  serverHardwareRaid: true
+                  site: AMS-01
+                  fileserverBaseUrl: 192.168.1.123
+                  initiatedBy: EMPLOYEE
                 progress:
-                  canceled: 0
-                  expired: 0
-                  failed: 0
-                  finished: 0
-                  inprogress: 0
-                  pending: 1
-                  percentage: 0
                   total: 1
                   waiting: 0
-                serverId: "99944"
-                status: FINISHED
+                  pending: 0
+                  inprogress: 1
+                  finished: 0
+                  failed: 0
+                  expired: 0
+                  canceled: 0
+                  warning: 0
+                  skipped: 0
+                  percentage: 50
+                serverId: "123"
+                status: ACTIVE
                 tasks:
-                - description: dummy
-                  errorMessage: null
-                  flow: tasks
+                - uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                  status: INPROGRESS
+                  description: dummy placeholder
                   onError: break
-                  status: PENDING
+                  errorMessage: null
+                  flow: main
                   statusTimestamps:
-                    PENDING: 2021-01-09T10:38:12+00:00
-                    WAITING: 2021-01-09T10:38:12+00:00
-                  uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                    WAITING: 2025-03-17T13:44:47+00:00
+                    PENDING: 2025-03-17T13:44:52+00:00
+                    INPROGRESS: 2025-03-17T13:44:51+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:44:47+00:00
+                  updatedAt: 2025-03-17T13:44:51+00:00
+                  timeout: 32400
                 type: install
-                updatedAt: 2021-01-09T10:38:12+00:00
-                uuid: bcf2bedf-8450-4b22-86a8-f30aeb3a38f9
+                updatedAt: 2025-03-17T13:44:51+00:00
+                uuid: 42df2827-b6aa-47ce-abad-6bc28a70223d
               schema:
                 $ref: '#/components/schemas/currentJob'
           description: Ok.
@@ -5507,58 +5937,134 @@ paths:
           content:
             application/json:
               example:
-                createdAt: 2021-01-09T10:38:12+0000
-                flow: tasks
+                bareMetalId: "123"
+                createdAt: 2025-03-17T14:01:43+00:00
+                currentTask:
+                  uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                  status: PENDING
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
+                  statusTimestamps:
+                    WAITING: 2025-03-17T13:48:15+00:00
+                    PENDING: 2025-03-17T13:48:15+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T13:48:15+00:00
+                  updatedAt: 2025-03-17T13:48:15+00:00
+                  timeout: 32400
+                flow: main
                 isRunning: true
                 metadata:
-                  BATCH_ID: biannual-os-upgrade-installs
-                node: 80:18:44:E0:AF:C4!JGNTQ92
+                  BATCH_ID: null
+                node: 00:11:22:AA:BB:CC
                 payload:
-                  configurable: true
-                  device: SATA2TB
-                  fileserverBaseUrl: ""
-                  jobType: install
-                  numberOfDisks: null
-                  operatingSystemId: UBUNTU_22_04_64BIT
                   os:
-                    architecture: 64bit
-                    family: ubuntu
-                    name: Ubuntu 22.04 LTS (Jammy Jellyfish) (amd64)
                     type: linux
-                    version: "22.04"
+                    name: Ubuntu 24.04 LTS (64bit)
+                    family: ubuntu
+                    version: "24.04"
+                    architecture: 64bit
+                    engine: tarbuilder
+                  device: SSD256GB
                   partitions:
+                  - mountpoint: /boot
+                    filesystem: ext4
+                    size: "1024"
                   - filesystem: swap
                     size: "4096"
-                  pop: AMS-01
-                  powerCycle: true
-                  raidLevel: null
-                  serverId: "99944"
+                  - mountpoint: /tmp
+                    filesystem: ext4
+                    size: "4096"
+                  - mountpoint: /
+                    filesystem: ext4
+                    size: '*'
+                  configurable: true
                   timezone: UTC
+                  powerCycle: true
+                  doEmailNotification: false
+                  operatingSystemId: UBUNTU_24_04_64BIT
+                  raid:
+                    type: SW
+                    level: 0
+                  callbackUrl: http://leaseweb.com
+                  hostname: s123.dedi.leaseweb.net
+                  sshKeys: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKA8HyZ72HYYYtTCjHeN6rvMVkmTY2hb2nouORWMm8vv
+                    noname
+                  network:
+                    public:
+                      ip: 192.168.1.1
+                      mac: 00:AA:BB:CC:DD:EE
+                      cidr: 192.168.1.1/27
+                      prefix: 27
+                      netmask: 255.255.255.224
+                      netmask_hex: 0xffffffe0
+                      gateway: 192.168.1.1
+                      network: 192.168.1.0
+                      broadcast: 192.168.1.31
+                      nameservers:
+                      - 192.168.1.21
+                      - 127.0.0.1
+                      isCustom: false
+                    internal:
+                      mac: 00:11:22:33:44:55
+                  featuresUtilized:
+                  - PARTITIONING
+                  - HOSTNAME
+                  - SSH_KEYS
+                  - SW_RAID
+                  - TIMEZONE
+                  features:
+                  - PARTITIONING
+                  - SW_RAID
+                  - TIMEZONE
+                  - HOSTNAME
+                  - SSH_KEYS
+                  - POST_INSTALL_SCRIPTS
+                  - CONTROL_PANEL
+                  - DB_MARIADB
+                  - DB_REDIS
+                  - DB_MONGODB
+                  - DB_POSTGRESQL
+                  serverBrand: SUPERMICRO
+                  serverChassis: SM 846TQ (24xLFF)
+                  serverHardwareRaid: true
+                  site: AMS-01
+                  fileserverBaseUrl: 192.168.1.123
+                  initiatedBy: EMPLOYEE
                 progress:
-                  canceled: 0
-                  expired: 0
-                  failed: 0
-                  finished: 0
-                  inprogress: 0
-                  pending: 1
-                  percentage: 0
                   total: 1
                   waiting: 0
-                serverId: "99944"
+                  pending: 1
+                  inprogress: 0
+                  finished: 0
+                  failed: 0
+                  expired: 0
+                  canceled: 0
+                  warning: 0
+                  skipped: 0
+                  percentage: 0
+                serverId: "123"
                 status: ACTIVE
                 tasks:
-                - description: dummy
-                  errorMessage: null
-                  flow: tasks
-                  onError: break
+                - uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
                   status: PENDING
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
                   statusTimestamps:
-                    PENDING: 2021-01-09T10:38:12+00:00
-                    WAITING: 2021-01-09T10:38:12+00:00
-                  uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                    WAITING: 2025-03-17T14:01:43+00:00
+                    PENDING: 2025-03-17T14:01:43+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T14:01:43+00:00
+                  updatedAt: 2025-03-17T14:01:43+00:00
+                  timeout: 32400
                 type: install
-                updatedAt: 2021-01-09T10:38:12+0000
-                uuid: 3a867358-5b4b-44ee-88ac-4274603ef641
+                updatedAt: 2025-03-17T14:01:43+00:00
+                uuid: 80d991c8-1bf5-40b9-8b99-cb65255065a5
               schema:
                 $ref: '#/components/schemas/currentJob'
           description: Ok.
@@ -6200,42 +6706,89 @@ paths:
           content:
             application/json:
               example:
-                createdAt: 2018-03-06T22:53:31+0000
-                flow: tasks
+                bareMetalId: "123"
+                createdAt: 2025-03-17T14:06:12+00:00
+                currentTask:
+                  uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                  status: PENDING
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
+                  statusTimestamps:
+                    WAITING: 2025-03-17T14:06:12+00:00
+                    PENDING: 2025-03-17T14:06:12+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T14:06:12+00:00
+                  updatedAt: 2025-03-17T14:06:12+00:00
+                  timeout: 32400
+                flow: main
                 isRunning: true
-                node: AA:BB:CC:DD:EE:FF!JKDJFK890
+                metadata:
+                  BATCH_ID: null
+                node: 00:11:22:33:44:55
                 payload:
-                  fileserverBaseUrl: 10.11.20.2
-                  isUnassignedServer: false
-                  jobType: rescueMode
-                  pop: AMS-01
                   powerCycle: true
-                  serverId: "2349839"
+                  doEmailNotification: false
+                  rescueImageId: ROCKY_LINUX
+                  callbackUrl: https://leaseweb.com
+                  sshKeys: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKA8HyZ72HYYYtTCjHeN6rvMVkmTY2hb2nouORWMm8vv
+                  network:
+                    public:
+                      ip: 192.168.1.1
+                      mac: 00:11:22:33:44:55
+                      cidr: 192.168.1.1/27
+                      prefix: 27
+                      netmask: 255.255.255.224
+                      netmask_hex: 0xffffffe0
+                      gateway: 192.168.1.1
+                      network: 192.168.1.0
+                      broadcast: 192.168.1.31
+                      nameservers:
+                      - 192.168.1.21
+                      - 127.0.0.1
+                      isCustom: false
+                    internal:
+                      mac: 00:11:22:33:44:55
+                  serverBrand: SUPERMICRO
+                  serverChassis: SM 846TQ (24xLFF)
+                  serverHardwareRaid: true
+                  site: AMS-01
+                  fileserverBaseUrl: 192.168.1.123
+                  initiatedBy: EMPLOYEE
                 progress:
-                  canceled: 0
-                  expired: 0
-                  failed: 0
-                  finished: 0
-                  inprogress: 0
+                  total: 1
+                  waiting: 0
                   pending: 1
+                  inprogress: 0
+                  finished: 0
+                  failed: 0
+                  expired: 0
+                  canceled: 0
+                  warning: 0
+                  skipped: 0
                   percentage: 0
-                  total: 12
-                  waiting: 11
-                serverId: "2349839"
+                serverId: "123"
                 status: ACTIVE
                 tasks:
-                - description: dummy
-                  errorMessage: null
-                  flow: tasks
-                  onError: break
+                - uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
                   status: PENDING
+                  description: dummy placeholder
+                  onError: break
+                  errorMessage: null
+                  flow: main
                   statusTimestamps:
-                    PENDING: 2018-01-09T10:38:12+00:00
-                    WAITING: 2018-01-09T10:38:12+00:00
-                  uuid: 8a10b74b-2a94-4a3b-88da-b9c07faa240d
+                    WAITING: 2025-03-17T14:06:12+00:00
+                    PENDING: 2025-03-17T14:06:12+00:00
+                  type: test_task
+                  actor: server
+                  createdAt: 2025-03-17T14:06:12+00:00
+                  updatedAt: 2025-03-17T14:06:12+00:00
+                  timeout: 32400
                 type: rescueMode
-                updatedAt: 2018-03-06T22:53:31+0000
-                uuid: ac99431b-640d-4282-95a9-a444eedb9309
+                updatedAt: 2025-03-17T14:06:12+00:00
+                uuid: 7f869a99-2c26-4281-bd75-a45786a8c2d2
               schema:
                 $ref: '#/components/schemas/job'
           description: Accepted.
@@ -7815,12 +8368,15 @@ components:
       - unit
       type: object
     vendor:
+      description: Vendor of the server
       example: HP
       type: string
     serialNumber:
+      description: Serial number of the server
       example: CZ33109CHV
       type: string
     diskId:
+      description: ID of the disk
       example: disk
       type: string
     attribute:
@@ -7836,26 +8392,36 @@ components:
         when_failed: when_failed
       properties:
         flag:
+          description: Flag of the attribute
           type: string
         id:
+          description: ID of the attribute
           type: string
         raw_value:
+          description: Raw value of the attribute
           type: string
         thresh:
+          description: Threshold value of the attribute
           type: string
         type:
+          description: Type of the attribute
           type: string
         updated:
+          description: Last updated timestamp of the attribute
           type: string
         value:
+          description: Value of the attribute
           type: string
         when_failed:
+          description: Timestamp when the attribute failed
           type: string
         worst:
+          description: Worst value of the attribute
           type: string
       title: attribute
       type: object
     memoryId:
+      description: ID of the memory
       example: memory/bank:0
       type: string
     scannedAt:
@@ -7864,6 +8430,7 @@ components:
       format: date-time
       type: string
     serverId:
+      description: Id of the server
       example: "62264"
       type: string
     getHardwareResult:
@@ -8136,6 +8703,7 @@ components:
           format: date-time
           type: string
         serverId:
+          description: Id of the server
           example: "62264"
           type: string
       type: object
@@ -8181,20 +8749,27 @@ components:
       type: object
     partition:
       example:
-        size: size
-        filesystem: filesystem
-        mountpoint: mountpoint
+        size: "1024"
+        filesystem: ext4
+        mountpoint: /home
       properties:
-        filesystem:
-          description: File system in which partition would be mounted
-          type: string
         mountpoint:
           description: The partition mount point (eg `/home`). Mandatory for the root
             partition (`/`) and not intended to be used in swap partition
+          example: /home
+          nullable: true
+          type: string
+        filesystem:
+          description: File system in which partition would be mounted
+          example: ext4
           type: string
         size:
           description: "Size of the partition (Normally in MB, but this is OS-specific)"
+          example: "1024"
           type: string
+      required:
+      - filesystem
+      - size
       title: partition
       type: object
     getOperatingSystemResult:
@@ -8207,12 +8782,12 @@ components:
         - supportedFileSystems
         defaults:
           partitions:
-          - size: size
-            filesystem: filesystem
-            mountpoint: mountpoint
-          - size: size
-            filesystem: filesystem
-            mountpoint: mountpoint
+          - size: "1024"
+            filesystem: ext4
+            mountpoint: /home
+          - size: "1024"
+            filesystem: ext4
+            mountpoint: /home
           device: device
         name: name
         id: id
@@ -8285,214 +8860,458 @@ components:
             $ref: '#/components/schemas/rescueImage'
           type: array
       type: object
-    installOperatingSystemPayload:
-      example:
-        partitions:
-        - size: size
-          filesystem: filesystem
-          mountpoint: mountpoint
-        - size: size
-          filesystem: filesystem
-          mountpoint: mountpoint
-        os:
-          name: name
-          family: family
-          type: type
-          version: version
-          architecture: architecture
-        timezone: UTC
-        raidLevel: 6
-        serverId: serverId
-        isUnassignedServer: true
-        pop: pop
-        operatingSystemId: operatingSystemId
-        jobType: install
-        numberOfDisks: 0
-        fileserverBaseUrl: fileserverBaseUrl
-        device: device
-        powerCycle: true
-        configurable: true
-      properties:
-        fileserverBaseUrl:
-          type: string
-        pop:
-          type: string
-        powerCycle:
-          type: boolean
-        isUnassignedServer:
-          type: boolean
-        serverId:
-          description: Id of the server
-          type: string
-        jobType:
-          enum:
-          - install
-          type: string
-        configurable:
-          type: boolean
-        device:
-          type: string
-        numberOfDisks:
-          nullable: true
-          type: integer
-        operatingSystemId:
-          type: string
-        os:
-          $ref: '#/components/schemas/os'
-        partitions:
-          items:
-            $ref: '#/components/schemas/partition'
-          type: array
-        raidLevel:
-          nullable: true
-          type: integer
-        timezone:
-          description: Timezone represented as Geographical_Area/City
-          example: UTC
-          type: string
-      required:
-      - jobType
-      title: installOperatingSystemPayload
-      type: object
-    payload:
-      discriminator:
-        propertyName: jobType
-      properties:
-        fileserverBaseUrl:
-          type: string
-        jobType:
-          enum:
-          - rescueMode
-          - hardwareScan
-          - ipmiReset
-          type: string
-        pop:
-          type: string
-        powerCycle:
-          type: boolean
-        isUnassignedServer:
-          type: boolean
-        serverId:
-          description: Id of the server
-          type: string
-      required:
-      - jobType
-      title: defaultPayload
-      type: object
     jobType:
+      description: Type of the job
       enum:
       - install
       - rescueMode
       - hardwareScan
       - ipmiReset
       type: string
-    job:
+    task:
+      description: A task is a single unit of work that is part of a job
       example:
-        bareMetalId: bareMetalId
-        type: install
-        serverId: serverId
-        uuid: uuid
+        actor: actor
         createdAt: 2000-01-23T04:56:07.000+00:00
-        node: node
-        isRunning: true
-        payload:
-          partitions:
-          - size: size
-            filesystem: filesystem
-            mountpoint: mountpoint
-          - size: size
-            filesystem: filesystem
-            mountpoint: mountpoint
-          os:
-            name: name
-            family: family
-            type: type
-            version: version
-            architecture: architecture
-          timezone: UTC
-          raidLevel: 6
-          serverId: serverId
-          isUnassignedServer: true
-          pop: pop
-          operatingSystemId: operatingSystemId
-          jobType: install
-          numberOfDisks: 0
-          fileserverBaseUrl: fileserverBaseUrl
-          device: device
-          powerCycle: true
-          configurable: true
-        progress:
-          canceled: 1
-          total: 2
-          expired: 5
-          waiting: 4
-          pending: 9
-          percentage: 3
-          inprogress: 7
-          finished: 2
-          failed: 5
+        onError: onError
+        errorMessage: errorMessage
+        description: description
+        statusTimestamps:
+          FAILED: 2000-01-23T04:56:07.000+00:00
+          INPROGRESS: 2000-01-23T04:56:07.000+00:00
+          CANCELED: 2000-01-23T04:56:07.000+00:00
+          EXPIRED: 2000-01-23T04:56:07.000+00:00
+          WAITING: 2000-01-23T04:56:07.000+00:00
+          REBOOTING: 2000-01-23T04:56:07.000+00:00
+          SKIPPED: 2000-01-23T04:56:07.000+00:00
+          PENDING: 2000-01-23T04:56:07.000+00:00
+          FINISHED: 2000-01-23T04:56:07.000+00:00
+          WARNING: 2000-01-23T04:56:07.000+00:00
+        type: type
+        uuid: uuid
         flow: flow
-        tasks:
-        - onError: onError
-          errorMessage: errorMessage
-          description: description
-          statusTimestamps:
-            key: 2000-01-23T04:56:07.000+00:00
-          uuid: uuid
-          flow: flow
-          status: status
-        - onError: onError
-          errorMessage: errorMessage
-          description: description
-          statusTimestamps:
-            key: 2000-01-23T04:56:07.000+00:00
-          uuid: uuid
-          flow: flow
-          status: status
-        status: status
+        timeout: 1
+        status: WAITING
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
-        bareMetalId:
-          deprecated: true
-          description: "Id of the server (deprecated, use serverId instead)"
+        uuid:
+          description: Unique ID for this task
+          type: string
+        status:
+          description: The status of the task
+          enum:
+          - WAITING
+          - PENDING
+          - INPROGRESS
+          - REBOOTING
+          - FINISHED
+          - FAILED
+          - SKIPPED
+          - CANCELED
+          - WARNING
+          - EXPIRED
+          type: string
+        description:
+          description: Description of the task
+          type: string
+        onError:
+          description: The behaviour if this task fails
+          type: string
+        errorMessage:
+          description: An optional error message
+          nullable: true
+          type: string
+        flow:
+          description: The flow this task is part of
+          type: string
+        statusTimestamps:
+          $ref: '#/components/schemas/statusTimestamps'
+        type:
+          description: The type of the task
+          type: string
+        actor:
+          description: The actor of the task
           type: string
         createdAt:
           description: Creation timestamp
           format: date-time
           type: string
-        flow:
-          description: Job flow
-          type: string
-        isRunning:
-          description: Describes whether the job is running
-          type: boolean
-        node:
-          description: Node ID for this server
-          type: string
-        payload:
-          $ref: '#/components/schemas/jobPayload'
-        progress:
-          $ref: '#/components/schemas/progress'
-        serverId:
-          description: Id of the server
-          type: string
-        status:
-          description: Status of the job
-          type: string
-        tasks:
-          description: List of tasks in the job
-          items:
-            $ref: '#/components/schemas/task'
-          type: array
-        type:
-          $ref: '#/components/schemas/jobType'
         updatedAt:
           description: Update timestamp
           format: date-time
           type: string
+        timeout:
+          description: The timeout for the task
+          nullable: true
+          type: integer
+      title: task
+      type: object
+    currentTask:
+      description: The current task of the job
+      nullable: true
+      properties:
+        task:
+          $ref: '#/components/schemas/task'
+      title: currentTask
+      type: object
+    payload:
+      properties:
+        powerCycle:
+          description: Whether the server should be powered off and on automatically
+            before the job is started
+          type: boolean
+        network:
+          $ref: '#/components/schemas/defaultPayloadNetwork'
+        site:
+          description: Location of the server
+          type: string
+        initiatedBy:
+          description: Who initiated the job
+          enum:
+          - EMPLOYEE
+          - CUSTOMER
+          type: string
+        serverBrand:
+          description: The brand of the server
+          type: string
+        serverChassis:
+          description: The chassis of the server
+          type: string
+        fileserverBaseUrl:
+          description: The base URL of the fileserver
+          type: string
+        serverHardwareRaid:
+          description: Whether the server has hardware RAID
+          type: boolean
+      title: defaultPayload
+      type: object
+    sshKeys:
+      description: SSH keys to be added to the server
+      nullable: true
+      type: string
+    installOperatingSystemPayload:
+      allOf:
+      - $ref: '#/components/schemas/payload'
+      - properties:
+          os:
+            $ref: '#/components/schemas/os'
+          raid:
+            $ref: '#/components/schemas/raidPayload'
+          device:
+            description: The installation device
+            type: string
+          hostname:
+            description: The hostname of the server
+            type: string
+          timezone:
+            description: Timezone to be configured on the server
+            example: UTC
+            type: string
+          partitions:
+            items:
+              $ref: '#/components/schemas/partition'
+            type: array
+          operatingSystemId:
+            description: The ID of the operating system
+            type: string
+          features:
+            description: The server's features
+            items:
+              type: string
+            type: array
+          featuresUtilized:
+            description: The features that are being utilized by the server
+            items:
+              type: string
+            type: array
+          sshKeys:
+            $ref: '#/components/schemas/sshKeys'
+          database:
+            $ref: '#/components/schemas/database'
+          callbackUrl:
+            description: The URL to be called when the job is finished
+            nullable: true
+            type: string
+          doEmailNotification:
+            description: Whether to send email notifications
+            nullable: true
+            type: boolean
+          configurable:
+            description: Whether the job is configurable
+            nullable: true
+            type: boolean
+      example:
+        partitions:
+        - size: "1024"
+          filesystem: ext4
+          mountpoint: /home
+        - size: "1024"
+          filesystem: ext4
+          mountpoint: /home
+        os:
+          engine: engine
+          name: name
+          type: type
+          family: family
+          version: version
+          architecture: architecture
+        serverHardwareRaid: true
+        timezone: UTC
+        doEmailNotification: true
+        serverBrand: serverBrand
+        network:
+          internal:
+            mac: mac
+          public:
+            broadcast: broadcast
+            nameservers:
+            - nameservers
+            - nameservers
+            netmask: netmask
+            prefix: 7
+            ip: ip
+            isCustom: true
+            cidr: cidr
+            mac: mac
+            gateway: gateway
+            netmask_hex: netmask_hex
+            network: network
+        features:
+        - features
+        - features
+        featuresUtilized:
+        - featuresUtilized
+        - featuresUtilized
+        site: site
+        hostname: hostname
+        operatingSystemId: operatingSystemId
+        database:
+          dbName: dbName
+          networkType: networkType
+          type: type
+        serverChassis: serverChassis
+        callbackUrl: callbackUrl
+        sshKeys: null
+        fileserverBaseUrl: fileserverBaseUrl
+        device: device
+        powerCycle: true
+        initiatedBy: EMPLOYEE
+        configurable: true
+        raid:
+          level: 1
+          type: HW
+          numberOfDisks: 1
+      title: installOperatingSystemPayload
+      type: object
+    genericPayload:
+      allOf:
+      - $ref: '#/components/schemas/payload'
+      title: genericPayload
+      type: object
+    rescueModePayload:
+      allOf:
+      - $ref: '#/components/schemas/payload'
+      - properties:
+          rescueImageId:
+            description: The ID of the rescue image if job is for rescue mode
+            type: string
+          sshKeys:
+            $ref: '#/components/schemas/sshKeys'
+          callbackUrl:
+            description: The URL to be called when the job is finished
+            nullable: true
+            type: string
+          doEmailNotification:
+            description: Whether to send email notifications
+            nullable: true
+            type: boolean
+          configurable:
+            description: Whether the job is configurable
+            nullable: true
+            type: boolean
+      title: rescueModePayload
+      type: object
+    job:
+      example:
+        metadata:
+          BATCH_ID: BATCH_ID
+        currentTask: ""
+        bareMetalId: bareMetalId
+        type: install
+        uuid: uuid
+        serverId: serverId
+        node: node
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        isRunning: true
+        payload:
+          partitions:
+          - size: "1024"
+            filesystem: ext4
+            mountpoint: /home
+          - size: "1024"
+            filesystem: ext4
+            mountpoint: /home
+          os:
+            engine: engine
+            name: name
+            type: type
+            family: family
+            version: version
+            architecture: architecture
+          serverHardwareRaid: true
+          timezone: UTC
+          doEmailNotification: true
+          serverBrand: serverBrand
+          network:
+            internal:
+              mac: mac
+            public:
+              broadcast: broadcast
+              nameservers:
+              - nameservers
+              - nameservers
+              netmask: netmask
+              prefix: 7
+              ip: ip
+              isCustom: true
+              cidr: cidr
+              mac: mac
+              gateway: gateway
+              netmask_hex: netmask_hex
+              network: network
+          features:
+          - features
+          - features
+          featuresUtilized:
+          - featuresUtilized
+          - featuresUtilized
+          site: site
+          hostname: hostname
+          operatingSystemId: operatingSystemId
+          database:
+            dbName: dbName
+            networkType: networkType
+            type: type
+          serverChassis: serverChassis
+          callbackUrl: callbackUrl
+          sshKeys: null
+          fileserverBaseUrl: fileserverBaseUrl
+          device: device
+          powerCycle: true
+          initiatedBy: EMPLOYEE
+          configurable: true
+          raid:
+            level: 1
+            type: HW
+            numberOfDisks: 1
+        progress:
+          canceled: 9
+          total: 0
+          expired: 7
+          waiting: 6
+          pending: 1
+          percentage: 4
+          inprogress: 5
+          warning: 3
+          finished: 5
+          failed: 2
+          skipped: 2
+        flow: flow
+        tasks:
+        - actor: actor
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          onError: onError
+          errorMessage: errorMessage
+          description: description
+          statusTimestamps:
+            FAILED: 2000-01-23T04:56:07.000+00:00
+            INPROGRESS: 2000-01-23T04:56:07.000+00:00
+            CANCELED: 2000-01-23T04:56:07.000+00:00
+            EXPIRED: 2000-01-23T04:56:07.000+00:00
+            WAITING: 2000-01-23T04:56:07.000+00:00
+            REBOOTING: 2000-01-23T04:56:07.000+00:00
+            SKIPPED: 2000-01-23T04:56:07.000+00:00
+            PENDING: 2000-01-23T04:56:07.000+00:00
+            FINISHED: 2000-01-23T04:56:07.000+00:00
+            WARNING: 2000-01-23T04:56:07.000+00:00
+          type: type
+          uuid: uuid
+          flow: flow
+          timeout: 1
+          status: WAITING
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - actor: actor
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          onError: onError
+          errorMessage: errorMessage
+          description: description
+          statusTimestamps:
+            FAILED: 2000-01-23T04:56:07.000+00:00
+            INPROGRESS: 2000-01-23T04:56:07.000+00:00
+            CANCELED: 2000-01-23T04:56:07.000+00:00
+            EXPIRED: 2000-01-23T04:56:07.000+00:00
+            WAITING: 2000-01-23T04:56:07.000+00:00
+            REBOOTING: 2000-01-23T04:56:07.000+00:00
+            SKIPPED: 2000-01-23T04:56:07.000+00:00
+            PENDING: 2000-01-23T04:56:07.000+00:00
+            FINISHED: 2000-01-23T04:56:07.000+00:00
+            WARNING: 2000-01-23T04:56:07.000+00:00
+          type: type
+          uuid: uuid
+          flow: flow
+          timeout: 1
+          status: WAITING
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        status: status
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        status:
+          description: Status of the job
+          type: string
         uuid:
           description: Unique identifier of the job
           type: string
+        type:
+          $ref: '#/components/schemas/jobType'
+        serverId:
+          description: Id of the server
+          type: string
+        bareMetalId:
+          deprecated: true
+          description: "Id of the server (deprecated, use serverId instead)"
+          type: string
+        node:
+          description: Node ID for this server
+          type: string
+        createdAt:
+          description: Creation timestamp
+          format: date-time
+          type: string
+        updatedAt:
+          description: Update timestamp
+          format: date-time
+          type: string
+        flow:
+          description: Job flow
+          type: string
+        currentTask:
+          allOf:
+          - $ref: '#/components/schemas/currentTask'
+        progress:
+          $ref: '#/components/schemas/progress'
+        isRunning:
+          description: Describes whether the job is running
+          type: boolean
+        metadata:
+          $ref: '#/components/schemas/metadata'
+        payload:
+          $ref: '#/components/schemas/jobPayload'
+        tasks:
+          description: List of tasks in the job
+          items:
+            $ref: '#/components/schemas/task'
+          title: tasks
+          type: array
       type: object
     credentialType:
       description: The type of the credential.
@@ -8669,116 +9488,186 @@ components:
       type: object
     serverJob:
       example:
+        metadata:
+          BATCH_ID: BATCH_ID
+        currentTask: ""
         bareMetalId: bareMetalId
         type: install
-        serverId: serverId
         uuid: uuid
-        createdAt: 2000-01-23T04:56:07.000+00:00
+        serverId: "62264"
         node: node
+        createdAt: 2000-01-23T04:56:07.000+00:00
         isRunning: true
         payload:
           partitions:
-          - size: size
-            filesystem: filesystem
-            mountpoint: mountpoint
-          - size: size
-            filesystem: filesystem
-            mountpoint: mountpoint
+          - size: "1024"
+            filesystem: ext4
+            mountpoint: /home
+          - size: "1024"
+            filesystem: ext4
+            mountpoint: /home
           os:
+            engine: engine
             name: name
-            family: family
             type: type
+            family: family
             version: version
             architecture: architecture
+          serverHardwareRaid: true
           timezone: UTC
-          raidLevel: 6
-          serverId: serverId
-          isUnassignedServer: true
-          pop: pop
-          operatingSystemId: operatingSystemId
+          doEmailNotification: true
+          serverBrand: serverBrand
+          network:
+            internal:
+              mac: mac
+            public:
+              broadcast: broadcast
+              nameservers:
+              - nameservers
+              - nameservers
+              netmask: netmask
+              prefix: 7
+              ip: ip
+              isCustom: true
+              cidr: cidr
+              mac: mac
+              gateway: gateway
+              netmask_hex: netmask_hex
+              network: network
+          features:
+          - features
+          - features
+          featuresUtilized:
+          - featuresUtilized
+          - featuresUtilized
+          site: site
           hostname: hostname
-          jobType: jobType
-          numberOfDisks: 0
+          operatingSystemId: operatingSystemId
+          database:
+            dbName: dbName
+            networkType: networkType
+            type: type
+          serverChassis: serverChassis
+          callbackUrl: callbackUrl
+          sshKeys: null
           fileserverBaseUrl: fileserverBaseUrl
           device: device
           powerCycle: true
+          initiatedBy: EMPLOYEE
           configurable: true
           raid:
             level: 1
             type: HW
-            numberOfDisks: 5
+            numberOfDisks: 1
         progress:
-          canceled: 1
-          total: 2
-          expired: 5
-          waiting: 4
-          pending: 9
-          percentage: 3
-          inprogress: 7
-          finished: 2
-          failed: 5
+          canceled: 9
+          total: 0
+          expired: 7
+          waiting: 6
+          pending: 1
+          percentage: 4
+          inprogress: 5
+          warning: 3
+          finished: 5
+          failed: 2
+          skipped: 2
         flow: flow
         tasks:
-        - onError: onError
+        - actor: actor
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          onError: onError
           errorMessage: errorMessage
           description: description
           statusTimestamps:
-            key: 2000-01-23T04:56:07.000+00:00
+            FAILED: 2000-01-23T04:56:07.000+00:00
+            INPROGRESS: 2000-01-23T04:56:07.000+00:00
+            CANCELED: 2000-01-23T04:56:07.000+00:00
+            EXPIRED: 2000-01-23T04:56:07.000+00:00
+            WAITING: 2000-01-23T04:56:07.000+00:00
+            REBOOTING: 2000-01-23T04:56:07.000+00:00
+            SKIPPED: 2000-01-23T04:56:07.000+00:00
+            PENDING: 2000-01-23T04:56:07.000+00:00
+            FINISHED: 2000-01-23T04:56:07.000+00:00
+            WARNING: 2000-01-23T04:56:07.000+00:00
+          type: type
           uuid: uuid
           flow: flow
-          status: status
-        - onError: onError
+          timeout: 1
+          status: WAITING
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - actor: actor
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          onError: onError
           errorMessage: errorMessage
           description: description
           statusTimestamps:
-            key: 2000-01-23T04:56:07.000+00:00
+            FAILED: 2000-01-23T04:56:07.000+00:00
+            INPROGRESS: 2000-01-23T04:56:07.000+00:00
+            CANCELED: 2000-01-23T04:56:07.000+00:00
+            EXPIRED: 2000-01-23T04:56:07.000+00:00
+            WAITING: 2000-01-23T04:56:07.000+00:00
+            REBOOTING: 2000-01-23T04:56:07.000+00:00
+            SKIPPED: 2000-01-23T04:56:07.000+00:00
+            PENDING: 2000-01-23T04:56:07.000+00:00
+            FINISHED: 2000-01-23T04:56:07.000+00:00
+            WARNING: 2000-01-23T04:56:07.000+00:00
+          type: type
           uuid: uuid
           flow: flow
-          status: status
+          timeout: 1
+          status: WAITING
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         status: status
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        status:
+          description: Status of the job
+          type: string
+        uuid:
+          description: Unique identifier of the job
+          type: string
+        type:
+          $ref: '#/components/schemas/jobType'
+        serverId:
+          description: Id of the server
+          example: "62264"
+          type: string
         bareMetalId:
           deprecated: true
           description: "Id of the server (deprecated, use serverId instead)"
+          type: string
+        node:
+          description: Node ID for this server
           type: string
         createdAt:
           description: Creation timestamp
           format: date-time
           type: string
-        flow:
-          description: Job flow
-          type: string
-        isRunning:
-          description: Describes whether the job is running
-          type: boolean
-        node:
-          description: Node ID for this server
-          type: string
-        payload:
-          $ref: '#/components/schemas/serverJobPayload'
-        progress:
-          $ref: '#/components/schemas/progress'
-        serverId:
-          description: Id of the server
-          type: string
-        status:
-          description: Status of the job
-          type: string
-        tasks:
-          description: List of tasks in the job
-          items:
-            $ref: '#/components/schemas/task'
-          type: array
-        type:
-          $ref: '#/components/schemas/jobType'
         updatedAt:
           description: Update timestamp
           format: date-time
           type: string
-        uuid:
-          description: Unique identifier of the job
+        flow:
+          description: Job flow
           type: string
+        currentTask:
+          allOf:
+          - $ref: '#/components/schemas/currentTask'
+        progress:
+          $ref: '#/components/schemas/progress'
+        isRunning:
+          description: Describes whether the job is running
+          type: boolean
+        metadata:
+          $ref: '#/components/schemas/metadata'
+        payload:
+          $ref: '#/components/schemas/jobPayload'
+        tasks:
+          description: List of tasks in the job
+          items:
+            $ref: '#/components/schemas/task'
+          title: tasks
+          type: array
       type: object
     ipmiResetOpts:
       properties:
@@ -8795,140 +9684,266 @@ components:
     jobList:
       example:
         jobs:
-        - bareMetalId: bareMetalId
+        - metadata:
+            BATCH_ID: BATCH_ID
+          currentTask: ""
+          bareMetalId: bareMetalId
           type: install
-          serverId: serverId
           uuid: uuid
-          createdAt: 2000-01-23T04:56:07.000+00:00
+          serverId: "62264"
           node: node
+          createdAt: 2000-01-23T04:56:07.000+00:00
           isRunning: true
           payload:
             partitions:
-            - size: size
-              filesystem: filesystem
-              mountpoint: mountpoint
-            - size: size
-              filesystem: filesystem
-              mountpoint: mountpoint
+            - size: "1024"
+              filesystem: ext4
+              mountpoint: /home
+            - size: "1024"
+              filesystem: ext4
+              mountpoint: /home
             os:
+              engine: engine
               name: name
-              family: family
               type: type
+              family: family
               version: version
               architecture: architecture
+            serverHardwareRaid: true
             timezone: UTC
-            raidLevel: 6
-            serverId: serverId
-            isUnassignedServer: true
-            pop: pop
-            operatingSystemId: operatingSystemId
+            doEmailNotification: true
+            serverBrand: serverBrand
+            network:
+              internal:
+                mac: mac
+              public:
+                broadcast: broadcast
+                nameservers:
+                - nameservers
+                - nameservers
+                netmask: netmask
+                prefix: 7
+                ip: ip
+                isCustom: true
+                cidr: cidr
+                mac: mac
+                gateway: gateway
+                netmask_hex: netmask_hex
+                network: network
+            features:
+            - features
+            - features
+            featuresUtilized:
+            - featuresUtilized
+            - featuresUtilized
+            site: site
             hostname: hostname
-            jobType: jobType
-            numberOfDisks: 0
+            operatingSystemId: operatingSystemId
+            database:
+              dbName: dbName
+              networkType: networkType
+              type: type
+            serverChassis: serverChassis
+            callbackUrl: callbackUrl
+            sshKeys: null
             fileserverBaseUrl: fileserverBaseUrl
             device: device
             powerCycle: true
+            initiatedBy: EMPLOYEE
             configurable: true
             raid:
               level: 1
               type: HW
-              numberOfDisks: 5
+              numberOfDisks: 1
           progress:
-            canceled: 1
-            total: 2
-            expired: 5
-            waiting: 4
-            pending: 9
-            percentage: 3
-            inprogress: 7
-            finished: 2
-            failed: 5
+            canceled: 9
+            total: 0
+            expired: 7
+            waiting: 6
+            pending: 1
+            percentage: 4
+            inprogress: 5
+            warning: 3
+            finished: 5
+            failed: 2
+            skipped: 2
           flow: flow
           tasks:
-          - onError: onError
+          - actor: actor
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            onError: onError
             errorMessage: errorMessage
             description: description
             statusTimestamps:
-              key: 2000-01-23T04:56:07.000+00:00
+              FAILED: 2000-01-23T04:56:07.000+00:00
+              INPROGRESS: 2000-01-23T04:56:07.000+00:00
+              CANCELED: 2000-01-23T04:56:07.000+00:00
+              EXPIRED: 2000-01-23T04:56:07.000+00:00
+              WAITING: 2000-01-23T04:56:07.000+00:00
+              REBOOTING: 2000-01-23T04:56:07.000+00:00
+              SKIPPED: 2000-01-23T04:56:07.000+00:00
+              PENDING: 2000-01-23T04:56:07.000+00:00
+              FINISHED: 2000-01-23T04:56:07.000+00:00
+              WARNING: 2000-01-23T04:56:07.000+00:00
+            type: type
             uuid: uuid
             flow: flow
-            status: status
-          - onError: onError
+            timeout: 1
+            status: WAITING
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - actor: actor
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            onError: onError
             errorMessage: errorMessage
             description: description
             statusTimestamps:
-              key: 2000-01-23T04:56:07.000+00:00
+              FAILED: 2000-01-23T04:56:07.000+00:00
+              INPROGRESS: 2000-01-23T04:56:07.000+00:00
+              CANCELED: 2000-01-23T04:56:07.000+00:00
+              EXPIRED: 2000-01-23T04:56:07.000+00:00
+              WAITING: 2000-01-23T04:56:07.000+00:00
+              REBOOTING: 2000-01-23T04:56:07.000+00:00
+              SKIPPED: 2000-01-23T04:56:07.000+00:00
+              PENDING: 2000-01-23T04:56:07.000+00:00
+              FINISHED: 2000-01-23T04:56:07.000+00:00
+              WARNING: 2000-01-23T04:56:07.000+00:00
+            type: type
             uuid: uuid
             flow: flow
-            status: status
+            timeout: 1
+            status: WAITING
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           status: status
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        - bareMetalId: bareMetalId
+        - metadata:
+            BATCH_ID: BATCH_ID
+          currentTask: ""
+          bareMetalId: bareMetalId
           type: install
-          serverId: serverId
           uuid: uuid
-          createdAt: 2000-01-23T04:56:07.000+00:00
+          serverId: "62264"
           node: node
+          createdAt: 2000-01-23T04:56:07.000+00:00
           isRunning: true
           payload:
             partitions:
-            - size: size
-              filesystem: filesystem
-              mountpoint: mountpoint
-            - size: size
-              filesystem: filesystem
-              mountpoint: mountpoint
+            - size: "1024"
+              filesystem: ext4
+              mountpoint: /home
+            - size: "1024"
+              filesystem: ext4
+              mountpoint: /home
             os:
+              engine: engine
               name: name
-              family: family
               type: type
+              family: family
               version: version
               architecture: architecture
+            serverHardwareRaid: true
             timezone: UTC
-            raidLevel: 6
-            serverId: serverId
-            isUnassignedServer: true
-            pop: pop
-            operatingSystemId: operatingSystemId
+            doEmailNotification: true
+            serverBrand: serverBrand
+            network:
+              internal:
+                mac: mac
+              public:
+                broadcast: broadcast
+                nameservers:
+                - nameservers
+                - nameservers
+                netmask: netmask
+                prefix: 7
+                ip: ip
+                isCustom: true
+                cidr: cidr
+                mac: mac
+                gateway: gateway
+                netmask_hex: netmask_hex
+                network: network
+            features:
+            - features
+            - features
+            featuresUtilized:
+            - featuresUtilized
+            - featuresUtilized
+            site: site
             hostname: hostname
-            jobType: jobType
-            numberOfDisks: 0
+            operatingSystemId: operatingSystemId
+            database:
+              dbName: dbName
+              networkType: networkType
+              type: type
+            serverChassis: serverChassis
+            callbackUrl: callbackUrl
+            sshKeys: null
             fileserverBaseUrl: fileserverBaseUrl
             device: device
             powerCycle: true
+            initiatedBy: EMPLOYEE
             configurable: true
             raid:
               level: 1
               type: HW
-              numberOfDisks: 5
+              numberOfDisks: 1
           progress:
-            canceled: 1
-            total: 2
-            expired: 5
-            waiting: 4
-            pending: 9
-            percentage: 3
-            inprogress: 7
-            finished: 2
-            failed: 5
+            canceled: 9
+            total: 0
+            expired: 7
+            waiting: 6
+            pending: 1
+            percentage: 4
+            inprogress: 5
+            warning: 3
+            finished: 5
+            failed: 2
+            skipped: 2
           flow: flow
           tasks:
-          - onError: onError
+          - actor: actor
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            onError: onError
             errorMessage: errorMessage
             description: description
             statusTimestamps:
-              key: 2000-01-23T04:56:07.000+00:00
+              FAILED: 2000-01-23T04:56:07.000+00:00
+              INPROGRESS: 2000-01-23T04:56:07.000+00:00
+              CANCELED: 2000-01-23T04:56:07.000+00:00
+              EXPIRED: 2000-01-23T04:56:07.000+00:00
+              WAITING: 2000-01-23T04:56:07.000+00:00
+              REBOOTING: 2000-01-23T04:56:07.000+00:00
+              SKIPPED: 2000-01-23T04:56:07.000+00:00
+              PENDING: 2000-01-23T04:56:07.000+00:00
+              FINISHED: 2000-01-23T04:56:07.000+00:00
+              WARNING: 2000-01-23T04:56:07.000+00:00
+            type: type
             uuid: uuid
             flow: flow
-            status: status
-          - onError: onError
+            timeout: 1
+            status: WAITING
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - actor: actor
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            onError: onError
             errorMessage: errorMessage
             description: description
             statusTimestamps:
-              key: 2000-01-23T04:56:07.000+00:00
+              FAILED: 2000-01-23T04:56:07.000+00:00
+              INPROGRESS: 2000-01-23T04:56:07.000+00:00
+              CANCELED: 2000-01-23T04:56:07.000+00:00
+              EXPIRED: 2000-01-23T04:56:07.000+00:00
+              WAITING: 2000-01-23T04:56:07.000+00:00
+              REBOOTING: 2000-01-23T04:56:07.000+00:00
+              SKIPPED: 2000-01-23T04:56:07.000+00:00
+              PENDING: 2000-01-23T04:56:07.000+00:00
+              FINISHED: 2000-01-23T04:56:07.000+00:00
+              WARNING: 2000-01-23T04:56:07.000+00:00
+            type: type
             uuid: uuid
             flow: flow
-            status: status
+            timeout: 1
+            status: WAITING
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           status: status
           updatedAt: 2000-01-23T04:56:07.000+00:00
         _metadata:
@@ -8947,78 +9962,136 @@ components:
     currentJob:
       allOf:
       - $ref: '#/components/schemas/serverJob'
-      - properties:
-          metadata:
-            $ref: '#/components/schemas/jobMetadata'
       example:
         metadata:
           BATCH_ID: BATCH_ID
+        currentTask: ""
         bareMetalId: bareMetalId
         type: install
-        serverId: serverId
         uuid: uuid
-        createdAt: 2000-01-23T04:56:07.000+00:00
+        serverId: "62264"
         node: node
+        createdAt: 2000-01-23T04:56:07.000+00:00
         isRunning: true
         payload:
           partitions:
-          - size: size
-            filesystem: filesystem
-            mountpoint: mountpoint
-          - size: size
-            filesystem: filesystem
-            mountpoint: mountpoint
+          - size: "1024"
+            filesystem: ext4
+            mountpoint: /home
+          - size: "1024"
+            filesystem: ext4
+            mountpoint: /home
           os:
+            engine: engine
             name: name
-            family: family
             type: type
+            family: family
             version: version
             architecture: architecture
+          serverHardwareRaid: true
           timezone: UTC
-          raidLevel: 6
-          serverId: serverId
-          isUnassignedServer: true
-          pop: pop
-          operatingSystemId: operatingSystemId
+          doEmailNotification: true
+          serverBrand: serverBrand
+          network:
+            internal:
+              mac: mac
+            public:
+              broadcast: broadcast
+              nameservers:
+              - nameservers
+              - nameservers
+              netmask: netmask
+              prefix: 7
+              ip: ip
+              isCustom: true
+              cidr: cidr
+              mac: mac
+              gateway: gateway
+              netmask_hex: netmask_hex
+              network: network
+          features:
+          - features
+          - features
+          featuresUtilized:
+          - featuresUtilized
+          - featuresUtilized
+          site: site
           hostname: hostname
-          jobType: jobType
-          numberOfDisks: 0
+          operatingSystemId: operatingSystemId
+          database:
+            dbName: dbName
+            networkType: networkType
+            type: type
+          serverChassis: serverChassis
+          callbackUrl: callbackUrl
+          sshKeys: null
           fileserverBaseUrl: fileserverBaseUrl
           device: device
           powerCycle: true
+          initiatedBy: EMPLOYEE
           configurable: true
           raid:
             level: 1
             type: HW
-            numberOfDisks: 5
+            numberOfDisks: 1
         progress:
-          canceled: 1
-          total: 2
-          expired: 5
-          waiting: 4
-          pending: 9
-          percentage: 3
-          inprogress: 7
-          finished: 2
-          failed: 5
+          canceled: 9
+          total: 0
+          expired: 7
+          waiting: 6
+          pending: 1
+          percentage: 4
+          inprogress: 5
+          warning: 3
+          finished: 5
+          failed: 2
+          skipped: 2
         flow: flow
         tasks:
-        - onError: onError
+        - actor: actor
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          onError: onError
           errorMessage: errorMessage
           description: description
           statusTimestamps:
-            key: 2000-01-23T04:56:07.000+00:00
+            FAILED: 2000-01-23T04:56:07.000+00:00
+            INPROGRESS: 2000-01-23T04:56:07.000+00:00
+            CANCELED: 2000-01-23T04:56:07.000+00:00
+            EXPIRED: 2000-01-23T04:56:07.000+00:00
+            WAITING: 2000-01-23T04:56:07.000+00:00
+            REBOOTING: 2000-01-23T04:56:07.000+00:00
+            SKIPPED: 2000-01-23T04:56:07.000+00:00
+            PENDING: 2000-01-23T04:56:07.000+00:00
+            FINISHED: 2000-01-23T04:56:07.000+00:00
+            WARNING: 2000-01-23T04:56:07.000+00:00
+          type: type
           uuid: uuid
           flow: flow
-          status: status
-        - onError: onError
+          timeout: 1
+          status: WAITING
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - actor: actor
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          onError: onError
           errorMessage: errorMessage
           description: description
           statusTimestamps:
-            key: 2000-01-23T04:56:07.000+00:00
+            FAILED: 2000-01-23T04:56:07.000+00:00
+            INPROGRESS: 2000-01-23T04:56:07.000+00:00
+            CANCELED: 2000-01-23T04:56:07.000+00:00
+            EXPIRED: 2000-01-23T04:56:07.000+00:00
+            WAITING: 2000-01-23T04:56:07.000+00:00
+            REBOOTING: 2000-01-23T04:56:07.000+00:00
+            SKIPPED: 2000-01-23T04:56:07.000+00:00
+            PENDING: 2000-01-23T04:56:07.000+00:00
+            FINISHED: 2000-01-23T04:56:07.000+00:00
+            WARNING: 2000-01-23T04:56:07.000+00:00
+          type: type
           uuid: uuid
           flow: flow
-          status: status
+          timeout: 1
+          status: WAITING
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         status: status
         updatedAt: 2000-01-23T04:56:07.000+00:00
     getDhcpReservationListResult:
@@ -9457,6 +10530,7 @@ components:
         description:
           type: string
         vendor:
+          description: Vendor of the server
           example: HP
           type: string
         version:
@@ -9473,9 +10547,11 @@ components:
         product:
           type: string
         serial:
+          description: Serial number of the server
           example: CZ33109CHV
           type: string
         vendor:
+          description: Vendor of the server
           example: HP
           type: string
       title: motherboard
@@ -9505,9 +10581,11 @@ components:
         product:
           type: string
         serial:
+          description: Serial number of the server
           example: CZ33109CHV
           type: string
         vendor:
+          description: Vendor of the server
           example: HP
           type: string
       title: chassis
@@ -9567,6 +10645,7 @@ components:
         hz:
           type: string
         serial_number:
+          description: Serial number of the server
           example: CZ33109CHV
           type: string
         settings:
@@ -9574,6 +10653,7 @@ components:
         slot:
           type: string
         vendor:
+          description: Vendor of the server
           example: HP
           type: string
       title: hardwareCpu
@@ -9678,6 +10758,7 @@ components:
         sector_size:
           type: string
         serial_number:
+          description: Serial number of the server
           example: CZ33109CHV
           type: string
         smart_error_log:
@@ -9740,11 +10821,13 @@ components:
         description:
           type: string
         id:
+          description: ID of the disk
           example: disk
           type: string
         product:
           type: string
         serial_number:
+          description: Serial number of the server
           example: CZ33109CHV
           type: string
         size:
@@ -9752,6 +10835,7 @@ components:
         smartctl:
           $ref: '#/components/schemas/smartctl'
         vendor:
+          description: Vendor of the server
           example: HP
           type: string
       title: disk
@@ -9786,6 +10870,7 @@ components:
           format: ipv4
           type: string
         vendor:
+          description: Vendor of the server
           example: HP
           type: string
       title: hardwareIpmi
@@ -9801,12 +10886,14 @@ components:
         description:
           type: string
         id:
+          description: ID of the memory
           example: memory/bank:0
           type: string
         clock_hz:
           example: "1333000000"
           type: string
         serial_number:
+          description: Serial number of the server
           example: CZ33109CHV
           type: string
         size_bytes:
@@ -10089,6 +11176,7 @@ components:
         settings:
           $ref: '#/components/schemas/networkSettings'
         vendor:
+          description: Vendor of the server
           example: HP
           type: string
       title: network
@@ -10406,12 +11494,12 @@ components:
       description: An object containing defaults for this operating system
       example:
         partitions:
-        - size: size
-          filesystem: filesystem
-          mountpoint: mountpoint
-        - size: size
-          filesystem: filesystem
-          mountpoint: mountpoint
+        - size: "1024"
+          filesystem: ext4
+          mountpoint: /home
+        - size: "1024"
+          filesystem: ext4
+          mountpoint: /home
         device: device
       properties:
         device:
@@ -10437,20 +11525,149 @@ components:
           type: string
       title: rescueImage
       type: object
+    statusTimestamps:
+      description: Timestamp for each state change
+      example:
+        FAILED: 2000-01-23T04:56:07.000+00:00
+        INPROGRESS: 2000-01-23T04:56:07.000+00:00
+        CANCELED: 2000-01-23T04:56:07.000+00:00
+        EXPIRED: 2000-01-23T04:56:07.000+00:00
+        WAITING: 2000-01-23T04:56:07.000+00:00
+        REBOOTING: 2000-01-23T04:56:07.000+00:00
+        SKIPPED: 2000-01-23T04:56:07.000+00:00
+        PENDING: 2000-01-23T04:56:07.000+00:00
+        FINISHED: 2000-01-23T04:56:07.000+00:00
+        WARNING: 2000-01-23T04:56:07.000+00:00
+      properties:
+        WAITING:
+          format: date-time
+          type: string
+        PENDING:
+          format: date-time
+          type: string
+        INPROGRESS:
+          format: date-time
+          type: string
+        REBOOTING:
+          format: date-time
+          type: string
+        FINISHED:
+          format: date-time
+          type: string
+        FAILED:
+          format: date-time
+          type: string
+        SKIPPED:
+          format: date-time
+          type: string
+        CANCELED:
+          format: date-time
+          type: string
+        WARNING:
+          format: date-time
+          type: string
+        EXPIRED:
+          format: date-time
+          type: string
+      title: statusTimestamps
+      type: object
+    public:
+      example:
+        broadcast: broadcast
+        nameservers:
+        - nameservers
+        - nameservers
+        netmask: netmask
+        prefix: 7
+        ip: ip
+        isCustom: true
+        cidr: cidr
+        mac: mac
+        gateway: gateway
+        netmask_hex: netmask_hex
+        network: network
+      properties:
+        ip:
+          description: The IP address of the server
+          type: string
+        mac:
+          description: The MAC address of the server's first network interface
+          type: string
+        cidr:
+          description: The CIDR of the server
+          type: string
+        prefix:
+          description: The IP's prefix
+          type: integer
+        gateway:
+          description: The network gateway of the server
+          type: string
+        netmask:
+          description: The netmask of the server
+          type: string
+        network:
+          description: The network of the server
+          type: string
+        isCustom:
+          description: Whether the network is custom
+          type: boolean
+        broadcast:
+          description: The broadcast network of the server
+          type: string
+        nameservers:
+          description: The nameservers of the server
+          items:
+            type: string
+          type: array
+        netmask_hex:
+          description: The netmask of the server in hex
+          type: string
+      title: public
+      type: object
+    internal:
+      example:
+        mac: mac
+      properties:
+        mac:
+          description: The MAC address of the server's internal network interface
+          type: string
+      title: internal
+      type: object
+    defaultPayloadNetwork:
+      description: The network configuration of the server
+      example:
+        internal:
+          mac: mac
+        public:
+          broadcast: broadcast
+          nameservers:
+          - nameservers
+          - nameservers
+          netmask: netmask
+          prefix: 7
+          ip: ip
+          isCustom: true
+          cidr: cidr
+          mac: mac
+          gateway: gateway
+          netmask_hex: netmask_hex
+          network: network
+      properties:
+        public:
+          $ref: '#/components/schemas/public'
+        internal:
+          $ref: '#/components/schemas/internal'
+      title: defaultPayloadNetwork
+      type: object
     os:
       example:
+        engine: engine
         name: name
-        family: family
         type: type
+        family: family
         version: version
         architecture: architecture
       properties:
-        architecture:
-          description: The architecture of the operating system
-          type: string
-        family:
-          description: The operating system family
-          type: string
         name:
           description: A human readable name for the operating system
           type: string
@@ -10458,108 +11675,25 @@ components:
           description: The type of operating system
           title: operatingSystemType
           type: string
+        engine:
+          description: Our engine used to install the operating system
+          type: string
+        family:
+          description: The operating system family
+          type: string
         version:
           description: The version of the operating system
           type: string
+        architecture:
+          description: The architecture of the operating system
+          type: string
       title: os
-      type: object
-    jobPayload:
-      discriminator:
-        propertyName: jobType
-      oneOf:
-      - $ref: '#/components/schemas/installOperatingSystemPayload'
-      - $ref: '#/components/schemas/payload'
-      title: jobPayload
-    progress:
-      description: Describes progress of the jobs on the server
-      example:
-        canceled: 1
-        total: 2
-        expired: 5
-        waiting: 4
-        pending: 9
-        percentage: 3
-        inprogress: 7
-        finished: 2
-        failed: 5
-      properties:
-        canceled:
-          type: integer
-        expired:
-          type: integer
-        failed:
-          type: integer
-        finished:
-          type: integer
-        inprogress:
-          type: integer
-        pending:
-          type: integer
-        percentage:
-          type: integer
-        total:
-          type: integer
-        waiting:
-          type: integer
-      title: progress
-      type: object
-    task:
-      example:
-        onError: onError
-        errorMessage: errorMessage
-        description: description
-        statusTimestamps:
-          key: 2000-01-23T04:56:07.000+00:00
-        uuid: uuid
-        flow: flow
-        status: status
-      properties:
-        description:
-          description: Description of the task
-          type: string
-        errorMessage:
-          description: An optional error message
-          nullable: true
-          type: string
-        flow:
-          description: The flow this task is part of
-          type: string
-        onError:
-          description: The behaviour if this task fails
-          type: string
-        status:
-          description: The status of the task
-          type: string
-        statusTimestamps:
-          additionalProperties:
-            format: date-time
-            type: string
-          description: Timestamp for each state change
-          title: statusTimestamps
-          type: object
-        uuid:
-          description: Unique ID for this task
-          type: string
-      title: task
-      type: object
-    raid:
-      description: Contains RAID related information about the installation request
-      properties:
-        level:
-          $ref: '#/components/schemas/raidLevel'
-        numberOfDisks:
-          description: The number of disks you want to apply RAID on. If not specified
-            all disks are used
-          type: integer
-        type:
-          $ref: '#/components/schemas/raidType'
-      title: raid
       type: object
     raidPayload:
       example:
         level: 1
         type: HW
-        numberOfDisks: 5
+        numberOfDisks: 1
       nullable: true
       properties:
         type:
@@ -10576,7 +11710,6 @@ components:
           - 1
           - 5
           - 10
-          nullable: true
           type: integer
         numberOfDisks:
           description: The number of disks in the RAID
@@ -10584,90 +11717,105 @@ components:
           type: integer
       title: raidPayload
       type: object
-    serverJobPayload:
+    database:
+      description: Database configuration
       example:
-        partitions:
-        - size: size
-          filesystem: filesystem
-          mountpoint: mountpoint
-        - size: size
-          filesystem: filesystem
-          mountpoint: mountpoint
-        os:
-          name: name
-          family: family
-          type: type
-          version: version
-          architecture: architecture
-        timezone: UTC
-        raidLevel: 6
-        serverId: serverId
-        isUnassignedServer: true
-        pop: pop
-        operatingSystemId: operatingSystemId
-        hostname: hostname
-        jobType: jobType
-        numberOfDisks: 0
-        fileserverBaseUrl: fileserverBaseUrl
-        device: device
-        powerCycle: true
-        configurable: true
-        raid:
-          level: 1
-          type: HW
-          numberOfDisks: 5
+        dbName: dbName
+        networkType: networkType
+        type: type
+      nullable: true
       properties:
-        fileserverBaseUrl:
+        networkType:
+          description: Network type for the database
           type: string
-        pop:
+        dbName:
+          description: Name of the database
           type: string
-        powerCycle:
-          type: boolean
-        isUnassignedServer:
-          type: boolean
-        serverId:
-          description: Id of the server
+        type:
+          description: Type of database
           type: string
-        jobType:
-          type: string
-        configurable:
-          type: boolean
-        device:
-          type: string
-        numberOfDisks:
-          nullable: true
-          type: integer
-        operatingSystemId:
-          type: string
-        os:
-          $ref: '#/components/schemas/os'
-        partitions:
-          items:
-            $ref: '#/components/schemas/partition'
-          type: array
-        raidLevel:
-          nullable: true
-          type: integer
-        timezone:
-          description: Timezone represented as Geographical_Area/City
-          example: UTC
-          type: string
-        raid:
-          $ref: '#/components/schemas/raidPayload'
-        hostname:
-          description: The hostname of the server
-          type: string
-      title: serverJobPayload
+      title: database
       type: object
-    jobMetadata:
-      description: The Job Metadata schema
+    progress:
+      description: Describes progress of the jobs on the server
+      example:
+        canceled: 9
+        total: 0
+        expired: 7
+        waiting: 6
+        pending: 1
+        percentage: 4
+        inprogress: 5
+        warning: 3
+        finished: 5
+        failed: 2
+        skipped: 2
+      properties:
+        total:
+          description: Total number of tasks
+          type: integer
+        waiting:
+          description: Number of tasks waiting
+          type: integer
+        pending:
+          description: Number of tasks pending
+          type: integer
+        inprogress:
+          description: Number of tasks in progress
+          type: integer
+        finished:
+          description: Number of tasks finished
+          type: integer
+        failed:
+          description: Number of tasks failed
+          type: integer
+        expired:
+          description: Number of tasks expired
+          type: integer
+        canceled:
+          description: Number of tasks canceled
+          type: integer
+        warning:
+          description: Number of tasks with warnings
+          type: integer
+        skipped:
+          description: Number of tasks skipped
+          type: integer
+        percentage:
+          description: Percentage of tasks completed
+          type: integer
+      title: progress
+      type: object
+    metadata:
+      description: Metadata of the job
       example:
         BATCH_ID: BATCH_ID
+      nullable: true
       properties:
         BATCH_ID:
-          description: Batch ID for batch jobs
+          description: The batch ID of the job
+          nullable: true
           type: string
-      title: jobMetadata
+      title: metadata
+      type: object
+    jobPayload:
+      anyOf:
+      - $ref: '#/components/schemas/installOperatingSystemPayload'
+      - $ref: '#/components/schemas/genericPayload'
+      - $ref: '#/components/schemas/rescueModePayload'
+      title: jobPayload
+    raid:
+      description: Contains RAID related information about the installation request
+      properties:
+        level:
+          $ref: '#/components/schemas/raidLevel'
+        numberOfDisks:
+          description: The number of disks you want to apply RAID on. If not specified
+            all disks are used
+          type: integer
+        type:
+          $ref: '#/components/schemas/raidType'
+      title: raid
       type: object
     lastClientRequest:
       description: "If the server acquired this DHCP reservation, this object shows\
