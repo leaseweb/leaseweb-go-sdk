@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 **Type** | [**TypeName**](TypeName.md) |  | 
 **Reference** | Pointer to **string** | An identifying name you can refer to the load balancer | [optional] 
 **ContractType** | [**ContractType**](ContractType.md) |  | 
-**ContractTerm** | [**ContractTerm**](ContractTerm.md) |  | 
-**BillingFrequency** | [**BillingFrequency**](BillingFrequency.md) |  | 
+**ContractTerm** | Pointer to [**ContractTerm**](ContractTerm.md) |  | [optional] 
+**BillingFrequency** | Pointer to [**BillingFrequency**](BillingFrequency.md) |  | [optional] 
 
 ## Methods
 
 ### NewLaunchLoadBalancerOpts
 
-`func NewLaunchLoadBalancerOpts(region RegionName, type_ TypeName, contractType ContractType, contractTerm ContractTerm, billingFrequency BillingFrequency, ) *LaunchLoadBalancerOpts`
+`func NewLaunchLoadBalancerOpts(region RegionName, type_ TypeName, contractType ContractType, ) *LaunchLoadBalancerOpts`
 
 NewLaunchLoadBalancerOpts instantiates a new LaunchLoadBalancerOpts object
 This constructor will assign default values to properties that have it defined,
@@ -134,6 +134,11 @@ and a boolean to check if the value has been set.
 
 SetContractTerm sets ContractTerm field to given value.
 
+### HasContractTerm
+
+`func (o *LaunchLoadBalancerOpts) HasContractTerm() bool`
+
+HasContractTerm returns a boolean if a field has been set.
 
 ### GetBillingFrequency
 
@@ -154,6 +159,11 @@ and a boolean to check if the value has been set.
 
 SetBillingFrequency sets BillingFrequency field to given value.
 
+### HasBillingFrequency
+
+`func (o *LaunchLoadBalancerOpts) HasBillingFrequency() bool`
+
+HasBillingFrequency returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

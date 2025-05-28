@@ -29,8 +29,8 @@ type LaunchInstanceOpts struct {
 	// An identifying name you can refer to the instance
 	Reference *string `json:"reference,omitempty"`
 	ContractType ContractType `json:"contractType"`
-	ContractTerm ContractTerm `json:"contractTerm"`
-	BillingFrequency BillingFrequency `json:"billingFrequency"`
+	ContractTerm *ContractTerm `json:"contractTerm,omitempty"`
+	BillingFrequency *BillingFrequency `json:"billingFrequency,omitempty"`
 	// The root disk's size in GB. Must be at least 5 GB for Linux and FreeBSD instances and 50 GB for Windows instances
 	RootDiskSize *int32 `json:"rootDiskSize,omitempty"`
 	RootDiskStorageType StorageType `json:"rootDiskStorageType"`
@@ -47,14 +47,12 @@ type _LaunchInstanceOpts LaunchInstanceOpts
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLaunchInstanceOpts(region RegionName, type_ TypeName, imageId string, contractType ContractType, contractTerm ContractTerm, billingFrequency BillingFrequency, rootDiskStorageType StorageType) *LaunchInstanceOpts {
+func NewLaunchInstanceOpts(region RegionName, type_ TypeName, imageId string, contractType ContractType, rootDiskStorageType StorageType) *LaunchInstanceOpts {
 	this := LaunchInstanceOpts{}
 	this.Region = region
 	this.Type = type_
 	this.ImageId = imageId
 	this.ContractType = contractType
-	this.ContractTerm = contractTerm
-	this.BillingFrequency = billingFrequency
 	this.RootDiskStorageType = rootDiskStorageType
 	return &this
 }
@@ -227,52 +225,68 @@ func (o *LaunchInstanceOpts) SetContractType(v ContractType) {
 	o.ContractType = v
 }
 
-// GetContractTerm returns the ContractTerm field value
+// GetContractTerm returns the ContractTerm field value if set, zero value otherwise.
 func (o *LaunchInstanceOpts) GetContractTerm() ContractTerm {
-	if o == nil {
+	if o == nil || IsNil(o.ContractTerm) {
 		var ret ContractTerm
 		return ret
 	}
-
-	return o.ContractTerm
+	return *o.ContractTerm
 }
 
-// GetContractTermOk returns a tuple with the ContractTerm field value
+// GetContractTermOk returns a tuple with the ContractTerm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LaunchInstanceOpts) GetContractTermOk() (*ContractTerm, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ContractTerm) {
 		return nil, false
 	}
-	return &o.ContractTerm, true
+	return o.ContractTerm, true
 }
 
-// SetContractTerm sets field value
+// HasContractTerm returns a boolean if a field has been set.
+func (o *LaunchInstanceOpts) HasContractTerm() bool {
+	if o != nil && !IsNil(o.ContractTerm) {
+		return true
+	}
+
+	return false
+}
+
+// SetContractTerm gets a reference to the given ContractTerm and assigns it to the ContractTerm field.
 func (o *LaunchInstanceOpts) SetContractTerm(v ContractTerm) {
-	o.ContractTerm = v
+	o.ContractTerm = &v
 }
 
-// GetBillingFrequency returns the BillingFrequency field value
+// GetBillingFrequency returns the BillingFrequency field value if set, zero value otherwise.
 func (o *LaunchInstanceOpts) GetBillingFrequency() BillingFrequency {
-	if o == nil {
+	if o == nil || IsNil(o.BillingFrequency) {
 		var ret BillingFrequency
 		return ret
 	}
-
-	return o.BillingFrequency
+	return *o.BillingFrequency
 }
 
-// GetBillingFrequencyOk returns a tuple with the BillingFrequency field value
+// GetBillingFrequencyOk returns a tuple with the BillingFrequency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LaunchInstanceOpts) GetBillingFrequencyOk() (*BillingFrequency, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BillingFrequency) {
 		return nil, false
 	}
-	return &o.BillingFrequency, true
+	return o.BillingFrequency, true
 }
 
-// SetBillingFrequency sets field value
+// HasBillingFrequency returns a boolean if a field has been set.
+func (o *LaunchInstanceOpts) HasBillingFrequency() bool {
+	if o != nil && !IsNil(o.BillingFrequency) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingFrequency gets a reference to the given BillingFrequency and assigns it to the BillingFrequency field.
 func (o *LaunchInstanceOpts) SetBillingFrequency(v BillingFrequency) {
-	o.BillingFrequency = v
+	o.BillingFrequency = &v
 }
 
 // GetRootDiskSize returns the RootDiskSize field value if set, zero value otherwise.
@@ -415,8 +429,12 @@ func (o LaunchInstanceOpts) ToMap() (map[string]interface{}, error) {
 		toSerialize["reference"] = o.Reference
 	}
 	toSerialize["contractType"] = o.ContractType
-	toSerialize["contractTerm"] = o.ContractTerm
-	toSerialize["billingFrequency"] = o.BillingFrequency
+	if !IsNil(o.ContractTerm) {
+		toSerialize["contractTerm"] = o.ContractTerm
+	}
+	if !IsNil(o.BillingFrequency) {
+		toSerialize["billingFrequency"] = o.BillingFrequency
+	}
 	if !IsNil(o.RootDiskSize) {
 		toSerialize["rootDiskSize"] = o.RootDiskSize
 	}
@@ -444,8 +462,6 @@ func (o *LaunchInstanceOpts) UnmarshalJSON(data []byte) (err error) {
 		"type",
 		"imageId",
 		"contractType",
-		"contractTerm",
-		"billingFrequency",
 		"rootDiskStorageType",
 	}
 

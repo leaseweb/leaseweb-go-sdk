@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// BillingFrequency The billing frequency (in months) of the instance.
+// BillingFrequency The billing frequency (in months) of the instance. Used only when contract type is MONTHLY
 type BillingFrequency int32
 
 // List of billingFrequency
@@ -24,6 +24,7 @@ const (
 	BILLINGFREQUENCY__3 BillingFrequency = 3
 	BILLINGFREQUENCY__6 BillingFrequency = 6
 	BILLINGFREQUENCY__12 BillingFrequency = 12
+	BILLINGFREQUENCY__24 BillingFrequency = 24
 )
 
 // All allowed values of BillingFrequency enum
@@ -32,6 +33,7 @@ var AllowedBillingFrequencyEnumValues = []BillingFrequency{
 	3,
 	6,
 	12,
+	24,
 }
 
 func (v *BillingFrequency) UnmarshalJSON(src []byte) error {

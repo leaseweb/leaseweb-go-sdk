@@ -24,9 +24,9 @@ type ContractTerm struct {
 	// Contract term description
 	Description *string `json:"description,omitempty"`
 	// Discount in percentage
-	DiscountText *string `json:"discount_text,omitempty"`
+	DiscountText *string `json:"discountText,omitempty"`
 	// Discount value
-	DiscountValue *float32 `json:"discount_value,omitempty"`
+	DiscountValue *float32 `json:"discountValue,omitempty"`
 	// Total price with discount
 	Total *float32 `json:"total,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -228,10 +228,10 @@ func (o ContractTerm) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.DiscountText) {
-		toSerialize["discount_text"] = o.DiscountText
+		toSerialize["discountText"] = o.DiscountText
 	}
 	if !IsNil(o.DiscountValue) {
-		toSerialize["discount_value"] = o.DiscountValue
+		toSerialize["discountValue"] = o.DiscountValue
 	}
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
@@ -260,8 +260,8 @@ func (o *ContractTerm) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "discount_text")
-		delete(additionalProperties, "discount_value")
+		delete(additionalProperties, "discountText")
+		delete(additionalProperties, "discountValue")
 		delete(additionalProperties, "total")
 		o.AdditionalProperties = additionalProperties
 	}

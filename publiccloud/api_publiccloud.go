@@ -756,7 +756,7 @@ Allowed only one snapshot per instance.
 	GetReinstallImageListExecute(r ApiGetReinstallImageListRequest) (*GetReinstallImageListResult, *http.Response, error)
 
 	/*
-	GetRequestsMetrics Get load balancer requests metrics
+	GetRequestsMetrics Get load balancer requests metrics. Not available for listeners with TCP protocol
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param loadBalancerId Load balancer ID
@@ -769,7 +769,7 @@ Allowed only one snapshot per instance.
 	GetRequestsMetricsExecute(r ApiGetRequestsMetricsRequest) (*GetRequestsMetricsResult, *http.Response, error)
 
 	/*
-	GetRequestsPerSecondMetrics Get load balancer requests per second metrics
+	GetRequestsPerSecondMetrics Get load balancer requests per second metrics. Not available for listeners with TCP protocol
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param loadBalancerId Load balancer ID
@@ -11295,7 +11295,7 @@ func (r ApiGetRequestsMetricsRequest) Execute() (*GetRequestsMetricsResult, *htt
 }
 
 /*
-GetRequestsMetrics Get load balancer requests metrics
+GetRequestsMetrics Get load balancer requests metrics. Not available for listeners with TCP protocol
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param loadBalancerId Load balancer ID
@@ -11505,7 +11505,7 @@ func (r ApiGetRequestsPerSecondMetricsRequest) Execute() (*GetRequestsPerSecondM
 }
 
 /*
-GetRequestsPerSecondMetrics Get load balancer requests per second metrics
+GetRequestsPerSecondMetrics Get load balancer requests per second metrics. Not available for listeners with TCP protocol
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param loadBalancerId Load balancer ID
@@ -16722,6 +16722,12 @@ type ApiTerminateInstanceRequest struct {
 	ctx context.Context
 	ApiService PubliccloudAPI
 	instanceId string
+	terminateInstanceOpts *TerminateInstanceOpts
+}
+
+func (r ApiTerminateInstanceRequest) TerminateInstanceOpts(terminateInstanceOpts TerminateInstanceOpts) ApiTerminateInstanceRequest {
+	r.terminateInstanceOpts = &terminateInstanceOpts
+	return r
 }
 
 func (r ApiTerminateInstanceRequest) Execute() (*http.Response, error) {
@@ -16764,9 +16770,12 @@ func (a *PubliccloudAPIService) TerminateInstanceExecute(r ApiTerminateInstanceR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.terminateInstanceOpts == nil {
+		return nil, reportError("terminateInstanceOpts is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -16782,6 +16791,8 @@ func (a *PubliccloudAPIService) TerminateInstanceExecute(r ApiTerminateInstanceR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.terminateInstanceOpts
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -16893,6 +16904,12 @@ type ApiTerminateLoadBalancerRequest struct {
 	ctx context.Context
 	ApiService PubliccloudAPI
 	loadBalancerId string
+	terminateLoadBalancerOpts *TerminateLoadBalancerOpts
+}
+
+func (r ApiTerminateLoadBalancerRequest) TerminateLoadBalancerOpts(terminateLoadBalancerOpts TerminateLoadBalancerOpts) ApiTerminateLoadBalancerRequest {
+	r.terminateLoadBalancerOpts = &terminateLoadBalancerOpts
+	return r
 }
 
 func (r ApiTerminateLoadBalancerRequest) Execute() (*http.Response, error) {
@@ -16935,9 +16952,12 @@ func (a *PubliccloudAPIService) TerminateLoadBalancerExecute(r ApiTerminateLoadB
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.terminateLoadBalancerOpts == nil {
+		return nil, reportError("terminateLoadBalancerOpts is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -16953,6 +16973,8 @@ func (a *PubliccloudAPIService) TerminateLoadBalancerExecute(r ApiTerminateLoadB
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.terminateLoadBalancerOpts
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

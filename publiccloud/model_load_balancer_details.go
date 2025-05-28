@@ -34,7 +34,7 @@ type LoadBalancerDetails struct {
 	Configuration NullableLoadBalancerConfiguration `json:"configuration"`
 	AutoScalingGroup NullableAutoScalingGroup `json:"autoScalingGroup"`
 	PrivateNetwork NullablePrivateNetwork `json:"privateNetwork"`
-	Contract Contract `json:"contract"`
+	Contract InstanceContract `json:"contract"`
 	Ips []IpDetails `json:"ips"`
 	AdditionalProperties map[string]interface{}
 }
@@ -45,7 +45,7 @@ type _LoadBalancerDetails LoadBalancerDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLoadBalancerDetails(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract Contract, ips []IpDetails) *LoadBalancerDetails {
+func NewLoadBalancerDetails(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract InstanceContract, ips []IpDetails) *LoadBalancerDetails {
 	this := LoadBalancerDetails{}
 	this.Id = id
 	this.Type = type_
@@ -321,9 +321,9 @@ func (o *LoadBalancerDetails) SetPrivateNetwork(v PrivateNetwork) {
 }
 
 // GetContract returns the Contract field value
-func (o *LoadBalancerDetails) GetContract() Contract {
+func (o *LoadBalancerDetails) GetContract() InstanceContract {
 	if o == nil {
-		var ret Contract
+		var ret InstanceContract
 		return ret
 	}
 
@@ -332,7 +332,7 @@ func (o *LoadBalancerDetails) GetContract() Contract {
 
 // GetContractOk returns a tuple with the Contract field value
 // and a boolean to check if the value has been set.
-func (o *LoadBalancerDetails) GetContractOk() (*Contract, bool) {
+func (o *LoadBalancerDetails) GetContractOk() (*InstanceContract, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -340,7 +340,7 @@ func (o *LoadBalancerDetails) GetContractOk() (*Contract, bool) {
 }
 
 // SetContract sets field value
-func (o *LoadBalancerDetails) SetContract(v Contract) {
+func (o *LoadBalancerDetails) SetContract(v InstanceContract) {
 	o.Contract = v
 }
 

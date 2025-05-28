@@ -41,7 +41,7 @@ type Instance struct {
 	// The root disk's size in GB. Must be at least 5 GB for Linux and FreeBSD instances and 50 GB for Windows instances
 	RootDiskSize int32 `json:"rootDiskSize"`
 	RootDiskStorageType StorageType `json:"rootDiskStorageType"`
-	Contract Contract `json:"contract"`
+	Contract InstanceContract `json:"contract"`
 	AutoScalingGroup NullableAutoScalingGroup `json:"autoScalingGroup"`
 	Image Image `json:"image"`
 	Ips []Ip `json:"ips"`
@@ -54,7 +54,7 @@ type _Instance Instance
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInstance(id string, type_ TypeName, resources Resources, region RegionName, reference NullableString, startedAt NullableTime, marketAppId NullableString, state State, productType string, hasPublicIpV4 bool, hasPrivateNetwork bool, hasUserData bool, rootDiskSize int32, rootDiskStorageType StorageType, contract Contract, autoScalingGroup NullableAutoScalingGroup, image Image, ips []Ip) *Instance {
+func NewInstance(id string, type_ TypeName, resources Resources, region RegionName, reference NullableString, startedAt NullableTime, marketAppId NullableString, state State, productType string, hasPublicIpV4 bool, hasPrivateNetwork bool, hasUserData bool, rootDiskSize int32, rootDiskStorageType StorageType, contract InstanceContract, autoScalingGroup NullableAutoScalingGroup, image Image, ips []Ip) *Instance {
 	this := Instance{}
 	this.Id = id
 	this.Type = type_
@@ -428,9 +428,9 @@ func (o *Instance) SetRootDiskStorageType(v StorageType) {
 }
 
 // GetContract returns the Contract field value
-func (o *Instance) GetContract() Contract {
+func (o *Instance) GetContract() InstanceContract {
 	if o == nil {
-		var ret Contract
+		var ret InstanceContract
 		return ret
 	}
 
@@ -439,7 +439,7 @@ func (o *Instance) GetContract() Contract {
 
 // GetContractOk returns a tuple with the Contract field value
 // and a boolean to check if the value has been set.
-func (o *Instance) GetContractOk() (*Contract, bool) {
+func (o *Instance) GetContractOk() (*InstanceContract, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -447,7 +447,7 @@ func (o *Instance) GetContractOk() (*Contract, bool) {
 }
 
 // SetContract sets field value
-func (o *Instance) SetContract(v Contract) {
+func (o *Instance) SetContract(v InstanceContract) {
 	o.Contract = v
 }
 

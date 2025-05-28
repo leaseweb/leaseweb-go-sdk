@@ -695,13 +695,16 @@ paths:
                     networkType: INTERNAL
                   startedAt: 2024-04-09T15:11:37+00:00
                   contract:
+                    id: ""
                     billingFrequency: 1
                     term: 0
                     type: HOURLY
-                    endsAt: null
-                    renewalsAt: 2024-04-09T15:28:28+00:00
-                    createdAt: 2024-04-09T15:11:21+00:00
                     state: ACTIVE
+                    endsAt: null
+                    startsAt: 2024-10-24T21:13:25+00:00
+                    sla: Basic
+                    controlPanel: cPanel Admin 5
+                    inModification: false
                 - marketAppId: null
                   productType: INSTANCE
                   autoScalingGroup:
@@ -759,13 +762,16 @@ paths:
                     networkType: INTERNAL
                   startedAt: 2024-04-09T15:11:37+00:00
                   contract:
+                    id: ""
                     billingFrequency: 1
                     term: 0
                     type: HOURLY
-                    endsAt: null
-                    renewalsAt: 2024-04-09T15:28:28+00:00
-                    createdAt: 2024-04-09T15:11:21+00:00
                     state: ACTIVE
+                    endsAt: null
+                    startsAt: 2024-10-24T21:13:25+00:00
+                    sla: Basic
+                    controlPanel: cPanel Admin 5
+                    inModification: false
                 - marketAppId: null
                   productType: INSTANCE
                   autoScalingGroup:
@@ -823,13 +829,16 @@ paths:
                     networkType: INTERNAL
                   startedAt: 2024-04-09T15:11:37+00:00
                   contract:
+                    id: ""
                     billingFrequency: 1
                     term: 0
                     type: HOURLY
-                    endsAt: null
-                    renewalsAt: 2024-04-09T15:28:28+00:00
-                    createdAt: 2024-04-09T15:11:21+00:00
                     state: ACTIVE
+                    endsAt: null
+                    startsAt: 2024-10-24T21:13:25+00:00
+                    sla: Basic
+                    controlPanel: cPanel Admin 5
+                    inModification: false
                 - marketAppId: null
                   productType: INSTANCE
                   autoScalingGroup:
@@ -887,13 +896,16 @@ paths:
                     networkType: INTERNAL
                   startedAt: 2024-04-09T15:11:37+00:00
                   contract:
+                    id: ""
                     billingFrequency: 1
                     term: 0
                     type: HOURLY
-                    endsAt: null
-                    renewalsAt: 2024-04-09T15:28:28+00:00
-                    createdAt: 2024-04-09T15:11:21+00:00
                     state: ACTIVE
+                    endsAt: null
+                    startsAt: 2024-10-24T21:13:25+00:00
+                    sla: Basic
+                    controlPanel: cPanel Admin 5
+                    inModification: false
               schema:
                 $ref: '#/components/schemas/instanceList'
           description: OK.
@@ -950,8 +962,8 @@ paths:
           application/json:
             example:
               billingFrequency: 1
-              contractTerm: 0
-              contractType: HOURLY
+              contractTerm: 12
+              contractType: MONTHLY
               imageId: UBUNTU_20_04_64BIT
               reference: my-webserver
               region: eu-west-3
@@ -975,13 +987,16 @@ paths:
               example:
                 autoScalingGroup: null
                 contract:
+                  id: "41228459000100"
                   billingFrequency: 1
-                  term: 0
-                  type: HOURLY
-                  endsAt: null
-                  renewalsAt: 2024-04-09T15:28:28+00:00
-                  createdAt: 2024-04-09T15:11:21+00:00
+                  term: 12
+                  type: MONTHLY
                   state: ACTIVE
+                  endsAt: 2024-10-24T21:13:25+00:00
+                  startsAt: 2024-10-24T21:13:25+00:00
+                  sla: Basic
+                  controlPanel: cPanel Admin 5
+                  inModification: false
                 hasPrivateNetwork: false
                 hasPublicIpV4: true
                 hasUserData: true
@@ -1094,6 +1109,14 @@ paths:
           format: uuid
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              reasonCode: CANCEL_TRIAL_PERIOD
+            schema:
+              $ref: '#/components/schemas/terminateInstanceOpts'
+        required: true
       responses:
         "200":
           description: "If instance is hourly, it is scheduled for termination immediately,\
@@ -1184,13 +1207,16 @@ paths:
               example:
                 autoScalingGroup: null
                 contract:
+                  id: ""
                   billingFrequency: 1
                   term: 0
                   type: HOURLY
-                  endsAt: null
-                  renewalsAt: 2024-04-09T15:28:28+00:00
-                  createdAt: 2024-04-09T15:11:21+00:00
                   state: ACTIVE
+                  endsAt: null
+                  startsAt: 2024-10-24T21:13:25+00:00
+                  sla: Basic
+                  controlPanel: cPanel Admin 5
+                  inModification: false
                 hasPrivateNetwork: false
                 hasPublicIpV4: true
                 hasUserData: false
@@ -1344,13 +1370,16 @@ paths:
               example:
                 autoScalingGroup: null
                 contract:
+                  id: ""
                   billingFrequency: 1
                   term: 0
                   type: HOURLY
-                  endsAt: null
-                  renewalsAt: 2024-04-09T15:28:28+00:00
-                  createdAt: 2024-04-09T15:11:21+00:00
                   state: ACTIVE
+                  endsAt: null
+                  startsAt: 2024-10-24T21:13:25+00:00
+                  sla: Basic
+                  controlPanel: cPanel Admin 5
+                  inModification: false
                 hasPrivateNetwork: false
                 hasPublicIpV4: true
                 hasUserData: false
@@ -3325,13 +3354,16 @@ paths:
                         value: 1000
                         unit: Mbps
                     contract:
+                      id: ""
                       billingFrequency: 1
                       term: 0
                       type: HOURLY
-                      endsAt: null
-                      renewalsAt: 2024-04-09T15:28:28+00:00
-                      createdAt: 2024-04-09T15:11:21+00:00
                       state: ACTIVE
+                      endsAt: null
+                      startsAt: 2024-10-24T21:13:25+00:00
+                      sla: Basic
+                      controlPanel: cPanel Admin 5
+                      inModification: false
                     startedAt: 2023-11-30T16:31:46+00:00
                     endedAt: 2023-11-30T16:40:46+00:00
                     rootDiskSize: 15
@@ -4655,13 +4687,16 @@ paths:
                     mainIp: false
                   startedAt: 2024-04-09T15:11:37+00:00
                   contract:
+                    id: ""
                     billingFrequency: 1
                     term: 0
                     type: HOURLY
-                    endsAt: null
-                    renewalsAt: 2024-04-09T15:28:28+00:00
-                    createdAt: 2024-04-09T15:11:21+00:00
                     state: ACTIVE
+                    endsAt: null
+                    startsAt: 2024-10-24T21:13:25+00:00
+                    sla: Basic
+                    controlPanel: cPanel Admin 5
+                    inModification: false
                   configuration:
                     stickySession:
                       enabled: true
@@ -4787,13 +4822,16 @@ paths:
                     protectionType: STANDARD
                 startedAt: 2024-04-09T15:11:37+00:00
                 contract:
+                  id: ""
                   billingFrequency: 1
                   term: 0
                   type: HOURLY
-                  endsAt: null
-                  renewalsAt: 2024-04-09T15:28:28+00:00
-                  createdAt: 2024-04-09T15:11:21+00:00
                   state: ACTIVE
+                  endsAt: null
+                  startsAt: 2024-10-24T21:13:25+00:00
+                  sla: Basic
+                  controlPanel: cPanel Admin 5
+                  inModification: false
                 configuration:
                   stickySession: null
                   balance: roundrobin
@@ -4871,6 +4909,14 @@ paths:
           format: uuid
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              reasonCode: CANCEL_TRIAL_PERIOD
+            schema:
+              $ref: '#/components/schemas/terminateLoadBalancerOpts'
+        required: true
       responses:
         "202":
           description: "If load balancer contractType is hourly, it is scheduled for\
@@ -4992,13 +5038,16 @@ paths:
                     protectionType: STANDARD
                 startedAt: 2024-04-09T15:11:37+00:00
                 contract:
+                  id: ""
                   billingFrequency: 1
                   term: 0
                   type: HOURLY
-                  endsAt: null
-                  renewalsAt: 2024-04-09T15:28:28+00:00
-                  createdAt: 2024-04-09T15:11:21+00:00
                   state: ACTIVE
+                  endsAt: null
+                  startsAt: 2024-10-24T21:13:25+00:00
+                  sla: Basic
+                  controlPanel: cPanel Admin 5
+                  inModification: false
                 configuration:
                   stickySession: null
                   balance: roundrobin
@@ -5125,13 +5174,16 @@ paths:
                     protectionType: STANDARD
                 startedAt: 2024-04-09T15:11:37+00:00
                 contract:
+                  id: ""
                   billingFrequency: 1
                   term: 0
                   type: HOURLY
-                  endsAt: null
-                  renewalsAt: 2024-04-09T15:28:28+00:00
-                  createdAt: 2024-04-09T15:11:21+00:00
                   state: ACTIVE
+                  endsAt: null
+                  startsAt: 2024-10-24T21:13:25+00:00
+                  sla: Basic
+                  controlPanel: cPanel Admin 5
+                  inModification: false
                 configuration:
                   stickySession: null
                   balance: roundrobin
@@ -7572,7 +7624,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/errorResult'
           description: Service Unavailable.
-      summary: Get load balancer requests metrics
+      summary: Get load balancer requests metrics. Not available for listeners with
+        TCP protocol
       tags:
       - publiccloud
   /loadBalancers/{loadBalancerId}/metrics/requestsPerSecond:
@@ -7710,7 +7763,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/errorResult'
           description: Service Unavailable.
-      summary: Get load balancer requests per second metrics
+      summary: Get load balancer requests per second metrics. Not available for listeners
+        with TCP protocol
       tags:
       - publiccloud
   /loadBalancers/{loadBalancerId}/metrics/dataTransferred:
@@ -12922,12 +12976,14 @@ components:
       minimum: 5
       type: integer
     billingFrequency:
-      description: The billing frequency (in months) of the instance.
+      description: The billing frequency (in months) of the instance. Used only when
+        contract type is MONTHLY
       enum:
       - 1
       - 3
       - 6
       - 12
+      - 24
       example: 1
       type: integer
     contractTerm:
@@ -12938,14 +12994,19 @@ components:
       - 3
       - 6
       - 12
+      - 24
+      - 36
       type: integer
-    contract:
+    instanceContract:
       example:
         billingFrequency: 1
-        createdAt: 2023-11-30T16:31:28Z
+        controlPanel: cPanel Admin 5
+        inModification: false
+        startsAt: 2023-11-30T16:31:28Z
+        sla: Basic
         term: 6
         state: ACTIVE
-        renewalsAt: 2023-11-30T16:31:28Z
+        id: "41228459000100"
         type: HOURLY
         endsAt: 2023-11-30T16:31:28Z
       properties:
@@ -12956,31 +13017,43 @@ components:
         type:
           $ref: '#/components/schemas/contractType'
         endsAt:
+          description: End date is null for hourly instances
           example: 2023-11-30T16:31:28Z
           format: date-time
           nullable: true
           type: string
-        createdAt:
-          description: Date when the contract was created
+        startsAt:
+          description: Date when the contract is starting
           example: 2023-11-30T16:31:28Z
           format: date-time
           type: string
         state:
           $ref: '#/components/schemas/contractState'
-        renewalsAt:
-          description: Date when the contract will be automatically renewed
-          example: 2023-11-30T16:31:28Z
-          format: date-time
+        id:
+          description: Contract id is empty for hourly instances
+          example: "41228459000100"
           type: string
+        sla:
+          example: Basic
+          type: string
+        controlPanel:
+          example: cPanel Admin 5
+          nullable: true
+          type: string
+        inModification:
+          example: false
+          type: boolean
       required:
       - billingFrequency
-      - createdAt
+      - controlPanel
       - endsAt
-      - renewalsAt
+      - id
+      - inModification
+      - sla
+      - startsAt
       - state
       - term
       - type
-      title: contract
       type: object
     autoScalingGroupType:
       description: Auto Scaling Group type
@@ -13227,10 +13300,13 @@ components:
         rootDiskSize: 84
         contract:
           billingFrequency: 1
-          createdAt: 2023-11-30T16:31:28Z
+          controlPanel: cPanel Admin 5
+          inModification: false
+          startsAt: 2023-11-30T16:31:28Z
+          sla: Basic
           term: 6
           state: ACTIVE
-          renewalsAt: 2023-11-30T16:31:28Z
+          id: "41228459000100"
           type: HOURLY
           endsAt: 2023-11-30T16:31:28Z
         hasPrivateNetwork: true
@@ -13317,7 +13393,7 @@ components:
         rootDiskStorageType:
           $ref: '#/components/schemas/storageType'
         contract:
-          $ref: '#/components/schemas/contract'
+          $ref: '#/components/schemas/instanceContract'
         autoScalingGroup:
           $ref: '#/components/schemas/autoScalingGroup'
         image:
@@ -13376,10 +13452,13 @@ components:
           rootDiskSize: 84
           contract:
             billingFrequency: 1
-            createdAt: 2023-11-30T16:31:28Z
+            controlPanel: cPanel Admin 5
+            inModification: false
+            startsAt: 2023-11-30T16:31:28Z
+            sla: Basic
             term: 6
             state: ACTIVE
-            renewalsAt: 2023-11-30T16:31:28Z
+            id: "41228459000100"
             type: HOURLY
             endsAt: 2023-11-30T16:31:28Z
           hasPrivateNetwork: true
@@ -13447,10 +13526,13 @@ components:
           rootDiskSize: 84
           contract:
             billingFrequency: 1
-            createdAt: 2023-11-30T16:31:28Z
+            controlPanel: cPanel Admin 5
+            inModification: false
+            startsAt: 2023-11-30T16:31:28Z
+            sla: Basic
             term: 6
             state: ACTIVE
-            renewalsAt: 2023-11-30T16:31:28Z
+            id: "41228459000100"
             type: HOURLY
             endsAt: 2023-11-30T16:31:28Z
           hasPrivateNetwork: true
@@ -13554,8 +13636,6 @@ components:
             \  owner: root:root\n  path: /tmp/3.txt\n  permissions: '0644'\n"
           type: string
       required:
-      - billingFrequency
-      - contractTerm
       - contractType
       - imageId
       - region
@@ -13656,10 +13736,13 @@ components:
         rootDiskSize: 84
         contract:
           billingFrequency: 1
-          createdAt: 2023-11-30T16:31:28Z
+          controlPanel: cPanel Admin 5
+          inModification: false
+          startsAt: 2023-11-30T16:31:28Z
+          sla: Basic
           term: 6
           state: ACTIVE
-          renewalsAt: 2023-11-30T16:31:28Z
+          id: "41228459000100"
           type: HOURLY
           endsAt: 2023-11-30T16:31:28Z
         hasPrivateNetwork: true
@@ -13752,7 +13835,7 @@ components:
         rootDiskStorageType:
           $ref: '#/components/schemas/storageType'
         contract:
-          $ref: '#/components/schemas/contract'
+          $ref: '#/components/schemas/instanceContract'
         autoScalingGroup:
           $ref: '#/components/schemas/autoScalingGroup'
         image:
@@ -13806,6 +13889,16 @@ components:
           maximum: 1000
           minimum: 5
           type: integer
+      type: object
+    terminateInstanceOpts:
+      properties:
+        reasonCode:
+          description: "The reason code for terminating the instance. This is a required\
+            \ field. Please refer at this page for the valid options: [Cancel Reasons](https://developer.leaseweb.com/docs/#tag/Services/operation/services-cancel-reasons-get)"
+          type: string
+        reason:
+          description: Required only when reasonCode is CANCEL_OTHER.
+          type: string
       type: object
     getConsoleAccessResult:
       example:
@@ -13967,10 +14060,13 @@ components:
             rootDiskSize: 84
             contract:
               billingFrequency: 1
-              createdAt: 2023-11-30T16:31:28Z
+              controlPanel: cPanel Admin 5
+              inModification: false
+              startsAt: 2023-11-30T16:31:28Z
+              sla: Basic
               term: 6
               state: ACTIVE
-              renewalsAt: 2023-11-30T16:31:28Z
+              id: "41228459000100"
               type: HOURLY
               endsAt: 2023-11-30T16:31:28Z
             resources:
@@ -13999,10 +14095,13 @@ components:
             rootDiskSize: 84
             contract:
               billingFrequency: 1
-              createdAt: 2023-11-30T16:31:28Z
+              controlPanel: cPanel Admin 5
+              inModification: false
+              startsAt: 2023-11-30T16:31:28Z
+              sla: Basic
               term: 6
               state: ACTIVE
-              renewalsAt: 2023-11-30T16:31:28Z
+              id: "41228459000100"
               type: HOURLY
               endsAt: 2023-11-30T16:31:28Z
             resources:
@@ -14479,10 +14578,13 @@ components:
           updatedAt: 2000-01-23T04:56:07.000+00:00
         contract:
           billingFrequency: 1
-          createdAt: 2023-11-30T16:31:28Z
+          controlPanel: cPanel Admin 5
+          inModification: false
+          startsAt: 2023-11-30T16:31:28Z
+          sla: Basic
           term: 6
           state: ACTIVE
-          renewalsAt: 2023-11-30T16:31:28Z
+          id: "41228459000100"
           type: HOURLY
           endsAt: 2023-11-30T16:31:28Z
         resources:
@@ -14548,7 +14650,7 @@ components:
         privateNetwork:
           $ref: '#/components/schemas/privateNetwork'
         contract:
-          $ref: '#/components/schemas/contract'
+          $ref: '#/components/schemas/instanceContract'
         ips:
           items:
             $ref: '#/components/schemas/ip'
@@ -14600,10 +14702,13 @@ components:
             updatedAt: 2000-01-23T04:56:07.000+00:00
           contract:
             billingFrequency: 1
-            createdAt: 2023-11-30T16:31:28Z
+            controlPanel: cPanel Admin 5
+            inModification: false
+            startsAt: 2023-11-30T16:31:28Z
+            sla: Basic
             term: 6
             state: ACTIVE
-            renewalsAt: 2023-11-30T16:31:28Z
+            id: "41228459000100"
             type: HOURLY
             endsAt: 2023-11-30T16:31:28Z
           resources:
@@ -14669,10 +14774,13 @@ components:
             updatedAt: 2000-01-23T04:56:07.000+00:00
           contract:
             billingFrequency: 1
-            createdAt: 2023-11-30T16:31:28Z
+            controlPanel: cPanel Admin 5
+            inModification: false
+            startsAt: 2023-11-30T16:31:28Z
+            sla: Basic
             term: 6
             state: ACTIVE
-            renewalsAt: 2023-11-30T16:31:28Z
+            id: "41228459000100"
             type: HOURLY
             endsAt: 2023-11-30T16:31:28Z
           resources:
@@ -14736,8 +14844,6 @@ components:
         billingFrequency:
           $ref: '#/components/schemas/billingFrequency'
       required:
-      - billingFrequency
-      - contractTerm
       - contractType
       - region
       - type
@@ -14774,10 +14880,13 @@ components:
           updatedAt: 2000-01-23T04:56:07.000+00:00
         contract:
           billingFrequency: 1
-          createdAt: 2023-11-30T16:31:28Z
+          controlPanel: cPanel Admin 5
+          inModification: false
+          startsAt: 2023-11-30T16:31:28Z
+          sla: Basic
           term: 6
           state: ACTIVE
-          renewalsAt: 2023-11-30T16:31:28Z
+          id: "41228459000100"
           type: HOURLY
           endsAt: 2023-11-30T16:31:28Z
         resources:
@@ -14849,7 +14958,7 @@ components:
         privateNetwork:
           $ref: '#/components/schemas/privateNetwork'
         contract:
-          $ref: '#/components/schemas/contract'
+          $ref: '#/components/schemas/instanceContract'
         ips:
           items:
             $ref: '#/components/schemas/ipDetails'
@@ -14887,6 +14996,18 @@ components:
         idleTimeOut:
           description: Time to close the connection if load balancer is idle
           type: integer
+      type: object
+    terminateLoadBalancerOpts:
+      properties:
+        reasonCode:
+          description: "The reason code for terminating the instance. This is a required\
+            \ field. Please refer at this page for the valid options: [Cancel Reasons](https://developer.leaseweb.com/docs/#tag/Services/operation/services-cancel-reasons-get)"
+          type: string
+        reason:
+          description: Required only when reasonCode is CANCEL_OTHER.
+          type: string
+      required:
+      - reasonCode
       type: object
     protocol:
       enum:
@@ -16669,10 +16790,13 @@ components:
         rootDiskSize: 84
         contract:
           billingFrequency: 1
-          createdAt: 2023-11-30T16:31:28Z
+          controlPanel: cPanel Admin 5
+          inModification: false
+          startsAt: 2023-11-30T16:31:28Z
+          sla: Basic
           term: 6
           state: ACTIVE
-          renewalsAt: 2023-11-30T16:31:28Z
+          id: "41228459000100"
           type: HOURLY
           endsAt: 2023-11-30T16:31:28Z
         resources:
@@ -16708,7 +16832,7 @@ components:
         resources:
           $ref: '#/components/schemas/resources'
         contract:
-          $ref: '#/components/schemas/contract'
+          $ref: '#/components/schemas/instanceContract'
         startedAt:
           description: Date when the instance was started
           example: 2023-11-30T16:31:46Z
@@ -16813,10 +16937,13 @@ components:
           rootDiskSize: 84
           contract:
             billingFrequency: 1
-            createdAt: 2023-11-30T16:31:28Z
+            controlPanel: cPanel Admin 5
+            inModification: false
+            startsAt: 2023-11-30T16:31:28Z
+            sla: Basic
             term: 6
             state: ACTIVE
-            renewalsAt: 2023-11-30T16:31:28Z
+            id: "41228459000100"
             type: HOURLY
             endsAt: 2023-11-30T16:31:28Z
           resources:
@@ -16845,10 +16972,13 @@ components:
           rootDiskSize: 84
           contract:
             billingFrequency: 1
-            createdAt: 2023-11-30T16:31:28Z
+            controlPanel: cPanel Admin 5
+            inModification: false
+            startsAt: 2023-11-30T16:31:28Z
+            sla: Basic
             term: 6
             state: ACTIVE
-            renewalsAt: 2023-11-30T16:31:28Z
+            id: "41228459000100"
             type: HOURLY
             endsAt: 2023-11-30T16:31:28Z
           resources:

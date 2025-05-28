@@ -25,8 +25,8 @@ type LaunchLoadBalancerOpts struct {
 	// An identifying name you can refer to the load balancer
 	Reference *string `json:"reference,omitempty"`
 	ContractType ContractType `json:"contractType"`
-	ContractTerm ContractTerm `json:"contractTerm"`
-	BillingFrequency BillingFrequency `json:"billingFrequency"`
+	ContractTerm *ContractTerm `json:"contractTerm,omitempty"`
+	BillingFrequency *BillingFrequency `json:"billingFrequency,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,13 +36,11 @@ type _LaunchLoadBalancerOpts LaunchLoadBalancerOpts
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLaunchLoadBalancerOpts(region RegionName, type_ TypeName, contractType ContractType, contractTerm ContractTerm, billingFrequency BillingFrequency) *LaunchLoadBalancerOpts {
+func NewLaunchLoadBalancerOpts(region RegionName, type_ TypeName, contractType ContractType) *LaunchLoadBalancerOpts {
 	this := LaunchLoadBalancerOpts{}
 	this.Region = region
 	this.Type = type_
 	this.ContractType = contractType
-	this.ContractTerm = contractTerm
-	this.BillingFrequency = billingFrequency
 	return &this
 }
 
@@ -158,52 +156,68 @@ func (o *LaunchLoadBalancerOpts) SetContractType(v ContractType) {
 	o.ContractType = v
 }
 
-// GetContractTerm returns the ContractTerm field value
+// GetContractTerm returns the ContractTerm field value if set, zero value otherwise.
 func (o *LaunchLoadBalancerOpts) GetContractTerm() ContractTerm {
-	if o == nil {
+	if o == nil || IsNil(o.ContractTerm) {
 		var ret ContractTerm
 		return ret
 	}
-
-	return o.ContractTerm
+	return *o.ContractTerm
 }
 
-// GetContractTermOk returns a tuple with the ContractTerm field value
+// GetContractTermOk returns a tuple with the ContractTerm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LaunchLoadBalancerOpts) GetContractTermOk() (*ContractTerm, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ContractTerm) {
 		return nil, false
 	}
-	return &o.ContractTerm, true
+	return o.ContractTerm, true
 }
 
-// SetContractTerm sets field value
+// HasContractTerm returns a boolean if a field has been set.
+func (o *LaunchLoadBalancerOpts) HasContractTerm() bool {
+	if o != nil && !IsNil(o.ContractTerm) {
+		return true
+	}
+
+	return false
+}
+
+// SetContractTerm gets a reference to the given ContractTerm and assigns it to the ContractTerm field.
 func (o *LaunchLoadBalancerOpts) SetContractTerm(v ContractTerm) {
-	o.ContractTerm = v
+	o.ContractTerm = &v
 }
 
-// GetBillingFrequency returns the BillingFrequency field value
+// GetBillingFrequency returns the BillingFrequency field value if set, zero value otherwise.
 func (o *LaunchLoadBalancerOpts) GetBillingFrequency() BillingFrequency {
-	if o == nil {
+	if o == nil || IsNil(o.BillingFrequency) {
 		var ret BillingFrequency
 		return ret
 	}
-
-	return o.BillingFrequency
+	return *o.BillingFrequency
 }
 
-// GetBillingFrequencyOk returns a tuple with the BillingFrequency field value
+// GetBillingFrequencyOk returns a tuple with the BillingFrequency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LaunchLoadBalancerOpts) GetBillingFrequencyOk() (*BillingFrequency, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BillingFrequency) {
 		return nil, false
 	}
-	return &o.BillingFrequency, true
+	return o.BillingFrequency, true
 }
 
-// SetBillingFrequency sets field value
+// HasBillingFrequency returns a boolean if a field has been set.
+func (o *LaunchLoadBalancerOpts) HasBillingFrequency() bool {
+	if o != nil && !IsNil(o.BillingFrequency) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingFrequency gets a reference to the given BillingFrequency and assigns it to the BillingFrequency field.
 func (o *LaunchLoadBalancerOpts) SetBillingFrequency(v BillingFrequency) {
-	o.BillingFrequency = v
+	o.BillingFrequency = &v
 }
 
 func (o LaunchLoadBalancerOpts) MarshalJSON() ([]byte, error) {
@@ -222,8 +236,12 @@ func (o LaunchLoadBalancerOpts) ToMap() (map[string]interface{}, error) {
 		toSerialize["reference"] = o.Reference
 	}
 	toSerialize["contractType"] = o.ContractType
-	toSerialize["contractTerm"] = o.ContractTerm
-	toSerialize["billingFrequency"] = o.BillingFrequency
+	if !IsNil(o.ContractTerm) {
+		toSerialize["contractTerm"] = o.ContractTerm
+	}
+	if !IsNil(o.BillingFrequency) {
+		toSerialize["billingFrequency"] = o.BillingFrequency
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -240,8 +258,6 @@ func (o *LaunchLoadBalancerOpts) UnmarshalJSON(data []byte) (err error) {
 		"region",
 		"type",
 		"contractType",
-		"contractTerm",
-		"billingFrequency",
 	}
 
 	allProperties := make(map[string]interface{})

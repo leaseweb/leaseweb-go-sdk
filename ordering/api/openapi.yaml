@@ -218,33 +218,33 @@ paths:
                   contractTerms:
                   - key: 1_MONTH
                     description: 1 month
-                    discount_text: 0%
-                    discount_value: 0
+                    discountText: 0%
+                    discountValue: 0
                     total: 123.5
                   - key: 3_MONTHS
                     description: 3 months
-                    discount_text: -1%
-                    discount_value: -1.23
+                    discountText: -1%
+                    discountValue: -1.23
                     total: 122.26
                   - key: 6_MONTHS
                     description: 6 months
-                    discount_text: -3%
-                    discount_value: -3.7
+                    discountText: -3%
+                    discountValue: -3.7
                     total: 120.93
                   - key: 1_YEAR
                     description: 1 year
-                    discount_text: -5%
-                    discount_value: -6.17
+                    discountText: -5%
+                    discountValue: -6.17
                     total: 117.32
                   - key: 2_YEARS
                     description: 2 years
-                    discount_text: -10%
-                    discount_value: -12.35
+                    discountText: -10%
+                    discountValue: -12.35
                     total: 113.59
                   - key: 3_YEARS
                     description: 3 years
-                    discount_text: -15%
-                    discount_value: -18.52
+                    discountText: -15%
+                    discountValue: -18.52
                     total: 109.86
                 ram:
                   size: "32"
@@ -655,14 +655,14 @@ components:
           contractTerms:
           - total: 3.616076749251911
             description: description
-            discount_value: 9.301444243932576
+            discountValue: 9.301444243932576
             key: key
-            discount_text: discount_text
+            discountText: discountText
           - total: 3.616076749251911
             description: description
-            discount_value: 9.301444243932576
+            discountValue: 9.301444243932576
             key: key
-            discount_text: discount_text
+            discountText: discountText
           total: 7.061401241503109
           discounts:
             total: 5.637376656633329
@@ -819,9 +819,9 @@ components:
       example:
         total: 3.616076749251911
         description: description
-        discount_value: 9.301444243932576
+        discountValue: 9.301444243932576
         key: key
-        discount_text: discount_text
+        discountText: discountText
       properties:
         key:
           description: Contract term key
@@ -829,10 +829,10 @@ components:
         description:
           description: Contract term description
           type: string
-        discount_text:
+        discountText:
           description: Discount in percentage
           type: string
-        discount_value:
+        discountValue:
           description: Discount value
           type: number
         total:
@@ -846,14 +846,14 @@ components:
         contractTerms:
         - total: 3.616076749251911
           description: description
-          discount_value: 9.301444243932576
+          discountValue: 9.301444243932576
           key: key
-          discount_text: discount_text
+          discountText: discountText
         - total: 3.616076749251911
           description: description
-          discount_value: 9.301444243932576
+          discountValue: 9.301444243932576
           key: key
-          discount_text: discount_text
+          discountText: discountText
         total: 7.061401241503109
         discounts:
           total: 5.637376656633329

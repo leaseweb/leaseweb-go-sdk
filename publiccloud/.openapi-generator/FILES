@@ -17,7 +17,6 @@ docs/Balance.md
 docs/Billing.md
 docs/BillingFrequency.md
 docs/Channel.md
-docs/Contract.md
 docs/ContractState.md
 docs/ContractTerm.md
 docs/ContractType.md
@@ -82,6 +81,7 @@ docs/ImageRegion.md
 docs/ImageState.md
 docs/ImageStateName.md
 docs/Instance.md
+docs/InstanceContract.md
 docs/InstanceDetails.md
 docs/InstanceList.md
 docs/InstanceType.md
@@ -143,6 +143,8 @@ docs/Summary.md
 docs/Target.md
 docs/TargetGroup.md
 docs/TargetGroupIdOpts.md
+docs/TerminateInstanceOpts.md
+docs/TerminateLoadBalancerOpts.md
 docs/Tier.md
 docs/TimePeriod.md
 docs/Traffic.md
@@ -179,7 +181,6 @@ model_balance.go
 model_billing.go
 model_billing_frequency.go
 model_channel.go
-model_contract.go
 model_contract_state.go
 model_contract_term.go
 model_contract_type.go
@@ -244,6 +245,7 @@ model_image_region.go
 model_image_state.go
 model_image_state_name.go
 model_instance.go
+model_instance_contract.go
 model_instance_details.go
 model_instance_list.go
 model_instance_type.go
@@ -302,6 +304,8 @@ model_summary.go
 model_target.go
 model_target_group.go
 model_target_group_id_opts.go
+model_terminate_instance_opts.go
+model_terminate_load_balancer_opts.go
 model_tier.go
 model_time_period.go
 model_traffic.go

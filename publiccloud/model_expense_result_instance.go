@@ -25,7 +25,7 @@ type ExpenseResultInstance struct {
 	// The reference of the instance.
 	Reference *string `json:"reference,omitempty"`
 	Resources *Resources `json:"resources,omitempty"`
-	Contract *Contract `json:"contract,omitempty"`
+	Contract *InstanceContract `json:"contract,omitempty"`
 	// Date when the instance was started
 	StartedAt *time.Time `json:"startedAt,omitempty"`
 	// Date when the instance ended
@@ -162,9 +162,9 @@ func (o *ExpenseResultInstance) SetResources(v Resources) {
 }
 
 // GetContract returns the Contract field value if set, zero value otherwise.
-func (o *ExpenseResultInstance) GetContract() Contract {
+func (o *ExpenseResultInstance) GetContract() InstanceContract {
 	if o == nil || IsNil(o.Contract) {
-		var ret Contract
+		var ret InstanceContract
 		return ret
 	}
 	return *o.Contract
@@ -172,7 +172,7 @@ func (o *ExpenseResultInstance) GetContract() Contract {
 
 // GetContractOk returns a tuple with the Contract field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExpenseResultInstance) GetContractOk() (*Contract, bool) {
+func (o *ExpenseResultInstance) GetContractOk() (*InstanceContract, bool) {
 	if o == nil || IsNil(o.Contract) {
 		return nil, false
 	}
@@ -188,8 +188,8 @@ func (o *ExpenseResultInstance) HasContract() bool {
 	return false
 }
 
-// SetContract gets a reference to the given Contract and assigns it to the Contract field.
-func (o *ExpenseResultInstance) SetContract(v Contract) {
+// SetContract gets a reference to the given InstanceContract and assigns it to the Contract field.
+func (o *ExpenseResultInstance) SetContract(v InstanceContract) {
 	o.Contract = &v
 }
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The unique identifier for the instance. | [optional] 
 **Reference** | Pointer to **string** | The reference of the instance. | [optional] 
 **Resources** | Pointer to [**Resources**](Resources.md) |  | [optional] 
-**Contract** | Pointer to [**Contract**](Contract.md) |  | [optional] 
+**Contract** | Pointer to [**InstanceContract**](InstanceContract.md) |  | [optional] 
 **StartedAt** | Pointer to **time.Time** | Date when the instance was started | [optional] 
 **EndedAt** | Pointer to **time.Time** | Date when the instance ended | [optional] 
 **RootDiskSize** | Pointer to **int32** | The root disk&#39;s size in GB. Must be at least 5 GB for Linux and FreeBSD instances and 50 GB for Windows instances | [optional] 
@@ -114,20 +114,20 @@ HasResources returns a boolean if a field has been set.
 
 ### GetContract
 
-`func (o *ExpenseResultInstance) GetContract() Contract`
+`func (o *ExpenseResultInstance) GetContract() InstanceContract`
 
 GetContract returns the Contract field if non-nil, zero value otherwise.
 
 ### GetContractOk
 
-`func (o *ExpenseResultInstance) GetContractOk() (*Contract, bool)`
+`func (o *ExpenseResultInstance) GetContractOk() (*InstanceContract, bool)`
 
 GetContractOk returns a tuple with the Contract field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContract
 
-`func (o *ExpenseResultInstance) SetContract(v Contract)`
+`func (o *ExpenseResultInstance) SetContract(v InstanceContract)`
 
 SetContract sets Contract field to given value.
 

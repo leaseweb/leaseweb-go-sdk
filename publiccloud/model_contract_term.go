@@ -25,6 +25,8 @@ const (
 	CONTRACTTERM__3 ContractTerm = 3
 	CONTRACTTERM__6 ContractTerm = 6
 	CONTRACTTERM__12 ContractTerm = 12
+	CONTRACTTERM__24 ContractTerm = 24
+	CONTRACTTERM__36 ContractTerm = 36
 )
 
 // All allowed values of ContractTerm enum
@@ -34,6 +36,8 @@ var AllowedContractTermEnumValues = []ContractTerm{
 	3,
 	6,
 	12,
+	24,
+	36,
 }
 
 func (v *ContractTerm) UnmarshalJSON(src []byte) error {

@@ -134,8 +134,8 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**GetNotificationSettingList**](docs/PubliccloudAPI.md#getnotificationsettinglist) | **Get** /instances/{instanceId}/notificationSettings/dataTraffic | List the notification settings of a customer
 *PubliccloudAPI* | [**GetRegionList**](docs/PubliccloudAPI.md#getregionlist) | **Get** /regions | List regions
 *PubliccloudAPI* | [**GetReinstallImageList**](docs/PubliccloudAPI.md#getreinstallimagelist) | **Get** /instances/{instanceId}/reinstall/images | List images available for reinstall
-*PubliccloudAPI* | [**GetRequestsMetrics**](docs/PubliccloudAPI.md#getrequestsmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/requests | Get load balancer requests metrics
-*PubliccloudAPI* | [**GetRequestsPerSecondMetrics**](docs/PubliccloudAPI.md#getrequestspersecondmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/requestsPerSecond | Get load balancer requests per second metrics
+*PubliccloudAPI* | [**GetRequestsMetrics**](docs/PubliccloudAPI.md#getrequestsmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/requests | Get load balancer requests metrics. Not available for listeners with TCP protocol
+*PubliccloudAPI* | [**GetRequestsPerSecondMetrics**](docs/PubliccloudAPI.md#getrequestspersecondmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/requestsPerSecond | Get load balancer requests per second metrics. Not available for listeners with TCP protocol
 *PubliccloudAPI* | [**GetResponseCodesMetrics**](docs/PubliccloudAPI.md#getresponsecodesmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/responseCodes | Get response codes metrics
 *PubliccloudAPI* | [**GetResponseCodesPerSecondMetrics**](docs/PubliccloudAPI.md#getresponsecodespersecondmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/responseCodesPerSecond | Get response codes per second metrics
 *PubliccloudAPI* | [**GetSnapshot**](docs/PubliccloudAPI.md#getsnapshot) | **Get** /instances/{instanceId}/snapshots/{snapshotId} | Get snapshot detail
@@ -190,7 +190,6 @@ Class | Method | HTTP request | Description
  - [Billing](docs/Billing.md)
  - [BillingFrequency](docs/BillingFrequency.md)
  - [Channel](docs/Channel.md)
- - [Contract](docs/Contract.md)
  - [ContractState](docs/ContractState.md)
  - [ContractTerm](docs/ContractTerm.md)
  - [ContractType](docs/ContractType.md)
@@ -255,6 +254,7 @@ Class | Method | HTTP request | Description
  - [ImageState](docs/ImageState.md)
  - [ImageStateName](docs/ImageStateName.md)
  - [Instance](docs/Instance.md)
+ - [InstanceContract](docs/InstanceContract.md)
  - [InstanceDetails](docs/InstanceDetails.md)
  - [InstanceList](docs/InstanceList.md)
  - [InstanceType](docs/InstanceType.md)
@@ -315,6 +315,8 @@ Class | Method | HTTP request | Description
  - [Target](docs/Target.md)
  - [TargetGroup](docs/TargetGroup.md)
  - [TargetGroupIdOpts](docs/TargetGroupIdOpts.md)
+ - [TerminateInstanceOpts](docs/TerminateInstanceOpts.md)
+ - [TerminateLoadBalancerOpts](docs/TerminateLoadBalancerOpts.md)
  - [Tier](docs/Tier.md)
  - [TimePeriod](docs/TimePeriod.md)
  - [Traffic](docs/Traffic.md)

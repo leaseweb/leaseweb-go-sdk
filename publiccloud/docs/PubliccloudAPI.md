@@ -56,8 +56,8 @@ Method | HTTP request | Description
 [**GetNotificationSettingList**](PubliccloudAPI.md#GetNotificationSettingList) | **Get** /instances/{instanceId}/notificationSettings/dataTraffic | List the notification settings of a customer
 [**GetRegionList**](PubliccloudAPI.md#GetRegionList) | **Get** /regions | List regions
 [**GetReinstallImageList**](PubliccloudAPI.md#GetReinstallImageList) | **Get** /instances/{instanceId}/reinstall/images | List images available for reinstall
-[**GetRequestsMetrics**](PubliccloudAPI.md#GetRequestsMetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/requests | Get load balancer requests metrics
-[**GetRequestsPerSecondMetrics**](PubliccloudAPI.md#GetRequestsPerSecondMetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/requestsPerSecond | Get load balancer requests per second metrics
+[**GetRequestsMetrics**](PubliccloudAPI.md#GetRequestsMetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/requests | Get load balancer requests metrics. Not available for listeners with TCP protocol
+[**GetRequestsPerSecondMetrics**](PubliccloudAPI.md#GetRequestsPerSecondMetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/requestsPerSecond | Get load balancer requests per second metrics. Not available for listeners with TCP protocol
 [**GetResponseCodesMetrics**](PubliccloudAPI.md#GetResponseCodesMetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/responseCodes | Get response codes metrics
 [**GetResponseCodesPerSecondMetrics**](PubliccloudAPI.md#GetResponseCodesPerSecondMetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/responseCodesPerSecond | Get response codes per second metrics
 [**GetSnapshot**](PubliccloudAPI.md#GetSnapshot) | **Get** /instances/{instanceId}/snapshots/{snapshotId} | Get snapshot detail
@@ -3840,7 +3840,7 @@ Name | Type | Description  | Notes
 
 > GetRequestsMetricsResult GetRequestsMetrics(ctx, loadBalancerId).From(from).To(to).Granularity(granularity).Execute()
 
-Get load balancer requests metrics
+Get load balancer requests metrics. Not available for listeners with TCP protocol
 
 ### Example
 
@@ -3914,7 +3914,7 @@ Name | Type | Description  | Notes
 
 > GetRequestsPerSecondMetricsResult GetRequestsPerSecondMetrics(ctx, loadBalancerId).From(from).To(to).Granularity(granularity).Execute()
 
-Get load balancer requests per second metrics
+Get load balancer requests per second metrics. Not available for listeners with TCP protocol
 
 ### Example
 
@@ -4594,7 +4594,7 @@ import (
 )
 
 func main() {
-	launchInstanceOpts := *openapiclient.NewLaunchInstanceOpts(openapiclient.regionName("eu-west-3"), openapiclient.typeName("lsw.m3.large"), "UBUNTU_22_04_64BIT", openapiclient.contractType("HOURLY"), openapiclient.contractTerm(0), openapiclient.billingFrequency(1), openapiclient.storageType("LOCAL")) // LaunchInstanceOpts | 
+	launchInstanceOpts := *openapiclient.NewLaunchInstanceOpts(openapiclient.regionName("eu-west-3"), openapiclient.typeName("lsw.m3.large"), "UBUNTU_22_04_64BIT", openapiclient.contractType("HOURLY"), openapiclient.storageType("LOCAL")) // LaunchInstanceOpts | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -4660,7 +4660,7 @@ import (
 )
 
 func main() {
-	launchLoadBalancerOpts := *openapiclient.NewLaunchLoadBalancerOpts(openapiclient.regionName("eu-west-3"), openapiclient.typeName("lsw.m3.large"), openapiclient.contractType("HOURLY"), openapiclient.contractTerm(0), openapiclient.billingFrequency(1)) // LaunchLoadBalancerOpts | 
+	launchLoadBalancerOpts := *openapiclient.NewLaunchLoadBalancerOpts(openapiclient.regionName("eu-west-3"), openapiclient.typeName("lsw.m3.large"), openapiclient.contractType("HOURLY")) // LaunchLoadBalancerOpts | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -5898,7 +5898,7 @@ Name | Type | Description  | Notes
 
 ## TerminateInstance
 
-> TerminateInstance(ctx, instanceId).Execute()
+> TerminateInstance(ctx, instanceId).TerminateInstanceOpts(terminateInstanceOpts).Execute()
 
 Terminate instance
 
@@ -5918,10 +5918,11 @@ import (
 
 func main() {
 	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
+	terminateInstanceOpts := *openapiclient.NewTerminateInstanceOpts() // TerminateInstanceOpts | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.PubliccloudAPI.TerminateInstance(context.Background(), instanceId).Execute()
+	r, err := apiClient.PubliccloudAPI.TerminateInstance(context.Background(), instanceId).TerminateInstanceOpts(terminateInstanceOpts).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.TerminateInstance``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5945,6 +5946,7 @@ Other parameters are passed through a pointer to a apiTerminateInstanceRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **terminateInstanceOpts** | [**TerminateInstanceOpts**](TerminateInstanceOpts.md) |  | 
 
 ### Return type
 
@@ -5956,7 +5958,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -5966,7 +5968,7 @@ Name | Type | Description  | Notes
 
 ## TerminateLoadBalancer
 
-> TerminateLoadBalancer(ctx, loadBalancerId).Execute()
+> TerminateLoadBalancer(ctx, loadBalancerId).TerminateLoadBalancerOpts(terminateLoadBalancerOpts).Execute()
 
 Delete load balancer
 
@@ -5986,10 +5988,11 @@ import (
 
 func main() {
 	loadBalancerId := "695ddd91-051f-4dd6-9120-938a927a47d0" // string | Load balancer ID
+	terminateLoadBalancerOpts := *openapiclient.NewTerminateLoadBalancerOpts("ReasonCode_example") // TerminateLoadBalancerOpts | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.PubliccloudAPI.TerminateLoadBalancer(context.Background(), loadBalancerId).Execute()
+	r, err := apiClient.PubliccloudAPI.TerminateLoadBalancer(context.Background(), loadBalancerId).TerminateLoadBalancerOpts(terminateLoadBalancerOpts).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.TerminateLoadBalancer``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6013,6 +6016,7 @@ Other parameters are passed through a pointer to a apiTerminateLoadBalancerReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **terminateLoadBalancerOpts** | [**TerminateLoadBalancerOpts**](TerminateLoadBalancerOpts.md) |  | 
 
 ### Return type
 
@@ -6024,7 +6028,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

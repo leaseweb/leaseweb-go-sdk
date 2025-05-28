@@ -14,14 +14,14 @@ Name | Type | Description | Notes
 **Configuration** | [**NullableLoadBalancerConfiguration**](LoadBalancerConfiguration.md) |  | 
 **AutoScalingGroup** | [**NullableAutoScalingGroup**](AutoScalingGroup.md) |  | 
 **PrivateNetwork** | [**NullablePrivateNetwork**](PrivateNetwork.md) |  | 
-**Contract** | [**Contract**](Contract.md) |  | 
+**Contract** | [**InstanceContract**](InstanceContract.md) |  | 
 **Ips** | [**[]IpDetails**](IpDetails.md) |  | 
 
 ## Methods
 
 ### NewLoadBalancerDetails
 
-`func NewLoadBalancerDetails(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract Contract, ips []IpDetails, ) *LoadBalancerDetails`
+`func NewLoadBalancerDetails(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract InstanceContract, ips []IpDetails, ) *LoadBalancerDetails`
 
 NewLoadBalancerDetails instantiates a new LoadBalancerDetails object
 This constructor will assign default values to properties that have it defined,
@@ -288,20 +288,20 @@ SetPrivateNetwork sets PrivateNetwork field to given value.
 UnsetPrivateNetwork ensures that no value is present for PrivateNetwork, not even an explicit nil
 ### GetContract
 
-`func (o *LoadBalancerDetails) GetContract() Contract`
+`func (o *LoadBalancerDetails) GetContract() InstanceContract`
 
 GetContract returns the Contract field if non-nil, zero value otherwise.
 
 ### GetContractOk
 
-`func (o *LoadBalancerDetails) GetContractOk() (*Contract, bool)`
+`func (o *LoadBalancerDetails) GetContractOk() (*InstanceContract, bool)`
 
 GetContractOk returns a tuple with the Contract field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContract
 
-`func (o *LoadBalancerDetails) SetContract(v Contract)`
+`func (o *LoadBalancerDetails) SetContract(v InstanceContract)`
 
 SetContract sets Contract field to given value.
 

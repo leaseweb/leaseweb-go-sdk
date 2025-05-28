@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **MarketAppId** | Pointer to **string** | Market App ID that must be installed into the instance | [optional] 
 **Reference** | Pointer to **string** | An identifying name you can refer to the instance | [optional] 
 **ContractType** | [**ContractType**](ContractType.md) |  | 
-**ContractTerm** | [**ContractTerm**](ContractTerm.md) |  | 
-**BillingFrequency** | [**BillingFrequency**](BillingFrequency.md) |  | 
+**ContractTerm** | Pointer to [**ContractTerm**](ContractTerm.md) |  | [optional] 
+**BillingFrequency** | Pointer to [**BillingFrequency**](BillingFrequency.md) |  | [optional] 
 **RootDiskSize** | Pointer to **int32** | The root disk&#39;s size in GB. Must be at least 5 GB for Linux and FreeBSD instances and 50 GB for Windows instances | [optional] 
 **RootDiskStorageType** | [**StorageType**](StorageType.md) |  | 
 **SshKey** | Pointer to **string** | Public SSH key to be installed into the instance. Must be used only on Linux/FreeBSD instances | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewLaunchInstanceOpts
 
-`func NewLaunchInstanceOpts(region RegionName, type_ TypeName, imageId string, contractType ContractType, contractTerm ContractTerm, billingFrequency BillingFrequency, rootDiskStorageType StorageType, ) *LaunchInstanceOpts`
+`func NewLaunchInstanceOpts(region RegionName, type_ TypeName, imageId string, contractType ContractType, rootDiskStorageType StorageType, ) *LaunchInstanceOpts`
 
 NewLaunchInstanceOpts instantiates a new LaunchInstanceOpts object
 This constructor will assign default values to properties that have it defined,
@@ -185,6 +185,11 @@ and a boolean to check if the value has been set.
 
 SetContractTerm sets ContractTerm field to given value.
 
+### HasContractTerm
+
+`func (o *LaunchInstanceOpts) HasContractTerm() bool`
+
+HasContractTerm returns a boolean if a field has been set.
 
 ### GetBillingFrequency
 
@@ -205,6 +210,11 @@ and a boolean to check if the value has been set.
 
 SetBillingFrequency sets BillingFrequency field to given value.
 
+### HasBillingFrequency
+
+`func (o *LaunchInstanceOpts) HasBillingFrequency() bool`
+
+HasBillingFrequency returns a boolean if a field has been set.
 
 ### GetRootDiskSize
 

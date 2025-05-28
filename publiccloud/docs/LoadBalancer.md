@@ -14,14 +14,14 @@ Name | Type | Description | Notes
 **Configuration** | [**NullableLoadBalancerConfiguration**](LoadBalancerConfiguration.md) |  | 
 **AutoScalingGroup** | [**NullableAutoScalingGroup**](AutoScalingGroup.md) |  | 
 **PrivateNetwork** | [**NullablePrivateNetwork**](PrivateNetwork.md) |  | 
-**Contract** | [**Contract**](Contract.md) |  | 
+**Contract** | [**InstanceContract**](InstanceContract.md) |  | 
 **Ips** | [**[]Ip**](Ip.md) |  | 
 
 ## Methods
 
 ### NewLoadBalancer
 
-`func NewLoadBalancer(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract Contract, ips []Ip, ) *LoadBalancer`
+`func NewLoadBalancer(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract InstanceContract, ips []Ip, ) *LoadBalancer`
 
 NewLoadBalancer instantiates a new LoadBalancer object
 This constructor will assign default values to properties that have it defined,
@@ -288,20 +288,20 @@ SetPrivateNetwork sets PrivateNetwork field to given value.
 UnsetPrivateNetwork ensures that no value is present for PrivateNetwork, not even an explicit nil
 ### GetContract
 
-`func (o *LoadBalancer) GetContract() Contract`
+`func (o *LoadBalancer) GetContract() InstanceContract`
 
 GetContract returns the Contract field if non-nil, zero value otherwise.
 
 ### GetContractOk
 
-`func (o *LoadBalancer) GetContractOk() (*Contract, bool)`
+`func (o *LoadBalancer) GetContractOk() (*InstanceContract, bool)`
 
 GetContractOk returns a tuple with the Contract field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContract
 
-`func (o *LoadBalancer) SetContract(v Contract)`
+`func (o *LoadBalancer) SetContract(v InstanceContract)`
 
 SetContract sets Contract field to given value.
 

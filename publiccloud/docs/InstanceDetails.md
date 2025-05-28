@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **HasUserData** | **bool** |  | 
 **RootDiskSize** | **int32** | The root disk&#39;s size in GB. Must be at least 5 GB for Linux and FreeBSD instances and 50 GB for Windows instances | 
 **RootDiskStorageType** | [**StorageType**](StorageType.md) |  | 
-**Contract** | [**Contract**](Contract.md) |  | 
+**Contract** | [**InstanceContract**](InstanceContract.md) |  | 
 **AutoScalingGroup** | [**NullableAutoScalingGroup**](AutoScalingGroup.md) |  | 
 **Image** | [**Image**](Image.md) |  | 
 **Iso** | [**NullableIso**](Iso.md) |  | 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewInstanceDetails
 
-`func NewInstanceDetails(id string, type_ TypeName, resources Resources, region RegionName, reference NullableString, startedAt NullableTime, marketAppId NullableString, state State, productType string, hasPublicIpV4 bool, hasPrivateNetwork bool, hasUserData bool, rootDiskSize int32, rootDiskStorageType StorageType, contract Contract, autoScalingGroup NullableAutoScalingGroup, image Image, iso NullableIso, privateNetwork NullablePrivateNetwork, ips []IpDetails, ) *InstanceDetails`
+`func NewInstanceDetails(id string, type_ TypeName, resources Resources, region RegionName, reference NullableString, startedAt NullableTime, marketAppId NullableString, state State, productType string, hasPublicIpV4 bool, hasPrivateNetwork bool, hasUserData bool, rootDiskSize int32, rootDiskStorageType StorageType, contract InstanceContract, autoScalingGroup NullableAutoScalingGroup, image Image, iso NullableIso, privateNetwork NullablePrivateNetwork, ips []IpDetails, ) *InstanceDetails`
 
 NewInstanceDetails instantiates a new InstanceDetails object
 This constructor will assign default values to properties that have it defined,
@@ -356,20 +356,20 @@ SetRootDiskStorageType sets RootDiskStorageType field to given value.
 
 ### GetContract
 
-`func (o *InstanceDetails) GetContract() Contract`
+`func (o *InstanceDetails) GetContract() InstanceContract`
 
 GetContract returns the Contract field if non-nil, zero value otherwise.
 
 ### GetContractOk
 
-`func (o *InstanceDetails) GetContractOk() (*Contract, bool)`
+`func (o *InstanceDetails) GetContractOk() (*InstanceContract, bool)`
 
 GetContractOk returns a tuple with the Contract field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContract
 
-`func (o *InstanceDetails) SetContract(v Contract)`
+`func (o *InstanceDetails) SetContract(v InstanceContract)`
 
 SetContract sets Contract field to given value.
 
