@@ -23,6 +23,8 @@ const (
 	CONTRACTSTATE_ACTIVE ContractState = "ACTIVE"
 	CONTRACTSTATE_DELETE_SCHEDULED ContractState = "DELETE_SCHEDULED"
 	CONTRACTSTATE_PENDING ContractState = "PENDING"
+	CONTRACTSTATE_INACTIVE ContractState = "INACTIVE"
+	CONTRACTSTATE_CANCELLED ContractState = "CANCELLED"
 )
 
 // All allowed values of ContractState enum
@@ -30,6 +32,8 @@ var AllowedContractStateEnumValues = []ContractState{
 	"ACTIVE",
 	"DELETE_SCHEDULED",
 	"PENDING",
+	"INACTIVE",
+	"CANCELLED",
 }
 
 func (v *ContractState) UnmarshalJSON(src []byte) error {

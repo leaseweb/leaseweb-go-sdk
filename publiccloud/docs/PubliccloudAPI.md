@@ -5918,7 +5918,7 @@ import (
 
 func main() {
 	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
-	terminateInstanceOpts := *openapiclient.NewTerminateInstanceOpts() // TerminateInstanceOpts | 
+	terminateInstanceOpts := *openapiclient.NewTerminateInstanceOpts() // TerminateInstanceOpts |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

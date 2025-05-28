@@ -19,7 +19,7 @@ var _ MappedNullable = &TerminateInstanceOpts{}
 
 // TerminateInstanceOpts struct for TerminateInstanceOpts
 type TerminateInstanceOpts struct {
-	// The reason code for terminating the instance. This is a required field. Please refer at this page for the valid options: [Cancel Reasons](https://developer.leaseweb.com/docs/#tag/Services/operation/services-cancel-reasons-get)
+	// The reason code for terminating the instance. This is a required field if contract type is Monthly. Please refer at this page for the valid options: [Cancel Reasons](https://developer.leaseweb.com/docs/#tag/Services/operation/services-cancel-reasons-get)
 	ReasonCode *string `json:"reasonCode,omitempty"`
 	// Required only when reasonCode is CANCEL_OTHER.
 	Reason *string `json:"reason,omitempty"`

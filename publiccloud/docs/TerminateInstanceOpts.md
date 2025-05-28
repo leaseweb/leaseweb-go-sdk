@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReasonCode** | Pointer to **string** | The reason code for terminating the instance. This is a required field. Please refer at this page for the valid options: [Cancel Reasons](https://developer.leaseweb.com/docs/#tag/Services/operation/services-cancel-reasons-get) | [optional] 
+**ReasonCode** | Pointer to **string** | The reason code for terminating the instance. This is a required field if contract type is Monthly. Please refer at this page for the valid options: [Cancel Reasons](https://developer.leaseweb.com/docs/#tag/Services/operation/services-cancel-reasons-get) | [optional] 
 **Reason** | Pointer to **string** | Required only when reasonCode is CANCEL_OTHER. | [optional] 
 
 ## Methods

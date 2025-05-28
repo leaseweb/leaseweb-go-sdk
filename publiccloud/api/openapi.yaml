@@ -1116,7 +1116,6 @@ paths:
               reasonCode: CANCEL_TRIAL_PERIOD
             schema:
               $ref: '#/components/schemas/terminateInstanceOpts'
-        required: true
       responses:
         "200":
           description: "If instance is hourly, it is scheduled for termination immediately,\
@@ -12950,6 +12949,8 @@ components:
       - ACTIVE
       - DELETE_SCHEDULED
       - PENDING
+      - INACTIVE
+      - CANCELLED
       type: string
     imageId:
       description: imageId can be either an Operating System or a UUID in case of
@@ -13895,7 +13896,8 @@ components:
       properties:
         reasonCode:
           description: "The reason code for terminating the instance. This is a required\
-            \ field. Please refer at this page for the valid options: [Cancel Reasons](https://developer.leaseweb.com/docs/#tag/Services/operation/services-cancel-reasons-get)"
+            \ field if contract type is Monthly. Please refer at this page for the\
+            \ valid options: [Cancel Reasons](https://developer.leaseweb.com/docs/#tag/Services/operation/services-cancel-reasons-get)"
           type: string
         reason:
           description: Required only when reasonCode is CANCEL_OTHER.
@@ -14179,8 +14181,13 @@ components:
       enum:
       - CPANEL_30
       - CPANEL_100
+      - CPANEL_ADMIN
+      - CPANEL_PRO
+      - CPANEL_PLUS
+      - CPANEL_PREMIER
       - PLESK_WEB_PRO
       - PLESK_WEB_ADMIN
+      - PLESK_WEB_HOST
       title: marketAppId
       type: string
     imageStateName:
