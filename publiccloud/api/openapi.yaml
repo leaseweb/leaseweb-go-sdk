@@ -12949,6 +12949,7 @@ components:
       enum:
       - ACTIVE
       - DELETE_SCHEDULED
+      - PENDING
       type: string
     imageId:
       description: imageId can be either an Operating System or a UUID in case of
