@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Metrics** | Pointer to [**MetricsProperties**](MetricsProperties.md) |  | [optional] 
+**Metrics** | Pointer to [**MetricsPropertiesConnections**](MetricsPropertiesConnections.md) |  | [optional] 
 **Metadata** | Pointer to [**MetricsMetadataProperties**](MetricsMetadataProperties.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMetrics
 
-`func (o *GetConnectionsMetricsResult) GetMetrics() MetricsProperties`
+`func (o *GetConnectionsMetricsResult) GetMetrics() MetricsPropertiesConnections`
 
 GetMetrics returns the Metrics field if non-nil, zero value otherwise.
 
 ### GetMetricsOk
 
-`func (o *GetConnectionsMetricsResult) GetMetricsOk() (*MetricsProperties, bool)`
+`func (o *GetConnectionsMetricsResult) GetMetricsOk() (*MetricsPropertiesConnections, bool)`
 
 GetMetricsOk returns a tuple with the Metrics field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetrics
 
-`func (o *GetConnectionsMetricsResult) SetMetrics(v MetricsProperties)`
+`func (o *GetConnectionsMetricsResult) SetMetrics(v MetricsPropertiesConnections)`
 
 SetMetrics sets Metrics field to given value.
 

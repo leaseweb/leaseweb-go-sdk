@@ -19,7 +19,7 @@ var _ MappedNullable = &GetRequestsMetricsResult{}
 
 // GetRequestsMetricsResult struct for GetRequestsMetricsResult
 type GetRequestsMetricsResult struct {
-	Metrics *MetricsProperties `json:"metrics,omitempty"`
+	Metrics *MetricsPropertiesRequests `json:"metrics,omitempty"`
 	Metadata *MetricsMetadataProperties `json:"_metadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,9 +44,9 @@ func NewGetRequestsMetricsResultWithDefaults() *GetRequestsMetricsResult {
 }
 
 // GetMetrics returns the Metrics field value if set, zero value otherwise.
-func (o *GetRequestsMetricsResult) GetMetrics() MetricsProperties {
+func (o *GetRequestsMetricsResult) GetMetrics() MetricsPropertiesRequests {
 	if o == nil || IsNil(o.Metrics) {
-		var ret MetricsProperties
+		var ret MetricsPropertiesRequests
 		return ret
 	}
 	return *o.Metrics
@@ -54,7 +54,7 @@ func (o *GetRequestsMetricsResult) GetMetrics() MetricsProperties {
 
 // GetMetricsOk returns a tuple with the Metrics field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetRequestsMetricsResult) GetMetricsOk() (*MetricsProperties, bool) {
+func (o *GetRequestsMetricsResult) GetMetricsOk() (*MetricsPropertiesRequests, bool) {
 	if o == nil || IsNil(o.Metrics) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *GetRequestsMetricsResult) HasMetrics() bool {
 	return false
 }
 
-// SetMetrics gets a reference to the given MetricsProperties and assigns it to the Metrics field.
-func (o *GetRequestsMetricsResult) SetMetrics(v MetricsProperties) {
+// SetMetrics gets a reference to the given MetricsPropertiesRequests and assigns it to the Metrics field.
+func (o *GetRequestsMetricsResult) SetMetrics(v MetricsPropertiesRequests) {
 	o.Metrics = &v
 }
 

@@ -14,37 +14,38 @@ import (
 	"encoding/json"
 )
 
-// checks if the MetricsProperties type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MetricsProperties{}
+// checks if the MetricsPropertiesRequests type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetricsPropertiesRequests{}
 
-// MetricsProperties struct for MetricsProperties
-type MetricsProperties struct {
+// MetricsPropertiesRequests struct for MetricsPropertiesRequests
+type MetricsPropertiesRequests struct {
 	Values []MetricsValues `json:"values,omitempty"`
-	Unit *MetricsUnit `json:"unit,omitempty"`
+	// Unit representing number of requests
+	Unit *string `json:"unit,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _MetricsProperties MetricsProperties
+type _MetricsPropertiesRequests MetricsPropertiesRequests
 
-// NewMetricsProperties instantiates a new MetricsProperties object
+// NewMetricsPropertiesRequests instantiates a new MetricsPropertiesRequests object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMetricsProperties() *MetricsProperties {
-	this := MetricsProperties{}
+func NewMetricsPropertiesRequests() *MetricsPropertiesRequests {
+	this := MetricsPropertiesRequests{}
 	return &this
 }
 
-// NewMetricsPropertiesWithDefaults instantiates a new MetricsProperties object
+// NewMetricsPropertiesRequestsWithDefaults instantiates a new MetricsPropertiesRequests object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewMetricsPropertiesWithDefaults() *MetricsProperties {
-	this := MetricsProperties{}
+func NewMetricsPropertiesRequestsWithDefaults() *MetricsPropertiesRequests {
+	this := MetricsPropertiesRequests{}
 	return &this
 }
 
 // GetValues returns the Values field value if set, zero value otherwise.
-func (o *MetricsProperties) GetValues() []MetricsValues {
+func (o *MetricsPropertiesRequests) GetValues() []MetricsValues {
 	if o == nil || IsNil(o.Values) {
 		var ret []MetricsValues
 		return ret
@@ -54,7 +55,7 @@ func (o *MetricsProperties) GetValues() []MetricsValues {
 
 // GetValuesOk returns a tuple with the Values field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricsProperties) GetValuesOk() ([]MetricsValues, bool) {
+func (o *MetricsPropertiesRequests) GetValuesOk() ([]MetricsValues, bool) {
 	if o == nil || IsNil(o.Values) {
 		return nil, false
 	}
@@ -62,7 +63,7 @@ func (o *MetricsProperties) GetValuesOk() ([]MetricsValues, bool) {
 }
 
 // HasValues returns a boolean if a field has been set.
-func (o *MetricsProperties) HasValues() bool {
+func (o *MetricsPropertiesRequests) HasValues() bool {
 	if o != nil && !IsNil(o.Values) {
 		return true
 	}
@@ -71,14 +72,14 @@ func (o *MetricsProperties) HasValues() bool {
 }
 
 // SetValues gets a reference to the given []MetricsValues and assigns it to the Values field.
-func (o *MetricsProperties) SetValues(v []MetricsValues) {
+func (o *MetricsPropertiesRequests) SetValues(v []MetricsValues) {
 	o.Values = v
 }
 
 // GetUnit returns the Unit field value if set, zero value otherwise.
-func (o *MetricsProperties) GetUnit() MetricsUnit {
+func (o *MetricsPropertiesRequests) GetUnit() string {
 	if o == nil || IsNil(o.Unit) {
-		var ret MetricsUnit
+		var ret string
 		return ret
 	}
 	return *o.Unit
@@ -86,7 +87,7 @@ func (o *MetricsProperties) GetUnit() MetricsUnit {
 
 // GetUnitOk returns a tuple with the Unit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricsProperties) GetUnitOk() (*MetricsUnit, bool) {
+func (o *MetricsPropertiesRequests) GetUnitOk() (*string, bool) {
 	if o == nil || IsNil(o.Unit) {
 		return nil, false
 	}
@@ -94,7 +95,7 @@ func (o *MetricsProperties) GetUnitOk() (*MetricsUnit, bool) {
 }
 
 // HasUnit returns a boolean if a field has been set.
-func (o *MetricsProperties) HasUnit() bool {
+func (o *MetricsPropertiesRequests) HasUnit() bool {
 	if o != nil && !IsNil(o.Unit) {
 		return true
 	}
@@ -102,12 +103,12 @@ func (o *MetricsProperties) HasUnit() bool {
 	return false
 }
 
-// SetUnit gets a reference to the given MetricsUnit and assigns it to the Unit field.
-func (o *MetricsProperties) SetUnit(v MetricsUnit) {
+// SetUnit gets a reference to the given string and assigns it to the Unit field.
+func (o *MetricsPropertiesRequests) SetUnit(v string) {
 	o.Unit = &v
 }
 
-func (o MetricsProperties) MarshalJSON() ([]byte, error) {
+func (o MetricsPropertiesRequests) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -115,7 +116,7 @@ func (o MetricsProperties) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o MetricsProperties) ToMap() (map[string]interface{}, error) {
+func (o MetricsPropertiesRequests) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Values) {
 		toSerialize["values"] = o.Values
@@ -131,16 +132,16 @@ func (o MetricsProperties) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *MetricsProperties) UnmarshalJSON(data []byte) (err error) {
-	varMetricsProperties := _MetricsProperties{}
+func (o *MetricsPropertiesRequests) UnmarshalJSON(data []byte) (err error) {
+	varMetricsPropertiesRequests := _MetricsPropertiesRequests{}
 
-	err = json.Unmarshal(data, &varMetricsProperties)
+	err = json.Unmarshal(data, &varMetricsPropertiesRequests)
 
 	if err != nil {
 		return err
 	}
 
-	*o = MetricsProperties(varMetricsProperties)
+	*o = MetricsPropertiesRequests(varMetricsPropertiesRequests)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -153,38 +154,38 @@ func (o *MetricsProperties) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableMetricsProperties struct {
-	value *MetricsProperties
+type NullableMetricsPropertiesRequests struct {
+	value *MetricsPropertiesRequests
 	isSet bool
 }
 
-func (v NullableMetricsProperties) Get() *MetricsProperties {
+func (v NullableMetricsPropertiesRequests) Get() *MetricsPropertiesRequests {
 	return v.value
 }
 
-func (v *NullableMetricsProperties) Set(val *MetricsProperties) {
+func (v *NullableMetricsPropertiesRequests) Set(val *MetricsPropertiesRequests) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableMetricsProperties) IsSet() bool {
+func (v NullableMetricsPropertiesRequests) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableMetricsProperties) Unset() {
+func (v *NullableMetricsPropertiesRequests) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableMetricsProperties(val *MetricsProperties) *NullableMetricsProperties {
-	return &NullableMetricsProperties{value: val, isSet: true}
+func NewNullableMetricsPropertiesRequests(val *MetricsPropertiesRequests) *NullableMetricsPropertiesRequests {
+	return &NullableMetricsPropertiesRequests{value: val, isSet: true}
 }
 
-func (v NullableMetricsProperties) MarshalJSON() ([]byte, error) {
+func (v NullableMetricsPropertiesRequests) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableMetricsProperties) UnmarshalJSON(src []byte) error {
+func (v *NullableMetricsPropertiesRequests) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

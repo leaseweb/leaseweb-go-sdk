@@ -38,6 +38,7 @@ docs/CredentialType.md
 docs/DataTrafficMetrics.md
 docs/DataTrafficMetricsGranularity.md
 docs/DataTransferredMetrics.md
+docs/DataTransferredMetrics1.md
 docs/Ddos.md
 docs/ErrorResult.md
 docs/ExpenseResultInstance.md
@@ -110,8 +111,15 @@ docs/Metadata.md
 docs/MetricsDataTrafficMetadataProperties.md
 docs/MetricsMetadataProperties.md
 docs/MetricsMetadataPropertiesGranularity.md
-docs/MetricsProperties.md
-docs/MetricsUnit.md
+docs/MetricsPropertiesB.md
+docs/MetricsPropertiesBase.md
+docs/MetricsPropertiesConnections.md
+docs/MetricsPropertiesConnectionsPerSec.md
+docs/MetricsPropertiesPercentage.md
+docs/MetricsPropertiesRequests.md
+docs/MetricsPropertiesRequestsPerSec.md
+docs/MetricsPropertiesResponses.md
+docs/MetricsPropertiesResponsesPerSec.md
 docs/MetricsValues.md
 docs/NetworkSpeed.md
 docs/NetworkType.md
@@ -129,6 +137,7 @@ docs/RegionName.md
 docs/ReinstallResourceOpts.md
 docs/Resources.md
 docs/ResponseCodesMetrics.md
+docs/ResponseCodesMetrics1.md
 docs/SchemasHealthCheckStatus.md
 docs/Snapshot.md
 docs/SslCertificate.md
@@ -202,6 +211,7 @@ model_credential_type.go
 model_data_traffic_metrics.go
 model_data_traffic_metrics_granularity.go
 model_data_transferred_metrics.go
+model_data_transferred_metrics_1.go
 model_ddos.go
 model_error_result.go
 model_expense_result_instance.go
@@ -273,8 +283,15 @@ model_memory.go
 model_metrics_data_traffic_metadata_properties.go
 model_metrics_metadata_properties.go
 model_metrics_metadata_properties_granularity.go
-model_metrics_properties.go
-model_metrics_unit.go
+model_metrics_properties_b.go
+model_metrics_properties_base.go
+model_metrics_properties_connections.go
+model_metrics_properties_connections_per_sec.go
+model_metrics_properties_percentage.go
+model_metrics_properties_requests.go
+model_metrics_properties_requests_per_sec.go
+model_metrics_properties_responses.go
+model_metrics_properties_responses_per_sec.go
 model_metrics_values.go
 model_network_speed.go
 model_network_type.go
@@ -291,6 +308,7 @@ model_region_name.go
 model_reinstall_resource_opts.go
 model_resources.go
 model_response_codes_metrics.go
+model_response_codes_metrics_1.go
 model_snapshot.go
 model_ssl_certificate.go
 model_state.go

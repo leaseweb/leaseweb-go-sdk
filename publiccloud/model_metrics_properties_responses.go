@@ -14,39 +14,40 @@ import (
 	"encoding/json"
 )
 
-// checks if the TrafficMetric type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TrafficMetric{}
+// checks if the MetricsPropertiesResponses type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetricsPropertiesResponses{}
 
-// TrafficMetric struct for TrafficMetric
-type TrafficMetric struct {
-	Values []TrafficMetricValue `json:"values,omitempty"`
+// MetricsPropertiesResponses struct for MetricsPropertiesResponses
+type MetricsPropertiesResponses struct {
+	Values []MetricsValues `json:"values,omitempty"`
+	// Unit representing number of responses
 	Unit *string `json:"unit,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _TrafficMetric TrafficMetric
+type _MetricsPropertiesResponses MetricsPropertiesResponses
 
-// NewTrafficMetric instantiates a new TrafficMetric object
+// NewMetricsPropertiesResponses instantiates a new MetricsPropertiesResponses object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTrafficMetric() *TrafficMetric {
-	this := TrafficMetric{}
+func NewMetricsPropertiesResponses() *MetricsPropertiesResponses {
+	this := MetricsPropertiesResponses{}
 	return &this
 }
 
-// NewTrafficMetricWithDefaults instantiates a new TrafficMetric object
+// NewMetricsPropertiesResponsesWithDefaults instantiates a new MetricsPropertiesResponses object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTrafficMetricWithDefaults() *TrafficMetric {
-	this := TrafficMetric{}
+func NewMetricsPropertiesResponsesWithDefaults() *MetricsPropertiesResponses {
+	this := MetricsPropertiesResponses{}
 	return &this
 }
 
 // GetValues returns the Values field value if set, zero value otherwise.
-func (o *TrafficMetric) GetValues() []TrafficMetricValue {
+func (o *MetricsPropertiesResponses) GetValues() []MetricsValues {
 	if o == nil || IsNil(o.Values) {
-		var ret []TrafficMetricValue
+		var ret []MetricsValues
 		return ret
 	}
 	return o.Values
@@ -54,7 +55,7 @@ func (o *TrafficMetric) GetValues() []TrafficMetricValue {
 
 // GetValuesOk returns a tuple with the Values field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TrafficMetric) GetValuesOk() ([]TrafficMetricValue, bool) {
+func (o *MetricsPropertiesResponses) GetValuesOk() ([]MetricsValues, bool) {
 	if o == nil || IsNil(o.Values) {
 		return nil, false
 	}
@@ -62,7 +63,7 @@ func (o *TrafficMetric) GetValuesOk() ([]TrafficMetricValue, bool) {
 }
 
 // HasValues returns a boolean if a field has been set.
-func (o *TrafficMetric) HasValues() bool {
+func (o *MetricsPropertiesResponses) HasValues() bool {
 	if o != nil && !IsNil(o.Values) {
 		return true
 	}
@@ -70,13 +71,13 @@ func (o *TrafficMetric) HasValues() bool {
 	return false
 }
 
-// SetValues gets a reference to the given []TrafficMetricValue and assigns it to the Values field.
-func (o *TrafficMetric) SetValues(v []TrafficMetricValue) {
+// SetValues gets a reference to the given []MetricsValues and assigns it to the Values field.
+func (o *MetricsPropertiesResponses) SetValues(v []MetricsValues) {
 	o.Values = v
 }
 
 // GetUnit returns the Unit field value if set, zero value otherwise.
-func (o *TrafficMetric) GetUnit() string {
+func (o *MetricsPropertiesResponses) GetUnit() string {
 	if o == nil || IsNil(o.Unit) {
 		var ret string
 		return ret
@@ -86,7 +87,7 @@ func (o *TrafficMetric) GetUnit() string {
 
 // GetUnitOk returns a tuple with the Unit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TrafficMetric) GetUnitOk() (*string, bool) {
+func (o *MetricsPropertiesResponses) GetUnitOk() (*string, bool) {
 	if o == nil || IsNil(o.Unit) {
 		return nil, false
 	}
@@ -94,7 +95,7 @@ func (o *TrafficMetric) GetUnitOk() (*string, bool) {
 }
 
 // HasUnit returns a boolean if a field has been set.
-func (o *TrafficMetric) HasUnit() bool {
+func (o *MetricsPropertiesResponses) HasUnit() bool {
 	if o != nil && !IsNil(o.Unit) {
 		return true
 	}
@@ -103,11 +104,11 @@ func (o *TrafficMetric) HasUnit() bool {
 }
 
 // SetUnit gets a reference to the given string and assigns it to the Unit field.
-func (o *TrafficMetric) SetUnit(v string) {
+func (o *MetricsPropertiesResponses) SetUnit(v string) {
 	o.Unit = &v
 }
 
-func (o TrafficMetric) MarshalJSON() ([]byte, error) {
+func (o MetricsPropertiesResponses) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -115,7 +116,7 @@ func (o TrafficMetric) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o TrafficMetric) ToMap() (map[string]interface{}, error) {
+func (o MetricsPropertiesResponses) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Values) {
 		toSerialize["values"] = o.Values
@@ -131,16 +132,16 @@ func (o TrafficMetric) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *TrafficMetric) UnmarshalJSON(data []byte) (err error) {
-	varTrafficMetric := _TrafficMetric{}
+func (o *MetricsPropertiesResponses) UnmarshalJSON(data []byte) (err error) {
+	varMetricsPropertiesResponses := _MetricsPropertiesResponses{}
 
-	err = json.Unmarshal(data, &varTrafficMetric)
+	err = json.Unmarshal(data, &varMetricsPropertiesResponses)
 
 	if err != nil {
 		return err
 	}
 
-	*o = TrafficMetric(varTrafficMetric)
+	*o = MetricsPropertiesResponses(varMetricsPropertiesResponses)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -153,38 +154,38 @@ func (o *TrafficMetric) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableTrafficMetric struct {
-	value *TrafficMetric
+type NullableMetricsPropertiesResponses struct {
+	value *MetricsPropertiesResponses
 	isSet bool
 }
 
-func (v NullableTrafficMetric) Get() *TrafficMetric {
+func (v NullableMetricsPropertiesResponses) Get() *MetricsPropertiesResponses {
 	return v.value
 }
 
-func (v *NullableTrafficMetric) Set(val *TrafficMetric) {
+func (v *NullableMetricsPropertiesResponses) Set(val *MetricsPropertiesResponses) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTrafficMetric) IsSet() bool {
+func (v NullableMetricsPropertiesResponses) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTrafficMetric) Unset() {
+func (v *NullableMetricsPropertiesResponses) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTrafficMetric(val *TrafficMetric) *NullableTrafficMetric {
-	return &NullableTrafficMetric{value: val, isSet: true}
+func NewNullableMetricsPropertiesResponses(val *MetricsPropertiesResponses) *NullableMetricsPropertiesResponses {
+	return &NullableMetricsPropertiesResponses{value: val, isSet: true}
 }
 
-func (v NullableTrafficMetric) MarshalJSON() ([]byte, error) {
+func (v NullableMetricsPropertiesResponses) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTrafficMetric) UnmarshalJSON(src []byte) error {
+func (v *NullableMetricsPropertiesResponses) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

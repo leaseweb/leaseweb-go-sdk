@@ -15258,7 +15258,7 @@ components:
       type: object
     trafficMetric:
       example:
-        unit: unit
+        unit: B
         values:
         - value: 0
           timestamp: 2000-01-23T04:56:07.000+00:00
@@ -15270,7 +15270,7 @@ components:
             $ref: '#/components/schemas/trafficMetricValue'
           type: array
         unit:
-          description: The unit of the returned values
+          example: B
           type: string
       title: trafficMetric
       type: object
@@ -15330,14 +15330,14 @@ components:
       example:
         metrics:
           upPublic:
-            unit: unit
+            unit: B
             values:
             - value: 0
               timestamp: 2000-01-23T04:56:07.000+00:00
             - value: 0
               timestamp: 2000-01-23T04:56:07.000+00:00
           downPublic:
-            unit: unit
+            unit: B
             values:
             - value: 0
               timestamp: 2000-01-23T04:56:07.000+00:00
@@ -15378,20 +15378,22 @@ components:
       - 30m
       - 60m
       type: string
-    metricsUnit:
-      description: The unit of the metric
-      enum:
-      - '%'
-      - B
-      - b/s
-      - requests
-      - requests/sec
-      - responses
-      - responses/s
-      - connections
-      - connections/s
-      type: string
-    metricsProperties:
+    metricsPropertiesBase:
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/metricsValues'
+          type: array
+      title: metricsProperties
+      type: object
+    metricsPropertiesPercentage:
+      allOf:
+      - $ref: '#/components/schemas/metricsPropertiesBase'
+      - properties:
+          unit:
+            description: Unit representing percentage
+            example: '%'
+            type: string
       example:
         unit: '%'
         values:
@@ -15399,15 +15401,6 @@ components:
           timestamp: 2000-01-23T04:56:07.000+00:00
         - value: 0.8008281904610115
           timestamp: 2000-01-23T04:56:07.000+00:00
-      properties:
-        values:
-          items:
-            $ref: '#/components/schemas/metricsValues'
-          type: array
-        unit:
-          $ref: '#/components/schemas/metricsUnit'
-      title: metricsProperties
-      type: object
     getCpuMetricsResult:
       example:
         metrics:
@@ -15436,6 +15429,21 @@ components:
         _metadata:
           $ref: '#/components/schemas/cpuMetricsMetadata'
       type: object
+    metricsPropertiesRequests:
+      allOf:
+      - $ref: '#/components/schemas/metricsPropertiesBase'
+      - properties:
+          unit:
+            description: Unit representing number of requests
+            example: requests
+            type: string
+      example:
+        unit: requests
+        values:
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
     cpuGranularity:
       description: Defines the time interval for data aggregation
       enum:
@@ -15480,7 +15488,7 @@ components:
     getRequestsMetricsResult:
       example:
         metrics:
-          unit: '%'
+          unit: requests
           values:
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
@@ -15493,14 +15501,29 @@ components:
           to: 2000-01-23T04:56:07.000+00:00
       properties:
         metrics:
-          $ref: '#/components/schemas/metricsProperties'
+          $ref: '#/components/schemas/metricsPropertiesRequests'
         _metadata:
           $ref: '#/components/schemas/metricsMetadataProperties'
       type: object
+    metricsPropertiesRequestsPerSec:
+      allOf:
+      - $ref: '#/components/schemas/metricsPropertiesBase'
+      - properties:
+          unit:
+            description: Unit representing number of requests per second
+            example: requests/sec
+            type: string
+      example:
+        unit: requests/sec
+        values:
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
     getRequestsPerSecondMetricsResult:
       example:
         metrics:
-          unit: '%'
+          unit: requests/sec
           values:
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
@@ -15513,22 +15536,37 @@ components:
           to: 2000-01-23T04:56:07.000+00:00
       properties:
         metrics:
-          $ref: '#/components/schemas/metricsProperties'
+          $ref: '#/components/schemas/metricsPropertiesRequestsPerSec'
         _metadata:
           $ref: '#/components/schemas/metricsMetadataProperties'
       type: object
+    metricsPropertiesB:
+      allOf:
+      - $ref: '#/components/schemas/metricsPropertiesBase'
+      - properties:
+          unit:
+            description: Unit representing bytes
+            example: B
+            type: string
+      example:
+        unit: B
+        values:
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
     getDataTransferredMetricsResult:
       example:
         metrics:
           dataOut:
-            unit: '%'
+            unit: B
             values:
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
           dataIn:
-            unit: '%'
+            unit: B
             values:
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
@@ -15549,14 +15587,14 @@ components:
       example:
         metrics:
           dataOut:
-            unit: '%'
+            unit: requests
             values:
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
           dataIn:
-            unit: '%'
+            unit: requests
             values:
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
@@ -15569,14 +15607,29 @@ components:
           to: 2000-01-23T04:56:07.000+00:00
       properties:
         metrics:
-          $ref: '#/components/schemas/dataTransferredMetrics'
+          $ref: '#/components/schemas/dataTransferredMetrics_1'
         _metadata:
           $ref: '#/components/schemas/metricsMetadataProperties'
       type: object
+    metricsPropertiesConnections:
+      allOf:
+      - $ref: '#/components/schemas/metricsPropertiesBase'
+      - properties:
+          unit:
+            description: Unit representing connections
+            example: connections
+            type: string
+      example:
+        unit: connections
+        values:
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
     getConnectionsMetricsResult:
       example:
         metrics:
-          unit: '%'
+          unit: connections
           values:
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
@@ -15589,14 +15642,29 @@ components:
           to: 2000-01-23T04:56:07.000+00:00
       properties:
         metrics:
-          $ref: '#/components/schemas/metricsProperties'
+          $ref: '#/components/schemas/metricsPropertiesConnections'
         _metadata:
           $ref: '#/components/schemas/metricsMetadataProperties'
       type: object
+    metricsPropertiesConnectionsPerSec:
+      allOf:
+      - $ref: '#/components/schemas/metricsPropertiesBase'
+      - properties:
+          unit:
+            description: Unit representing connections per second
+            example: connections/s
+            type: string
+      example:
+        unit: connections/s
+        values:
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
     getConnectionsPerSecondMetricsResult:
       example:
         metrics:
-          unit: '%'
+          unit: connections/s
           values:
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
@@ -15609,36 +15677,51 @@ components:
           to: 2000-01-23T04:56:07.000+00:00
       properties:
         metrics:
-          $ref: '#/components/schemas/metricsProperties'
+          $ref: '#/components/schemas/metricsPropertiesConnectionsPerSec'
         _metadata:
           $ref: '#/components/schemas/metricsMetadataProperties'
       type: object
+    metricsPropertiesResponses:
+      allOf:
+      - $ref: '#/components/schemas/metricsPropertiesBase'
+      - properties:
+          unit:
+            description: Unit representing number of responses
+            example: responses
+            type: string
+      example:
+        unit: responses
+        values:
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
     getResponseCodesMetricsResult:
       example:
         metrics:
           "2xx":
-            unit: '%'
+            unit: responses
             values:
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
           "3xx":
-            unit: '%'
+            unit: responses
             values:
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
           "4xx":
-            unit: '%'
+            unit: responses
             values:
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
           "5xx":
-            unit: '%'
+            unit: responses
             values:
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
@@ -15655,32 +15738,47 @@ components:
         _metadata:
           $ref: '#/components/schemas/metricsMetadataProperties'
       type: object
+    metricsPropertiesResponsesPerSec:
+      allOf:
+      - $ref: '#/components/schemas/metricsPropertiesBase'
+      - properties:
+          unit:
+            description: Unit representing number of responses per second
+            example: responses/s
+            type: string
+      example:
+        unit: responses/s
+        values:
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - value: 0.8008281904610115
+          timestamp: 2000-01-23T04:56:07.000+00:00
     getResponseCodesPerSecondMetricsResult:
       example:
         metrics:
           "2xx":
-            unit: '%'
+            unit: responses/s
             values:
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
           "3xx":
-            unit: '%'
+            unit: responses/s
             values:
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
           "4xx":
-            unit: '%'
+            unit: responses/s
             values:
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
           "5xx":
-            unit: '%'
+            unit: responses/s
             values:
             - value: 0.8008281904610115
               timestamp: 2000-01-23T04:56:07.000+00:00
@@ -15693,7 +15791,7 @@ components:
           to: 2000-01-23T04:56:07.000+00:00
       properties:
         metrics:
-          $ref: '#/components/schemas/responseCodesMetrics'
+          $ref: '#/components/schemas/responseCodesMetrics_1'
         _metadata:
           $ref: '#/components/schemas/metricsMetadataProperties'
       type: object
@@ -17122,14 +17220,14 @@ components:
     dataTrafficMetrics:
       example:
         upPublic:
-          unit: unit
+          unit: B
           values:
           - value: 0
             timestamp: 2000-01-23T04:56:07.000+00:00
           - value: 0
             timestamp: 2000-01-23T04:56:07.000+00:00
         downPublic:
-          unit: unit
+          unit: B
           values:
           - value: 0
             timestamp: 2000-01-23T04:56:07.000+00:00
@@ -17218,7 +17316,7 @@ components:
             timestamp: 2000-01-23T04:56:07.000+00:00
       properties:
         cpuMetrics:
-          $ref: '#/components/schemas/metricsProperties'
+          $ref: '#/components/schemas/metricsPropertiesPercentage'
       title: cpuMetrics
       type: object
     cpuMetricsMetadataSummaryPeak:
@@ -17305,14 +17403,14 @@ components:
     dataTransferredMetrics:
       example:
         dataOut:
-          unit: '%'
+          unit: B
           values:
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
         dataIn:
-          unit: '%'
+          unit: B
           values:
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
@@ -17320,36 +17418,59 @@ components:
             timestamp: 2000-01-23T04:56:07.000+00:00
       properties:
         dataIn:
-          $ref: '#/components/schemas/metricsProperties'
+          $ref: '#/components/schemas/metricsPropertiesB'
         dataOut:
-          $ref: '#/components/schemas/metricsProperties'
+          $ref: '#/components/schemas/metricsPropertiesB'
+      title: dataTransferredMetrics
+      type: object
+    dataTransferredMetrics_1:
+      example:
+        dataOut:
+          unit: requests
+          values:
+          - value: 0.8008281904610115
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - value: 0.8008281904610115
+            timestamp: 2000-01-23T04:56:07.000+00:00
+        dataIn:
+          unit: requests
+          values:
+          - value: 0.8008281904610115
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - value: 0.8008281904610115
+            timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        dataIn:
+          $ref: '#/components/schemas/metricsPropertiesRequests'
+        dataOut:
+          $ref: '#/components/schemas/metricsPropertiesRequests'
       title: dataTransferredMetrics
       type: object
     responseCodesMetrics:
       example:
         "2xx":
-          unit: '%'
+          unit: responses
           values:
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
         "3xx":
-          unit: '%'
+          unit: responses
           values:
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
         "4xx":
-          unit: '%'
+          unit: responses
           values:
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
         "5xx":
-          unit: '%'
+          unit: responses
           values:
           - value: 0.8008281904610115
             timestamp: 2000-01-23T04:56:07.000+00:00
@@ -17357,13 +17478,54 @@ components:
             timestamp: 2000-01-23T04:56:07.000+00:00
       properties:
         "2xx":
-          $ref: '#/components/schemas/metricsProperties'
+          $ref: '#/components/schemas/metricsPropertiesResponses'
         "3xx":
-          $ref: '#/components/schemas/metricsProperties'
+          $ref: '#/components/schemas/metricsPropertiesResponses'
         "4xx":
-          $ref: '#/components/schemas/metricsProperties'
+          $ref: '#/components/schemas/metricsPropertiesResponses'
         "5xx":
-          $ref: '#/components/schemas/metricsProperties'
+          $ref: '#/components/schemas/metricsPropertiesResponses'
+      title: responseCodesMetrics
+      type: object
+    responseCodesMetrics_1:
+      example:
+        "2xx":
+          unit: responses/s
+          values:
+          - value: 0.8008281904610115
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - value: 0.8008281904610115
+            timestamp: 2000-01-23T04:56:07.000+00:00
+        "3xx":
+          unit: responses/s
+          values:
+          - value: 0.8008281904610115
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - value: 0.8008281904610115
+            timestamp: 2000-01-23T04:56:07.000+00:00
+        "4xx":
+          unit: responses/s
+          values:
+          - value: 0.8008281904610115
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - value: 0.8008281904610115
+            timestamp: 2000-01-23T04:56:07.000+00:00
+        "5xx":
+          unit: responses/s
+          values:
+          - value: 0.8008281904610115
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - value: 0.8008281904610115
+            timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        "2xx":
+          $ref: '#/components/schemas/metricsPropertiesResponsesPerSec'
+        "3xx":
+          $ref: '#/components/schemas/metricsPropertiesResponsesPerSec'
+        "4xx":
+          $ref: '#/components/schemas/metricsPropertiesResponsesPerSec'
+        "5xx":
+          $ref: '#/components/schemas/metricsPropertiesResponsesPerSec'
       title: responseCodesMetrics
       type: object
     healthCheck:

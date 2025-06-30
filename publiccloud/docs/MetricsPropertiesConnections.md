@@ -1,78 +1,78 @@
-# TrafficMetric
+# MetricsPropertiesConnections
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Values** | Pointer to [**[]TrafficMetricValue**](TrafficMetricValue.md) |  | [optional] 
-**Unit** | Pointer to **string** |  | [optional] 
+**Values** | Pointer to [**[]MetricsValues**](MetricsValues.md) |  | [optional] 
+**Unit** | Pointer to **string** | Unit representing connections | [optional] 
 
 ## Methods
 
-### NewTrafficMetric
+### NewMetricsPropertiesConnections
 
-`func NewTrafficMetric() *TrafficMetric`
+`func NewMetricsPropertiesConnections() *MetricsPropertiesConnections`
 
-NewTrafficMetric instantiates a new TrafficMetric object
+NewMetricsPropertiesConnections instantiates a new MetricsPropertiesConnections object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewTrafficMetricWithDefaults
+### NewMetricsPropertiesConnectionsWithDefaults
 
-`func NewTrafficMetricWithDefaults() *TrafficMetric`
+`func NewMetricsPropertiesConnectionsWithDefaults() *MetricsPropertiesConnections`
 
-NewTrafficMetricWithDefaults instantiates a new TrafficMetric object
+NewMetricsPropertiesConnectionsWithDefaults instantiates a new MetricsPropertiesConnections object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetValues
 
-`func (o *TrafficMetric) GetValues() []TrafficMetricValue`
+`func (o *MetricsPropertiesConnections) GetValues() []MetricsValues`
 
 GetValues returns the Values field if non-nil, zero value otherwise.
 
 ### GetValuesOk
 
-`func (o *TrafficMetric) GetValuesOk() (*[]TrafficMetricValue, bool)`
+`func (o *MetricsPropertiesConnections) GetValuesOk() (*[]MetricsValues, bool)`
 
 GetValuesOk returns a tuple with the Values field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValues
 
-`func (o *TrafficMetric) SetValues(v []TrafficMetricValue)`
+`func (o *MetricsPropertiesConnections) SetValues(v []MetricsValues)`
 
 SetValues sets Values field to given value.
 
 ### HasValues
 
-`func (o *TrafficMetric) HasValues() bool`
+`func (o *MetricsPropertiesConnections) HasValues() bool`
 
 HasValues returns a boolean if a field has been set.
 
 ### GetUnit
 
-`func (o *TrafficMetric) GetUnit() string`
+`func (o *MetricsPropertiesConnections) GetUnit() string`
 
 GetUnit returns the Unit field if non-nil, zero value otherwise.
 
 ### GetUnitOk
 
-`func (o *TrafficMetric) GetUnitOk() (*string, bool)`
+`func (o *MetricsPropertiesConnections) GetUnitOk() (*string, bool)`
 
 GetUnitOk returns a tuple with the Unit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnit
 
-`func (o *TrafficMetric) SetUnit(v string)`
+`func (o *MetricsPropertiesConnections) SetUnit(v string)`
 
 SetUnit sets Unit field to given value.
 
 ### HasUnit
 
-`func (o *TrafficMetric) HasUnit() bool`
+`func (o *MetricsPropertiesConnections) HasUnit() bool`
 
 HasUnit returns a boolean if a field has been set.
 

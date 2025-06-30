@@ -19,7 +19,7 @@ var _ MappedNullable = &GetConnectionsPerSecondMetricsResult{}
 
 // GetConnectionsPerSecondMetricsResult struct for GetConnectionsPerSecondMetricsResult
 type GetConnectionsPerSecondMetricsResult struct {
-	Metrics *MetricsProperties `json:"metrics,omitempty"`
+	Metrics *MetricsPropertiesConnectionsPerSec `json:"metrics,omitempty"`
 	Metadata *MetricsMetadataProperties `json:"_metadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,9 +44,9 @@ func NewGetConnectionsPerSecondMetricsResultWithDefaults() *GetConnectionsPerSec
 }
 
 // GetMetrics returns the Metrics field value if set, zero value otherwise.
-func (o *GetConnectionsPerSecondMetricsResult) GetMetrics() MetricsProperties {
+func (o *GetConnectionsPerSecondMetricsResult) GetMetrics() MetricsPropertiesConnectionsPerSec {
 	if o == nil || IsNil(o.Metrics) {
-		var ret MetricsProperties
+		var ret MetricsPropertiesConnectionsPerSec
 		return ret
 	}
 	return *o.Metrics
@@ -54,7 +54,7 @@ func (o *GetConnectionsPerSecondMetricsResult) GetMetrics() MetricsProperties {
 
 // GetMetricsOk returns a tuple with the Metrics field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetConnectionsPerSecondMetricsResult) GetMetricsOk() (*MetricsProperties, bool) {
+func (o *GetConnectionsPerSecondMetricsResult) GetMetricsOk() (*MetricsPropertiesConnectionsPerSec, bool) {
 	if o == nil || IsNil(o.Metrics) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *GetConnectionsPerSecondMetricsResult) HasMetrics() bool {
 	return false
 }
 
-// SetMetrics gets a reference to the given MetricsProperties and assigns it to the Metrics field.
-func (o *GetConnectionsPerSecondMetricsResult) SetMetrics(v MetricsProperties) {
+// SetMetrics gets a reference to the given MetricsPropertiesConnectionsPerSec and assigns it to the Metrics field.
+func (o *GetConnectionsPerSecondMetricsResult) SetMetrics(v MetricsPropertiesConnectionsPerSec) {
 	o.Metrics = &v
 }
 
