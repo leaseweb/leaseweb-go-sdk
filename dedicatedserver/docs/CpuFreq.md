@@ -1,4 +1,4 @@
-# Smartctl
+# CpuFreq
 
 ## Properties
 
@@ -7,20 +7,20 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewSmartctl
+### NewCpuFreq
 
-`func NewSmartctl() *Smartctl`
+`func NewCpuFreq() *CpuFreq`
 
-NewSmartctl instantiates a new Smartctl object
+NewCpuFreq instantiates a new CpuFreq object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSmartctlWithDefaults
+### NewCpuFreqWithDefaults
 
-`func NewSmartctlWithDefaults() *Smartctl`
+`func NewCpuFreqWithDefaults() *CpuFreq`
 
-NewSmartctlWithDefaults instantiates a new Smartctl object
+NewCpuFreqWithDefaults instantiates a new CpuFreq object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 

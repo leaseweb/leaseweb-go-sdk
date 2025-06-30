@@ -19,7 +19,7 @@ var _ MappedNullable = &CpuCapabilities{}
 
 // CpuCapabilities struct for CpuCapabilities
 type CpuCapabilities struct {
-	Cpufreq *string `json:"cpufreq,omitempty"`
+	Cpufreq *CpuFreq `json:"cpufreq,omitempty"`
 	Ht *string `json:"ht,omitempty"`
 	Vmx *bool `json:"vmx,omitempty"`
 	X8664 *string `json:"x86-64,omitempty"`
@@ -46,9 +46,9 @@ func NewCpuCapabilitiesWithDefaults() *CpuCapabilities {
 }
 
 // GetCpufreq returns the Cpufreq field value if set, zero value otherwise.
-func (o *CpuCapabilities) GetCpufreq() string {
+func (o *CpuCapabilities) GetCpufreq() CpuFreq {
 	if o == nil || IsNil(o.Cpufreq) {
-		var ret string
+		var ret CpuFreq
 		return ret
 	}
 	return *o.Cpufreq
@@ -56,7 +56,7 @@ func (o *CpuCapabilities) GetCpufreq() string {
 
 // GetCpufreqOk returns a tuple with the Cpufreq field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CpuCapabilities) GetCpufreqOk() (*string, bool) {
+func (o *CpuCapabilities) GetCpufreqOk() (*CpuFreq, bool) {
 	if o == nil || IsNil(o.Cpufreq) {
 		return nil, false
 	}
@@ -72,8 +72,8 @@ func (o *CpuCapabilities) HasCpufreq() bool {
 	return false
 }
 
-// SetCpufreq gets a reference to the given string and assigns it to the Cpufreq field.
-func (o *CpuCapabilities) SetCpufreq(v string) {
+// SetCpufreq gets a reference to the given CpuFreq and assigns it to the Cpufreq field.
+func (o *CpuCapabilities) SetCpufreq(v CpuFreq) {
 	o.Cpufreq = &v
 }
 

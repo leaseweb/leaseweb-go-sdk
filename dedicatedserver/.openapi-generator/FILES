@@ -19,6 +19,7 @@ docs/ControlPanel.md
 docs/ControlPanelList.md
 docs/Cpu.md
 docs/CpuCapabilities.md
+docs/CpuFreq.md
 docs/CpuSettings.md
 docs/CreateCredentialOpts.md
 docs/CreateDhcpReservationOpts.md
@@ -146,6 +147,7 @@ model_control_panel.go
 model_control_panel_list.go
 model_cpu.go
 model_cpu_capabilities.go
+model_cpu_freq.go
 model_cpu_settings.go
 model_create_credential_opts.go
 model_create_dhcp_reservation_opts.go

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cpufreq** | Pointer to **string** |  | [optional] 
+**Cpufreq** | Pointer to [**CpuFreq**](CpuFreq.md) |  | [optional] 
 **Ht** | Pointer to **string** |  | [optional] 
 **Vmx** | Pointer to **bool** |  | [optional] 
 **X8664** | Pointer to **string** |  | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCpufreq
 
-`func (o *CpuCapabilities) GetCpufreq() string`
+`func (o *CpuCapabilities) GetCpufreq() CpuFreq`
 
 GetCpufreq returns the Cpufreq field if non-nil, zero value otherwise.
 
 ### GetCpufreqOk
 
-`func (o *CpuCapabilities) GetCpufreqOk() (*string, bool)`
+`func (o *CpuCapabilities) GetCpufreqOk() (*CpuFreq, bool)`
 
 GetCpufreqOk returns a tuple with the Cpufreq field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpufreq
 
-`func (o *CpuCapabilities) SetCpufreq(v string)`
+`func (o *CpuCapabilities) SetCpufreq(v CpuFreq)`
 
 SetCpufreq sets Cpufreq field to given value.
 

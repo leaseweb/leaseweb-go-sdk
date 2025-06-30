@@ -8394,16 +8394,6 @@ components:
       example: disk
       type: string
     attribute:
-      example:
-        flag: flag
-        raw_value: raw_value
-        worst: worst
-        id: id
-        type: type
-        thresh: thresh
-        updated: updated
-        value: value
-        when_failed: when_failed
       properties:
         flag:
           description: Flag of the attribute
@@ -8471,88 +8461,14 @@ components:
             id: memory/bank:0
           disks:
           - product: product
-            smartctl:
-              device_model: device_model
-              ata_version: ata_version
-              smart_support:
-                available: true
-                enabled: true
-              serial_number: CZ33109CHV
-              firmware_version: firmware_version
-              rpm: rpm
-              user_capacity: user_capacity
-              execution_status: execution_status
-              attributes:
-                Power_On_Hours:
-                  flag: flag
-                  raw_value: raw_value
-                  worst: worst
-                  id: id
-                  type: type
-                  thresh: thresh
-                  updated: updated
-                  value: value
-                  when_failed: when_failed
-                Reallocated_Sector_Ct:
-                  flag: flag
-                  raw_value: raw_value
-                  worst: worst
-                  id: id
-                  type: type
-                  thresh: thresh
-                  updated: updated
-                  value: value
-                  when_failed: when_failed
-              sata_version: sata_version
-              sector_size: sector_size
-              smart_error_log: smart_error_log
-              smartctl_version: smartctl_version
-              overall_health: overall_health
-              is_sas: true
+            smartctl: null
             size: size
             vendor: HP
             description: description
             serial_number: CZ33109CHV
             id: disk
           - product: product
-            smartctl:
-              device_model: device_model
-              ata_version: ata_version
-              smart_support:
-                available: true
-                enabled: true
-              serial_number: CZ33109CHV
-              firmware_version: firmware_version
-              rpm: rpm
-              user_capacity: user_capacity
-              execution_status: execution_status
-              attributes:
-                Power_On_Hours:
-                  flag: flag
-                  raw_value: raw_value
-                  worst: worst
-                  id: id
-                  type: type
-                  thresh: thresh
-                  updated: updated
-                  value: value
-                  when_failed: when_failed
-                Reallocated_Sector_Ct:
-                  flag: flag
-                  raw_value: raw_value
-                  worst: worst
-                  id: id
-                  type: type
-                  thresh: thresh
-                  updated: updated
-                  value: value
-                  when_failed: when_failed
-              sata_version: sata_version
-              sector_size: sector_size
-              smart_error_log: smart_error_log
-              smartctl_version: smartctl_version
-              overall_health: overall_health
-              is_sas: true
+            smartctl: null
             size: size
             vendor: HP
             description: description
@@ -8567,7 +8483,7 @@ components:
             capabilities:
               vmx: true
               x86-64: x86-64
-              cpufreq: cpufreq
+              cpufreq: cpuFreq
               ht: ht
             vendor: HP
             description: description
@@ -8581,7 +8497,7 @@ components:
             capabilities:
               vmx: true
               x86-64: x86-64
-              cpufreq: cpufreq
+              cpufreq: cpuFreq
               ht: ht
             vendor: HP
             description: description
@@ -10634,15 +10550,20 @@ components:
           type: string
       title: chassis
       type: object
+    cpuFreq:
+      oneOf:
+      - type: string
+      - type: boolean
+      title: cpuFreq
     cpuCapabilities:
       example:
         vmx: true
         x86-64: x86-64
-        cpufreq: cpufreq
+        cpufreq: cpuFreq
         ht: ht
       properties:
         cpufreq:
-          type: string
+          $ref: '#/components/schemas/cpuFreq'
         ht:
           type: string
         vmx:
@@ -10675,7 +10596,7 @@ components:
         capabilities:
           vmx: true
           x86-64: x86-64
-          cpufreq: cpufreq
+          cpufreq: cpuFreq
           ht: ht
         vendor: HP
         description: description
@@ -10702,27 +10623,6 @@ components:
           type: string
       title: hardwareCpu
     attributes:
-      example:
-        Power_On_Hours:
-          flag: flag
-          raw_value: raw_value
-          worst: worst
-          id: id
-          type: type
-          thresh: thresh
-          updated: updated
-          value: value
-          when_failed: when_failed
-        Reallocated_Sector_Ct:
-          flag: flag
-          raw_value: raw_value
-          worst: worst
-          id: id
-          type: type
-          thresh: thresh
-          updated: updated
-          value: value
-          when_failed: when_failed
       properties:
         Power_On_Hours:
           $ref: '#/components/schemas/attribute'
@@ -10731,9 +10631,6 @@ components:
       title: attributes
       type: object
     smartSupport:
-      example:
-        available: true
-        enabled: true
       properties:
         available:
           type: boolean
@@ -10742,120 +10639,14 @@ components:
       title: smartSupport
       type: object
     smartctl:
-      example:
-        device_model: device_model
-        ata_version: ata_version
-        smart_support:
-          available: true
-          enabled: true
-        serial_number: CZ33109CHV
-        firmware_version: firmware_version
-        rpm: rpm
-        user_capacity: user_capacity
-        execution_status: execution_status
-        attributes:
-          Power_On_Hours:
-            flag: flag
-            raw_value: raw_value
-            worst: worst
-            id: id
-            type: type
-            thresh: thresh
-            updated: updated
-            value: value
-            when_failed: when_failed
-          Reallocated_Sector_Ct:
-            flag: flag
-            raw_value: raw_value
-            worst: worst
-            id: id
-            type: type
-            thresh: thresh
-            updated: updated
-            value: value
-            when_failed: when_failed
-        sata_version: sata_version
-        sector_size: sector_size
-        smart_error_log: smart_error_log
-        smartctl_version: smartctl_version
-        overall_health: overall_health
-        is_sas: true
-      properties:
-        ata_version:
-          type: string
-        attributes:
-          $ref: '#/components/schemas/attributes'
-        device_model:
-          type: string
-        execution_status:
-          type: string
-        firmware_version:
-          type: string
-        is_sas:
-          type: boolean
-        overall_health:
-          type: string
-        rpm:
-          type: string
-        sata_version:
-          type: string
-        sector_size:
-          type: string
-        serial_number:
-          description: Serial number of the server
-          example: CZ33109CHV
-          type: string
-        smart_error_log:
-          type: string
-        smart_support:
-          $ref: '#/components/schemas/smartSupport'
-        smartctl_version:
-          type: string
-        user_capacity:
-          type: string
+      oneOf:
+      - $ref: '#/components/schemas/smartctl'
+      - type: boolean
       title: smartctl
-      type: object
     disk:
       example:
         product: product
-        smartctl:
-          device_model: device_model
-          ata_version: ata_version
-          smart_support:
-            available: true
-            enabled: true
-          serial_number: CZ33109CHV
-          firmware_version: firmware_version
-          rpm: rpm
-          user_capacity: user_capacity
-          execution_status: execution_status
-          attributes:
-            Power_On_Hours:
-              flag: flag
-              raw_value: raw_value
-              worst: worst
-              id: id
-              type: type
-              thresh: thresh
-              updated: updated
-              value: value
-              when_failed: when_failed
-            Reallocated_Sector_Ct:
-              flag: flag
-              raw_value: raw_value
-              worst: worst
-              id: id
-              type: type
-              thresh: thresh
-              updated: updated
-              value: value
-              when_failed: when_failed
-          sata_version: sata_version
-          sector_size: sector_size
-          smart_error_log: smart_error_log
-          smartctl_version: smartctl_version
-          overall_health: overall_health
-          is_sas: true
+        smartctl: null
         size: size
         vendor: HP
         description: description
@@ -11248,88 +11039,14 @@ components:
           id: memory/bank:0
         disks:
         - product: product
-          smartctl:
-            device_model: device_model
-            ata_version: ata_version
-            smart_support:
-              available: true
-              enabled: true
-            serial_number: CZ33109CHV
-            firmware_version: firmware_version
-            rpm: rpm
-            user_capacity: user_capacity
-            execution_status: execution_status
-            attributes:
-              Power_On_Hours:
-                flag: flag
-                raw_value: raw_value
-                worst: worst
-                id: id
-                type: type
-                thresh: thresh
-                updated: updated
-                value: value
-                when_failed: when_failed
-              Reallocated_Sector_Ct:
-                flag: flag
-                raw_value: raw_value
-                worst: worst
-                id: id
-                type: type
-                thresh: thresh
-                updated: updated
-                value: value
-                when_failed: when_failed
-            sata_version: sata_version
-            sector_size: sector_size
-            smart_error_log: smart_error_log
-            smartctl_version: smartctl_version
-            overall_health: overall_health
-            is_sas: true
+          smartctl: null
           size: size
           vendor: HP
           description: description
           serial_number: CZ33109CHV
           id: disk
         - product: product
-          smartctl:
-            device_model: device_model
-            ata_version: ata_version
-            smart_support:
-              available: true
-              enabled: true
-            serial_number: CZ33109CHV
-            firmware_version: firmware_version
-            rpm: rpm
-            user_capacity: user_capacity
-            execution_status: execution_status
-            attributes:
-              Power_On_Hours:
-                flag: flag
-                raw_value: raw_value
-                worst: worst
-                id: id
-                type: type
-                thresh: thresh
-                updated: updated
-                value: value
-                when_failed: when_failed
-              Reallocated_Sector_Ct:
-                flag: flag
-                raw_value: raw_value
-                worst: worst
-                id: id
-                type: type
-                thresh: thresh
-                updated: updated
-                value: value
-                when_failed: when_failed
-            sata_version: sata_version
-            sector_size: sector_size
-            smart_error_log: smart_error_log
-            smartctl_version: smartctl_version
-            overall_health: overall_health
-            is_sas: true
+          smartctl: null
           size: size
           vendor: HP
           description: description
@@ -11344,7 +11061,7 @@ components:
           capabilities:
             vmx: true
             x86-64: x86-64
-            cpufreq: cpufreq
+            cpufreq: cpuFreq
             ht: ht
           vendor: HP
           description: description
@@ -11358,7 +11075,7 @@ components:
           capabilities:
             vmx: true
             x86-64: x86-64
-            cpufreq: cpufreq
+            cpufreq: cpuFreq
             ht: ht
           vendor: HP
           description: description

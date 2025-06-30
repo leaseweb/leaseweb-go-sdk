@@ -156,6 +156,7 @@ Class | Method | HTTP request | Description
  - [ControlPanelList](docs/ControlPanelList.md)
  - [Cpu](docs/Cpu.md)
  - [CpuCapabilities](docs/CpuCapabilities.md)
+ - [CpuFreq](docs/CpuFreq.md)
  - [CpuSettings](docs/CpuSettings.md)
  - [CreateCredentialOpts](docs/CreateCredentialOpts.md)
  - [CreateDhcpReservationOpts](docs/CreateDhcpReservationOpts.md)
