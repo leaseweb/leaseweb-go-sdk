@@ -1,7 +1,7 @@
 /*
 Public Clouds
 
-> The base URL for this API is: **https://api.leaseweb.com/publicCloud/v1/_**  This API provides ways to launch and manage Public Cloud instances.  <div class=\"badge\">BETA</div> This API is in BETA. Documentation might be incorrect or incomplete. Functionality might change with the final release.>
+> The base URL for this API is: **https://api.leaseweb.com/publicCloud/v1/_**  This API provides ways to launch and manage Public Cloud instances.
 
 API version: v1
 */
@@ -19,7 +19,7 @@ var _ MappedNullable = &InstanceTypes{}
 
 // InstanceTypes struct for InstanceTypes
 type InstanceTypes struct {
-	Metadata *Metadata `json:"_metadata,omitempty"`
+	Metadata *InstanceTypesMetadata `json:"_metadata,omitempty"`
 	InstanceTypes []InstanceType `json:"instanceTypes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,9 +44,9 @@ func NewInstanceTypesWithDefaults() *InstanceTypes {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *InstanceTypes) GetMetadata() Metadata {
+func (o *InstanceTypes) GetMetadata() InstanceTypesMetadata {
 	if o == nil || IsNil(o.Metadata) {
-		var ret Metadata
+		var ret InstanceTypesMetadata
 		return ret
 	}
 	return *o.Metadata
@@ -54,7 +54,7 @@ func (o *InstanceTypes) GetMetadata() Metadata {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstanceTypes) GetMetadataOk() (*Metadata, bool) {
+func (o *InstanceTypes) GetMetadataOk() (*InstanceTypesMetadata, bool) {
 	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *InstanceTypes) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given Metadata and assigns it to the Metadata field.
-func (o *InstanceTypes) SetMetadata(v Metadata) {
+// SetMetadata gets a reference to the given InstanceTypesMetadata and assigns it to the Metadata field.
+func (o *InstanceTypes) SetMetadata(v InstanceTypesMetadata) {
 	o.Metadata = &v
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Metadata** | Pointer to [**Metadata**](Metadata.md) |  | [optional] 
+**Metadata** | Pointer to [**InstanceTypesMetadata**](InstanceTypesMetadata.md) |  | [optional] 
 **InstanceTypes** | Pointer to [**[]InstanceType**](InstanceType.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMetadata
 
-`func (o *InstanceTypes) GetMetadata() Metadata`
+`func (o *InstanceTypes) GetMetadata() InstanceTypesMetadata`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *InstanceTypes) GetMetadataOk() (*Metadata, bool)`
+`func (o *InstanceTypes) GetMetadataOk() (*InstanceTypesMetadata, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *InstanceTypes) SetMetadata(v Metadata)`
+`func (o *InstanceTypes) SetMetadata(v InstanceTypesMetadata)`
 
 SetMetadata sets Metadata field to given value.
 

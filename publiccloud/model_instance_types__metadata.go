@@ -15,39 +15,43 @@ import (
 	"fmt"
 )
 
-// checks if the Metadata type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Metadata{}
+// checks if the InstanceTypesMetadata type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InstanceTypesMetadata{}
 
-// Metadata Metadata about the collection
-type Metadata struct {
+// InstanceTypesMetadata struct for InstanceTypesMetadata
+type InstanceTypesMetadata struct {
 	// Total amount of elements in this collection
 	TotalCount int32 `json:"totalCount"`
 	// The offset used to generate this response
 	Offset int32 `json:"offset"`
 	// The limit used to generate this response
 	Limit int32 `json:"limit"`
+	Currency string `json:"currency"`
+	CurrencySymbol string `json:"currencySymbol"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _Metadata Metadata
+type _InstanceTypesMetadata InstanceTypesMetadata
 
-// NewMetadata instantiates a new Metadata object
+// NewInstanceTypesMetadata instantiates a new InstanceTypesMetadata object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMetadata(totalCount int32, offset int32, limit int32) *Metadata {
-	this := Metadata{}
+func NewInstanceTypesMetadata(totalCount int32, offset int32, limit int32, currency string, currencySymbol string) *InstanceTypesMetadata {
+	this := InstanceTypesMetadata{}
 	this.TotalCount = totalCount
 	this.Offset = offset
 	this.Limit = limit
+	this.Currency = currency
+	this.CurrencySymbol = currencySymbol
 	return &this
 }
 
-// NewMetadataWithDefaults instantiates a new Metadata object
+// NewInstanceTypesMetadataWithDefaults instantiates a new InstanceTypesMetadata object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewMetadataWithDefaults() *Metadata {
-	this := Metadata{}
+func NewInstanceTypesMetadataWithDefaults() *InstanceTypesMetadata {
+	this := InstanceTypesMetadata{}
 	var offset int32 = 0
 	this.Offset = offset
 	var limit int32 = 5
@@ -56,7 +60,7 @@ func NewMetadataWithDefaults() *Metadata {
 }
 
 // GetTotalCount returns the TotalCount field value
-func (o *Metadata) GetTotalCount() int32 {
+func (o *InstanceTypesMetadata) GetTotalCount() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -67,7 +71,7 @@ func (o *Metadata) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *Metadata) GetTotalCountOk() (*int32, bool) {
+func (o *InstanceTypesMetadata) GetTotalCountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -75,12 +79,12 @@ func (o *Metadata) GetTotalCountOk() (*int32, bool) {
 }
 
 // SetTotalCount sets field value
-func (o *Metadata) SetTotalCount(v int32) {
+func (o *InstanceTypesMetadata) SetTotalCount(v int32) {
 	o.TotalCount = v
 }
 
 // GetOffset returns the Offset field value
-func (o *Metadata) GetOffset() int32 {
+func (o *InstanceTypesMetadata) GetOffset() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -91,7 +95,7 @@ func (o *Metadata) GetOffset() int32 {
 
 // GetOffsetOk returns a tuple with the Offset field value
 // and a boolean to check if the value has been set.
-func (o *Metadata) GetOffsetOk() (*int32, bool) {
+func (o *InstanceTypesMetadata) GetOffsetOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -99,12 +103,12 @@ func (o *Metadata) GetOffsetOk() (*int32, bool) {
 }
 
 // SetOffset sets field value
-func (o *Metadata) SetOffset(v int32) {
+func (o *InstanceTypesMetadata) SetOffset(v int32) {
 	o.Offset = v
 }
 
 // GetLimit returns the Limit field value
-func (o *Metadata) GetLimit() int32 {
+func (o *InstanceTypesMetadata) GetLimit() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -115,7 +119,7 @@ func (o *Metadata) GetLimit() int32 {
 
 // GetLimitOk returns a tuple with the Limit field value
 // and a boolean to check if the value has been set.
-func (o *Metadata) GetLimitOk() (*int32, bool) {
+func (o *InstanceTypesMetadata) GetLimitOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,11 +127,59 @@ func (o *Metadata) GetLimitOk() (*int32, bool) {
 }
 
 // SetLimit sets field value
-func (o *Metadata) SetLimit(v int32) {
+func (o *InstanceTypesMetadata) SetLimit(v int32) {
 	o.Limit = v
 }
 
-func (o Metadata) MarshalJSON() ([]byte, error) {
+// GetCurrency returns the Currency field value
+func (o *InstanceTypesMetadata) GetCurrency() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value
+// and a boolean to check if the value has been set.
+func (o *InstanceTypesMetadata) GetCurrencyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Currency, true
+}
+
+// SetCurrency sets field value
+func (o *InstanceTypesMetadata) SetCurrency(v string) {
+	o.Currency = v
+}
+
+// GetCurrencySymbol returns the CurrencySymbol field value
+func (o *InstanceTypesMetadata) GetCurrencySymbol() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CurrencySymbol
+}
+
+// GetCurrencySymbolOk returns a tuple with the CurrencySymbol field value
+// and a boolean to check if the value has been set.
+func (o *InstanceTypesMetadata) GetCurrencySymbolOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CurrencySymbol, true
+}
+
+// SetCurrencySymbol sets field value
+func (o *InstanceTypesMetadata) SetCurrencySymbol(v string) {
+	o.CurrencySymbol = v
+}
+
+func (o InstanceTypesMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -135,11 +187,13 @@ func (o Metadata) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Metadata) ToMap() (map[string]interface{}, error) {
+func (o InstanceTypesMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["totalCount"] = o.TotalCount
 	toSerialize["offset"] = o.Offset
 	toSerialize["limit"] = o.Limit
+	toSerialize["currency"] = o.Currency
+	toSerialize["currencySymbol"] = o.CurrencySymbol
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -148,7 +202,7 @@ func (o Metadata) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Metadata) UnmarshalJSON(data []byte) (err error) {
+func (o *InstanceTypesMetadata) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -156,6 +210,8 @@ func (o *Metadata) UnmarshalJSON(data []byte) (err error) {
 		"totalCount",
 		"offset",
 		"limit",
+		"currency",
+		"currencySymbol",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -172,15 +228,15 @@ func (o *Metadata) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varMetadata := _Metadata{}
+	varInstanceTypesMetadata := _InstanceTypesMetadata{}
 
-	err = json.Unmarshal(data, &varMetadata)
+	err = json.Unmarshal(data, &varInstanceTypesMetadata)
 
 	if err != nil {
 		return err
 	}
 
-	*o = Metadata(varMetadata)
+	*o = InstanceTypesMetadata(varInstanceTypesMetadata)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -188,44 +244,46 @@ func (o *Metadata) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "totalCount")
 		delete(additionalProperties, "offset")
 		delete(additionalProperties, "limit")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "currencySymbol")
 		o.AdditionalProperties = additionalProperties
 	}
 
 	return err
 }
 
-type NullableMetadata struct {
-	value *Metadata
+type NullableInstanceTypesMetadata struct {
+	value *InstanceTypesMetadata
 	isSet bool
 }
 
-func (v NullableMetadata) Get() *Metadata {
+func (v NullableInstanceTypesMetadata) Get() *InstanceTypesMetadata {
 	return v.value
 }
 
-func (v *NullableMetadata) Set(val *Metadata) {
+func (v *NullableInstanceTypesMetadata) Set(val *InstanceTypesMetadata) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableMetadata) IsSet() bool {
+func (v NullableInstanceTypesMetadata) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableMetadata) Unset() {
+func (v *NullableInstanceTypesMetadata) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableMetadata(val *Metadata) *NullableMetadata {
-	return &NullableMetadata{value: val, isSet: true}
+func NewNullableInstanceTypesMetadata(val *InstanceTypesMetadata) *NullableInstanceTypesMetadata {
+	return &NullableInstanceTypesMetadata{value: val, isSet: true}
 }
 
-func (v NullableMetadata) MarshalJSON() ([]byte, error) {
+func (v NullableInstanceTypesMetadata) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableMetadata) UnmarshalJSON(src []byte) error {
+func (v *NullableInstanceTypesMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

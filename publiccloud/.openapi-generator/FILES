@@ -87,6 +87,7 @@ docs/InstanceDetails.md
 docs/InstanceList.md
 docs/InstanceType.md
 docs/InstanceTypes.md
+docs/InstanceTypesMetadata.md
 docs/Ip.md
 docs/IpDetails.md
 docs/IpVersion.md
@@ -127,7 +128,6 @@ docs/NotificationSetting.md
 docs/NotificationSettingThreshold.md
 docs/NullRouteIPOpts.md
 docs/Peak.md
-docs/Price.md
 docs/Prices.md
 docs/PrivateNetwork.md
 docs/Protocol.md
@@ -143,7 +143,6 @@ docs/Snapshot.md
 docs/SslCertificate.md
 docs/State.md
 docs/StickySession.md
-docs/Storage.md
 docs/StorageSize.md
 docs/StorageType.md
 docs/StoreCredentialOpts.md
@@ -260,6 +259,7 @@ model_instance_details.go
 model_instance_list.go
 model_instance_type.go
 model_instance_types.go
+model_instance_types__metadata.go
 model_ip.go
 model_ip_details.go
 model_ip_version.go
@@ -299,7 +299,6 @@ model_notification_setting.go
 model_notification_setting_threshold.go
 model_null_route_ip_opts.go
 model_peak.go
-model_price.go
 model_prices.go
 model_private_network.go
 model_protocol.go
@@ -313,7 +312,6 @@ model_snapshot.go
 model_ssl_certificate.go
 model_state.go
 model_sticky_session.go
-model_storage.go
 model_storage_size.go
 model_storage_type.go
 model_store_credential_opts.go
