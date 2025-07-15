@@ -12,6 +12,7 @@ package publiccloud
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the GetExpensesResult type satisfies the MappedNullable interface at compile time
@@ -19,7 +20,8 @@ var _ MappedNullable = &GetExpensesResult{}
 
 // GetExpensesResult struct for GetExpensesResult
 type GetExpensesResult struct {
-	Billing *Billing `json:"billing,omitempty"`
+	Billing Billing `json:"billing"`
+	Metadata Metadata `json:"_metadata"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -29,8 +31,10 @@ type _GetExpensesResult GetExpensesResult
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetExpensesResult() *GetExpensesResult {
+func NewGetExpensesResult(billing Billing, metadata Metadata) *GetExpensesResult {
 	this := GetExpensesResult{}
+	this.Billing = billing
+	this.Metadata = metadata
 	return &this
 }
 
@@ -42,36 +46,52 @@ func NewGetExpensesResultWithDefaults() *GetExpensesResult {
 	return &this
 }
 
-// GetBilling returns the Billing field value if set, zero value otherwise.
+// GetBilling returns the Billing field value
 func (o *GetExpensesResult) GetBilling() Billing {
-	if o == nil || IsNil(o.Billing) {
+	if o == nil {
 		var ret Billing
 		return ret
 	}
-	return *o.Billing
+
+	return o.Billing
 }
 
-// GetBillingOk returns a tuple with the Billing field value if set, nil otherwise
+// GetBillingOk returns a tuple with the Billing field value
 // and a boolean to check if the value has been set.
 func (o *GetExpensesResult) GetBillingOk() (*Billing, bool) {
-	if o == nil || IsNil(o.Billing) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Billing, true
+	return &o.Billing, true
 }
 
-// HasBilling returns a boolean if a field has been set.
-func (o *GetExpensesResult) HasBilling() bool {
-	if o != nil && !IsNil(o.Billing) {
-		return true
+// SetBilling sets field value
+func (o *GetExpensesResult) SetBilling(v Billing) {
+	o.Billing = v
+}
+
+// GetMetadata returns the Metadata field value
+func (o *GetExpensesResult) GetMetadata() Metadata {
+	if o == nil {
+		var ret Metadata
+		return ret
 	}
 
-	return false
+	return o.Metadata
 }
 
-// SetBilling gets a reference to the given Billing and assigns it to the Billing field.
-func (o *GetExpensesResult) SetBilling(v Billing) {
-	o.Billing = &v
+// GetMetadataOk returns a tuple with the Metadata field value
+// and a boolean to check if the value has been set.
+func (o *GetExpensesResult) GetMetadataOk() (*Metadata, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Metadata, true
+}
+
+// SetMetadata sets field value
+func (o *GetExpensesResult) SetMetadata(v Metadata) {
+	o.Metadata = v
 }
 
 func (o GetExpensesResult) MarshalJSON() ([]byte, error) {
@@ -84,9 +104,8 @@ func (o GetExpensesResult) MarshalJSON() ([]byte, error) {
 
 func (o GetExpensesResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Billing) {
-		toSerialize["billing"] = o.Billing
-	}
+	toSerialize["billing"] = o.Billing
+	toSerialize["_metadata"] = o.Metadata
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -96,6 +115,28 @@ func (o GetExpensesResult) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *GetExpensesResult) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"billing",
+		"_metadata",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varGetExpensesResult := _GetExpensesResult{}
 
 	err = json.Unmarshal(data, &varGetExpensesResult)
@@ -110,6 +151,7 @@ func (o *GetExpensesResult) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "billing")
+		delete(additionalProperties, "_metadata")
 		o.AdditionalProperties = additionalProperties
 	}
 

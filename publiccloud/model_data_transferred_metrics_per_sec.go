@@ -14,37 +14,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the DataTransferredMetrics1 type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataTransferredMetrics1{}
+// checks if the DataTransferredMetricsPerSec type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DataTransferredMetricsPerSec{}
 
-// DataTransferredMetrics1 struct for DataTransferredMetrics1
-type DataTransferredMetrics1 struct {
+// DataTransferredMetricsPerSec struct for DataTransferredMetricsPerSec
+type DataTransferredMetricsPerSec struct {
 	DataIn *MetricsPropertiesRequests `json:"dataIn,omitempty"`
 	DataOut *MetricsPropertiesRequests `json:"dataOut,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _DataTransferredMetrics1 DataTransferredMetrics1
+type _DataTransferredMetricsPerSec DataTransferredMetricsPerSec
 
-// NewDataTransferredMetrics1 instantiates a new DataTransferredMetrics1 object
+// NewDataTransferredMetricsPerSec instantiates a new DataTransferredMetricsPerSec object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataTransferredMetrics1() *DataTransferredMetrics1 {
-	this := DataTransferredMetrics1{}
+func NewDataTransferredMetricsPerSec() *DataTransferredMetricsPerSec {
+	this := DataTransferredMetricsPerSec{}
 	return &this
 }
 
-// NewDataTransferredMetrics1WithDefaults instantiates a new DataTransferredMetrics1 object
+// NewDataTransferredMetricsPerSecWithDefaults instantiates a new DataTransferredMetricsPerSec object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDataTransferredMetrics1WithDefaults() *DataTransferredMetrics1 {
-	this := DataTransferredMetrics1{}
+func NewDataTransferredMetricsPerSecWithDefaults() *DataTransferredMetricsPerSec {
+	this := DataTransferredMetricsPerSec{}
 	return &this
 }
 
 // GetDataIn returns the DataIn field value if set, zero value otherwise.
-func (o *DataTransferredMetrics1) GetDataIn() MetricsPropertiesRequests {
+func (o *DataTransferredMetricsPerSec) GetDataIn() MetricsPropertiesRequests {
 	if o == nil || IsNil(o.DataIn) {
 		var ret MetricsPropertiesRequests
 		return ret
@@ -54,7 +54,7 @@ func (o *DataTransferredMetrics1) GetDataIn() MetricsPropertiesRequests {
 
 // GetDataInOk returns a tuple with the DataIn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataTransferredMetrics1) GetDataInOk() (*MetricsPropertiesRequests, bool) {
+func (o *DataTransferredMetricsPerSec) GetDataInOk() (*MetricsPropertiesRequests, bool) {
 	if o == nil || IsNil(o.DataIn) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *DataTransferredMetrics1) GetDataInOk() (*MetricsPropertiesRequests, boo
 }
 
 // HasDataIn returns a boolean if a field has been set.
-func (o *DataTransferredMetrics1) HasDataIn() bool {
+func (o *DataTransferredMetricsPerSec) HasDataIn() bool {
 	if o != nil && !IsNil(o.DataIn) {
 		return true
 	}
@@ -71,12 +71,12 @@ func (o *DataTransferredMetrics1) HasDataIn() bool {
 }
 
 // SetDataIn gets a reference to the given MetricsPropertiesRequests and assigns it to the DataIn field.
-func (o *DataTransferredMetrics1) SetDataIn(v MetricsPropertiesRequests) {
+func (o *DataTransferredMetricsPerSec) SetDataIn(v MetricsPropertiesRequests) {
 	o.DataIn = &v
 }
 
 // GetDataOut returns the DataOut field value if set, zero value otherwise.
-func (o *DataTransferredMetrics1) GetDataOut() MetricsPropertiesRequests {
+func (o *DataTransferredMetricsPerSec) GetDataOut() MetricsPropertiesRequests {
 	if o == nil || IsNil(o.DataOut) {
 		var ret MetricsPropertiesRequests
 		return ret
@@ -86,7 +86,7 @@ func (o *DataTransferredMetrics1) GetDataOut() MetricsPropertiesRequests {
 
 // GetDataOutOk returns a tuple with the DataOut field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataTransferredMetrics1) GetDataOutOk() (*MetricsPropertiesRequests, bool) {
+func (o *DataTransferredMetricsPerSec) GetDataOutOk() (*MetricsPropertiesRequests, bool) {
 	if o == nil || IsNil(o.DataOut) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *DataTransferredMetrics1) GetDataOutOk() (*MetricsPropertiesRequests, bo
 }
 
 // HasDataOut returns a boolean if a field has been set.
-func (o *DataTransferredMetrics1) HasDataOut() bool {
+func (o *DataTransferredMetricsPerSec) HasDataOut() bool {
 	if o != nil && !IsNil(o.DataOut) {
 		return true
 	}
@@ -103,11 +103,11 @@ func (o *DataTransferredMetrics1) HasDataOut() bool {
 }
 
 // SetDataOut gets a reference to the given MetricsPropertiesRequests and assigns it to the DataOut field.
-func (o *DataTransferredMetrics1) SetDataOut(v MetricsPropertiesRequests) {
+func (o *DataTransferredMetricsPerSec) SetDataOut(v MetricsPropertiesRequests) {
 	o.DataOut = &v
 }
 
-func (o DataTransferredMetrics1) MarshalJSON() ([]byte, error) {
+func (o DataTransferredMetricsPerSec) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -115,7 +115,7 @@ func (o DataTransferredMetrics1) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o DataTransferredMetrics1) ToMap() (map[string]interface{}, error) {
+func (o DataTransferredMetricsPerSec) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DataIn) {
 		toSerialize["dataIn"] = o.DataIn
@@ -131,16 +131,16 @@ func (o DataTransferredMetrics1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DataTransferredMetrics1) UnmarshalJSON(data []byte) (err error) {
-	varDataTransferredMetrics1 := _DataTransferredMetrics1{}
+func (o *DataTransferredMetricsPerSec) UnmarshalJSON(data []byte) (err error) {
+	varDataTransferredMetricsPerSec := _DataTransferredMetricsPerSec{}
 
-	err = json.Unmarshal(data, &varDataTransferredMetrics1)
+	err = json.Unmarshal(data, &varDataTransferredMetricsPerSec)
 
 	if err != nil {
 		return err
 	}
 
-	*o = DataTransferredMetrics1(varDataTransferredMetrics1)
+	*o = DataTransferredMetricsPerSec(varDataTransferredMetricsPerSec)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -153,38 +153,38 @@ func (o *DataTransferredMetrics1) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableDataTransferredMetrics1 struct {
-	value *DataTransferredMetrics1
+type NullableDataTransferredMetricsPerSec struct {
+	value *DataTransferredMetricsPerSec
 	isSet bool
 }
 
-func (v NullableDataTransferredMetrics1) Get() *DataTransferredMetrics1 {
+func (v NullableDataTransferredMetricsPerSec) Get() *DataTransferredMetricsPerSec {
 	return v.value
 }
 
-func (v *NullableDataTransferredMetrics1) Set(val *DataTransferredMetrics1) {
+func (v *NullableDataTransferredMetricsPerSec) Set(val *DataTransferredMetricsPerSec) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDataTransferredMetrics1) IsSet() bool {
+func (v NullableDataTransferredMetricsPerSec) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDataTransferredMetrics1) Unset() {
+func (v *NullableDataTransferredMetricsPerSec) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDataTransferredMetrics1(val *DataTransferredMetrics1) *NullableDataTransferredMetrics1 {
-	return &NullableDataTransferredMetrics1{value: val, isSet: true}
+func NewNullableDataTransferredMetricsPerSec(val *DataTransferredMetricsPerSec) *NullableDataTransferredMetricsPerSec {
+	return &NullableDataTransferredMetricsPerSec{value: val, isSet: true}
 }
 
-func (v NullableDataTransferredMetrics1) MarshalJSON() ([]byte, error) {
+func (v NullableDataTransferredMetricsPerSec) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDataTransferredMetrics1) UnmarshalJSON(src []byte) error {
+func (v *NullableDataTransferredMetricsPerSec) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

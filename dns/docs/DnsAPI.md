@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**GetResourceRecordSet**](DnsAPI.md#GetResourceRecordSet) | **Get** /domains/{domainName}/resourceRecordSets/{name}/{type} | Inspect resource record set
 [**GetResourceRecordSetList**](DnsAPI.md#GetResourceRecordSetList) | **Get** /domains/{domainName}/resourceRecordSets | List resource record sets
 [**ImportResourceRecordSets**](DnsAPI.md#ImportResourceRecordSets) | **Post** /domains/{domainName}/resourceRecordSets/import | Import dns records from bind file content
+[**RolloverKey**](DnsAPI.md#RolloverKey) | **Post** /domains/{domainName}/keyRollover | Key Rollover
 [**UpdateResourceRecordSet**](DnsAPI.md#UpdateResourceRecordSet) | **Put** /domains/{domainName}/resourceRecordSets/{name}/{type} | Update a specific DNS record
 [**UpdateResourceRecordSets**](DnsAPI.md#UpdateResourceRecordSets) | **Put** /domains/{domainName}/resourceRecordSets | Update all DNS records
 [**ValidateResourceRecordSet**](DnsAPI.md#ValidateResourceRecordSet) | **Post** /domains/{domainName}/resourceRecordSets/validateSet | Validate a resource record set
@@ -491,6 +492,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ImportResourceRecordSetsResult**](ImportResourceRecordSetsResult.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RolloverKey
+
+> InfoMessageResult RolloverKey(ctx, domainName).RolloverKeyOpts(rolloverKeyOpts).Execute()
+
+Key Rollover
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+)
+
+func main() {
+	domainName := "example.com" // string | Domain name
+	rolloverKeyOpts := *openapiclient.NewRolloverKeyOpts(openapiclient.rolloverType("KSK")) // RolloverKeyOpts | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DnsAPI.RolloverKey(context.Background(), domainName).RolloverKeyOpts(rolloverKeyOpts).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DnsAPI.RolloverKey``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RolloverKey`: InfoMessageResult
+	fmt.Fprintf(os.Stdout, "Response from `DnsAPI.RolloverKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**domainName** | **string** | Domain name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRolloverKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **rolloverKeyOpts** | [**RolloverKeyOpts**](RolloverKeyOpts.md) |  | 
+
+### Return type
+
+[**InfoMessageResult**](InfoMessageResult.md)
 
 ### Authorization
 

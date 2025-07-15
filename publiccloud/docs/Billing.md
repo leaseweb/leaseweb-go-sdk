@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Instances** | Pointer to [**[]ExpenseResultInstance**](ExpenseResultInstance.md) | List of instances to be billed in the period | [optional] 
-**Traffic** | Pointer to [**Traffic**](Traffic.md) |  | [optional] 
+**Instances** | [**[]ExpenseResultInstance**](ExpenseResultInstance.md) | List of instances to be billed in the period | 
+**Traffic** | [**Traffic**](Traffic.md) |  | 
+**TotalValue** | **string** | Total estimated value for period | 
 
 ## Methods
 
 ### NewBilling
 
-`func NewBilling() *Billing`
+`func NewBilling(instances []ExpenseResultInstance, traffic Traffic, totalValue string, ) *Billing`
 
 NewBilling instantiates a new Billing object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetInstances sets Instances field to given value.
 
-### HasInstances
-
-`func (o *Billing) HasInstances() bool`
-
-HasInstances returns a boolean if a field has been set.
 
 ### GetTraffic
 
@@ -70,11 +66,26 @@ and a boolean to check if the value has been set.
 
 SetTraffic sets Traffic field to given value.
 
-### HasTraffic
 
-`func (o *Billing) HasTraffic() bool`
+### GetTotalValue
 
-HasTraffic returns a boolean if a field has been set.
+`func (o *Billing) GetTotalValue() string`
+
+GetTotalValue returns the TotalValue field if non-nil, zero value otherwise.
+
+### GetTotalValueOk
+
+`func (o *Billing) GetTotalValueOk() (*string, bool)`
+
+GetTotalValueOk returns a tuple with the TotalValue field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalValue
+
+`func (o *Billing) SetTotalValue(v string)`
+
+SetTotalValue sets TotalValue field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

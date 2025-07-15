@@ -4,15 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalCount** | **int32** | Total amount of elements in this collection | 
-**Offset** | **int32** | The offset used to generate this response | [default to 0]
-**Limit** | **int32** | The limit used to generate this response | [default to 5]
+**Currency** | **string** |  | 
+**CurrencySymbol** | **string** |  | 
 
 ## Methods
 
 ### NewMetadata
 
-`func NewMetadata(totalCount int32, offset int32, limit int32, ) *Metadata`
+`func NewMetadata(currency string, currencySymbol string, ) *Metadata`
 
 NewMetadata instantiates a new Metadata object
 This constructor will assign default values to properties that have it defined,
@@ -27,64 +26,44 @@ NewMetadataWithDefaults instantiates a new Metadata object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTotalCount
+### GetCurrency
 
-`func (o *Metadata) GetTotalCount() int32`
+`func (o *Metadata) GetCurrency() string`
 
-GetTotalCount returns the TotalCount field if non-nil, zero value otherwise.
+GetCurrency returns the Currency field if non-nil, zero value otherwise.
 
-### GetTotalCountOk
+### GetCurrencyOk
 
-`func (o *Metadata) GetTotalCountOk() (*int32, bool)`
+`func (o *Metadata) GetCurrencyOk() (*string, bool)`
 
-GetTotalCountOk returns a tuple with the TotalCount field if it's non-nil, zero value otherwise
+GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTotalCount
+### SetCurrency
 
-`func (o *Metadata) SetTotalCount(v int32)`
+`func (o *Metadata) SetCurrency(v string)`
 
-SetTotalCount sets TotalCount field to given value.
+SetCurrency sets Currency field to given value.
 
 
-### GetOffset
+### GetCurrencySymbol
 
-`func (o *Metadata) GetOffset() int32`
+`func (o *Metadata) GetCurrencySymbol() string`
 
-GetOffset returns the Offset field if non-nil, zero value otherwise.
+GetCurrencySymbol returns the CurrencySymbol field if non-nil, zero value otherwise.
 
-### GetOffsetOk
+### GetCurrencySymbolOk
 
-`func (o *Metadata) GetOffsetOk() (*int32, bool)`
+`func (o *Metadata) GetCurrencySymbolOk() (*string, bool)`
 
-GetOffsetOk returns a tuple with the Offset field if it's non-nil, zero value otherwise
+GetCurrencySymbolOk returns a tuple with the CurrencySymbol field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOffset
+### SetCurrencySymbol
 
-`func (o *Metadata) SetOffset(v int32)`
+`func (o *Metadata) SetCurrencySymbol(v string)`
 
-SetOffset sets Offset field to given value.
-
-
-### GetLimit
-
-`func (o *Metadata) GetLimit() int32`
-
-GetLimit returns the Limit field if non-nil, zero value otherwise.
-
-### GetLimitOk
-
-`func (o *Metadata) GetLimitOk() (*int32, bool)`
-
-GetLimitOk returns a tuple with the Limit field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLimit
-
-`func (o *Metadata) SetLimit(v int32)`
-
-SetLimit sets Limit field to given value.
+SetCurrencySymbol sets CurrencySymbol field to given value.
 
 
 

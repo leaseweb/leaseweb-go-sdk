@@ -121,6 +121,20 @@ func Test_dns_DnsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DnsAPIService RolloverKey", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var domainName string
+
+		resp, httpRes, err := apiClient.DnsAPI.RolloverKey(context.Background(), domainName).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DnsAPIService UpdateResourceRecordSet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

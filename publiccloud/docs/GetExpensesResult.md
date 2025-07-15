@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Billing** | Pointer to [**Billing**](Billing.md) |  | [optional] 
+**Billing** | [**Billing**](Billing.md) |  | 
+**Metadata** | [**Metadata**](Metadata.md) |  | 
 
 ## Methods
 
 ### NewGetExpensesResult
 
-`func NewGetExpensesResult() *GetExpensesResult`
+`func NewGetExpensesResult(billing Billing, metadata Metadata, ) *GetExpensesResult`
 
 NewGetExpensesResult instantiates a new GetExpensesResult object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +45,26 @@ and a boolean to check if the value has been set.
 
 SetBilling sets Billing field to given value.
 
-### HasBilling
 
-`func (o *GetExpensesResult) HasBilling() bool`
+### GetMetadata
 
-HasBilling returns a boolean if a field has been set.
+`func (o *GetExpensesResult) GetMetadata() Metadata`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *GetExpensesResult) GetMetadataOk() (*Metadata, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *GetExpensesResult) SetMetadata(v Metadata)`
+
+SetMetadata sets Metadata field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

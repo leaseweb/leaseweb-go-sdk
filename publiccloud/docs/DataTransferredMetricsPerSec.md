@@ -1,4 +1,4 @@
-# DataTransferredMetrics1
+# DataTransferredMetricsPerSec
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewDataTransferredMetrics1
+### NewDataTransferredMetricsPerSec
 
-`func NewDataTransferredMetrics1() *DataTransferredMetrics1`
+`func NewDataTransferredMetricsPerSec() *DataTransferredMetricsPerSec`
 
-NewDataTransferredMetrics1 instantiates a new DataTransferredMetrics1 object
+NewDataTransferredMetricsPerSec instantiates a new DataTransferredMetricsPerSec object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewDataTransferredMetrics1WithDefaults
+### NewDataTransferredMetricsPerSecWithDefaults
 
-`func NewDataTransferredMetrics1WithDefaults() *DataTransferredMetrics1`
+`func NewDataTransferredMetricsPerSecWithDefaults() *DataTransferredMetricsPerSec`
 
-NewDataTransferredMetrics1WithDefaults instantiates a new DataTransferredMetrics1 object
+NewDataTransferredMetricsPerSecWithDefaults instantiates a new DataTransferredMetricsPerSec object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetDataIn
 
-`func (o *DataTransferredMetrics1) GetDataIn() MetricsPropertiesRequests`
+`func (o *DataTransferredMetricsPerSec) GetDataIn() MetricsPropertiesRequests`
 
 GetDataIn returns the DataIn field if non-nil, zero value otherwise.
 
 ### GetDataInOk
 
-`func (o *DataTransferredMetrics1) GetDataInOk() (*MetricsPropertiesRequests, bool)`
+`func (o *DataTransferredMetricsPerSec) GetDataInOk() (*MetricsPropertiesRequests, bool)`
 
 GetDataInOk returns a tuple with the DataIn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDataIn
 
-`func (o *DataTransferredMetrics1) SetDataIn(v MetricsPropertiesRequests)`
+`func (o *DataTransferredMetricsPerSec) SetDataIn(v MetricsPropertiesRequests)`
 
 SetDataIn sets DataIn field to given value.
 
 ### HasDataIn
 
-`func (o *DataTransferredMetrics1) HasDataIn() bool`
+`func (o *DataTransferredMetricsPerSec) HasDataIn() bool`
 
 HasDataIn returns a boolean if a field has been set.
 
 ### GetDataOut
 
-`func (o *DataTransferredMetrics1) GetDataOut() MetricsPropertiesRequests`
+`func (o *DataTransferredMetricsPerSec) GetDataOut() MetricsPropertiesRequests`
 
 GetDataOut returns the DataOut field if non-nil, zero value otherwise.
 
 ### GetDataOutOk
 
-`func (o *DataTransferredMetrics1) GetDataOutOk() (*MetricsPropertiesRequests, bool)`
+`func (o *DataTransferredMetricsPerSec) GetDataOutOk() (*MetricsPropertiesRequests, bool)`
 
 GetDataOutOk returns a tuple with the DataOut field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDataOut
 
-`func (o *DataTransferredMetrics1) SetDataOut(v MetricsPropertiesRequests)`
+`func (o *DataTransferredMetricsPerSec) SetDataOut(v MetricsPropertiesRequests)`
 
 SetDataOut sets DataOut field to given value.
 
 ### HasDataOut
 
-`func (o *DataTransferredMetrics1) HasDataOut() bool`
+`func (o *DataTransferredMetricsPerSec) HasDataOut() bool`
 
 HasDataOut returns a boolean if a field has been set.
 

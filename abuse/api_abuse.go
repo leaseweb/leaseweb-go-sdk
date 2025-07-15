@@ -655,6 +655,7 @@ type ApiGetReportListRequest struct {
 	status *string
 	ticketId *string
 	ip *string
+	sort *string
 }
 
 // Limit the number of results returned.
@@ -684,6 +685,12 @@ func (r ApiGetReportListRequest) TicketId(ticketId string) ApiGetReportListReque
 // Optional IP address to filter results
 func (r ApiGetReportListRequest) Ip(ip string) ApiGetReportListRequest {
 	r.ip = &ip
+	return r
+}
+
+// Comma-separated list of sort field names. Prepend the field name with &#39;-&#39; for descending order. Sortable field names are deadline and reportedAt 
+func (r ApiGetReportListRequest) Sort(sort string) ApiGetReportListRequest {
+	r.sort = &sort
 	return r
 }
 
@@ -745,6 +752,12 @@ func (a *AbuseAPIService) GetReportListExecute(r ApiGetReportListRequest) (*GetR
 	if r.ip != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ip", r.ip, "form", "")
 	}
+	if r.sort != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
+	} else {
+		var defaultValue string = "The list is sorted in descending order by reportedAt"
+		r.sort = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -797,6 +810,17 @@ func (a *AbuseAPIService) GetReportListExecute(r ApiGetReportListRequest) (*GetR
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ErrorResult

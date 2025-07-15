@@ -12,6 +12,7 @@ package publiccloud
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the Billing type satisfies the MappedNullable interface at compile time
@@ -20,8 +21,10 @@ var _ MappedNullable = &Billing{}
 // Billing struct for Billing
 type Billing struct {
 	// List of instances to be billed in the period
-	Instances []ExpenseResultInstance `json:"instances,omitempty"`
-	Traffic *Traffic `json:"traffic,omitempty"`
+	Instances []ExpenseResultInstance `json:"instances"`
+	Traffic Traffic `json:"traffic"`
+	// Total estimated value for period
+	TotalValue string `json:"totalValue"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,8 +34,11 @@ type _Billing Billing
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBilling() *Billing {
+func NewBilling(instances []ExpenseResultInstance, traffic Traffic, totalValue string) *Billing {
 	this := Billing{}
+	this.Instances = instances
+	this.Traffic = traffic
+	this.TotalValue = totalValue
 	return &this
 }
 
@@ -44,68 +50,76 @@ func NewBillingWithDefaults() *Billing {
 	return &this
 }
 
-// GetInstances returns the Instances field value if set, zero value otherwise.
+// GetInstances returns the Instances field value
 func (o *Billing) GetInstances() []ExpenseResultInstance {
-	if o == nil || IsNil(o.Instances) {
+	if o == nil {
 		var ret []ExpenseResultInstance
 		return ret
 	}
+
 	return o.Instances
 }
 
-// GetInstancesOk returns a tuple with the Instances field value if set, nil otherwise
+// GetInstancesOk returns a tuple with the Instances field value
 // and a boolean to check if the value has been set.
 func (o *Billing) GetInstancesOk() ([]ExpenseResultInstance, bool) {
-	if o == nil || IsNil(o.Instances) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Instances, true
 }
 
-// HasInstances returns a boolean if a field has been set.
-func (o *Billing) HasInstances() bool {
-	if o != nil && !IsNil(o.Instances) {
-		return true
-	}
-
-	return false
-}
-
-// SetInstances gets a reference to the given []ExpenseResultInstance and assigns it to the Instances field.
+// SetInstances sets field value
 func (o *Billing) SetInstances(v []ExpenseResultInstance) {
 	o.Instances = v
 }
 
-// GetTraffic returns the Traffic field value if set, zero value otherwise.
+// GetTraffic returns the Traffic field value
 func (o *Billing) GetTraffic() Traffic {
-	if o == nil || IsNil(o.Traffic) {
+	if o == nil {
 		var ret Traffic
 		return ret
 	}
-	return *o.Traffic
+
+	return o.Traffic
 }
 
-// GetTrafficOk returns a tuple with the Traffic field value if set, nil otherwise
+// GetTrafficOk returns a tuple with the Traffic field value
 // and a boolean to check if the value has been set.
 func (o *Billing) GetTrafficOk() (*Traffic, bool) {
-	if o == nil || IsNil(o.Traffic) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Traffic, true
+	return &o.Traffic, true
 }
 
-// HasTraffic returns a boolean if a field has been set.
-func (o *Billing) HasTraffic() bool {
-	if o != nil && !IsNil(o.Traffic) {
-		return true
+// SetTraffic sets field value
+func (o *Billing) SetTraffic(v Traffic) {
+	o.Traffic = v
+}
+
+// GetTotalValue returns the TotalValue field value
+func (o *Billing) GetTotalValue() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
 
-	return false
+	return o.TotalValue
 }
 
-// SetTraffic gets a reference to the given Traffic and assigns it to the Traffic field.
-func (o *Billing) SetTraffic(v Traffic) {
-	o.Traffic = &v
+// GetTotalValueOk returns a tuple with the TotalValue field value
+// and a boolean to check if the value has been set.
+func (o *Billing) GetTotalValueOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TotalValue, true
+}
+
+// SetTotalValue sets field value
+func (o *Billing) SetTotalValue(v string) {
+	o.TotalValue = v
 }
 
 func (o Billing) MarshalJSON() ([]byte, error) {
@@ -118,12 +132,9 @@ func (o Billing) MarshalJSON() ([]byte, error) {
 
 func (o Billing) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Instances) {
-		toSerialize["instances"] = o.Instances
-	}
-	if !IsNil(o.Traffic) {
-		toSerialize["traffic"] = o.Traffic
-	}
+	toSerialize["instances"] = o.Instances
+	toSerialize["traffic"] = o.Traffic
+	toSerialize["totalValue"] = o.TotalValue
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -133,6 +144,29 @@ func (o Billing) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *Billing) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"instances",
+		"traffic",
+		"totalValue",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varBilling := _Billing{}
 
 	err = json.Unmarshal(data, &varBilling)
@@ -148,6 +182,7 @@ func (o *Billing) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "instances")
 		delete(additionalProperties, "traffic")
+		delete(additionalProperties, "totalValue")
 		o.AdditionalProperties = additionalProperties
 	}
 

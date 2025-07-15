@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the ResponseCodesMetrics1 type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ResponseCodesMetrics1{}
+// checks if the ResponseCodesMetricsPerSec type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ResponseCodesMetricsPerSec{}
 
-// ResponseCodesMetrics1 struct for ResponseCodesMetrics1
-type ResponseCodesMetrics1 struct {
+// ResponseCodesMetricsPerSec struct for ResponseCodesMetricsPerSec
+type ResponseCodesMetricsPerSec struct {
 	Var2xx *MetricsPropertiesResponsesPerSec `json:"2xx,omitempty"`
 	Var3xx *MetricsPropertiesResponsesPerSec `json:"3xx,omitempty"`
 	Var4xx *MetricsPropertiesResponsesPerSec `json:"4xx,omitempty"`
@@ -26,27 +26,27 @@ type ResponseCodesMetrics1 struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _ResponseCodesMetrics1 ResponseCodesMetrics1
+type _ResponseCodesMetricsPerSec ResponseCodesMetricsPerSec
 
-// NewResponseCodesMetrics1 instantiates a new ResponseCodesMetrics1 object
+// NewResponseCodesMetricsPerSec instantiates a new ResponseCodesMetricsPerSec object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResponseCodesMetrics1() *ResponseCodesMetrics1 {
-	this := ResponseCodesMetrics1{}
+func NewResponseCodesMetricsPerSec() *ResponseCodesMetricsPerSec {
+	this := ResponseCodesMetricsPerSec{}
 	return &this
 }
 
-// NewResponseCodesMetrics1WithDefaults instantiates a new ResponseCodesMetrics1 object
+// NewResponseCodesMetricsPerSecWithDefaults instantiates a new ResponseCodesMetricsPerSec object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewResponseCodesMetrics1WithDefaults() *ResponseCodesMetrics1 {
-	this := ResponseCodesMetrics1{}
+func NewResponseCodesMetricsPerSecWithDefaults() *ResponseCodesMetricsPerSec {
+	this := ResponseCodesMetricsPerSec{}
 	return &this
 }
 
 // GetVar2xx returns the Var2xx field value if set, zero value otherwise.
-func (o *ResponseCodesMetrics1) GetVar2xx() MetricsPropertiesResponsesPerSec {
+func (o *ResponseCodesMetricsPerSec) GetVar2xx() MetricsPropertiesResponsesPerSec {
 	if o == nil || IsNil(o.Var2xx) {
 		var ret MetricsPropertiesResponsesPerSec
 		return ret
@@ -56,7 +56,7 @@ func (o *ResponseCodesMetrics1) GetVar2xx() MetricsPropertiesResponsesPerSec {
 
 // GetVar2xxOk returns a tuple with the Var2xx field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseCodesMetrics1) GetVar2xxOk() (*MetricsPropertiesResponsesPerSec, bool) {
+func (o *ResponseCodesMetricsPerSec) GetVar2xxOk() (*MetricsPropertiesResponsesPerSec, bool) {
 	if o == nil || IsNil(o.Var2xx) {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *ResponseCodesMetrics1) GetVar2xxOk() (*MetricsPropertiesResponsesPerSec
 }
 
 // HasVar2xx returns a boolean if a field has been set.
-func (o *ResponseCodesMetrics1) HasVar2xx() bool {
+func (o *ResponseCodesMetricsPerSec) HasVar2xx() bool {
 	if o != nil && !IsNil(o.Var2xx) {
 		return true
 	}
@@ -73,12 +73,12 @@ func (o *ResponseCodesMetrics1) HasVar2xx() bool {
 }
 
 // SetVar2xx gets a reference to the given MetricsPropertiesResponsesPerSec and assigns it to the Var2xx field.
-func (o *ResponseCodesMetrics1) SetVar2xx(v MetricsPropertiesResponsesPerSec) {
+func (o *ResponseCodesMetricsPerSec) SetVar2xx(v MetricsPropertiesResponsesPerSec) {
 	o.Var2xx = &v
 }
 
 // GetVar3xx returns the Var3xx field value if set, zero value otherwise.
-func (o *ResponseCodesMetrics1) GetVar3xx() MetricsPropertiesResponsesPerSec {
+func (o *ResponseCodesMetricsPerSec) GetVar3xx() MetricsPropertiesResponsesPerSec {
 	if o == nil || IsNil(o.Var3xx) {
 		var ret MetricsPropertiesResponsesPerSec
 		return ret
@@ -88,7 +88,7 @@ func (o *ResponseCodesMetrics1) GetVar3xx() MetricsPropertiesResponsesPerSec {
 
 // GetVar3xxOk returns a tuple with the Var3xx field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseCodesMetrics1) GetVar3xxOk() (*MetricsPropertiesResponsesPerSec, bool) {
+func (o *ResponseCodesMetricsPerSec) GetVar3xxOk() (*MetricsPropertiesResponsesPerSec, bool) {
 	if o == nil || IsNil(o.Var3xx) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *ResponseCodesMetrics1) GetVar3xxOk() (*MetricsPropertiesResponsesPerSec
 }
 
 // HasVar3xx returns a boolean if a field has been set.
-func (o *ResponseCodesMetrics1) HasVar3xx() bool {
+func (o *ResponseCodesMetricsPerSec) HasVar3xx() bool {
 	if o != nil && !IsNil(o.Var3xx) {
 		return true
 	}
@@ -105,12 +105,12 @@ func (o *ResponseCodesMetrics1) HasVar3xx() bool {
 }
 
 // SetVar3xx gets a reference to the given MetricsPropertiesResponsesPerSec and assigns it to the Var3xx field.
-func (o *ResponseCodesMetrics1) SetVar3xx(v MetricsPropertiesResponsesPerSec) {
+func (o *ResponseCodesMetricsPerSec) SetVar3xx(v MetricsPropertiesResponsesPerSec) {
 	o.Var3xx = &v
 }
 
 // GetVar4xx returns the Var4xx field value if set, zero value otherwise.
-func (o *ResponseCodesMetrics1) GetVar4xx() MetricsPropertiesResponsesPerSec {
+func (o *ResponseCodesMetricsPerSec) GetVar4xx() MetricsPropertiesResponsesPerSec {
 	if o == nil || IsNil(o.Var4xx) {
 		var ret MetricsPropertiesResponsesPerSec
 		return ret
@@ -120,7 +120,7 @@ func (o *ResponseCodesMetrics1) GetVar4xx() MetricsPropertiesResponsesPerSec {
 
 // GetVar4xxOk returns a tuple with the Var4xx field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseCodesMetrics1) GetVar4xxOk() (*MetricsPropertiesResponsesPerSec, bool) {
+func (o *ResponseCodesMetricsPerSec) GetVar4xxOk() (*MetricsPropertiesResponsesPerSec, bool) {
 	if o == nil || IsNil(o.Var4xx) {
 		return nil, false
 	}
@@ -128,7 +128,7 @@ func (o *ResponseCodesMetrics1) GetVar4xxOk() (*MetricsPropertiesResponsesPerSec
 }
 
 // HasVar4xx returns a boolean if a field has been set.
-func (o *ResponseCodesMetrics1) HasVar4xx() bool {
+func (o *ResponseCodesMetricsPerSec) HasVar4xx() bool {
 	if o != nil && !IsNil(o.Var4xx) {
 		return true
 	}
@@ -137,12 +137,12 @@ func (o *ResponseCodesMetrics1) HasVar4xx() bool {
 }
 
 // SetVar4xx gets a reference to the given MetricsPropertiesResponsesPerSec and assigns it to the Var4xx field.
-func (o *ResponseCodesMetrics1) SetVar4xx(v MetricsPropertiesResponsesPerSec) {
+func (o *ResponseCodesMetricsPerSec) SetVar4xx(v MetricsPropertiesResponsesPerSec) {
 	o.Var4xx = &v
 }
 
 // GetVar5xx returns the Var5xx field value if set, zero value otherwise.
-func (o *ResponseCodesMetrics1) GetVar5xx() MetricsPropertiesResponsesPerSec {
+func (o *ResponseCodesMetricsPerSec) GetVar5xx() MetricsPropertiesResponsesPerSec {
 	if o == nil || IsNil(o.Var5xx) {
 		var ret MetricsPropertiesResponsesPerSec
 		return ret
@@ -152,7 +152,7 @@ func (o *ResponseCodesMetrics1) GetVar5xx() MetricsPropertiesResponsesPerSec {
 
 // GetVar5xxOk returns a tuple with the Var5xx field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResponseCodesMetrics1) GetVar5xxOk() (*MetricsPropertiesResponsesPerSec, bool) {
+func (o *ResponseCodesMetricsPerSec) GetVar5xxOk() (*MetricsPropertiesResponsesPerSec, bool) {
 	if o == nil || IsNil(o.Var5xx) {
 		return nil, false
 	}
@@ -160,7 +160,7 @@ func (o *ResponseCodesMetrics1) GetVar5xxOk() (*MetricsPropertiesResponsesPerSec
 }
 
 // HasVar5xx returns a boolean if a field has been set.
-func (o *ResponseCodesMetrics1) HasVar5xx() bool {
+func (o *ResponseCodesMetricsPerSec) HasVar5xx() bool {
 	if o != nil && !IsNil(o.Var5xx) {
 		return true
 	}
@@ -169,11 +169,11 @@ func (o *ResponseCodesMetrics1) HasVar5xx() bool {
 }
 
 // SetVar5xx gets a reference to the given MetricsPropertiesResponsesPerSec and assigns it to the Var5xx field.
-func (o *ResponseCodesMetrics1) SetVar5xx(v MetricsPropertiesResponsesPerSec) {
+func (o *ResponseCodesMetricsPerSec) SetVar5xx(v MetricsPropertiesResponsesPerSec) {
 	o.Var5xx = &v
 }
 
-func (o ResponseCodesMetrics1) MarshalJSON() ([]byte, error) {
+func (o ResponseCodesMetricsPerSec) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -181,7 +181,7 @@ func (o ResponseCodesMetrics1) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ResponseCodesMetrics1) ToMap() (map[string]interface{}, error) {
+func (o ResponseCodesMetricsPerSec) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Var2xx) {
 		toSerialize["2xx"] = o.Var2xx
@@ -203,16 +203,16 @@ func (o ResponseCodesMetrics1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ResponseCodesMetrics1) UnmarshalJSON(data []byte) (err error) {
-	varResponseCodesMetrics1 := _ResponseCodesMetrics1{}
+func (o *ResponseCodesMetricsPerSec) UnmarshalJSON(data []byte) (err error) {
+	varResponseCodesMetricsPerSec := _ResponseCodesMetricsPerSec{}
 
-	err = json.Unmarshal(data, &varResponseCodesMetrics1)
+	err = json.Unmarshal(data, &varResponseCodesMetricsPerSec)
 
 	if err != nil {
 		return err
 	}
 
-	*o = ResponseCodesMetrics1(varResponseCodesMetrics1)
+	*o = ResponseCodesMetricsPerSec(varResponseCodesMetricsPerSec)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -227,38 +227,38 @@ func (o *ResponseCodesMetrics1) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableResponseCodesMetrics1 struct {
-	value *ResponseCodesMetrics1
+type NullableResponseCodesMetricsPerSec struct {
+	value *ResponseCodesMetricsPerSec
 	isSet bool
 }
 
-func (v NullableResponseCodesMetrics1) Get() *ResponseCodesMetrics1 {
+func (v NullableResponseCodesMetricsPerSec) Get() *ResponseCodesMetricsPerSec {
 	return v.value
 }
 
-func (v *NullableResponseCodesMetrics1) Set(val *ResponseCodesMetrics1) {
+func (v *NullableResponseCodesMetricsPerSec) Set(val *ResponseCodesMetricsPerSec) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableResponseCodesMetrics1) IsSet() bool {
+func (v NullableResponseCodesMetricsPerSec) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableResponseCodesMetrics1) Unset() {
+func (v *NullableResponseCodesMetricsPerSec) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableResponseCodesMetrics1(val *ResponseCodesMetrics1) *NullableResponseCodesMetrics1 {
-	return &NullableResponseCodesMetrics1{value: val, isSet: true}
+func NewNullableResponseCodesMetricsPerSec(val *ResponseCodesMetricsPerSec) *NullableResponseCodesMetricsPerSec {
+	return &NullableResponseCodesMetricsPerSec{value: val, isSet: true}
 }
 
-func (v NullableResponseCodesMetrics1) MarshalJSON() ([]byte, error) {
+func (v NullableResponseCodesMetricsPerSec) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableResponseCodesMetrics1) UnmarshalJSON(src []byte) error {
+func (v *NullableResponseCodesMetricsPerSec) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

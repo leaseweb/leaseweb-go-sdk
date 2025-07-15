@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## GetReportList
 
-> GetReportListResult GetReportList(ctx).Limit(limit).Offset(offset).Status(status).TicketId(ticketId).Ip(ip).Execute()
+> GetReportListResult GetReportList(ctx).Limit(limit).Offset(offset).Status(status).TicketId(ticketId).Ip(ip).Sort(sort).Execute()
 
 List reports
 
@@ -254,10 +254,11 @@ func main() {
 	status := "OPEN,WAITING,CLOSED" // string | Comma separated list of report statuses to filter on.  (optional) (default to "OPEN,WAITING,CLOSED")
 	ticketId := "ticketId_example" // string | Optional ticket ID to filter results (optional)
 	ip := "ip_example" // string | Optional IP address to filter results (optional)
+	sort := "deadline,-reportedAt" // string | Comma-separated list of sort field names. Prepend the field name with '-' for descending order. Sortable field names are deadline and reportedAt  (optional) (default to "The list is sorted in descending order by reportedAt")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AbuseAPI.GetReportList(context.Background()).Limit(limit).Offset(offset).Status(status).TicketId(ticketId).Ip(ip).Execute()
+	resp, r, err := apiClient.AbuseAPI.GetReportList(context.Background()).Limit(limit).Offset(offset).Status(status).TicketId(ticketId).Ip(ip).Sort(sort).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AbuseAPI.GetReportList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -283,6 +284,7 @@ Name | Type | Description  | Notes
  **status** | **string** | Comma separated list of report statuses to filter on.  | [default to &quot;OPEN,WAITING,CLOSED&quot;]
  **ticketId** | **string** | Optional ticket ID to filter results | 
  **ip** | **string** | Optional IP address to filter results | 
+ **sort** | **string** | Comma-separated list of sort field names. Prepend the field name with &#39;-&#39; for descending order. Sortable field names are deadline and reportedAt  | [default to &quot;The list is sorted in descending order by reportedAt&quot;]
 
 ### Return type
 

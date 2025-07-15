@@ -32,9 +32,8 @@ type LoadBalancerDetails struct {
 	StartedAt NullableTime `json:"startedAt"`
 	Region RegionName `json:"region"`
 	Configuration NullableLoadBalancerConfiguration `json:"configuration"`
-	AutoScalingGroup NullableAutoScalingGroup `json:"autoScalingGroup"`
 	PrivateNetwork NullablePrivateNetwork `json:"privateNetwork"`
-	Contract InstanceContract `json:"contract"`
+	Contract InstanceContractDetails `json:"contract"`
 	Ips []IpDetails `json:"ips"`
 	AdditionalProperties map[string]interface{}
 }
@@ -45,7 +44,7 @@ type _LoadBalancerDetails LoadBalancerDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLoadBalancerDetails(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract InstanceContract, ips []IpDetails) *LoadBalancerDetails {
+func NewLoadBalancerDetails(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, privateNetwork NullablePrivateNetwork, contract InstanceContractDetails, ips []IpDetails) *LoadBalancerDetails {
 	this := LoadBalancerDetails{}
 	this.Id = id
 	this.Type = type_
@@ -55,7 +54,6 @@ func NewLoadBalancerDetails(id string, type_ TypeName, resources Resources, refe
 	this.StartedAt = startedAt
 	this.Region = region
 	this.Configuration = configuration
-	this.AutoScalingGroup = autoScalingGroup
 	this.PrivateNetwork = privateNetwork
 	this.Contract = contract
 	this.Ips = ips
@@ -268,32 +266,6 @@ func (o *LoadBalancerDetails) SetConfiguration(v LoadBalancerConfiguration) {
 	o.Configuration.Set(&v)
 }
 
-// GetAutoScalingGroup returns the AutoScalingGroup field value
-// If the value is explicit nil, the zero value for AutoScalingGroup will be returned
-func (o *LoadBalancerDetails) GetAutoScalingGroup() AutoScalingGroup {
-	if o == nil || o.AutoScalingGroup.Get() == nil {
-		var ret AutoScalingGroup
-		return ret
-	}
-
-	return *o.AutoScalingGroup.Get()
-}
-
-// GetAutoScalingGroupOk returns a tuple with the AutoScalingGroup field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LoadBalancerDetails) GetAutoScalingGroupOk() (*AutoScalingGroup, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AutoScalingGroup.Get(), o.AutoScalingGroup.IsSet()
-}
-
-// SetAutoScalingGroup sets field value
-func (o *LoadBalancerDetails) SetAutoScalingGroup(v AutoScalingGroup) {
-	o.AutoScalingGroup.Set(&v)
-}
-
 // GetPrivateNetwork returns the PrivateNetwork field value
 // If the value is explicit nil, the zero value for PrivateNetwork will be returned
 func (o *LoadBalancerDetails) GetPrivateNetwork() PrivateNetwork {
@@ -321,9 +293,9 @@ func (o *LoadBalancerDetails) SetPrivateNetwork(v PrivateNetwork) {
 }
 
 // GetContract returns the Contract field value
-func (o *LoadBalancerDetails) GetContract() InstanceContract {
+func (o *LoadBalancerDetails) GetContract() InstanceContractDetails {
 	if o == nil {
-		var ret InstanceContract
+		var ret InstanceContractDetails
 		return ret
 	}
 
@@ -332,7 +304,7 @@ func (o *LoadBalancerDetails) GetContract() InstanceContract {
 
 // GetContractOk returns a tuple with the Contract field value
 // and a boolean to check if the value has been set.
-func (o *LoadBalancerDetails) GetContractOk() (*InstanceContract, bool) {
+func (o *LoadBalancerDetails) GetContractOk() (*InstanceContractDetails, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -340,7 +312,7 @@ func (o *LoadBalancerDetails) GetContractOk() (*InstanceContract, bool) {
 }
 
 // SetContract sets field value
-func (o *LoadBalancerDetails) SetContract(v InstanceContract) {
+func (o *LoadBalancerDetails) SetContract(v InstanceContractDetails) {
 	o.Contract = v
 }
 
@@ -386,7 +358,6 @@ func (o LoadBalancerDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize["startedAt"] = o.StartedAt.Get()
 	toSerialize["region"] = o.Region
 	toSerialize["configuration"] = o.Configuration.Get()
-	toSerialize["autoScalingGroup"] = o.AutoScalingGroup.Get()
 	toSerialize["privateNetwork"] = o.PrivateNetwork.Get()
 	toSerialize["contract"] = o.Contract
 	toSerialize["ips"] = o.Ips
@@ -411,7 +382,6 @@ func (o *LoadBalancerDetails) UnmarshalJSON(data []byte) (err error) {
 		"startedAt",
 		"region",
 		"configuration",
-		"autoScalingGroup",
 		"privateNetwork",
 		"contract",
 		"ips",
@@ -452,7 +422,6 @@ func (o *LoadBalancerDetails) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "startedAt")
 		delete(additionalProperties, "region")
 		delete(additionalProperties, "configuration")
-		delete(additionalProperties, "autoScalingGroup")
 		delete(additionalProperties, "privateNetwork")
 		delete(additionalProperties, "contract")
 		delete(additionalProperties, "ips")

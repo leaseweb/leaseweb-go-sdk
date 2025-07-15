@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Metrics** | Pointer to [**DataTransferredMetrics1**](DataTransferredMetrics1.md) |  | [optional] 
+**Metrics** | Pointer to [**DataTransferredMetricsPerSec**](DataTransferredMetricsPerSec.md) |  | [optional] 
 **Metadata** | Pointer to [**MetricsMetadataProperties**](MetricsMetadataProperties.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMetrics
 
-`func (o *GetDataTransferredPerSecondMetricsResult) GetMetrics() DataTransferredMetrics1`
+`func (o *GetDataTransferredPerSecondMetricsResult) GetMetrics() DataTransferredMetricsPerSec`
 
 GetMetrics returns the Metrics field if non-nil, zero value otherwise.
 
 ### GetMetricsOk
 
-`func (o *GetDataTransferredPerSecondMetricsResult) GetMetricsOk() (*DataTransferredMetrics1, bool)`
+`func (o *GetDataTransferredPerSecondMetricsResult) GetMetricsOk() (*DataTransferredMetricsPerSec, bool)`
 
 GetMetricsOk returns a tuple with the Metrics field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetrics
 
-`func (o *GetDataTransferredPerSecondMetricsResult) SetMetrics(v DataTransferredMetrics1)`
+`func (o *GetDataTransferredPerSecondMetricsResult) SetMetrics(v DataTransferredMetricsPerSec)`
 
 SetMetrics sets Metrics field to given value.
 

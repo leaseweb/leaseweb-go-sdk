@@ -38,6 +38,110 @@ tags:
   name: API Key Authentication
   x-traitTag: true
 paths:
+  /domains/{domainName}/keyRollover:
+    post:
+      description: |
+        Best practice for DNSSEC key management is to use different keys to sign zone data (ZSK) and DNSKEY data (KSK).
+
+        - ZSK will be performed with Pre-publication approach
+        - KSK will be performed with Double-KSK approach
+      operationId: rolloverKey
+      parameters:
+      - description: Domain name
+        example: example.com
+        explode: false
+        in: path
+        name: domainName
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              type: ZSK
+            schema:
+              $ref: '#/components/schemas/rolloverKeyOpts'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              example:
+                infoMessage: Resource record set is valid.
+              schema:
+                $ref: '#/components/schemas/infoMessageResult'
+          description: |
+            Accepted.
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "409":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: Conflict
+                errorMessage: ZSK key rollover for example.com is in progress please
+                  wait for 50 hour
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: "If there is a conflict (for example item is already in processing\
+            \ state), you will receive a 409 Conflict."
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      security:
+      - OAuth2: []
+      summary: Key Rollover
+      tags:
+      - dns
   /domains/{domainName}/resourceRecordSets:
     delete:
       description: |
@@ -1667,6 +1771,18 @@ components:
           schema:
             $ref: '#/components/schemas/errorResult'
       description: Not Found.
+    "409":
+      content:
+        application/json:
+          example:
+            correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+            errorCode: Conflict
+            errorMessage: ZSK key rollover for example.com is in progress please wait
+              for 50 hour
+          schema:
+            $ref: '#/components/schemas/errorResult'
+      description: "If there is a conflict (for example item is already in processing\
+        \ state), you will receive a 409 Conflict."
     "500":
       content:
         application/json:
@@ -1688,6 +1804,62 @@ components:
             $ref: '#/components/schemas/errorResult'
       description: Service Unavailable.
   schemas:
+    rolloverType:
+      description: The key rollover type.
+      enum:
+      - KSK
+      - ZSK
+      type: string
+    rolloverKeyOpts:
+      properties:
+        type:
+          $ref: '#/components/schemas/rolloverType'
+      required:
+      - type
+      type: object
+    infoMessage:
+      description: Optional additional information
+      example: "Sorry, but your domain is not yet listed on our nameservers. Please\
+        \ create a DNS record first so we can add your domain."
+      type: string
+    infoMessageResult:
+      example:
+        infoMessage: "Sorry, but your domain is not yet listed on our nameservers.\
+          \ Please create a DNS record first so we can add your domain."
+      properties:
+        infoMessage:
+          description: Optional additional information
+          example: "Sorry, but your domain is not yet listed on our nameservers. Please\
+            \ create a DNS record first so we can add your domain."
+          type: string
+      type: object
+    errorResult:
+      example:
+        errorMessage: errorMessage
+        errorCode: errorCode
+        correlationId: correlationId
+        errorDetails:
+          key:
+          - errorDetails
+          - errorDetails
+      properties:
+        correlationId:
+          description: The correlation ID of the current request.
+          type: string
+        errorCode:
+          description: The error code.
+          type: string
+        errorMessage:
+          description: A human friendly description of the error.
+          type: string
+        errorDetails:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          title: errorDetails
+          type: object
+      type: object
     editable:
       description: May the set be edited
       type: boolean
@@ -1811,11 +1983,6 @@ components:
         content:
         - 85.17.150.50
         - 85.17.150.50
-    infoMessage:
-      description: Optional additional information
-      example: "Sorry, but your domain is not yet listed on our nameservers. Please\
-        \ create a DNS record first so we can add your domain."
-      type: string
     links:
       description: Links to related resource locations
       example:
@@ -1960,33 +2127,6 @@ components:
         - resourceRecordSets
         type: object
       - $ref: '#/components/schemas/baseResourceRecordSetList'
-    errorResult:
-      example:
-        errorMessage: errorMessage
-        errorCode: errorCode
-        correlationId: correlationId
-        errorDetails:
-          key:
-          - errorDetails
-          - errorDetails
-      properties:
-        correlationId:
-          description: The correlation ID of the current request.
-          type: string
-        errorCode:
-          description: The error code.
-          type: string
-        errorMessage:
-          description: A human friendly description of the error.
-          type: string
-        errorDetails:
-          additionalProperties:
-            items:
-              type: string
-            type: array
-          title: errorDetails
-          type: object
-      type: object
     resultRecordSets:
       properties:
         resourceRecordSets:
@@ -2093,17 +2233,6 @@ components:
           type: array
         _links:
           $ref: '#/components/schemas/links'
-      type: object
-    infoMessageResult:
-      example:
-        infoMessage: "Sorry, but your domain is not yet listed on our nameservers.\
-          \ Please create a DNS record first so we can add your domain."
-      properties:
-        infoMessage:
-          description: Optional additional information
-          example: "Sorry, but your domain is not yet listed on our nameservers. Please\
-            \ create a DNS record first so we can add your domain."
-          type: string
       type: object
     validateZoneResult:
       example:

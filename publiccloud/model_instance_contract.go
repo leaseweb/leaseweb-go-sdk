@@ -12,7 +12,6 @@ package publiccloud
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
 )
 
@@ -24,16 +23,6 @@ type InstanceContract struct {
 	BillingFrequency BillingFrequency `json:"billingFrequency"`
 	Term ContractTerm `json:"term"`
 	Type ContractType `json:"type"`
-	// End date is null for hourly instances
-	EndsAt NullableTime `json:"endsAt"`
-	// Date when the contract is starting
-	StartsAt time.Time `json:"startsAt"`
-	State ContractState `json:"state"`
-	// Contract id is empty for hourly instances
-	Id string `json:"id"`
-	Sla string `json:"sla"`
-	ControlPanel NullableString `json:"controlPanel"`
-	InModification bool `json:"inModification"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,18 +32,11 @@ type _InstanceContract InstanceContract
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInstanceContract(billingFrequency BillingFrequency, term ContractTerm, type_ ContractType, endsAt NullableTime, startsAt time.Time, state ContractState, id string, sla string, controlPanel NullableString, inModification bool) *InstanceContract {
+func NewInstanceContract(billingFrequency BillingFrequency, term ContractTerm, type_ ContractType) *InstanceContract {
 	this := InstanceContract{}
 	this.BillingFrequency = billingFrequency
 	this.Term = term
 	this.Type = type_
-	this.EndsAt = endsAt
-	this.StartsAt = startsAt
-	this.State = state
-	this.Id = id
-	this.Sla = sla
-	this.ControlPanel = controlPanel
-	this.InModification = inModification
 	return &this
 }
 
@@ -138,178 +120,6 @@ func (o *InstanceContract) SetType(v ContractType) {
 	o.Type = v
 }
 
-// GetEndsAt returns the EndsAt field value
-// If the value is explicit nil, the zero value for time.Time will be returned
-func (o *InstanceContract) GetEndsAt() time.Time {
-	if o == nil || o.EndsAt.Get() == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return *o.EndsAt.Get()
-}
-
-// GetEndsAtOk returns a tuple with the EndsAt field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InstanceContract) GetEndsAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.EndsAt.Get(), o.EndsAt.IsSet()
-}
-
-// SetEndsAt sets field value
-func (o *InstanceContract) SetEndsAt(v time.Time) {
-	o.EndsAt.Set(&v)
-}
-
-// GetStartsAt returns the StartsAt field value
-func (o *InstanceContract) GetStartsAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.StartsAt
-}
-
-// GetStartsAtOk returns a tuple with the StartsAt field value
-// and a boolean to check if the value has been set.
-func (o *InstanceContract) GetStartsAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.StartsAt, true
-}
-
-// SetStartsAt sets field value
-func (o *InstanceContract) SetStartsAt(v time.Time) {
-	o.StartsAt = v
-}
-
-// GetState returns the State field value
-func (o *InstanceContract) GetState() ContractState {
-	if o == nil {
-		var ret ContractState
-		return ret
-	}
-
-	return o.State
-}
-
-// GetStateOk returns a tuple with the State field value
-// and a boolean to check if the value has been set.
-func (o *InstanceContract) GetStateOk() (*ContractState, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.State, true
-}
-
-// SetState sets field value
-func (o *InstanceContract) SetState(v ContractState) {
-	o.State = v
-}
-
-// GetId returns the Id field value
-func (o *InstanceContract) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *InstanceContract) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *InstanceContract) SetId(v string) {
-	o.Id = v
-}
-
-// GetSla returns the Sla field value
-func (o *InstanceContract) GetSla() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Sla
-}
-
-// GetSlaOk returns a tuple with the Sla field value
-// and a boolean to check if the value has been set.
-func (o *InstanceContract) GetSlaOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Sla, true
-}
-
-// SetSla sets field value
-func (o *InstanceContract) SetSla(v string) {
-	o.Sla = v
-}
-
-// GetControlPanel returns the ControlPanel field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *InstanceContract) GetControlPanel() string {
-	if o == nil || o.ControlPanel.Get() == nil {
-		var ret string
-		return ret
-	}
-
-	return *o.ControlPanel.Get()
-}
-
-// GetControlPanelOk returns a tuple with the ControlPanel field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InstanceContract) GetControlPanelOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ControlPanel.Get(), o.ControlPanel.IsSet()
-}
-
-// SetControlPanel sets field value
-func (o *InstanceContract) SetControlPanel(v string) {
-	o.ControlPanel.Set(&v)
-}
-
-// GetInModification returns the InModification field value
-func (o *InstanceContract) GetInModification() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.InModification
-}
-
-// GetInModificationOk returns a tuple with the InModification field value
-// and a boolean to check if the value has been set.
-func (o *InstanceContract) GetInModificationOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.InModification, true
-}
-
-// SetInModification sets field value
-func (o *InstanceContract) SetInModification(v bool) {
-	o.InModification = v
-}
-
 func (o InstanceContract) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -323,13 +133,6 @@ func (o InstanceContract) ToMap() (map[string]interface{}, error) {
 	toSerialize["billingFrequency"] = o.BillingFrequency
 	toSerialize["term"] = o.Term
 	toSerialize["type"] = o.Type
-	toSerialize["endsAt"] = o.EndsAt.Get()
-	toSerialize["startsAt"] = o.StartsAt
-	toSerialize["state"] = o.State
-	toSerialize["id"] = o.Id
-	toSerialize["sla"] = o.Sla
-	toSerialize["controlPanel"] = o.ControlPanel.Get()
-	toSerialize["inModification"] = o.InModification
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -346,13 +149,6 @@ func (o *InstanceContract) UnmarshalJSON(data []byte) (err error) {
 		"billingFrequency",
 		"term",
 		"type",
-		"endsAt",
-		"startsAt",
-		"state",
-		"id",
-		"sla",
-		"controlPanel",
-		"inModification",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -385,13 +181,6 @@ func (o *InstanceContract) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "billingFrequency")
 		delete(additionalProperties, "term")
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "endsAt")
-		delete(additionalProperties, "startsAt")
-		delete(additionalProperties, "state")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "sla")
-		delete(additionalProperties, "controlPanel")
-		delete(additionalProperties, "inModification")
 		o.AdditionalProperties = additionalProperties
 	}
 

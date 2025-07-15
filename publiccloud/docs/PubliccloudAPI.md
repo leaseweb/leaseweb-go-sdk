@@ -4575,7 +4575,7 @@ Name | Type | Description  | Notes
 
 ## LaunchInstance
 
-> Instance LaunchInstance(ctx).LaunchInstanceOpts(launchInstanceOpts).Execute()
+> InstanceDetails LaunchInstance(ctx).LaunchInstanceOpts(launchInstanceOpts).Execute()
 
 Launch instance
 
@@ -4603,7 +4603,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.LaunchInstance``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `LaunchInstance`: Instance
+	// response from `LaunchInstance`: InstanceDetails
 	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.LaunchInstance`: %v\n", resp)
 }
 ```
@@ -4623,7 +4623,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Instance**](Instance.md)
+[**InstanceDetails**](InstanceDetails.md)
 
 ### Authorization
 

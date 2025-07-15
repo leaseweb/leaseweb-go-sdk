@@ -12,16 +12,15 @@ Name | Type | Description | Notes
 **StartedAt** | **NullableTime** | Date and time when the load balancer was started for the first time, right after launching it | 
 **Region** | [**RegionName**](RegionName.md) |  | 
 **Configuration** | [**NullableLoadBalancerConfiguration**](LoadBalancerConfiguration.md) |  | 
-**AutoScalingGroup** | [**NullableAutoScalingGroup**](AutoScalingGroup.md) |  | 
 **PrivateNetwork** | [**NullablePrivateNetwork**](PrivateNetwork.md) |  | 
-**Contract** | [**InstanceContract**](InstanceContract.md) |  | 
+**Contract** | [**InstanceContractDetails**](InstanceContractDetails.md) |  | 
 **Ips** | [**[]IpDetails**](IpDetails.md) |  | 
 
 ## Methods
 
 ### NewLoadBalancerDetails
 
-`func NewLoadBalancerDetails(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract InstanceContract, ips []IpDetails, ) *LoadBalancerDetails`
+`func NewLoadBalancerDetails(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, privateNetwork NullablePrivateNetwork, contract InstanceContractDetails, ips []IpDetails, ) *LoadBalancerDetails`
 
 NewLoadBalancerDetails instantiates a new LoadBalancerDetails object
 This constructor will assign default values to properties that have it defined,
@@ -226,36 +225,6 @@ SetConfiguration sets Configuration field to given value.
 `func (o *LoadBalancerDetails) UnsetConfiguration()`
 
 UnsetConfiguration ensures that no value is present for Configuration, not even an explicit nil
-### GetAutoScalingGroup
-
-`func (o *LoadBalancerDetails) GetAutoScalingGroup() AutoScalingGroup`
-
-GetAutoScalingGroup returns the AutoScalingGroup field if non-nil, zero value otherwise.
-
-### GetAutoScalingGroupOk
-
-`func (o *LoadBalancerDetails) GetAutoScalingGroupOk() (*AutoScalingGroup, bool)`
-
-GetAutoScalingGroupOk returns a tuple with the AutoScalingGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoScalingGroup
-
-`func (o *LoadBalancerDetails) SetAutoScalingGroup(v AutoScalingGroup)`
-
-SetAutoScalingGroup sets AutoScalingGroup field to given value.
-
-
-### SetAutoScalingGroupNil
-
-`func (o *LoadBalancerDetails) SetAutoScalingGroupNil(b bool)`
-
- SetAutoScalingGroupNil sets the value for AutoScalingGroup to be an explicit nil
-
-### UnsetAutoScalingGroup
-`func (o *LoadBalancerDetails) UnsetAutoScalingGroup()`
-
-UnsetAutoScalingGroup ensures that no value is present for AutoScalingGroup, not even an explicit nil
 ### GetPrivateNetwork
 
 `func (o *LoadBalancerDetails) GetPrivateNetwork() PrivateNetwork`
@@ -288,20 +257,20 @@ SetPrivateNetwork sets PrivateNetwork field to given value.
 UnsetPrivateNetwork ensures that no value is present for PrivateNetwork, not even an explicit nil
 ### GetContract
 
-`func (o *LoadBalancerDetails) GetContract() InstanceContract`
+`func (o *LoadBalancerDetails) GetContract() InstanceContractDetails`
 
 GetContract returns the Contract field if non-nil, zero value otherwise.
 
 ### GetContractOk
 
-`func (o *LoadBalancerDetails) GetContractOk() (*InstanceContract, bool)`
+`func (o *LoadBalancerDetails) GetContractOk() (*InstanceContractDetails, bool)`
 
 GetContractOk returns a tuple with the Contract field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContract
 
-`func (o *LoadBalancerDetails) SetContract(v InstanceContract)`
+`func (o *LoadBalancerDetails) SetContract(v InstanceContractDetails)`
 
 SetContract sets Contract field to given value.
 

@@ -19,7 +19,7 @@ var _ MappedNullable = &GetResponseCodesPerSecondMetricsResult{}
 
 // GetResponseCodesPerSecondMetricsResult struct for GetResponseCodesPerSecondMetricsResult
 type GetResponseCodesPerSecondMetricsResult struct {
-	Metrics *ResponseCodesMetrics1 `json:"metrics,omitempty"`
+	Metrics *ResponseCodesMetricsPerSec `json:"metrics,omitempty"`
 	Metadata *MetricsMetadataProperties `json:"_metadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,9 +44,9 @@ func NewGetResponseCodesPerSecondMetricsResultWithDefaults() *GetResponseCodesPe
 }
 
 // GetMetrics returns the Metrics field value if set, zero value otherwise.
-func (o *GetResponseCodesPerSecondMetricsResult) GetMetrics() ResponseCodesMetrics1 {
+func (o *GetResponseCodesPerSecondMetricsResult) GetMetrics() ResponseCodesMetricsPerSec {
 	if o == nil || IsNil(o.Metrics) {
-		var ret ResponseCodesMetrics1
+		var ret ResponseCodesMetricsPerSec
 		return ret
 	}
 	return *o.Metrics
@@ -54,7 +54,7 @@ func (o *GetResponseCodesPerSecondMetricsResult) GetMetrics() ResponseCodesMetri
 
 // GetMetricsOk returns a tuple with the Metrics field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetResponseCodesPerSecondMetricsResult) GetMetricsOk() (*ResponseCodesMetrics1, bool) {
+func (o *GetResponseCodesPerSecondMetricsResult) GetMetricsOk() (*ResponseCodesMetricsPerSec, bool) {
 	if o == nil || IsNil(o.Metrics) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *GetResponseCodesPerSecondMetricsResult) HasMetrics() bool {
 	return false
 }
 
-// SetMetrics gets a reference to the given ResponseCodesMetrics1 and assigns it to the Metrics field.
-func (o *GetResponseCodesPerSecondMetricsResult) SetMetrics(v ResponseCodesMetrics1) {
+// SetMetrics gets a reference to the given ResponseCodesMetricsPerSec and assigns it to the Metrics field.
+func (o *GetResponseCodesPerSecondMetricsResult) SetMetrics(v ResponseCodesMetricsPerSec) {
 	o.Metrics = &v
 }
 

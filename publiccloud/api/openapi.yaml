@@ -595,16 +595,9 @@ paths:
                     networkType: INTERNAL
                   startedAt: 2024-04-09T15:11:37+00:00
                   contract:
-                    id: ""
                     billingFrequency: 1
                     term: 0
                     type: HOURLY
-                    state: ACTIVE
-                    endsAt: null
-                    startsAt: 2024-10-24T21:13:25+00:00
-                    sla: Basic
-                    controlPanel: cPanel Admin 5
-                    inModification: false
                 - marketAppId: null
                   productType: INSTANCE
                   autoScalingGroup:
@@ -662,16 +655,9 @@ paths:
                     networkType: INTERNAL
                   startedAt: 2024-04-09T15:11:37+00:00
                   contract:
-                    id: ""
                     billingFrequency: 1
                     term: 0
                     type: HOURLY
-                    state: ACTIVE
-                    endsAt: null
-                    startsAt: 2024-10-24T21:13:25+00:00
-                    sla: Basic
-                    controlPanel: cPanel Admin 5
-                    inModification: false
                 - marketAppId: null
                   productType: INSTANCE
                   autoScalingGroup:
@@ -729,16 +715,9 @@ paths:
                     networkType: INTERNAL
                   startedAt: 2024-04-09T15:11:37+00:00
                   contract:
-                    id: ""
                     billingFrequency: 1
                     term: 0
                     type: HOURLY
-                    state: ACTIVE
-                    endsAt: null
-                    startsAt: 2024-10-24T21:13:25+00:00
-                    sla: Basic
-                    controlPanel: cPanel Admin 5
-                    inModification: false
                 - marketAppId: null
                   productType: INSTANCE
                   autoScalingGroup:
@@ -796,16 +775,9 @@ paths:
                     networkType: INTERNAL
                   startedAt: 2024-04-09T15:11:37+00:00
                   contract:
-                    id: ""
                     billingFrequency: 1
                     term: 0
                     type: HOURLY
-                    state: ACTIVE
-                    endsAt: null
-                    startsAt: 2024-10-24T21:13:25+00:00
-                    sla: Basic
-                    controlPanel: cPanel Admin 5
-                    inModification: false
               schema:
                 $ref: '#/components/schemas/instanceList'
           description: OK.
@@ -887,15 +859,15 @@ paths:
               example:
                 autoScalingGroup: null
                 contract:
-                  id: "41228459000100"
+                  id: ""
                   billingFrequency: 1
                   term: 12
-                  type: MONTHLY
-                  state: ACTIVE
+                  type: HOURLY
+                  state: PENDING
                   endsAt: 2024-10-24T21:13:25+00:00
                   startsAt: 2024-10-24T21:13:25+00:00
                   sla: Basic
-                  controlPanel: cPanel Admin 5
+                  controlPanel: null
                   inModification: false
                 hasPrivateNetwork: false
                 hasPublicIpV4: true
@@ -907,15 +879,10 @@ paths:
                   family: linux
                   flavour: ubuntu
                   custom: false
-                ips:
-                - ip: 10.32.60.12
-                  prefixLength: "27"
-                  version: 4
-                  nullRouted: false
-                  reverseLookup: null
-                  mainIp: false
-                  networkType: INTERNAL
+                ips: []
+                iso: null
                 marketAppId: null
+                privateNetwork: null
                 productType: INSTANCE
                 reference: my webserver
                 region: eu-west-3
@@ -935,10 +902,10 @@ paths:
                 rootDiskSize: 5
                 rootDiskStorageType: CENTRAL
                 startedAt: null
-                state: RUNNING
+                state: CREATING
                 type: lsw.m3.large
               schema:
-                $ref: '#/components/schemas/instance'
+                $ref: '#/components/schemas/instanceDetails'
           description: OK
         "400":
           content:
@@ -3137,6 +3104,9 @@ paths:
           content:
             application/json:
               example:
+                _metadata:
+                  currency: EUR
+                  currencySymbol: €
                 billing:
                   instances:
                   - id: b778824a-a96e-4f6f-9713-7b7196f09c4f
@@ -3155,16 +3125,9 @@ paths:
                         value: 1000
                         unit: Mbps
                     contract:
-                      id: ""
                       billingFrequency: 1
                       term: 0
                       type: HOURLY
-                      state: ACTIVE
-                      endsAt: null
-                      startsAt: 2024-10-24T21:13:25+00:00
-                      sla: Basic
-                      controlPanel: cPanel Admin 5
-                      inModification: false
                     startedAt: 2023-11-30T16:31:46+00:00
                     endedAt: 2023-11-30T16:40:46+00:00
                     rootDiskSize: 15
@@ -3189,6 +3152,7 @@ paths:
                       tier_3:
                         usage: 34.5
                         price: 2.34
+                  totalValue: "11.223,00"
               schema:
                 $ref: '#/components/schemas/getExpensesResult'
           description: OK.
@@ -4488,16 +4452,9 @@ paths:
                     mainIp: false
                   startedAt: 2024-04-09T15:11:37+00:00
                   contract:
-                    id: ""
                     billingFrequency: 1
                     term: 0
                     type: HOURLY
-                    state: ACTIVE
-                    endsAt: null
-                    startsAt: 2024-10-24T21:13:25+00:00
-                    sla: Basic
-                    controlPanel: cPanel Admin 5
-                    inModification: false
                   configuration:
                     stickySession:
                       enabled: true
@@ -4606,7 +4563,6 @@ paths:
                   privateNetworkSpeed:
                     value: 100
                     unit: Mbps
-                autoScalingGroup: null
                 region: eu-west-3
                 reference: my-loadbalancer1
                 state: RUNNING
@@ -4822,7 +4778,6 @@ paths:
                   privateNetworkSpeed:
                     value: 100
                     unit: Mbps
-                autoScalingGroup: null
                 region: eu-west-3
                 reference: my-loadbalancer1
                 state: RUNNING
@@ -4958,7 +4913,6 @@ paths:
                   privateNetworkSpeed:
                     value: 100
                     unit: Mbps
-                autoScalingGroup: null
                 region: eu-west-3
                 reference: my-loadbalancer1
                 state: RUNNING
@@ -12744,15 +12698,8 @@ components:
     instanceContract:
       example:
         billingFrequency: 1
-        controlPanel: cPanel Admin 5
-        inModification: false
-        startsAt: 2023-11-30T16:31:28Z
-        sla: Basic
         term: 6
-        state: ACTIVE
-        id: "41228459000100"
         type: HOURLY
-        endsAt: 2023-11-30T16:31:28Z
       properties:
         billingFrequency:
           $ref: '#/components/schemas/billingFrequency'
@@ -12760,42 +12707,8 @@ components:
           $ref: '#/components/schemas/contractTerm'
         type:
           $ref: '#/components/schemas/contractType'
-        endsAt:
-          description: End date is null for hourly instances
-          example: 2023-11-30T16:31:28Z
-          format: date-time
-          nullable: true
-          type: string
-        startsAt:
-          description: Date when the contract is starting
-          example: 2023-11-30T16:31:28Z
-          format: date-time
-          type: string
-        state:
-          $ref: '#/components/schemas/contractState'
-        id:
-          description: Contract id is empty for hourly instances
-          example: "41228459000100"
-          type: string
-        sla:
-          example: Basic
-          type: string
-        controlPanel:
-          example: cPanel Admin 5
-          nullable: true
-          type: string
-        inModification:
-          example: false
-          type: boolean
       required:
       - billingFrequency
-      - controlPanel
-      - endsAt
-      - id
-      - inModification
-      - sla
-      - startsAt
-      - state
       - term
       - type
       type: object
@@ -13044,15 +12957,8 @@ components:
         rootDiskSize: 84
         contract:
           billingFrequency: 1
-          controlPanel: cPanel Admin 5
-          inModification: false
-          startsAt: 2023-11-30T16:31:28Z
-          sla: Basic
           term: 6
-          state: ACTIVE
-          id: "41228459000100"
           type: HOURLY
-          endsAt: 2023-11-30T16:31:28Z
         hasPrivateNetwork: true
         resources:
           memory:
@@ -13196,15 +13102,8 @@ components:
           rootDiskSize: 84
           contract:
             billingFrequency: 1
-            controlPanel: cPanel Admin 5
-            inModification: false
-            startsAt: 2023-11-30T16:31:28Z
-            sla: Basic
             term: 6
-            state: ACTIVE
-            id: "41228459000100"
             type: HOURLY
-            endsAt: 2023-11-30T16:31:28Z
           hasPrivateNetwork: true
           resources:
             memory:
@@ -13270,15 +13169,8 @@ components:
           rootDiskSize: 84
           contract:
             billingFrequency: 1
-            controlPanel: cPanel Admin 5
-            inModification: false
-            startsAt: 2023-11-30T16:31:28Z
-            sla: Basic
             term: 6
-            state: ACTIVE
-            id: "41228459000100"
             type: HOURLY
-            endsAt: 2023-11-30T16:31:28Z
           hasPrivateNetwork: true
           resources:
             memory:
@@ -13386,6 +13278,57 @@ components:
       - rootDiskStorageType
       - type
       type: object
+    instanceContractDetails:
+      allOf:
+      - $ref: '#/components/schemas/instanceContract'
+      - properties:
+          endsAt:
+            description: End date is null for hourly instances
+            example: 2023-11-30T16:31:28Z
+            format: date-time
+            nullable: true
+            type: string
+          startsAt:
+            description: Date when the contract is starting
+            example: 2023-11-30T16:31:28Z
+            format: date-time
+            type: string
+          state:
+            $ref: '#/components/schemas/contractState'
+          id:
+            description: Contract id is empty for hourly instances
+            example: "41228459000100"
+            type: string
+          sla:
+            example: Basic
+            type: string
+          controlPanel:
+            example: cPanel Admin 5
+            nullable: true
+            type: string
+          inModification:
+            example: false
+            type: boolean
+        required:
+        - controlPanel
+        - endsAt
+        - id
+        - inModification
+        - sla
+        - startsAt
+        - state
+        type: object
+      example:
+        billingFrequency: 1
+        controlPanel: cPanel Admin 5
+        inModification: false
+        startsAt: 2023-11-30T16:31:28Z
+        sla: Basic
+        term: 6
+        state: ACTIVE
+        id: "41228459000100"
+        type: HOURLY
+        endsAt: 2023-11-30T16:31:28Z
     iso:
       example:
         name: name
@@ -13443,7 +13386,7 @@ components:
           detectionProfile: STANDARD_DEFAULT
           protectionType: STANDARD
         networkType: internal
-        version: 6
+        version: 1
     instanceDetails:
       example:
         image:
@@ -13515,7 +13458,7 @@ components:
             detectionProfile: STANDARD_DEFAULT
             protectionType: STANDARD
           networkType: internal
-          version: 6
+          version: 1
         - prefixLength: "28"
           reverseLookup: reverseLookup
           ip: 127.0.0.1
@@ -13525,7 +13468,7 @@ components:
             detectionProfile: STANDARD_DEFAULT
             protectionType: STANDARD
           networkType: internal
-          version: 6
+          version: 1
         reference: reference
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         marketAppId: CPANEL
@@ -13579,7 +13522,7 @@ components:
         rootDiskStorageType:
           $ref: '#/components/schemas/storageType'
         contract:
-          $ref: '#/components/schemas/instanceContract'
+          $ref: '#/components/schemas/instanceContractDetails'
         autoScalingGroup:
           $ref: '#/components/schemas/autoScalingGroup'
         image:
@@ -13593,7 +13536,6 @@ components:
             $ref: '#/components/schemas/ipDetails'
           type: array
       required:
-      - autoScalingGroup
       - contract
       - hasPrivateNetwork
       - hasPublicIpV4
@@ -13798,22 +13740,19 @@ components:
       type: object
     getExpensesResult:
       example:
+        _metadata:
+          currencySymbol: €
+          currency: EUR
         billing:
+          totalValue: totalValue
           instances:
           - hours: 14
             rootDiskStorageType: LOCAL
             rootDiskSize: 84
             contract:
               billingFrequency: 1
-              controlPanel: cPanel Admin 5
-              inModification: false
-              startsAt: 2023-11-30T16:31:28Z
-              sla: Basic
               term: 6
-              state: ACTIVE
-              id: "41228459000100"
               type: HOURLY
-              endsAt: 2023-11-30T16:31:28Z
             resources:
               memory:
                 unit: GiB
@@ -13840,15 +13779,8 @@ components:
             rootDiskSize: 84
             contract:
               billingFrequency: 1
-              controlPanel: cPanel Admin 5
-              inModification: false
-              startsAt: 2023-11-30T16:31:28Z
-              sla: Basic
               term: 6
-              state: ACTIVE
-              id: "41228459000100"
               type: HOURLY
-              endsAt: 2023-11-30T16:31:28Z
             resources:
               memory:
                 unit: GiB
@@ -13888,6 +13820,11 @@ components:
       properties:
         billing:
           $ref: '#/components/schemas/billing'
+        _metadata:
+          $ref: '#/components/schemas/metadata'
+      required:
+      - _metadata
+      - billing
       type: object
     getIsoListResult:
       example:
@@ -14328,15 +14265,8 @@ components:
           updatedAt: 2000-01-23T04:56:07.000+00:00
         contract:
           billingFrequency: 1
-          controlPanel: cPanel Admin 5
-          inModification: false
-          startsAt: 2023-11-30T16:31:28Z
-          sla: Basic
           term: 6
-          state: ACTIVE
-          id: "41228459000100"
           type: HOURLY
-          endsAt: 2023-11-30T16:31:28Z
         resources:
           memory:
             unit: GiB
@@ -14452,15 +14382,8 @@ components:
             updatedAt: 2000-01-23T04:56:07.000+00:00
           contract:
             billingFrequency: 1
-            controlPanel: cPanel Admin 5
-            inModification: false
-            startsAt: 2023-11-30T16:31:28Z
-            sla: Basic
             term: 6
-            state: ACTIVE
-            id: "41228459000100"
             type: HOURLY
-            endsAt: 2023-11-30T16:31:28Z
           resources:
             memory:
               unit: GiB
@@ -14524,15 +14447,8 @@ components:
             updatedAt: 2000-01-23T04:56:07.000+00:00
           contract:
             billingFrequency: 1
-            controlPanel: cPanel Admin 5
-            inModification: false
-            startsAt: 2023-11-30T16:31:28Z
-            sla: Basic
             term: 6
-            state: ACTIVE
-            id: "41228459000100"
             type: HOURLY
-            endsAt: 2023-11-30T16:31:28Z
           resources:
             memory:
               unit: GiB
@@ -14612,22 +14528,6 @@ components:
           stickySession:
             maxLifeTime: 0
             enabled: true
-        autoScalingGroup:
-          cpuThreshold: 2
-          maximumAmount: 5
-          type: MANUAL
-          desiredAmount: 1
-          reference: reference
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          minimumAmount: 5
-          startsAt: 2000-01-23T04:56:07.000+00:00
-          warmupTime: 7
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: ACTIVE
-          cooldownTime: 9
-          region: null
-          endsAt: 2000-01-23T04:56:07.000+00:00
-          updatedAt: 2000-01-23T04:56:07.000+00:00
         contract:
           billingFrequency: 1
           controlPanel: cPanel Admin 5
@@ -14667,7 +14567,7 @@ components:
             detectionProfile: STANDARD_DEFAULT
             protectionType: STANDARD
           networkType: internal
-          version: 6
+          version: 1
         - prefixLength: "28"
           reverseLookup: reverseLookup
           ip: 127.0.0.1
@@ -14677,7 +14577,7 @@ components:
             detectionProfile: STANDARD_DEFAULT
             protectionType: STANDARD
           networkType: internal
-          version: 6
+          version: 1
       properties:
         id:
           description: The load balancer unique identifier
@@ -14703,18 +14603,15 @@ components:
           $ref: '#/components/schemas/regionName'
         configuration:
           $ref: '#/components/schemas/loadBalancerConfiguration'
-        autoScalingGroup:
-          $ref: '#/components/schemas/autoScalingGroup'
         privateNetwork:
           $ref: '#/components/schemas/privateNetwork'
         contract:
-          $ref: '#/components/schemas/instanceContract'
+          $ref: '#/components/schemas/instanceContractDetails'
         ips:
           items:
             $ref: '#/components/schemas/ipDetails'
           type: array
       required:
-      - autoScalingGroup
       - configuration
       - contract
       - id
@@ -14960,7 +14857,7 @@ components:
             detectionProfile: STANDARD_DEFAULT
             protectionType: STANDARD
           networkType: internal
-          version: 6
+          version: 1
         - prefixLength: "28"
           reverseLookup: reverseLookup
           ip: 127.0.0.1
@@ -14970,7 +14867,7 @@ components:
             detectionProfile: STANDARD_DEFAULT
             protectionType: STANDARD
           networkType: internal
-          version: 6
+          version: 1
       properties:
         ips:
           items:
@@ -15349,7 +15246,7 @@ components:
           to: 2000-01-23T04:56:07.000+00:00
       properties:
         metrics:
-          $ref: '#/components/schemas/dataTransferredMetrics_1'
+          $ref: '#/components/schemas/dataTransferredMetricsPerSec'
         _metadata:
           $ref: '#/components/schemas/metricsMetadataProperties'
       type: object
@@ -15533,7 +15430,7 @@ components:
           to: 2000-01-23T04:56:07.000+00:00
       properties:
         metrics:
-          $ref: '#/components/schemas/responseCodesMetrics_1'
+          $ref: '#/components/schemas/responseCodesMetricsPerSec'
         _metadata:
           $ref: '#/components/schemas/metricsMetadataProperties'
       type: object
@@ -15958,7 +15855,7 @@ components:
             detectionProfile: STANDARD_DEFAULT
             protectionType: STANDARD
           networkType: internal
-          version: 6
+          version: 1
         - prefixLength: "28"
           reverseLookup: reverseLookup
           ip: 127.0.0.1
@@ -15968,7 +15865,7 @@ components:
             detectionProfile: STANDARD_DEFAULT
             protectionType: STANDARD
           networkType: internal
-          version: 6
+          version: 1
         productType: INSTANCE
       properties:
         id:
@@ -16031,7 +15928,7 @@ components:
               detectionProfile: STANDARD_DEFAULT
               protectionType: STANDARD
             networkType: internal
-            version: 6
+            version: 1
           - prefixLength: "28"
             reverseLookup: reverseLookup
             ip: 127.0.0.1
@@ -16041,7 +15938,7 @@ components:
               detectionProfile: STANDARD_DEFAULT
               protectionType: STANDARD
             networkType: internal
-            version: 6
+            version: 1
           productType: INSTANCE
         - reference: reference
           hasPrivateNetwork: true
@@ -16072,7 +15969,7 @@ components:
               detectionProfile: STANDARD_DEFAULT
               protectionType: STANDARD
             networkType: internal
-            version: 6
+            version: 1
           - prefixLength: "28"
             reverseLookup: reverseLookup
             ip: 127.0.0.1
@@ -16082,7 +15979,7 @@ components:
               detectionProfile: STANDARD_DEFAULT
               protectionType: STANDARD
             networkType: internal
-            version: 6
+            version: 1
           productType: INSTANCE
         _metadata:
           offset: 0
@@ -16644,15 +16541,8 @@ components:
         rootDiskSize: 84
         contract:
           billingFrequency: 1
-          controlPanel: cPanel Admin 5
-          inModification: false
-          startsAt: 2023-11-30T16:31:28Z
-          sla: Basic
           term: 6
-          state: ACTIVE
-          id: "41228459000100"
           type: HOURLY
-          endsAt: 2023-11-30T16:31:28Z
         resources:
           memory:
             unit: GiB
@@ -16785,21 +16675,15 @@ components:
       type: object
     billing:
       example:
+        totalValue: totalValue
         instances:
         - hours: 14
           rootDiskStorageType: LOCAL
           rootDiskSize: 84
           contract:
             billingFrequency: 1
-            controlPanel: cPanel Admin 5
-            inModification: false
-            startsAt: 2023-11-30T16:31:28Z
-            sla: Basic
             term: 6
-            state: ACTIVE
-            id: "41228459000100"
             type: HOURLY
-            endsAt: 2023-11-30T16:31:28Z
           resources:
             memory:
               unit: GiB
@@ -16826,15 +16710,8 @@ components:
           rootDiskSize: 84
           contract:
             billingFrequency: 1
-            controlPanel: cPanel Admin 5
-            inModification: false
-            startsAt: 2023-11-30T16:31:28Z
-            sla: Basic
             term: 6
-            state: ACTIVE
-            id: "41228459000100"
             type: HOURLY
-            endsAt: 2023-11-30T16:31:28Z
           resources:
             memory:
               unit: GiB
@@ -16879,7 +16756,30 @@ components:
           type: array
         traffic:
           $ref: '#/components/schemas/traffic'
+        totalValue:
+          description: Total estimated value for period
+          type: string
+      required:
+      - instances
+      - totalValue
+      - traffic
       title: billing
+      type: object
+    metadata:
+      example:
+        currencySymbol: €
+        currency: EUR
+      properties:
+        currency:
+          example: EUR
+          type: string
+        currencySymbol:
+          example: €
+          type: string
+      required:
+      - currency
+      - currencySymbol
+      title: metadata
       type: object
     storageSize:
       example:
@@ -17171,7 +17071,7 @@ components:
           $ref: '#/components/schemas/metricsPropertiesB'
       title: dataTransferredMetrics
       type: object
-    dataTransferredMetrics_1:
+    dataTransferredMetricsPerSec:
       example:
         dataOut:
           unit: requests
@@ -17192,7 +17092,7 @@ components:
           $ref: '#/components/schemas/metricsPropertiesRequests'
         dataOut:
           $ref: '#/components/schemas/metricsPropertiesRequests'
-      title: dataTransferredMetrics
+      title: dataTransferredMetricsPerSec
       type: object
     responseCodesMetrics:
       example:
@@ -17235,7 +17135,7 @@ components:
           $ref: '#/components/schemas/metricsPropertiesResponses'
       title: responseCodesMetrics
       type: object
-    responseCodesMetrics_1:
+    responseCodesMetricsPerSec:
       example:
         "2xx":
           unit: responses/s
@@ -17274,7 +17174,7 @@ components:
           $ref: '#/components/schemas/metricsPropertiesResponsesPerSec'
         "5xx":
           $ref: '#/components/schemas/metricsPropertiesResponsesPerSec'
-      title: responseCodesMetrics
+      title: responseCodesMetricsPerSec
       type: object
     healthCheck:
       example:

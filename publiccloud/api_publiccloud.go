@@ -912,8 +912,8 @@ Available instance types for your region can be obtained using `/v1/instanceType
 	LaunchInstance(ctx context.Context) ApiLaunchInstanceRequest
 
 	// LaunchInstanceExecute executes the request
-	//  @return Instance
-	LaunchInstanceExecute(r ApiLaunchInstanceRequest) (*Instance, *http.Response, error)
+	//  @return InstanceDetails
+	LaunchInstanceExecute(r ApiLaunchInstanceRequest) (*InstanceDetails, *http.Response, error)
 
 	/*
 	LaunchLoadBalancer Launch Load balancer
@@ -13289,7 +13289,7 @@ func (r ApiLaunchInstanceRequest) LaunchInstanceOpts(launchInstanceOpts LaunchIn
 	return r
 }
 
-func (r ApiLaunchInstanceRequest) Execute() (*Instance, *http.Response, error) {
+func (r ApiLaunchInstanceRequest) Execute() (*InstanceDetails, *http.Response, error) {
 	return r.ApiService.LaunchInstanceExecute(r)
 }
 
@@ -13315,13 +13315,13 @@ func (a *PubliccloudAPIService) LaunchInstance(ctx context.Context) ApiLaunchIns
 }
 
 // Execute executes the request
-//  @return Instance
-func (a *PubliccloudAPIService) LaunchInstanceExecute(r ApiLaunchInstanceRequest) (*Instance, *http.Response, error) {
+//  @return InstanceDetails
+func (a *PubliccloudAPIService) LaunchInstanceExecute(r ApiLaunchInstanceRequest) (*InstanceDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Instance
+		localVarReturnValue  *InstanceDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PubliccloudAPIService.LaunchInstance")

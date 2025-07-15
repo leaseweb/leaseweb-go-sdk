@@ -38,7 +38,7 @@ docs/CredentialType.md
 docs/DataTrafficMetrics.md
 docs/DataTrafficMetricsGranularity.md
 docs/DataTransferredMetrics.md
-docs/DataTransferredMetrics1.md
+docs/DataTransferredMetricsPerSec.md
 docs/Ddos.md
 docs/ErrorResult.md
 docs/ExpenseResultInstance.md
@@ -83,6 +83,7 @@ docs/ImageState.md
 docs/ImageStateName.md
 docs/Instance.md
 docs/InstanceContract.md
+docs/InstanceContractDetails.md
 docs/InstanceDetails.md
 docs/InstanceList.md
 docs/InstanceType.md
@@ -137,7 +138,7 @@ docs/RegionName.md
 docs/ReinstallResourceOpts.md
 docs/Resources.md
 docs/ResponseCodesMetrics.md
-docs/ResponseCodesMetrics1.md
+docs/ResponseCodesMetricsPerSec.md
 docs/SchemasHealthCheckStatus.md
 docs/Snapshot.md
 docs/SslCertificate.md
@@ -210,7 +211,7 @@ model_credential_type.go
 model_data_traffic_metrics.go
 model_data_traffic_metrics_granularity.go
 model_data_transferred_metrics.go
-model_data_transferred_metrics_1.go
+model_data_transferred_metrics_per_sec.go
 model_ddos.go
 model_error_result.go
 model_expense_result_instance.go
@@ -255,6 +256,7 @@ model_image_state.go
 model_image_state_name.go
 model_instance.go
 model_instance_contract.go
+model_instance_contract_details.go
 model_instance_details.go
 model_instance_list.go
 model_instance_type.go
@@ -307,7 +309,7 @@ model_region_name.go
 model_reinstall_resource_opts.go
 model_resources.go
 model_response_codes_metrics.go
-model_response_codes_metrics_1.go
+model_response_codes_metrics_per_sec.go
 model_snapshot.go
 model_ssl_certificate.go
 model_state.go

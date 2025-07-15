@@ -26,6 +26,8 @@ docs/ResourceRecordSet.md
 docs/ResourceRecordSetDetails.md
 docs/ResourceRecordSetType.md
 docs/ResultRecordSets.md
+docs/RolloverKeyOpts.md
+docs/RolloverType.md
 docs/Self.md
 docs/Ttl.md
 docs/UpdateResourceRecordSetLdOpts.md
@@ -55,6 +57,8 @@ model_resource_record_set.go
 model_resource_record_set_details.go
 model_resource_record_set_type.go
 model_result_record_sets.go
+model_rollover_key_opts.go
+model_rollover_type.go
 model_self.go
 model_ttl.go
 model_update_resource_record_set_ld_opts.go

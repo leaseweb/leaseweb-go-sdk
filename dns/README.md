@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 *DnsAPI* | [**GetResourceRecordSet**](docs/DnsAPI.md#getresourcerecordset) | **Get** /domains/{domainName}/resourceRecordSets/{name}/{type} | Inspect resource record set
 *DnsAPI* | [**GetResourceRecordSetList**](docs/DnsAPI.md#getresourcerecordsetlist) | **Get** /domains/{domainName}/resourceRecordSets | List resource record sets
 *DnsAPI* | [**ImportResourceRecordSets**](docs/DnsAPI.md#importresourcerecordsets) | **Post** /domains/{domainName}/resourceRecordSets/import | Import dns records from bind file content
+*DnsAPI* | [**RolloverKey**](docs/DnsAPI.md#rolloverkey) | **Post** /domains/{domainName}/keyRollover | Key Rollover
 *DnsAPI* | [**UpdateResourceRecordSet**](docs/DnsAPI.md#updateresourcerecordset) | **Put** /domains/{domainName}/resourceRecordSets/{name}/{type} | Update a specific DNS record
 *DnsAPI* | [**UpdateResourceRecordSets**](docs/DnsAPI.md#updateresourcerecordsets) | **Put** /domains/{domainName}/resourceRecordSets | Update all DNS records
 *DnsAPI* | [**ValidateResourceRecordSet**](docs/DnsAPI.md#validateresourcerecordset) | **Post** /domains/{domainName}/resourceRecordSets/validateSet | Validate a resource record set
@@ -112,6 +113,8 @@ Class | Method | HTTP request | Description
  - [ResourceRecordSetDetails](docs/ResourceRecordSetDetails.md)
  - [ResourceRecordSetType](docs/ResourceRecordSetType.md)
  - [ResultRecordSets](docs/ResultRecordSets.md)
+ - [RolloverKeyOpts](docs/RolloverKeyOpts.md)
+ - [RolloverType](docs/RolloverType.md)
  - [Self](docs/Self.md)
  - [Ttl](docs/Ttl.md)
  - [UpdateResourceRecordSetLdOpts](docs/UpdateResourceRecordSetLdOpts.md)

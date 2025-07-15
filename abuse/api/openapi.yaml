@@ -89,6 +89,17 @@ paths:
           format: ipv4
           type: string
         style: form
+      - description: |
+          Comma-separated list of sort field names. Prepend the field name with '-' for descending order. Sortable field names are deadline and reportedAt
+        example: "deadline,-reportedAt"
+        explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          default: The list is sorted in descending order by reportedAt
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -125,6 +136,17 @@ paths:
                 $ref: '#/components/schemas/getReportListResult'
           description: |
             OK.
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
         "401":
           content:
             application/json:
@@ -875,6 +897,18 @@ components:
       required: false
       schema:
         format: ipv4
+        type: string
+      style: form
+    sort:
+      description: |
+        Comma-separated list of sort field names. Prepend the field name with '-' for descending order. Sortable field names are deadline and reportedAt
+      example: "deadline,-reportedAt"
+      explode: true
+      in: query
+      name: sort
+      required: false
+      schema:
+        default: The list is sorted in descending order by reportedAt
         type: string
       style: form
     reportId:

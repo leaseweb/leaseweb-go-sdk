@@ -19,7 +19,7 @@ var _ MappedNullable = &GetDataTransferredPerSecondMetricsResult{}
 
 // GetDataTransferredPerSecondMetricsResult struct for GetDataTransferredPerSecondMetricsResult
 type GetDataTransferredPerSecondMetricsResult struct {
-	Metrics *DataTransferredMetrics1 `json:"metrics,omitempty"`
+	Metrics *DataTransferredMetricsPerSec `json:"metrics,omitempty"`
 	Metadata *MetricsMetadataProperties `json:"_metadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,9 +44,9 @@ func NewGetDataTransferredPerSecondMetricsResultWithDefaults() *GetDataTransferr
 }
 
 // GetMetrics returns the Metrics field value if set, zero value otherwise.
-func (o *GetDataTransferredPerSecondMetricsResult) GetMetrics() DataTransferredMetrics1 {
+func (o *GetDataTransferredPerSecondMetricsResult) GetMetrics() DataTransferredMetricsPerSec {
 	if o == nil || IsNil(o.Metrics) {
-		var ret DataTransferredMetrics1
+		var ret DataTransferredMetricsPerSec
 		return ret
 	}
 	return *o.Metrics
@@ -54,7 +54,7 @@ func (o *GetDataTransferredPerSecondMetricsResult) GetMetrics() DataTransferredM
 
 // GetMetricsOk returns a tuple with the Metrics field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetDataTransferredPerSecondMetricsResult) GetMetricsOk() (*DataTransferredMetrics1, bool) {
+func (o *GetDataTransferredPerSecondMetricsResult) GetMetricsOk() (*DataTransferredMetricsPerSec, bool) {
 	if o == nil || IsNil(o.Metrics) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *GetDataTransferredPerSecondMetricsResult) HasMetrics() bool {
 	return false
 }
 
-// SetMetrics gets a reference to the given DataTransferredMetrics1 and assigns it to the Metrics field.
-func (o *GetDataTransferredPerSecondMetricsResult) SetMetrics(v DataTransferredMetrics1) {
+// SetMetrics gets a reference to the given DataTransferredMetricsPerSec and assigns it to the Metrics field.
+func (o *GetDataTransferredPerSecondMetricsResult) SetMetrics(v DataTransferredMetricsPerSec) {
 	o.Metrics = &v
 }
 
