@@ -137,8 +137,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/errorResult'
           description: Service Unavailable.
-      security:
-      - OAuth2: []
       summary: Key Rollover
       tags:
       - dns

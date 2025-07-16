@@ -13821,7 +13821,7 @@ components:
         billing:
           $ref: '#/components/schemas/billing'
         _metadata:
-          $ref: '#/components/schemas/metadata'
+          $ref: '#/components/schemas/expensesMetadata'
       required:
       - _metadata
       - billing
@@ -16765,7 +16765,7 @@ components:
       - traffic
       title: billing
       type: object
-    metadata:
+    expensesMetadata:
       example:
         currencySymbol: €
         currency: EUR
@@ -16779,7 +16779,7 @@ components:
       required:
       - currency
       - currencySymbol
-      title: metadata
+      title: expensesMetadata
       type: object
     storageSize:
       example:

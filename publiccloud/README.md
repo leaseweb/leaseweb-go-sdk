@@ -213,6 +213,7 @@ Class | Method | HTTP request | Description
  - [Ddos](docs/Ddos.md)
  - [ErrorResult](docs/ErrorResult.md)
  - [ExpenseResultInstance](docs/ExpenseResultInstance.md)
+ - [ExpensesMetadata](docs/ExpensesMetadata.md)
  - [Flavour](docs/Flavour.md)
  - [GetAutoScalingGroupInstanceListResult](docs/GetAutoScalingGroupInstanceListResult.md)
  - [GetAutoScalingGroupListResult](docs/GetAutoScalingGroupListResult.md)

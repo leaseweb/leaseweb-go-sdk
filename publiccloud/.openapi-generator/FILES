@@ -42,6 +42,7 @@ docs/DataTransferredMetricsPerSec.md
 docs/Ddos.md
 docs/ErrorResult.md
 docs/ExpenseResultInstance.md
+docs/ExpensesMetadata.md
 docs/Flavour.md
 docs/GetAutoScalingGroupInstanceListResult.md
 docs/GetAutoScalingGroupListResult.md
@@ -215,6 +216,7 @@ model_data_transferred_metrics_per_sec.go
 model_ddos.go
 model_error_result.go
 model_expense_result_instance.go
+model_expenses_metadata.go
 model_flavour.go
 model_get_auto_scaling_group_instance_list_result.go
 model_get_auto_scaling_group_list_result.go

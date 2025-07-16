@@ -18,10 +18,14 @@ import (
 // checks if the Metadata type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Metadata{}
 
-// Metadata struct for Metadata
+// Metadata Metadata about the collection
 type Metadata struct {
-	Currency string `json:"currency"`
-	CurrencySymbol string `json:"currencySymbol"`
+	// Total amount of elements in this collection
+	TotalCount int32 `json:"totalCount"`
+	// The offset used to generate this response
+	Offset int32 `json:"offset"`
+	// The limit used to generate this response
+	Limit int32 `json:"limit"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,10 +35,11 @@ type _Metadata Metadata
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMetadata(currency string, currencySymbol string) *Metadata {
+func NewMetadata(totalCount int32, offset int32, limit int32) *Metadata {
 	this := Metadata{}
-	this.Currency = currency
-	this.CurrencySymbol = currencySymbol
+	this.TotalCount = totalCount
+	this.Offset = offset
+	this.Limit = limit
 	return &this
 }
 
@@ -43,55 +48,83 @@ func NewMetadata(currency string, currencySymbol string) *Metadata {
 // but it doesn't guarantee that properties required by API are set
 func NewMetadataWithDefaults() *Metadata {
 	this := Metadata{}
+	var offset int32 = 0
+	this.Offset = offset
+	var limit int32 = 5
+	this.Limit = limit
 	return &this
 }
 
-// GetCurrency returns the Currency field value
-func (o *Metadata) GetCurrency() string {
+// GetTotalCount returns the TotalCount field value
+func (o *Metadata) GetTotalCount() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
-	return o.Currency
+	return o.TotalCount
 }
 
-// GetCurrencyOk returns a tuple with the Currency field value
+// GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *Metadata) GetCurrencyOk() (*string, bool) {
+func (o *Metadata) GetTotalCountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Currency, true
+	return &o.TotalCount, true
 }
 
-// SetCurrency sets field value
-func (o *Metadata) SetCurrency(v string) {
-	o.Currency = v
+// SetTotalCount sets field value
+func (o *Metadata) SetTotalCount(v int32) {
+	o.TotalCount = v
 }
 
-// GetCurrencySymbol returns the CurrencySymbol field value
-func (o *Metadata) GetCurrencySymbol() string {
+// GetOffset returns the Offset field value
+func (o *Metadata) GetOffset() int32 {
 	if o == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 
-	return o.CurrencySymbol
+	return o.Offset
 }
 
-// GetCurrencySymbolOk returns a tuple with the CurrencySymbol field value
+// GetOffsetOk returns a tuple with the Offset field value
 // and a boolean to check if the value has been set.
-func (o *Metadata) GetCurrencySymbolOk() (*string, bool) {
+func (o *Metadata) GetOffsetOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CurrencySymbol, true
+	return &o.Offset, true
 }
 
-// SetCurrencySymbol sets field value
-func (o *Metadata) SetCurrencySymbol(v string) {
-	o.CurrencySymbol = v
+// SetOffset sets field value
+func (o *Metadata) SetOffset(v int32) {
+	o.Offset = v
+}
+
+// GetLimit returns the Limit field value
+func (o *Metadata) GetLimit() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Limit
+}
+
+// GetLimitOk returns a tuple with the Limit field value
+// and a boolean to check if the value has been set.
+func (o *Metadata) GetLimitOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Limit, true
+}
+
+// SetLimit sets field value
+func (o *Metadata) SetLimit(v int32) {
+	o.Limit = v
 }
 
 func (o Metadata) MarshalJSON() ([]byte, error) {
@@ -104,8 +137,9 @@ func (o Metadata) MarshalJSON() ([]byte, error) {
 
 func (o Metadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["currency"] = o.Currency
-	toSerialize["currencySymbol"] = o.CurrencySymbol
+	toSerialize["totalCount"] = o.TotalCount
+	toSerialize["offset"] = o.Offset
+	toSerialize["limit"] = o.Limit
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -119,8 +153,9 @@ func (o *Metadata) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"currency",
-		"currencySymbol",
+		"totalCount",
+		"offset",
+		"limit",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -150,8 +185,9 @@ func (o *Metadata) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "currency")
-		delete(additionalProperties, "currencySymbol")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "limit")
 		o.AdditionalProperties = additionalProperties
 	}
 

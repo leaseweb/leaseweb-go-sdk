@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Billing** | [**Billing**](Billing.md) |  | 
-**Metadata** | [**Metadata**](Metadata.md) |  | 
+**Metadata** | [**ExpensesMetadata**](ExpensesMetadata.md) |  | 
 
 ## Methods
 
 ### NewGetExpensesResult
 
-`func NewGetExpensesResult(billing Billing, metadata Metadata, ) *GetExpensesResult`
+`func NewGetExpensesResult(billing Billing, metadata ExpensesMetadata, ) *GetExpensesResult`
 
 NewGetExpensesResult instantiates a new GetExpensesResult object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetBilling sets Billing field to given value.
 
 ### GetMetadata
 
-`func (o *GetExpensesResult) GetMetadata() Metadata`
+`func (o *GetExpensesResult) GetMetadata() ExpensesMetadata`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *GetExpensesResult) GetMetadataOk() (*Metadata, bool)`
+`func (o *GetExpensesResult) GetMetadataOk() (*ExpensesMetadata, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *GetExpensesResult) SetMetadata(v Metadata)`
+`func (o *GetExpensesResult) SetMetadata(v ExpensesMetadata)`
 
 SetMetadata sets Metadata field to given value.
 

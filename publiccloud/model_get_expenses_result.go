@@ -21,7 +21,7 @@ var _ MappedNullable = &GetExpensesResult{}
 // GetExpensesResult struct for GetExpensesResult
 type GetExpensesResult struct {
 	Billing Billing `json:"billing"`
-	Metadata Metadata `json:"_metadata"`
+	Metadata ExpensesMetadata `json:"_metadata"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ type _GetExpensesResult GetExpensesResult
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetExpensesResult(billing Billing, metadata Metadata) *GetExpensesResult {
+func NewGetExpensesResult(billing Billing, metadata ExpensesMetadata) *GetExpensesResult {
 	this := GetExpensesResult{}
 	this.Billing = billing
 	this.Metadata = metadata
@@ -71,9 +71,9 @@ func (o *GetExpensesResult) SetBilling(v Billing) {
 }
 
 // GetMetadata returns the Metadata field value
-func (o *GetExpensesResult) GetMetadata() Metadata {
+func (o *GetExpensesResult) GetMetadata() ExpensesMetadata {
 	if o == nil {
-		var ret Metadata
+		var ret ExpensesMetadata
 		return ret
 	}
 
@@ -82,7 +82,7 @@ func (o *GetExpensesResult) GetMetadata() Metadata {
 
 // GetMetadataOk returns a tuple with the Metadata field value
 // and a boolean to check if the value has been set.
-func (o *GetExpensesResult) GetMetadataOk() (*Metadata, bool) {
+func (o *GetExpensesResult) GetMetadataOk() (*ExpensesMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *GetExpensesResult) GetMetadataOk() (*Metadata, bool) {
 }
 
 // SetMetadata sets field value
-func (o *GetExpensesResult) SetMetadata(v Metadata) {
+func (o *GetExpensesResult) SetMetadata(v ExpensesMetadata) {
 	o.Metadata = v
 }
 
