@@ -4462,22 +4462,6 @@ paths:
                     balance: roundrobin
                     xForwardedFor: false
                     idleTimeOut: 60
-                  autoScalingGroup:
-                    id: 8714e190-8ca1-49cf-8594-0d019deff809
-                    type: MANUAL
-                    state: ACTIVE
-                    desiredAmount: 1
-                    region: eu-west-3
-                    reference: ono
-                    createdAt: 2024-06-14T09:12:08+00:00
-                    updatedAt: 2024-06-14T09:12:08+00:00
-                    startsAt: null
-                    endsAt: null
-                    minimumAmount: null
-                    maximumAmount: null
-                    cpuThreshold: null
-                    warmupTime: null
-                    cooldownTime: null
               schema:
                 $ref: '#/components/schemas/loadBalancers'
           description: OK.
@@ -14247,22 +14231,6 @@ components:
           stickySession:
             maxLifeTime: 0
             enabled: true
-        autoScalingGroup:
-          cpuThreshold: 2
-          maximumAmount: 5
-          type: MANUAL
-          desiredAmount: 1
-          reference: reference
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          minimumAmount: 5
-          startsAt: 2000-01-23T04:56:07.000+00:00
-          warmupTime: 7
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: ACTIVE
-          cooldownTime: 9
-          region: null
-          endsAt: 2000-01-23T04:56:07.000+00:00
-          updatedAt: 2000-01-23T04:56:07.000+00:00
         contract:
           billingFrequency: 1
           term: 6
@@ -14325,8 +14293,6 @@ components:
           $ref: '#/components/schemas/regionName'
         configuration:
           $ref: '#/components/schemas/loadBalancerConfiguration'
-        autoScalingGroup:
-          $ref: '#/components/schemas/autoScalingGroup'
         privateNetwork:
           $ref: '#/components/schemas/privateNetwork'
         contract:
@@ -14336,7 +14302,6 @@ components:
             $ref: '#/components/schemas/ip'
           type: array
       required:
-      - autoScalingGroup
       - configuration
       - contract
       - id
@@ -14364,22 +14329,6 @@ components:
             stickySession:
               maxLifeTime: 0
               enabled: true
-          autoScalingGroup:
-            cpuThreshold: 2
-            maximumAmount: 5
-            type: MANUAL
-            desiredAmount: 1
-            reference: reference
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            minimumAmount: 5
-            startsAt: 2000-01-23T04:56:07.000+00:00
-            warmupTime: 7
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: ACTIVE
-            cooldownTime: 9
-            region: null
-            endsAt: 2000-01-23T04:56:07.000+00:00
-            updatedAt: 2000-01-23T04:56:07.000+00:00
           contract:
             billingFrequency: 1
             term: 6
@@ -14429,22 +14378,6 @@ components:
             stickySession:
               maxLifeTime: 0
               enabled: true
-          autoScalingGroup:
-            cpuThreshold: 2
-            maximumAmount: 5
-            type: MANUAL
-            desiredAmount: 1
-            reference: reference
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            minimumAmount: 5
-            startsAt: 2000-01-23T04:56:07.000+00:00
-            warmupTime: 7
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: ACTIVE
-            cooldownTime: 9
-            region: null
-            endsAt: 2000-01-23T04:56:07.000+00:00
-            updatedAt: 2000-01-23T04:56:07.000+00:00
           contract:
             billingFrequency: 1
             term: 6

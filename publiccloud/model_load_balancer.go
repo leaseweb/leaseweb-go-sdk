@@ -32,7 +32,6 @@ type LoadBalancer struct {
 	StartedAt NullableTime `json:"startedAt"`
 	Region RegionName `json:"region"`
 	Configuration NullableLoadBalancerConfiguration `json:"configuration"`
-	AutoScalingGroup NullableAutoScalingGroup `json:"autoScalingGroup"`
 	PrivateNetwork NullablePrivateNetwork `json:"privateNetwork"`
 	Contract InstanceContract `json:"contract"`
 	Ips []Ip `json:"ips"`
@@ -45,7 +44,7 @@ type _LoadBalancer LoadBalancer
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLoadBalancer(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract InstanceContract, ips []Ip) *LoadBalancer {
+func NewLoadBalancer(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, privateNetwork NullablePrivateNetwork, contract InstanceContract, ips []Ip) *LoadBalancer {
 	this := LoadBalancer{}
 	this.Id = id
 	this.Type = type_
@@ -55,7 +54,6 @@ func NewLoadBalancer(id string, type_ TypeName, resources Resources, reference N
 	this.StartedAt = startedAt
 	this.Region = region
 	this.Configuration = configuration
-	this.AutoScalingGroup = autoScalingGroup
 	this.PrivateNetwork = privateNetwork
 	this.Contract = contract
 	this.Ips = ips
@@ -268,32 +266,6 @@ func (o *LoadBalancer) SetConfiguration(v LoadBalancerConfiguration) {
 	o.Configuration.Set(&v)
 }
 
-// GetAutoScalingGroup returns the AutoScalingGroup field value
-// If the value is explicit nil, the zero value for AutoScalingGroup will be returned
-func (o *LoadBalancer) GetAutoScalingGroup() AutoScalingGroup {
-	if o == nil || o.AutoScalingGroup.Get() == nil {
-		var ret AutoScalingGroup
-		return ret
-	}
-
-	return *o.AutoScalingGroup.Get()
-}
-
-// GetAutoScalingGroupOk returns a tuple with the AutoScalingGroup field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LoadBalancer) GetAutoScalingGroupOk() (*AutoScalingGroup, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AutoScalingGroup.Get(), o.AutoScalingGroup.IsSet()
-}
-
-// SetAutoScalingGroup sets field value
-func (o *LoadBalancer) SetAutoScalingGroup(v AutoScalingGroup) {
-	o.AutoScalingGroup.Set(&v)
-}
-
 // GetPrivateNetwork returns the PrivateNetwork field value
 // If the value is explicit nil, the zero value for PrivateNetwork will be returned
 func (o *LoadBalancer) GetPrivateNetwork() PrivateNetwork {
@@ -386,7 +358,6 @@ func (o LoadBalancer) ToMap() (map[string]interface{}, error) {
 	toSerialize["startedAt"] = o.StartedAt.Get()
 	toSerialize["region"] = o.Region
 	toSerialize["configuration"] = o.Configuration.Get()
-	toSerialize["autoScalingGroup"] = o.AutoScalingGroup.Get()
 	toSerialize["privateNetwork"] = o.PrivateNetwork.Get()
 	toSerialize["contract"] = o.Contract
 	toSerialize["ips"] = o.Ips
@@ -411,7 +382,6 @@ func (o *LoadBalancer) UnmarshalJSON(data []byte) (err error) {
 		"startedAt",
 		"region",
 		"configuration",
-		"autoScalingGroup",
 		"privateNetwork",
 		"contract",
 		"ips",
@@ -452,7 +422,6 @@ func (o *LoadBalancer) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "startedAt")
 		delete(additionalProperties, "region")
 		delete(additionalProperties, "configuration")
-		delete(additionalProperties, "autoScalingGroup")
 		delete(additionalProperties, "privateNetwork")
 		delete(additionalProperties, "contract")
 		delete(additionalProperties, "ips")

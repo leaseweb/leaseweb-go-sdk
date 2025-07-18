@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **StartedAt** | **NullableTime** | Date and time when the load balancer was started for the first time, right after launching it | 
 **Region** | [**RegionName**](RegionName.md) |  | 
 **Configuration** | [**NullableLoadBalancerConfiguration**](LoadBalancerConfiguration.md) |  | 
-**AutoScalingGroup** | [**NullableAutoScalingGroup**](AutoScalingGroup.md) |  | 
 **PrivateNetwork** | [**NullablePrivateNetwork**](PrivateNetwork.md) |  | 
 **Contract** | [**InstanceContract**](InstanceContract.md) |  | 
 **Ips** | [**[]Ip**](Ip.md) |  | 
@@ -21,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewLoadBalancer
 
-`func NewLoadBalancer(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, autoScalingGroup NullableAutoScalingGroup, privateNetwork NullablePrivateNetwork, contract InstanceContract, ips []Ip, ) *LoadBalancer`
+`func NewLoadBalancer(id string, type_ TypeName, resources Resources, reference NullableString, state State, startedAt NullableTime, region RegionName, configuration NullableLoadBalancerConfiguration, privateNetwork NullablePrivateNetwork, contract InstanceContract, ips []Ip, ) *LoadBalancer`
 
 NewLoadBalancer instantiates a new LoadBalancer object
 This constructor will assign default values to properties that have it defined,
@@ -226,36 +225,6 @@ SetConfiguration sets Configuration field to given value.
 `func (o *LoadBalancer) UnsetConfiguration()`
 
 UnsetConfiguration ensures that no value is present for Configuration, not even an explicit nil
-### GetAutoScalingGroup
-
-`func (o *LoadBalancer) GetAutoScalingGroup() AutoScalingGroup`
-
-GetAutoScalingGroup returns the AutoScalingGroup field if non-nil, zero value otherwise.
-
-### GetAutoScalingGroupOk
-
-`func (o *LoadBalancer) GetAutoScalingGroupOk() (*AutoScalingGroup, bool)`
-
-GetAutoScalingGroupOk returns a tuple with the AutoScalingGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoScalingGroup
-
-`func (o *LoadBalancer) SetAutoScalingGroup(v AutoScalingGroup)`
-
-SetAutoScalingGroup sets AutoScalingGroup field to given value.
-
-
-### SetAutoScalingGroupNil
-
-`func (o *LoadBalancer) SetAutoScalingGroupNil(b bool)`
-
- SetAutoScalingGroupNil sets the value for AutoScalingGroup to be an explicit nil
-
-### UnsetAutoScalingGroup
-`func (o *LoadBalancer) UnsetAutoScalingGroup()`
-
-UnsetAutoScalingGroup ensures that no value is present for AutoScalingGroup, not even an explicit nil
 ### GetPrivateNetwork
 
 `func (o *LoadBalancer) GetPrivateNetwork() PrivateNetwork`
