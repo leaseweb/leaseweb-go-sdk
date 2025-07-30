@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**DeleteResourceRecordSet**](DnsAPI.md#DeleteResourceRecordSet) | **Delete** /domains/{domainName}/resourceRecordSets/{name}/{type} | Delete a specific DNS record
 [**DeleteResourceRecordSets**](DnsAPI.md#DeleteResourceRecordSets) | **Delete** /domains/{domainName}/resourceRecordSets | Delete all DNS records
 [**ExportResourceRecordSets**](DnsAPI.md#ExportResourceRecordSets) | **Get** /domains/{domainName}/resourceRecordSets/import | Export dns records as a bind file content
+[**GetQueryMetrics**](DnsAPI.md#GetQueryMetrics) | **Get** /domains/{domainName}/metrics/dnsQuery | Show Dns Query Metrics
 [**GetResourceRecordSet**](DnsAPI.md#GetResourceRecordSet) | **Get** /domains/{domainName}/resourceRecordSets/{name}/{type} | Inspect resource record set
 [**GetResourceRecordSetList**](DnsAPI.md#GetResourceRecordSetList) | **Get** /domains/{domainName}/resourceRecordSets | List resource record sets
 [**ImportResourceRecordSets**](DnsAPI.md#ImportResourceRecordSets) | **Post** /domains/{domainName}/resourceRecordSets/import | Import dns records from bind file content
@@ -289,6 +290,83 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: text/plain, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetQueryMetrics
+
+> GetQueryMetricsResult GetQueryMetrics(ctx, domainName).From(from).To(to).Granularity(granularity).Aggregation(aggregation).Execute()
+
+Show Dns Query Metrics
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+    "time"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+)
+
+func main() {
+	domainName := "example.com" // string | Domain name
+	from := time.Now() // time.Time | Start of date interval in ISO-8601 format. The returned data will include everything up from - and including - the specified date time.
+	to := time.Now() // time.Time | End of date interval in ISO-8601 format. The returned data will include everything up until - but not including - the specified date time.
+	granularity := "granularity_example" // string | Specify the preferred interval for each metric. If granularity is omitted from the request, only one metric is returned. (optional)
+	aggregation := "aggregation_example" // string | Aggregate each metric using the given aggregation function. (optional) (default to "SUM")
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DnsAPI.GetQueryMetrics(context.Background(), domainName).From(from).To(to).Granularity(granularity).Aggregation(aggregation).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DnsAPI.GetQueryMetrics``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetQueryMetrics`: GetQueryMetricsResult
+	fmt.Fprintf(os.Stdout, "Response from `DnsAPI.GetQueryMetrics`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**domainName** | **string** | Domain name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetQueryMetricsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **from** | **time.Time** | Start of date interval in ISO-8601 format. The returned data will include everything up from - and including - the specified date time. | 
+ **to** | **time.Time** | End of date interval in ISO-8601 format. The returned data will include everything up until - but not including - the specified date time. | 
+ **granularity** | **string** | Specify the preferred interval for each metric. If granularity is omitted from the request, only one metric is returned. | 
+ **aggregation** | **string** | Aggregate each metric using the given aggregation function. | [default to &quot;SUM&quot;]
+
+### Return type
+
+[**GetQueryMetricsResult**](GetQueryMetricsResult.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

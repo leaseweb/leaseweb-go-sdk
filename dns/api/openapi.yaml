@@ -38,6 +38,130 @@ tags:
   name: API Key Authentication
   x-traitTag: true
 paths:
+  /domains/{domainName}/metrics/dnsQuery:
+    get:
+      operationId: getQueryMetrics
+      parameters:
+      - description: Domain name
+        example: example.com
+        explode: false
+        in: path
+        name: domainName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Start of date interval in ISO-8601 format. The returned data
+          will include everything up from - and including - the specified date time.
+        example: 2024-08-23T00:00:00Z
+        explode: true
+        in: query
+        name: from
+        required: true
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: End of date interval in ISO-8601 format. The returned data will
+          include everything up until - but not including - the specified date time.
+        example: 2024-09-03T00:00:00Z
+        explode: true
+        in: query
+        name: to
+        required: true
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: "Specify the preferred interval for each metric. If granularity\
+          \ is omitted from the request, only one metric is returned."
+        explode: true
+        in: query
+        name: granularity
+        required: false
+        schema:
+          enum:
+          - 5MIN
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          type: string
+        style: form
+      - description: Aggregate each metric using the given aggregation function.
+        explode: true
+        in: query
+        name: aggregation
+        required: false
+        schema:
+          default: SUM
+          enum:
+          - SUM
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                _metadata:
+                  aggregation: SUM
+                  granularity: HOUR
+                  from: 2024-08-23T09:00:00Z
+                  to: 2024-09-03T11:00:00Z
+                dnsQuery:
+                  unit: query
+                  values:
+                  - timestamp: 2024-09-02T09:00:00Z
+                    value: 200
+                  - timestamp: 2016-09-03T10:00:00Z
+                    value: 150
+              schema:
+                $ref: '#/components/schemas/getQueryMetricsResult'
+          description: ""
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Show Dns Query Metrics
+      tags:
+      - dns
   /domains/{domainName}/keyRollover:
     post:
       description: |
@@ -1693,6 +1817,30 @@ components:
       schema:
         type: string
       style: simple
+    fromDateTime:
+      description: Start of date interval in ISO-8601 format. The returned data will
+        include everything up from - and including - the specified date time.
+      example: 2024-08-23T00:00:00Z
+      explode: true
+      in: query
+      name: from
+      required: true
+      schema:
+        format: date-time
+        type: string
+      style: form
+    toDateTime:
+      description: End of date interval in ISO-8601 format. The returned data will
+        include everything up until - but not including - the specified date time.
+      example: 2024-09-03T00:00:00Z
+      explode: true
+      in: query
+      name: to
+      required: true
+      schema:
+        format: date-time
+        type: string
+      style: form
     name:
       description: Record name
       example: example.com.
@@ -1802,6 +1950,68 @@ components:
             $ref: '#/components/schemas/errorResult'
       description: Service Unavailable.
   schemas:
+    aggregation:
+      enum:
+      - SUM
+      type: string
+    granularity:
+      enum:
+      - 5MIN
+      - HOUR
+      - DAY
+      - WEEK
+      - MONTH
+      type: string
+    getQueryMetricsResult:
+      example:
+        dnsQuery:
+          unit: unit
+          values:
+          - value: 0
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - value: 0
+            timestamp: 2000-01-23T04:56:07.000+00:00
+        _metadata:
+          granularity: 5MIN
+          aggregation: SUM
+          from: 2000-01-23T04:56:07.000+00:00
+          to: 2000-01-23T04:56:07.000+00:00
+      properties:
+        dnsQuery:
+          $ref: '#/components/schemas/dnsQuery'
+        _metadata:
+          $ref: '#/components/schemas/metricsMetaData'
+      required:
+      - _metadata
+      - dnsQuery
+      type: object
+    errorResult:
+      example:
+        errorMessage: errorMessage
+        errorCode: errorCode
+        correlationId: correlationId
+        errorDetails:
+          key:
+          - errorDetails
+          - errorDetails
+      properties:
+        correlationId:
+          description: The correlation ID of the current request.
+          type: string
+        errorCode:
+          description: The error code.
+          type: string
+        errorMessage:
+          description: A human friendly description of the error.
+          type: string
+        errorDetails:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          title: errorDetails
+          type: object
+      type: object
     rolloverType:
       description: The key rollover type.
       enum:
@@ -1830,33 +2040,6 @@ components:
           example: "Sorry, but your domain is not yet listed on our nameservers. Please\
             \ create a DNS record first so we can add your domain."
           type: string
-      type: object
-    errorResult:
-      example:
-        errorMessage: errorMessage
-        errorCode: errorCode
-        correlationId: correlationId
-        errorDetails:
-          key:
-          - errorDetails
-          - errorDetails
-      properties:
-        correlationId:
-          description: The correlation ID of the current request.
-          type: string
-        errorCode:
-          description: The error code.
-          type: string
-        errorMessage:
-          description: A human friendly description of the error.
-          type: string
-        errorDetails:
-          additionalProperties:
-            items:
-              type: string
-            type: array
-          title: errorDetails
-          type: object
       type: object
     editable:
       description: May the set be edited
@@ -2242,6 +2425,72 @@ components:
           example: "Sorry, but your domain is not yet listed on our nameservers. Please\
             \ create a DNS record first so we can add your domain."
           type: string
+      type: object
+    metricValue:
+      description: An array of metrics grouped by granularity
+      example:
+        value: 0
+        timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        timestamp:
+          description: The time of the current metric
+          format: date-time
+          type: string
+        value:
+          description: The value of the current metric
+          type: integer
+      required:
+      - timestamp
+      - value
+      title: metricValue
+      type: object
+    dnsQuery:
+      example:
+        unit: unit
+        values:
+        - value: 0
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - value: 0
+          timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        unit:
+          description: The metric unit that's used
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/metricValue'
+          type: array
+      required:
+      - unit
+      - values
+      title: dnsQuery
+      type: object
+    metricsMetaData:
+      description: Metadata about the collection
+      example:
+        granularity: 5MIN
+        aggregation: SUM
+        from: 2000-01-23T04:56:07.000+00:00
+        to: 2000-01-23T04:56:07.000+00:00
+      properties:
+        aggregation:
+          $ref: '#/components/schemas/aggregation'
+        from:
+          description: Start of date interval in ISO-8601 format
+          format: date-time
+          type: string
+        granularity:
+          $ref: '#/components/schemas/granularity'
+        to:
+          description: End of date interval in ISO-8601 format
+          format: date-time
+          type: string
+      required:
+      - aggregation
+      - from
+      - granularity
+      - to
+      title: metricsMetaData
       type: object
     collection:
       description: Link to the resource record sets collection

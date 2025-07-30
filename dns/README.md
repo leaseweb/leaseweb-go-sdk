@@ -82,6 +82,7 @@ Class | Method | HTTP request | Description
 *DnsAPI* | [**DeleteResourceRecordSet**](docs/DnsAPI.md#deleteresourcerecordset) | **Delete** /domains/{domainName}/resourceRecordSets/{name}/{type} | Delete a specific DNS record
 *DnsAPI* | [**DeleteResourceRecordSets**](docs/DnsAPI.md#deleteresourcerecordsets) | **Delete** /domains/{domainName}/resourceRecordSets | Delete all DNS records
 *DnsAPI* | [**ExportResourceRecordSets**](docs/DnsAPI.md#exportresourcerecordsets) | **Get** /domains/{domainName}/resourceRecordSets/import | Export dns records as a bind file content
+*DnsAPI* | [**GetQueryMetrics**](docs/DnsAPI.md#getquerymetrics) | **Get** /domains/{domainName}/metrics/dnsQuery | Show Dns Query Metrics
 *DnsAPI* | [**GetResourceRecordSet**](docs/DnsAPI.md#getresourcerecordset) | **Get** /domains/{domainName}/resourceRecordSets/{name}/{type} | Inspect resource record set
 *DnsAPI* | [**GetResourceRecordSetList**](docs/DnsAPI.md#getresourcerecordsetlist) | **Get** /domains/{domainName}/resourceRecordSets | List resource record sets
 *DnsAPI* | [**ImportResourceRecordSets**](docs/DnsAPI.md#importresourcerecordsets) | **Post** /domains/{domainName}/resourceRecordSets/import | Import dns records from bind file content
@@ -94,12 +95,16 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Aggregation](docs/Aggregation.md)
  - [BaseResourceRecordSetList](docs/BaseResourceRecordSetList.md)
  - [Collection](docs/Collection.md)
+ - [DnsQuery](docs/DnsQuery.md)
  - [ErrorResult](docs/ErrorResult.md)
  - [GeoContent](docs/GeoContent.md)
+ - [GetQueryMetricsResult](docs/GetQueryMetricsResult.md)
  - [GetResourceRecordSetListLdResult](docs/GetResourceRecordSetListLdResult.md)
  - [GetResourceRecordSetListResult](docs/GetResourceRecordSetListResult.md)
+ - [Granularity](docs/Granularity.md)
  - [ImportResourceRecordSetsOpts](docs/ImportResourceRecordSetsOpts.md)
  - [ImportResourceRecordSetsResult](docs/ImportResourceRecordSetsResult.md)
  - [InfoMessageResult](docs/InfoMessageResult.md)
@@ -108,6 +113,8 @@ Class | Method | HTTP request | Description
  - [LdResourceRecordSetDetails](docs/LdResourceRecordSetDetails.md)
  - [LdResourceRecordSetType](docs/LdResourceRecordSetType.md)
  - [Links](docs/Links.md)
+ - [MetricValue](docs/MetricValue.md)
+ - [MetricsMetaData](docs/MetricsMetaData.md)
  - [Parent](docs/Parent.md)
  - [ResourceRecordSet](docs/ResourceRecordSet.md)
  - [ResourceRecordSetDetails](docs/ResourceRecordSetDetails.md)

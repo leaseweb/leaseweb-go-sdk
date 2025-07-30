@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -77,6 +78,19 @@ Please note that this action will keep the domain's zone in place.
 
 	// ExportResourceRecordSetsExecute executes the request
 	ExportResourceRecordSetsExecute(r ApiExportResourceRecordSetsRequest) (*http.Response, error)
+
+	/*
+	GetQueryMetrics Show Dns Query Metrics
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param domainName Domain name
+	@return ApiGetQueryMetricsRequest
+	*/
+	GetQueryMetrics(ctx context.Context, domainName string) ApiGetQueryMetricsRequest
+
+	// GetQueryMetricsExecute executes the request
+	//  @return GetQueryMetricsResult
+	GetQueryMetricsExecute(r ApiGetQueryMetricsRequest) (*GetQueryMetricsResult, *http.Response, error)
 
 	/*
 	GetResourceRecordSet Inspect resource record set
@@ -888,6 +902,209 @@ func (a *DnsAPIService) ExportResourceRecordSetsExecute(r ApiExportResourceRecor
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type ApiGetQueryMetricsRequest struct {
+	ctx context.Context
+	ApiService DnsAPI
+	domainName string
+	from *time.Time
+	to *time.Time
+	granularity *string
+	aggregation *string
+}
+
+// Start of date interval in ISO-8601 format. The returned data will include everything up from - and including - the specified date time.
+func (r ApiGetQueryMetricsRequest) From(from time.Time) ApiGetQueryMetricsRequest {
+	r.from = &from
+	return r
+}
+
+// End of date interval in ISO-8601 format. The returned data will include everything up until - but not including - the specified date time.
+func (r ApiGetQueryMetricsRequest) To(to time.Time) ApiGetQueryMetricsRequest {
+	r.to = &to
+	return r
+}
+
+// Specify the preferred interval for each metric. If granularity is omitted from the request, only one metric is returned.
+func (r ApiGetQueryMetricsRequest) Granularity(granularity string) ApiGetQueryMetricsRequest {
+	r.granularity = &granularity
+	return r
+}
+
+// Aggregate each metric using the given aggregation function.
+func (r ApiGetQueryMetricsRequest) Aggregation(aggregation string) ApiGetQueryMetricsRequest {
+	r.aggregation = &aggregation
+	return r
+}
+
+func (r ApiGetQueryMetricsRequest) Execute() (*GetQueryMetricsResult, *http.Response, error) {
+	return r.ApiService.GetQueryMetricsExecute(r)
+}
+
+/*
+GetQueryMetrics Show Dns Query Metrics
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param domainName Domain name
+ @return ApiGetQueryMetricsRequest
+*/
+func (a *DnsAPIService) GetQueryMetrics(ctx context.Context, domainName string) ApiGetQueryMetricsRequest {
+	return ApiGetQueryMetricsRequest{
+		ApiService: a,
+		ctx: ctx,
+		domainName: domainName,
+	}
+}
+
+// Execute executes the request
+//  @return GetQueryMetricsResult
+func (a *DnsAPIService) GetQueryMetricsExecute(r ApiGetQueryMetricsRequest) (*GetQueryMetricsResult, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetQueryMetricsResult
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DnsAPIService.GetQueryMetrics")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/domains/{domainName}/metrics/dnsQuery"
+	localVarPath = strings.Replace(localVarPath, "{"+"domainName"+"}", url.PathEscape(parameterValueToString(r.domainName, "domainName")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	if r.granularity != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
+	}
+	if r.aggregation != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "aggregation", r.aggregation, "form", "")
+	} else {
+		var defaultValue string = "SUM"
+		r.aggregation = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiGetResourceRecordSetRequest struct {
