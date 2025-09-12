@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **From** | Pointer to **time.Time** |  | [optional] 
 **To** | Pointer to **time.Time** |  | [optional] 
 **Unit** | Pointer to **string** |  | [optional] 
-**Granularity** | Pointer to [**CpuMetricsGranularity**](CpuMetricsGranularity.md) |  | [optional] 
+**Granularity** | Pointer to [**MetricGranularity**](MetricGranularity.md) |  | [optional] 
 **Summary** | Pointer to [**CpuMetricsMetadataSummary**](CpuMetricsMetadataSummary.md) |  | [optional] 
 
 ## Methods
@@ -106,20 +106,20 @@ HasUnit returns a boolean if a field has been set.
 
 ### GetGranularity
 
-`func (o *CpuMetricsMetadata) GetGranularity() CpuMetricsGranularity`
+`func (o *CpuMetricsMetadata) GetGranularity() MetricGranularity`
 
 GetGranularity returns the Granularity field if non-nil, zero value otherwise.
 
 ### GetGranularityOk
 
-`func (o *CpuMetricsMetadata) GetGranularityOk() (*CpuMetricsGranularity, bool)`
+`func (o *CpuMetricsMetadata) GetGranularityOk() (*MetricGranularity, bool)`
 
 GetGranularityOk returns a tuple with the Granularity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGranularity
 
-`func (o *CpuMetricsMetadata) SetGranularity(v CpuMetricsGranularity)`
+`func (o *CpuMetricsMetadata) SetGranularity(v MetricGranularity)`
 
 SetGranularity sets Granularity field to given value.
 

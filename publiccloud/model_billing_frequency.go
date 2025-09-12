@@ -24,7 +24,6 @@ const (
 	BILLINGFREQUENCY__3 BillingFrequency = 3
 	BILLINGFREQUENCY__6 BillingFrequency = 6
 	BILLINGFREQUENCY__12 BillingFrequency = 12
-	BILLINGFREQUENCY__24 BillingFrequency = 24
 )
 
 // All allowed values of BillingFrequency enum
@@ -33,7 +32,6 @@ var AllowedBillingFrequencyEnumValues = []BillingFrequency{
 	3,
 	6,
 	12,
-	24,
 }
 
 func (v *BillingFrequency) UnmarshalJSON(src []byte) error {

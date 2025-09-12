@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **ContractType** | [**ContractType**](ContractType.md) |  | 
 **ContractTerm** | Pointer to [**ContractTerm**](ContractTerm.md) |  | [optional] 
 **BillingFrequency** | Pointer to [**BillingFrequency**](BillingFrequency.md) |  | [optional] 
-**RootDiskSize** | Pointer to **int32** | The root disk&#39;s size in GB. Must be at least 5 GB for Linux and FreeBSD instances and 50 GB for Windows instances | [optional] 
+**RootDiskSize** | **int32** | The root disk&#39;s size in GB. Must be at least 5 GB for Linux and FreeBSD instances and 50 GB for Windows instances | 
 **RootDiskStorageType** | [**StorageType**](StorageType.md) |  | 
 **SshKey** | Pointer to **string** | Public SSH key to be installed into the instance. Must be used only on Linux/FreeBSD instances | [optional] 
 **UserData** | Pointer to **string** | User data to be installed into the instance. Please note that this setting cannot be used in combination with the &#39;sshKey&#39; setting. Send the user data as plain text, not encoded as base64. | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewLaunchInstanceOpts
 
-`func NewLaunchInstanceOpts(region RegionName, type_ TypeName, imageId string, contractType ContractType, rootDiskStorageType StorageType, ) *LaunchInstanceOpts`
+`func NewLaunchInstanceOpts(region RegionName, type_ TypeName, imageId string, contractType ContractType, rootDiskSize int32, rootDiskStorageType StorageType, ) *LaunchInstanceOpts`
 
 NewLaunchInstanceOpts instantiates a new LaunchInstanceOpts object
 This constructor will assign default values to properties that have it defined,
@@ -235,11 +235,6 @@ and a boolean to check if the value has been set.
 
 SetRootDiskSize sets RootDiskSize field to given value.
 
-### HasRootDiskSize
-
-`func (o *LaunchInstanceOpts) HasRootDiskSize() bool`
-
-HasRootDiskSize returns a boolean if a field has been set.
 
 ### GetRootDiskStorageType
 

@@ -232,7 +232,7 @@ Allowed only one snapshot per instance.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param instanceId Instance's ID
-	@param snapshotId
+	@param snapshotId Snapshot's ID
 	@return ApiDeleteSnapshotRequest
 	*/
 	DeleteSnapshot(ctx context.Context, instanceId string, snapshotId string) ApiDeleteSnapshotRequest
@@ -383,19 +383,6 @@ Allowed only one snapshot per instance.
 	GetConsoleAccessExecute(r ApiGetConsoleAccessRequest) (*GetConsoleAccessResult, *http.Response, error)
 
 	/*
-	GetCpuMetrics Get instance CPU metrics
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param instanceId Instance's ID
-	@return ApiGetCpuMetricsRequest
-	*/
-	GetCpuMetrics(ctx context.Context, instanceId string) ApiGetCpuMetricsRequest
-
-	// GetCpuMetricsExecute executes the request
-	//  @return GetCpuMetricsResult
-	GetCpuMetricsExecute(r ApiGetCpuMetricsRequest) (*GetCpuMetricsResult, *http.Response, error)
-
-	/*
 	GetCredential Get Instance credentials by type and username.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -504,6 +491,19 @@ Allowed only one snapshot per instance.
 	GetInstanceExecute(r ApiGetInstanceRequest) (*InstanceDetails, *http.Response, error)
 
 	/*
+	GetInstanceCpuMetrics Get instance CPU metrics
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param instanceId Instance's ID
+	@return ApiGetInstanceCpuMetricsRequest
+	*/
+	GetInstanceCpuMetrics(ctx context.Context, instanceId string) ApiGetInstanceCpuMetricsRequest
+
+	// GetInstanceCpuMetricsExecute executes the request
+	//  @return GetCpuMetricsResult
+	GetInstanceCpuMetricsExecute(r ApiGetInstanceCpuMetricsRequest) (*GetCpuMetricsResult, *http.Response, error)
+
+	/*
 	GetInstanceDataTrafficMetrics Get data traffic metrics for a specific Instance
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -601,6 +601,19 @@ Allowed only one snapshot per instance.
 	// GetLoadBalancerExecute executes the request
 	//  @return LoadBalancerDetails
 	GetLoadBalancerExecute(r ApiGetLoadBalancerRequest) (*LoadBalancerDetails, *http.Response, error)
+
+	/*
+	GetLoadBalancerCpuMetrics Get load balancer CPU metrics
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param loadBalancerId Load balancer ID
+	@return ApiGetLoadBalancerCpuMetricsRequest
+	*/
+	GetLoadBalancerCpuMetrics(ctx context.Context, loadBalancerId string) ApiGetLoadBalancerCpuMetricsRequest
+
+	// GetLoadBalancerCpuMetricsExecute executes the request
+	//  @return GetCpuMetricsResult
+	GetLoadBalancerCpuMetricsExecute(r ApiGetLoadBalancerCpuMetricsRequest) (*GetCpuMetricsResult, *http.Response, error)
 
 	/*
 	GetLoadBalancerDataTrafficMetrics Get data traffic metrics for a specific Load Balancer
@@ -812,7 +825,7 @@ Allowed only one snapshot per instance.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param instanceId Instance's ID
-	@param snapshotId
+	@param snapshotId Snapshot's ID
 	@return ApiGetSnapshotRequest
 	*/
 	GetSnapshot(ctx context.Context, instanceId string, snapshotId string) ApiGetSnapshotRequest
@@ -1115,7 +1128,7 @@ You can obtain the new credential using the credentials endpoints
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param instanceId Instance's ID
-	@param snapshotId
+	@param snapshotId Snapshot's ID
 	@return ApiRestoreSnapshotRequest
 	*/
 	RestoreSnapshot(ctx context.Context, instanceId string, snapshotId string) ApiRestoreSnapshotRequest
@@ -3851,7 +3864,7 @@ DeleteSnapshot Delete instance snapshot
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param instanceId Instance's ID
- @param snapshotId
+ @param snapshotId Snapshot's ID
  @return ApiDeleteSnapshotRequest
 */
 func (a *PubliccloudAPIService) DeleteSnapshot(ctx context.Context, instanceId string, snapshotId string) ApiDeleteSnapshotRequest {
@@ -5371,23 +5384,23 @@ type ApiGetConnectionsMetricsRequest struct {
 	loadBalancerId string
 	from *string
 	to *string
-	granularity *string
+	granularity *MetricGranularity
 }
 
-// The start of the interval to get the metric, in ISO 8601 format
+// The start of the interval to get the metric
 func (r ApiGetConnectionsMetricsRequest) From(from string) ApiGetConnectionsMetricsRequest {
 	r.from = &from
 	return r
 }
 
-// The end of the interval to get the metric in format ISO 8601. Must be greater than the date provided in &#x60;from&#x60;.
+// The end of the interval to get the metric. Must be greater than the date provided in &#x60;from&#x60;
 func (r ApiGetConnectionsMetricsRequest) To(to string) ApiGetConnectionsMetricsRequest {
 	r.to = &to
 	return r
 }
 
 // The interval for each metric
-func (r ApiGetConnectionsMetricsRequest) Granularity(granularity string) ApiGetConnectionsMetricsRequest {
+func (r ApiGetConnectionsMetricsRequest) Granularity(granularity MetricGranularity) ApiGetConnectionsMetricsRequest {
 	r.granularity = &granularity
 	return r
 }
@@ -5432,16 +5445,19 @@ func (a *PubliccloudAPIService) GetConnectionsMetricsExecute(r ApiGetConnections
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
 
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	}
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -5581,23 +5597,23 @@ type ApiGetConnectionsPerSecondMetricsRequest struct {
 	loadBalancerId string
 	from *string
 	to *string
-	granularity *string
+	granularity *MetricGranularity
 }
 
-// The start of the interval to get the metric, in ISO 8601 format
+// The start of the interval to get the metric
 func (r ApiGetConnectionsPerSecondMetricsRequest) From(from string) ApiGetConnectionsPerSecondMetricsRequest {
 	r.from = &from
 	return r
 }
 
-// The end of the interval to get the metric in format ISO 8601. Must be greater than the date provided in &#x60;from&#x60;.
+// The end of the interval to get the metric. Must be greater than the date provided in &#x60;from&#x60;
 func (r ApiGetConnectionsPerSecondMetricsRequest) To(to string) ApiGetConnectionsPerSecondMetricsRequest {
 	r.to = &to
 	return r
 }
 
 // The interval for each metric
-func (r ApiGetConnectionsPerSecondMetricsRequest) Granularity(granularity string) ApiGetConnectionsPerSecondMetricsRequest {
+func (r ApiGetConnectionsPerSecondMetricsRequest) Granularity(granularity MetricGranularity) ApiGetConnectionsPerSecondMetricsRequest {
 	r.granularity = &granularity
 	return r
 }
@@ -5642,16 +5658,19 @@ func (a *PubliccloudAPIService) GetConnectionsPerSecondMetricsExecute(r ApiGetCo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
 
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	}
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -5834,216 +5853,6 @@ func (a *PubliccloudAPIService) GetConsoleAccessExecute(r ApiGetConsoleAccessReq
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetCpuMetricsRequest struct {
-	ctx context.Context
-	ApiService PubliccloudAPI
-	instanceId string
-	from *string
-	to *string
-	granularity *CpuMetricsGranularity
-}
-
-// The start of the interval to get the metric
-func (r ApiGetCpuMetricsRequest) From(from string) ApiGetCpuMetricsRequest {
-	r.from = &from
-	return r
-}
-
-// The end of the interval to get the metric. Must be greater than the date provided in &#x60;from&#x60;
-func (r ApiGetCpuMetricsRequest) To(to string) ApiGetCpuMetricsRequest {
-	r.to = &to
-	return r
-}
-
-// The interval for each metric
-func (r ApiGetCpuMetricsRequest) Granularity(granularity CpuMetricsGranularity) ApiGetCpuMetricsRequest {
-	r.granularity = &granularity
-	return r
-}
-
-func (r ApiGetCpuMetricsRequest) Execute() (*GetCpuMetricsResult, *http.Response, error) {
-	return r.ApiService.GetCpuMetricsExecute(r)
-}
-
-/*
-GetCpuMetrics Get instance CPU metrics
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param instanceId Instance's ID
- @return ApiGetCpuMetricsRequest
-*/
-func (a *PubliccloudAPIService) GetCpuMetrics(ctx context.Context, instanceId string) ApiGetCpuMetricsRequest {
-	return ApiGetCpuMetricsRequest{
-		ApiService: a,
-		ctx: ctx,
-		instanceId: instanceId,
-	}
-}
-
-// Execute executes the request
-//  @return GetCpuMetricsResult
-func (a *PubliccloudAPIService) GetCpuMetricsExecute(r ApiGetCpuMetricsRequest) (*GetCpuMetricsResult, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetCpuMetricsResult
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PubliccloudAPIService.GetCpuMetrics")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/instances/{instanceId}/metrics/cpu"
-	localVarPath = strings.Replace(localVarPath, "{"+"instanceId"+"}", url.PathEscape(parameterValueToString(r.instanceId, "instanceId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	}
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6724,23 +6533,23 @@ type ApiGetDataTransferredMetricsRequest struct {
 	loadBalancerId string
 	from *string
 	to *string
-	granularity *string
+	granularity *MetricGranularity
 }
 
-// The start of the interval to get the metric, in ISO 8601 format
+// The start of the interval to get the metric
 func (r ApiGetDataTransferredMetricsRequest) From(from string) ApiGetDataTransferredMetricsRequest {
 	r.from = &from
 	return r
 }
 
-// The end of the interval to get the metric in format ISO 8601. Must be greater than the date provided in &#x60;from&#x60;.
+// The end of the interval to get the metric. Must be greater than the date provided in &#x60;from&#x60;
 func (r ApiGetDataTransferredMetricsRequest) To(to string) ApiGetDataTransferredMetricsRequest {
 	r.to = &to
 	return r
 }
 
 // The interval for each metric
-func (r ApiGetDataTransferredMetricsRequest) Granularity(granularity string) ApiGetDataTransferredMetricsRequest {
+func (r ApiGetDataTransferredMetricsRequest) Granularity(granularity MetricGranularity) ApiGetDataTransferredMetricsRequest {
 	r.granularity = &granularity
 	return r
 }
@@ -6785,16 +6594,19 @@ func (a *PubliccloudAPIService) GetDataTransferredMetricsExecute(r ApiGetDataTra
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
 
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	}
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6934,23 +6746,23 @@ type ApiGetDataTransferredPerSecondMetricsRequest struct {
 	loadBalancerId string
 	from *string
 	to *string
-	granularity *string
+	granularity *MetricGranularity
 }
 
-// The start of the interval to get the metric, in ISO 8601 format
+// The start of the interval to get the metric
 func (r ApiGetDataTransferredPerSecondMetricsRequest) From(from string) ApiGetDataTransferredPerSecondMetricsRequest {
 	r.from = &from
 	return r
 }
 
-// The end of the interval to get the metric in format ISO 8601. Must be greater than the date provided in &#x60;from&#x60;.
+// The end of the interval to get the metric. Must be greater than the date provided in &#x60;from&#x60;
 func (r ApiGetDataTransferredPerSecondMetricsRequest) To(to string) ApiGetDataTransferredPerSecondMetricsRequest {
 	r.to = &to
 	return r
 }
 
 // The interval for each metric
-func (r ApiGetDataTransferredPerSecondMetricsRequest) Granularity(granularity string) ApiGetDataTransferredPerSecondMetricsRequest {
+func (r ApiGetDataTransferredPerSecondMetricsRequest) Granularity(granularity MetricGranularity) ApiGetDataTransferredPerSecondMetricsRequest {
 	r.granularity = &granularity
 	return r
 }
@@ -6995,16 +6807,19 @@ func (a *PubliccloudAPIService) GetDataTransferredPerSecondMetricsExecute(r ApiG
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
 
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	}
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -7742,14 +7557,227 @@ func (a *PubliccloudAPIService) GetInstanceExecute(r ApiGetInstanceRequest) (*In
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetInstanceCpuMetricsRequest struct {
+	ctx context.Context
+	ApiService PubliccloudAPI
+	instanceId string
+	from *string
+	to *string
+	granularity *MetricGranularity
+}
+
+// The start of the interval to get the metric
+func (r ApiGetInstanceCpuMetricsRequest) From(from string) ApiGetInstanceCpuMetricsRequest {
+	r.from = &from
+	return r
+}
+
+// The end of the interval to get the metric. Must be greater than the date provided in &#x60;from&#x60;
+func (r ApiGetInstanceCpuMetricsRequest) To(to string) ApiGetInstanceCpuMetricsRequest {
+	r.to = &to
+	return r
+}
+
+// The interval for each metric
+func (r ApiGetInstanceCpuMetricsRequest) Granularity(granularity MetricGranularity) ApiGetInstanceCpuMetricsRequest {
+	r.granularity = &granularity
+	return r
+}
+
+func (r ApiGetInstanceCpuMetricsRequest) Execute() (*GetCpuMetricsResult, *http.Response, error) {
+	return r.ApiService.GetInstanceCpuMetricsExecute(r)
+}
+
+/*
+GetInstanceCpuMetrics Get instance CPU metrics
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param instanceId Instance's ID
+ @return ApiGetInstanceCpuMetricsRequest
+*/
+func (a *PubliccloudAPIService) GetInstanceCpuMetrics(ctx context.Context, instanceId string) ApiGetInstanceCpuMetricsRequest {
+	return ApiGetInstanceCpuMetricsRequest{
+		ApiService: a,
+		ctx: ctx,
+		instanceId: instanceId,
+	}
+}
+
+// Execute executes the request
+//  @return GetCpuMetricsResult
+func (a *PubliccloudAPIService) GetInstanceCpuMetricsExecute(r ApiGetInstanceCpuMetricsRequest) (*GetCpuMetricsResult, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetCpuMetricsResult
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PubliccloudAPIService.GetInstanceCpuMetrics")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/instances/{instanceId}/metrics/cpu"
+	localVarPath = strings.Replace(localVarPath, "{"+"instanceId"+"}", url.PathEscape(parameterValueToString(r.instanceId, "instanceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetInstanceDataTrafficMetricsRequest struct {
 	ctx context.Context
 	ApiService PubliccloudAPI
 	instanceId string
 	from *string
 	to *string
-	granularity *string
-	aggregation *string
+	granularity *DataTrafficMetricsGranularity
+	aggregation *MetricAggregation
 }
 
 // The start of the interval to get the metric
@@ -7764,14 +7792,14 @@ func (r ApiGetInstanceDataTrafficMetricsRequest) To(to string) ApiGetInstanceDat
 	return r
 }
 
-// How the metrics are grouped by
-func (r ApiGetInstanceDataTrafficMetricsRequest) Granularity(granularity string) ApiGetInstanceDataTrafficMetricsRequest {
+// The interval for each metric
+func (r ApiGetInstanceDataTrafficMetricsRequest) Granularity(granularity DataTrafficMetricsGranularity) ApiGetInstanceDataTrafficMetricsRequest {
 	r.granularity = &granularity
 	return r
 }
 
-// How the metrics are aggregated
-func (r ApiGetInstanceDataTrafficMetricsRequest) Aggregation(aggregation string) ApiGetInstanceDataTrafficMetricsRequest {
+// The metric aggregation function
+func (r ApiGetInstanceDataTrafficMetricsRequest) Aggregation(aggregation MetricAggregation) ApiGetInstanceDataTrafficMetricsRequest {
 	r.aggregation = &aggregation
 	return r
 }
@@ -7816,19 +7844,23 @@ func (a *PubliccloudAPIService) GetInstanceDataTrafficMetricsExecute(r ApiGetIns
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
+	if r.aggregation == nil {
+		return localVarReturnValue, nil, reportError("aggregation is required and must be specified")
+	}
 
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	}
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
-	if r.aggregation != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "aggregation", r.aggregation, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "aggregation", r.aggregation, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -9132,14 +9164,227 @@ func (a *PubliccloudAPIService) GetLoadBalancerExecute(r ApiGetLoadBalancerReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetLoadBalancerCpuMetricsRequest struct {
+	ctx context.Context
+	ApiService PubliccloudAPI
+	loadBalancerId string
+	from *string
+	to *string
+	granularity *MetricGranularity
+}
+
+// The start of the interval to get the metric
+func (r ApiGetLoadBalancerCpuMetricsRequest) From(from string) ApiGetLoadBalancerCpuMetricsRequest {
+	r.from = &from
+	return r
+}
+
+// The end of the interval to get the metric. Must be greater than the date provided in &#x60;from&#x60;
+func (r ApiGetLoadBalancerCpuMetricsRequest) To(to string) ApiGetLoadBalancerCpuMetricsRequest {
+	r.to = &to
+	return r
+}
+
+// The interval for each metric
+func (r ApiGetLoadBalancerCpuMetricsRequest) Granularity(granularity MetricGranularity) ApiGetLoadBalancerCpuMetricsRequest {
+	r.granularity = &granularity
+	return r
+}
+
+func (r ApiGetLoadBalancerCpuMetricsRequest) Execute() (*GetCpuMetricsResult, *http.Response, error) {
+	return r.ApiService.GetLoadBalancerCpuMetricsExecute(r)
+}
+
+/*
+GetLoadBalancerCpuMetrics Get load balancer CPU metrics
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param loadBalancerId Load balancer ID
+ @return ApiGetLoadBalancerCpuMetricsRequest
+*/
+func (a *PubliccloudAPIService) GetLoadBalancerCpuMetrics(ctx context.Context, loadBalancerId string) ApiGetLoadBalancerCpuMetricsRequest {
+	return ApiGetLoadBalancerCpuMetricsRequest{
+		ApiService: a,
+		ctx: ctx,
+		loadBalancerId: loadBalancerId,
+	}
+}
+
+// Execute executes the request
+//  @return GetCpuMetricsResult
+func (a *PubliccloudAPIService) GetLoadBalancerCpuMetricsExecute(r ApiGetLoadBalancerCpuMetricsRequest) (*GetCpuMetricsResult, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetCpuMetricsResult
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PubliccloudAPIService.GetLoadBalancerCpuMetrics")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/loadBalancers/{loadBalancerId}/metrics/cpu"
+	localVarPath = strings.Replace(localVarPath, "{"+"loadBalancerId"+"}", url.PathEscape(parameterValueToString(r.loadBalancerId, "loadBalancerId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetLoadBalancerDataTrafficMetricsRequest struct {
 	ctx context.Context
 	ApiService PubliccloudAPI
 	loadBalancerId string
 	from *string
 	to *string
-	granularity *string
-	aggregation *string
+	granularity *DataTrafficMetricsGranularity
+	aggregation *MetricAggregation
 }
 
 // The start of the interval to get the metric
@@ -9154,14 +9399,14 @@ func (r ApiGetLoadBalancerDataTrafficMetricsRequest) To(to string) ApiGetLoadBal
 	return r
 }
 
-// How the metrics are grouped by
-func (r ApiGetLoadBalancerDataTrafficMetricsRequest) Granularity(granularity string) ApiGetLoadBalancerDataTrafficMetricsRequest {
+// The interval for each metric
+func (r ApiGetLoadBalancerDataTrafficMetricsRequest) Granularity(granularity DataTrafficMetricsGranularity) ApiGetLoadBalancerDataTrafficMetricsRequest {
 	r.granularity = &granularity
 	return r
 }
 
-// How the metrics are aggregated
-func (r ApiGetLoadBalancerDataTrafficMetricsRequest) Aggregation(aggregation string) ApiGetLoadBalancerDataTrafficMetricsRequest {
+// The metric aggregation function
+func (r ApiGetLoadBalancerDataTrafficMetricsRequest) Aggregation(aggregation MetricAggregation) ApiGetLoadBalancerDataTrafficMetricsRequest {
 	r.aggregation = &aggregation
 	return r
 }
@@ -9206,19 +9451,23 @@ func (a *PubliccloudAPIService) GetLoadBalancerDataTrafficMetricsExecute(r ApiGe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
+	if r.aggregation == nil {
+		return localVarReturnValue, nil, reportError("aggregation is required and must be specified")
+	}
 
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	}
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
-	if r.aggregation != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "aggregation", r.aggregation, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "aggregation", r.aggregation, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -11269,23 +11518,23 @@ type ApiGetRequestsMetricsRequest struct {
 	loadBalancerId string
 	from *string
 	to *string
-	granularity *string
+	granularity *MetricGranularity
 }
 
-// The start of the interval to get the metric, in ISO 8601 format
+// The start of the interval to get the metric
 func (r ApiGetRequestsMetricsRequest) From(from string) ApiGetRequestsMetricsRequest {
 	r.from = &from
 	return r
 }
 
-// The end of the interval to get the metric in format ISO 8601. Must be greater than the date provided in &#x60;from&#x60;.
+// The end of the interval to get the metric. Must be greater than the date provided in &#x60;from&#x60;
 func (r ApiGetRequestsMetricsRequest) To(to string) ApiGetRequestsMetricsRequest {
 	r.to = &to
 	return r
 }
 
 // The interval for each metric
-func (r ApiGetRequestsMetricsRequest) Granularity(granularity string) ApiGetRequestsMetricsRequest {
+func (r ApiGetRequestsMetricsRequest) Granularity(granularity MetricGranularity) ApiGetRequestsMetricsRequest {
 	r.granularity = &granularity
 	return r
 }
@@ -11330,16 +11579,19 @@ func (a *PubliccloudAPIService) GetRequestsMetricsExecute(r ApiGetRequestsMetric
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
 
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	}
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -11479,23 +11731,23 @@ type ApiGetRequestsPerSecondMetricsRequest struct {
 	loadBalancerId string
 	from *string
 	to *string
-	granularity *string
+	granularity *MetricGranularity
 }
 
-// The start of the interval to get the metric, in ISO 8601 format
+// The start of the interval to get the metric
 func (r ApiGetRequestsPerSecondMetricsRequest) From(from string) ApiGetRequestsPerSecondMetricsRequest {
 	r.from = &from
 	return r
 }
 
-// The end of the interval to get the metric in format ISO 8601. Must be greater than the date provided in &#x60;from&#x60;.
+// The end of the interval to get the metric. Must be greater than the date provided in &#x60;from&#x60;
 func (r ApiGetRequestsPerSecondMetricsRequest) To(to string) ApiGetRequestsPerSecondMetricsRequest {
 	r.to = &to
 	return r
 }
 
 // The interval for each metric
-func (r ApiGetRequestsPerSecondMetricsRequest) Granularity(granularity string) ApiGetRequestsPerSecondMetricsRequest {
+func (r ApiGetRequestsPerSecondMetricsRequest) Granularity(granularity MetricGranularity) ApiGetRequestsPerSecondMetricsRequest {
 	r.granularity = &granularity
 	return r
 }
@@ -11540,16 +11792,19 @@ func (a *PubliccloudAPIService) GetRequestsPerSecondMetricsExecute(r ApiGetReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
 
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	}
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -11689,23 +11944,23 @@ type ApiGetResponseCodesMetricsRequest struct {
 	loadBalancerId string
 	from *string
 	to *string
-	granularity *string
+	granularity *MetricGranularity
 }
 
-// The start of the interval to get the metric, in ISO 8601 format
+// The start of the interval to get the metric
 func (r ApiGetResponseCodesMetricsRequest) From(from string) ApiGetResponseCodesMetricsRequest {
 	r.from = &from
 	return r
 }
 
-// The end of the interval to get the metric in format ISO 8601. Must be greater than the date provided in &#x60;from&#x60;.
+// The end of the interval to get the metric. Must be greater than the date provided in &#x60;from&#x60;
 func (r ApiGetResponseCodesMetricsRequest) To(to string) ApiGetResponseCodesMetricsRequest {
 	r.to = &to
 	return r
 }
 
 // The interval for each metric
-func (r ApiGetResponseCodesMetricsRequest) Granularity(granularity string) ApiGetResponseCodesMetricsRequest {
+func (r ApiGetResponseCodesMetricsRequest) Granularity(granularity MetricGranularity) ApiGetResponseCodesMetricsRequest {
 	r.granularity = &granularity
 	return r
 }
@@ -11750,16 +12005,19 @@ func (a *PubliccloudAPIService) GetResponseCodesMetricsExecute(r ApiGetResponseC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
 
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	}
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -11899,23 +12157,23 @@ type ApiGetResponseCodesPerSecondMetricsRequest struct {
 	loadBalancerId string
 	from *string
 	to *string
-	granularity *string
+	granularity *MetricGranularity
 }
 
-// The start of the interval to get the metric, in ISO 8601 format
+// The start of the interval to get the metric
 func (r ApiGetResponseCodesPerSecondMetricsRequest) From(from string) ApiGetResponseCodesPerSecondMetricsRequest {
 	r.from = &from
 	return r
 }
 
-// The end of the interval to get the metric in format ISO 8601. Must be greater than the date provided in &#x60;from&#x60;.
+// The end of the interval to get the metric. Must be greater than the date provided in &#x60;from&#x60;
 func (r ApiGetResponseCodesPerSecondMetricsRequest) To(to string) ApiGetResponseCodesPerSecondMetricsRequest {
 	r.to = &to
 	return r
 }
 
 // The interval for each metric
-func (r ApiGetResponseCodesPerSecondMetricsRequest) Granularity(granularity string) ApiGetResponseCodesPerSecondMetricsRequest {
+func (r ApiGetResponseCodesPerSecondMetricsRequest) Granularity(granularity MetricGranularity) ApiGetResponseCodesPerSecondMetricsRequest {
 	r.granularity = &granularity
 	return r
 }
@@ -11960,16 +12218,19 @@ func (a *PubliccloudAPIService) GetResponseCodesPerSecondMetricsExecute(r ApiGet
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.from == nil {
+		return localVarReturnValue, nil, reportError("from is required and must be specified")
+	}
+	if r.to == nil {
+		return localVarReturnValue, nil, reportError("to is required and must be specified")
+	}
+	if r.granularity == nil {
+		return localVarReturnValue, nil, reportError("granularity is required and must be specified")
+	}
 
-	if r.from != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
-	}
-	if r.to != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
-	}
-	if r.granularity != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "granularity", r.granularity, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -12119,7 +12380,7 @@ GetSnapshot Get snapshot detail
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param instanceId Instance's ID
- @param snapshotId
+ @param snapshotId Snapshot's ID
  @return ApiGetSnapshotRequest
 */
 func (a *PubliccloudAPIService) GetSnapshot(ctx context.Context, instanceId string, snapshotId string) ApiGetSnapshotRequest {
@@ -15686,7 +15947,7 @@ RestoreSnapshot Restore instance snapshot
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param instanceId Instance's ID
- @param snapshotId
+ @param snapshotId Snapshot's ID
  @return ApiRestoreSnapshotRequest
 */
 func (a *PubliccloudAPIService) RestoreSnapshot(ctx context.Context, instanceId string, snapshotId string) ApiRestoreSnapshotRequest {

@@ -357,20 +357,6 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PubliccloudAPIService GetCpuMetrics", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var instanceId string
-
-		resp, httpRes, err := apiClient.PubliccloudAPI.GetCpuMetrics(context.Background(), instanceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test PubliccloudAPIService GetCredential", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -484,6 +470,20 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PubliccloudAPIService GetInstanceCpuMetrics", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var instanceId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.GetInstanceCpuMetrics(context.Background(), instanceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PubliccloudAPIService GetInstanceDataTrafficMetrics", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -570,6 +570,20 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		var loadBalancerId string
 
 		resp, httpRes, err := apiClient.PubliccloudAPI.GetLoadBalancer(context.Background(), loadBalancerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService GetLoadBalancerCpuMetrics", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var loadBalancerId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.GetLoadBalancerCpuMetrics(context.Background(), loadBalancerId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

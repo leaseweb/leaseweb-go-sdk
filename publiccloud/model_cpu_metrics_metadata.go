@@ -23,7 +23,7 @@ type CpuMetricsMetadata struct {
 	From *time.Time `json:"from,omitempty"`
 	To *time.Time `json:"to,omitempty"`
 	Unit *string `json:"unit,omitempty"`
-	Granularity *CpuMetricsGranularity `json:"granularity,omitempty"`
+	Granularity *MetricGranularity `json:"granularity,omitempty"`
 	Summary *CpuMetricsMetadataSummary `json:"summary,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -144,9 +144,9 @@ func (o *CpuMetricsMetadata) SetUnit(v string) {
 }
 
 // GetGranularity returns the Granularity field value if set, zero value otherwise.
-func (o *CpuMetricsMetadata) GetGranularity() CpuMetricsGranularity {
+func (o *CpuMetricsMetadata) GetGranularity() MetricGranularity {
 	if o == nil || IsNil(o.Granularity) {
-		var ret CpuMetricsGranularity
+		var ret MetricGranularity
 		return ret
 	}
 	return *o.Granularity
@@ -154,7 +154,7 @@ func (o *CpuMetricsMetadata) GetGranularity() CpuMetricsGranularity {
 
 // GetGranularityOk returns a tuple with the Granularity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CpuMetricsMetadata) GetGranularityOk() (*CpuMetricsGranularity, bool) {
+func (o *CpuMetricsMetadata) GetGranularityOk() (*MetricGranularity, bool) {
 	if o == nil || IsNil(o.Granularity) {
 		return nil, false
 	}
@@ -170,8 +170,8 @@ func (o *CpuMetricsMetadata) HasGranularity() bool {
 	return false
 }
 
-// SetGranularity gets a reference to the given CpuMetricsGranularity and assigns it to the Granularity field.
-func (o *CpuMetricsMetadata) SetGranularity(v CpuMetricsGranularity) {
+// SetGranularity gets a reference to the given MetricGranularity and assigns it to the Granularity field.
+func (o *CpuMetricsMetadata) SetGranularity(v MetricGranularity) {
 	o.Granularity = &v
 }
 

@@ -105,7 +105,6 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**GetConnectionsMetrics**](docs/PubliccloudAPI.md#getconnectionsmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/connections | Get connections metrics
 *PubliccloudAPI* | [**GetConnectionsPerSecondMetrics**](docs/PubliccloudAPI.md#getconnectionspersecondmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/connectionsPerSecond | Get connections per second metrics
 *PubliccloudAPI* | [**GetConsoleAccess**](docs/PubliccloudAPI.md#getconsoleaccess) | **Get** /instances/{instanceId}/console | Get console access
-*PubliccloudAPI* | [**GetCpuMetrics**](docs/PubliccloudAPI.md#getcpumetrics) | **Get** /instances/{instanceId}/metrics/cpu | Get instance CPU metrics
 *PubliccloudAPI* | [**GetCredential**](docs/PubliccloudAPI.md#getcredential) | **Get** /instances/{instanceId}/credentials/{type}/{username} | Get Instance credentials by type and username.
 *PubliccloudAPI* | [**GetCredentialList**](docs/PubliccloudAPI.md#getcredentiallist) | **Get** /instances/{instanceId}/credentials | List credentials stored for a specific Instance
 *PubliccloudAPI* | [**GetCredentialListByType**](docs/PubliccloudAPI.md#getcredentiallistbytype) | **Get** /instances/{instanceId}/credentials/{type} | Get credentials by type for a specific Instance
@@ -114,6 +113,7 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**GetExpenses**](docs/PubliccloudAPI.md#getexpenses) | **Get** /equipments/{equipmentId}/expenses | Get costs for a given month.
 *PubliccloudAPI* | [**GetImageList**](docs/PubliccloudAPI.md#getimagelist) | **Get** /images | List all available Images
 *PubliccloudAPI* | [**GetInstance**](docs/PubliccloudAPI.md#getinstance) | **Get** /instances/{instanceId} | Get instance details
+*PubliccloudAPI* | [**GetInstanceCpuMetrics**](docs/PubliccloudAPI.md#getinstancecpumetrics) | **Get** /instances/{instanceId}/metrics/cpu | Get instance CPU metrics
 *PubliccloudAPI* | [**GetInstanceDataTrafficMetrics**](docs/PubliccloudAPI.md#getinstancedatatrafficmetrics) | **Get** /instances/{instanceId}/metrics/datatraffic | Get data traffic metrics for a specific Instance
 *PubliccloudAPI* | [**GetInstanceIP**](docs/PubliccloudAPI.md#getinstanceip) | **Get** /instances/{instanceId}/ips/{ip} | Get IP details for a specific Instance
 *PubliccloudAPI* | [**GetInstanceIPList**](docs/PubliccloudAPI.md#getinstanceiplist) | **Get** /instances/{instanceId}/ips | List IP addresses associated with a specific Instance
@@ -121,6 +121,7 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**GetInstanceTypeList**](docs/PubliccloudAPI.md#getinstancetypelist) | **Get** /instanceTypes | List instance types
 *PubliccloudAPI* | [**GetIsoList**](docs/PubliccloudAPI.md#getisolist) | **Get** /isos | List available ISOs
 *PubliccloudAPI* | [**GetLoadBalancer**](docs/PubliccloudAPI.md#getloadbalancer) | **Get** /loadBalancers/{loadBalancerId} | Get load balancer details
+*PubliccloudAPI* | [**GetLoadBalancerCpuMetrics**](docs/PubliccloudAPI.md#getloadbalancercpumetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/cpu | Get load balancer CPU metrics
 *PubliccloudAPI* | [**GetLoadBalancerDataTrafficMetrics**](docs/PubliccloudAPI.md#getloadbalancerdatatrafficmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/datatraffic | Get data traffic metrics for a specific Load Balancer
 *PubliccloudAPI* | [**GetLoadBalancerIP**](docs/PubliccloudAPI.md#getloadbalancerip) | **Get** /loadBalancers/{loadBalancerId}/ips/{ip} | Get IP details for a specific Load Balancer
 *PubliccloudAPI* | [**GetLoadBalancerIPList**](docs/PubliccloudAPI.md#getloadbalanceriplist) | **Get** /loadBalancers/{loadBalancerId}/ips | List IP addresses associated with a specific Load Balancer
@@ -192,9 +193,7 @@ Class | Method | HTTP request | Description
  - [ContractTerm](docs/ContractTerm.md)
  - [ContractType](docs/ContractType.md)
  - [Cpu](docs/Cpu.md)
- - [CpuGranularity](docs/CpuGranularity.md)
  - [CpuMetrics](docs/CpuMetrics.md)
- - [CpuMetricsGranularity](docs/CpuMetricsGranularity.md)
  - [CpuMetricsMetadata](docs/CpuMetricsMetadata.md)
  - [CpuMetricsMetadataSummary](docs/CpuMetricsMetadataSummary.md)
  - [CpuMetricsMetadataSummaryCpuMetrics](docs/CpuMetricsMetadataSummaryCpuMetrics.md)
@@ -276,15 +275,15 @@ Class | Method | HTTP request | Description
  - [LoadBalancerListenerDetails](docs/LoadBalancerListenerDetails.md)
  - [LoadBalancerListenerOpts](docs/LoadBalancerListenerOpts.md)
  - [LoadBalancerListenerRule](docs/LoadBalancerListenerRule.md)
- - [LoadBalancerMetricsGranularity](docs/LoadBalancerMetricsGranularity.md)
  - [LoadBalancers](docs/LoadBalancers.md)
  - [MarketApp](docs/MarketApp.md)
  - [MarketAppId](docs/MarketAppId.md)
  - [Memory](docs/Memory.md)
  - [Metadata](docs/Metadata.md)
+ - [MetricAggregation](docs/MetricAggregation.md)
+ - [MetricGranularity](docs/MetricGranularity.md)
  - [MetricsDataTrafficMetadataProperties](docs/MetricsDataTrafficMetadataProperties.md)
  - [MetricsMetadataProperties](docs/MetricsMetadataProperties.md)
- - [MetricsMetadataPropertiesGranularity](docs/MetricsMetadataPropertiesGranularity.md)
  - [MetricsPropertiesB](docs/MetricsPropertiesB.md)
  - [MetricsPropertiesBase](docs/MetricsPropertiesBase.md)
  - [MetricsPropertiesConnections](docs/MetricsPropertiesConnections.md)

@@ -32,7 +32,7 @@ type LaunchInstanceOpts struct {
 	ContractTerm *ContractTerm `json:"contractTerm,omitempty"`
 	BillingFrequency *BillingFrequency `json:"billingFrequency,omitempty"`
 	// The root disk's size in GB. Must be at least 5 GB for Linux and FreeBSD instances and 50 GB for Windows instances
-	RootDiskSize *int32 `json:"rootDiskSize,omitempty"`
+	RootDiskSize int32 `json:"rootDiskSize"`
 	RootDiskStorageType StorageType `json:"rootDiskStorageType"`
 	// Public SSH key to be installed into the instance. Must be used only on Linux/FreeBSD instances
 	SshKey *string `json:"sshKey,omitempty"`
@@ -47,12 +47,13 @@ type _LaunchInstanceOpts LaunchInstanceOpts
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLaunchInstanceOpts(region RegionName, type_ TypeName, imageId string, contractType ContractType, rootDiskStorageType StorageType) *LaunchInstanceOpts {
+func NewLaunchInstanceOpts(region RegionName, type_ TypeName, imageId string, contractType ContractType, rootDiskSize int32, rootDiskStorageType StorageType) *LaunchInstanceOpts {
 	this := LaunchInstanceOpts{}
 	this.Region = region
 	this.Type = type_
 	this.ImageId = imageId
 	this.ContractType = contractType
+	this.RootDiskSize = rootDiskSize
 	this.RootDiskStorageType = rootDiskStorageType
 	return &this
 }
@@ -289,36 +290,28 @@ func (o *LaunchInstanceOpts) SetBillingFrequency(v BillingFrequency) {
 	o.BillingFrequency = &v
 }
 
-// GetRootDiskSize returns the RootDiskSize field value if set, zero value otherwise.
+// GetRootDiskSize returns the RootDiskSize field value
 func (o *LaunchInstanceOpts) GetRootDiskSize() int32 {
-	if o == nil || IsNil(o.RootDiskSize) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.RootDiskSize
+
+	return o.RootDiskSize
 }
 
-// GetRootDiskSizeOk returns a tuple with the RootDiskSize field value if set, nil otherwise
+// GetRootDiskSizeOk returns a tuple with the RootDiskSize field value
 // and a boolean to check if the value has been set.
 func (o *LaunchInstanceOpts) GetRootDiskSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.RootDiskSize) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RootDiskSize, true
+	return &o.RootDiskSize, true
 }
 
-// HasRootDiskSize returns a boolean if a field has been set.
-func (o *LaunchInstanceOpts) HasRootDiskSize() bool {
-	if o != nil && !IsNil(o.RootDiskSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetRootDiskSize gets a reference to the given int32 and assigns it to the RootDiskSize field.
+// SetRootDiskSize sets field value
 func (o *LaunchInstanceOpts) SetRootDiskSize(v int32) {
-	o.RootDiskSize = &v
+	o.RootDiskSize = v
 }
 
 // GetRootDiskStorageType returns the RootDiskStorageType field value
@@ -435,9 +428,7 @@ func (o LaunchInstanceOpts) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BillingFrequency) {
 		toSerialize["billingFrequency"] = o.BillingFrequency
 	}
-	if !IsNil(o.RootDiskSize) {
-		toSerialize["rootDiskSize"] = o.RootDiskSize
-	}
+	toSerialize["rootDiskSize"] = o.RootDiskSize
 	toSerialize["rootDiskStorageType"] = o.RootDiskStorageType
 	if !IsNil(o.SshKey) {
 		toSerialize["sshKey"] = o.SshKey
@@ -462,6 +453,7 @@ func (o *LaunchInstanceOpts) UnmarshalJSON(data []byte) (err error) {
 		"type",
 		"imageId",
 		"contractType",
+		"rootDiskSize",
 		"rootDiskStorageType",
 	}
 

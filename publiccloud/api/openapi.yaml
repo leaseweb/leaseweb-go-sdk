@@ -6781,7 +6781,7 @@ paths:
         explode: true
         in: query
         name: from
-        required: false
+        required: true
         schema:
           example: 2025-01-28
           format: date
@@ -6792,31 +6792,27 @@ paths:
         explode: true
         in: query
         name: to
-        required: false
+        required: true
         schema:
           example: 2025-01-28
           format: date
           type: string
         style: form
-      - description: How the metrics are grouped by
+      - description: The interval for each metric
         explode: true
         in: query
         name: granularity
-        required: false
+        required: true
         schema:
-          enum:
-          - DAY
-          type: string
+          $ref: '#/components/schemas/dataTrafficMetricsGranularity'
         style: form
-      - description: How the metrics are aggregated
+      - description: The metric aggregation function
         explode: true
         in: query
         name: aggregation
-        required: false
+        required: true
         schema:
-          enum:
-          - SUM
-          type: string
+          $ref: '#/components/schemas/metricAggregation'
         style: form
       responses:
         "200":
@@ -6926,6 +6922,143 @@ paths:
       summary: Get data traffic metrics for a specific Instance
       tags:
       - publiccloud
+  /instances/{instanceId}/metrics/cpu:
+    get:
+      operationId: getInstanceCpuMetrics
+      parameters:
+      - description: Instance's ID
+        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The start of the interval to get the metric
+        explode: true
+        in: query
+        name: from
+        required: true
+        schema:
+          example: 2025-01-28
+          format: date
+          type: string
+        style: form
+      - description: The end of the interval to get the metric. Must be greater than
+          the date provided in `from`
+        explode: true
+        in: query
+        name: to
+        required: true
+        schema:
+          example: 2025-01-28
+          format: date
+          type: string
+        style: form
+      - description: The interval for each metric
+        explode: true
+        in: query
+        name: granularity
+        required: true
+        schema:
+          $ref: '#/components/schemas/metricGranularity'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                _metadata:
+                  from: 2023-10-27T08:00:00+00:00
+                  to: 2023-10-28T08:00:00+00:00
+                  granularity: 5m
+                  unit: '%'
+                  summary:
+                    cpuMetrics:
+                      average: 8.13
+                      expected: 8.13
+                      peak:
+                        value: 9.98
+                        timestamp: 2023-10-27T08:10:24+00:00
+                metrics:
+                  cpuMetrics:
+                    values:
+                    - value: 5.45
+                      timestamp: 2023-10-27T08:00:00+00:00
+                    - value: 8.98
+                      timestamp: 2023-10-27T08:05:32+00:00
+                    - value: 9.98
+                      timestamp: 2023-10-27T08:10:24+00:00
+                    unit: '%'
+              schema:
+                $ref: '#/components/schemas/getCpuMetricsResult'
+          description: OK.
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Get instance CPU metrics
+      tags:
+      - publiccloud
   /loadBalancers/{loadBalancerId}/metrics/datatraffic:
     get:
       operationId: getLoadBalancerDataTrafficMetrics
@@ -6944,7 +7077,7 @@ paths:
         explode: true
         in: query
         name: from
-        required: false
+        required: true
         schema:
           example: 2025-01-28
           format: date
@@ -6955,31 +7088,27 @@ paths:
         explode: true
         in: query
         name: to
-        required: false
+        required: true
         schema:
           example: 2025-01-28
           format: date
           type: string
         style: form
-      - description: How the metrics are grouped by
+      - description: The interval for each metric
         explode: true
         in: query
         name: granularity
-        required: false
+        required: true
         schema:
-          enum:
-          - DAY
-          type: string
+          $ref: '#/components/schemas/dataTrafficMetricsGranularity'
         style: form
-      - description: How the metrics are aggregated
+      - description: The metric aggregation function
         explode: true
         in: query
         name: aggregation
-        required: false
+        required: true
         schema:
-          enum:
-          - SUM
-          type: string
+          $ref: '#/components/schemas/metricAggregation'
         style: form
       responses:
         "200":
@@ -7089,15 +7218,15 @@ paths:
       summary: Get data traffic metrics for a specific Load Balancer
       tags:
       - publiccloud
-  /instances/{instanceId}/metrics/cpu:
+  /loadBalancers/{loadBalancerId}/metrics/cpu:
     get:
-      operationId: getCpuMetrics
+      operationId: getLoadBalancerCpuMetrics
       parameters:
-      - description: Instance's ID
-        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+      - description: Load balancer ID
+        example: 695ddd91-051f-4dd6-9120-938a927a47d0
         explode: false
         in: path
-        name: instanceId
+        name: loadBalancerId
         required: true
         schema:
           format: uuid
@@ -7107,7 +7236,7 @@ paths:
         explode: true
         in: query
         name: from
-        required: false
+        required: true
         schema:
           example: 2025-01-28
           format: date
@@ -7118,7 +7247,7 @@ paths:
         explode: true
         in: query
         name: to
-        required: false
+        required: true
         schema:
           example: 2025-01-28
           format: date
@@ -7128,9 +7257,9 @@ paths:
         explode: true
         in: query
         name: granularity
-        required: false
+        required: true
         schema:
-          $ref: '#/components/schemas/cpuMetricsGranularity'
+          $ref: '#/components/schemas/metricGranularity'
         style: form
       responses:
         "200":
@@ -7223,7 +7352,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/errorResult'
           description: Service Unavailable.
-      summary: Get instance CPU metrics
+      summary: Get load balancer CPU metrics
       tags:
       - publiccloud
   /loadBalancers/{loadBalancerId}/metrics/requests:
@@ -7240,41 +7369,34 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: "The start of the interval to get the metric, in ISO 8601 format"
+      - description: The start of the interval to get the metric
         explode: true
         in: query
         name: from
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T10:34:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
-      - description: The end of the interval to get the metric in format ISO 8601.
-          Must be greater than the date provided in `from`.
+      - description: The end of the interval to get the metric. Must be greater than
+          the date provided in `from`
         explode: true
         in: query
         name: to
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T11:44:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
       - description: The interval for each metric
         explode: true
         in: query
         name: granularity
-        required: false
+        required: true
         schema:
-          enum:
-          - 5m
-          - 10m
-          - 30m
-          - 1h
-          - 1d
-          - 1w
-          type: string
+          $ref: '#/components/schemas/metricGranularity'
         style: form
       responses:
         "200":
@@ -7284,7 +7406,7 @@ paths:
                 _metadata:
                   from: 2024-09-14T00:00:00+00:00
                   to: 2024-09-15T00:00:00+00:00
-                  granularity: 1h
+                  granularity: 60m
                   aggregation: SUM
                 metrics:
                   values:
@@ -7381,41 +7503,34 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: "The start of the interval to get the metric, in ISO 8601 format"
+      - description: The start of the interval to get the metric
         explode: true
         in: query
         name: from
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T10:34:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
-      - description: The end of the interval to get the metric in format ISO 8601.
-          Must be greater than the date provided in `from`.
+      - description: The end of the interval to get the metric. Must be greater than
+          the date provided in `from`
         explode: true
         in: query
         name: to
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T11:44:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
       - description: The interval for each metric
         explode: true
         in: query
         name: granularity
-        required: false
+        required: true
         schema:
-          enum:
-          - 5m
-          - 10m
-          - 30m
-          - 1h
-          - 1d
-          - 1w
-          type: string
+          $ref: '#/components/schemas/metricGranularity'
         style: form
       responses:
         "200":
@@ -7520,41 +7635,34 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: "The start of the interval to get the metric, in ISO 8601 format"
+      - description: The start of the interval to get the metric
         explode: true
         in: query
         name: from
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T10:34:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
-      - description: The end of the interval to get the metric in format ISO 8601.
-          Must be greater than the date provided in `from`.
+      - description: The end of the interval to get the metric. Must be greater than
+          the date provided in `from`
         explode: true
         in: query
         name: to
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T11:44:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
       - description: The interval for each metric
         explode: true
         in: query
         name: granularity
-        required: false
+        required: true
         schema:
-          enum:
-          - 5m
-          - 10m
-          - 30m
-          - 1h
-          - 1d
-          - 1w
-          type: string
+          $ref: '#/components/schemas/metricGranularity'
         style: form
       responses:
         "200":
@@ -7670,41 +7778,34 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: "The start of the interval to get the metric, in ISO 8601 format"
+      - description: The start of the interval to get the metric
         explode: true
         in: query
         name: from
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T10:34:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
-      - description: The end of the interval to get the metric in format ISO 8601.
-          Must be greater than the date provided in `from`.
+      - description: The end of the interval to get the metric. Must be greater than
+          the date provided in `from`
         explode: true
         in: query
         name: to
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T11:44:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
       - description: The interval for each metric
         explode: true
         in: query
         name: granularity
-        required: false
+        required: true
         schema:
-          enum:
-          - 5m
-          - 10m
-          - 30m
-          - 1h
-          - 1d
-          - 1w
-          type: string
+          $ref: '#/components/schemas/metricGranularity'
         style: form
       responses:
         "200":
@@ -7820,41 +7921,34 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: "The start of the interval to get the metric, in ISO 8601 format"
+      - description: The start of the interval to get the metric
         explode: true
         in: query
         name: from
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T10:34:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
-      - description: The end of the interval to get the metric in format ISO 8601.
-          Must be greater than the date provided in `from`.
+      - description: The end of the interval to get the metric. Must be greater than
+          the date provided in `from`
         explode: true
         in: query
         name: to
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T11:44:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
       - description: The interval for each metric
         explode: true
         in: query
         name: granularity
-        required: false
+        required: true
         schema:
-          enum:
-          - 5m
-          - 10m
-          - 30m
-          - 1h
-          - 1d
-          - 1w
-          type: string
+          $ref: '#/components/schemas/metricGranularity'
         style: form
       responses:
         "200":
@@ -7864,7 +7958,7 @@ paths:
                 _metadata:
                   from: 2024-09-14T00:00:00+00:00
                   to: 2024-09-15T00:00:00+00:00
-                  granularity: 1h
+                  granularity: 60m
                   aggregation: SUM
                 metrics:
                   values:
@@ -8000,41 +8094,34 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: "The start of the interval to get the metric, in ISO 8601 format"
+      - description: The start of the interval to get the metric
         explode: true
         in: query
         name: from
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T10:34:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
-      - description: The end of the interval to get the metric in format ISO 8601.
-          Must be greater than the date provided in `from`.
+      - description: The end of the interval to get the metric. Must be greater than
+          the date provided in `from`
         explode: true
         in: query
         name: to
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T11:44:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
       - description: The interval for each metric
         explode: true
         in: query
         name: granularity
-        required: false
+        required: true
         schema:
-          enum:
-          - 5m
-          - 10m
-          - 30m
-          - 1h
-          - 1d
-          - 1w
-          type: string
+          $ref: '#/components/schemas/metricGranularity'
         style: form
       responses:
         "200":
@@ -8044,7 +8131,7 @@ paths:
                 _metadata:
                   from: 2024-09-14T00:00:00+00:00
                   to: 2024-09-15T00:00:00+00:00
-                  granularity: 1h
+                  granularity: 60m
                   aggregation: SUM
                 metrics:
                   values:
@@ -8180,41 +8267,34 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: "The start of the interval to get the metric, in ISO 8601 format"
+      - description: The start of the interval to get the metric
         explode: true
         in: query
         name: from
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T10:34:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
-      - description: The end of the interval to get the metric in format ISO 8601.
-          Must be greater than the date provided in `from`.
+      - description: The end of the interval to get the metric. Must be greater than
+          the date provided in `from`
         explode: true
         in: query
         name: to
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T11:44:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
       - description: The interval for each metric
         explode: true
         in: query
         name: granularity
-        required: false
+        required: true
         schema:
-          enum:
-          - 5m
-          - 10m
-          - 30m
-          - 1h
-          - 1d
-          - 1w
-          type: string
+          $ref: '#/components/schemas/metricGranularity'
         style: form
       responses:
         "200":
@@ -8224,7 +8304,7 @@ paths:
                 _metadata:
                   from: 2024-09-14T00:00:00+00:00
                   to: 2024-09-15T00:00:00+00:00
-                  granularity: 1h
+                  granularity: 60m
                   aggregation: SUM
                 metrics:
                   "2xx":
@@ -8520,41 +8600,34 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: "The start of the interval to get the metric, in ISO 8601 format"
+      - description: The start of the interval to get the metric
         explode: true
         in: query
         name: from
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T10:34:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
-      - description: The end of the interval to get the metric in format ISO 8601.
-          Must be greater than the date provided in `from`.
+      - description: The end of the interval to get the metric. Must be greater than
+          the date provided in `from`
         explode: true
         in: query
         name: to
-        required: false
+        required: true
         schema:
-          example: 2025-01-28T11:44:01+00:00
-          format: datetime
+          example: 2025-01-28
+          format: date
           type: string
         style: form
       - description: The interval for each metric
         explode: true
         in: query
         name: granularity
-        required: false
+        required: true
         schema:
-          enum:
-          - 5m
-          - 10m
-          - 30m
-          - 1h
-          - 1d
-          - 1w
-          type: string
+          $ref: '#/components/schemas/metricGranularity'
         style: form
       responses:
         "200":
@@ -8564,7 +8637,7 @@ paths:
                 _metadata:
                   from: 2024-09-14T00:00:00+00:00
                   to: 2024-09-15T00:00:00+00:00
-                  granularity: 1h
+                  granularity: 60m
                   aggregation: SUM
                 metrics:
                   "2xx":
@@ -9230,7 +9303,9 @@ paths:
           format: uuid
           type: string
         style: simple
-      - explode: false
+      - description: Snapshot's ID
+        example: 54eee4c2-aef2-4cda-9fd5-74bfbf438abf
+        explode: false
         in: path
         name: snapshotId
         required: true
@@ -9319,7 +9394,9 @@ paths:
           format: uuid
           type: string
         style: simple
-      - explode: false
+      - description: Snapshot's ID
+        example: 54eee4c2-aef2-4cda-9fd5-74bfbf438abf
+        explode: false
         in: path
         name: snapshotId
         required: true
@@ -9405,7 +9482,9 @@ paths:
           format: uuid
           type: string
         style: simple
-      - explode: false
+      - description: Snapshot's ID
+        example: 54eee4c2-aef2-4cda-9fd5-74bfbf438abf
+        explode: false
         in: path
         name: snapshotId
         required: true
@@ -12060,7 +12139,7 @@ components:
       explode: true
       in: query
       name: from
-      required: false
+      required: true
       schema:
         example: 2025-01-28
         format: date
@@ -12072,60 +12151,50 @@ components:
       explode: true
       in: query
       name: to
-      required: false
+      required: true
       schema:
         example: 2025-01-28
         format: date
         type: string
       style: form
-    cpuMetricsGranularity:
+    dataTrafficMetricGranularity:
       description: The interval for each metric
       explode: true
       in: query
       name: granularity
-      required: false
+      required: true
       schema:
-        $ref: '#/components/schemas/cpuMetricsGranularity'
+        $ref: '#/components/schemas/dataTrafficMetricsGranularity'
       style: form
-    fromDateTime:
-      description: "The start of the interval to get the metric, in ISO 8601 format"
+    metricAggregation:
+      description: The metric aggregation function
       explode: true
       in: query
-      name: from
-      required: false
+      name: aggregation
+      required: true
       schema:
-        example: 2025-01-28T10:34:01+00:00
-        format: datetime
-        type: string
+        $ref: '#/components/schemas/metricAggregation'
       style: form
-    toDateTime:
-      description: The end of the interval to get the metric in format ISO 8601. Must
-        be greater than the date provided in `from`.
-      explode: true
-      in: query
-      name: to
-      required: false
-      schema:
-        example: 2025-01-28T11:44:01+00:00
-        format: datetime
-        type: string
-      style: form
-    loadBalancerMetricsGranularity:
+    metricGranularity:
       description: The interval for each metric
       explode: true
       in: query
       name: granularity
-      required: false
+      required: true
       schema:
-        enum:
-        - 5m
-        - 10m
-        - 30m
-        - 1h
-        - 1d
-        - 1w
-        type: string
+        $ref: '#/components/schemas/metricGranularity'
       style: form
+    snapshotId:
+      description: Snapshot's ID
+      example: 54eee4c2-aef2-4cda-9fd5-74bfbf438abf
+      explode: false
+      in: path
+      name: snapshotId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
     autoScalingGroupId:
       description: Auto Scaling Group ID
       example: fb769dab-3daa-47e4-89ed-06a4b6499176
@@ -12665,7 +12734,6 @@ components:
       - 3
       - 6
       - 12
-      - 24
       example: 1
       type: integer
     contractTerm:
@@ -13259,6 +13327,7 @@ components:
       - contractType
       - imageId
       - region
+      - rootDiskSize
       - rootDiskStorageType
       - type
       type: object
@@ -14828,6 +14897,16 @@ components:
           minimum: 1
           type: integer
       type: object
+    dataTrafficMetricsGranularity:
+      description: Define the time interval for data aggregation
+      enum:
+      - DAY
+      type: string
+    metricAggregation:
+      description: Defines the function used to aggregate the metrics
+      enum:
+      - SUM
+      type: string
     trafficMetric:
       example:
         unit: B
@@ -14846,11 +14925,6 @@ components:
           type: string
       title: trafficMetric
       type: object
-    dataTrafficMetricsGranularity:
-      description: Define the time interval for data aggregation
-      enum:
-      - DAY
-      type: string
     metricsDataTrafficMetadataProperties:
       properties:
         from:
@@ -14942,13 +15016,14 @@ components:
         _metadata:
           $ref: '#/components/schemas/trafficMetricsMetaData'
       type: object
-    cpuMetricsGranularity:
-      description: Define the time interval for data aggregation
+    metricGranularity:
+      description: Defines the time interval for data aggregation
       enum:
       - 5m
       - 10m
       - 30m
       - 60m
+      - DAY
       type: string
     metricsPropertiesBase:
       properties:
@@ -15016,25 +15091,6 @@ components:
           timestamp: 2000-01-23T04:56:07.000+00:00
         - value: 0.8008281904610115
           timestamp: 2000-01-23T04:56:07.000+00:00
-    cpuGranularity:
-      description: Defines the time interval for data aggregation
-      enum:
-      - 5m
-      - 10m
-      - 30m
-      - 60m
-      - DAY
-      type: string
-    loadBalancerMetricsGranularity:
-      description: Defines the time interval for data aggregation
-      enum:
-      - 5m
-      - 10m
-      - 30m
-      - 1h
-      - 1d
-      - 1w
-      type: string
     metricsMetadataProperties:
       example:
         granularity: 5m
@@ -15049,7 +15105,7 @@ components:
           format: date-time
           type: string
         granularity:
-          $ref: '#/components/schemas/metricsMetadataProperties_granularity'
+          $ref: '#/components/schemas/metricGranularity'
         aggregation:
           description: Defined by the query
           enum:
@@ -16972,15 +17028,11 @@ components:
         unit:
           type: string
         granularity:
-          $ref: '#/components/schemas/cpuMetricsGranularity'
+          $ref: '#/components/schemas/metricGranularity'
         summary:
           $ref: '#/components/schemas/cpuMetricsMetadataSummary'
       title: cpuMetricsMetadata
       type: object
-    metricsMetadataProperties_granularity:
-      oneOf:
-      - $ref: '#/components/schemas/cpuGranularity'
-      - $ref: '#/components/schemas/loadBalancerMetricsGranularity'
     dataTransferredMetrics:
       example:
         dataOut:
