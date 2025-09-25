@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Date** | Pointer to **string** | The date of the credit connected to the invoice | [optional] 
 **Id** | Pointer to **string** | The unique id of the credit | [optional] 
-**TaxAmount** | Pointer to **float32** | The total tax amount of the credit connected to the invoice | [optional] 
-**Total** | Pointer to **float32** | The total amount of the credit connected to the invoice | [optional] 
+**Date** | Pointer to **string** | The date the credit was issued (UTC) | [optional] 
+**TaxAmount** | Pointer to **float32** | The amount of tax on the credit | [optional] 
+**NetAmount** | Pointer to **float32** | The total amount of the credit without the tax amount included | [optional] 
+**Total** | Pointer to **float32** | The total amount of the credit | [optional] 
 
 ## Methods
 
@@ -27,31 +28,6 @@ will change when the set of required properties is changed
 NewCreditWithDefaults instantiates a new Credit object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetDate
-
-`func (o *Credit) GetDate() string`
-
-GetDate returns the Date field if non-nil, zero value otherwise.
-
-### GetDateOk
-
-`func (o *Credit) GetDateOk() (*string, bool)`
-
-GetDateOk returns a tuple with the Date field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDate
-
-`func (o *Credit) SetDate(v string)`
-
-SetDate sets Date field to given value.
-
-### HasDate
-
-`func (o *Credit) HasDate() bool`
-
-HasDate returns a boolean if a field has been set.
 
 ### GetId
 
@@ -78,6 +54,31 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### GetDate
+
+`func (o *Credit) GetDate() string`
+
+GetDate returns the Date field if non-nil, zero value otherwise.
+
+### GetDateOk
+
+`func (o *Credit) GetDateOk() (*string, bool)`
+
+GetDateOk returns a tuple with the Date field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDate
+
+`func (o *Credit) SetDate(v string)`
+
+SetDate sets Date field to given value.
+
+### HasDate
+
+`func (o *Credit) HasDate() bool`
+
+HasDate returns a boolean if a field has been set.
+
 ### GetTaxAmount
 
 `func (o *Credit) GetTaxAmount() float32`
@@ -102,6 +103,31 @@ SetTaxAmount sets TaxAmount field to given value.
 `func (o *Credit) HasTaxAmount() bool`
 
 HasTaxAmount returns a boolean if a field has been set.
+
+### GetNetAmount
+
+`func (o *Credit) GetNetAmount() float32`
+
+GetNetAmount returns the NetAmount field if non-nil, zero value otherwise.
+
+### GetNetAmountOk
+
+`func (o *Credit) GetNetAmountOk() (*float32, bool)`
+
+GetNetAmountOk returns a tuple with the NetAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetAmount
+
+`func (o *Credit) SetNetAmount(v float32)`
+
+SetNetAmount sets NetAmount field to given value.
+
+### HasNetAmount
+
+`func (o *Credit) HasNetAmount() bool`
+
+HasNetAmount returns a boolean if a field has been set.
 
 ### GetTotal
 

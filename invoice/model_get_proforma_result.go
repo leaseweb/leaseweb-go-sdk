@@ -1,7 +1,7 @@
 /*
 Invoices
 
-> The base URL for this API is: **https://api.leaseweb.com/invoices/v1/_**
+The base URL for this API is: https://api.leaseweb.com/invoices/v1/ This API provides an overview of all your Invoices  
 
 API version: v1
 */
@@ -19,18 +19,19 @@ var _ MappedNullable = &GetProformaResult{}
 
 // GetProformaResult struct for GetProformaResult
 type GetProformaResult struct {
-	Metadata *Metadata `json:"_metadata,omitempty"`
-	ContractItems []ContractItem `json:"contractItems,omitempty"`
-	// The currency of the invoice. Based on ISO 4217
-	Currency *string `json:"currency,omitempty"`
-	// The date of the next invoice on which this proforma is based on.
+	// The date of the next invoice on which this proforma is based on. (UTC)
 	ProformaDate *string `json:"proformaDate,omitempty"`
-	// Total amount without vat which will be invoiced the upcoming month.
-	SubTotal *float32 `json:"subTotal,omitempty"`
 	// Total amount which will be invoiced the upcoming month.
 	Total *float32 `json:"total,omitempty"`
-	// The total amount of vat.
+	// Total amount without vat which will be invoiced the upcoming month.
+	SubTotal *float32 `json:"subTotal,omitempty"`
+	// The total amount of tax.
 	VatAmount *float32 `json:"vatAmount,omitempty"`
+	// The currency of the service price
+	Currency *string `json:"currency,omitempty"`
+	// Array of contract items
+	ContractItems []LineItem1 `json:"contractItems,omitempty"`
+	Metadata *Metadata `json:"_metadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -51,102 +52,6 @@ func NewGetProformaResult() *GetProformaResult {
 func NewGetProformaResultWithDefaults() *GetProformaResult {
 	this := GetProformaResult{}
 	return &this
-}
-
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *GetProformaResult) GetMetadata() Metadata {
-	if o == nil || IsNil(o.Metadata) {
-		var ret Metadata
-		return ret
-	}
-	return *o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetProformaResult) GetMetadataOk() (*Metadata, bool) {
-	if o == nil || IsNil(o.Metadata) {
-		return nil, false
-	}
-	return o.Metadata, true
-}
-
-// HasMetadata returns a boolean if a field has been set.
-func (o *GetProformaResult) HasMetadata() bool {
-	if o != nil && !IsNil(o.Metadata) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadata gets a reference to the given Metadata and assigns it to the Metadata field.
-func (o *GetProformaResult) SetMetadata(v Metadata) {
-	o.Metadata = &v
-}
-
-// GetContractItems returns the ContractItems field value if set, zero value otherwise.
-func (o *GetProformaResult) GetContractItems() []ContractItem {
-	if o == nil || IsNil(o.ContractItems) {
-		var ret []ContractItem
-		return ret
-	}
-	return o.ContractItems
-}
-
-// GetContractItemsOk returns a tuple with the ContractItems field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetProformaResult) GetContractItemsOk() ([]ContractItem, bool) {
-	if o == nil || IsNil(o.ContractItems) {
-		return nil, false
-	}
-	return o.ContractItems, true
-}
-
-// HasContractItems returns a boolean if a field has been set.
-func (o *GetProformaResult) HasContractItems() bool {
-	if o != nil && !IsNil(o.ContractItems) {
-		return true
-	}
-
-	return false
-}
-
-// SetContractItems gets a reference to the given []ContractItem and assigns it to the ContractItems field.
-func (o *GetProformaResult) SetContractItems(v []ContractItem) {
-	o.ContractItems = v
-}
-
-// GetCurrency returns the Currency field value if set, zero value otherwise.
-func (o *GetProformaResult) GetCurrency() string {
-	if o == nil || IsNil(o.Currency) {
-		var ret string
-		return ret
-	}
-	return *o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetProformaResult) GetCurrencyOk() (*string, bool) {
-	if o == nil || IsNil(o.Currency) {
-		return nil, false
-	}
-	return o.Currency, true
-}
-
-// HasCurrency returns a boolean if a field has been set.
-func (o *GetProformaResult) HasCurrency() bool {
-	if o != nil && !IsNil(o.Currency) {
-		return true
-	}
-
-	return false
-}
-
-// SetCurrency gets a reference to the given string and assigns it to the Currency field.
-func (o *GetProformaResult) SetCurrency(v string) {
-	o.Currency = &v
 }
 
 // GetProformaDate returns the ProformaDate field value if set, zero value otherwise.
@@ -181,38 +86,6 @@ func (o *GetProformaResult) SetProformaDate(v string) {
 	o.ProformaDate = &v
 }
 
-// GetSubTotal returns the SubTotal field value if set, zero value otherwise.
-func (o *GetProformaResult) GetSubTotal() float32 {
-	if o == nil || IsNil(o.SubTotal) {
-		var ret float32
-		return ret
-	}
-	return *o.SubTotal
-}
-
-// GetSubTotalOk returns a tuple with the SubTotal field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetProformaResult) GetSubTotalOk() (*float32, bool) {
-	if o == nil || IsNil(o.SubTotal) {
-		return nil, false
-	}
-	return o.SubTotal, true
-}
-
-// HasSubTotal returns a boolean if a field has been set.
-func (o *GetProformaResult) HasSubTotal() bool {
-	if o != nil && !IsNil(o.SubTotal) {
-		return true
-	}
-
-	return false
-}
-
-// SetSubTotal gets a reference to the given float32 and assigns it to the SubTotal field.
-func (o *GetProformaResult) SetSubTotal(v float32) {
-	o.SubTotal = &v
-}
-
 // GetTotal returns the Total field value if set, zero value otherwise.
 func (o *GetProformaResult) GetTotal() float32 {
 	if o == nil || IsNil(o.Total) {
@@ -243,6 +116,38 @@ func (o *GetProformaResult) HasTotal() bool {
 // SetTotal gets a reference to the given float32 and assigns it to the Total field.
 func (o *GetProformaResult) SetTotal(v float32) {
 	o.Total = &v
+}
+
+// GetSubTotal returns the SubTotal field value if set, zero value otherwise.
+func (o *GetProformaResult) GetSubTotal() float32 {
+	if o == nil || IsNil(o.SubTotal) {
+		var ret float32
+		return ret
+	}
+	return *o.SubTotal
+}
+
+// GetSubTotalOk returns a tuple with the SubTotal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetProformaResult) GetSubTotalOk() (*float32, bool) {
+	if o == nil || IsNil(o.SubTotal) {
+		return nil, false
+	}
+	return o.SubTotal, true
+}
+
+// HasSubTotal returns a boolean if a field has been set.
+func (o *GetProformaResult) HasSubTotal() bool {
+	if o != nil && !IsNil(o.SubTotal) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubTotal gets a reference to the given float32 and assigns it to the SubTotal field.
+func (o *GetProformaResult) SetSubTotal(v float32) {
+	o.SubTotal = &v
 }
 
 // GetVatAmount returns the VatAmount field value if set, zero value otherwise.
@@ -277,6 +182,102 @@ func (o *GetProformaResult) SetVatAmount(v float32) {
 	o.VatAmount = &v
 }
 
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *GetProformaResult) GetCurrency() string {
+	if o == nil || IsNil(o.Currency) {
+		var ret string
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetProformaResult) GetCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.Currency) {
+		return nil, false
+	}
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *GetProformaResult) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *GetProformaResult) SetCurrency(v string) {
+	o.Currency = &v
+}
+
+// GetContractItems returns the ContractItems field value if set, zero value otherwise.
+func (o *GetProformaResult) GetContractItems() []LineItem1 {
+	if o == nil || IsNil(o.ContractItems) {
+		var ret []LineItem1
+		return ret
+	}
+	return o.ContractItems
+}
+
+// GetContractItemsOk returns a tuple with the ContractItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetProformaResult) GetContractItemsOk() ([]LineItem1, bool) {
+	if o == nil || IsNil(o.ContractItems) {
+		return nil, false
+	}
+	return o.ContractItems, true
+}
+
+// HasContractItems returns a boolean if a field has been set.
+func (o *GetProformaResult) HasContractItems() bool {
+	if o != nil && !IsNil(o.ContractItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetContractItems gets a reference to the given []LineItem1 and assigns it to the ContractItems field.
+func (o *GetProformaResult) SetContractItems(v []LineItem1) {
+	o.ContractItems = v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *GetProformaResult) GetMetadata() Metadata {
+	if o == nil || IsNil(o.Metadata) {
+		var ret Metadata
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetProformaResult) GetMetadataOk() (*Metadata, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *GetProformaResult) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given Metadata and assigns it to the Metadata field.
+func (o *GetProformaResult) SetMetadata(v Metadata) {
+	o.Metadata = &v
+}
+
 func (o GetProformaResult) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -287,26 +288,26 @@ func (o GetProformaResult) MarshalJSON() ([]byte, error) {
 
 func (o GetProformaResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Metadata) {
-		toSerialize["_metadata"] = o.Metadata
-	}
-	if !IsNil(o.ContractItems) {
-		toSerialize["contractItems"] = o.ContractItems
-	}
-	if !IsNil(o.Currency) {
-		toSerialize["currency"] = o.Currency
-	}
 	if !IsNil(o.ProformaDate) {
 		toSerialize["proformaDate"] = o.ProformaDate
-	}
-	if !IsNil(o.SubTotal) {
-		toSerialize["subTotal"] = o.SubTotal
 	}
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
 	}
+	if !IsNil(o.SubTotal) {
+		toSerialize["subTotal"] = o.SubTotal
+	}
 	if !IsNil(o.VatAmount) {
 		toSerialize["vatAmount"] = o.VatAmount
+	}
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
+	}
+	if !IsNil(o.ContractItems) {
+		toSerialize["contractItems"] = o.ContractItems
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["_metadata"] = o.Metadata
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -330,13 +331,13 @@ func (o *GetProformaResult) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_metadata")
-		delete(additionalProperties, "contractItems")
-		delete(additionalProperties, "currency")
 		delete(additionalProperties, "proformaDate")
-		delete(additionalProperties, "subTotal")
 		delete(additionalProperties, "total")
+		delete(additionalProperties, "subTotal")
 		delete(additionalProperties, "vatAmount")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "contractItems")
+		delete(additionalProperties, "_metadata")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetIPList**](IpmgmtAPI.md#GetIPList) | **Get** /ips | List IPs
 [**GetNullRouteHistoryList**](IpmgmtAPI.md#GetNullRouteHistoryList) | **Get** /nullRoutes | Inspect null route history
+[**GetNullRoutedList**](IpmgmtAPI.md#GetNullRoutedList) | **Get** /ips/{ip}/nullRouted | List null routed IPv6
 [**GetReverseLookupRecordList**](IpmgmtAPI.md#GetReverseLookupRecordList) | **Get** /ips/{ip}/reverseLookup | List reverse lookup records for an IPv6 range
 [**InspectIP**](IpmgmtAPI.md#InspectIP) | **Get** /ips/{ip} | Inspect an IP
 [**InspectNullRouteHistory**](IpmgmtAPI.md#InspectNullRouteHistory) | **Get** /nullRoutes/{id} | Inspect null route history
@@ -179,6 +180,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetNullRouteHistoryListResult**](GetNullRouteHistoryListResult.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetNullRoutedList
+
+> GetNullRoutedListResult GetNullRoutedList(ctx, ip).Limit(limit).Offset(offset).Execute()
+
+List null routed IPv6
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+)
+
+func main() {
+	ip := "192.0.2.1" // string | IP address or IP address with prefixLength {ip}_{prefix}. If prefixLength is not given, then we assume 32 (for IPv4) or 128 (for IPv6). PrefixLength is mandatory for IP range, for example, the IPv6 address range with prefixLength = 112
+	limit := int32(20) // int32 | Limit the number of results returned. (optional)
+	offset := int32(10) // int32 | Return results starting from the given offset. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IpmgmtAPI.GetNullRoutedList(context.Background(), ip).Limit(limit).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IpmgmtAPI.GetNullRoutedList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetNullRoutedList`: GetNullRoutedListResult
+	fmt.Fprintf(os.Stdout, "Response from `IpmgmtAPI.GetNullRoutedList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**ip** | **string** | IP address or IP address with prefixLength {ip}_{prefix}. If prefixLength is not given, then we assume 32 (for IPv4) or 128 (for IPv6). PrefixLength is mandatory for IP range, for example, the IPv6 address range with prefixLength &#x3D; 112 | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetNullRoutedListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Limit the number of results returned. | 
+ **offset** | **int32** | Return results starting from the given offset. | 
+
+### Return type
+
+[**GetNullRoutedListResult**](GetNullRoutedListResult.md)
 
 ### Authorization
 

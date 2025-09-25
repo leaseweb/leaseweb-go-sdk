@@ -1,7 +1,7 @@
 /*
 Invoices
 
-> The base URL for this API is: **https://api.leaseweb.com/invoices/v1/_**
+The base URL for this API is: https://api.leaseweb.com/invoices/v1/ This API provides an overview of all your Invoices  
 
 API version: v1
 */
@@ -19,28 +19,30 @@ var _ MappedNullable = &GetInvoiceResult{}
 
 // GetInvoiceResult struct for GetInvoiceResult
 type GetInvoiceResult struct {
-	// All the credits attached to the invoice
-	Credits []Credit `json:"credits,omitempty"`
-	// The currency of the invoice.
-	Currency *string `json:"currency,omitempty"`
+	// The unique id of the invoice
+	Id *string `json:"id,omitempty"`
 	// The date the invoice was issued
 	Date *string `json:"date,omitempty"`
 	// The date the invoice is due for payment
 	DueDate *string `json:"dueDate,omitempty"`
-	// The unique id of the invoice
-	Id *string `json:"id,omitempty"`
-	// The invoice can be paid partially
-	IsPartialPaymentAllowed *bool `json:"isPartialPaymentAllowed,omitempty"`
-	// All the line items attached to the invoice
-	LineItems []LineItem `json:"lineItems,omitempty"`
-	// The open amount of the invoice
-	OpenAmount *float32 `json:"openAmount,omitempty"`
-	// The status of the invoice.
-	Status *string `json:"status,omitempty"`
 	// The tax amount of the invoice
 	TaxAmount *float32 `json:"taxAmount,omitempty"`
 	// The total amount of the invoice
 	Total *float32 `json:"total,omitempty"`
+	// The total amount of the invoice without the tax amount included
+	NetAmount *float32 `json:"netAmount,omitempty"`
+	// The open amount of the invoice
+	OpenAmount *float32 `json:"openAmount,omitempty"`
+	// The currency of the service price
+	Currency *string `json:"currency,omitempty"`
+	// The invoice can be paid partially
+	IsPartialPaymentAllowed *bool `json:"isPartialPaymentAllowed,omitempty"`
+	// The status of the invoice.
+	Status *string `json:"status,omitempty"`
+	// Array of Credits
+	Credits []Credit `json:"credits,omitempty"`
+	// All the line items attached to the invoice
+	LineItems []LineItem `json:"lineItems,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -63,68 +65,36 @@ func NewGetInvoiceResultWithDefaults() *GetInvoiceResult {
 	return &this
 }
 
-// GetCredits returns the Credits field value if set, zero value otherwise.
-func (o *GetInvoiceResult) GetCredits() []Credit {
-	if o == nil || IsNil(o.Credits) {
-		var ret []Credit
-		return ret
-	}
-	return o.Credits
-}
-
-// GetCreditsOk returns a tuple with the Credits field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetInvoiceResult) GetCreditsOk() ([]Credit, bool) {
-	if o == nil || IsNil(o.Credits) {
-		return nil, false
-	}
-	return o.Credits, true
-}
-
-// HasCredits returns a boolean if a field has been set.
-func (o *GetInvoiceResult) HasCredits() bool {
-	if o != nil && !IsNil(o.Credits) {
-		return true
-	}
-
-	return false
-}
-
-// SetCredits gets a reference to the given []Credit and assigns it to the Credits field.
-func (o *GetInvoiceResult) SetCredits(v []Credit) {
-	o.Credits = v
-}
-
-// GetCurrency returns the Currency field value if set, zero value otherwise.
-func (o *GetInvoiceResult) GetCurrency() string {
-	if o == nil || IsNil(o.Currency) {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *GetInvoiceResult) GetId() string {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-	return *o.Currency
+	return *o.Id
 }
 
-// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetInvoiceResult) GetCurrencyOk() (*string, bool) {
-	if o == nil || IsNil(o.Currency) {
+func (o *GetInvoiceResult) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.Currency, true
+	return o.Id, true
 }
 
-// HasCurrency returns a boolean if a field has been set.
-func (o *GetInvoiceResult) HasCurrency() bool {
-	if o != nil && !IsNil(o.Currency) {
+// HasId returns a boolean if a field has been set.
+func (o *GetInvoiceResult) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrency gets a reference to the given string and assigns it to the Currency field.
-func (o *GetInvoiceResult) SetCurrency(v string) {
-	o.Currency = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *GetInvoiceResult) SetId(v string) {
+	o.Id = &v
 }
 
 // GetDate returns the Date field value if set, zero value otherwise.
@@ -191,166 +161,6 @@ func (o *GetInvoiceResult) SetDueDate(v string) {
 	o.DueDate = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *GetInvoiceResult) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetInvoiceResult) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *GetInvoiceResult) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *GetInvoiceResult) SetId(v string) {
-	o.Id = &v
-}
-
-// GetIsPartialPaymentAllowed returns the IsPartialPaymentAllowed field value if set, zero value otherwise.
-func (o *GetInvoiceResult) GetIsPartialPaymentAllowed() bool {
-	if o == nil || IsNil(o.IsPartialPaymentAllowed) {
-		var ret bool
-		return ret
-	}
-	return *o.IsPartialPaymentAllowed
-}
-
-// GetIsPartialPaymentAllowedOk returns a tuple with the IsPartialPaymentAllowed field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetInvoiceResult) GetIsPartialPaymentAllowedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsPartialPaymentAllowed) {
-		return nil, false
-	}
-	return o.IsPartialPaymentAllowed, true
-}
-
-// HasIsPartialPaymentAllowed returns a boolean if a field has been set.
-func (o *GetInvoiceResult) HasIsPartialPaymentAllowed() bool {
-	if o != nil && !IsNil(o.IsPartialPaymentAllowed) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsPartialPaymentAllowed gets a reference to the given bool and assigns it to the IsPartialPaymentAllowed field.
-func (o *GetInvoiceResult) SetIsPartialPaymentAllowed(v bool) {
-	o.IsPartialPaymentAllowed = &v
-}
-
-// GetLineItems returns the LineItems field value if set, zero value otherwise.
-func (o *GetInvoiceResult) GetLineItems() []LineItem {
-	if o == nil || IsNil(o.LineItems) {
-		var ret []LineItem
-		return ret
-	}
-	return o.LineItems
-}
-
-// GetLineItemsOk returns a tuple with the LineItems field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetInvoiceResult) GetLineItemsOk() ([]LineItem, bool) {
-	if o == nil || IsNil(o.LineItems) {
-		return nil, false
-	}
-	return o.LineItems, true
-}
-
-// HasLineItems returns a boolean if a field has been set.
-func (o *GetInvoiceResult) HasLineItems() bool {
-	if o != nil && !IsNil(o.LineItems) {
-		return true
-	}
-
-	return false
-}
-
-// SetLineItems gets a reference to the given []LineItem and assigns it to the LineItems field.
-func (o *GetInvoiceResult) SetLineItems(v []LineItem) {
-	o.LineItems = v
-}
-
-// GetOpenAmount returns the OpenAmount field value if set, zero value otherwise.
-func (o *GetInvoiceResult) GetOpenAmount() float32 {
-	if o == nil || IsNil(o.OpenAmount) {
-		var ret float32
-		return ret
-	}
-	return *o.OpenAmount
-}
-
-// GetOpenAmountOk returns a tuple with the OpenAmount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetInvoiceResult) GetOpenAmountOk() (*float32, bool) {
-	if o == nil || IsNil(o.OpenAmount) {
-		return nil, false
-	}
-	return o.OpenAmount, true
-}
-
-// HasOpenAmount returns a boolean if a field has been set.
-func (o *GetInvoiceResult) HasOpenAmount() bool {
-	if o != nil && !IsNil(o.OpenAmount) {
-		return true
-	}
-
-	return false
-}
-
-// SetOpenAmount gets a reference to the given float32 and assigns it to the OpenAmount field.
-func (o *GetInvoiceResult) SetOpenAmount(v float32) {
-	o.OpenAmount = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *GetInvoiceResult) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetInvoiceResult) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *GetInvoiceResult) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *GetInvoiceResult) SetStatus(v string) {
-	o.Status = &v
-}
-
 // GetTaxAmount returns the TaxAmount field value if set, zero value otherwise.
 func (o *GetInvoiceResult) GetTaxAmount() float32 {
 	if o == nil || IsNil(o.TaxAmount) {
@@ -415,6 +225,230 @@ func (o *GetInvoiceResult) SetTotal(v float32) {
 	o.Total = &v
 }
 
+// GetNetAmount returns the NetAmount field value if set, zero value otherwise.
+func (o *GetInvoiceResult) GetNetAmount() float32 {
+	if o == nil || IsNil(o.NetAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.NetAmount
+}
+
+// GetNetAmountOk returns a tuple with the NetAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetInvoiceResult) GetNetAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.NetAmount) {
+		return nil, false
+	}
+	return o.NetAmount, true
+}
+
+// HasNetAmount returns a boolean if a field has been set.
+func (o *GetInvoiceResult) HasNetAmount() bool {
+	if o != nil && !IsNil(o.NetAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetAmount gets a reference to the given float32 and assigns it to the NetAmount field.
+func (o *GetInvoiceResult) SetNetAmount(v float32) {
+	o.NetAmount = &v
+}
+
+// GetOpenAmount returns the OpenAmount field value if set, zero value otherwise.
+func (o *GetInvoiceResult) GetOpenAmount() float32 {
+	if o == nil || IsNil(o.OpenAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.OpenAmount
+}
+
+// GetOpenAmountOk returns a tuple with the OpenAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetInvoiceResult) GetOpenAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.OpenAmount) {
+		return nil, false
+	}
+	return o.OpenAmount, true
+}
+
+// HasOpenAmount returns a boolean if a field has been set.
+func (o *GetInvoiceResult) HasOpenAmount() bool {
+	if o != nil && !IsNil(o.OpenAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenAmount gets a reference to the given float32 and assigns it to the OpenAmount field.
+func (o *GetInvoiceResult) SetOpenAmount(v float32) {
+	o.OpenAmount = &v
+}
+
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *GetInvoiceResult) GetCurrency() string {
+	if o == nil || IsNil(o.Currency) {
+		var ret string
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetInvoiceResult) GetCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.Currency) {
+		return nil, false
+	}
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *GetInvoiceResult) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *GetInvoiceResult) SetCurrency(v string) {
+	o.Currency = &v
+}
+
+// GetIsPartialPaymentAllowed returns the IsPartialPaymentAllowed field value if set, zero value otherwise.
+func (o *GetInvoiceResult) GetIsPartialPaymentAllowed() bool {
+	if o == nil || IsNil(o.IsPartialPaymentAllowed) {
+		var ret bool
+		return ret
+	}
+	return *o.IsPartialPaymentAllowed
+}
+
+// GetIsPartialPaymentAllowedOk returns a tuple with the IsPartialPaymentAllowed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetInvoiceResult) GetIsPartialPaymentAllowedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsPartialPaymentAllowed) {
+		return nil, false
+	}
+	return o.IsPartialPaymentAllowed, true
+}
+
+// HasIsPartialPaymentAllowed returns a boolean if a field has been set.
+func (o *GetInvoiceResult) HasIsPartialPaymentAllowed() bool {
+	if o != nil && !IsNil(o.IsPartialPaymentAllowed) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsPartialPaymentAllowed gets a reference to the given bool and assigns it to the IsPartialPaymentAllowed field.
+func (o *GetInvoiceResult) SetIsPartialPaymentAllowed(v bool) {
+	o.IsPartialPaymentAllowed = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *GetInvoiceResult) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetInvoiceResult) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *GetInvoiceResult) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *GetInvoiceResult) SetStatus(v string) {
+	o.Status = &v
+}
+
+// GetCredits returns the Credits field value if set, zero value otherwise.
+func (o *GetInvoiceResult) GetCredits() []Credit {
+	if o == nil || IsNil(o.Credits) {
+		var ret []Credit
+		return ret
+	}
+	return o.Credits
+}
+
+// GetCreditsOk returns a tuple with the Credits field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetInvoiceResult) GetCreditsOk() ([]Credit, bool) {
+	if o == nil || IsNil(o.Credits) {
+		return nil, false
+	}
+	return o.Credits, true
+}
+
+// HasCredits returns a boolean if a field has been set.
+func (o *GetInvoiceResult) HasCredits() bool {
+	if o != nil && !IsNil(o.Credits) {
+		return true
+	}
+
+	return false
+}
+
+// SetCredits gets a reference to the given []Credit and assigns it to the Credits field.
+func (o *GetInvoiceResult) SetCredits(v []Credit) {
+	o.Credits = v
+}
+
+// GetLineItems returns the LineItems field value if set, zero value otherwise.
+func (o *GetInvoiceResult) GetLineItems() []LineItem {
+	if o == nil || IsNil(o.LineItems) {
+		var ret []LineItem
+		return ret
+	}
+	return o.LineItems
+}
+
+// GetLineItemsOk returns a tuple with the LineItems field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetInvoiceResult) GetLineItemsOk() ([]LineItem, bool) {
+	if o == nil || IsNil(o.LineItems) {
+		return nil, false
+	}
+	return o.LineItems, true
+}
+
+// HasLineItems returns a boolean if a field has been set.
+func (o *GetInvoiceResult) HasLineItems() bool {
+	if o != nil && !IsNil(o.LineItems) {
+		return true
+	}
+
+	return false
+}
+
+// SetLineItems gets a reference to the given []LineItem and assigns it to the LineItems field.
+func (o *GetInvoiceResult) SetLineItems(v []LineItem) {
+	o.LineItems = v
+}
+
 func (o GetInvoiceResult) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -425,11 +459,8 @@ func (o GetInvoiceResult) MarshalJSON() ([]byte, error) {
 
 func (o GetInvoiceResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Credits) {
-		toSerialize["credits"] = o.Credits
-	}
-	if !IsNil(o.Currency) {
-		toSerialize["currency"] = o.Currency
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.Date) {
 		toSerialize["date"] = o.Date
@@ -437,26 +468,32 @@ func (o GetInvoiceResult) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DueDate) {
 		toSerialize["dueDate"] = o.DueDate
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.IsPartialPaymentAllowed) {
-		toSerialize["isPartialPaymentAllowed"] = o.IsPartialPaymentAllowed
-	}
-	if !IsNil(o.LineItems) {
-		toSerialize["lineItems"] = o.LineItems
-	}
-	if !IsNil(o.OpenAmount) {
-		toSerialize["openAmount"] = o.OpenAmount
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
 	if !IsNil(o.TaxAmount) {
 		toSerialize["taxAmount"] = o.TaxAmount
 	}
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
+	}
+	if !IsNil(o.NetAmount) {
+		toSerialize["netAmount"] = o.NetAmount
+	}
+	if !IsNil(o.OpenAmount) {
+		toSerialize["openAmount"] = o.OpenAmount
+	}
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
+	}
+	if !IsNil(o.IsPartialPaymentAllowed) {
+		toSerialize["isPartialPaymentAllowed"] = o.IsPartialPaymentAllowed
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Credits) {
+		toSerialize["credits"] = o.Credits
+	}
+	if !IsNil(o.LineItems) {
+		toSerialize["lineItems"] = o.LineItems
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -480,17 +517,18 @@ func (o *GetInvoiceResult) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "credits")
-		delete(additionalProperties, "currency")
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "date")
 		delete(additionalProperties, "dueDate")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "isPartialPaymentAllowed")
-		delete(additionalProperties, "lineItems")
-		delete(additionalProperties, "openAmount")
-		delete(additionalProperties, "status")
 		delete(additionalProperties, "taxAmount")
 		delete(additionalProperties, "total")
+		delete(additionalProperties, "netAmount")
+		delete(additionalProperties, "openAmount")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "isPartialPaymentAllowed")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "credits")
+		delete(additionalProperties, "lineItems")
 		o.AdditionalProperties = additionalProperties
 	}
 

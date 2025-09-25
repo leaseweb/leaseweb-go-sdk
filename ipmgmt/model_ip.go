@@ -28,6 +28,8 @@ type Ip struct {
 	PrefixLength int32 `json:"prefixLength"`
 	// Boolean indicating if this is the primary IP of the assigned equipment
 	Primary bool `json:"primary"`
+	// Indicates if the IP is a Floating IP
+	FloatingIp bool `json:"floatingIp"`
 	// Reverse lookup set for the IP. This only applies to IPv4. For IPv6 see [GET /ips/{ip}/reverseLookup](#operation/get/ips/{ip}/reverseLookup).
 	ReverseLookup NullableString `json:"reverseLookup"`
 	// Boolean to indicate if the IP is null-routed
@@ -49,13 +51,14 @@ type _Ip Ip
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIp(ip string, version ProtocolVersion, type_ IpType, prefixLength int32, primary bool, reverseLookup NullableString, nullRouted bool, nullLevel NullableInt32, unnullingAllowed bool, equipmentId string, assignedContract NullableAssignedContract, subnet Subnet) *Ip {
+func NewIp(ip string, version ProtocolVersion, type_ IpType, prefixLength int32, primary bool, floatingIp bool, reverseLookup NullableString, nullRouted bool, nullLevel NullableInt32, unnullingAllowed bool, equipmentId string, assignedContract NullableAssignedContract, subnet Subnet) *Ip {
 	this := Ip{}
 	this.Ip = ip
 	this.Version = version
 	this.Type = type_
 	this.PrefixLength = prefixLength
 	this.Primary = primary
+	this.FloatingIp = floatingIp
 	this.ReverseLookup = reverseLookup
 	this.NullRouted = nullRouted
 	this.NullLevel = nullLevel
@@ -198,6 +201,30 @@ func (o *Ip) GetPrimaryOk() (*bool, bool) {
 // SetPrimary sets field value
 func (o *Ip) SetPrimary(v bool) {
 	o.Primary = v
+}
+
+// GetFloatingIp returns the FloatingIp field value
+func (o *Ip) GetFloatingIp() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.FloatingIp
+}
+
+// GetFloatingIpOk returns a tuple with the FloatingIp field value
+// and a boolean to check if the value has been set.
+func (o *Ip) GetFloatingIpOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FloatingIp, true
+}
+
+// SetFloatingIp sets field value
+func (o *Ip) SetFloatingIp(v bool) {
+	o.FloatingIp = v
 }
 
 // GetReverseLookup returns the ReverseLookup field value
@@ -389,6 +416,7 @@ func (o Ip) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	toSerialize["prefixLength"] = o.PrefixLength
 	toSerialize["primary"] = o.Primary
+	toSerialize["floatingIp"] = o.FloatingIp
 	toSerialize["reverseLookup"] = o.ReverseLookup.Get()
 	toSerialize["nullRouted"] = o.NullRouted
 	toSerialize["nullLevel"] = o.NullLevel.Get()
@@ -414,6 +442,7 @@ func (o *Ip) UnmarshalJSON(data []byte) (err error) {
 		"type",
 		"prefixLength",
 		"primary",
+		"floatingIp",
 		"reverseLookup",
 		"nullRouted",
 		"nullLevel",
@@ -455,6 +484,7 @@ func (o *Ip) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "prefixLength")
 		delete(additionalProperties, "primary")
+		delete(additionalProperties, "floatingIp")
 		delete(additionalProperties, "reverseLookup")
 		delete(additionalProperties, "nullRouted")
 		delete(additionalProperties, "nullLevel")

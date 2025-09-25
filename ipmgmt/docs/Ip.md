@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Type** | [**IpType**](IpType.md) |  | 
 **PrefixLength** | **int32** | Prefix length of the IP range represented by the record. Note: this is not the same as &#x60;subnet.prefixLength&#x60;. | [default to 0]
 **Primary** | **bool** | Boolean indicating if this is the primary IP of the assigned equipment | 
+**FloatingIp** | **bool** | Indicates if the IP is a Floating IP | 
 **ReverseLookup** | **NullableString** | Reverse lookup set for the IP. This only applies to IPv4. For IPv6 see [GET /ips/{ip}/reverseLookup](#operation/get/ips/{ip}/reverseLookup). | 
 **NullRouted** | **bool** | Boolean to indicate if the IP is null-routed | [default to false]
 **NullLevel** | **NullableInt32** | Null route level | 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewIp
 
-`func NewIp(ip string, version ProtocolVersion, type_ IpType, prefixLength int32, primary bool, reverseLookup NullableString, nullRouted bool, nullLevel NullableInt32, unnullingAllowed bool, equipmentId string, assignedContract NullableAssignedContract, subnet Subnet, ) *Ip`
+`func NewIp(ip string, version ProtocolVersion, type_ IpType, prefixLength int32, primary bool, floatingIp bool, reverseLookup NullableString, nullRouted bool, nullLevel NullableInt32, unnullingAllowed bool, equipmentId string, assignedContract NullableAssignedContract, subnet Subnet, ) *Ip`
 
 NewIp instantiates a new Ip object
 This constructor will assign default values to properties that have it defined,
@@ -134,6 +135,26 @@ and a boolean to check if the value has been set.
 `func (o *Ip) SetPrimary(v bool)`
 
 SetPrimary sets Primary field to given value.
+
+
+### GetFloatingIp
+
+`func (o *Ip) GetFloatingIp() bool`
+
+GetFloatingIp returns the FloatingIp field if non-nil, zero value otherwise.
+
+### GetFloatingIpOk
+
+`func (o *Ip) GetFloatingIpOk() (*bool, bool)`
+
+GetFloatingIpOk returns a tuple with the FloatingIp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFloatingIp
+
+`func (o *Ip) SetFloatingIp(v bool)`
+
+SetFloatingIp sets FloatingIp field to given value.
 
 
 ### GetReverseLookup

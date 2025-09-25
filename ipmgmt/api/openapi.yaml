@@ -177,6 +177,7 @@ paths:
                   type: NORMAL_IP
                   prefixLength: 32
                   primary: true
+                  floatingIp: false
                   reverseLookup: mydomain1.example.com
                   nullRouted: false
                   nullLevel: null
@@ -194,6 +195,7 @@ paths:
                   type: NORMAL_IP
                   prefixLength: 32
                   primary: false
+                  floatingIp: false
                   reverseLookup: mydomain2.example.com
                   nullRouted: false
                   nullLevel: null
@@ -278,6 +280,7 @@ paths:
                 type: NORMAL_IP
                 prefixLength: 32
                 primary: true
+                floatingIp: false
                 reverseLookup: mydomain1.example.com
                 nullRouted: false
                 nullLevel: null
@@ -367,6 +370,7 @@ paths:
                 type: NORMAL_IP
                 prefixLength: 32
                 primary: true
+                floatingIp: false
                 reverseLookup: mydomain1.example.com
                 nullRouted: false
                 nullLevel: null
@@ -776,6 +780,113 @@ paths:
                 $ref: '#/components/schemas/errorResult'
           description: Service Unavailable.
       summary: Null route an IP
+      tags:
+      - ipmgmt
+  /ips/{ip}/nullRouted:
+    get:
+      description: Get null routed IPv6 addresses in the specified range
+      operationId: getNullRoutedList
+      parameters:
+      - description: "IP address or IP address with prefixLength {ip}_{prefix}. If\
+          \ prefixLength is not given, then we assume 32 (for IPv4) or 128 (for IPv6).\
+          \ PrefixLength is mandatory for IP range, for example, the IPv6 address\
+          \ range with prefixLength = 112"
+        example: 192.0.2.1
+        explode: false
+        in: path
+        name: ip
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Limit the number of results returned.
+        example: 20
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Return results starting from the given offset.
+        example: 10
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                _metadata:
+                  totalCount: 3
+                  offset: 0
+                  limit: 2
+                nullRoutes:
+                - ip: 2001:db8::0
+                  nullLevel: 3
+                  unnullingAllowed: false
+                - ip: 2001:db8::1
+                  nullLevel: 1
+                  unnullingAllowed: true
+              schema:
+                $ref: '#/components/schemas/getNullRoutedListResult'
+          description: ""
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: List null routed IPv6
       tags:
       - ipmgmt
   /nullRoutes:
@@ -1250,6 +1361,16 @@ components:
           schema:
             $ref: '#/components/schemas/errorResult'
       description: Forbidden.
+    "404":
+      content:
+        application/json:
+          example:
+            correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+            errorCode: "404"
+            errorMessage: Resource not found
+          schema:
+            $ref: '#/components/schemas/errorResult'
+      description: Not Found.
     "500":
       content:
         application/json:
@@ -1302,22 +1423,23 @@ components:
       type: object
     ip:
       example:
-        prefixLength: 6
         nullLevel: 1
         subnet:
           prefixLength: 5
           networkIp: networkIp
           id: id
           gateway: gateway
-        unnullingAllowed: false
-        reverseLookup: reverseLookup
+        floatingIp: true
         ip: ip
-        nullRouted: false
-        assignedContract:
-          id: "123456"
         type: NORMAL_IP
         version: 0
         equipmentId: equipmentId
+        prefixLength: 6
+        unnullingAllowed: false
+        reverseLookup: reverseLookup
+        nullRouted: false
+        assignedContract:
+          id: "123456"
         primary: true
       properties:
         ip:
@@ -1335,6 +1457,9 @@ components:
         primary:
           description: Boolean indicating if this is the primary IP of the assigned
             equipment
+          type: boolean
+        floatingIp:
+          description: Indicates if the IP is a Floating IP
           type: boolean
         reverseLookup:
           description: "Reverse lookup set for the IP. This only applies to IPv4.\
@@ -1363,6 +1488,7 @@ components:
       required:
       - assignedContract
       - equipmentId
+      - floatingIp
       - ip
       - nullLevel
       - nullRouted
@@ -1412,39 +1538,41 @@ components:
           limit: 5
           totalCount: 2
         ips:
-        - prefixLength: 6
-          nullLevel: 1
+        - nullLevel: 1
           subnet:
             prefixLength: 5
             networkIp: networkIp
             id: id
             gateway: gateway
-          unnullingAllowed: false
-          reverseLookup: reverseLookup
+          floatingIp: true
           ip: ip
-          nullRouted: false
-          assignedContract:
-            id: "123456"
           type: NORMAL_IP
           version: 0
           equipmentId: equipmentId
+          prefixLength: 6
+          unnullingAllowed: false
+          reverseLookup: reverseLookup
+          nullRouted: false
+          assignedContract:
+            id: "123456"
           primary: true
-        - prefixLength: 6
-          nullLevel: 1
+        - nullLevel: 1
           subnet:
             prefixLength: 5
             networkIp: networkIp
             id: id
             gateway: gateway
-          unnullingAllowed: false
-          reverseLookup: reverseLookup
+          floatingIp: true
           ip: ip
-          nullRouted: false
-          assignedContract:
-            id: "123456"
           type: NORMAL_IP
           version: 0
           equipmentId: equipmentId
+          prefixLength: 6
+          unnullingAllowed: false
+          reverseLookup: reverseLookup
+          nullRouted: false
+          assignedContract:
+            id: "123456"
           primary: true
       properties:
         ips:
@@ -1663,6 +1791,53 @@ components:
       - ticketId
       - unnulledAt
       - unnulledBy
+    nullRoutedIPv6:
+      example:
+        nullLevel: 0
+        unnullingAllowed: true
+        ip: ip
+      properties:
+        ip:
+          description: IP address
+          type: string
+        nullLevel:
+          description: Null route level
+          type: integer
+        unnullingAllowed:
+          description: Describes whether the current user is allowed to unnull the
+            IP
+          type: boolean
+      required:
+      - ip
+      - nullLevel
+      - unnullingAllowed
+      title: nullRoutedIPv6
+      type: object
+    getNullRoutedListResult:
+      description: Object containing a list of null routed IPv6
+      example:
+        nullRoutes:
+        - nullLevel: 0
+          unnullingAllowed: true
+          ip: ip
+        - nullLevel: 0
+          unnullingAllowed: true
+          ip: ip
+        _metadata:
+          offset: 0
+          limit: 5
+          totalCount: 2
+      properties:
+        nullRoutes:
+          items:
+            $ref: '#/components/schemas/nullRoutedIPv6'
+          type: array
+        _metadata:
+          $ref: '#/components/schemas/_metadata'
+      required:
+      - _metadata
+      - nullRoutes
+      type: object
     getNullRouteHistoryListResult:
       example:
         nullroutes:

@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Currency** | Pointer to **string** | The currency of the invoice. | [optional] 
-**Date** | Pointer to **string** | The date the invoice was issued | [optional] 
-**DueDate** | Pointer to **string** | The date the invoice is due for payment | [optional] 
 **Id** | Pointer to **string** | The unique id of the invoice | [optional] 
-**IsPartialPaymentAllowed** | Pointer to **bool** | The invoice can be paid partially | [optional] 
-**OpenAmount** | Pointer to **float32** | The open amount of the invoice | [optional] 
-**Status** | Pointer to **string** | The status of the invoice. | [optional] 
-**TaxAmount** | Pointer to **float32** | The tax amount of the invoice | [optional] 
+**Date** | Pointer to **string** | The date the invoice was issued (UTC) | [optional] 
+**DueDate** | Pointer to **string** | The date the invoice is due for payment (UTC) | [optional] 
+**TaxAmount** | Pointer to **float32** | The amount of tax on the invoice | [optional] 
+**NetAmount** | Pointer to **float32** | The total amount without the tax amount included | [optional] 
 **Total** | Pointer to **float32** | The total amount of the invoice | [optional] 
+**OpenAmount** | Pointer to **float32** | The open amount of the invoice | [optional] 
+**Currency** | Pointer to **string** | The currency of the invoice. | [optional] 
+**IsPartialPaymentAllowed** | Pointer to **bool** | The invoice can be paid partially | [optional] 
+**Status** | Pointer to **string** | The status of the invoice. | [optional] 
 
 ## Methods
 
@@ -33,30 +34,30 @@ NewInvoiceWithDefaults instantiates a new Invoice object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCurrency
+### GetId
 
-`func (o *Invoice) GetCurrency() string`
+`func (o *Invoice) GetId() string`
 
-GetCurrency returns the Currency field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetCurrencyOk
+### GetIdOk
 
-`func (o *Invoice) GetCurrencyOk() (*string, bool)`
+`func (o *Invoice) GetIdOk() (*string, bool)`
 
-GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCurrency
+### SetId
 
-`func (o *Invoice) SetCurrency(v string)`
+`func (o *Invoice) SetId(v string)`
 
-SetCurrency sets Currency field to given value.
+SetId sets Id field to given value.
 
-### HasCurrency
+### HasId
 
-`func (o *Invoice) HasCurrency() bool`
+`func (o *Invoice) HasId() bool`
 
-HasCurrency returns a boolean if a field has been set.
+HasId returns a boolean if a field has been set.
 
 ### GetDate
 
@@ -108,55 +109,80 @@ SetDueDate sets DueDate field to given value.
 
 HasDueDate returns a boolean if a field has been set.
 
-### GetId
+### GetTaxAmount
 
-`func (o *Invoice) GetId() string`
+`func (o *Invoice) GetTaxAmount() float32`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetTaxAmount returns the TaxAmount field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetTaxAmountOk
 
-`func (o *Invoice) GetIdOk() (*string, bool)`
+`func (o *Invoice) GetTaxAmountOk() (*float32, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetTaxAmountOk returns a tuple with the TaxAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetTaxAmount
 
-`func (o *Invoice) SetId(v string)`
+`func (o *Invoice) SetTaxAmount(v float32)`
 
-SetId sets Id field to given value.
+SetTaxAmount sets TaxAmount field to given value.
 
-### HasId
+### HasTaxAmount
 
-`func (o *Invoice) HasId() bool`
+`func (o *Invoice) HasTaxAmount() bool`
 
-HasId returns a boolean if a field has been set.
+HasTaxAmount returns a boolean if a field has been set.
 
-### GetIsPartialPaymentAllowed
+### GetNetAmount
 
-`func (o *Invoice) GetIsPartialPaymentAllowed() bool`
+`func (o *Invoice) GetNetAmount() float32`
 
-GetIsPartialPaymentAllowed returns the IsPartialPaymentAllowed field if non-nil, zero value otherwise.
+GetNetAmount returns the NetAmount field if non-nil, zero value otherwise.
 
-### GetIsPartialPaymentAllowedOk
+### GetNetAmountOk
 
-`func (o *Invoice) GetIsPartialPaymentAllowedOk() (*bool, bool)`
+`func (o *Invoice) GetNetAmountOk() (*float32, bool)`
 
-GetIsPartialPaymentAllowedOk returns a tuple with the IsPartialPaymentAllowed field if it's non-nil, zero value otherwise
+GetNetAmountOk returns a tuple with the NetAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsPartialPaymentAllowed
+### SetNetAmount
 
-`func (o *Invoice) SetIsPartialPaymentAllowed(v bool)`
+`func (o *Invoice) SetNetAmount(v float32)`
 
-SetIsPartialPaymentAllowed sets IsPartialPaymentAllowed field to given value.
+SetNetAmount sets NetAmount field to given value.
 
-### HasIsPartialPaymentAllowed
+### HasNetAmount
 
-`func (o *Invoice) HasIsPartialPaymentAllowed() bool`
+`func (o *Invoice) HasNetAmount() bool`
 
-HasIsPartialPaymentAllowed returns a boolean if a field has been set.
+HasNetAmount returns a boolean if a field has been set.
+
+### GetTotal
+
+`func (o *Invoice) GetTotal() float32`
+
+GetTotal returns the Total field if non-nil, zero value otherwise.
+
+### GetTotalOk
+
+`func (o *Invoice) GetTotalOk() (*float32, bool)`
+
+GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotal
+
+`func (o *Invoice) SetTotal(v float32)`
+
+SetTotal sets Total field to given value.
+
+### HasTotal
+
+`func (o *Invoice) HasTotal() bool`
+
+HasTotal returns a boolean if a field has been set.
 
 ### GetOpenAmount
 
@@ -183,6 +209,56 @@ SetOpenAmount sets OpenAmount field to given value.
 
 HasOpenAmount returns a boolean if a field has been set.
 
+### GetCurrency
+
+`func (o *Invoice) GetCurrency() string`
+
+GetCurrency returns the Currency field if non-nil, zero value otherwise.
+
+### GetCurrencyOk
+
+`func (o *Invoice) GetCurrencyOk() (*string, bool)`
+
+GetCurrencyOk returns a tuple with the Currency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrency
+
+`func (o *Invoice) SetCurrency(v string)`
+
+SetCurrency sets Currency field to given value.
+
+### HasCurrency
+
+`func (o *Invoice) HasCurrency() bool`
+
+HasCurrency returns a boolean if a field has been set.
+
+### GetIsPartialPaymentAllowed
+
+`func (o *Invoice) GetIsPartialPaymentAllowed() bool`
+
+GetIsPartialPaymentAllowed returns the IsPartialPaymentAllowed field if non-nil, zero value otherwise.
+
+### GetIsPartialPaymentAllowedOk
+
+`func (o *Invoice) GetIsPartialPaymentAllowedOk() (*bool, bool)`
+
+GetIsPartialPaymentAllowedOk returns a tuple with the IsPartialPaymentAllowed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsPartialPaymentAllowed
+
+`func (o *Invoice) SetIsPartialPaymentAllowed(v bool)`
+
+SetIsPartialPaymentAllowed sets IsPartialPaymentAllowed field to given value.
+
+### HasIsPartialPaymentAllowed
+
+`func (o *Invoice) HasIsPartialPaymentAllowed() bool`
+
+HasIsPartialPaymentAllowed returns a boolean if a field has been set.
+
 ### GetStatus
 
 `func (o *Invoice) GetStatus() string`
@@ -207,56 +283,6 @@ SetStatus sets Status field to given value.
 `func (o *Invoice) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
-### GetTaxAmount
-
-`func (o *Invoice) GetTaxAmount() float32`
-
-GetTaxAmount returns the TaxAmount field if non-nil, zero value otherwise.
-
-### GetTaxAmountOk
-
-`func (o *Invoice) GetTaxAmountOk() (*float32, bool)`
-
-GetTaxAmountOk returns a tuple with the TaxAmount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTaxAmount
-
-`func (o *Invoice) SetTaxAmount(v float32)`
-
-SetTaxAmount sets TaxAmount field to given value.
-
-### HasTaxAmount
-
-`func (o *Invoice) HasTaxAmount() bool`
-
-HasTaxAmount returns a boolean if a field has been set.
-
-### GetTotal
-
-`func (o *Invoice) GetTotal() float32`
-
-GetTotal returns the Total field if non-nil, zero value otherwise.
-
-### GetTotalOk
-
-`func (o *Invoice) GetTotalOk() (*float32, bool)`
-
-GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTotal
-
-`func (o *Invoice) SetTotal(v float32)`
-
-SetTotal sets Total field to given value.
-
-### HasTotal
-
-`func (o *Invoice) HasTotal() bool`
-
-HasTotal returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

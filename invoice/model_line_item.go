@@ -1,7 +1,7 @@
 /*
 Invoices
 
-> The base URL for this API is: **https://api.leaseweb.com/invoices/v1/_**
+The base URL for this API is: https://api.leaseweb.com/invoices/v1/ This API provides an overview of all your Invoices  
 
 API version: v1
 */
@@ -12,7 +12,6 @@ package invoice
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // checks if the LineItem type satisfies the MappedNullable interface at compile time
@@ -20,24 +19,22 @@ var _ MappedNullable = &LineItem{}
 
 // LineItem struct for LineItem
 type LineItem struct {
-	// The id of the contract
-	ContractId *string `json:"contractId,omitempty"`
-	// The id of the equipment
-	EquipmentId *string `json:"equipmentId,omitempty"`
-	// A string to indicate what kind of product this is.
+	// A string to indicate what kind of product this is
 	Product *string `json:"product,omitempty"`
-	// The quantity of a product
-	Quantity *int32 `json:"quantity,omitempty"`
-	// The reference a customer gave to the service
-	Reference *string `json:"reference,omitempty"`
-	// The total amount of the product
-	Total *float32 `json:"total,omitempty"`
 	// The amount it cost for a single product unit.
 	UnitAmount *float32 `json:"unitAmount,omitempty"`
+	// The total amount of the product
+	TotalAmount *float32 `json:"totalAmount,omitempty"`
 	// The product start date (UTC)
-	FromDate NullableTime `json:"fromDate,omitempty"`
+	FromDate *string `json:"fromDate,omitempty"`
 	// The product end date (UTC)
-	ToDate NullableTime `json:"toDate,omitempty"`
+	ToDate *string `json:"toDate,omitempty"`
+	// The id of the equipment
+	EquipmentId *string `json:"equipmentId,omitempty"`
+	// The id of the contract
+	ContractId *string `json:"contractId,omitempty"`
+	// The quantity of a product
+	Quantity *int32 `json:"quantity,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -58,70 +55,6 @@ func NewLineItem() *LineItem {
 func NewLineItemWithDefaults() *LineItem {
 	this := LineItem{}
 	return &this
-}
-
-// GetContractId returns the ContractId field value if set, zero value otherwise.
-func (o *LineItem) GetContractId() string {
-	if o == nil || IsNil(o.ContractId) {
-		var ret string
-		return ret
-	}
-	return *o.ContractId
-}
-
-// GetContractIdOk returns a tuple with the ContractId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LineItem) GetContractIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ContractId) {
-		return nil, false
-	}
-	return o.ContractId, true
-}
-
-// HasContractId returns a boolean if a field has been set.
-func (o *LineItem) HasContractId() bool {
-	if o != nil && !IsNil(o.ContractId) {
-		return true
-	}
-
-	return false
-}
-
-// SetContractId gets a reference to the given string and assigns it to the ContractId field.
-func (o *LineItem) SetContractId(v string) {
-	o.ContractId = &v
-}
-
-// GetEquipmentId returns the EquipmentId field value if set, zero value otherwise.
-func (o *LineItem) GetEquipmentId() string {
-	if o == nil || IsNil(o.EquipmentId) {
-		var ret string
-		return ret
-	}
-	return *o.EquipmentId
-}
-
-// GetEquipmentIdOk returns a tuple with the EquipmentId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LineItem) GetEquipmentIdOk() (*string, bool) {
-	if o == nil || IsNil(o.EquipmentId) {
-		return nil, false
-	}
-	return o.EquipmentId, true
-}
-
-// HasEquipmentId returns a boolean if a field has been set.
-func (o *LineItem) HasEquipmentId() bool {
-	if o != nil && !IsNil(o.EquipmentId) {
-		return true
-	}
-
-	return false
-}
-
-// SetEquipmentId gets a reference to the given string and assigns it to the EquipmentId field.
-func (o *LineItem) SetEquipmentId(v string) {
-	o.EquipmentId = &v
 }
 
 // GetProduct returns the Product field value if set, zero value otherwise.
@@ -156,102 +89,6 @@ func (o *LineItem) SetProduct(v string) {
 	o.Product = &v
 }
 
-// GetQuantity returns the Quantity field value if set, zero value otherwise.
-func (o *LineItem) GetQuantity() int32 {
-	if o == nil || IsNil(o.Quantity) {
-		var ret int32
-		return ret
-	}
-	return *o.Quantity
-}
-
-// GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LineItem) GetQuantityOk() (*int32, bool) {
-	if o == nil || IsNil(o.Quantity) {
-		return nil, false
-	}
-	return o.Quantity, true
-}
-
-// HasQuantity returns a boolean if a field has been set.
-func (o *LineItem) HasQuantity() bool {
-	if o != nil && !IsNil(o.Quantity) {
-		return true
-	}
-
-	return false
-}
-
-// SetQuantity gets a reference to the given int32 and assigns it to the Quantity field.
-func (o *LineItem) SetQuantity(v int32) {
-	o.Quantity = &v
-}
-
-// GetReference returns the Reference field value if set, zero value otherwise.
-func (o *LineItem) GetReference() string {
-	if o == nil || IsNil(o.Reference) {
-		var ret string
-		return ret
-	}
-	return *o.Reference
-}
-
-// GetReferenceOk returns a tuple with the Reference field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LineItem) GetReferenceOk() (*string, bool) {
-	if o == nil || IsNil(o.Reference) {
-		return nil, false
-	}
-	return o.Reference, true
-}
-
-// HasReference returns a boolean if a field has been set.
-func (o *LineItem) HasReference() bool {
-	if o != nil && !IsNil(o.Reference) {
-		return true
-	}
-
-	return false
-}
-
-// SetReference gets a reference to the given string and assigns it to the Reference field.
-func (o *LineItem) SetReference(v string) {
-	o.Reference = &v
-}
-
-// GetTotal returns the Total field value if set, zero value otherwise.
-func (o *LineItem) GetTotal() float32 {
-	if o == nil || IsNil(o.Total) {
-		var ret float32
-		return ret
-	}
-	return *o.Total
-}
-
-// GetTotalOk returns a tuple with the Total field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LineItem) GetTotalOk() (*float32, bool) {
-	if o == nil || IsNil(o.Total) {
-		return nil, false
-	}
-	return o.Total, true
-}
-
-// HasTotal returns a boolean if a field has been set.
-func (o *LineItem) HasTotal() bool {
-	if o != nil && !IsNil(o.Total) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotal gets a reference to the given float32 and assigns it to the Total field.
-func (o *LineItem) SetTotal(v float32) {
-	o.Total = &v
-}
-
 // GetUnitAmount returns the UnitAmount field value if set, zero value otherwise.
 func (o *LineItem) GetUnitAmount() float32 {
 	if o == nil || IsNil(o.UnitAmount) {
@@ -284,88 +121,196 @@ func (o *LineItem) SetUnitAmount(v float32) {
 	o.UnitAmount = &v
 }
 
-// GetFromDate returns the FromDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LineItem) GetFromDate() time.Time {
-	if o == nil || IsNil(o.FromDate.Get()) {
-		var ret time.Time
+// GetTotalAmount returns the TotalAmount field value if set, zero value otherwise.
+func (o *LineItem) GetTotalAmount() float32 {
+	if o == nil || IsNil(o.TotalAmount) {
+		var ret float32
 		return ret
 	}
-	return *o.FromDate.Get()
+	return *o.TotalAmount
+}
+
+// GetTotalAmountOk returns a tuple with the TotalAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LineItem) GetTotalAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.TotalAmount) {
+		return nil, false
+	}
+	return o.TotalAmount, true
+}
+
+// HasTotalAmount returns a boolean if a field has been set.
+func (o *LineItem) HasTotalAmount() bool {
+	if o != nil && !IsNil(o.TotalAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalAmount gets a reference to the given float32 and assigns it to the TotalAmount field.
+func (o *LineItem) SetTotalAmount(v float32) {
+	o.TotalAmount = &v
+}
+
+// GetFromDate returns the FromDate field value if set, zero value otherwise.
+func (o *LineItem) GetFromDate() string {
+	if o == nil || IsNil(o.FromDate) {
+		var ret string
+		return ret
+	}
+	return *o.FromDate
 }
 
 // GetFromDateOk returns a tuple with the FromDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LineItem) GetFromDateOk() (*time.Time, bool) {
-	if o == nil {
+func (o *LineItem) GetFromDateOk() (*string, bool) {
+	if o == nil || IsNil(o.FromDate) {
 		return nil, false
 	}
-	return o.FromDate.Get(), o.FromDate.IsSet()
+	return o.FromDate, true
 }
 
 // HasFromDate returns a boolean if a field has been set.
 func (o *LineItem) HasFromDate() bool {
-	if o != nil && o.FromDate.IsSet() {
+	if o != nil && !IsNil(o.FromDate) {
 		return true
 	}
 
 	return false
 }
 
-// SetFromDate gets a reference to the given NullableTime and assigns it to the FromDate field.
-func (o *LineItem) SetFromDate(v time.Time) {
-	o.FromDate.Set(&v)
-}
-// SetFromDateNil sets the value for FromDate to be an explicit nil
-func (o *LineItem) SetFromDateNil() {
-	o.FromDate.Set(nil)
+// SetFromDate gets a reference to the given string and assigns it to the FromDate field.
+func (o *LineItem) SetFromDate(v string) {
+	o.FromDate = &v
 }
 
-// UnsetFromDate ensures that no value is present for FromDate, not even an explicit nil
-func (o *LineItem) UnsetFromDate() {
-	o.FromDate.Unset()
-}
-
-// GetToDate returns the ToDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LineItem) GetToDate() time.Time {
-	if o == nil || IsNil(o.ToDate.Get()) {
-		var ret time.Time
+// GetToDate returns the ToDate field value if set, zero value otherwise.
+func (o *LineItem) GetToDate() string {
+	if o == nil || IsNil(o.ToDate) {
+		var ret string
 		return ret
 	}
-	return *o.ToDate.Get()
+	return *o.ToDate
 }
 
 // GetToDateOk returns a tuple with the ToDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LineItem) GetToDateOk() (*time.Time, bool) {
-	if o == nil {
+func (o *LineItem) GetToDateOk() (*string, bool) {
+	if o == nil || IsNil(o.ToDate) {
 		return nil, false
 	}
-	return o.ToDate.Get(), o.ToDate.IsSet()
+	return o.ToDate, true
 }
 
 // HasToDate returns a boolean if a field has been set.
 func (o *LineItem) HasToDate() bool {
-	if o != nil && o.ToDate.IsSet() {
+	if o != nil && !IsNil(o.ToDate) {
 		return true
 	}
 
 	return false
 }
 
-// SetToDate gets a reference to the given NullableTime and assigns it to the ToDate field.
-func (o *LineItem) SetToDate(v time.Time) {
-	o.ToDate.Set(&v)
-}
-// SetToDateNil sets the value for ToDate to be an explicit nil
-func (o *LineItem) SetToDateNil() {
-	o.ToDate.Set(nil)
+// SetToDate gets a reference to the given string and assigns it to the ToDate field.
+func (o *LineItem) SetToDate(v string) {
+	o.ToDate = &v
 }
 
-// UnsetToDate ensures that no value is present for ToDate, not even an explicit nil
-func (o *LineItem) UnsetToDate() {
-	o.ToDate.Unset()
+// GetEquipmentId returns the EquipmentId field value if set, zero value otherwise.
+func (o *LineItem) GetEquipmentId() string {
+	if o == nil || IsNil(o.EquipmentId) {
+		var ret string
+		return ret
+	}
+	return *o.EquipmentId
+}
+
+// GetEquipmentIdOk returns a tuple with the EquipmentId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LineItem) GetEquipmentIdOk() (*string, bool) {
+	if o == nil || IsNil(o.EquipmentId) {
+		return nil, false
+	}
+	return o.EquipmentId, true
+}
+
+// HasEquipmentId returns a boolean if a field has been set.
+func (o *LineItem) HasEquipmentId() bool {
+	if o != nil && !IsNil(o.EquipmentId) {
+		return true
+	}
+
+	return false
+}
+
+// SetEquipmentId gets a reference to the given string and assigns it to the EquipmentId field.
+func (o *LineItem) SetEquipmentId(v string) {
+	o.EquipmentId = &v
+}
+
+// GetContractId returns the ContractId field value if set, zero value otherwise.
+func (o *LineItem) GetContractId() string {
+	if o == nil || IsNil(o.ContractId) {
+		var ret string
+		return ret
+	}
+	return *o.ContractId
+}
+
+// GetContractIdOk returns a tuple with the ContractId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LineItem) GetContractIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ContractId) {
+		return nil, false
+	}
+	return o.ContractId, true
+}
+
+// HasContractId returns a boolean if a field has been set.
+func (o *LineItem) HasContractId() bool {
+	if o != nil && !IsNil(o.ContractId) {
+		return true
+	}
+
+	return false
+}
+
+// SetContractId gets a reference to the given string and assigns it to the ContractId field.
+func (o *LineItem) SetContractId(v string) {
+	o.ContractId = &v
+}
+
+// GetQuantity returns the Quantity field value if set, zero value otherwise.
+func (o *LineItem) GetQuantity() int32 {
+	if o == nil || IsNil(o.Quantity) {
+		var ret int32
+		return ret
+	}
+	return *o.Quantity
+}
+
+// GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LineItem) GetQuantityOk() (*int32, bool) {
+	if o == nil || IsNil(o.Quantity) {
+		return nil, false
+	}
+	return o.Quantity, true
+}
+
+// HasQuantity returns a boolean if a field has been set.
+func (o *LineItem) HasQuantity() bool {
+	if o != nil && !IsNil(o.Quantity) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuantity gets a reference to the given int32 and assigns it to the Quantity field.
+func (o *LineItem) SetQuantity(v int32) {
+	o.Quantity = &v
 }
 
 func (o LineItem) MarshalJSON() ([]byte, error) {
@@ -378,32 +323,29 @@ func (o LineItem) MarshalJSON() ([]byte, error) {
 
 func (o LineItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ContractId) {
-		toSerialize["contractId"] = o.ContractId
-	}
-	if !IsNil(o.EquipmentId) {
-		toSerialize["equipmentId"] = o.EquipmentId
-	}
 	if !IsNil(o.Product) {
 		toSerialize["product"] = o.Product
-	}
-	if !IsNil(o.Quantity) {
-		toSerialize["quantity"] = o.Quantity
-	}
-	if !IsNil(o.Reference) {
-		toSerialize["reference"] = o.Reference
-	}
-	if !IsNil(o.Total) {
-		toSerialize["total"] = o.Total
 	}
 	if !IsNil(o.UnitAmount) {
 		toSerialize["unitAmount"] = o.UnitAmount
 	}
-	if o.FromDate.IsSet() {
-		toSerialize["fromDate"] = o.FromDate.Get()
+	if !IsNil(o.TotalAmount) {
+		toSerialize["totalAmount"] = o.TotalAmount
 	}
-	if o.ToDate.IsSet() {
-		toSerialize["toDate"] = o.ToDate.Get()
+	if !IsNil(o.FromDate) {
+		toSerialize["fromDate"] = o.FromDate
+	}
+	if !IsNil(o.ToDate) {
+		toSerialize["toDate"] = o.ToDate
+	}
+	if !IsNil(o.EquipmentId) {
+		toSerialize["equipmentId"] = o.EquipmentId
+	}
+	if !IsNil(o.ContractId) {
+		toSerialize["contractId"] = o.ContractId
+	}
+	if !IsNil(o.Quantity) {
+		toSerialize["quantity"] = o.Quantity
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -427,15 +369,14 @@ func (o *LineItem) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "contractId")
-		delete(additionalProperties, "equipmentId")
 		delete(additionalProperties, "product")
-		delete(additionalProperties, "quantity")
-		delete(additionalProperties, "reference")
-		delete(additionalProperties, "total")
 		delete(additionalProperties, "unitAmount")
+		delete(additionalProperties, "totalAmount")
 		delete(additionalProperties, "fromDate")
 		delete(additionalProperties, "toDate")
+		delete(additionalProperties, "equipmentId")
+		delete(additionalProperties, "contractId")
+		delete(additionalProperties, "quantity")
 		o.AdditionalProperties = additionalProperties
 	}
 

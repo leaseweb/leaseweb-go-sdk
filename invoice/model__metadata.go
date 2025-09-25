@@ -1,7 +1,7 @@
 /*
 Invoices
 
-> The base URL for this API is: **https://api.leaseweb.com/invoices/v1/_**
+The base URL for this API is: https://api.leaseweb.com/invoices/v1/ This API provides an overview of all your Invoices  
 
 API version: v1
 */

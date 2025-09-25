@@ -10,6 +10,7 @@ docs/AssignedContract.md
 docs/ErrorResult.md
 docs/GetIPListResult.md
 docs/GetNullRouteHistoryListResult.md
+docs/GetNullRoutedListResult.md
 docs/GetReverseLookupRecordListResult.md
 docs/Ip.md
 docs/IpType.md
@@ -17,6 +18,7 @@ docs/IpmgmtAPI.md
 docs/Metadata.md
 docs/NullRouteIPOpts.md
 docs/NullRoutedIP.md
+docs/NullRoutedIPv6.md
 docs/ProtocolVersion.md
 docs/ReverseLookup.md
 docs/Subnet.md
@@ -32,11 +34,13 @@ model_assigned_contract.go
 model_error_result.go
 model_get_ip_list_result.go
 model_get_null_route_history_list_result.go
+model_get_null_routed_list_result.go
 model_get_reverse_lookup_record_list_result.go
 model_ip.go
 model_ip_type.go
 model_null_route_ip_opts.go
 model_null_routed_ip.go
+model_null_routed_ipv6.go
 model_protocol_version.go
 model_reverse_lookup.go
 model_subnet.go

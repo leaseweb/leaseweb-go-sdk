@@ -80,6 +80,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *IpmgmtAPI* | [**GetIPList**](docs/IpmgmtAPI.md#getiplist) | **Get** /ips | List IPs
 *IpmgmtAPI* | [**GetNullRouteHistoryList**](docs/IpmgmtAPI.md#getnullroutehistorylist) | **Get** /nullRoutes | Inspect null route history
+*IpmgmtAPI* | [**GetNullRoutedList**](docs/IpmgmtAPI.md#getnullroutedlist) | **Get** /ips/{ip}/nullRouted | List null routed IPv6
 *IpmgmtAPI* | [**GetReverseLookupRecordList**](docs/IpmgmtAPI.md#getreverselookuprecordlist) | **Get** /ips/{ip}/reverseLookup | List reverse lookup records for an IPv6 range
 *IpmgmtAPI* | [**InspectIP**](docs/IpmgmtAPI.md#inspectip) | **Get** /ips/{ip} | Inspect an IP
 *IpmgmtAPI* | [**InspectNullRouteHistory**](docs/IpmgmtAPI.md#inspectnullroutehistory) | **Get** /nullRoutes/{id} | Inspect null route history
@@ -96,12 +97,14 @@ Class | Method | HTTP request | Description
  - [ErrorResult](docs/ErrorResult.md)
  - [GetIPListResult](docs/GetIPListResult.md)
  - [GetNullRouteHistoryListResult](docs/GetNullRouteHistoryListResult.md)
+ - [GetNullRoutedListResult](docs/GetNullRoutedListResult.md)
  - [GetReverseLookupRecordListResult](docs/GetReverseLookupRecordListResult.md)
  - [Ip](docs/Ip.md)
  - [IpType](docs/IpType.md)
  - [Metadata](docs/Metadata.md)
  - [NullRouteIPOpts](docs/NullRouteIPOpts.md)
  - [NullRoutedIP](docs/NullRoutedIP.md)
+ - [NullRoutedIPv6](docs/NullRoutedIPv6.md)
  - [ProtocolVersion](docs/ProtocolVersion.md)
  - [ReverseLookup](docs/ReverseLookup.md)
  - [Subnet](docs/Subnet.md)

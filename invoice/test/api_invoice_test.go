@@ -26,21 +26,9 @@ func Test_invoice_InvoiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var invoiceId string
+		var id string
 
-		resp, httpRes, err := apiClient.InvoiceAPI.GetInvoice(context.Background(), invoiceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test InvoiceAPIService GetInvoiceList", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.InvoiceAPI.GetInvoiceList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InvoiceAPI.GetInvoice(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,11 +40,24 @@ func Test_invoice_InvoiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var invoiceId string
+		var id string
 
-		httpRes, err := apiClient.InvoiceAPI.GetInvoicePdf(context.Background(), invoiceId).Execute()
+		resp, httpRes, err := apiClient.InvoiceAPI.GetInvoicePdf(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test InvoiceAPIService GetInvoices", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.InvoiceAPI.GetInvoices(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

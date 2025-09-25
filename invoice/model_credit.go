@@ -1,7 +1,7 @@
 /*
 Invoices
 
-> The base URL for this API is: **https://api.leaseweb.com/invoices/v1/_**
+The base URL for this API is: https://api.leaseweb.com/invoices/v1/ This API provides an overview of all your Invoices  
 
 API version: v1
 */
@@ -19,13 +19,15 @@ var _ MappedNullable = &Credit{}
 
 // Credit struct for Credit
 type Credit struct {
-	// The date of the credit connected to the invoice
-	Date *string `json:"date,omitempty"`
 	// The unique id of the credit
 	Id *string `json:"id,omitempty"`
-	// The total tax amount of the credit connected to the invoice
+	// The date the credit was issued (UTC)
+	Date *string `json:"date,omitempty"`
+	// The amount of tax on the credit
 	TaxAmount *float32 `json:"taxAmount,omitempty"`
-	// The total amount of the credit connected to the invoice
+	// The total amount of the credit without the tax amount included
+	NetAmount *float32 `json:"netAmount,omitempty"`
+	// The total amount of the credit
 	Total *float32 `json:"total,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -47,38 +49,6 @@ func NewCredit() *Credit {
 func NewCreditWithDefaults() *Credit {
 	this := Credit{}
 	return &this
-}
-
-// GetDate returns the Date field value if set, zero value otherwise.
-func (o *Credit) GetDate() string {
-	if o == nil || IsNil(o.Date) {
-		var ret string
-		return ret
-	}
-	return *o.Date
-}
-
-// GetDateOk returns a tuple with the Date field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Credit) GetDateOk() (*string, bool) {
-	if o == nil || IsNil(o.Date) {
-		return nil, false
-	}
-	return o.Date, true
-}
-
-// HasDate returns a boolean if a field has been set.
-func (o *Credit) HasDate() bool {
-	if o != nil && !IsNil(o.Date) {
-		return true
-	}
-
-	return false
-}
-
-// SetDate gets a reference to the given string and assigns it to the Date field.
-func (o *Credit) SetDate(v string) {
-	o.Date = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -113,6 +83,38 @@ func (o *Credit) SetId(v string) {
 	o.Id = &v
 }
 
+// GetDate returns the Date field value if set, zero value otherwise.
+func (o *Credit) GetDate() string {
+	if o == nil || IsNil(o.Date) {
+		var ret string
+		return ret
+	}
+	return *o.Date
+}
+
+// GetDateOk returns a tuple with the Date field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Credit) GetDateOk() (*string, bool) {
+	if o == nil || IsNil(o.Date) {
+		return nil, false
+	}
+	return o.Date, true
+}
+
+// HasDate returns a boolean if a field has been set.
+func (o *Credit) HasDate() bool {
+	if o != nil && !IsNil(o.Date) {
+		return true
+	}
+
+	return false
+}
+
+// SetDate gets a reference to the given string and assigns it to the Date field.
+func (o *Credit) SetDate(v string) {
+	o.Date = &v
+}
+
 // GetTaxAmount returns the TaxAmount field value if set, zero value otherwise.
 func (o *Credit) GetTaxAmount() float32 {
 	if o == nil || IsNil(o.TaxAmount) {
@@ -143,6 +145,38 @@ func (o *Credit) HasTaxAmount() bool {
 // SetTaxAmount gets a reference to the given float32 and assigns it to the TaxAmount field.
 func (o *Credit) SetTaxAmount(v float32) {
 	o.TaxAmount = &v
+}
+
+// GetNetAmount returns the NetAmount field value if set, zero value otherwise.
+func (o *Credit) GetNetAmount() float32 {
+	if o == nil || IsNil(o.NetAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.NetAmount
+}
+
+// GetNetAmountOk returns a tuple with the NetAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Credit) GetNetAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.NetAmount) {
+		return nil, false
+	}
+	return o.NetAmount, true
+}
+
+// HasNetAmount returns a boolean if a field has been set.
+func (o *Credit) HasNetAmount() bool {
+	if o != nil && !IsNil(o.NetAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetAmount gets a reference to the given float32 and assigns it to the NetAmount field.
+func (o *Credit) SetNetAmount(v float32) {
+	o.NetAmount = &v
 }
 
 // GetTotal returns the Total field value if set, zero value otherwise.
@@ -187,14 +221,17 @@ func (o Credit) MarshalJSON() ([]byte, error) {
 
 func (o Credit) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Date) {
-		toSerialize["date"] = o.Date
-	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+	if !IsNil(o.Date) {
+		toSerialize["date"] = o.Date
+	}
 	if !IsNil(o.TaxAmount) {
 		toSerialize["taxAmount"] = o.TaxAmount
+	}
+	if !IsNil(o.NetAmount) {
+		toSerialize["netAmount"] = o.NetAmount
 	}
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
@@ -221,9 +258,10 @@ func (o *Credit) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "date")
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "date")
 		delete(additionalProperties, "taxAmount")
+		delete(additionalProperties, "netAmount")
 		delete(additionalProperties, "total")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -46,6 +46,20 @@ func Test_ipmgmt_IpmgmtAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IpmgmtAPIService GetNullRoutedList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var ip string
+
+		resp, httpRes, err := apiClient.IpmgmtAPI.GetNullRoutedList(context.Background(), ip).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IpmgmtAPIService GetReverseLookupRecordList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

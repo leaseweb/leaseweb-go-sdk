@@ -1,7 +1,7 @@
 /*
 Invoices
 
-> The base URL for this API is: **https://api.leaseweb.com/invoices/v1/_**
+The base URL for this API is: https://api.leaseweb.com/invoices/v1/ This API provides an overview of all your Invoices  
 
 API version: v1
 */
@@ -17,53 +17,55 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"os"
 )
 
 
 type InvoiceAPI interface {
 
 	/*
-	GetInvoice Inspect an invoice
+	GetInvoice Inspect a invoice
 
-	This endpoint will return a single invoice for the customer.
+	Get Invoice will return a single invoice for the customer.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param invoiceId Invoice Id
+	@param id Invoice Id
 	@return ApiGetInvoiceRequest
 	*/
-	GetInvoice(ctx context.Context, invoiceId string) ApiGetInvoiceRequest
+	GetInvoice(ctx context.Context, id string) ApiGetInvoiceRequest
 
 	// GetInvoiceExecute executes the request
 	//  @return GetInvoiceResult
 	GetInvoiceExecute(r ApiGetInvoiceRequest) (*GetInvoiceResult, *http.Response, error)
 
 	/*
-	GetInvoiceList List invoices
+	GetInvoicePdf Get Invoice PDF
+
+	This endpoint will return a PDF of a single invoice for the customer.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Invoice Id
+	@return ApiGetInvoicePdfRequest
+	*/
+	GetInvoicePdf(ctx context.Context, id string) ApiGetInvoicePdfRequest
+
+	// GetInvoicePdfExecute executes the request
+	//  @return *os.File
+	GetInvoicePdfExecute(r ApiGetInvoicePdfRequest) (*os.File, *http.Response, error)
+
+	/*
+	GetInvoices List Invoices
 
 	This endpoint will return an overview of all the invoices for the customer.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetInvoiceListRequest
+	@return ApiGetInvoicesRequest
 	*/
-	GetInvoiceList(ctx context.Context) ApiGetInvoiceListRequest
+	GetInvoices(ctx context.Context) ApiGetInvoicesRequest
 
-	// GetInvoiceListExecute executes the request
-	//  @return GetInvoiceListResult
-	GetInvoiceListExecute(r ApiGetInvoiceListRequest) (*GetInvoiceListResult, *http.Response, error)
-
-	/*
-	GetInvoicePdf Get invoice PDF
-
-	This endpoint will return a PDf of a single invoice for the customer.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param invoiceId Invoice Id
-	@return ApiGetInvoicePdfRequest
-	*/
-	GetInvoicePdf(ctx context.Context, invoiceId string) ApiGetInvoicePdfRequest
-
-	// GetInvoicePdfExecute executes the request
-	GetInvoicePdfExecute(r ApiGetInvoicePdfRequest) (*http.Response, error)
+	// GetInvoicesExecute executes the request
+	//  @return GetInvoicesResult
+	GetInvoicesExecute(r ApiGetInvoicesRequest) (*GetInvoicesResult, *http.Response, error)
 
 	/*
 	GetProforma Pro Forma
@@ -86,7 +88,7 @@ type InvoiceAPIService service
 type ApiGetInvoiceRequest struct {
 	ctx context.Context
 	ApiService InvoiceAPI
-	invoiceId string
+	id string
 }
 
 func (r ApiGetInvoiceRequest) Execute() (*GetInvoiceResult, *http.Response, error) {
@@ -94,19 +96,19 @@ func (r ApiGetInvoiceRequest) Execute() (*GetInvoiceResult, *http.Response, erro
 }
 
 /*
-GetInvoice Inspect an invoice
+GetInvoice Inspect a invoice
 
-This endpoint will return a single invoice for the customer.
+Get Invoice will return a single invoice for the customer.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param invoiceId Invoice Id
+ @param id Invoice Id
  @return ApiGetInvoiceRequest
 */
-func (a *InvoiceAPIService) GetInvoice(ctx context.Context, invoiceId string) ApiGetInvoiceRequest {
+func (a *InvoiceAPIService) GetInvoice(ctx context.Context, id string) ApiGetInvoiceRequest {
 	return ApiGetInvoiceRequest{
 		ApiService: a,
 		ctx: ctx,
-		invoiceId: invoiceId,
+		id: id,
 	}
 }
 
@@ -125,8 +127,8 @@ func (a *InvoiceAPIService) GetInvoiceExecute(r ApiGetInvoiceRequest) (*GetInvoi
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/invoices/{invoiceId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(parameterValueToString(r.invoiceId, "invoiceId")), -1)
+	localVarPath := localBasePath + "/invoices/{Id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"Id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -207,6 +209,17 @@ func (a *InvoiceAPIService) GetInvoiceExecute(r ApiGetInvoiceRequest) (*GetInvoi
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ErrorResult
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -243,7 +256,178 @@ func (a *InvoiceAPIService) GetInvoiceExecute(r ApiGetInvoiceRequest) (*GetInvoi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetInvoiceListRequest struct {
+type ApiGetInvoicePdfRequest struct {
+	ctx context.Context
+	ApiService InvoiceAPI
+	id string
+}
+
+func (r ApiGetInvoicePdfRequest) Execute() (*os.File, *http.Response, error) {
+	return r.ApiService.GetInvoicePdfExecute(r)
+}
+
+/*
+GetInvoicePdf Get Invoice PDF
+
+This endpoint will return a PDF of a single invoice for the customer.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Invoice Id
+ @return ApiGetInvoicePdfRequest
+*/
+func (a *InvoiceAPIService) GetInvoicePdf(ctx context.Context, id string) ApiGetInvoicePdfRequest {
+	return ApiGetInvoicePdfRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return *os.File
+func (a *InvoiceAPIService) GetInvoicePdfExecute(r ApiGetInvoicePdfRequest) (*os.File, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *os.File
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoiceAPIService.GetInvoicePdf")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/invoices/{Id}/pdf"
+	localVarPath = strings.Replace(localVarPath, "{"+"Id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/pdf", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetInvoicesRequest struct {
 	ctx context.Context
 	ApiService InvoiceAPI
 	limit *int32
@@ -251,47 +435,47 @@ type ApiGetInvoiceListRequest struct {
 }
 
 // Limit the number of results returned.
-func (r ApiGetInvoiceListRequest) Limit(limit int32) ApiGetInvoiceListRequest {
+func (r ApiGetInvoicesRequest) Limit(limit int32) ApiGetInvoicesRequest {
 	r.limit = &limit
 	return r
 }
 
 // Return results starting from the given offset.
-func (r ApiGetInvoiceListRequest) Offset(offset int32) ApiGetInvoiceListRequest {
+func (r ApiGetInvoicesRequest) Offset(offset int32) ApiGetInvoicesRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetInvoiceListRequest) Execute() (*GetInvoiceListResult, *http.Response, error) {
-	return r.ApiService.GetInvoiceListExecute(r)
+func (r ApiGetInvoicesRequest) Execute() (*GetInvoicesResult, *http.Response, error) {
+	return r.ApiService.GetInvoicesExecute(r)
 }
 
 /*
-GetInvoiceList List invoices
+GetInvoices List Invoices
 
 This endpoint will return an overview of all the invoices for the customer.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetInvoiceListRequest
+ @return ApiGetInvoicesRequest
 */
-func (a *InvoiceAPIService) GetInvoiceList(ctx context.Context) ApiGetInvoiceListRequest {
-	return ApiGetInvoiceListRequest{
+func (a *InvoiceAPIService) GetInvoices(ctx context.Context) ApiGetInvoicesRequest {
+	return ApiGetInvoicesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return GetInvoiceListResult
-func (a *InvoiceAPIService) GetInvoiceListExecute(r ApiGetInvoiceListRequest) (*GetInvoiceListResult, *http.Response, error) {
+//  @return GetInvoicesResult
+func (a *InvoiceAPIService) GetInvoicesExecute(r ApiGetInvoicesRequest) (*GetInvoicesResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetInvoiceListResult
+		localVarReturnValue  *GetInvoicesResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoiceAPIService.GetInvoiceList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoiceAPIService.GetInvoices")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -419,172 +603,9 @@ func (a *InvoiceAPIService) GetInvoiceListExecute(r ApiGetInvoiceListRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetInvoicePdfRequest struct {
-	ctx context.Context
-	ApiService InvoiceAPI
-	invoiceId string
-}
-
-func (r ApiGetInvoicePdfRequest) Execute() (*http.Response, error) {
-	return r.ApiService.GetInvoicePdfExecute(r)
-}
-
-/*
-GetInvoicePdf Get invoice PDF
-
-This endpoint will return a PDf of a single invoice for the customer.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param invoiceId Invoice Id
- @return ApiGetInvoicePdfRequest
-*/
-func (a *InvoiceAPIService) GetInvoicePdf(ctx context.Context, invoiceId string) ApiGetInvoicePdfRequest {
-	return ApiGetInvoicePdfRequest{
-		ApiService: a,
-		ctx: ctx,
-		invoiceId: invoiceId,
-	}
-}
-
-// Execute executes the request
-func (a *InvoiceAPIService) GetInvoicePdfExecute(r ApiGetInvoicePdfRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoiceAPIService.GetInvoicePdf")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/invoices/{invoiceId}/pdf"
-	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(parameterValueToString(r.invoiceId, "invoiceId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["X-LSW-Auth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-LSW-Auth"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ErrorResult
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
 type ApiGetProformaRequest struct {
 	ctx context.Context
 	ApiService InvoiceAPI
-	limit *int32
-	offset *int32
-}
-
-// Limit the number of results returned.
-func (r ApiGetProformaRequest) Limit(limit int32) ApiGetProformaRequest {
-	r.limit = &limit
-	return r
-}
-
-// Return results starting from the given offset.
-func (r ApiGetProformaRequest) Offset(offset int32) ApiGetProformaRequest {
-	r.offset = &offset
-	return r
 }
 
 func (r ApiGetProformaRequest) Execute() (*GetProformaResult, *http.Response, error) {
@@ -621,18 +642,12 @@ func (a *InvoiceAPIService) GetProformaExecute(r ApiGetProformaRequest) (*GetPro
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/invoices/proforma"
+	localVarPath := localBasePath + "/proforma"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -698,6 +713,17 @@ func (a *InvoiceAPIService) GetProformaExecute(r ApiGetProformaRequest) (*GetPro
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
 			var v ErrorResult
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

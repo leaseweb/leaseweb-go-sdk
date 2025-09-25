@@ -1,7 +1,7 @@
 /*
 Invoices
 
-> The base URL for this API is: **https://api.leaseweb.com/invoices/v1/_**
+The base URL for this API is: https://api.leaseweb.com/invoices/v1/ This API provides an overview of all your Invoices  
 
 API version: v1
 */
@@ -19,24 +19,26 @@ var _ MappedNullable = &Invoice{}
 
 // Invoice struct for Invoice
 type Invoice struct {
-	// The currency of the invoice.
-	Currency *string `json:"currency,omitempty"`
-	// The date the invoice was issued
-	Date *string `json:"date,omitempty"`
-	// The date the invoice is due for payment
-	DueDate *string `json:"dueDate,omitempty"`
 	// The unique id of the invoice
 	Id *string `json:"id,omitempty"`
-	// The invoice can be paid partially
-	IsPartialPaymentAllowed *bool `json:"isPartialPaymentAllowed,omitempty"`
-	// The open amount of the invoice
-	OpenAmount *float32 `json:"openAmount,omitempty"`
-	// The status of the invoice.
-	Status *string `json:"status,omitempty"`
-	// The tax amount of the invoice
+	// The date the invoice was issued (UTC)
+	Date *string `json:"date,omitempty"`
+	// The date the invoice is due for payment (UTC)
+	DueDate *string `json:"dueDate,omitempty"`
+	// The amount of tax on the invoice
 	TaxAmount *float32 `json:"taxAmount,omitempty"`
+	// The total amount without the tax amount included
+	NetAmount *float32 `json:"netAmount,omitempty"`
 	// The total amount of the invoice
 	Total *float32 `json:"total,omitempty"`
+	// The open amount of the invoice
+	OpenAmount *float32 `json:"openAmount,omitempty"`
+	// The currency of the invoice.
+	Currency *string `json:"currency,omitempty"`
+	// The invoice can be paid partially
+	IsPartialPaymentAllowed *bool `json:"isPartialPaymentAllowed,omitempty"`
+	// The status of the invoice.
+	Status *string `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -59,36 +61,36 @@ func NewInvoiceWithDefaults() *Invoice {
 	return &this
 }
 
-// GetCurrency returns the Currency field value if set, zero value otherwise.
-func (o *Invoice) GetCurrency() string {
-	if o == nil || IsNil(o.Currency) {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Invoice) GetId() string {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-	return *o.Currency
+	return *o.Id
 }
 
-// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Invoice) GetCurrencyOk() (*string, bool) {
-	if o == nil || IsNil(o.Currency) {
+func (o *Invoice) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.Currency, true
+	return o.Id, true
 }
 
-// HasCurrency returns a boolean if a field has been set.
-func (o *Invoice) HasCurrency() bool {
-	if o != nil && !IsNil(o.Currency) {
+// HasId returns a boolean if a field has been set.
+func (o *Invoice) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrency gets a reference to the given string and assigns it to the Currency field.
-func (o *Invoice) SetCurrency(v string) {
-	o.Currency = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Invoice) SetId(v string) {
+	o.Id = &v
 }
 
 // GetDate returns the Date field value if set, zero value otherwise.
@@ -155,134 +157,6 @@ func (o *Invoice) SetDueDate(v string) {
 	o.DueDate = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Invoice) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Invoice) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Invoice) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Invoice) SetId(v string) {
-	o.Id = &v
-}
-
-// GetIsPartialPaymentAllowed returns the IsPartialPaymentAllowed field value if set, zero value otherwise.
-func (o *Invoice) GetIsPartialPaymentAllowed() bool {
-	if o == nil || IsNil(o.IsPartialPaymentAllowed) {
-		var ret bool
-		return ret
-	}
-	return *o.IsPartialPaymentAllowed
-}
-
-// GetIsPartialPaymentAllowedOk returns a tuple with the IsPartialPaymentAllowed field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Invoice) GetIsPartialPaymentAllowedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsPartialPaymentAllowed) {
-		return nil, false
-	}
-	return o.IsPartialPaymentAllowed, true
-}
-
-// HasIsPartialPaymentAllowed returns a boolean if a field has been set.
-func (o *Invoice) HasIsPartialPaymentAllowed() bool {
-	if o != nil && !IsNil(o.IsPartialPaymentAllowed) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsPartialPaymentAllowed gets a reference to the given bool and assigns it to the IsPartialPaymentAllowed field.
-func (o *Invoice) SetIsPartialPaymentAllowed(v bool) {
-	o.IsPartialPaymentAllowed = &v
-}
-
-// GetOpenAmount returns the OpenAmount field value if set, zero value otherwise.
-func (o *Invoice) GetOpenAmount() float32 {
-	if o == nil || IsNil(o.OpenAmount) {
-		var ret float32
-		return ret
-	}
-	return *o.OpenAmount
-}
-
-// GetOpenAmountOk returns a tuple with the OpenAmount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Invoice) GetOpenAmountOk() (*float32, bool) {
-	if o == nil || IsNil(o.OpenAmount) {
-		return nil, false
-	}
-	return o.OpenAmount, true
-}
-
-// HasOpenAmount returns a boolean if a field has been set.
-func (o *Invoice) HasOpenAmount() bool {
-	if o != nil && !IsNil(o.OpenAmount) {
-		return true
-	}
-
-	return false
-}
-
-// SetOpenAmount gets a reference to the given float32 and assigns it to the OpenAmount field.
-func (o *Invoice) SetOpenAmount(v float32) {
-	o.OpenAmount = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *Invoice) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Invoice) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *Invoice) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *Invoice) SetStatus(v string) {
-	o.Status = &v
-}
-
 // GetTaxAmount returns the TaxAmount field value if set, zero value otherwise.
 func (o *Invoice) GetTaxAmount() float32 {
 	if o == nil || IsNil(o.TaxAmount) {
@@ -313,6 +187,38 @@ func (o *Invoice) HasTaxAmount() bool {
 // SetTaxAmount gets a reference to the given float32 and assigns it to the TaxAmount field.
 func (o *Invoice) SetTaxAmount(v float32) {
 	o.TaxAmount = &v
+}
+
+// GetNetAmount returns the NetAmount field value if set, zero value otherwise.
+func (o *Invoice) GetNetAmount() float32 {
+	if o == nil || IsNil(o.NetAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.NetAmount
+}
+
+// GetNetAmountOk returns a tuple with the NetAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Invoice) GetNetAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.NetAmount) {
+		return nil, false
+	}
+	return o.NetAmount, true
+}
+
+// HasNetAmount returns a boolean if a field has been set.
+func (o *Invoice) HasNetAmount() bool {
+	if o != nil && !IsNil(o.NetAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetAmount gets a reference to the given float32 and assigns it to the NetAmount field.
+func (o *Invoice) SetNetAmount(v float32) {
+	o.NetAmount = &v
 }
 
 // GetTotal returns the Total field value if set, zero value otherwise.
@@ -347,6 +253,134 @@ func (o *Invoice) SetTotal(v float32) {
 	o.Total = &v
 }
 
+// GetOpenAmount returns the OpenAmount field value if set, zero value otherwise.
+func (o *Invoice) GetOpenAmount() float32 {
+	if o == nil || IsNil(o.OpenAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.OpenAmount
+}
+
+// GetOpenAmountOk returns a tuple with the OpenAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Invoice) GetOpenAmountOk() (*float32, bool) {
+	if o == nil || IsNil(o.OpenAmount) {
+		return nil, false
+	}
+	return o.OpenAmount, true
+}
+
+// HasOpenAmount returns a boolean if a field has been set.
+func (o *Invoice) HasOpenAmount() bool {
+	if o != nil && !IsNil(o.OpenAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenAmount gets a reference to the given float32 and assigns it to the OpenAmount field.
+func (o *Invoice) SetOpenAmount(v float32) {
+	o.OpenAmount = &v
+}
+
+// GetCurrency returns the Currency field value if set, zero value otherwise.
+func (o *Invoice) GetCurrency() string {
+	if o == nil || IsNil(o.Currency) {
+		var ret string
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Invoice) GetCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.Currency) {
+		return nil, false
+	}
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *Invoice) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *Invoice) SetCurrency(v string) {
+	o.Currency = &v
+}
+
+// GetIsPartialPaymentAllowed returns the IsPartialPaymentAllowed field value if set, zero value otherwise.
+func (o *Invoice) GetIsPartialPaymentAllowed() bool {
+	if o == nil || IsNil(o.IsPartialPaymentAllowed) {
+		var ret bool
+		return ret
+	}
+	return *o.IsPartialPaymentAllowed
+}
+
+// GetIsPartialPaymentAllowedOk returns a tuple with the IsPartialPaymentAllowed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Invoice) GetIsPartialPaymentAllowedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsPartialPaymentAllowed) {
+		return nil, false
+	}
+	return o.IsPartialPaymentAllowed, true
+}
+
+// HasIsPartialPaymentAllowed returns a boolean if a field has been set.
+func (o *Invoice) HasIsPartialPaymentAllowed() bool {
+	if o != nil && !IsNil(o.IsPartialPaymentAllowed) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsPartialPaymentAllowed gets a reference to the given bool and assigns it to the IsPartialPaymentAllowed field.
+func (o *Invoice) SetIsPartialPaymentAllowed(v bool) {
+	o.IsPartialPaymentAllowed = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *Invoice) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Invoice) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *Invoice) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *Invoice) SetStatus(v string) {
+	o.Status = &v
+}
+
 func (o Invoice) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -357,8 +391,8 @@ func (o Invoice) MarshalJSON() ([]byte, error) {
 
 func (o Invoice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Currency) {
-		toSerialize["currency"] = o.Currency
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.Date) {
 		toSerialize["date"] = o.Date
@@ -366,23 +400,26 @@ func (o Invoice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DueDate) {
 		toSerialize["dueDate"] = o.DueDate
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if !IsNil(o.TaxAmount) {
+		toSerialize["taxAmount"] = o.TaxAmount
 	}
-	if !IsNil(o.IsPartialPaymentAllowed) {
-		toSerialize["isPartialPaymentAllowed"] = o.IsPartialPaymentAllowed
+	if !IsNil(o.NetAmount) {
+		toSerialize["netAmount"] = o.NetAmount
+	}
+	if !IsNil(o.Total) {
+		toSerialize["total"] = o.Total
 	}
 	if !IsNil(o.OpenAmount) {
 		toSerialize["openAmount"] = o.OpenAmount
 	}
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
+	}
+	if !IsNil(o.IsPartialPaymentAllowed) {
+		toSerialize["isPartialPaymentAllowed"] = o.IsPartialPaymentAllowed
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.TaxAmount) {
-		toSerialize["taxAmount"] = o.TaxAmount
-	}
-	if !IsNil(o.Total) {
-		toSerialize["total"] = o.Total
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -406,15 +443,16 @@ func (o *Invoice) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "currency")
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "date")
 		delete(additionalProperties, "dueDate")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "isPartialPaymentAllowed")
-		delete(additionalProperties, "openAmount")
-		delete(additionalProperties, "status")
 		delete(additionalProperties, "taxAmount")
+		delete(additionalProperties, "netAmount")
 		delete(additionalProperties, "total")
+		delete(additionalProperties, "openAmount")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "isPartialPaymentAllowed")
+		delete(additionalProperties, "status")
 		o.AdditionalProperties = additionalProperties
 	}
 
