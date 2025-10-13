@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **Resources** | [**Resources**](Resources.md) |  | 
 **StorageTypes** | [**[]StorageType**](StorageType.md) | The supported storage types for the instance type | 
 **Prices** | [**Prices**](Prices.md) |  | 
+**MinDiskSize** | **int32** | The minimum disk size required to launch an instance with the instance type | 
 
 ## Methods
 
 ### NewInstanceType
 
-`func NewInstanceType(name TypeName, resources Resources, storageTypes []StorageType, prices Prices, ) *InstanceType`
+`func NewInstanceType(name TypeName, resources Resources, storageTypes []StorageType, prices Prices, minDiskSize int32, ) *InstanceType`
 
 NewInstanceType instantiates a new InstanceType object
 This constructor will assign default values to properties that have it defined,
@@ -116,6 +117,26 @@ and a boolean to check if the value has been set.
 `func (o *InstanceType) SetPrices(v Prices)`
 
 SetPrices sets Prices field to given value.
+
+
+### GetMinDiskSize
+
+`func (o *InstanceType) GetMinDiskSize() int32`
+
+GetMinDiskSize returns the MinDiskSize field if non-nil, zero value otherwise.
+
+### GetMinDiskSizeOk
+
+`func (o *InstanceType) GetMinDiskSizeOk() (*int32, bool)`
+
+GetMinDiskSizeOk returns a tuple with the MinDiskSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinDiskSize
+
+`func (o *InstanceType) SetMinDiskSize(v int32)`
+
+SetMinDiskSize sets MinDiskSize field to given value.
 
 
 

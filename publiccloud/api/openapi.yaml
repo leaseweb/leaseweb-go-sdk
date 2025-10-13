@@ -206,6 +206,7 @@ paths:
                     monthly: "26.0200"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.c3.xlarge
                   resources:
                     cpu:
@@ -225,6 +226,7 @@ paths:
                     monthly: "52.5000"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.c3.2xlarge
                   resources:
                     cpu:
@@ -244,6 +246,7 @@ paths:
                     monthly: "105.4500"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.c3.4xlarge
                   resources:
                     cpu:
@@ -263,6 +266,7 @@ paths:
                     monthly: "210.5100"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.m3.large
                   resources:
                     cpu:
@@ -282,6 +286,7 @@ paths:
                     monthly: "29.4400"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.m3.xlarge
                   resources:
                     cpu:
@@ -301,6 +306,7 @@ paths:
                     monthly: "59.3300"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.m3.2xlarge
                   resources:
                     cpu:
@@ -320,6 +326,7 @@ paths:
                     monthly: "118.2700"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.r3.large
                   resources:
                     cpu:
@@ -339,6 +346,7 @@ paths:
                     monthly: "36.4900"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.r3.xlarge
                   resources:
                     cpu:
@@ -358,6 +366,7 @@ paths:
                     monthly: "72.5700"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.r3.2xlarge
                   resources:
                     cpu:
@@ -377,6 +386,7 @@ paths:
                     monthly: "144.7400"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 _metadata:
                   totalCount: 10
                   limit: 50
@@ -2088,6 +2098,7 @@ paths:
                     monthly: "26.0200"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.c3.xlarge
                   resources:
                     cpu:
@@ -2107,6 +2118,7 @@ paths:
                     monthly: "52.5000"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.c3.2xlarge
                   resources:
                     cpu:
@@ -2126,6 +2138,7 @@ paths:
                     monthly: "105.4500"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.c3.4xlarge
                   resources:
                     cpu:
@@ -2145,6 +2158,7 @@ paths:
                     monthly: "210.5100"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.m3.large
                   resources:
                     cpu:
@@ -2164,6 +2178,7 @@ paths:
                     monthly: "29.4400"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.m3.xlarge
                   resources:
                     cpu:
@@ -2183,6 +2198,7 @@ paths:
                     monthly: "59.3300"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.m3.2xlarge
                   resources:
                     cpu:
@@ -2202,6 +2218,7 @@ paths:
                     monthly: "118.2700"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.r3.large
                   resources:
                     cpu:
@@ -2221,6 +2238,7 @@ paths:
                     monthly: "36.4900"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.r3.xlarge
                   resources:
                     cpu:
@@ -2240,6 +2258,7 @@ paths:
                     monthly: "72.5700"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 - name: lsw.r3.2xlarge
                   resources:
                     cpu:
@@ -2259,6 +2278,7 @@ paths:
                     monthly: "144.7400"
                   storageTypes:
                   - CENTRAL
+                  minDiskSize: 5
                 _metadata:
                   totalCount: 10
                   limit: 50
@@ -12610,6 +12630,7 @@ components:
         prices:
           monthly: "105.4500"
           hourly: "0.1604"
+        minDiskSize: 0
       properties:
         name:
           $ref: '#/components/schemas/typeName'
@@ -12623,7 +12644,12 @@ components:
           type: array
         prices:
           $ref: '#/components/schemas/prices'
+        minDiskSize:
+          description: The minimum disk size required to launch an instance with the
+            instance type
+          type: integer
       required:
+      - minDiskSize
       - name
       - prices
       - resources
@@ -12652,6 +12678,7 @@ components:
           prices:
             monthly: "105.4500"
             hourly: "0.1604"
+          minDiskSize: 0
         - name: lsw.m3.large
           resources:
             memory:
@@ -12672,6 +12699,7 @@ components:
           prices:
             monthly: "105.4500"
             hourly: "0.1604"
+          minDiskSize: 0
         _metadata:
           offset: 0
           limit: 5

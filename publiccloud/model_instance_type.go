@@ -25,6 +25,8 @@ type InstanceType struct {
 	// The supported storage types for the instance type
 	StorageTypes []StorageType `json:"storageTypes"`
 	Prices Prices `json:"prices"`
+	// The minimum disk size required to launch an instance with the instance type
+	MinDiskSize int32 `json:"minDiskSize"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,12 +36,13 @@ type _InstanceType InstanceType
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInstanceType(name TypeName, resources Resources, storageTypes []StorageType, prices Prices) *InstanceType {
+func NewInstanceType(name TypeName, resources Resources, storageTypes []StorageType, prices Prices, minDiskSize int32) *InstanceType {
 	this := InstanceType{}
 	this.Name = name
 	this.Resources = resources
 	this.StorageTypes = storageTypes
 	this.Prices = prices
+	this.MinDiskSize = minDiskSize
 	return &this
 }
 
@@ -149,6 +152,30 @@ func (o *InstanceType) SetPrices(v Prices) {
 	o.Prices = v
 }
 
+// GetMinDiskSize returns the MinDiskSize field value
+func (o *InstanceType) GetMinDiskSize() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.MinDiskSize
+}
+
+// GetMinDiskSizeOk returns a tuple with the MinDiskSize field value
+// and a boolean to check if the value has been set.
+func (o *InstanceType) GetMinDiskSizeOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MinDiskSize, true
+}
+
+// SetMinDiskSize sets field value
+func (o *InstanceType) SetMinDiskSize(v int32) {
+	o.MinDiskSize = v
+}
+
 func (o InstanceType) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -165,6 +192,7 @@ func (o InstanceType) ToMap() (map[string]interface{}, error) {
 		toSerialize["storageTypes"] = o.StorageTypes
 	}
 	toSerialize["prices"] = o.Prices
+	toSerialize["minDiskSize"] = o.MinDiskSize
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -182,6 +210,7 @@ func (o *InstanceType) UnmarshalJSON(data []byte) (err error) {
 		"resources",
 		"storageTypes",
 		"prices",
+		"minDiskSize",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -215,6 +244,7 @@ func (o *InstanceType) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "resources")
 		delete(additionalProperties, "storageTypes")
 		delete(additionalProperties, "prices")
+		delete(additionalProperties, "minDiskSize")
 		o.AdditionalProperties = additionalProperties
 	}
 
