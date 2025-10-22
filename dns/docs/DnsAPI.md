@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**CreateResourceRecordSet**](DnsAPI.md#CreateResourceRecordSet) | **Post** /domains/{domainName}/resourceRecordSets | Create a resource record set
 [**DeleteResourceRecordSet**](DnsAPI.md#DeleteResourceRecordSet) | **Delete** /domains/{domainName}/resourceRecordSets/{name}/{type} | Delete a specific DNS record
 [**DeleteResourceRecordSets**](DnsAPI.md#DeleteResourceRecordSets) | **Delete** /domains/{domainName}/resourceRecordSets | Delete all DNS records
-[**ExportResourceRecordSets**](DnsAPI.md#ExportResourceRecordSets) | **Get** /domains/{domainName}/resourceRecordSets/import | Export dns records as a bind file content
+[**ExportResourceRecordSets**](DnsAPI.md#ExportResourceRecordSets) | **Get** /domains/{domainName}/resourceRecordSets/export | Export dns records as a bind file content
 [**GetQueryMetrics**](DnsAPI.md#GetQueryMetrics) | **Get** /domains/{domainName}/metrics/dnsQuery | Show Dns Query Metrics
 [**GetResourceRecordSet**](DnsAPI.md#GetResourceRecordSet) | **Get** /domains/{domainName}/resourceRecordSets/{name}/{type} | Inspect resource record set
 [**GetResourceRecordSetList**](DnsAPI.md#GetResourceRecordSetList) | **Get** /domains/{domainName}/resourceRecordSets | List resource record sets

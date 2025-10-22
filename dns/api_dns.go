@@ -773,7 +773,7 @@ func (a *DnsAPIService) ExportResourceRecordSetsExecute(r ApiExportResourceRecor
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/domains/{domainName}/resourceRecordSets/import"
+	localVarPath := localBasePath + "/domains/{domainName}/resourceRecordSets/export"
 	localVarPath = strings.Replace(localVarPath, "{"+"domainName"+"}", url.PathEscape(parameterValueToString(r.domainName, "domainName")), -1)
 
 	localVarHeaderParams := make(map[string]string)

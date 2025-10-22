@@ -81,7 +81,7 @@ Class | Method | HTTP request | Description
 *DnsAPI* | [**CreateResourceRecordSet**](docs/DnsAPI.md#createresourcerecordset) | **Post** /domains/{domainName}/resourceRecordSets | Create a resource record set
 *DnsAPI* | [**DeleteResourceRecordSet**](docs/DnsAPI.md#deleteresourcerecordset) | **Delete** /domains/{domainName}/resourceRecordSets/{name}/{type} | Delete a specific DNS record
 *DnsAPI* | [**DeleteResourceRecordSets**](docs/DnsAPI.md#deleteresourcerecordsets) | **Delete** /domains/{domainName}/resourceRecordSets | Delete all DNS records
-*DnsAPI* | [**ExportResourceRecordSets**](docs/DnsAPI.md#exportresourcerecordsets) | **Get** /domains/{domainName}/resourceRecordSets/import | Export dns records as a bind file content
+*DnsAPI* | [**ExportResourceRecordSets**](docs/DnsAPI.md#exportresourcerecordsets) | **Get** /domains/{domainName}/resourceRecordSets/export | Export dns records as a bind file content
 *DnsAPI* | [**GetQueryMetrics**](docs/DnsAPI.md#getquerymetrics) | **Get** /domains/{domainName}/metrics/dnsQuery | Show Dns Query Metrics
 *DnsAPI* | [**GetResourceRecordSet**](docs/DnsAPI.md#getresourcerecordset) | **Get** /domains/{domainName}/resourceRecordSets/{name}/{type} | Inspect resource record set
 *DnsAPI* | [**GetResourceRecordSetList**](docs/DnsAPI.md#getresourcerecordsetlist) | **Get** /domains/{domainName}/resourceRecordSets | List resource record sets
