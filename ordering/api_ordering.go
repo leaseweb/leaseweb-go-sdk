@@ -274,6 +274,8 @@ type ApiGetDedicatedServerListRequest struct {
 	ram *string
 	diskSize *string
 	diskAmount *string
+	limit *int32
+	offset *int32
 }
 
 func (r ApiGetDedicatedServerListRequest) Location(location string) ApiGetDedicatedServerListRequest {
@@ -293,6 +295,18 @@ func (r ApiGetDedicatedServerListRequest) DiskSize(diskSize string) ApiGetDedica
 
 func (r ApiGetDedicatedServerListRequest) DiskAmount(diskAmount string) ApiGetDedicatedServerListRequest {
 	r.diskAmount = &diskAmount
+	return r
+}
+
+// Limit the number of results returned.
+func (r ApiGetDedicatedServerListRequest) Limit(limit int32) ApiGetDedicatedServerListRequest {
+	r.limit = &limit
+	return r
+}
+
+// Return results starting from the given offset.
+func (r ApiGetDedicatedServerListRequest) Offset(offset int32) ApiGetDedicatedServerListRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -348,6 +362,12 @@ func (a *OrderingAPIService) GetDedicatedServerListExecute(r ApiGetDedicatedServ
 	}
 	if r.diskAmount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "diskAmount", r.diskAmount, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

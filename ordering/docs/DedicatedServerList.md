@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Metadata** | Pointer to [**Metadata**](Metadata.md) |  | [optional] 
 **DedicatedServers** | Pointer to [**[]DedicatedServerDetail**](DedicatedServerDetail.md) |  | [optional] 
+**Metadata** | Pointer to [**Metadata**](Metadata.md) |  | [optional] 
 
 ## Methods
 
@@ -25,31 +25,6 @@ will change when the set of required properties is changed
 NewDedicatedServerListWithDefaults instantiates a new DedicatedServerList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetMetadata
-
-`func (o *DedicatedServerList) GetMetadata() Metadata`
-
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
-
-### GetMetadataOk
-
-`func (o *DedicatedServerList) GetMetadataOk() (*Metadata, bool)`
-
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetadata
-
-`func (o *DedicatedServerList) SetMetadata(v Metadata)`
-
-SetMetadata sets Metadata field to given value.
-
-### HasMetadata
-
-`func (o *DedicatedServerList) HasMetadata() bool`
-
-HasMetadata returns a boolean if a field has been set.
 
 ### GetDedicatedServers
 
@@ -75,6 +50,31 @@ SetDedicatedServers sets DedicatedServers field to given value.
 `func (o *DedicatedServerList) HasDedicatedServers() bool`
 
 HasDedicatedServers returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *DedicatedServerList) GetMetadata() Metadata`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *DedicatedServerList) GetMetadataOk() (*Metadata, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *DedicatedServerList) SetMetadata(v Metadata)`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *DedicatedServerList) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

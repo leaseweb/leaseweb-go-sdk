@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## GetDedicatedServerList
 
-> DedicatedServerList GetDedicatedServerList(ctx).Location(location).Ram(ram).DiskSize(diskSize).DiskAmount(diskAmount).Execute()
+> DedicatedServerList GetDedicatedServerList(ctx).Location(location).Ram(ram).DiskSize(diskSize).DiskAmount(diskAmount).Limit(limit).Offset(offset).Execute()
 
 List available dedicated server configurations.
 
@@ -109,10 +109,12 @@ func main() {
 	ram := "ram_example" // string |  (optional)
 	diskSize := "diskSize_example" // string |  (optional)
 	diskAmount := "diskAmount_example" // string |  (optional)
+	limit := int32(20) // int32 | Limit the number of results returned. (optional)
+	offset := int32(10) // int32 | Return results starting from the given offset. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderingAPI.GetDedicatedServerList(context.Background()).Location(location).Ram(ram).DiskSize(diskSize).DiskAmount(diskAmount).Execute()
+	resp, r, err := apiClient.OrderingAPI.GetDedicatedServerList(context.Background()).Location(location).Ram(ram).DiskSize(diskSize).DiskAmount(diskAmount).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderingAPI.GetDedicatedServerList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,6 +139,8 @@ Name | Type | Description  | Notes
  **ram** | **string** |  | 
  **diskSize** | **string** |  | 
  **diskAmount** | **string** |  | 
+ **limit** | **int32** | Limit the number of results returned. | 
+ **offset** | **int32** | Return results starting from the given offset. | 
 
 ### Return type
 

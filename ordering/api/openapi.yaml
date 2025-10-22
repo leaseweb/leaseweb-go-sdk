@@ -54,15 +54,33 @@ paths:
         schema:
           $ref: '#/components/schemas/diskAmount'
         style: form
+      - description: Limit the number of results returned.
+        example: 20
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Return results starting from the given offset.
+        example: 10
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
               example:
                 _metadata:
-                  totalCount: 2
-                  limit: 2
+                  limit: 10
                   offset: 0
+                  totalCount: 2
                 dedicatedServers:
                 - id: 27f38ef06cf3bf62e21e75401feac6cd
                   name: Dell R730XD (12xLFF) 2x Intel Xeon E5-2650v4
@@ -393,6 +411,26 @@ paths:
       - ordering
 components:
   parameters:
+    limit:
+      description: Limit the number of results returned.
+      example: 20
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+      style: form
+    offset:
+      description: Return results starting from the given offset.
+      example: 10
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+      style: form
     dedicatedServerId:
       description: The ID of a dedicated server
       example: 27f38ef06cf3bf62e21e75401feac6cd
@@ -471,36 +509,6 @@ components:
       description: The amount of disks
       example: "2"
       type: string
-    _metadata:
-      description: Metadata about the collection
-      example:
-        offset: 0
-        limit: 5
-        totalCount: 2
-      properties:
-        totalCount:
-          description: Total amount of elements in this collection
-          example: 2
-          minimum: 0
-          type: integer
-        offset:
-          default: 0
-          description: The offset used to generate this response
-          example: 0
-          minimum: 0
-          type: integer
-        limit:
-          default: 5
-          description: The limit used to generate this response
-          example: 5
-          minimum: 0
-          type: integer
-      required:
-      - limit
-      - offset
-      - totalCount
-      title: metadata
-      type: object
     dedicatedServerDetail:
       example:
         deliveryMethod: deliveryMethod
@@ -552,6 +560,36 @@ components:
             type: string
           type: array
       type: object
+    _metadata:
+      description: Metadata about the collection
+      example:
+        offset: 0
+        limit: 5
+        totalCount: 2
+      properties:
+        totalCount:
+          description: Total amount of elements in this collection
+          example: 2
+          minimum: 0
+          type: integer
+        offset:
+          default: 0
+          description: The offset used to generate this response
+          example: 0
+          minimum: 0
+          type: integer
+        limit:
+          default: 5
+          description: The limit used to generate this response
+          example: 5
+          minimum: 0
+          type: integer
+      required:
+      - limit
+      - offset
+      - totalCount
+      title: metadata
+      type: object
     dedicatedServerList:
       example:
         _metadata:
@@ -602,12 +640,12 @@ components:
             unit: unit
             size: size
       properties:
-        _metadata:
-          $ref: '#/components/schemas/_metadata'
         dedicatedServers:
           items:
             $ref: '#/components/schemas/dedicatedServerDetail'
           type: array
+        _metadata:
+          $ref: '#/components/schemas/_metadata'
       type: object
     errorResult:
       example:

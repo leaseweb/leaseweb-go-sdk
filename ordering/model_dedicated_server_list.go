@@ -19,8 +19,8 @@ var _ MappedNullable = &DedicatedServerList{}
 
 // DedicatedServerList struct for DedicatedServerList
 type DedicatedServerList struct {
-	Metadata *Metadata `json:"_metadata,omitempty"`
 	DedicatedServers []DedicatedServerDetail `json:"dedicatedServers,omitempty"`
+	Metadata *Metadata `json:"_metadata,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -41,38 +41,6 @@ func NewDedicatedServerList() *DedicatedServerList {
 func NewDedicatedServerListWithDefaults() *DedicatedServerList {
 	this := DedicatedServerList{}
 	return &this
-}
-
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *DedicatedServerList) GetMetadata() Metadata {
-	if o == nil || IsNil(o.Metadata) {
-		var ret Metadata
-		return ret
-	}
-	return *o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DedicatedServerList) GetMetadataOk() (*Metadata, bool) {
-	if o == nil || IsNil(o.Metadata) {
-		return nil, false
-	}
-	return o.Metadata, true
-}
-
-// HasMetadata returns a boolean if a field has been set.
-func (o *DedicatedServerList) HasMetadata() bool {
-	if o != nil && !IsNil(o.Metadata) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadata gets a reference to the given Metadata and assigns it to the Metadata field.
-func (o *DedicatedServerList) SetMetadata(v Metadata) {
-	o.Metadata = &v
 }
 
 // GetDedicatedServers returns the DedicatedServers field value if set, zero value otherwise.
@@ -107,6 +75,38 @@ func (o *DedicatedServerList) SetDedicatedServers(v []DedicatedServerDetail) {
 	o.DedicatedServers = v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *DedicatedServerList) GetMetadata() Metadata {
+	if o == nil || IsNil(o.Metadata) {
+		var ret Metadata
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServerList) GetMetadataOk() (*Metadata, bool) {
+	if o == nil || IsNil(o.Metadata) {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *DedicatedServerList) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given Metadata and assigns it to the Metadata field.
+func (o *DedicatedServerList) SetMetadata(v Metadata) {
+	o.Metadata = &v
+}
+
 func (o DedicatedServerList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -117,11 +117,11 @@ func (o DedicatedServerList) MarshalJSON() ([]byte, error) {
 
 func (o DedicatedServerList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Metadata) {
-		toSerialize["_metadata"] = o.Metadata
-	}
 	if !IsNil(o.DedicatedServers) {
 		toSerialize["dedicatedServers"] = o.DedicatedServers
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["_metadata"] = o.Metadata
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -145,8 +145,8 @@ func (o *DedicatedServerList) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "_metadata")
 		delete(additionalProperties, "dedicatedServers")
+		delete(additionalProperties, "_metadata")
 		o.AdditionalProperties = additionalProperties
 	}
 
