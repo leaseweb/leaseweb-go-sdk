@@ -83,6 +83,7 @@ Class | Method | HTTP request | Description
 *InvoiceAPI* | [**GetInvoice**](docs/InvoiceAPI.md#getinvoice) | **Get** /invoices/{Id} | Inspect a invoice
 *InvoiceAPI* | [**GetInvoicePdf**](docs/InvoiceAPI.md#getinvoicepdf) | **Get** /invoices/{Id}/pdf | Get Invoice PDF
 *InvoiceAPI* | [**GetInvoices**](docs/InvoiceAPI.md#getinvoices) | **Get** /invoices | List Invoices
+*InvoiceAPI* | [**GetInvoicesExportCsv**](docs/InvoiceAPI.md#getinvoicesexportcsv) | **Get** /invoices/export/csv | Export Invoices (CSV)
 *InvoiceAPI* | [**GetProforma**](docs/InvoiceAPI.md#getproforma) | **Get** /proforma | Pro Forma
 
 

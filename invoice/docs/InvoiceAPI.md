@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**GetInvoice**](InvoiceAPI.md#GetInvoice) | **Get** /invoices/{Id} | Inspect a invoice
 [**GetInvoicePdf**](InvoiceAPI.md#GetInvoicePdf) | **Get** /invoices/{Id}/pdf | Get Invoice PDF
 [**GetInvoices**](InvoiceAPI.md#GetInvoices) | **Get** /invoices | List Invoices
+[**GetInvoicesExportCsv**](InvoiceAPI.md#GetInvoicesExportCsv) | **Get** /invoices/export/csv | Export Invoices (CSV)
 [**GetProforma**](InvoiceAPI.md#GetProforma) | **Get** /proforma | Pro Forma
 
 
@@ -213,6 +214,75 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetInvoicesExportCsv
+
+> *os.File GetInvoicesExportCsv(ctx).DateFrom(dateFrom).DateTo(dateTo).Execute()
+
+Export Invoices (CSV)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+    "time"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/invoice"
+)
+
+func main() {
+	dateFrom := time.Now() // string | Filter invoices starting from this date. - Format: YYYY-MM-DD - Example: 2025-01-01  (optional)
+	dateTo := time.Now() // string | Filter invoices starting up to this date. - Format: YYYY-MM-DD - Example: 2025-01-01  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InvoiceAPI.GetInvoicesExportCsv(context.Background()).DateFrom(dateFrom).DateTo(dateTo).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InvoiceAPI.GetInvoicesExportCsv``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetInvoicesExportCsv`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `InvoiceAPI.GetInvoicesExportCsv`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetInvoicesExportCsvRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dateFrom** | **string** | Filter invoices starting from this date. - Format: YYYY-MM-DD - Example: 2025-01-01  | 
+ **dateTo** | **string** | Filter invoices starting up to this date. - Format: YYYY-MM-DD - Example: 2025-01-01  | 
+
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/csv, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

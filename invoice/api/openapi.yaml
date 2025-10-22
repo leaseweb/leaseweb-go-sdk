@@ -150,6 +150,91 @@ paths:
       summary: List Invoices
       tags:
       - invoice
+  /invoices/export/csv:
+    get:
+      description: This endpoint exports all invoices for the current customer as
+        a CSV file.
+      operationId: getInvoicesExportCsv
+      parameters:
+      - description: |
+          Filter invoices starting from this date.
+          - Format: YYYY-MM-DD
+          - Example: 2025-01-01
+        explode: true
+        in: query
+        name: dateFrom
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: |
+          Filter invoices starting up to this date.
+          - Format: YYYY-MM-DD
+          - Example: 2025-01-01
+        explode: true
+        in: query
+        name: dateTo
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/csv:
+              example: |
+                Invoice number,Date (UTC),Status,Open amount,Total
+                12341234,2025-09-30T12:00:00+00:00,PAID,0,120
+                12341235,2025-10-01T08:30:00+00:00,OPEN,50.50,200.50
+                12341236,2025-11-01T08:30:00+00:00,OPEN,10.99,220.99
+              schema:
+                $ref: '#/components/schemas/getInvoicesExportCsvResult'
+          description: CSV file with invoices.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Export Invoices (CSV)
+      tags:
+      - invoice
   /invoices/{Id}:
     get:
       description: Get Invoice will return a single invoice for the customer.
@@ -439,6 +524,32 @@ components:
       schema:
         type: integer
       style: form
+    DateFrom:
+      description: |
+        Filter invoices starting from this date.
+        - Format: YYYY-MM-DD
+        - Example: 2025-01-01
+      explode: true
+      in: query
+      name: dateFrom
+      required: false
+      schema:
+        format: date
+        type: string
+      style: form
+    DateTo:
+      description: |
+        Filter invoices starting up to this date.
+        - Format: YYYY-MM-DD
+        - Example: 2025-01-01
+      explode: true
+      in: query
+      name: dateTo
+      required: false
+      schema:
+        format: date
+        type: string
+      style: form
     Id:
       description: Invoice Id
       explode: false
@@ -593,6 +704,16 @@ components:
           title: errorDetails
           type: object
       type: object
+    getInvoicesExportCsvResult:
+      description: |
+        CSV file containing invoice data with the following columns:
+        - Invoice number
+        - Date (UTC)
+        - Status
+        - Open amount
+        - Total
+      format: binary
+      type: string
     getInvoiceResult:
       example:
         date: 2019-05-06T00:00:00+00:00
