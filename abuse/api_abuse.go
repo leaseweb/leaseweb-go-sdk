@@ -688,7 +688,7 @@ func (r ApiGetReportListRequest) Ip(ip string) ApiGetReportListRequest {
 	return r
 }
 
-// Comma-separated list of sort field names. Prepend the field name with &#39;-&#39; for descending order. Sortable field names are deadline and reportedAt 
+// Comma-separated list of sort field names. Prepend the field name with &#39;-&#39; for descending order. Sortable field names are deadline, reportedAt and updatedAt 
 func (r ApiGetReportListRequest) Sort(sort string) ApiGetReportListRequest {
 	r.sort = &sort
 	return r

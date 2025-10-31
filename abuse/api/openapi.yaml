@@ -90,8 +90,8 @@ paths:
           type: string
         style: form
       - description: |
-          Comma-separated list of sort field names. Prepend the field name with '-' for descending order. Sortable field names are deadline and reportedAt
-        example: "deadline,-reportedAt"
+          Comma-separated list of sort field names. Prepend the field name with '-' for descending order. Sortable field names are deadline, reportedAt and updatedAt
+        example: "deadline,-reportedAt,-updatedAt"
         explode: true
         in: query
         name: sort
@@ -901,8 +901,8 @@ components:
       style: form
     sort:
       description: |
-        Comma-separated list of sort field names. Prepend the field name with '-' for descending order. Sortable field names are deadline and reportedAt
-      example: "deadline,-reportedAt"
+        Comma-separated list of sort field names. Prepend the field name with '-' for descending order. Sortable field names are deadline, reportedAt and updatedAt
+      example: "deadline,-reportedAt,-updatedAt"
       explode: true
       in: query
       name: sort

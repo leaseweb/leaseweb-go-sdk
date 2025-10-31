@@ -254,7 +254,7 @@ func main() {
 	status := "OPEN,WAITING,CLOSED" // string | Comma separated list of report statuses to filter on.  (optional) (default to "OPEN,WAITING,CLOSED")
 	ticketId := "ticketId_example" // string | Optional ticket ID to filter results (optional)
 	ip := "ip_example" // string | Optional IP address to filter results (optional)
-	sort := "deadline,-reportedAt" // string | Comma-separated list of sort field names. Prepend the field name with '-' for descending order. Sortable field names are deadline and reportedAt  (optional) (default to "The list is sorted in descending order by reportedAt")
+	sort := "deadline,-reportedAt,-updatedAt" // string | Comma-separated list of sort field names. Prepend the field name with '-' for descending order. Sortable field names are deadline, reportedAt and updatedAt  (optional) (default to "The list is sorted in descending order by reportedAt")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
  **status** | **string** | Comma separated list of report statuses to filter on.  | [default to &quot;OPEN,WAITING,CLOSED&quot;]
  **ticketId** | **string** | Optional ticket ID to filter results | 
  **ip** | **string** | Optional IP address to filter results | 
- **sort** | **string** | Comma-separated list of sort field names. Prepend the field name with &#39;-&#39; for descending order. Sortable field names are deadline and reportedAt  | [default to &quot;The list is sorted in descending order by reportedAt&quot;]
+ **sort** | **string** | Comma-separated list of sort field names. Prepend the field name with &#39;-&#39; for descending order. Sortable field names are deadline, reportedAt and updatedAt  | [default to &quot;The list is sorted in descending order by reportedAt&quot;]
 
 ### Return type
 
