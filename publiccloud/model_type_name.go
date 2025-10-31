@@ -94,6 +94,16 @@ const (
 	TYPENAME_R6A_12XLARGE TypeName = "lsw.r6a.12xlarge"
 	TYPENAME_R6A_16XLARGE TypeName = "lsw.r6a.16xlarge"
 	TYPENAME_R6A_24XLARGE TypeName = "lsw.r6a.24xlarge"
+	TYPENAME_G6_XLARGE TypeName = "lsw.g6.xlarge"
+	TYPENAME_G6_2XLARGE TypeName = "lsw.g6.2xlarge"
+	TYPENAME_G6_4XLARGE TypeName = "lsw.g6.4xlarge"
+	TYPENAME_G6_8XLARGE TypeName = "lsw.g6.8xlarge"
+	TYPENAME_G6_12XLARGE TypeName = "lsw.g6.12xlarge"
+	TYPENAME_G6_16XLARGE TypeName = "lsw.g6.16xlarge"
+	TYPENAME_G6_18XLARGE TypeName = "lsw.g6.18xlarge"
+	TYPENAME_G6_24XLARGE TypeName = "lsw.g6.24xlarge"
+	TYPENAME_GR6_4XLARGE TypeName = "lsw.gr6.4xlarge"
+	TYPENAME_GR6_8XLARGE TypeName = "lsw.gr6.8xlarge"
 )
 
 // All allowed values of TypeName enum
@@ -172,6 +182,16 @@ var AllowedTypeNameEnumValues = []TypeName{
 	"lsw.r6a.12xlarge",
 	"lsw.r6a.16xlarge",
 	"lsw.r6a.24xlarge",
+	"lsw.g6.xlarge",
+	"lsw.g6.2xlarge",
+	"lsw.g6.4xlarge",
+	"lsw.g6.8xlarge",
+	"lsw.g6.12xlarge",
+	"lsw.g6.16xlarge",
+	"lsw.g6.18xlarge",
+	"lsw.g6.24xlarge",
+	"lsw.gr6.4xlarge",
+	"lsw.gr6.8xlarge",
 }
 
 func (v *TypeName) UnmarshalJSON(src []byte) error {

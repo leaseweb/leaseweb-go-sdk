@@ -151,6 +151,26 @@
 
 * `R6A_24XLARGE` (value: `"lsw.r6a.24xlarge"`)
 
+* `G6_XLARGE` (value: `"lsw.g6.xlarge"`)
+
+* `G6_2XLARGE` (value: `"lsw.g6.2xlarge"`)
+
+* `G6_4XLARGE` (value: `"lsw.g6.4xlarge"`)
+
+* `G6_8XLARGE` (value: `"lsw.g6.8xlarge"`)
+
+* `G6_12XLARGE` (value: `"lsw.g6.12xlarge"`)
+
+* `G6_16XLARGE` (value: `"lsw.g6.16xlarge"`)
+
+* `G6_18XLARGE` (value: `"lsw.g6.18xlarge"`)
+
+* `G6_24XLARGE` (value: `"lsw.g6.24xlarge"`)
+
+* `GR6_4XLARGE` (value: `"lsw.gr6.4xlarge"`)
+
+* `GR6_8XLARGE` (value: `"lsw.gr6.8xlarge"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
