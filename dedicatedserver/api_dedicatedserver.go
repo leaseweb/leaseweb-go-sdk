@@ -782,7 +782,7 @@ You are now able to target a specific diskset, like SATA1TB, SATA2TB, SSD256GB,
 etc. To see which disksets are available in your server check the `/v2/servers/{serverId}`
 endpoint and look for the corresponding diskset id from the hdd array.
 
-For more information about Dedicated Server installation, [click here](https://kb.leaseweb.com/products/dedicated-server/reinstalling-your-dedicated-server) for our related Knowledge Base article.
+For more information about Dedicated Server installation, check our [Knowledge Base article on reinstalling your Dedicated Server](https://kb.leaseweb.com/products/dedicated-server/reinstalling-your-dedicated-server).
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1035,7 +1035,7 @@ associated with this resource in our database.
 DDoS detection profiles can only be changed if the IP address is protected
 using Advanced DDoS protection.
 
-For more information about DDoS detection profiles [click here](https://kb.leaseweb.com/products/cyber-security/ddos-ip-protection#DDOSIPProtection-DDoSIPProtectionAdvancedDetectionprofiles) for our KB related article.
+For more information about DDoS detection profiles, check our [Knowledge Base article on DDoS IP Protection](https://kb.leaseweb.com/products/cyber-security/ddos-ip-protection#DDOSIPProtection-DDoSIPProtectionAdvancedDetectionprofiles).
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -8575,7 +8575,7 @@ You are now able to target a specific diskset, like SATA1TB, SATA2TB, SSD256GB,
 etc. To see which disksets are available in your server check the `/v2/servers/{serverId}`
 endpoint and look for the corresponding diskset id from the hdd array.
 
-For more information about Dedicated Server installation, [click here](https://kb.leaseweb.com/products/dedicated-server/reinstalling-your-dedicated-server) for our related Knowledge Base article.
+For more information about Dedicated Server installation, check our [Knowledge Base article on reinstalling your Dedicated Server](https://kb.leaseweb.com/products/dedicated-server/reinstalling-your-dedicated-server).
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -11156,7 +11156,7 @@ Update the reverse lookup or DDoS detection profile for the ip address.
 DDoS detection profiles can only be changed if the IP address is protected
 using Advanced DDoS protection.
 
-For more information about DDoS detection profiles [click here](https://kb.leaseweb.com/products/cyber-security/ddos-ip-protection#DDOSIPProtection-DDoSIPProtectionAdvancedDetectionprofiles) for our KB related article.
+For more information about DDoS detection profiles, check our [Knowledge Base article on DDoS IP Protection](https://kb.leaseweb.com/products/cyber-security/ddos-ip-protection#DDOSIPProtection-DDoSIPProtectionAdvancedDetectionprofiles).
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

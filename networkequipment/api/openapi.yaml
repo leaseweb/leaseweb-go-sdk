@@ -722,7 +722,7 @@ paths:
         DDoS detection profiles can only be changed if the IP address is protected
         using Advanced DDoS protection.
 
-        For more information about DDoS detection profiles [click here](https://kb.leaseweb.com/products/cyber-security/ddos-ip-protection#DDOSIPProtection-DDoSIPProtectionAdvancedDetectionprofiles) for our KB related article.
+        For more information about DDoS detection profiles, check our [Knowledge Base article on DDoS IP Protection](https://kb.leaseweb.com/products/cyber-security/ddos-ip-protection#DDOSIPProtection-DDoSIPProtectionAdvancedDetectionprofiles).
       operationId: updateIp
       parameters:
       - description: The ID of a dedicated network equipment

@@ -324,7 +324,7 @@ associated with this resource in our database.
 DDoS detection profiles can only be changed if the IP address is protected
 using Advanced DDoS protection.
 
-For more information about DDoS detection profiles [click here](https://kb.leaseweb.com/products/cyber-security/ddos-ip-protection#DDOSIPProtection-DDoSIPProtectionAdvancedDetectionprofiles) for our KB related article.
+For more information about DDoS detection profiles, check our [Knowledge Base article on DDoS IP Protection](https://kb.leaseweb.com/products/cyber-security/ddos-ip-protection#DDOSIPProtection-DDoSIPProtectionAdvancedDetectionprofiles).
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -3452,7 +3452,7 @@ Update the reverse lookup or DDoS detection profile for the ip address.
 DDoS detection profiles can only be changed if the IP address is protected
 using Advanced DDoS protection.
 
-For more information about DDoS detection profiles [click here](https://kb.leaseweb.com/products/cyber-security/ddos-ip-protection#DDOSIPProtection-DDoSIPProtectionAdvancedDetectionprofiles) for our KB related article.
+For more information about DDoS detection profiles, check our [Knowledge Base article on DDoS IP Protection](https://kb.leaseweb.com/products/cyber-security/ddos-ip-protection#DDOSIPProtection-DDoSIPProtectionAdvancedDetectionprofiles).
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
