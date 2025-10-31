@@ -55,6 +55,8 @@ tags:
 - name: IPs
 - name: Private Networks
 - name: Load Balancer
+- description: Operations related to security groups
+  name: Security Groups
 - name: Auto Scaling Groups
 - name: Reinstall
 paths:
@@ -537,6 +539,15 @@ paths:
         required: false
         schema:
           $ref: '#/components/schemas/typeName'
+        style: form
+      - description: "Filter instances by security group UUIDs, separated by commas."
+        example: "166cc685-8273-11f0-b4f8-2687367a8a5e,7e59b33d-05f3-4078-b251-c7831ae8fe14"
+        explode: true
+        in: query
+        name: securityGroupIds
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -9111,6 +9122,301 @@ paths:
       summary: Remove instance from Private Network
       tags:
       - publiccloud
+  /instances/{instanceId}/attachSecurityGroups:
+    post:
+      description: Attach security groups to an instance
+      operationId: attachSecurityGroups
+      parameters:
+      - description: Instance's ID
+        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              securityGroupIds:
+              - 7e59b33d-05f3-4078-b251-c7831ae8fe14
+              - 166cc685-8273-11f0-b4f8-2687367a8a5e
+            schema:
+              $ref: '#/components/schemas/attachSecurityGroupsOpts'
+        required: true
+      responses:
+        "202":
+          description: Accepted
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Attach security groups to instance
+      tags:
+      - publiccloud
+  /instances/{instanceId}/detachSecurityGroups:
+    post:
+      description: Detach security groups from an instance
+      operationId: detachSecurityGroups
+      parameters:
+      - description: Instance's ID
+        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              securityGroupIds:
+              - 7e59b33d-05f3-4078-b251-c7831ae8fe14
+              - 166cc685-8273-11f0-b4f8-2687367a8a5e
+            schema:
+              $ref: '#/components/schemas/detachSecurityGroupsOpts'
+        required: true
+      responses:
+        "202":
+          description: Accepted
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Detach security groups from instance
+      tags:
+      - publiccloud
+  /instances/{instanceId}/securityGroups:
+    get:
+      description: List security groups associated with the instance
+      operationId: getInstanceSecurityGroups
+      parameters:
+      - description: Instance's ID
+        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Limit the number of results returned.
+        example: 20
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Return results starting from the given offset.
+        example: 10
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                _metadata:
+                  totalCount: 3
+                  limit: 10
+                  offset: 0
+                securityGroups:
+                - id: 166cc685-8273-11f0-b4f8-2687367a8a5e
+                  name: Default Security Group
+                  default: true
+                  state: ACTIVE
+                - id: 7e59b33d-05f3-4078-b251-c7831ae8fe14
+                  name: My Security Group
+                  default: false
+                  state: ACTIVE
+                - id: fb769dab-3daa-47e4-89ed-06a4b6499176
+                  name: My Security Group
+                  default: false
+                  state: ACTIVE
+              schema:
+                $ref: '#/components/schemas/instanceSecurityGroups'
+          description: OK.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Get Instance Security Groups
+      tags:
+      - publiccloud
   /instances/{instanceId}/snapshots:
     get:
       description: List instance snapshots
@@ -12004,6 +12310,754 @@ paths:
       summary: Update Notification Setting details
       tags:
       - publiccloud
+  /securityGroups:
+    get:
+      description: List and filter security groups
+      operationId: getSecurityGroupList
+      parameters:
+      - description: Limit the number of results returned.
+        example: 20
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Return results starting from the given offset.
+        example: 10
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Filter by state
+        explode: true
+        in: query
+        name: state
+        required: false
+        schema:
+          $ref: '#/components/schemas/securityGroupState'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                _metadata:
+                  totalCount: 3
+                  limit: 10
+                  offset: 0
+                securityGroups:
+                - id: 166cc685-8273-11f0-b4f8-2687367a8a5e
+                  name: Default Security Group
+                  default: true
+                  state: ACTIVE
+                - id: 7e59b33d-05f3-4078-b251-c7831ae8fe14
+                  name: My Security Group
+                  default: false
+                  state: ACTIVE
+                - id: fb769dab-3daa-47e4-89ed-06a4b6499176
+                  name: My Security Group
+                  default: false
+                  state: ACTIVE
+              schema:
+                $ref: '#/components/schemas/securityGroupList'
+          description: OK.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Get Security Group list
+      tags:
+      - publiccloud
+    post:
+      description: Create a Security Group
+      operationId: createSecurityGroup
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: My Security Group
+            schema:
+              $ref: '#/components/schemas/createSecurityGroupOpts'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              example:
+                default: false
+                id: 7e59b33d-05f3-4078-b251-c7831ae8fe14
+                name: My Security Group
+                state: CREATING
+              schema:
+                $ref: '#/components/schemas/securityGroup'
+          description: Created
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Create Security Group
+      tags:
+      - publiccloud
+  /securityGroups/{securityGroupId}:
+    delete:
+      description: Delete a Security Group
+      operationId: deleteSecurityGroup
+      parameters:
+      - description: Security Group ID
+        example: 166cc685-8273-11f0-b4f8-2687367a8a5e
+        explode: false
+        in: path
+        name: securityGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No Content.
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Delete Security Group
+      tags:
+      - publiccloud
+    get:
+      operationId: getSecurityGroup
+      parameters:
+      - description: Security Group ID
+        example: 166cc685-8273-11f0-b4f8-2687367a8a5e
+        explode: false
+        in: path
+        name: securityGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                default: false
+                id: 166cc685-8273-11f0-b4f8-2687367a8a5e
+                name: My Security Group
+                state: ACTIVE
+              schema:
+                $ref: '#/components/schemas/securityGroup'
+          description: OK.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Get Security Group details
+      tags:
+      - publiccloud
+    put:
+      description: Update a Security Group
+      operationId: updateSecurityGroup
+      parameters:
+      - description: Security Group ID
+        example: 166cc685-8273-11f0-b4f8-2687367a8a5e
+        explode: false
+        in: path
+        name: securityGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: My Security Group
+            schema:
+              $ref: '#/components/schemas/updateSecurityGroupOpts'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                default: false
+                id: 166cc685-8273-11f0-b4f8-2687367a8a5e
+                name: My Security Group
+                state: ACTIVE
+              schema:
+                $ref: '#/components/schemas/securityGroup'
+          description: OK
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Update Security Group
+      tags:
+      - publiccloud
+  /securityGroups/{securityGroupId}/authorizeFirewallRules:
+    post:
+      description: Add firewall rules to security group
+      operationId: authorizeSecurityGroupFirewallRules
+      parameters:
+      - description: Security Group ID
+        example: 166cc685-8273-11f0-b4f8-2687367a8a5e
+        explode: false
+        in: path
+        name: securityGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              rules:
+              - protocol: TCP
+                startPort: 8000
+                endPort: 8000
+                source: 0.0.0.0/0
+              - protocol: ICMP
+                icmpType: -1
+                icmpCode: -1
+                source: 0.0.0.0/0
+            schema:
+              $ref: '#/components/schemas/authorizeFirewallRulesOpts'
+        required: true
+      responses:
+        "202":
+          description: Accepted
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Add firewall rules to security group
+      tags:
+      - publiccloud
+  /securityGroups/{securityGroupId}/revokeFirewallRules:
+    post:
+      description: Remove firewall rules from security group
+      operationId: revokeSecurityGroupFirewallRules
+      parameters:
+      - description: Security Group ID
+        example: 166cc685-8273-11f0-b4f8-2687367a8a5e
+        explode: false
+        in: path
+        name: securityGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              rules:
+              - 7e59b33d-05f3-4078-b251-c7831ae8fe14
+              - 166cc685-8273-11f0-b4f8-2687367a8a5e
+            schema:
+              $ref: '#/components/schemas/revokeFirewallRulesOpts'
+        required: true
+      responses:
+        "202":
+          description: Accepted
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Remove firewall rules from security group
+      tags:
+      - publiccloud
+  /securityGroups/{securityGroupId}/firewallRules:
+    get:
+      description: Get firewall rules for a security group
+      operationId: getSecurityGroupFirewallRules
+      parameters:
+      - description: Security Group ID
+        example: 166cc685-8273-11f0-b4f8-2687367a8a5e
+        explode: false
+        in: path
+        name: securityGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Limit the number of results returned.
+        example: 20
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Return results starting from the given offset.
+        example: 10
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                _metadata:
+                  totalCount: 2
+                  limit: 20
+                  offset: 0
+                firewallRules:
+                - protocol: TCP
+                  source: 0.0.0.0/0
+                  startPort: 80
+                  endPort: 80
+                  icmpCode: null
+                  icmpType: null
+                  state: ACTIVE
+                - protocol: ICMP
+                  source: 10.0.0.0/8
+                  icmpType: -1
+                  icmpCode: -1
+                  startPort: null
+                  endPort: null
+                  state: ACTIVE
+              schema:
+                $ref: '#/components/schemas/getSecurityGroupFirewallRulesResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Get Security Group Firewall Rules
+      tags:
+      - publiccloud
 components:
   parameters:
     limit:
@@ -12287,6 +13341,26 @@ components:
       explode: false
       in: path
       name: notificationSettingId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    securityGroupState:
+      description: Filter by state
+      explode: true
+      in: query
+      name: state
+      required: false
+      schema:
+        $ref: '#/components/schemas/securityGroupState'
+      style: form
+    securityGroupId:
+      description: Security Group ID
+      example: 166cc685-8273-11f0-b4f8-2687367a8a5e
+      explode: false
+      in: path
+      name: securityGroupId
       required: true
       schema:
         format: uuid
@@ -15451,6 +16525,91 @@ components:
         _metadata:
           $ref: '#/components/schemas/metricsMetadataProperties'
       type: object
+    ids:
+      items:
+        format: uuid
+        type: string
+      type: array
+    attachSecurityGroupsOpts:
+      properties:
+        securityGroupIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+      required:
+      - securityGroupIds
+      type: object
+    detachSecurityGroupsOpts:
+      properties:
+        securityGroupIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+      required:
+      - securityGroupIds
+      type: object
+    securityGroupState:
+      enum:
+      - CREATING
+      - ACTIVE
+      - FAILED
+      - SYNCING
+      type: string
+    securityGroup:
+      example:
+        default: true
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        state: CREATING
+      properties:
+        id:
+          description: The unique identifier of the security group
+          format: uuid
+          type: string
+        name:
+          description: The name of the security group
+          type: string
+        default:
+          description: Whether this is the default security group
+          type: boolean
+        state:
+          $ref: '#/components/schemas/securityGroupState'
+      required:
+      - default
+      - id
+      - name
+      - state
+      title: securityGroup
+      type: object
+    instanceSecurityGroups:
+      example:
+        securityGroups:
+        - default: true
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: CREATING
+        - default: true
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: CREATING
+        _metadata:
+          offset: 0
+          limit: 5
+          totalCount: 2
+      properties:
+        securityGroups:
+          description: List of security groups associated with the instance
+          items:
+            $ref: '#/components/schemas/securityGroup'
+          type: array
+        _metadata:
+          $ref: '#/components/schemas/_metadata'
+      required:
+      - _metadata
+      - securityGroups
+      type: object
     snapshot:
       example:
         displayName: displayName
@@ -16273,11 +17432,6 @@ components:
           $ref: '#/components/schemas/_metadata'
       title: targets
       type: object
-    ids:
-      items:
-        format: uuid
-        type: string
-      type: array
     unit:
       enum:
       - MB
@@ -16459,6 +17613,157 @@ components:
       - channels
       - threshold
       - timePeriod
+      type: object
+    securityGroupList:
+      example:
+        securityGroups:
+        - default: true
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: CREATING
+        - default: true
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: CREATING
+        _metadata:
+          offset: 0
+          limit: 5
+          totalCount: 2
+      properties:
+        securityGroups:
+          items:
+            $ref: '#/components/schemas/securityGroup'
+          type: array
+        _metadata:
+          $ref: '#/components/schemas/_metadata'
+      required:
+      - _metadata
+      - securityGroups
+      type: object
+    createSecurityGroupOpts:
+      properties:
+        name:
+          description: The name of the security group
+          type: string
+      required:
+      - name
+      type: object
+    updateSecurityGroupOpts:
+      properties:
+        name:
+          description: The name of the security group
+          type: string
+      required:
+      - name
+      type: object
+    authorizeFirewallRulesOpts:
+      properties:
+        rules:
+          description: Array of firewall rules to authorize
+          items:
+            $ref: '#/components/schemas/authorizeRule'
+          type: array
+      required:
+      - rules
+      type: object
+    revokeFirewallRulesOpts:
+      properties:
+        rules:
+          items:
+            format: uuid
+            type: string
+          type: array
+      required:
+      - rules
+      type: object
+    firewallRuleState:
+      enum:
+      - CREATING
+      - ACTIVE
+      - FAILED
+      - DELETING
+      type: string
+    securityGroupFirewallRuleResponse:
+      example:
+        startPort: 5248
+        icmpType: 1
+        protocol: TCP
+        icmpCode: 5
+        source: 0.0.0.0/0
+        state: CREATING
+        endPort: 39500
+      properties:
+        protocol:
+          description: The protocol of the firewall rule
+          enum:
+          - TCP
+          - UDP
+          - ICMP
+          type: string
+        startPort:
+          description: "Start port for TCP/UDP rules, null for ICMP rules"
+          maximum: 65535
+          minimum: 0
+          nullable: true
+          type: integer
+        endPort:
+          description: "End port for TCP/UDP rules, null for ICMP rules"
+          maximum: 65535
+          minimum: 0
+          nullable: true
+          type: integer
+        icmpType:
+          description: "ICMP type for ICMP protocol, null for TCP/UDP rules"
+          nullable: true
+          type: integer
+        icmpCode:
+          description: "ICMP code for ICMP protocol, null for TCP/UDP rules"
+          nullable: true
+          type: integer
+        source:
+          description: Source IP address or CIDR block
+          example: 0.0.0.0/0
+          type: string
+        state:
+          $ref: '#/components/schemas/firewallRuleState'
+      required:
+      - endPort
+      - icmpCode
+      - icmpType
+      - protocol
+      - source
+      - startPort
+      - state
+      title: securityGroupFirewallRuleResponse
+      type: object
+    getSecurityGroupFirewallRulesResult:
+      example:
+        _metadata:
+          offset: 0
+          limit: 5
+          totalCount: 2
+        firewallRules:
+        - startPort: 5248
+          icmpType: 1
+          protocol: TCP
+          icmpCode: 5
+          source: 0.0.0.0/0
+          state: CREATING
+          endPort: 39500
+        - startPort: 5248
+          icmpType: 1
+          protocol: TCP
+          icmpCode: 5
+          source: 0.0.0.0/0
+          state: CREATING
+          endPort: 39500
+      properties:
+        firewallRules:
+          items:
+            $ref: '#/components/schemas/securityGroupFirewallRuleResponse'
+          type: array
+        _metadata:
+          $ref: '#/components/schemas/_metadata'
       type: object
     region:
       example:
@@ -17242,6 +18547,47 @@ components:
         contactGroup:
           example: TECHNICAL
           type: string
+    authorizeRule:
+      properties:
+        protocol:
+          description: The protocol of the firewall rule
+          enum:
+          - TCP
+          - UDP
+          - ICMP
+          type: string
+        startPort:
+          description: "Start port for TCP/UDP rules. Required for TCP/UDP protocols,\
+            \ not applicable for ICMP"
+          maximum: 65535
+          minimum: 0
+          nullable: true
+          type: integer
+        endPort:
+          description: "End port for TCP/UDP rules. Required for TCP/UDP protocols,\
+            \ not applicable for ICMP"
+          maximum: 65535
+          minimum: 0
+          nullable: true
+          type: integer
+        icmpType:
+          description: "ICMP type. Required for ICMP protocol, not applicable for\
+            \ TCP/UDP"
+          nullable: true
+          type: integer
+        icmpCode:
+          description: "ICMP code. Required for ICMP protocol, not applicable for\
+            \ TCP/UDP"
+          nullable: true
+          type: integer
+        source:
+          description: CIDR block
+          example: 0.0.0.0/0
+          type: string
+      required:
+      - protocol
+      title: authorizeRule
+      type: object
   securitySchemes:
     BearerAuth:
       scheme: bearer

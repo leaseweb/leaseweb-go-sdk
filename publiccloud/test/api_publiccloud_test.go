@@ -48,6 +48,32 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PubliccloudAPIService AttachSecurityGroups", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var instanceId string
+
+		httpRes, err := apiClient.PubliccloudAPI.AttachSecurityGroups(context.Background(), instanceId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService AuthorizeSecurityGroupFirewallRules", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var securityGroupId string
+
+		httpRes, err := apiClient.PubliccloudAPI.AuthorizeSecurityGroupFirewallRules(context.Background(), securityGroupId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PubliccloudAPIService CancelInstanceTermination", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -107,6 +133,18 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		var notificationSettingId string
 
 		resp, httpRes, err := apiClient.PubliccloudAPI.CreateNotificationSetting(context.Background(), instanceId, notificationSettingId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService CreateSecurityGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.CreateSecurityGroup(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -208,6 +246,19 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PubliccloudAPIService DeleteSecurityGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var securityGroupId string
+
+		httpRes, err := apiClient.PubliccloudAPI.DeleteSecurityGroup(context.Background(), securityGroupId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PubliccloudAPIService DeleteSnapshot", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -269,6 +320,19 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		var instanceId string
 
 		httpRes, err := apiClient.PubliccloudAPI.DetachIso(context.Background(), instanceId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService DetachSecurityGroups", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var instanceId string
+
+		httpRes, err := apiClient.PubliccloudAPI.DetachSecurityGroups(context.Background(), instanceId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -539,6 +603,20 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PubliccloudAPIService GetInstanceSecurityGroups", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var instanceId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.GetInstanceSecurityGroups(context.Background(), instanceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PubliccloudAPIService GetInstanceTypeList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -791,6 +869,46 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		var loadBalancerId string
 
 		resp, httpRes, err := apiClient.PubliccloudAPI.GetResponseCodesPerSecondMetrics(context.Background(), loadBalancerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService GetSecurityGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var securityGroupId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.GetSecurityGroup(context.Background(), securityGroupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService GetSecurityGroupFirewallRules", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var securityGroupId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.GetSecurityGroupFirewallRules(context.Background(), securityGroupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService GetSecurityGroupList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.GetSecurityGroupList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -1071,6 +1189,19 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PubliccloudAPIService RevokeSecurityGroupFirewallRules", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var securityGroupId string
+
+		httpRes, err := apiClient.PubliccloudAPI.RevokeSecurityGroupFirewallRules(context.Background(), securityGroupId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PubliccloudAPIService StartInstance", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -1288,6 +1419,20 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		var notificationSettingId string
 
 		resp, httpRes, err := apiClient.PubliccloudAPI.UpdateNotificationSetting(context.Background(), instanceId, notificationSettingId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService UpdateSecurityGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var securityGroupId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.UpdateSecurityGroup(context.Background(), securityGroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

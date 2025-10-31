@@ -8,6 +8,9 @@ client.go
 configuration.go
 docs/Action.md
 docs/AttachIsoOpts.md
+docs/AttachSecurityGroupsOpts.md
+docs/AuthorizeFirewallRulesOpts.md
+docs/AuthorizeRule.md
 docs/AutoScaledInstance.md
 docs/AutoScalingGroup.md
 docs/AutoScalingGroupDetails.md
@@ -29,6 +32,7 @@ docs/CpuMetricsMetadataSummaryPeak.md
 docs/CreateAutoScalingGroupOpts.md
 docs/CreateImageOpts.md
 docs/CreateNotificationSettingOpts.md
+docs/CreateSecurityGroupOpts.md
 docs/CreateSnapshotOpts.md
 docs/CreateTargetGroupOpts.md
 docs/Credential.md
@@ -38,9 +42,11 @@ docs/DataTrafficMetricsGranularity.md
 docs/DataTransferredMetrics.md
 docs/DataTransferredMetricsPerSec.md
 docs/Ddos.md
+docs/DetachSecurityGroupsOpts.md
 docs/ErrorResult.md
 docs/ExpenseResultInstance.md
 docs/ExpensesMetadata.md
+docs/FirewallRuleState.md
 docs/Flavour.md
 docs/GetAutoScalingGroupInstanceListResult.md
 docs/GetAutoScalingGroupListResult.md
@@ -67,6 +73,7 @@ docs/GetRequestsMetricsResult.md
 docs/GetRequestsPerSecondMetricsResult.md
 docs/GetResponseCodesMetricsResult.md
 docs/GetResponseCodesPerSecondMetricsResult.md
+docs/GetSecurityGroupFirewallRulesResult.md
 docs/GetSnapshotListResult.md
 docs/GetTargetGroupListResult.md
 docs/GetTargetListResult.md
@@ -85,6 +92,7 @@ docs/InstanceContract.md
 docs/InstanceContractDetails.md
 docs/InstanceDetails.md
 docs/InstanceList.md
+docs/InstanceSecurityGroups.md
 docs/InstanceType.md
 docs/InstanceTypes.md
 docs/InstanceTypesMetadata.md
@@ -138,7 +146,12 @@ docs/ReinstallResourceOpts.md
 docs/Resources.md
 docs/ResponseCodesMetrics.md
 docs/ResponseCodesMetricsPerSec.md
+docs/RevokeFirewallRulesOpts.md
 docs/SchemasHealthCheckStatus.md
+docs/SecurityGroup.md
+docs/SecurityGroupFirewallRuleResponse.md
+docs/SecurityGroupList.md
+docs/SecurityGroupState.md
 docs/Snapshot.md
 docs/SslCertificate.md
 docs/State.md
@@ -171,6 +184,7 @@ docs/UpdateInstanceOpts.md
 docs/UpdateLoadBalancerOpts.md
 docs/UpdateNotificationSettingOpts.md
 docs/UpdateNotificationSettingOptsChannelsInner.md
+docs/UpdateSecurityGroupOpts.md
 docs/UpdateTargetGroupOpts.md
 docs/Values.md
 git_push.sh
@@ -180,6 +194,9 @@ model__metadata.go
 model__schemas_health_check_status.go
 model_action.go
 model_attach_iso_opts.go
+model_attach_security_groups_opts.go
+model_authorize_firewall_rules_opts.go
+model_authorize_rule.go
 model_auto_scaled_instance.go
 model_auto_scaling_group.go
 model_auto_scaling_group_details.go
@@ -201,6 +218,7 @@ model_cpu_metrics_metadata_summary_peak.go
 model_create_auto_scaling_group_opts.go
 model_create_image_opts.go
 model_create_notification_setting_opts.go
+model_create_security_group_opts.go
 model_create_snapshot_opts.go
 model_create_target_group_opts.go
 model_credential.go
@@ -210,9 +228,11 @@ model_data_traffic_metrics_granularity.go
 model_data_transferred_metrics.go
 model_data_transferred_metrics_per_sec.go
 model_ddos.go
+model_detach_security_groups_opts.go
 model_error_result.go
 model_expense_result_instance.go
 model_expenses_metadata.go
+model_firewall_rule_state.go
 model_flavour.go
 model_get_auto_scaling_group_instance_list_result.go
 model_get_auto_scaling_group_list_result.go
@@ -239,6 +259,7 @@ model_get_requests_metrics_result.go
 model_get_requests_per_second_metrics_result.go
 model_get_response_codes_metrics_result.go
 model_get_response_codes_per_second_metrics_result.go
+model_get_security_group_firewall_rules_result.go
 model_get_snapshot_list_result.go
 model_get_target_group_list_result.go
 model_get_target_list_result.go
@@ -257,6 +278,7 @@ model_instance_contract.go
 model_instance_contract_details.go
 model_instance_details.go
 model_instance_list.go
+model_instance_security_groups.go
 model_instance_type.go
 model_instance_types.go
 model_instance_types__metadata.go
@@ -308,6 +330,11 @@ model_reinstall_resource_opts.go
 model_resources.go
 model_response_codes_metrics.go
 model_response_codes_metrics_per_sec.go
+model_revoke_firewall_rules_opts.go
+model_security_group.go
+model_security_group_firewall_rule_response.go
+model_security_group_list.go
+model_security_group_state.go
 model_snapshot.go
 model_ssl_certificate.go
 model_state.go
@@ -340,6 +367,7 @@ model_update_ip_opts.go
 model_update_load_balancer_opts.go
 model_update_notification_setting_opts.go
 model_update_notification_setting_opts_channels_inner.go
+model_update_security_group_opts.go
 model_update_target_group_opts.go
 model_values.go
 response.go

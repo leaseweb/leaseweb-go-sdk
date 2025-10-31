@@ -82,11 +82,14 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *PubliccloudAPI* | [**AddToPrivateNetwork**](docs/PubliccloudAPI.md#addtoprivatenetwork) | **Put** /instances/{instanceId}/addToPrivateNetwork | Add instance to Private Network
 *PubliccloudAPI* | [**AttachIso**](docs/PubliccloudAPI.md#attachiso) | **Post** /instances/{instanceId}/attachIso | Attach ISO to a specific Instance
+*PubliccloudAPI* | [**AttachSecurityGroups**](docs/PubliccloudAPI.md#attachsecuritygroups) | **Post** /instances/{instanceId}/attachSecurityGroups | Attach security groups to instance
+*PubliccloudAPI* | [**AuthorizeSecurityGroupFirewallRules**](docs/PubliccloudAPI.md#authorizesecuritygroupfirewallrules) | **Post** /securityGroups/{securityGroupId}/authorizeFirewallRules | Add firewall rules to security group
 *PubliccloudAPI* | [**CancelInstanceTermination**](docs/PubliccloudAPI.md#cancelinstancetermination) | **Post** /instances/{instanceId}/cancelTermination | Cancel instance termination
 *PubliccloudAPI* | [**CreateAutoScalingGroup**](docs/PubliccloudAPI.md#createautoscalinggroup) | **Post** /autoScalingGroups | Create Auto Scaling Group
 *PubliccloudAPI* | [**CreateImage**](docs/PubliccloudAPI.md#createimage) | **Post** /images | Create Custom Image
 *PubliccloudAPI* | [**CreateLoadBalancerListener**](docs/PubliccloudAPI.md#createloadbalancerlistener) | **Post** /loadBalancers/{loadBalancerId}/listeners | Create listener
 *PubliccloudAPI* | [**CreateNotificationSetting**](docs/PubliccloudAPI.md#createnotificationsetting) | **Post** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Create a notification setting
+*PubliccloudAPI* | [**CreateSecurityGroup**](docs/PubliccloudAPI.md#createsecuritygroup) | **Post** /securityGroups | Create Security Group
 *PubliccloudAPI* | [**CreateSnapshot**](docs/PubliccloudAPI.md#createsnapshot) | **Post** /instances/{instanceId}/snapshots | Create instance snapshot
 *PubliccloudAPI* | [**CreateTargetGroup**](docs/PubliccloudAPI.md#createtargetgroup) | **Post** /targetGroups | Create Target Group
 *PubliccloudAPI* | [**DeleteAutoScalingGroup**](docs/PubliccloudAPI.md#deleteautoscalinggroup) | **Delete** /autoScalingGroups/{autoScalingGroupId} | Delete Auto Scaling Group
@@ -94,11 +97,13 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**DeleteCredentials**](docs/PubliccloudAPI.md#deletecredentials) | **Delete** /instances/{instanceId}/credentials | Delete all credentials associated with a specific Instance
 *PubliccloudAPI* | [**DeleteLoadBalancerListener**](docs/PubliccloudAPI.md#deleteloadbalancerlistener) | **Delete** /loadBalancers/{loadBalancerId}/listeners/{listenerId} | Delete load balancer listener
 *PubliccloudAPI* | [**DeleteNotificationSetting**](docs/PubliccloudAPI.md#deletenotificationsetting) | **Delete** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Delete a notification setting setting
+*PubliccloudAPI* | [**DeleteSecurityGroup**](docs/PubliccloudAPI.md#deletesecuritygroup) | **Delete** /securityGroups/{securityGroupId} | Delete Security Group
 *PubliccloudAPI* | [**DeleteSnapshot**](docs/PubliccloudAPI.md#deletesnapshot) | **Delete** /instances/{instanceId}/snapshots/{snapshotId} | Delete instance snapshot
 *PubliccloudAPI* | [**DeleteTargetGroup**](docs/PubliccloudAPI.md#deletetargetgroup) | **Delete** /targetGroups/{targetGroupId} | Delete Target Group
 *PubliccloudAPI* | [**DeregisterAutoScalingGroupTargetGroup**](docs/PubliccloudAPI.md#deregisterautoscalinggrouptargetgroup) | **Post** /autoScalingGroups/{autoScalingGroupId}/deregisterTargetGroup | Deregister Target Group
 *PubliccloudAPI* | [**DeregisterTargets**](docs/PubliccloudAPI.md#deregistertargets) | **Post** /targetGroups/{targetGroupId}/deregisterTargets | Deregister Targets
 *PubliccloudAPI* | [**DetachIso**](docs/PubliccloudAPI.md#detachiso) | **Post** /instances/{instanceId}/detachIso | Detach ISO from a specific Instance
+*PubliccloudAPI* | [**DetachSecurityGroups**](docs/PubliccloudAPI.md#detachsecuritygroups) | **Post** /instances/{instanceId}/detachSecurityGroups | Detach security groups from instance
 *PubliccloudAPI* | [**GetAutoScalingGroup**](docs/PubliccloudAPI.md#getautoscalinggroup) | **Get** /autoScalingGroups/{autoScalingGroupId} | Get Auto Scaling Group details
 *PubliccloudAPI* | [**GetAutoScalingGroupInstanceList**](docs/PubliccloudAPI.md#getautoscalinggroupinstancelist) | **Get** /autoScalingGroups/{autoScalingGroupId}/instances | Get list of instances belonging to an Auto Scaling Group
 *PubliccloudAPI* | [**GetAutoScalingGroupList**](docs/PubliccloudAPI.md#getautoscalinggrouplist) | **Get** /autoScalingGroups | Get Auto Scaling Group list
@@ -118,6 +123,7 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**GetInstanceIP**](docs/PubliccloudAPI.md#getinstanceip) | **Get** /instances/{instanceId}/ips/{ip} | Get IP details for a specific Instance
 *PubliccloudAPI* | [**GetInstanceIPList**](docs/PubliccloudAPI.md#getinstanceiplist) | **Get** /instances/{instanceId}/ips | List IP addresses associated with a specific Instance
 *PubliccloudAPI* | [**GetInstanceList**](docs/PubliccloudAPI.md#getinstancelist) | **Get** /instances | Get instance list
+*PubliccloudAPI* | [**GetInstanceSecurityGroups**](docs/PubliccloudAPI.md#getinstancesecuritygroups) | **Get** /instances/{instanceId}/securityGroups | Get Instance Security Groups
 *PubliccloudAPI* | [**GetInstanceTypeList**](docs/PubliccloudAPI.md#getinstancetypelist) | **Get** /instanceTypes | List instance types
 *PubliccloudAPI* | [**GetIsoList**](docs/PubliccloudAPI.md#getisolist) | **Get** /isos | List available ISOs
 *PubliccloudAPI* | [**GetLoadBalancer**](docs/PubliccloudAPI.md#getloadbalancer) | **Get** /loadBalancers/{loadBalancerId} | Get load balancer details
@@ -137,6 +143,9 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**GetRequestsPerSecondMetrics**](docs/PubliccloudAPI.md#getrequestspersecondmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/requestsPerSecond | Get load balancer requests per second metrics. Not available for listeners with TCP protocol
 *PubliccloudAPI* | [**GetResponseCodesMetrics**](docs/PubliccloudAPI.md#getresponsecodesmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/responseCodes | Get response codes metrics
 *PubliccloudAPI* | [**GetResponseCodesPerSecondMetrics**](docs/PubliccloudAPI.md#getresponsecodespersecondmetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/responseCodesPerSecond | Get response codes per second metrics
+*PubliccloudAPI* | [**GetSecurityGroup**](docs/PubliccloudAPI.md#getsecuritygroup) | **Get** /securityGroups/{securityGroupId} | Get Security Group details
+*PubliccloudAPI* | [**GetSecurityGroupFirewallRules**](docs/PubliccloudAPI.md#getsecuritygroupfirewallrules) | **Get** /securityGroups/{securityGroupId}/firewallRules | Get Security Group Firewall Rules
+*PubliccloudAPI* | [**GetSecurityGroupList**](docs/PubliccloudAPI.md#getsecuritygrouplist) | **Get** /securityGroups | Get Security Group list
 *PubliccloudAPI* | [**GetSnapshot**](docs/PubliccloudAPI.md#getsnapshot) | **Get** /instances/{instanceId}/snapshots/{snapshotId} | Get snapshot detail
 *PubliccloudAPI* | [**GetSnapshotList**](docs/PubliccloudAPI.md#getsnapshotlist) | **Get** /instances/{instanceId}/snapshots | List snapshots
 *PubliccloudAPI* | [**GetTargetGroup**](docs/PubliccloudAPI.md#gettargetgroup) | **Get** /targetGroups/{targetGroupId} | Get Target Group details
@@ -157,6 +166,7 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**RemoveLoadBalancerIPNullRoute**](docs/PubliccloudAPI.md#removeloadbalanceripnullroute) | **Post** /loadBalancers/{loadBalancerId}/ips/{ip}/unnull | Remove an IP null route for a specific Load Balancer
 *PubliccloudAPI* | [**ResetPassword**](docs/PubliccloudAPI.md#resetpassword) | **Post** /instances/{instanceId}/resetPassword | Reset the password for a specific Instance
 *PubliccloudAPI* | [**RestoreSnapshot**](docs/PubliccloudAPI.md#restoresnapshot) | **Put** /instances/{instanceId}/snapshots/{snapshotId} | Restore instance snapshot
+*PubliccloudAPI* | [**RevokeSecurityGroupFirewallRules**](docs/PubliccloudAPI.md#revokesecuritygroupfirewallrules) | **Post** /securityGroups/{securityGroupId}/revokeFirewallRules | Remove firewall rules from security group
 *PubliccloudAPI* | [**StartInstance**](docs/PubliccloudAPI.md#startinstance) | **Post** /instances/{instanceId}/start | Start a specific resource Instance
 *PubliccloudAPI* | [**StartLoadBalancer**](docs/PubliccloudAPI.md#startloadbalancer) | **Post** /loadBalancers/{loadBalancerId}/start | Start a specific resource Load Balancer
 *PubliccloudAPI* | [**StopInstance**](docs/PubliccloudAPI.md#stopinstance) | **Post** /instances/{instanceId}/stop | Stop a specific Instance
@@ -173,6 +183,7 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**UpdateLoadBalancerIP**](docs/PubliccloudAPI.md#updateloadbalancerip) | **Put** /loadBalancers/{loadBalancerId}/ips/{ip} | Update the IP address for a specific Load Balancer
 *PubliccloudAPI* | [**UpdateLoadBalancerListener**](docs/PubliccloudAPI.md#updateloadbalancerlistener) | **Put** /loadBalancers/{loadBalancerId}/listeners/{listenerId} | Update a listener
 *PubliccloudAPI* | [**UpdateNotificationSetting**](docs/PubliccloudAPI.md#updatenotificationsetting) | **Put** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Update Notification Setting details
+*PubliccloudAPI* | [**UpdateSecurityGroup**](docs/PubliccloudAPI.md#updatesecuritygroup) | **Put** /securityGroups/{securityGroupId} | Update Security Group
 *PubliccloudAPI* | [**UpdateTargetGroup**](docs/PubliccloudAPI.md#updatetargetgroup) | **Put** /targetGroups/{targetGroupId} | Update Target Group
 
 
@@ -180,6 +191,9 @@ Class | Method | HTTP request | Description
 
  - [Action](docs/Action.md)
  - [AttachIsoOpts](docs/AttachIsoOpts.md)
+ - [AttachSecurityGroupsOpts](docs/AttachSecurityGroupsOpts.md)
+ - [AuthorizeFirewallRulesOpts](docs/AuthorizeFirewallRulesOpts.md)
+ - [AuthorizeRule](docs/AuthorizeRule.md)
  - [AutoScaledInstance](docs/AutoScaledInstance.md)
  - [AutoScalingGroup](docs/AutoScalingGroup.md)
  - [AutoScalingGroupDetails](docs/AutoScalingGroupDetails.md)
@@ -201,6 +215,7 @@ Class | Method | HTTP request | Description
  - [CreateAutoScalingGroupOpts](docs/CreateAutoScalingGroupOpts.md)
  - [CreateImageOpts](docs/CreateImageOpts.md)
  - [CreateNotificationSettingOpts](docs/CreateNotificationSettingOpts.md)
+ - [CreateSecurityGroupOpts](docs/CreateSecurityGroupOpts.md)
  - [CreateSnapshotOpts](docs/CreateSnapshotOpts.md)
  - [CreateTargetGroupOpts](docs/CreateTargetGroupOpts.md)
  - [Credential](docs/Credential.md)
@@ -210,9 +225,11 @@ Class | Method | HTTP request | Description
  - [DataTransferredMetrics](docs/DataTransferredMetrics.md)
  - [DataTransferredMetricsPerSec](docs/DataTransferredMetricsPerSec.md)
  - [Ddos](docs/Ddos.md)
+ - [DetachSecurityGroupsOpts](docs/DetachSecurityGroupsOpts.md)
  - [ErrorResult](docs/ErrorResult.md)
  - [ExpenseResultInstance](docs/ExpenseResultInstance.md)
  - [ExpensesMetadata](docs/ExpensesMetadata.md)
+ - [FirewallRuleState](docs/FirewallRuleState.md)
  - [Flavour](docs/Flavour.md)
  - [GetAutoScalingGroupInstanceListResult](docs/GetAutoScalingGroupInstanceListResult.md)
  - [GetAutoScalingGroupListResult](docs/GetAutoScalingGroupListResult.md)
@@ -239,6 +256,7 @@ Class | Method | HTTP request | Description
  - [GetRequestsPerSecondMetricsResult](docs/GetRequestsPerSecondMetricsResult.md)
  - [GetResponseCodesMetricsResult](docs/GetResponseCodesMetricsResult.md)
  - [GetResponseCodesPerSecondMetricsResult](docs/GetResponseCodesPerSecondMetricsResult.md)
+ - [GetSecurityGroupFirewallRulesResult](docs/GetSecurityGroupFirewallRulesResult.md)
  - [GetSnapshotListResult](docs/GetSnapshotListResult.md)
  - [GetTargetGroupListResult](docs/GetTargetGroupListResult.md)
  - [GetTargetListResult](docs/GetTargetListResult.md)
@@ -257,6 +275,7 @@ Class | Method | HTTP request | Description
  - [InstanceContractDetails](docs/InstanceContractDetails.md)
  - [InstanceDetails](docs/InstanceDetails.md)
  - [InstanceList](docs/InstanceList.md)
+ - [InstanceSecurityGroups](docs/InstanceSecurityGroups.md)
  - [InstanceType](docs/InstanceType.md)
  - [InstanceTypes](docs/InstanceTypes.md)
  - [InstanceTypesMetadata](docs/InstanceTypesMetadata.md)
@@ -309,7 +328,12 @@ Class | Method | HTTP request | Description
  - [Resources](docs/Resources.md)
  - [ResponseCodesMetrics](docs/ResponseCodesMetrics.md)
  - [ResponseCodesMetricsPerSec](docs/ResponseCodesMetricsPerSec.md)
+ - [RevokeFirewallRulesOpts](docs/RevokeFirewallRulesOpts.md)
  - [SchemasHealthCheckStatus](docs/SchemasHealthCheckStatus.md)
+ - [SecurityGroup](docs/SecurityGroup.md)
+ - [SecurityGroupFirewallRuleResponse](docs/SecurityGroupFirewallRuleResponse.md)
+ - [SecurityGroupList](docs/SecurityGroupList.md)
+ - [SecurityGroupState](docs/SecurityGroupState.md)
  - [Snapshot](docs/Snapshot.md)
  - [SslCertificate](docs/SslCertificate.md)
  - [State](docs/State.md)
@@ -342,6 +366,7 @@ Class | Method | HTTP request | Description
  - [UpdateLoadBalancerOpts](docs/UpdateLoadBalancerOpts.md)
  - [UpdateNotificationSettingOpts](docs/UpdateNotificationSettingOpts.md)
  - [UpdateNotificationSettingOptsChannelsInner](docs/UpdateNotificationSettingOptsChannelsInner.md)
+ - [UpdateSecurityGroupOpts](docs/UpdateSecurityGroupOpts.md)
  - [UpdateTargetGroupOpts](docs/UpdateTargetGroupOpts.md)
  - [Values](docs/Values.md)
 

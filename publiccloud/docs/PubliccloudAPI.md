@@ -6,11 +6,14 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddToPrivateNetwork**](PubliccloudAPI.md#AddToPrivateNetwork) | **Put** /instances/{instanceId}/addToPrivateNetwork | Add instance to Private Network
 [**AttachIso**](PubliccloudAPI.md#AttachIso) | **Post** /instances/{instanceId}/attachIso | Attach ISO to a specific Instance
+[**AttachSecurityGroups**](PubliccloudAPI.md#AttachSecurityGroups) | **Post** /instances/{instanceId}/attachSecurityGroups | Attach security groups to instance
+[**AuthorizeSecurityGroupFirewallRules**](PubliccloudAPI.md#AuthorizeSecurityGroupFirewallRules) | **Post** /securityGroups/{securityGroupId}/authorizeFirewallRules | Add firewall rules to security group
 [**CancelInstanceTermination**](PubliccloudAPI.md#CancelInstanceTermination) | **Post** /instances/{instanceId}/cancelTermination | Cancel instance termination
 [**CreateAutoScalingGroup**](PubliccloudAPI.md#CreateAutoScalingGroup) | **Post** /autoScalingGroups | Create Auto Scaling Group
 [**CreateImage**](PubliccloudAPI.md#CreateImage) | **Post** /images | Create Custom Image
 [**CreateLoadBalancerListener**](PubliccloudAPI.md#CreateLoadBalancerListener) | **Post** /loadBalancers/{loadBalancerId}/listeners | Create listener
 [**CreateNotificationSetting**](PubliccloudAPI.md#CreateNotificationSetting) | **Post** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Create a notification setting
+[**CreateSecurityGroup**](PubliccloudAPI.md#CreateSecurityGroup) | **Post** /securityGroups | Create Security Group
 [**CreateSnapshot**](PubliccloudAPI.md#CreateSnapshot) | **Post** /instances/{instanceId}/snapshots | Create instance snapshot
 [**CreateTargetGroup**](PubliccloudAPI.md#CreateTargetGroup) | **Post** /targetGroups | Create Target Group
 [**DeleteAutoScalingGroup**](PubliccloudAPI.md#DeleteAutoScalingGroup) | **Delete** /autoScalingGroups/{autoScalingGroupId} | Delete Auto Scaling Group
@@ -18,11 +21,13 @@ Method | HTTP request | Description
 [**DeleteCredentials**](PubliccloudAPI.md#DeleteCredentials) | **Delete** /instances/{instanceId}/credentials | Delete all credentials associated with a specific Instance
 [**DeleteLoadBalancerListener**](PubliccloudAPI.md#DeleteLoadBalancerListener) | **Delete** /loadBalancers/{loadBalancerId}/listeners/{listenerId} | Delete load balancer listener
 [**DeleteNotificationSetting**](PubliccloudAPI.md#DeleteNotificationSetting) | **Delete** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Delete a notification setting setting
+[**DeleteSecurityGroup**](PubliccloudAPI.md#DeleteSecurityGroup) | **Delete** /securityGroups/{securityGroupId} | Delete Security Group
 [**DeleteSnapshot**](PubliccloudAPI.md#DeleteSnapshot) | **Delete** /instances/{instanceId}/snapshots/{snapshotId} | Delete instance snapshot
 [**DeleteTargetGroup**](PubliccloudAPI.md#DeleteTargetGroup) | **Delete** /targetGroups/{targetGroupId} | Delete Target Group
 [**DeregisterAutoScalingGroupTargetGroup**](PubliccloudAPI.md#DeregisterAutoScalingGroupTargetGroup) | **Post** /autoScalingGroups/{autoScalingGroupId}/deregisterTargetGroup | Deregister Target Group
 [**DeregisterTargets**](PubliccloudAPI.md#DeregisterTargets) | **Post** /targetGroups/{targetGroupId}/deregisterTargets | Deregister Targets
 [**DetachIso**](PubliccloudAPI.md#DetachIso) | **Post** /instances/{instanceId}/detachIso | Detach ISO from a specific Instance
+[**DetachSecurityGroups**](PubliccloudAPI.md#DetachSecurityGroups) | **Post** /instances/{instanceId}/detachSecurityGroups | Detach security groups from instance
 [**GetAutoScalingGroup**](PubliccloudAPI.md#GetAutoScalingGroup) | **Get** /autoScalingGroups/{autoScalingGroupId} | Get Auto Scaling Group details
 [**GetAutoScalingGroupInstanceList**](PubliccloudAPI.md#GetAutoScalingGroupInstanceList) | **Get** /autoScalingGroups/{autoScalingGroupId}/instances | Get list of instances belonging to an Auto Scaling Group
 [**GetAutoScalingGroupList**](PubliccloudAPI.md#GetAutoScalingGroupList) | **Get** /autoScalingGroups | Get Auto Scaling Group list
@@ -42,6 +47,7 @@ Method | HTTP request | Description
 [**GetInstanceIP**](PubliccloudAPI.md#GetInstanceIP) | **Get** /instances/{instanceId}/ips/{ip} | Get IP details for a specific Instance
 [**GetInstanceIPList**](PubliccloudAPI.md#GetInstanceIPList) | **Get** /instances/{instanceId}/ips | List IP addresses associated with a specific Instance
 [**GetInstanceList**](PubliccloudAPI.md#GetInstanceList) | **Get** /instances | Get instance list
+[**GetInstanceSecurityGroups**](PubliccloudAPI.md#GetInstanceSecurityGroups) | **Get** /instances/{instanceId}/securityGroups | Get Instance Security Groups
 [**GetInstanceTypeList**](PubliccloudAPI.md#GetInstanceTypeList) | **Get** /instanceTypes | List instance types
 [**GetIsoList**](PubliccloudAPI.md#GetIsoList) | **Get** /isos | List available ISOs
 [**GetLoadBalancer**](PubliccloudAPI.md#GetLoadBalancer) | **Get** /loadBalancers/{loadBalancerId} | Get load balancer details
@@ -61,6 +67,9 @@ Method | HTTP request | Description
 [**GetRequestsPerSecondMetrics**](PubliccloudAPI.md#GetRequestsPerSecondMetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/requestsPerSecond | Get load balancer requests per second metrics. Not available for listeners with TCP protocol
 [**GetResponseCodesMetrics**](PubliccloudAPI.md#GetResponseCodesMetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/responseCodes | Get response codes metrics
 [**GetResponseCodesPerSecondMetrics**](PubliccloudAPI.md#GetResponseCodesPerSecondMetrics) | **Get** /loadBalancers/{loadBalancerId}/metrics/responseCodesPerSecond | Get response codes per second metrics
+[**GetSecurityGroup**](PubliccloudAPI.md#GetSecurityGroup) | **Get** /securityGroups/{securityGroupId} | Get Security Group details
+[**GetSecurityGroupFirewallRules**](PubliccloudAPI.md#GetSecurityGroupFirewallRules) | **Get** /securityGroups/{securityGroupId}/firewallRules | Get Security Group Firewall Rules
+[**GetSecurityGroupList**](PubliccloudAPI.md#GetSecurityGroupList) | **Get** /securityGroups | Get Security Group list
 [**GetSnapshot**](PubliccloudAPI.md#GetSnapshot) | **Get** /instances/{instanceId}/snapshots/{snapshotId} | Get snapshot detail
 [**GetSnapshotList**](PubliccloudAPI.md#GetSnapshotList) | **Get** /instances/{instanceId}/snapshots | List snapshots
 [**GetTargetGroup**](PubliccloudAPI.md#GetTargetGroup) | **Get** /targetGroups/{targetGroupId} | Get Target Group details
@@ -81,6 +90,7 @@ Method | HTTP request | Description
 [**RemoveLoadBalancerIPNullRoute**](PubliccloudAPI.md#RemoveLoadBalancerIPNullRoute) | **Post** /loadBalancers/{loadBalancerId}/ips/{ip}/unnull | Remove an IP null route for a specific Load Balancer
 [**ResetPassword**](PubliccloudAPI.md#ResetPassword) | **Post** /instances/{instanceId}/resetPassword | Reset the password for a specific Instance
 [**RestoreSnapshot**](PubliccloudAPI.md#RestoreSnapshot) | **Put** /instances/{instanceId}/snapshots/{snapshotId} | Restore instance snapshot
+[**RevokeSecurityGroupFirewallRules**](PubliccloudAPI.md#RevokeSecurityGroupFirewallRules) | **Post** /securityGroups/{securityGroupId}/revokeFirewallRules | Remove firewall rules from security group
 [**StartInstance**](PubliccloudAPI.md#StartInstance) | **Post** /instances/{instanceId}/start | Start a specific resource Instance
 [**StartLoadBalancer**](PubliccloudAPI.md#StartLoadBalancer) | **Post** /loadBalancers/{loadBalancerId}/start | Start a specific resource Load Balancer
 [**StopInstance**](PubliccloudAPI.md#StopInstance) | **Post** /instances/{instanceId}/stop | Stop a specific Instance
@@ -97,6 +107,7 @@ Method | HTTP request | Description
 [**UpdateLoadBalancerIP**](PubliccloudAPI.md#UpdateLoadBalancerIP) | **Put** /loadBalancers/{loadBalancerId}/ips/{ip} | Update the IP address for a specific Load Balancer
 [**UpdateLoadBalancerListener**](PubliccloudAPI.md#UpdateLoadBalancerListener) | **Put** /loadBalancers/{loadBalancerId}/listeners/{listenerId} | Update a listener
 [**UpdateNotificationSetting**](PubliccloudAPI.md#UpdateNotificationSetting) | **Put** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Update Notification Setting details
+[**UpdateSecurityGroup**](PubliccloudAPI.md#UpdateSecurityGroup) | **Put** /securityGroups/{securityGroupId} | Update Security Group
 [**UpdateTargetGroup**](PubliccloudAPI.md#UpdateTargetGroup) | **Put** /targetGroups/{targetGroupId} | Update Target Group
 
 
@@ -220,6 +231,146 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **attachIsoOpts** | [**AttachIsoOpts**](AttachIsoOpts.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AttachSecurityGroups
+
+> AttachSecurityGroups(ctx, instanceId).AttachSecurityGroupsOpts(attachSecurityGroupsOpts).Execute()
+
+Attach security groups to instance
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
+	attachSecurityGroupsOpts := *openapiclient.NewAttachSecurityGroupsOpts([]string{"SecurityGroupIds_example"}) // AttachSecurityGroupsOpts | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PubliccloudAPI.AttachSecurityGroups(context.Background(), instanceId).AttachSecurityGroupsOpts(attachSecurityGroupsOpts).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.AttachSecurityGroups``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceId** | **string** | Instance&#39;s ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAttachSecurityGroupsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **attachSecurityGroupsOpts** | [**AttachSecurityGroupsOpts**](AttachSecurityGroupsOpts.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthorizeSecurityGroupFirewallRules
+
+> AuthorizeSecurityGroupFirewallRules(ctx, securityGroupId).AuthorizeFirewallRulesOpts(authorizeFirewallRulesOpts).Execute()
+
+Add firewall rules to security group
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	securityGroupId := "166cc685-8273-11f0-b4f8-2687367a8a5e" // string | Security Group ID
+	authorizeFirewallRulesOpts := *openapiclient.NewAuthorizeFirewallRulesOpts([]openapiclient.AuthorizeRule{*openapiclient.NewAuthorizeRule("Protocol_example")}) // AuthorizeFirewallRulesOpts | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PubliccloudAPI.AuthorizeSecurityGroupFirewallRules(context.Background(), securityGroupId).AuthorizeFirewallRulesOpts(authorizeFirewallRulesOpts).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.AuthorizeSecurityGroupFirewallRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**securityGroupId** | **string** | Security Group ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthorizeSecurityGroupFirewallRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **authorizeFirewallRulesOpts** | [**AuthorizeFirewallRulesOpts**](AuthorizeFirewallRulesOpts.md) |  | 
 
 ### Return type
 
@@ -571,6 +722,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**NotificationSetting**](NotificationSetting.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateSecurityGroup
+
+> SecurityGroup CreateSecurityGroup(ctx).CreateSecurityGroupOpts(createSecurityGroupOpts).Execute()
+
+Create Security Group
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	createSecurityGroupOpts := *openapiclient.NewCreateSecurityGroupOpts("Name_example") // CreateSecurityGroupOpts | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.CreateSecurityGroup(context.Background()).CreateSecurityGroupOpts(createSecurityGroupOpts).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.CreateSecurityGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateSecurityGroup`: SecurityGroup
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.CreateSecurityGroup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateSecurityGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSecurityGroupOpts** | [**CreateSecurityGroupOpts**](CreateSecurityGroupOpts.md) |  | 
+
+### Return type
+
+[**SecurityGroup**](SecurityGroup.md)
 
 ### Authorization
 
@@ -1068,6 +1285,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteSecurityGroup
+
+> DeleteSecurityGroup(ctx, securityGroupId).Execute()
+
+Delete Security Group
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	securityGroupId := "166cc685-8273-11f0-b4f8-2687367a8a5e" // string | Security Group ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PubliccloudAPI.DeleteSecurityGroup(context.Background(), securityGroupId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.DeleteSecurityGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**securityGroupId** | **string** | Security Group ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteSecurityGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteSnapshot
 
 > DeleteSnapshot(ctx, instanceId, snapshotId).Execute()
@@ -1408,6 +1693,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DetachSecurityGroups
+
+> DetachSecurityGroups(ctx, instanceId).DetachSecurityGroupsOpts(detachSecurityGroupsOpts).Execute()
+
+Detach security groups from instance
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
+	detachSecurityGroupsOpts := *openapiclient.NewDetachSecurityGroupsOpts([]string{"SecurityGroupIds_example"}) // DetachSecurityGroupsOpts | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PubliccloudAPI.DetachSecurityGroups(context.Background(), instanceId).DetachSecurityGroupsOpts(detachSecurityGroupsOpts).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.DetachSecurityGroups``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceId** | **string** | Instance&#39;s ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDetachSecurityGroupsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **detachSecurityGroupsOpts** | [**DetachSecurityGroupsOpts**](DetachSecurityGroupsOpts.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2748,7 +3103,7 @@ Name | Type | Description  | Notes
 
 ## GetInstanceList
 
-> InstanceList GetInstanceList(ctx).Limit(limit).Offset(offset).Ip(ip).Reference(reference).Id(id).ContractType(contractType).ContractState(contractState).ImageId(imageId).State(state).Region(region).Type_(type_).Execute()
+> InstanceList GetInstanceList(ctx).Limit(limit).Offset(offset).Ip(ip).Reference(reference).Id(id).ContractType(contractType).ContractState(contractState).ImageId(imageId).State(state).Region(region).Type_(type_).SecurityGroupIds(securityGroupIds).Execute()
 
 Get instance list
 
@@ -2778,10 +3133,11 @@ func main() {
 	state := openapiclient.state("CREATING") // State | The instance's current state(s), separated by commas. (optional)
 	region := openapiclient.regionName("eu-west-3") // RegionName | Available regions can be obtained using `/v1/regions` (optional)
 	type_ := openapiclient.typeName("lsw.m3.large") // TypeName | Available instance types for your region can be obtained using `/v1/instanceTypes`. (optional)
+	securityGroupIds := "166cc685-8273-11f0-b4f8-2687367a8a5e,7e59b33d-05f3-4078-b251-c7831ae8fe14" // string | Filter instances by security group UUIDs, separated by commas. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PubliccloudAPI.GetInstanceList(context.Background()).Limit(limit).Offset(offset).Ip(ip).Reference(reference).Id(id).ContractType(contractType).ContractState(contractState).ImageId(imageId).State(state).Region(region).Type_(type_).Execute()
+	resp, r, err := apiClient.PubliccloudAPI.GetInstanceList(context.Background()).Limit(limit).Offset(offset).Ip(ip).Reference(reference).Id(id).ContractType(contractType).ContractState(contractState).ImageId(imageId).State(state).Region(region).Type_(type_).SecurityGroupIds(securityGroupIds).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.GetInstanceList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2813,10 +3169,85 @@ Name | Type | Description  | Notes
  **state** | [**State**](State.md) | The instance&#39;s current state(s), separated by commas. | 
  **region** | [**RegionName**](RegionName.md) | Available regions can be obtained using &#x60;/v1/regions&#x60; | 
  **type_** | [**TypeName**](TypeName.md) | Available instance types for your region can be obtained using &#x60;/v1/instanceTypes&#x60;. | 
+ **securityGroupIds** | **string** | Filter instances by security group UUIDs, separated by commas. | 
 
 ### Return type
 
 [**InstanceList**](InstanceList.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetInstanceSecurityGroups
+
+> InstanceSecurityGroups GetInstanceSecurityGroups(ctx, instanceId).Limit(limit).Offset(offset).Execute()
+
+Get Instance Security Groups
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
+	limit := int32(20) // int32 | Limit the number of results returned. (optional)
+	offset := int32(10) // int32 | Return results starting from the given offset. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.GetInstanceSecurityGroups(context.Background(), instanceId).Limit(limit).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.GetInstanceSecurityGroups``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetInstanceSecurityGroups`: InstanceSecurityGroups
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.GetInstanceSecurityGroups`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceId** | **string** | Instance&#39;s ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetInstanceSecurityGroupsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Limit the number of results returned. | 
+ **offset** | **int32** | Return results starting from the given offset. | 
+
+### Return type
+
+[**InstanceSecurityGroups**](InstanceSecurityGroups.md)
 
 ### Authorization
 
@@ -4201,6 +4632,218 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetResponseCodesPerSecondMetricsResult**](GetResponseCodesPerSecondMetricsResult.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSecurityGroup
+
+> SecurityGroup GetSecurityGroup(ctx, securityGroupId).Execute()
+
+Get Security Group details
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	securityGroupId := "166cc685-8273-11f0-b4f8-2687367a8a5e" // string | Security Group ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.GetSecurityGroup(context.Background(), securityGroupId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.GetSecurityGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSecurityGroup`: SecurityGroup
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.GetSecurityGroup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**securityGroupId** | **string** | Security Group ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSecurityGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SecurityGroup**](SecurityGroup.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSecurityGroupFirewallRules
+
+> GetSecurityGroupFirewallRulesResult GetSecurityGroupFirewallRules(ctx, securityGroupId).Limit(limit).Offset(offset).Execute()
+
+Get Security Group Firewall Rules
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	securityGroupId := "166cc685-8273-11f0-b4f8-2687367a8a5e" // string | Security Group ID
+	limit := int32(20) // int32 | Limit the number of results returned. (optional)
+	offset := int32(10) // int32 | Return results starting from the given offset. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.GetSecurityGroupFirewallRules(context.Background(), securityGroupId).Limit(limit).Offset(offset).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.GetSecurityGroupFirewallRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSecurityGroupFirewallRules`: GetSecurityGroupFirewallRulesResult
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.GetSecurityGroupFirewallRules`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**securityGroupId** | **string** | Security Group ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSecurityGroupFirewallRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Limit the number of results returned. | 
+ **offset** | **int32** | Return results starting from the given offset. | 
+
+### Return type
+
+[**GetSecurityGroupFirewallRulesResult**](GetSecurityGroupFirewallRulesResult.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSecurityGroupList
+
+> SecurityGroupList GetSecurityGroupList(ctx).Limit(limit).Offset(offset).State(state).Execute()
+
+Get Security Group list
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	limit := int32(20) // int32 | Limit the number of results returned. (optional)
+	offset := int32(10) // int32 | Return results starting from the given offset. (optional)
+	state := openapiclient.securityGroupState("CREATING") // SecurityGroupState | Filter by state (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.GetSecurityGroupList(context.Background()).Limit(limit).Offset(offset).State(state).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.GetSecurityGroupList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSecurityGroupList`: SecurityGroupList
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.GetSecurityGroupList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSecurityGroupListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Limit the number of results returned. | 
+ **offset** | **int32** | Return results starting from the given offset. | 
+ **state** | [**SecurityGroupState**](SecurityGroupState.md) | Filter by state | 
+
+### Return type
+
+[**SecurityGroupList**](SecurityGroupList.md)
 
 ### Authorization
 
@@ -5638,6 +6281,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## RevokeSecurityGroupFirewallRules
+
+> RevokeSecurityGroupFirewallRules(ctx, securityGroupId).RevokeFirewallRulesOpts(revokeFirewallRulesOpts).Execute()
+
+Remove firewall rules from security group
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	securityGroupId := "166cc685-8273-11f0-b4f8-2687367a8a5e" // string | Security Group ID
+	revokeFirewallRulesOpts := *openapiclient.NewRevokeFirewallRulesOpts([]string{"Rules_example"}) // RevokeFirewallRulesOpts | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PubliccloudAPI.RevokeSecurityGroupFirewallRules(context.Background(), securityGroupId).RevokeFirewallRulesOpts(revokeFirewallRulesOpts).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.RevokeSecurityGroupFirewallRules``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**securityGroupId** | **string** | Security Group ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRevokeSecurityGroupFirewallRulesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **revokeFirewallRulesOpts** | [**RevokeFirewallRulesOpts**](RevokeFirewallRulesOpts.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## StartInstance
 
 > StartInstance(ctx, instanceId).Execute()
@@ -6765,6 +7478,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**NotificationSetting**](NotificationSetting.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateSecurityGroup
+
+> SecurityGroup UpdateSecurityGroup(ctx, securityGroupId).UpdateSecurityGroupOpts(updateSecurityGroupOpts).Execute()
+
+Update Security Group
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	securityGroupId := "166cc685-8273-11f0-b4f8-2687367a8a5e" // string | Security Group ID
+	updateSecurityGroupOpts := *openapiclient.NewUpdateSecurityGroupOpts("Name_example") // UpdateSecurityGroupOpts | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.UpdateSecurityGroup(context.Background(), securityGroupId).UpdateSecurityGroupOpts(updateSecurityGroupOpts).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.UpdateSecurityGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateSecurityGroup`: SecurityGroup
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.UpdateSecurityGroup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**securityGroupId** | **string** | Security Group ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateSecurityGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **updateSecurityGroupOpts** | [**UpdateSecurityGroupOpts**](UpdateSecurityGroupOpts.md) |  | 
+
+### Return type
+
+[**SecurityGroup**](SecurityGroup.md)
 
 ### Authorization
 
