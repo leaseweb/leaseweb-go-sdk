@@ -999,6 +999,20 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PubliccloudAPIService GetUserData", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var instanceId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.GetUserData(context.Background(), instanceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PubliccloudAPIService LaunchInstance", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

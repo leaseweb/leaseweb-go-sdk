@@ -9907,6 +9907,87 @@ paths:
       summary: Restore instance snapshot
       tags:
       - publiccloud
+  /instances/{instanceId}/userData:
+    get:
+      operationId: getUserData
+      parameters:
+      - description: Instance's ID
+        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                userData: |
+                  #cloud-config
+                  hostname: myhost
+                  create_hostname_file: true
+                  fqdn: myhost.example.com
+                  prefer_fqdn_over_hostname: true
+              schema:
+                $ref: '#/components/schemas/getUserDataResult'
+          description: OK.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Get User Data supplied while launching the instance.
+      tags:
+      - publiccloud
   /autoScalingGroups:
     get:
       description: List and filter Auto Scaling Groups
@@ -16770,6 +16851,20 @@ components:
           type: string
       required:
       - name
+      type: object
+    getUserDataResult:
+      example:
+        userData: |-
+          #cloud-config
+          runcmd:
+          - echo 'Hello, World!' > /var/tmp/hello-world.txt
+      properties:
+        userData:
+          example: |-
+            #cloud-config
+            runcmd:
+            - echo 'Hello, World!' > /var/tmp/hello-world.txt
+          type: string
       type: object
     getAutoScalingGroupListResult:
       example:

@@ -76,6 +76,7 @@ Method | HTTP request | Description
 [**GetTargetGroupList**](PubliccloudAPI.md#GetTargetGroupList) | **Get** /targetGroups | Get Target Group list
 [**GetTargetList**](PubliccloudAPI.md#GetTargetList) | **Get** /targetGroups/{targetGroupId}/targets | Get Targets
 [**GetUpdateInstanceTypeList**](PubliccloudAPI.md#GetUpdateInstanceTypeList) | **Get** /instances/{instanceId}/instanceTypesUpdate | List available instance types for update
+[**GetUserData**](PubliccloudAPI.md#GetUserData) | **Get** /instances/{instanceId}/userData | Get User Data supplied while launching the instance.
 [**LaunchInstance**](PubliccloudAPI.md#LaunchInstance) | **Post** /instances | Launch instance
 [**LaunchLoadBalancer**](PubliccloudAPI.md#LaunchLoadBalancer) | **Post** /loadBalancers | Launch Load balancer
 [**NullRouteInstanceIP**](PubliccloudAPI.md#NullRouteInstanceIP) | **Post** /instances/{instanceId}/ips/{ip}/null | Null route IP address for a specific resource Instance
@@ -5285,6 +5286,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InstanceTypes**](InstanceTypes.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetUserData
+
+> GetUserDataResult GetUserData(ctx, instanceId).Execute()
+
+Get User Data supplied while launching the instance.
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.GetUserData(context.Background(), instanceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.GetUserData``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetUserData`: GetUserDataResult
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.GetUserData`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceId** | **string** | Instance&#39;s ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetUserDataRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GetUserDataResult**](GetUserDataResult.md)
 
 ### Authorization
 

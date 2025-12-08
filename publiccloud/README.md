@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**GetTargetGroupList**](docs/PubliccloudAPI.md#gettargetgrouplist) | **Get** /targetGroups | Get Target Group list
 *PubliccloudAPI* | [**GetTargetList**](docs/PubliccloudAPI.md#gettargetlist) | **Get** /targetGroups/{targetGroupId}/targets | Get Targets
 *PubliccloudAPI* | [**GetUpdateInstanceTypeList**](docs/PubliccloudAPI.md#getupdateinstancetypelist) | **Get** /instances/{instanceId}/instanceTypesUpdate | List available instance types for update
+*PubliccloudAPI* | [**GetUserData**](docs/PubliccloudAPI.md#getuserdata) | **Get** /instances/{instanceId}/userData | Get User Data supplied while launching the instance.
 *PubliccloudAPI* | [**LaunchInstance**](docs/PubliccloudAPI.md#launchinstance) | **Post** /instances | Launch instance
 *PubliccloudAPI* | [**LaunchLoadBalancer**](docs/PubliccloudAPI.md#launchloadbalancer) | **Post** /loadBalancers | Launch Load balancer
 *PubliccloudAPI* | [**NullRouteInstanceIP**](docs/PubliccloudAPI.md#nullrouteinstanceip) | **Post** /instances/{instanceId}/ips/{ip}/null | Null route IP address for a specific resource Instance
@@ -260,6 +261,7 @@ Class | Method | HTTP request | Description
  - [GetSnapshotListResult](docs/GetSnapshotListResult.md)
  - [GetTargetGroupListResult](docs/GetTargetGroupListResult.md)
  - [GetTargetListResult](docs/GetTargetListResult.md)
+ - [GetUserDataResult](docs/GetUserDataResult.md)
  - [HealthCheck](docs/HealthCheck.md)
  - [HealthCheckOpts](docs/HealthCheckOpts.md)
  - [HealthCheckStatus](docs/HealthCheckStatus.md)
