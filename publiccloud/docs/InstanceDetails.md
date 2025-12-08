@@ -24,12 +24,13 @@ Name | Type | Description | Notes
 **Iso** | [**NullableIso**](Iso.md) |  | 
 **PrivateNetwork** | [**NullablePrivateNetwork**](PrivateNetwork.md) |  | 
 **Ips** | [**[]IpDetails**](IpDetails.md) |  | 
+**TargetGroups** | [**[]TargetGroup**](TargetGroup.md) |  | 
 
 ## Methods
 
 ### NewInstanceDetails
 
-`func NewInstanceDetails(id string, type_ TypeName, resources Resources, region RegionName, reference NullableString, startedAt NullableTime, marketAppId NullableString, state State, productType string, hasPublicIpV4 bool, hasPrivateNetwork bool, hasUserData bool, rootDiskSize int32, rootDiskStorageType StorageType, contract InstanceContractDetails, image Image, iso NullableIso, privateNetwork NullablePrivateNetwork, ips []IpDetails, ) *InstanceDetails`
+`func NewInstanceDetails(id string, type_ TypeName, resources Resources, region RegionName, reference NullableString, startedAt NullableTime, marketAppId NullableString, state State, productType string, hasPublicIpV4 bool, hasPrivateNetwork bool, hasUserData bool, rootDiskSize int32, rootDiskStorageType StorageType, contract InstanceContractDetails, image Image, iso NullableIso, privateNetwork NullablePrivateNetwork, ips []IpDetails, targetGroups []TargetGroup, ) *InstanceDetails`
 
 NewInstanceDetails instantiates a new InstanceDetails object
 This constructor will assign default values to properties that have it defined,
@@ -507,6 +508,26 @@ and a boolean to check if the value has been set.
 `func (o *InstanceDetails) SetIps(v []IpDetails)`
 
 SetIps sets Ips field to given value.
+
+
+### GetTargetGroups
+
+`func (o *InstanceDetails) GetTargetGroups() []TargetGroup`
+
+GetTargetGroups returns the TargetGroups field if non-nil, zero value otherwise.
+
+### GetTargetGroupsOk
+
+`func (o *InstanceDetails) GetTargetGroupsOk() (*[]TargetGroup, bool)`
+
+GetTargetGroupsOk returns a tuple with the TargetGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetGroups
+
+`func (o *InstanceDetails) SetTargetGroups(v []TargetGroup)`
+
+SetTargetGroups sets TargetGroups field to given value.
 
 
 

@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## GetInvoices
 
-> GetInvoicesResult GetInvoices(ctx).Limit(limit).Offset(offset).Execute()
+> GetInvoicesResult GetInvoices(ctx).Limit(limit).Offset(offset).Id(id).Status(status).DateFrom(dateFrom).DateTo(dateTo).Execute()
 
 List Invoices
 
@@ -169,16 +169,21 @@ import (
 	"context"
 	"fmt"
 	"os"
+    "time"
 	openapiclient "github.com/leaseweb/leaseweb-go-sdk/invoice"
 )
 
 func main() {
 	limit := int32(20) // int32 | Limit the number of results returned. (optional)
 	offset := int32(10) // int32 | Return results starting from the given offset. (optional)
+	id := "1" // string | Filter - The unique id of the invoice. The filter only matches exact IDs. (optional)
+	status := "PAID" // string | Filter - Invoice status (optional)
+	dateFrom := time.Now() // time.Time | Filter - Invoice creation date lower limit (optional)
+	dateTo := time.Now() // time.Time | Filter - Invoice creation date upper limit (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InvoiceAPI.GetInvoices(context.Background()).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.InvoiceAPI.GetInvoices(context.Background()).Limit(limit).Offset(offset).Id(id).Status(status).DateFrom(dateFrom).DateTo(dateTo).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `InvoiceAPI.GetInvoices``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -201,6 +206,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int32** | Limit the number of results returned. | 
  **offset** | **int32** | Return results starting from the given offset. | 
+ **id** | **string** | Filter - The unique id of the invoice. The filter only matches exact IDs. | 
+ **status** | **string** | Filter - Invoice status | 
+ **dateFrom** | **time.Time** | Filter - Invoice creation date lower limit | 
+ **dateTo** | **time.Time** | Filter - Invoice creation date upper limit | 
 
 ### Return type
 

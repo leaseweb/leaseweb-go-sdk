@@ -924,6 +924,13 @@ paths:
                 rootDiskStorageType: CENTRAL
                 startedAt: null
                 state: CREATING
+                targetGroups:
+                - id: ace712e9-a166-47f1-9065-4af0f7e7fce1
+                  name: Target group name
+                  protocol: HTTP
+                  port: 80
+                  healthCheck: null
+                  region: eu-west-2
                 type: lsw.m3.large
               schema:
                 $ref: '#/components/schemas/instanceDetails'
@@ -1151,6 +1158,13 @@ paths:
                 startedAt: 2024-04-09T15:11:37+00:00
                 state: RUNNING
                 type: lsw.m3.large
+                targetGroups:
+                - id: ace712e9-a166-47f1-9065-4af0f7e7fce1
+                  name: Target group name
+                  protocol: HTTP
+                  port: 80
+                  healthCheck: null
+                  region: eu-west-2
               schema:
                 $ref: '#/components/schemas/instanceDetails'
           description: OK.
@@ -1314,6 +1328,13 @@ paths:
                 startedAt: 2024-04-09T15:11:37+00:00
                 state: RUNNING
                 type: lsw.m3.large
+                targetGroups:
+                - id: ace712e9-a166-47f1-9065-4af0f7e7fce1
+                  name: Target group name
+                  protocol: HTTP
+                  port: 80
+                  healthCheck: null
+                  region: eu-west-2
               schema:
                 $ref: '#/components/schemas/instanceDetails'
           description: OK.
@@ -14552,6 +14573,62 @@ components:
           protectionType: STANDARD
         networkType: internal
         version: 1
+    protocol:
+      enum:
+      - HTTP
+      - HTTPS
+      - TCP
+      example: HTTP
+      type: string
+    httpMethod:
+      description: HTTP method to be used for health check - Required if `protocol`
+        is HTTP or HTTPS. Not allowed if `protocol` is TCP
+      enum:
+      - GET
+      - HEAD
+      - POST
+      - OPTIONS
+      nullable: true
+      type: string
+    targetGroup:
+      example:
+        protocol: protocol
+        port: 5
+        healthCheck:
+          protocol: HTTP
+          method: GET
+          port: 5
+          host: host
+          uri: /
+        name: name
+        id: 7e59b33d-05f3-4078-b251-c7831ae8fe14
+        region: region
+      properties:
+        id:
+          example: 7e59b33d-05f3-4078-b251-c7831ae8fe14
+          format: uuid
+          type: string
+        name:
+          description: The name of the target group
+          type: string
+        protocol:
+          $ref: '#/components/schemas/protocol'
+        port:
+          description: The port of the target group
+          type: integer
+        region:
+          $ref: '#/components/schemas/regionName'
+        healthCheck:
+          $ref: '#/components/schemas/healthCheck'
+      required:
+      - healthCheck
+      - id
+      - name
+      - port
+      - protocol
+      - region
+      title: targetGroup
+      type: object
     instanceDetails:
       example:
         image:
@@ -14635,6 +14712,29 @@ components:
           networkType: internal
           version: 1
         reference: reference
+        targetGroups:
+        - protocol: protocol
+          port: 5
+          healthCheck:
+            protocol: HTTP
+            method: GET
+            port: 5
+            host: host
+            uri: /
+          name: name
+          id: 7e59b33d-05f3-4078-b251-c7831ae8fe14
+          region: region
+        - protocol: protocol
+          port: 5
+          healthCheck:
+            protocol: HTTP
+            method: GET
+            port: 5
+            host: host
+            uri: /
+          name: name
+          id: 7e59b33d-05f3-4078-b251-c7831ae8fe14
+          region: region
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         marketAppId: CPANEL
         state: CREATING
@@ -14700,6 +14800,10 @@ components:
           items:
             $ref: '#/components/schemas/ipDetails'
           type: array
+        targetGroups:
+          items:
+            $ref: '#/components/schemas/targetGroup'
+          type: array
       required:
       - contract
       - hasPrivateNetwork
@@ -14719,6 +14823,7 @@ components:
       - rootDiskStorageType
       - startedAt
       - state
+      - targetGroups
       - type
       type: object
     updateInstanceOpts:
@@ -15770,13 +15875,6 @@ components:
       required:
       - reasonCode
       type: object
-    protocol:
-      enum:
-      - HTTP
-      - HTTPS
-      - TCP
-      example: HTTP
-      type: string
     loadBalancerListenerRule:
       example:
         default: true
@@ -16784,55 +16882,6 @@ components:
       - reference
       - type
       type: object
-    httpMethod:
-      description: HTTP method to be used for health check - Required if `protocol`
-        is HTTP or HTTPS. Not allowed if `protocol` is TCP
-      enum:
-      - GET
-      - HEAD
-      - POST
-      - OPTIONS
-      nullable: true
-      type: string
-    targetGroup:
-      example:
-        protocol: protocol
-        port: 7
-        healthCheck:
-          protocol: HTTP
-          method: GET
-          port: 9
-          host: host
-          uri: /
-        name: name
-        id: 7e59b33d-05f3-4078-b251-c7831ae8fe14
-        region: region
-      properties:
-        id:
-          example: 7e59b33d-05f3-4078-b251-c7831ae8fe14
-          format: uuid
-          type: string
-        name:
-          description: The name of the target group
-          type: string
-        protocol:
-          $ref: '#/components/schemas/protocol'
-        port:
-          description: The port of the target group
-          type: integer
-        region:
-          $ref: '#/components/schemas/regionName'
-        healthCheck:
-          $ref: '#/components/schemas/healthCheck'
-      required:
-      - healthCheck
-      - id
-      - name
-      - port
-      - protocol
-      - region
-      title: targetGroup
-      type: object
     autoScalingGroupDetails:
       example:
         cpuThreshold: 5
@@ -16843,22 +16892,22 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         targetGroups:
         - protocol: protocol
-          port: 7
+          port: 5
           healthCheck:
             protocol: HTTP
             method: GET
-            port: 9
+            port: 5
             host: host
             uri: /
           name: name
           id: 7e59b33d-05f3-4078-b251-c7831ae8fe14
           region: region
         - protocol: protocol
-          port: 7
+          port: 5
           healthCheck:
             protocol: HTTP
             method: GET
-            port: 9
+            port: 5
             host: host
             uri: /
           name: name
@@ -17193,22 +17242,22 @@ components:
       example:
         targetGroups:
         - protocol: protocol
-          port: 7
+          port: 5
           healthCheck:
             protocol: HTTP
             method: GET
-            port: 9
+            port: 5
             host: host
             uri: /
           name: name
           id: 7e59b33d-05f3-4078-b251-c7831ae8fe14
           region: region
         - protocol: protocol
-          port: 7
+          port: 5
           healthCheck:
             protocol: HTTP
             method: GET
-            port: 9
+            port: 5
             host: host
             uri: /
           name: name
@@ -17866,6 +17915,38 @@ components:
       - protectionType
       title: ddos
       type: object
+    healthCheck:
+      example:
+        protocol: HTTP
+        method: GET
+        port: 5
+        host: host
+        uri: /
+      nullable: true
+      properties:
+        protocol:
+          $ref: '#/components/schemas/protocol'
+        method:
+          $ref: '#/components/schemas/httpMethod'
+        uri:
+          description: URI to check in the target instances
+          example: /
+          type: string
+        host:
+          description: Host for the health check if any
+          nullable: true
+          type: string
+        port:
+          description: Port number
+          type: integer
+      required:
+      - host
+      - method
+      - port
+      - protocol
+      - uri
+      title: healthCheck
+      type: object
     expenseResultInstance:
       example:
         hours: 14
@@ -18503,38 +18584,6 @@ components:
         "5xx":
           $ref: '#/components/schemas/metricsPropertiesResponsesPerSec'
       title: responseCodesMetricsPerSec
-      type: object
-    healthCheck:
-      example:
-        protocol: HTTP
-        method: GET
-        port: 9
-        host: host
-        uri: /
-      nullable: true
-      properties:
-        protocol:
-          $ref: '#/components/schemas/protocol'
-        method:
-          $ref: '#/components/schemas/httpMethod'
-        uri:
-          description: URI to check in the target instances
-          example: /
-          type: string
-        host:
-          description: Host for the health check if any
-          nullable: true
-          type: string
-        port:
-          description: Port number
-          type: integer
-      required:
-      - host
-      - method
-      - port
-      - protocol
-      - uri
-      title: healthCheck
       type: object
     notificationSetting_threshold:
       example:

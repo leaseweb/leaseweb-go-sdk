@@ -47,6 +47,7 @@ type InstanceDetails struct {
 	Iso NullableIso `json:"iso"`
 	PrivateNetwork NullablePrivateNetwork `json:"privateNetwork"`
 	Ips []IpDetails `json:"ips"`
+	TargetGroups []TargetGroup `json:"targetGroups"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -56,7 +57,7 @@ type _InstanceDetails InstanceDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInstanceDetails(id string, type_ TypeName, resources Resources, region RegionName, reference NullableString, startedAt NullableTime, marketAppId NullableString, state State, productType string, hasPublicIpV4 bool, hasPrivateNetwork bool, hasUserData bool, rootDiskSize int32, rootDiskStorageType StorageType, contract InstanceContractDetails, image Image, iso NullableIso, privateNetwork NullablePrivateNetwork, ips []IpDetails) *InstanceDetails {
+func NewInstanceDetails(id string, type_ TypeName, resources Resources, region RegionName, reference NullableString, startedAt NullableTime, marketAppId NullableString, state State, productType string, hasPublicIpV4 bool, hasPrivateNetwork bool, hasUserData bool, rootDiskSize int32, rootDiskStorageType StorageType, contract InstanceContractDetails, image Image, iso NullableIso, privateNetwork NullablePrivateNetwork, ips []IpDetails, targetGroups []TargetGroup) *InstanceDetails {
 	this := InstanceDetails{}
 	this.Id = id
 	this.Type = type_
@@ -77,6 +78,7 @@ func NewInstanceDetails(id string, type_ TypeName, resources Resources, region R
 	this.Iso = iso
 	this.PrivateNetwork = privateNetwork
 	this.Ips = ips
+	this.TargetGroups = targetGroups
 	return &this
 }
 
@@ -596,6 +598,30 @@ func (o *InstanceDetails) SetIps(v []IpDetails) {
 	o.Ips = v
 }
 
+// GetTargetGroups returns the TargetGroups field value
+func (o *InstanceDetails) GetTargetGroups() []TargetGroup {
+	if o == nil {
+		var ret []TargetGroup
+		return ret
+	}
+
+	return o.TargetGroups
+}
+
+// GetTargetGroupsOk returns a tuple with the TargetGroups field value
+// and a boolean to check if the value has been set.
+func (o *InstanceDetails) GetTargetGroupsOk() ([]TargetGroup, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TargetGroups, true
+}
+
+// SetTargetGroups sets field value
+func (o *InstanceDetails) SetTargetGroups(v []TargetGroup) {
+	o.TargetGroups = v
+}
+
 func (o InstanceDetails) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -628,6 +654,7 @@ func (o InstanceDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize["iso"] = o.Iso.Get()
 	toSerialize["privateNetwork"] = o.PrivateNetwork.Get()
 	toSerialize["ips"] = o.Ips
+	toSerialize["targetGroups"] = o.TargetGroups
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -660,6 +687,7 @@ func (o *InstanceDetails) UnmarshalJSON(data []byte) (err error) {
 		"iso",
 		"privateNetwork",
 		"ips",
+		"targetGroups",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -709,6 +737,7 @@ func (o *InstanceDetails) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "iso")
 		delete(additionalProperties, "privateNetwork")
 		delete(additionalProperties, "ips")
+		delete(additionalProperties, "targetGroups")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -64,6 +64,49 @@ paths:
         schema:
           type: integer
         style: form
+      - description: Filter - The unique id of the invoice. The filter only matches
+          exact IDs.
+        example: 1
+        explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter - Invoice status
+        example: PAID
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          enum:
+          - OPEN
+          - PAID
+          - READY
+          - CANCELLED
+          - OVERDUE
+          type: string
+        style: form
+      - description: Filter - Invoice creation date lower limit
+        explode: true
+        in: query
+        name: dateFrom
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: Filter - Invoice creation date upper limit
+        explode: true
+        in: query
+        name: dateTo
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -523,6 +566,53 @@ components:
       required: false
       schema:
         type: integer
+      style: form
+    id:
+      description: Filter - The unique id of the invoice. The filter only matches
+        exact IDs.
+      example: 1
+      explode: true
+      in: query
+      name: id
+      required: false
+      schema:
+        type: string
+      style: form
+    status:
+      description: Filter - Invoice status
+      example: PAID
+      explode: true
+      in: query
+      name: status
+      required: false
+      schema:
+        enum:
+        - OPEN
+        - PAID
+        - READY
+        - CANCELLED
+        - OVERDUE
+        type: string
+      style: form
+    dateFrom:
+      description: Filter - Invoice creation date lower limit
+      explode: true
+      in: query
+      name: dateFrom
+      required: false
+      schema:
+        format: date-time
+        type: string
+      style: form
+    dateTo:
+      description: Filter - Invoice creation date upper limit
+      explode: true
+      in: query
+      name: dateTo
+      required: false
+      schema:
+        format: date-time
+        type: string
       style: form
     DateFrom:
       description: |

@@ -18,6 +18,7 @@ import (
 	"net/url"
 	"strings"
 	"os"
+	"time"
 )
 
 
@@ -446,6 +447,10 @@ type ApiGetInvoicesRequest struct {
 	ApiService InvoiceAPI
 	limit *int32
 	offset *int32
+	id *string
+	status *string
+	dateFrom *time.Time
+	dateTo *time.Time
 }
 
 // Limit the number of results returned.
@@ -457,6 +462,30 @@ func (r ApiGetInvoicesRequest) Limit(limit int32) ApiGetInvoicesRequest {
 // Return results starting from the given offset.
 func (r ApiGetInvoicesRequest) Offset(offset int32) ApiGetInvoicesRequest {
 	r.offset = &offset
+	return r
+}
+
+// Filter - The unique id of the invoice. The filter only matches exact IDs.
+func (r ApiGetInvoicesRequest) Id(id string) ApiGetInvoicesRequest {
+	r.id = &id
+	return r
+}
+
+// Filter - Invoice status
+func (r ApiGetInvoicesRequest) Status(status string) ApiGetInvoicesRequest {
+	r.status = &status
+	return r
+}
+
+// Filter - Invoice creation date lower limit
+func (r ApiGetInvoicesRequest) DateFrom(dateFrom time.Time) ApiGetInvoicesRequest {
+	r.dateFrom = &dateFrom
+	return r
+}
+
+// Filter - Invoice creation date upper limit
+func (r ApiGetInvoicesRequest) DateTo(dateTo time.Time) ApiGetInvoicesRequest {
+	r.dateTo = &dateTo
 	return r
 }
 
@@ -505,6 +534,18 @@ func (a *InvoiceAPIService) GetInvoicesExecute(r ApiGetInvoicesRequest) (*GetInv
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
+	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+	}
+	if r.dateFrom != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dateFrom", r.dateFrom, "form", "")
+	}
+	if r.dateTo != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dateTo", r.dateTo, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
