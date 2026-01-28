@@ -429,6 +429,32 @@ func Test_dedicatedserver_DedicatedserverAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DedicatedserverAPIService GetHardwareMonitoring", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var serverId string
+
+		resp, httpRes, err := apiClient.DedicatedserverAPI.GetHardwareMonitoring(context.Background(), serverId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DedicatedserverAPIService GetHardwareMonitoringList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DedicatedserverAPI.GetHardwareMonitoringList(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DedicatedserverAPIService GetIp", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

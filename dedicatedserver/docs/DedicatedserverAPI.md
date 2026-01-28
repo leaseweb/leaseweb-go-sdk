@@ -33,6 +33,8 @@ Method | HTTP request | Description
 [**GetDdosNotificationSetting**](DedicatedserverAPI.md#GetDdosNotificationSetting) | **Get** /servers/{serverId}/notificationSettings/ddos | Inspect DDoS notification settings
 [**GetDhcpReservationList**](DedicatedserverAPI.md#GetDhcpReservationList) | **Get** /servers/{serverId}/leases | List DHCP reservations
 [**GetHardware**](DedicatedserverAPI.md#GetHardware) | **Get** /servers/{serverId}/hardwareInfo | Show hardware information
+[**GetHardwareMonitoring**](DedicatedserverAPI.md#GetHardwareMonitoring) | **Get** /servers/{serverId}/hardwareMonitoring | Show hardware monitoring data for a server
+[**GetHardwareMonitoringList**](DedicatedserverAPI.md#GetHardwareMonitoringList) | **Get** /hardwareMonitoring | Show hardware monitoring data for all servers
 [**GetIp**](DedicatedserverAPI.md#GetIp) | **Get** /servers/{serverId}/ips/{ip} | Show a server IP
 [**GetIpList**](DedicatedserverAPI.md#GetIpList) | **Get** /servers/{serverId}/ips | List IPs
 [**GetJob**](DedicatedserverAPI.md#GetJob) | **Get** /servers/{serverId}/jobs/{jobId} | Show a job
@@ -2147,6 +2149,148 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetHardwareResult**](GetHardwareResult.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetHardwareMonitoring
+
+> GetHardwareMonitoringResult GetHardwareMonitoring(ctx, serverId).Execute()
+
+Show hardware monitoring data for a server
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
+)
+
+func main() {
+	serverId := "12345" // string | The ID of a server
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DedicatedserverAPI.GetHardwareMonitoring(context.Background(), serverId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DedicatedserverAPI.GetHardwareMonitoring``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetHardwareMonitoring`: GetHardwareMonitoringResult
+	fmt.Fprintf(os.Stdout, "Response from `DedicatedserverAPI.GetHardwareMonitoring`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serverId** | **string** | The ID of a server | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetHardwareMonitoringRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GetHardwareMonitoringResult**](GetHardwareMonitoringResult.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetHardwareMonitoringList
+
+> GetHardwareMonitoringListResult GetHardwareMonitoringList(ctx).Limit(limit).Offset(offset).Site(site).Location(location).Execute()
+
+Show hardware monitoring data for all servers
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
+)
+
+func main() {
+	limit := int32(20) // int32 | Limit the number of results returned. (optional)
+	offset := int32(10) // int32 | Return results starting from the given offset. (optional)
+	site := "FRA-10" // string | Filter the list of servers by site. (optional)
+	location := "FRA-10-5.1.10-RM-SW01" // string | Filter the list of servers by location (rack). (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DedicatedserverAPI.GetHardwareMonitoringList(context.Background()).Limit(limit).Offset(offset).Site(site).Location(location).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DedicatedserverAPI.GetHardwareMonitoringList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetHardwareMonitoringList`: GetHardwareMonitoringListResult
+	fmt.Fprintf(os.Stdout, "Response from `DedicatedserverAPI.GetHardwareMonitoringList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetHardwareMonitoringListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Limit the number of results returned. | 
+ **offset** | **int32** | Return results starting from the given offset. | 
+ **site** | **string** | Filter the list of servers by site. | 
+ **location** | **string** | Filter the list of servers by location (rack). | 
+
+### Return type
+
+[**GetHardwareMonitoringListResult**](GetHardwareMonitoringListResult.md)
 
 ### Authorization
 

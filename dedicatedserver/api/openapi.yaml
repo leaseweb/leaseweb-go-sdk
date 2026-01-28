@@ -3363,6 +3363,470 @@ paths:
       summary: Show hardware information
       tags:
       - dedicatedserver
+  /hardwareMonitoring:
+    get:
+      description: Get hardware monitoring data for all servers.
+      operationId: getHardwareMonitoringList
+      parameters:
+      - description: Limit the number of results returned.
+        example: 20
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Return results starting from the given offset.
+        example: 10
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Filter the list of servers by site.
+        example: FRA-10
+        explode: true
+        in: query
+        name: site
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter the list of servers by location (rack).
+        example: FRA-10-5.1.10-RM-SW01
+        explode: true
+        in: query
+        name: location
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                _metadata:
+                  totalCount: 1
+                  limit: 0
+                  offset: 0
+                servers:
+                - serverId: "123"
+                  ipmiInfo:
+                    bmcUrl: N/A
+                    firmwareRevision: "3.09"
+                    manufacturerId: Hewlett Packard Enterprise (47196)
+                    systemFirmwareVersion: null
+                  metrics:
+                  - metric: ipmi_chassis_cooling_fault_state
+                    name: null
+                    value: "1"
+                  - metric: ipmi_chassis_drive_fault_state
+                    name: null
+                    value: "1"
+                  - metric: ipmi_chassis_power_state
+                    name: null
+                    value: "1"
+                  - metric: ipmi_fan_speed_ratio
+                    name: Fan 1 DutyCycle
+                    value: "0.4194"
+                  - metric: ipmi_fan_speed_ratio
+                    name: Fan 2 DutyCycle
+                    value: "0.4194"
+                  - metric: ipmi_fan_speed_ratio
+                    name: Fan 3 DutyCycle
+                    value: "0.4194"
+                  - metric: ipmi_fan_speed_state
+                    name: Fan 1 DutyCycle
+                    value: "0"
+                  - metric: ipmi_fan_speed_state
+                    name: Fan 2 DutyCycle
+                    value: "0"
+                  - metric: ipmi_fan_speed_state
+                    name: Fan 3 DutyCycle
+                    value: "0"
+                  - metric: ipmi_sensor_state
+                    name: SysHealth_Stat
+                    value: "0"
+                  - metric: ipmi_sensor_state
+                    name: Fan 1
+                    value: "0"
+                  - metric: ipmi_sensor_state
+                    name: Fan 1 Presence
+                    value: "0"
+                  - metric: ipmi_sensor_state
+                    name: Fan 2
+                    value: "0"
+                  - metric: ipmi_sensor_state
+                    name: Fan 2 Presence
+                    value: "0"
+                  - metric: ipmi_sensor_state
+                    name: Fan 3
+                    value: "0"
+                  - metric: ipmi_sensor_state
+                    name: Fan 3 Presence
+                    value: "0"
+                  - metric: ipmi_sensor_state
+                    name: Memory Status
+                    value: "0"
+                  - metric: ipmi_sensor_state
+                    name: CPU_Stat_C1
+                    value: "0"
+                  - metric: ipmi_temperature_celsius
+                    name: 01-Inlet Ambient
+                    value: "22"
+                  - metric: ipmi_temperature_celsius
+                    name: 02-CPU 1
+                    value: "40"
+                  - metric: ipmi_temperature_celsius
+                    name: 03-P1 DIMM 1-4
+                    value: "29"
+                  - metric: ipmi_temperature_celsius
+                    name: 06-Chipset
+                    value: "40"
+                  - metric: ipmi_temperature_celsius
+                    name: 07-VR P1
+                    value: "34"
+                  - metric: ipmi_temperature_celsius
+                    name: 09-BMC
+                    value: "61"
+                  - metric: ipmi_temperature_celsius
+                    name: 10-BMC Zone
+                    value: "25"
+                  - metric: ipmi_temperature_celsius
+                    name: 11-System Board
+                    value: "30"
+                  - metric: ipmi_temperature_celsius
+                    name: 14-PCI 1 Zone
+                    value: "32"
+                  - metric: ipmi_temperature_celsius
+                    name: 15-PCI 2 Zone
+                    value: "34"
+                  - metric: ipmi_temperature_celsius
+                    name: 17-HD Cntlr Zone
+                    value: "31"
+                  - metric: ipmi_temperature_celsius
+                    name: 18.1-LOM-Communi
+                    value: "48"
+                  - metric: ipmi_temperature_state
+                    name: 01-Inlet Ambient
+                    value: "0"
+                  - metric: ipmi_temperature_state
+                    name: 02-CPU 1
+                    value: "0"
+                  - metric: ipmi_temperature_state
+                    name: 03-P1 DIMM 1-4
+                    value: "0"
+                  - metric: ipmi_temperature_state
+                    name: 06-Chipset
+                    value: "0"
+                  - metric: ipmi_temperature_state
+                    name: 07-VR P1
+                    value: "0"
+                  - metric: ipmi_temperature_state
+                    name: 09-BMC
+                    value: "0"
+                  - metric: ipmi_temperature_state
+                    name: 10-BMC Zone
+                    value: "0"
+                  - metric: ipmi_temperature_state
+                    name: 11-System Board
+                    value: "0"
+                  - metric: ipmi_temperature_state
+                    name: 14-PCI 1 Zone
+                    value: "0"
+                  - metric: ipmi_temperature_state
+                    name: 15-PCI 2 Zone
+                    value: "0"
+                  - metric: ipmi_temperature_state
+                    name: 17-HD Cntlr Zone
+                    value: "0"
+                  - metric: ipmi_temperature_state
+                    name: 18.1-LOM-Communi
+                    value: "0"
+                  - metric: ipmi_up
+                    name: null
+                    value: "1"
+                  - metric: ipmi_up
+                    name: null
+                    value: "1"
+                  - metric: ipmi_up
+                    name: null
+                    value: "1"
+                  - metric: up
+                    name: null
+                    value: "1"
+              schema:
+                $ref: '#/components/schemas/getHardwareMonitoringListResult'
+          description: Ok.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+      summary: Show hardware monitoring data for all servers
+      tags:
+      - dedicatedserver
+  /servers/{serverId}/hardwareMonitoring:
+    get:
+      description: Get hardware monitoring data for a server.
+      operationId: getHardwareMonitoring
+      parameters:
+      - description: The ID of a server
+        example: "12345"
+        explode: false
+        in: path
+        name: serverId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                ipmiInfo:
+                  bmcUrl: N/A
+                  firmwareRevision: "3.09"
+                  manufacturerId: Hewlett Packard Enterprise (47196)
+                  systemFirmwareVersion: null
+                metrics:
+                - metric: ipmi_chassis_cooling_fault_state
+                  name: null
+                  value: "1"
+                - metric: ipmi_chassis_drive_fault_state
+                  name: null
+                  value: "1"
+                - metric: ipmi_chassis_power_state
+                  name: null
+                  value: "1"
+                - metric: ipmi_fan_speed_ratio
+                  name: Fan 1 DutyCycle
+                  value: "0.4194"
+                - metric: ipmi_fan_speed_ratio
+                  name: Fan 2 DutyCycle
+                  value: "0.4194"
+                - metric: ipmi_fan_speed_ratio
+                  name: Fan 3 DutyCycle
+                  value: "0.4194"
+                - metric: ipmi_fan_speed_state
+                  name: Fan 1 DutyCycle
+                  value: "0"
+                - metric: ipmi_fan_speed_state
+                  name: Fan 2 DutyCycle
+                  value: "0"
+                - metric: ipmi_fan_speed_state
+                  name: Fan 3 DutyCycle
+                  value: "0"
+                - metric: ipmi_sensor_state
+                  name: SysHealth_Stat
+                  value: "0"
+                - metric: ipmi_sensor_state
+                  name: Fan 1
+                  value: "0"
+                - metric: ipmi_sensor_state
+                  name: Fan 1 Presence
+                  value: "0"
+                - metric: ipmi_sensor_state
+                  name: Fan 2
+                  value: "0"
+                - metric: ipmi_sensor_state
+                  name: Fan 2 Presence
+                  value: "0"
+                - metric: ipmi_sensor_state
+                  name: Fan 3
+                  value: "0"
+                - metric: ipmi_sensor_state
+                  name: Fan 3 Presence
+                  value: "0"
+                - metric: ipmi_sensor_state
+                  name: Memory Status
+                  value: "0"
+                - metric: ipmi_sensor_state
+                  name: CPU_Stat_C1
+                  value: "0"
+                - metric: ipmi_temperature_celsius
+                  name: 01-Inlet Ambient
+                  value: "22"
+                - metric: ipmi_temperature_celsius
+                  name: 02-CPU 1
+                  value: "40"
+                - metric: ipmi_temperature_celsius
+                  name: 03-P1 DIMM 1-4
+                  value: "29"
+                - metric: ipmi_temperature_celsius
+                  name: 06-Chipset
+                  value: "40"
+                - metric: ipmi_temperature_celsius
+                  name: 07-VR P1
+                  value: "34"
+                - metric: ipmi_temperature_celsius
+                  name: 09-BMC
+                  value: "61"
+                - metric: ipmi_temperature_celsius
+                  name: 10-BMC Zone
+                  value: "25"
+                - metric: ipmi_temperature_celsius
+                  name: 11-System Board
+                  value: "30"
+                - metric: ipmi_temperature_celsius
+                  name: 14-PCI 1 Zone
+                  value: "32"
+                - metric: ipmi_temperature_celsius
+                  name: 15-PCI 2 Zone
+                  value: "34"
+                - metric: ipmi_temperature_celsius
+                  name: 17-HD Cntlr Zone
+                  value: "31"
+                - metric: ipmi_temperature_celsius
+                  name: 18.1-LOM-Communi
+                  value: "48"
+                - metric: ipmi_temperature_state
+                  name: 01-Inlet Ambient
+                  value: "0"
+                - metric: ipmi_temperature_state
+                  name: 02-CPU 1
+                  value: "0"
+                - metric: ipmi_temperature_state
+                  name: 03-P1 DIMM 1-4
+                  value: "0"
+                - metric: ipmi_temperature_state
+                  name: 06-Chipset
+                  value: "0"
+                - metric: ipmi_temperature_state
+                  name: 07-VR P1
+                  value: "0"
+                - metric: ipmi_temperature_state
+                  name: 09-BMC
+                  value: "0"
+                - metric: ipmi_temperature_state
+                  name: 10-BMC Zone
+                  value: "0"
+                - metric: ipmi_temperature_state
+                  name: 11-System Board
+                  value: "0"
+                - metric: ipmi_temperature_state
+                  name: 14-PCI 1 Zone
+                  value: "0"
+                - metric: ipmi_temperature_state
+                  name: 15-PCI 2 Zone
+                  value: "0"
+                - metric: ipmi_temperature_state
+                  name: 17-HD Cntlr Zone
+                  value: "0"
+                - metric: ipmi_temperature_state
+                  name: 18.1-LOM-Communi
+                  value: "0"
+                - metric: ipmi_up
+                  name: null
+                  value: "1"
+                scrapedAt: 2026-01-12T12:00:00+00:00
+                serverId: "123"
+              schema:
+                $ref: '#/components/schemas/getHardwareMonitoringResult'
+          description: Ok.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+      summary: Show hardware monitoring data for a server
+      tags:
+      - dedicatedserver
   /controlPanels:
     get:
       description: |
@@ -8637,6 +9101,86 @@ components:
           example: "62264"
           type: string
       type: object
+    getHardwareMonitoringResult:
+      description: Hardware monitoring data for a server
+      example:
+        ipmiInfo:
+          systemFirmwareVersion: systemFirmwareVersion
+          manufacturerId: manufacturerId
+          bmcUrl: bmcUrl
+          firmwareRevision: firmwareRevision
+        scrapedAt: 2000-01-23T04:56:07.000+00:00
+        metrics:
+        - metric: metric
+          name: name
+          value: value
+        - metric: metric
+          name: name
+          value: value
+        serverId: serverId
+      properties:
+        serverId:
+          description: The ID of the server
+          type: string
+        scrapedAt:
+          description: The date and time the hardware monitoring data was scraped
+          format: date-time
+          type: string
+        ipmiInfo:
+          $ref: '#/components/schemas/ipmiInfo'
+        metrics:
+          description: IPMI monitoring metrics
+          items:
+            $ref: '#/components/schemas/ipmiMonitoringMetric'
+          title: ipmiMonitoringMetrics
+          type: array
+      title: hardwareMonitoringMetrics
+      type: object
+    getHardwareMonitoringListResult:
+      example:
+        servers:
+        - ipmiInfo:
+            systemFirmwareVersion: systemFirmwareVersion
+            manufacturerId: manufacturerId
+            bmcUrl: bmcUrl
+            firmwareRevision: firmwareRevision
+          scrapedAt: 2000-01-23T04:56:07.000+00:00
+          metrics:
+          - metric: metric
+            name: name
+            value: value
+          - metric: metric
+            name: name
+            value: value
+          serverId: serverId
+        - ipmiInfo:
+            systemFirmwareVersion: systemFirmwareVersion
+            manufacturerId: manufacturerId
+            bmcUrl: bmcUrl
+            firmwareRevision: firmwareRevision
+          scrapedAt: 2000-01-23T04:56:07.000+00:00
+          metrics:
+          - metric: metric
+            name: name
+            value: value
+          - metric: metric
+            name: name
+            value: value
+          serverId: serverId
+        _metadata:
+          offset: 0
+          limit: 5
+          totalCount: 2
+      properties:
+        _metadata:
+          $ref: '#/components/schemas/_metadata'
+        servers:
+          description: An array of servers with hardware monitoring metrics
+          items:
+            $ref: '#/components/schemas/getHardwareMonitoringResult'
+          title: hardwareMonitoringMetricsServers
+          type: array
+      type: object
     controlPanelList:
       example:
         controlPanels:
@@ -11217,6 +11761,54 @@ components:
           title: network
           type: array
       title: result
+    ipmiInfo:
+      description: IPMI information for the server
+      example:
+        systemFirmwareVersion: systemFirmwareVersion
+        manufacturerId: manufacturerId
+        bmcUrl: bmcUrl
+        firmwareRevision: firmwareRevision
+      properties:
+        bmcUrl:
+          description: The Baseboard Management Controller URL
+          nullable: true
+          type: string
+        firmwareRevision:
+          description: The firmware revision of the IPMI controller
+          nullable: true
+          type: string
+        manufacturerId:
+          description: The manufacturer ID of the IPMI controller
+          nullable: true
+          type: string
+        systemFirmwareVersion:
+          description: The system firmware version
+          nullable: true
+          type: string
+      title: ipmiInfo
+      type: object
+    ipmiMonitoringMetric:
+      description: A single IPMI monitoring metric
+      example:
+        metric: metric
+        name: name
+        value: value
+      properties:
+        metric:
+          description: The type of metric
+          type: string
+        name:
+          description: The name of the specific metric instance
+          nullable: true
+          type: string
+        value:
+          description: The value of the metric
+          type: string
+      required:
+      - metric
+      - value
+      title: ipmiMonitoringMetric
+      type: object
     controlPanel:
       description: A single control panel
       example:

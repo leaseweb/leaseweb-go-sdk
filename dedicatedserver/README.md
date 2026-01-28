@@ -109,6 +109,8 @@ Class | Method | HTTP request | Description
 *DedicatedserverAPI* | [**GetDdosNotificationSetting**](docs/DedicatedserverAPI.md#getddosnotificationsetting) | **Get** /servers/{serverId}/notificationSettings/ddos | Inspect DDoS notification settings
 *DedicatedserverAPI* | [**GetDhcpReservationList**](docs/DedicatedserverAPI.md#getdhcpreservationlist) | **Get** /servers/{serverId}/leases | List DHCP reservations
 *DedicatedserverAPI* | [**GetHardware**](docs/DedicatedserverAPI.md#gethardware) | **Get** /servers/{serverId}/hardwareInfo | Show hardware information
+*DedicatedserverAPI* | [**GetHardwareMonitoring**](docs/DedicatedserverAPI.md#gethardwaremonitoring) | **Get** /servers/{serverId}/hardwareMonitoring | Show hardware monitoring data for a server
+*DedicatedserverAPI* | [**GetHardwareMonitoringList**](docs/DedicatedserverAPI.md#gethardwaremonitoringlist) | **Get** /hardwareMonitoring | Show hardware monitoring data for all servers
 *DedicatedserverAPI* | [**GetIp**](docs/DedicatedserverAPI.md#getip) | **Get** /servers/{serverId}/ips/{ip} | Show a server IP
 *DedicatedserverAPI* | [**GetIpList**](docs/DedicatedserverAPI.md#getiplist) | **Get** /servers/{serverId}/ips | List IPs
 *DedicatedserverAPI* | [**GetJob**](docs/DedicatedserverAPI.md#getjob) | **Get** /servers/{serverId}/jobs/{jobId} | Show a job
@@ -182,6 +184,8 @@ Class | Method | HTTP request | Description
  - [GetDataTrafficNotificationSettingListResult](docs/GetDataTrafficNotificationSettingListResult.md)
  - [GetDdosNotificationSettingResult](docs/GetDdosNotificationSettingResult.md)
  - [GetDhcpReservationListResult](docs/GetDhcpReservationListResult.md)
+ - [GetHardwareMonitoringListResult](docs/GetHardwareMonitoringListResult.md)
+ - [GetHardwareMonitoringResult](docs/GetHardwareMonitoringResult.md)
  - [GetHardwareResult](docs/GetHardwareResult.md)
  - [GetNetworkInterfaceListResult](docs/GetNetworkInterfaceListResult.md)
  - [GetOperatingSystemListResult](docs/GetOperatingSystemListResult.md)
@@ -199,6 +203,8 @@ Class | Method | HTTP request | Description
  - [Ip](docs/Ip.md)
  - [IpList](docs/IpList.md)
  - [Ipmi](docs/Ipmi.md)
+ - [IpmiInfo](docs/IpmiInfo.md)
+ - [IpmiMonitoringMetric](docs/IpmiMonitoringMetric.md)
  - [IpmiResetOpts](docs/IpmiResetOpts.md)
  - [Job](docs/Job.md)
  - [JobList](docs/JobList.md)

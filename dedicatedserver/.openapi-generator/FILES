@@ -46,6 +46,8 @@ docs/GetBandwidthNotificationSettingListResult.md
 docs/GetDataTrafficNotificationSettingListResult.md
 docs/GetDdosNotificationSettingResult.md
 docs/GetDhcpReservationListResult.md
+docs/GetHardwareMonitoringListResult.md
+docs/GetHardwareMonitoringResult.md
 docs/GetHardwareResult.md
 docs/GetNetworkInterfaceListResult.md
 docs/GetOperatingSystemListResult.md
@@ -63,6 +65,8 @@ docs/Internal.md
 docs/Ip.md
 docs/IpList.md
 docs/Ipmi.md
+docs/IpmiInfo.md
+docs/IpmiMonitoringMetric.md
 docs/IpmiResetOpts.md
 docs/Job.md
 docs/JobList.md
@@ -173,6 +177,8 @@ model_get_bandwidth_notification_setting_list_result.go
 model_get_data_traffic_notification_setting_list_result.go
 model_get_ddos_notification_setting_result.go
 model_get_dhcp_reservation_list_result.go
+model_get_hardware_monitoring_list_result.go
+model_get_hardware_monitoring_result.go
 model_get_hardware_result.go
 model_get_network_interface_list_result.go
 model_get_operating_system_list_result.go
@@ -190,6 +196,8 @@ model_internal.go
 model_ip.go
 model_ip_list.go
 model_ipmi.go
+model_ipmi_info.go
+model_ipmi_monitoring_metric.go
 model_ipmi_reset_opts.go
 model_job.go
 model_job_list.go
