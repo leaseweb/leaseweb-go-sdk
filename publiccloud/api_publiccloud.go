@@ -1151,6 +1151,20 @@ Only works for IPv4.
 	RebootLoadBalancerExecute(r ApiRebootLoadBalancerRequest) (*http.Response, error)
 
 	/*
+	RefreshAutoScalingGroupImage Refresh auto scaling group image
+
+	Refresh image for auto scaling group
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param autoScalingGroupId Auto Scaling Group ID
+	@return ApiRefreshAutoScalingGroupImageRequest
+	*/
+	RefreshAutoScalingGroupImage(ctx context.Context, autoScalingGroupId string) ApiRefreshAutoScalingGroupImageRequest
+
+	// RefreshAutoScalingGroupImageExecute executes the request
+	RefreshAutoScalingGroupImageExecute(r ApiRefreshAutoScalingGroupImageRequest) (*http.Response, error)
+
+	/*
 	RegisterAutoScalingGroupTargetGroup Register Target Group
 
 	Associates an auto scaling group with a target group.
@@ -16501,6 +16515,177 @@ func (a *PubliccloudAPIService) RebootLoadBalancerExecute(r ApiRebootLoadBalance
 
 	localVarPath := localBasePath + "/loadBalancers/{loadBalancerId}/reboot"
 	localVarPath = strings.Replace(localVarPath, "{"+"loadBalancerId"+"}", url.PathEscape(parameterValueToString(r.loadBalancerId, "loadBalancerId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRefreshAutoScalingGroupImageRequest struct {
+	ctx context.Context
+	ApiService PubliccloudAPI
+	autoScalingGroupId string
+}
+
+func (r ApiRefreshAutoScalingGroupImageRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RefreshAutoScalingGroupImageExecute(r)
+}
+
+/*
+RefreshAutoScalingGroupImage Refresh auto scaling group image
+
+Refresh image for auto scaling group
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param autoScalingGroupId Auto Scaling Group ID
+ @return ApiRefreshAutoScalingGroupImageRequest
+*/
+func (a *PubliccloudAPIService) RefreshAutoScalingGroupImage(ctx context.Context, autoScalingGroupId string) ApiRefreshAutoScalingGroupImageRequest {
+	return ApiRefreshAutoScalingGroupImageRequest{
+		ApiService: a,
+		ctx: ctx,
+		autoScalingGroupId: autoScalingGroupId,
+	}
+}
+
+// Execute executes the request
+func (a *PubliccloudAPIService) RefreshAutoScalingGroupImageExecute(r ApiRefreshAutoScalingGroupImageRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PubliccloudAPIService.RefreshAutoScalingGroupImage")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/autoScalingGroups/{autoScalingGroupId}/refreshImage"
+	localVarPath = strings.Replace(localVarPath, "{"+"autoScalingGroupId"+"}", url.PathEscape(parameterValueToString(r.autoScalingGroupId, "autoScalingGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

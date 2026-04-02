@@ -1093,6 +1093,19 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PubliccloudAPIService RefreshAutoScalingGroupImage", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var autoScalingGroupId string
+
+		httpRes, err := apiClient.PubliccloudAPI.RefreshAutoScalingGroupImage(context.Background(), autoScalingGroupId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PubliccloudAPIService RegisterAutoScalingGroupTargetGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

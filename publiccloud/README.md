@@ -159,6 +159,7 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**NullRouteLoadBalancerIP**](docs/PubliccloudAPI.md#nullrouteloadbalancerip) | **Post** /loadBalancers/{loadBalancerId}/ips/{ip}/null | Null route IP address for a specific resource Load Balancer
 *PubliccloudAPI* | [**RebootInstance**](docs/PubliccloudAPI.md#rebootinstance) | **Post** /instances/{instanceId}/reboot | Reboot a specific Instance
 *PubliccloudAPI* | [**RebootLoadBalancer**](docs/PubliccloudAPI.md#rebootloadbalancer) | **Post** /loadBalancers/{loadBalancerId}/reboot | Reboot a specific Load Balancer
+*PubliccloudAPI* | [**RefreshAutoScalingGroupImage**](docs/PubliccloudAPI.md#refreshautoscalinggroupimage) | **Post** /autoScalingGroups/{autoScalingGroupId}/refreshImage | Refresh auto scaling group image
 *PubliccloudAPI* | [**RegisterAutoScalingGroupTargetGroup**](docs/PubliccloudAPI.md#registerautoscalinggrouptargetgroup) | **Post** /autoScalingGroups/{autoScalingGroupId}/registerTargetGroup | Register Target Group
 *PubliccloudAPI* | [**RegisterTargets**](docs/PubliccloudAPI.md#registertargets) | **Post** /targetGroups/{targetGroupId}/registerTargets | Register Targets
 *PubliccloudAPI* | [**ReinstallInstance**](docs/PubliccloudAPI.md#reinstallinstance) | **Put** /instances/{instanceId}/reinstall | Reinstall an Instance

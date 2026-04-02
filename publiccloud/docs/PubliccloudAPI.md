@@ -83,6 +83,7 @@ Method | HTTP request | Description
 [**NullRouteLoadBalancerIP**](PubliccloudAPI.md#NullRouteLoadBalancerIP) | **Post** /loadBalancers/{loadBalancerId}/ips/{ip}/null | Null route IP address for a specific resource Load Balancer
 [**RebootInstance**](PubliccloudAPI.md#RebootInstance) | **Post** /instances/{instanceId}/reboot | Reboot a specific Instance
 [**RebootLoadBalancer**](PubliccloudAPI.md#RebootLoadBalancer) | **Post** /loadBalancers/{loadBalancerId}/reboot | Reboot a specific Load Balancer
+[**RefreshAutoScalingGroupImage**](PubliccloudAPI.md#RefreshAutoScalingGroupImage) | **Post** /autoScalingGroups/{autoScalingGroupId}/refreshImage | Refresh auto scaling group image
 [**RegisterAutoScalingGroupTargetGroup**](PubliccloudAPI.md#RegisterAutoScalingGroupTargetGroup) | **Post** /autoScalingGroups/{autoScalingGroupId}/registerTargetGroup | Register Target Group
 [**RegisterTargets**](PubliccloudAPI.md#RegisterTargets) | **Post** /targetGroups/{targetGroupId}/registerTargets | Register Targets
 [**ReinstallInstance**](PubliccloudAPI.md#ReinstallInstance) | **Put** /instances/{instanceId}/reinstall | Reinstall an Instance
@@ -5763,6 +5764,74 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiRebootLoadBalancerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RefreshAutoScalingGroupImage
+
+> RefreshAutoScalingGroupImage(ctx, autoScalingGroupId).Execute()
+
+Refresh auto scaling group image
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	autoScalingGroupId := "fb769dab-3daa-47e4-89ed-06a4b6499176" // string | Auto Scaling Group ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PubliccloudAPI.RefreshAutoScalingGroupImage(context.Background(), autoScalingGroupId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.RefreshAutoScalingGroupImage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**autoScalingGroupId** | **string** | Auto Scaling Group ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRefreshAutoScalingGroupImageRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
