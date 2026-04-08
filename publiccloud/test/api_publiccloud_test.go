@@ -339,6 +339,32 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PubliccloudAPIService EnableInstanceMonitoring", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var instanceId string
+
+		httpRes, err := apiClient.PubliccloudAPI.EnableInstanceMonitoring(context.Background(), instanceId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService EnableLoadBalancerMonitoring", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var loadBalancerId string
+
+		httpRes, err := apiClient.PubliccloudAPI.EnableLoadBalancerMonitoring(context.Background(), loadBalancerId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PubliccloudAPIService GetAutoScalingGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -603,6 +629,20 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PubliccloudAPIService GetInstanceMonitoringStatus", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var instanceId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.GetInstanceMonitoringStatus(context.Background(), instanceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PubliccloudAPIService GetInstanceSecurityGroups", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -746,6 +786,20 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		var loadBalancerId string
 
 		resp, httpRes, err := apiClient.PubliccloudAPI.GetLoadBalancerListenerList(context.Background(), loadBalancerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PubliccloudAPIService GetLoadBalancerMonitoringStatus", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var loadBalancerId string
+
+		resp, httpRes, err := apiClient.PubliccloudAPI.GetLoadBalancerMonitoringStatus(context.Background(), loadBalancerId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

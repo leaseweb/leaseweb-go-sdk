@@ -131,6 +131,7 @@ docs/MetricsPropertiesRequestsPerSec.md
 docs/MetricsPropertiesResponses.md
 docs/MetricsPropertiesResponsesPerSec.md
 docs/MetricsValues.md
+docs/MonitoringStatus.md
 docs/NetworkSpeed.md
 docs/NetworkType.md
 docs/NotificationSetting.md
@@ -149,6 +150,7 @@ docs/ResponseCodesMetrics.md
 docs/ResponseCodesMetricsPerSec.md
 docs/RevokeFirewallRulesOpts.md
 docs/SchemasHealthCheckStatus.md
+docs/SchemasMonitoringStatus.md
 docs/SecurityGroup.md
 docs/SecurityGroupFirewallRuleResponse.md
 docs/SecurityGroupList.md
@@ -193,6 +195,7 @@ go.mod
 go.sum
 model__metadata.go
 model__schemas_health_check_status.go
+model__schemas_monitoring_status.go
 model_action.go
 model_attach_iso_opts.go
 model_attach_security_groups_opts.go
@@ -317,6 +320,7 @@ model_metrics_properties_requests_per_sec.go
 model_metrics_properties_responses.go
 model_metrics_properties_responses_per_sec.go
 model_metrics_values.go
+model_monitoring_status.go
 model_network_speed.go
 model_network_type.go
 model_notification_setting.go

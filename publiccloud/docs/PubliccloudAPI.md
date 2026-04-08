@@ -28,6 +28,8 @@ Method | HTTP request | Description
 [**DeregisterTargets**](PubliccloudAPI.md#DeregisterTargets) | **Post** /targetGroups/{targetGroupId}/deregisterTargets | Deregister Targets
 [**DetachIso**](PubliccloudAPI.md#DetachIso) | **Post** /instances/{instanceId}/detachIso | Detach ISO from a specific Instance
 [**DetachSecurityGroups**](PubliccloudAPI.md#DetachSecurityGroups) | **Post** /instances/{instanceId}/detachSecurityGroups | Detach security groups from instance
+[**EnableInstanceMonitoring**](PubliccloudAPI.md#EnableInstanceMonitoring) | **Post** /instance/{instanceId}/monitoring/enable | Enable monitoring
+[**EnableLoadBalancerMonitoring**](PubliccloudAPI.md#EnableLoadBalancerMonitoring) | **Post** /loadBalancers/{loadBalancerId}/monitoring/enable | Enable monitoring
 [**GetAutoScalingGroup**](PubliccloudAPI.md#GetAutoScalingGroup) | **Get** /autoScalingGroups/{autoScalingGroupId} | Get Auto Scaling Group details
 [**GetAutoScalingGroupInstanceList**](PubliccloudAPI.md#GetAutoScalingGroupInstanceList) | **Get** /autoScalingGroups/{autoScalingGroupId}/instances | Get list of instances belonging to an Auto Scaling Group
 [**GetAutoScalingGroupList**](PubliccloudAPI.md#GetAutoScalingGroupList) | **Get** /autoScalingGroups | Get Auto Scaling Group list
@@ -47,6 +49,7 @@ Method | HTTP request | Description
 [**GetInstanceIP**](PubliccloudAPI.md#GetInstanceIP) | **Get** /instances/{instanceId}/ips/{ip} | Get IP details for a specific Instance
 [**GetInstanceIPList**](PubliccloudAPI.md#GetInstanceIPList) | **Get** /instances/{instanceId}/ips | List IP addresses associated with a specific Instance
 [**GetInstanceList**](PubliccloudAPI.md#GetInstanceList) | **Get** /instances | Get instance list
+[**GetInstanceMonitoringStatus**](PubliccloudAPI.md#GetInstanceMonitoringStatus) | **Get** /instance/{instanceId}/monitoring/status | Get service monitoring status
 [**GetInstanceSecurityGroups**](PubliccloudAPI.md#GetInstanceSecurityGroups) | **Get** /instances/{instanceId}/securityGroups | Get Instance Security Groups
 [**GetInstanceTypeList**](PubliccloudAPI.md#GetInstanceTypeList) | **Get** /instanceTypes | List instance types
 [**GetIsoList**](PubliccloudAPI.md#GetIsoList) | **Get** /isos | List available ISOs
@@ -58,6 +61,7 @@ Method | HTTP request | Description
 [**GetLoadBalancerList**](PubliccloudAPI.md#GetLoadBalancerList) | **Get** /loadBalancers | Get load balancer list
 [**GetLoadBalancerListener**](PubliccloudAPI.md#GetLoadBalancerListener) | **Get** /loadBalancers/{loadBalancerId}/listeners/{listenerId} | Get listener details
 [**GetLoadBalancerListenerList**](PubliccloudAPI.md#GetLoadBalancerListenerList) | **Get** /loadBalancers/{loadBalancerId}/listeners | Get listener list
+[**GetLoadBalancerMonitoringStatus**](PubliccloudAPI.md#GetLoadBalancerMonitoringStatus) | **Get** /loadBalancers/{loadBalancerId}/monitoring/status | Get service monitoring status
 [**GetMarketAppList**](PubliccloudAPI.md#GetMarketAppList) | **Get** /marketApps | Get marketplace apps
 [**GetNotificationSetting**](PubliccloudAPI.md#GetNotificationSetting) | **Get** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Get details of a notification Setting
 [**GetNotificationSettingList**](PubliccloudAPI.md#GetNotificationSettingList) | **Get** /instances/{instanceId}/notificationSettings/dataTraffic | List the notification settings of a customer
@@ -1772,6 +1776,142 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## EnableInstanceMonitoring
+
+> EnableInstanceMonitoring(ctx, instanceId).Execute()
+
+Enable monitoring
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PubliccloudAPI.EnableInstanceMonitoring(context.Background(), instanceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.EnableInstanceMonitoring``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceId** | **string** | Instance&#39;s ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEnableInstanceMonitoringRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EnableLoadBalancerMonitoring
+
+> EnableLoadBalancerMonitoring(ctx, loadBalancerId).Execute()
+
+Enable monitoring
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	loadBalancerId := "695ddd91-051f-4dd6-9120-938a927a47d0" // string | Load balancer ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PubliccloudAPI.EnableLoadBalancerMonitoring(context.Background(), loadBalancerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.EnableLoadBalancerMonitoring``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**loadBalancerId** | **string** | Load balancer ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEnableLoadBalancerMonitoringRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetAutoScalingGroup
 
 > AutoScalingGroupDetails GetAutoScalingGroup(ctx, autoScalingGroupId).Execute()
@@ -3191,6 +3331,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetInstanceMonitoringStatus
+
+> SchemasMonitoringStatus GetInstanceMonitoringStatus(ctx, instanceId).Execute()
+
+Get service monitoring status
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	instanceId := "ace712e9-a166-47f1-9065-4af0f7e7fce1" // string | Instance's ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.GetInstanceMonitoringStatus(context.Background(), instanceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.GetInstanceMonitoringStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetInstanceMonitoringStatus`: SchemasMonitoringStatus
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.GetInstanceMonitoringStatus`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**instanceId** | **string** | Instance&#39;s ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetInstanceMonitoringStatusRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SchemasMonitoringStatus**](SchemasMonitoringStatus.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetInstanceSecurityGroups
 
 > InstanceSecurityGroups GetInstanceSecurityGroups(ctx, instanceId).Limit(limit).Offset(offset).Execute()
@@ -3988,6 +4198,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetLoadBalancerListenerListResult**](GetLoadBalancerListenerListResult.md)
+
+### Authorization
+
+[X-LSW-Auth](../README.md#X-LSW-Auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetLoadBalancerMonitoringStatus
+
+> SchemasMonitoringStatus GetLoadBalancerMonitoringStatus(ctx, loadBalancerId).Execute()
+
+Get service monitoring status
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+)
+
+func main() {
+	loadBalancerId := "695ddd91-051f-4dd6-9120-938a927a47d0" // string | Load balancer ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PubliccloudAPI.GetLoadBalancerMonitoringStatus(context.Background(), loadBalancerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PubliccloudAPI.GetLoadBalancerMonitoringStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetLoadBalancerMonitoringStatus`: SchemasMonitoringStatus
+	fmt.Fprintf(os.Stdout, "Response from `PubliccloudAPI.GetLoadBalancerMonitoringStatus`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**loadBalancerId** | **string** | Load balancer ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetLoadBalancerMonitoringStatusRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SchemasMonitoringStatus**](SchemasMonitoringStatus.md)
 
 ### Authorization
 

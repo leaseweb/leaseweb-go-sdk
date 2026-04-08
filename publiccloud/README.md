@@ -104,6 +104,8 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**DeregisterTargets**](docs/PubliccloudAPI.md#deregistertargets) | **Post** /targetGroups/{targetGroupId}/deregisterTargets | Deregister Targets
 *PubliccloudAPI* | [**DetachIso**](docs/PubliccloudAPI.md#detachiso) | **Post** /instances/{instanceId}/detachIso | Detach ISO from a specific Instance
 *PubliccloudAPI* | [**DetachSecurityGroups**](docs/PubliccloudAPI.md#detachsecuritygroups) | **Post** /instances/{instanceId}/detachSecurityGroups | Detach security groups from instance
+*PubliccloudAPI* | [**EnableInstanceMonitoring**](docs/PubliccloudAPI.md#enableinstancemonitoring) | **Post** /instance/{instanceId}/monitoring/enable | Enable monitoring
+*PubliccloudAPI* | [**EnableLoadBalancerMonitoring**](docs/PubliccloudAPI.md#enableloadbalancermonitoring) | **Post** /loadBalancers/{loadBalancerId}/monitoring/enable | Enable monitoring
 *PubliccloudAPI* | [**GetAutoScalingGroup**](docs/PubliccloudAPI.md#getautoscalinggroup) | **Get** /autoScalingGroups/{autoScalingGroupId} | Get Auto Scaling Group details
 *PubliccloudAPI* | [**GetAutoScalingGroupInstanceList**](docs/PubliccloudAPI.md#getautoscalinggroupinstancelist) | **Get** /autoScalingGroups/{autoScalingGroupId}/instances | Get list of instances belonging to an Auto Scaling Group
 *PubliccloudAPI* | [**GetAutoScalingGroupList**](docs/PubliccloudAPI.md#getautoscalinggrouplist) | **Get** /autoScalingGroups | Get Auto Scaling Group list
@@ -123,6 +125,7 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**GetInstanceIP**](docs/PubliccloudAPI.md#getinstanceip) | **Get** /instances/{instanceId}/ips/{ip} | Get IP details for a specific Instance
 *PubliccloudAPI* | [**GetInstanceIPList**](docs/PubliccloudAPI.md#getinstanceiplist) | **Get** /instances/{instanceId}/ips | List IP addresses associated with a specific Instance
 *PubliccloudAPI* | [**GetInstanceList**](docs/PubliccloudAPI.md#getinstancelist) | **Get** /instances | Get instance list
+*PubliccloudAPI* | [**GetInstanceMonitoringStatus**](docs/PubliccloudAPI.md#getinstancemonitoringstatus) | **Get** /instance/{instanceId}/monitoring/status | Get service monitoring status
 *PubliccloudAPI* | [**GetInstanceSecurityGroups**](docs/PubliccloudAPI.md#getinstancesecuritygroups) | **Get** /instances/{instanceId}/securityGroups | Get Instance Security Groups
 *PubliccloudAPI* | [**GetInstanceTypeList**](docs/PubliccloudAPI.md#getinstancetypelist) | **Get** /instanceTypes | List instance types
 *PubliccloudAPI* | [**GetIsoList**](docs/PubliccloudAPI.md#getisolist) | **Get** /isos | List available ISOs
@@ -134,6 +137,7 @@ Class | Method | HTTP request | Description
 *PubliccloudAPI* | [**GetLoadBalancerList**](docs/PubliccloudAPI.md#getloadbalancerlist) | **Get** /loadBalancers | Get load balancer list
 *PubliccloudAPI* | [**GetLoadBalancerListener**](docs/PubliccloudAPI.md#getloadbalancerlistener) | **Get** /loadBalancers/{loadBalancerId}/listeners/{listenerId} | Get listener details
 *PubliccloudAPI* | [**GetLoadBalancerListenerList**](docs/PubliccloudAPI.md#getloadbalancerlistenerlist) | **Get** /loadBalancers/{loadBalancerId}/listeners | Get listener list
+*PubliccloudAPI* | [**GetLoadBalancerMonitoringStatus**](docs/PubliccloudAPI.md#getloadbalancermonitoringstatus) | **Get** /loadBalancers/{loadBalancerId}/monitoring/status | Get service monitoring status
 *PubliccloudAPI* | [**GetMarketAppList**](docs/PubliccloudAPI.md#getmarketapplist) | **Get** /marketApps | Get marketplace apps
 *PubliccloudAPI* | [**GetNotificationSetting**](docs/PubliccloudAPI.md#getnotificationsetting) | **Get** /instances/{instanceId}/notificationSettings/dataTraffic/{notificationSettingId} | Get details of a notification Setting
 *PubliccloudAPI* | [**GetNotificationSettingList**](docs/PubliccloudAPI.md#getnotificationsettinglist) | **Get** /instances/{instanceId}/notificationSettings/dataTraffic | List the notification settings of a customer
@@ -316,6 +320,7 @@ Class | Method | HTTP request | Description
  - [MetricsPropertiesResponses](docs/MetricsPropertiesResponses.md)
  - [MetricsPropertiesResponsesPerSec](docs/MetricsPropertiesResponsesPerSec.md)
  - [MetricsValues](docs/MetricsValues.md)
+ - [MonitoringStatus](docs/MonitoringStatus.md)
  - [NetworkSpeed](docs/NetworkSpeed.md)
  - [NetworkType](docs/NetworkType.md)
  - [NotificationSetting](docs/NotificationSetting.md)
@@ -333,6 +338,7 @@ Class | Method | HTTP request | Description
  - [ResponseCodesMetricsPerSec](docs/ResponseCodesMetricsPerSec.md)
  - [RevokeFirewallRulesOpts](docs/RevokeFirewallRulesOpts.md)
  - [SchemasHealthCheckStatus](docs/SchemasHealthCheckStatus.md)
+ - [SchemasMonitoringStatus](docs/SchemasMonitoringStatus.md)
  - [SecurityGroup](docs/SecurityGroup.md)
  - [SecurityGroupFirewallRuleResponse](docs/SecurityGroupFirewallRuleResponse.md)
  - [SecurityGroupList](docs/SecurityGroupList.md)

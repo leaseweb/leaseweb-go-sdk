@@ -3251,6 +3251,177 @@ paths:
       summary: Get costs for a given month.
       tags:
       - publiccloud
+  /instance/{instanceId}/monitoring/status:
+    get:
+      description: Get monitoring status
+      operationId: getInstanceMonitoringStatus
+      parameters:
+      - description: Instance's ID
+        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                description: Service is Up
+                status: UP
+              schema:
+                $ref: '#/components/schemas/_schemas_monitoringStatus'
+          description: OK.
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Get service monitoring status
+      tags:
+      - publiccloud
+  /instance/{instanceId}/monitoring/enable:
+    post:
+      description: Enable service monitoring
+      operationId: enableInstanceMonitoring
+      parameters:
+      - description: Instance's ID
+        example: ace712e9-a166-47f1-9065-4af0f7e7fce1
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No content.
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Enable monitoring
+      tags:
+      - publiccloud
   /isos:
     get:
       description: List all available ISO images
@@ -5723,6 +5894,177 @@ paths:
                 $ref: '#/components/schemas/errorResult'
           description: Service Unavailable.
       summary: Update a listener
+      tags:
+      - publiccloud
+  /loadBalancers/{loadBalancerId}/monitoring/status:
+    get:
+      description: Get monitoring status
+      operationId: getLoadBalancerMonitoringStatus
+      parameters:
+      - description: Load balancer ID
+        example: 695ddd91-051f-4dd6-9120-938a927a47d0
+        explode: false
+        in: path
+        name: loadBalancerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                description: Service is Up
+                status: UP
+              schema:
+                $ref: '#/components/schemas/_schemas_monitoringStatus'
+          description: OK.
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Get service monitoring status
+      tags:
+      - publiccloud
+  /loadBalancers/{loadBalancerId}/monitoring/enable:
+    post:
+      description: Enable service monitoring
+      operationId: enableLoadBalancerMonitoring
+      parameters:
+      - description: Load balancer ID
+        example: 695ddd91-051f-4dd6-9120-938a927a47d0
+        explode: false
+        in: path
+        name: loadBalancerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No content.
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "401"
+                errorMessage: You are not authorized to view this resource.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Authorized.
+        "403":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "403"
+                errorMessage: Access to the requested resource is forbidden.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Forbidden.
+        "404":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "404"
+                errorMessage: Resource not found
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Not Found.
+        "500":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "500"
+                errorMessage: '''The API could not handle your request at this time.'
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "503"
+                errorMessage: The API is not available at the moment.
+              schema:
+                $ref: '#/components/schemas/errorResult'
+          description: Service Unavailable.
+      summary: Enable monitoring
       tags:
       - publiccloud
   /instances/{instanceId}/ips:
@@ -15259,6 +15601,27 @@ components:
       required:
       - _metadata
       - billing
+      type: object
+    monitoringStatus:
+      description: Monitoring status
+      enum:
+      - UP
+      - DOWN
+      - NOT_MONITORED
+      - UNKNOWN
+      title: monitoringStatus
+      type: string
+    _schemas_monitoringStatus:
+      example:
+        description: Service is Up
+        status: UP
+      properties:
+        status:
+          $ref: '#/components/schemas/monitoringStatus'
+        description:
+          example: Service is Up
+          title: monitoringDescription
+          type: string
       type: object
     getIsoListResult:
       example:
