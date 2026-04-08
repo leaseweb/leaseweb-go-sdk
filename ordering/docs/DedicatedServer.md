@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Hdd** | Pointer to [**[]Hdd**](Hdd.md) | HDD info of the server | [optional] 
 **Ram** | Pointer to [**Ram**](Ram.md) |  | [optional] 
 **Location** | Pointer to **[]string** | Location of the server | [optional] 
-**Price** | Pointer to [**DedicatedServerPricePrice**](DedicatedServerPricePrice.md) |  | [optional] 
+**Price** | Pointer to [**ProductPricePrice**](ProductPricePrice.md) |  | [optional] 
 
 ## Methods
 
@@ -235,20 +235,20 @@ HasLocation returns a boolean if a field has been set.
 
 ### GetPrice
 
-`func (o *DedicatedServer) GetPrice() DedicatedServerPricePrice`
+`func (o *DedicatedServer) GetPrice() ProductPricePrice`
 
 GetPrice returns the Price field if non-nil, zero value otherwise.
 
 ### GetPriceOk
 
-`func (o *DedicatedServer) GetPriceOk() (*DedicatedServerPricePrice, bool)`
+`func (o *DedicatedServer) GetPriceOk() (*ProductPricePrice, bool)`
 
 GetPriceOk returns a tuple with the Price field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrice
 
-`func (o *DedicatedServer) SetPrice(v DedicatedServerPricePrice)`
+`func (o *DedicatedServer) SetPrice(v ProductPricePrice)`
 
 SetPrice sets Price field to given value.
 

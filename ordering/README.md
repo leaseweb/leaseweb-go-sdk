@@ -80,26 +80,42 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *OrderingAPI* | [**GetDedicatedServer**](docs/OrderingAPI.md#getdedicatedserver) | **Get** /products/dedicatedServers/{dedicatedServerId} | Get a single dedicated server and its price.
 *OrderingAPI* | [**GetDedicatedServerList**](docs/OrderingAPI.md#getdedicatedserverlist) | **Get** /products/dedicatedServers | List available dedicated server configurations.
+*OrderingAPI* | [**GetVps**](docs/OrderingAPI.md#getvps) | **Get** /products/vps/{vpsId} | Get a single VPS and its price.
+*OrderingAPI* | [**GetVpsList**](docs/OrderingAPI.md#getvpslist) | **Get** /products/vps | Get a list of available VPS products and their prices.
 *OrderingAPI* | [**OrderDedicatedServer**](docs/OrderingAPI.md#orderdedicatedserver) | **Post** /products/dedicatedServers/{dedicatedServerId}/order | Dedicated Server ordering.
+*OrderingAPI* | [**OrderVps**](docs/OrderingAPI.md#ordervps) | **Post** /products/vps/{vpsId}/order | VPS ordering.
 
 
 ## Documentation For Models
 
+ - [BillingCycle](docs/BillingCycle.md)
+ - [BillingCycleItem](docs/BillingCycleItem.md)
+ - [ConfigurationOptions](docs/ConfigurationOptions.md)
  - [ContractTerm](docs/ContractTerm.md)
+ - [ContractTermItem](docs/ContractTermItem.md)
  - [Cpu](docs/Cpu.md)
  - [DedicatedServer](docs/DedicatedServer.md)
  - [DedicatedServerDetail](docs/DedicatedServerDetail.md)
  - [DedicatedServerList](docs/DedicatedServerList.md)
- - [DedicatedServerOrder](docs/DedicatedServerOrder.md)
- - [DedicatedServerPrice](docs/DedicatedServerPrice.md)
- - [DedicatedServerPricePrice](docs/DedicatedServerPricePrice.md)
- - [DedicatedServerPricePriceDiscounts](docs/DedicatedServerPricePriceDiscounts.md)
- - [Discount](docs/Discount.md)
+ - [DiscountItems](docs/DiscountItems.md)
  - [ErrorResult](docs/ErrorResult.md)
  - [Hdd](docs/Hdd.md)
  - [Metadata](docs/Metadata.md)
+ - [Order](docs/Order.md)
  - [OrderDedicatedServerOpts](docs/OrderDedicatedServerOpts.md)
+ - [OrderVpsOpts](docs/OrderVpsOpts.md)
+ - [ProductDiscounts](docs/ProductDiscounts.md)
+ - [ProductPrice](docs/ProductPrice.md)
+ - [ProductPricePrice](docs/ProductPricePrice.md)
  - [Ram](docs/Ram.md)
+ - [ServiceLevelAgreement](docs/ServiceLevelAgreement.md)
+ - [Vps](docs/Vps.md)
+ - [VpsConfigurationOption](docs/VpsConfigurationOption.md)
+ - [VpsConfigurationOptions](docs/VpsConfigurationOptions.md)
+ - [VpsDetail](docs/VpsDetail.md)
+ - [VpsList](docs/VpsList.md)
+ - [VpsListItem](docs/VpsListItem.md)
+ - [VpsListItemPrice](docs/VpsListItemPrice.md)
 
 
 ## Documentation For Authorization

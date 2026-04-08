@@ -54,6 +54,37 @@ type OrderingAPI interface {
 	GetDedicatedServerListExecute(r ApiGetDedicatedServerListRequest) (*DedicatedServerList, *http.Response, error)
 
 	/*
+	GetVps Get a single VPS and its price.
+
+	Get a single VPS and its price.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param vpsId The VPS ID
+	@return ApiGetVpsRequest
+	*/
+	GetVps(ctx context.Context, vpsId string) ApiGetVpsRequest
+
+	// GetVpsExecute executes the request
+	//  @return Vps
+	GetVpsExecute(r ApiGetVpsRequest) (*Vps, *http.Response, error)
+
+	/*
+	GetVpsList Get a list of available VPS products and their prices.
+
+	Get a list of VPS and its price.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetVpsListRequest
+	*/
+	GetVpsList(ctx context.Context) ApiGetVpsListRequest
+
+	// GetVpsListExecute executes the request
+	//  @return VpsList
+	GetVpsListExecute(r ApiGetVpsListRequest) (*VpsList, *http.Response, error)
+
+	/*
 	OrderDedicatedServer Dedicated Server ordering.
 
 	Dedicated Server ordering.
@@ -66,8 +97,24 @@ type OrderingAPI interface {
 	OrderDedicatedServer(ctx context.Context, dedicatedServerId string) ApiOrderDedicatedServerRequest
 
 	// OrderDedicatedServerExecute executes the request
-	//  @return DedicatedServerOrder
-	OrderDedicatedServerExecute(r ApiOrderDedicatedServerRequest) (*DedicatedServerOrder, *http.Response, error)
+	//  @return Order
+	OrderDedicatedServerExecute(r ApiOrderDedicatedServerRequest) (*Order, *http.Response, error)
+
+	/*
+	OrderVps VPS ordering.
+
+	Order a VPS
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param vpsId The VPS ID
+	@return ApiOrderVpsRequest
+	*/
+	OrderVps(ctx context.Context, vpsId string) ApiOrderVpsRequest
+
+	// OrderVpsExecute executes the request
+	//  @return Order
+	OrderVpsExecute(r ApiOrderVpsRequest) (*Order, *http.Response, error)
 }
 
 // OrderingAPIService OrderingAPI service
@@ -480,6 +527,434 @@ func (a *OrderingAPIService) GetDedicatedServerListExecute(r ApiGetDedicatedServ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetVpsRequest struct {
+	ctx context.Context
+	ApiService OrderingAPI
+	vpsId string
+	location *string
+	diskUpgrade *string
+	operatingSystem *string
+	controlPanel *string
+	contractTerm *ContractTerm
+	billingCycle *BillingCycle
+	serviceLevelAgreement *ServiceLevelAgreement
+}
+
+func (r ApiGetVpsRequest) Location(location string) ApiGetVpsRequest {
+	r.location = &location
+	return r
+}
+
+func (r ApiGetVpsRequest) DiskUpgrade(diskUpgrade string) ApiGetVpsRequest {
+	r.diskUpgrade = &diskUpgrade
+	return r
+}
+
+func (r ApiGetVpsRequest) OperatingSystem(operatingSystem string) ApiGetVpsRequest {
+	r.operatingSystem = &operatingSystem
+	return r
+}
+
+func (r ApiGetVpsRequest) ControlPanel(controlPanel string) ApiGetVpsRequest {
+	r.controlPanel = &controlPanel
+	return r
+}
+
+func (r ApiGetVpsRequest) ContractTerm(contractTerm ContractTerm) ApiGetVpsRequest {
+	r.contractTerm = &contractTerm
+	return r
+}
+
+func (r ApiGetVpsRequest) BillingCycle(billingCycle BillingCycle) ApiGetVpsRequest {
+	r.billingCycle = &billingCycle
+	return r
+}
+
+func (r ApiGetVpsRequest) ServiceLevelAgreement(serviceLevelAgreement ServiceLevelAgreement) ApiGetVpsRequest {
+	r.serviceLevelAgreement = &serviceLevelAgreement
+	return r
+}
+
+func (r ApiGetVpsRequest) Execute() (*Vps, *http.Response, error) {
+	return r.ApiService.GetVpsExecute(r)
+}
+
+/*
+GetVps Get a single VPS and its price.
+
+Get a single VPS and its price.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param vpsId The VPS ID
+ @return ApiGetVpsRequest
+*/
+func (a *OrderingAPIService) GetVps(ctx context.Context, vpsId string) ApiGetVpsRequest {
+	return ApiGetVpsRequest{
+		ApiService: a,
+		ctx: ctx,
+		vpsId: vpsId,
+	}
+}
+
+// Execute executes the request
+//  @return Vps
+func (a *OrderingAPIService) GetVpsExecute(r ApiGetVpsRequest) (*Vps, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Vps
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderingAPIService.GetVps")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/products/vps/{vpsId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"vpsId"+"}", url.PathEscape(parameterValueToString(r.vpsId, "vpsId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.location == nil {
+		return localVarReturnValue, nil, reportError("location is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "location", r.location, "form", "")
+	if r.diskUpgrade != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "diskUpgrade", r.diskUpgrade, "form", "")
+	}
+	if r.operatingSystem != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "operatingSystem", r.operatingSystem, "form", "")
+	}
+	if r.controlPanel != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "controlPanel", r.controlPanel, "form", "")
+	}
+	if r.contractTerm != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contractTerm", r.contractTerm, "form", "")
+	} else {
+		var defaultValue ContractTerm = "1_YEAR"
+		r.contractTerm = &defaultValue
+	}
+	if r.billingCycle != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "billingCycle", r.billingCycle, "form", "")
+	} else {
+		var defaultValue BillingCycle = "1_MONTH"
+		r.billingCycle = &defaultValue
+	}
+	if r.serviceLevelAgreement != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "serviceLevelAgreement", r.serviceLevelAgreement, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetVpsListRequest struct {
+	ctx context.Context
+	ApiService OrderingAPI
+	location *string
+	limit *int32
+	offset *int32
+}
+
+func (r ApiGetVpsListRequest) Location(location string) ApiGetVpsListRequest {
+	r.location = &location
+	return r
+}
+
+// Limit the number of results returned.
+func (r ApiGetVpsListRequest) Limit(limit int32) ApiGetVpsListRequest {
+	r.limit = &limit
+	return r
+}
+
+// Return results starting from the given offset.
+func (r ApiGetVpsListRequest) Offset(offset int32) ApiGetVpsListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiGetVpsListRequest) Execute() (*VpsList, *http.Response, error) {
+	return r.ApiService.GetVpsListExecute(r)
+}
+
+/*
+GetVpsList Get a list of available VPS products and their prices.
+
+Get a list of VPS and its price.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetVpsListRequest
+*/
+func (a *OrderingAPIService) GetVpsList(ctx context.Context) ApiGetVpsListRequest {
+	return ApiGetVpsListRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return VpsList
+func (a *OrderingAPIService) GetVpsListExecute(r ApiGetVpsListRequest) (*VpsList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *VpsList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderingAPIService.GetVpsList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/products/vps"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.location != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "location", r.location, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiOrderDedicatedServerRequest struct {
 	ctx context.Context
 	ApiService OrderingAPI
@@ -492,7 +967,7 @@ func (r ApiOrderDedicatedServerRequest) OrderDedicatedServerOpts(orderDedicatedS
 	return r
 }
 
-func (r ApiOrderDedicatedServerRequest) Execute() (*DedicatedServerOrder, *http.Response, error) {
+func (r ApiOrderDedicatedServerRequest) Execute() (*Order, *http.Response, error) {
 	return r.ApiService.OrderDedicatedServerExecute(r)
 }
 
@@ -515,13 +990,13 @@ func (a *OrderingAPIService) OrderDedicatedServer(ctx context.Context, dedicated
 }
 
 // Execute executes the request
-//  @return DedicatedServerOrder
-func (a *OrderingAPIService) OrderDedicatedServerExecute(r ApiOrderDedicatedServerRequest) (*DedicatedServerOrder, *http.Response, error) {
+//  @return Order
+func (a *OrderingAPIService) OrderDedicatedServerExecute(r ApiOrderDedicatedServerRequest) (*Order, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DedicatedServerOrder
+		localVarReturnValue  *Order
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderingAPIService.OrderDedicatedServer")
@@ -555,6 +1030,186 @@ func (a *OrderingAPIService) OrderDedicatedServerExecute(r ApiOrderDedicatedServ
 	}
 	// body params
 	localVarPostBody = r.orderDedicatedServerOpts
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["X-LSW-Auth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-LSW-Auth"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiOrderVpsRequest struct {
+	ctx context.Context
+	ApiService OrderingAPI
+	vpsId string
+	orderVpsOpts *OrderVpsOpts
+}
+
+func (r ApiOrderVpsRequest) OrderVpsOpts(orderVpsOpts OrderVpsOpts) ApiOrderVpsRequest {
+	r.orderVpsOpts = &orderVpsOpts
+	return r
+}
+
+func (r ApiOrderVpsRequest) Execute() (*Order, *http.Response, error) {
+	return r.ApiService.OrderVpsExecute(r)
+}
+
+/*
+OrderVps VPS ordering.
+
+Order a VPS
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param vpsId The VPS ID
+ @return ApiOrderVpsRequest
+*/
+func (a *OrderingAPIService) OrderVps(ctx context.Context, vpsId string) ApiOrderVpsRequest {
+	return ApiOrderVpsRequest{
+		ApiService: a,
+		ctx: ctx,
+		vpsId: vpsId,
+	}
+}
+
+// Execute executes the request
+//  @return Order
+func (a *OrderingAPIService) OrderVpsExecute(r ApiOrderVpsRequest) (*Order, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Order
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderingAPIService.OrderVps")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/products/vps/{vpsId}/order"
+	localVarPath = strings.Replace(localVarPath, "{"+"vpsId"+"}", url.PathEscape(parameterValueToString(r.vpsId, "vpsId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.orderVpsOpts
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -12,261 +12,73 @@ package ordering
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the ContractTerm type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ContractTerm{}
+// ContractTerm Order contract term
+type ContractTerm string
 
-// ContractTerm struct for ContractTerm
-type ContractTerm struct {
-	// Contract term key
-	Key *string `json:"key,omitempty"`
-	// Contract term description
-	Description *string `json:"description,omitempty"`
-	// Discount in percentage
-	DiscountText *string `json:"discountText,omitempty"`
-	// Discount value
-	DiscountValue *float32 `json:"discountValue,omitempty"`
-	// Total price with discount
-	Total *float32 `json:"total,omitempty"`
-	AdditionalProperties map[string]interface{}
+// List of contractTerm
+const (
+	CONTRACTTERM__1_MONTH ContractTerm = "1_MONTH"
+	CONTRACTTERM__3_MONTHS ContractTerm = "3_MONTHS"
+	CONTRACTTERM__6_MONTHS ContractTerm = "6_MONTHS"
+	CONTRACTTERM__1_YEAR ContractTerm = "1_YEAR"
+	CONTRACTTERM__2_YEARS ContractTerm = "2_YEARS"
+	CONTRACTTERM__3_YEARS ContractTerm = "3_YEARS"
+)
+
+// All allowed values of ContractTerm enum
+var AllowedContractTermEnumValues = []ContractTerm{
+	"1_MONTH",
+	"3_MONTHS",
+	"6_MONTHS",
+	"1_YEAR",
+	"2_YEARS",
+	"3_YEARS",
 }
 
-type _ContractTerm ContractTerm
-
-// NewContractTerm instantiates a new ContractTerm object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewContractTerm() *ContractTerm {
-	this := ContractTerm{}
-	return &this
-}
-
-// NewContractTermWithDefaults instantiates a new ContractTerm object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewContractTermWithDefaults() *ContractTerm {
-	this := ContractTerm{}
-	return &this
-}
-
-// GetKey returns the Key field value if set, zero value otherwise.
-func (o *ContractTerm) GetKey() string {
-	if o == nil || IsNil(o.Key) {
-		var ret string
-		return ret
-	}
-	return *o.Key
-}
-
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContractTerm) GetKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.Key) {
-		return nil, false
-	}
-	return o.Key, true
-}
-
-// HasKey returns a boolean if a field has been set.
-func (o *ContractTerm) HasKey() bool {
-	if o != nil && !IsNil(o.Key) {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given string and assigns it to the Key field.
-func (o *ContractTerm) SetKey(v string) {
-	o.Key = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *ContractTerm) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContractTerm) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *ContractTerm) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *ContractTerm) SetDescription(v string) {
-	o.Description = &v
-}
-
-// GetDiscountText returns the DiscountText field value if set, zero value otherwise.
-func (o *ContractTerm) GetDiscountText() string {
-	if o == nil || IsNil(o.DiscountText) {
-		var ret string
-		return ret
-	}
-	return *o.DiscountText
-}
-
-// GetDiscountTextOk returns a tuple with the DiscountText field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContractTerm) GetDiscountTextOk() (*string, bool) {
-	if o == nil || IsNil(o.DiscountText) {
-		return nil, false
-	}
-	return o.DiscountText, true
-}
-
-// HasDiscountText returns a boolean if a field has been set.
-func (o *ContractTerm) HasDiscountText() bool {
-	if o != nil && !IsNil(o.DiscountText) {
-		return true
-	}
-
-	return false
-}
-
-// SetDiscountText gets a reference to the given string and assigns it to the DiscountText field.
-func (o *ContractTerm) SetDiscountText(v string) {
-	o.DiscountText = &v
-}
-
-// GetDiscountValue returns the DiscountValue field value if set, zero value otherwise.
-func (o *ContractTerm) GetDiscountValue() float32 {
-	if o == nil || IsNil(o.DiscountValue) {
-		var ret float32
-		return ret
-	}
-	return *o.DiscountValue
-}
-
-// GetDiscountValueOk returns a tuple with the DiscountValue field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContractTerm) GetDiscountValueOk() (*float32, bool) {
-	if o == nil || IsNil(o.DiscountValue) {
-		return nil, false
-	}
-	return o.DiscountValue, true
-}
-
-// HasDiscountValue returns a boolean if a field has been set.
-func (o *ContractTerm) HasDiscountValue() bool {
-	if o != nil && !IsNil(o.DiscountValue) {
-		return true
-	}
-
-	return false
-}
-
-// SetDiscountValue gets a reference to the given float32 and assigns it to the DiscountValue field.
-func (o *ContractTerm) SetDiscountValue(v float32) {
-	o.DiscountValue = &v
-}
-
-// GetTotal returns the Total field value if set, zero value otherwise.
-func (o *ContractTerm) GetTotal() float32 {
-	if o == nil || IsNil(o.Total) {
-		var ret float32
-		return ret
-	}
-	return *o.Total
-}
-
-// GetTotalOk returns a tuple with the Total field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContractTerm) GetTotalOk() (*float32, bool) {
-	if o == nil || IsNil(o.Total) {
-		return nil, false
-	}
-	return o.Total, true
-}
-
-// HasTotal returns a boolean if a field has been set.
-func (o *ContractTerm) HasTotal() bool {
-	if o != nil && !IsNil(o.Total) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotal gets a reference to the given float32 and assigns it to the Total field.
-func (o *ContractTerm) SetTotal(v float32) {
-	o.Total = &v
-}
-
-func (o ContractTerm) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ContractTerm) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Key) {
-		toSerialize["key"] = o.Key
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.DiscountText) {
-		toSerialize["discountText"] = o.DiscountText
-	}
-	if !IsNil(o.DiscountValue) {
-		toSerialize["discountValue"] = o.DiscountValue
-	}
-	if !IsNil(o.Total) {
-		toSerialize["total"] = o.Total
-	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
-	return toSerialize, nil
-}
-
-func (o *ContractTerm) UnmarshalJSON(data []byte) (err error) {
-	varContractTerm := _ContractTerm{}
-
-	err = json.Unmarshal(data, &varContractTerm)
-
+func (v *ContractTerm) UnmarshalJSON(src []byte) error {
+	var value string
+	err := json.Unmarshal(src, &value)
 	if err != nil {
 		return err
 	}
-
-	*o = ContractTerm(varContractTerm)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "discountText")
-		delete(additionalProperties, "discountValue")
-		delete(additionalProperties, "total")
-		o.AdditionalProperties = additionalProperties
+	enumTypeValue := ContractTerm(value)
+	for _, existing := range AllowedContractTermEnumValues {
+		if existing == enumTypeValue {
+			*v = enumTypeValue
+			return nil
+		}
 	}
 
-	return err
+	return fmt.Errorf("%+v is not a valid ContractTerm", value)
+}
+
+// NewContractTermFromValue returns a pointer to a valid ContractTerm
+// for the value passed as argument, or an error if the value passed is not allowed by the enum
+func NewContractTermFromValue(v string) (*ContractTerm, error) {
+	ev := ContractTerm(v)
+	if ev.IsValid() {
+		return &ev, nil
+	} else {
+		return nil, fmt.Errorf("invalid value '%v' for ContractTerm: valid values are %v", v, AllowedContractTermEnumValues)
+	}
+}
+
+// IsValid return true if the value is valid for the enum, false otherwise
+func (v ContractTerm) IsValid() bool {
+	for _, existing := range AllowedContractTermEnumValues {
+		if existing == v {
+			return true
+		}
+	}
+	return false
+}
+
+// Ptr returns reference to contractTerm value
+func (v ContractTerm) Ptr() *ContractTerm {
+	return &v
 }
 
 type NullableContractTerm struct {
@@ -304,5 +116,4 @@ func (v *NullableContractTerm) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
 

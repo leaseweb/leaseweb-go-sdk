@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the Discount type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Discount{}
+// checks if the DiscountItems type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DiscountItems{}
 
-// Discount struct for Discount
-type Discount struct {
+// DiscountItems struct for DiscountItems
+type DiscountItems struct {
 	// Discount description
 	Description *string `json:"description,omitempty"`
 	// Discount value
@@ -26,27 +26,27 @@ type Discount struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _Discount Discount
+type _DiscountItems DiscountItems
 
-// NewDiscount instantiates a new Discount object
+// NewDiscountItems instantiates a new DiscountItems object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiscount() *Discount {
-	this := Discount{}
+func NewDiscountItems() *DiscountItems {
+	this := DiscountItems{}
 	return &this
 }
 
-// NewDiscountWithDefaults instantiates a new Discount object
+// NewDiscountItemsWithDefaults instantiates a new DiscountItems object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDiscountWithDefaults() *Discount {
-	this := Discount{}
+func NewDiscountItemsWithDefaults() *DiscountItems {
+	this := DiscountItems{}
 	return &this
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *Discount) GetDescription() string {
+func (o *DiscountItems) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -56,7 +56,7 @@ func (o *Discount) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Discount) GetDescriptionOk() (*string, bool) {
+func (o *DiscountItems) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *Discount) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *Discount) HasDescription() bool {
+func (o *DiscountItems) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -73,12 +73,12 @@ func (o *Discount) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *Discount) SetDescription(v string) {
+func (o *DiscountItems) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *Discount) GetValue() float32 {
+func (o *DiscountItems) GetValue() float32 {
 	if o == nil || IsNil(o.Value) {
 		var ret float32
 		return ret
@@ -88,7 +88,7 @@ func (o *Discount) GetValue() float32 {
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Discount) GetValueOk() (*float32, bool) {
+func (o *DiscountItems) GetValueOk() (*float32, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *Discount) GetValueOk() (*float32, bool) {
 }
 
 // HasValue returns a boolean if a field has been set.
-func (o *Discount) HasValue() bool {
+func (o *DiscountItems) HasValue() bool {
 	if o != nil && !IsNil(o.Value) {
 		return true
 	}
@@ -105,11 +105,11 @@ func (o *Discount) HasValue() bool {
 }
 
 // SetValue gets a reference to the given float32 and assigns it to the Value field.
-func (o *Discount) SetValue(v float32) {
+func (o *DiscountItems) SetValue(v float32) {
 	o.Value = &v
 }
 
-func (o Discount) MarshalJSON() ([]byte, error) {
+func (o DiscountItems) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -117,7 +117,7 @@ func (o Discount) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Discount) ToMap() (map[string]interface{}, error) {
+func (o DiscountItems) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -133,16 +133,16 @@ func (o Discount) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Discount) UnmarshalJSON(data []byte) (err error) {
-	varDiscount := _Discount{}
+func (o *DiscountItems) UnmarshalJSON(data []byte) (err error) {
+	varDiscountItems := _DiscountItems{}
 
-	err = json.Unmarshal(data, &varDiscount)
+	err = json.Unmarshal(data, &varDiscountItems)
 
 	if err != nil {
 		return err
 	}
 
-	*o = Discount(varDiscount)
+	*o = DiscountItems(varDiscountItems)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -155,38 +155,38 @@ func (o *Discount) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableDiscount struct {
-	value *Discount
+type NullableDiscountItems struct {
+	value *DiscountItems
 	isSet bool
 }
 
-func (v NullableDiscount) Get() *Discount {
+func (v NullableDiscountItems) Get() *DiscountItems {
 	return v.value
 }
 
-func (v *NullableDiscount) Set(val *Discount) {
+func (v *NullableDiscountItems) Set(val *DiscountItems) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDiscount) IsSet() bool {
+func (v NullableDiscountItems) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDiscount) Unset() {
+func (v *NullableDiscountItems) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDiscount(val *Discount) *NullableDiscount {
-	return &NullableDiscount{value: val, isSet: true}
+func NewNullableDiscountItems(val *DiscountItems) *NullableDiscountItems {
+	return &NullableDiscountItems{value: val, isSet: true}
 }
 
-func (v NullableDiscount) MarshalJSON() ([]byte, error) {
+func (v NullableDiscountItems) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDiscount) UnmarshalJSON(src []byte) error {
+func (v *NullableDiscountItems) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

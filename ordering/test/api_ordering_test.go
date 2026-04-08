@@ -48,6 +48,32 @@ func Test_ordering_OrderingAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrderingAPIService GetVps", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var vpsId string
+
+		resp, httpRes, err := apiClient.OrderingAPI.GetVps(context.Background(), vpsId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrderingAPIService GetVpsList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.OrderingAPI.GetVpsList(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrderingAPIService OrderDedicatedServer", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -55,6 +81,20 @@ func Test_ordering_OrderingAPIService(t *testing.T) {
 		var dedicatedServerId string
 
 		resp, httpRes, err := apiClient.OrderingAPI.OrderDedicatedServer(context.Background(), dedicatedServerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrderingAPIService OrderVps", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var vpsId string
+
+		resp, httpRes, err := apiClient.OrderingAPI.OrderVps(context.Background(), vpsId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

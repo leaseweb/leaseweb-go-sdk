@@ -14,52 +14,56 @@ import (
 	"encoding/json"
 )
 
-// checks if the DedicatedServerPricePrice type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DedicatedServerPricePrice{}
+// checks if the ProductPricePrice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProductPricePrice{}
 
-// DedicatedServerPricePrice Price details of the server
-type DedicatedServerPricePrice struct {
+// ProductPricePrice Price details of the product
+type ProductPricePrice struct {
 	// Price's currency
 	Currency *string `json:"currency,omitempty"`
-	// Inicial price
+	// Initial price
 	BasePrice *float32 `json:"basePrice,omitempty"`
 	// Tax
 	Tax *float32 `json:"tax,omitempty"`
 	// Setup Fee
 	SetupFee *float32 `json:"setupFee,omitempty"`
-	// Ram size
+	// Fee amount
 	Fee *float32 `json:"fee,omitempty"`
-	Discounts *DedicatedServerPricePriceDiscounts `json:"discounts,omitempty"`
+	Discounts *ProductDiscounts `json:"discounts,omitempty"`
 	// Final price
 	Total *float32 `json:"total,omitempty"`
-	// Billing periodicity
+	// Selected contract term
+	ContractTerm *string `json:"contractTerm,omitempty"`
+	// Available contract terms
+	ContractTerms []ContractTermItem `json:"contractTerms,omitempty"`
+	// Selected billing cycle
 	BillingCycle *string `json:"billingCycle,omitempty"`
-	// Contract terms
-	ContractTerms []ContractTerm `json:"contractTerms,omitempty"`
+	// Available billing cycles
+	BillingCycles []BillingCycleItem `json:"billingCycles,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _DedicatedServerPricePrice DedicatedServerPricePrice
+type _ProductPricePrice ProductPricePrice
 
-// NewDedicatedServerPricePrice instantiates a new DedicatedServerPricePrice object
+// NewProductPricePrice instantiates a new ProductPricePrice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDedicatedServerPricePrice() *DedicatedServerPricePrice {
-	this := DedicatedServerPricePrice{}
+func NewProductPricePrice() *ProductPricePrice {
+	this := ProductPricePrice{}
 	return &this
 }
 
-// NewDedicatedServerPricePriceWithDefaults instantiates a new DedicatedServerPricePrice object
+// NewProductPricePriceWithDefaults instantiates a new ProductPricePrice object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDedicatedServerPricePriceWithDefaults() *DedicatedServerPricePrice {
-	this := DedicatedServerPricePrice{}
+func NewProductPricePriceWithDefaults() *ProductPricePrice {
+	this := ProductPricePrice{}
 	return &this
 }
 
 // GetCurrency returns the Currency field value if set, zero value otherwise.
-func (o *DedicatedServerPricePrice) GetCurrency() string {
+func (o *ProductPricePrice) GetCurrency() string {
 	if o == nil || IsNil(o.Currency) {
 		var ret string
 		return ret
@@ -69,7 +73,7 @@ func (o *DedicatedServerPricePrice) GetCurrency() string {
 
 // GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DedicatedServerPricePrice) GetCurrencyOk() (*string, bool) {
+func (o *ProductPricePrice) GetCurrencyOk() (*string, bool) {
 	if o == nil || IsNil(o.Currency) {
 		return nil, false
 	}
@@ -77,7 +81,7 @@ func (o *DedicatedServerPricePrice) GetCurrencyOk() (*string, bool) {
 }
 
 // HasCurrency returns a boolean if a field has been set.
-func (o *DedicatedServerPricePrice) HasCurrency() bool {
+func (o *ProductPricePrice) HasCurrency() bool {
 	if o != nil && !IsNil(o.Currency) {
 		return true
 	}
@@ -86,12 +90,12 @@ func (o *DedicatedServerPricePrice) HasCurrency() bool {
 }
 
 // SetCurrency gets a reference to the given string and assigns it to the Currency field.
-func (o *DedicatedServerPricePrice) SetCurrency(v string) {
+func (o *ProductPricePrice) SetCurrency(v string) {
 	o.Currency = &v
 }
 
 // GetBasePrice returns the BasePrice field value if set, zero value otherwise.
-func (o *DedicatedServerPricePrice) GetBasePrice() float32 {
+func (o *ProductPricePrice) GetBasePrice() float32 {
 	if o == nil || IsNil(o.BasePrice) {
 		var ret float32
 		return ret
@@ -101,7 +105,7 @@ func (o *DedicatedServerPricePrice) GetBasePrice() float32 {
 
 // GetBasePriceOk returns a tuple with the BasePrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DedicatedServerPricePrice) GetBasePriceOk() (*float32, bool) {
+func (o *ProductPricePrice) GetBasePriceOk() (*float32, bool) {
 	if o == nil || IsNil(o.BasePrice) {
 		return nil, false
 	}
@@ -109,7 +113,7 @@ func (o *DedicatedServerPricePrice) GetBasePriceOk() (*float32, bool) {
 }
 
 // HasBasePrice returns a boolean if a field has been set.
-func (o *DedicatedServerPricePrice) HasBasePrice() bool {
+func (o *ProductPricePrice) HasBasePrice() bool {
 	if o != nil && !IsNil(o.BasePrice) {
 		return true
 	}
@@ -118,12 +122,12 @@ func (o *DedicatedServerPricePrice) HasBasePrice() bool {
 }
 
 // SetBasePrice gets a reference to the given float32 and assigns it to the BasePrice field.
-func (o *DedicatedServerPricePrice) SetBasePrice(v float32) {
+func (o *ProductPricePrice) SetBasePrice(v float32) {
 	o.BasePrice = &v
 }
 
 // GetTax returns the Tax field value if set, zero value otherwise.
-func (o *DedicatedServerPricePrice) GetTax() float32 {
+func (o *ProductPricePrice) GetTax() float32 {
 	if o == nil || IsNil(o.Tax) {
 		var ret float32
 		return ret
@@ -133,7 +137,7 @@ func (o *DedicatedServerPricePrice) GetTax() float32 {
 
 // GetTaxOk returns a tuple with the Tax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DedicatedServerPricePrice) GetTaxOk() (*float32, bool) {
+func (o *ProductPricePrice) GetTaxOk() (*float32, bool) {
 	if o == nil || IsNil(o.Tax) {
 		return nil, false
 	}
@@ -141,7 +145,7 @@ func (o *DedicatedServerPricePrice) GetTaxOk() (*float32, bool) {
 }
 
 // HasTax returns a boolean if a field has been set.
-func (o *DedicatedServerPricePrice) HasTax() bool {
+func (o *ProductPricePrice) HasTax() bool {
 	if o != nil && !IsNil(o.Tax) {
 		return true
 	}
@@ -150,12 +154,12 @@ func (o *DedicatedServerPricePrice) HasTax() bool {
 }
 
 // SetTax gets a reference to the given float32 and assigns it to the Tax field.
-func (o *DedicatedServerPricePrice) SetTax(v float32) {
+func (o *ProductPricePrice) SetTax(v float32) {
 	o.Tax = &v
 }
 
 // GetSetupFee returns the SetupFee field value if set, zero value otherwise.
-func (o *DedicatedServerPricePrice) GetSetupFee() float32 {
+func (o *ProductPricePrice) GetSetupFee() float32 {
 	if o == nil || IsNil(o.SetupFee) {
 		var ret float32
 		return ret
@@ -165,7 +169,7 @@ func (o *DedicatedServerPricePrice) GetSetupFee() float32 {
 
 // GetSetupFeeOk returns a tuple with the SetupFee field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DedicatedServerPricePrice) GetSetupFeeOk() (*float32, bool) {
+func (o *ProductPricePrice) GetSetupFeeOk() (*float32, bool) {
 	if o == nil || IsNil(o.SetupFee) {
 		return nil, false
 	}
@@ -173,7 +177,7 @@ func (o *DedicatedServerPricePrice) GetSetupFeeOk() (*float32, bool) {
 }
 
 // HasSetupFee returns a boolean if a field has been set.
-func (o *DedicatedServerPricePrice) HasSetupFee() bool {
+func (o *ProductPricePrice) HasSetupFee() bool {
 	if o != nil && !IsNil(o.SetupFee) {
 		return true
 	}
@@ -182,12 +186,12 @@ func (o *DedicatedServerPricePrice) HasSetupFee() bool {
 }
 
 // SetSetupFee gets a reference to the given float32 and assigns it to the SetupFee field.
-func (o *DedicatedServerPricePrice) SetSetupFee(v float32) {
+func (o *ProductPricePrice) SetSetupFee(v float32) {
 	o.SetupFee = &v
 }
 
 // GetFee returns the Fee field value if set, zero value otherwise.
-func (o *DedicatedServerPricePrice) GetFee() float32 {
+func (o *ProductPricePrice) GetFee() float32 {
 	if o == nil || IsNil(o.Fee) {
 		var ret float32
 		return ret
@@ -197,7 +201,7 @@ func (o *DedicatedServerPricePrice) GetFee() float32 {
 
 // GetFeeOk returns a tuple with the Fee field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DedicatedServerPricePrice) GetFeeOk() (*float32, bool) {
+func (o *ProductPricePrice) GetFeeOk() (*float32, bool) {
 	if o == nil || IsNil(o.Fee) {
 		return nil, false
 	}
@@ -205,7 +209,7 @@ func (o *DedicatedServerPricePrice) GetFeeOk() (*float32, bool) {
 }
 
 // HasFee returns a boolean if a field has been set.
-func (o *DedicatedServerPricePrice) HasFee() bool {
+func (o *ProductPricePrice) HasFee() bool {
 	if o != nil && !IsNil(o.Fee) {
 		return true
 	}
@@ -214,14 +218,14 @@ func (o *DedicatedServerPricePrice) HasFee() bool {
 }
 
 // SetFee gets a reference to the given float32 and assigns it to the Fee field.
-func (o *DedicatedServerPricePrice) SetFee(v float32) {
+func (o *ProductPricePrice) SetFee(v float32) {
 	o.Fee = &v
 }
 
 // GetDiscounts returns the Discounts field value if set, zero value otherwise.
-func (o *DedicatedServerPricePrice) GetDiscounts() DedicatedServerPricePriceDiscounts {
+func (o *ProductPricePrice) GetDiscounts() ProductDiscounts {
 	if o == nil || IsNil(o.Discounts) {
-		var ret DedicatedServerPricePriceDiscounts
+		var ret ProductDiscounts
 		return ret
 	}
 	return *o.Discounts
@@ -229,7 +233,7 @@ func (o *DedicatedServerPricePrice) GetDiscounts() DedicatedServerPricePriceDisc
 
 // GetDiscountsOk returns a tuple with the Discounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DedicatedServerPricePrice) GetDiscountsOk() (*DedicatedServerPricePriceDiscounts, bool) {
+func (o *ProductPricePrice) GetDiscountsOk() (*ProductDiscounts, bool) {
 	if o == nil || IsNil(o.Discounts) {
 		return nil, false
 	}
@@ -237,7 +241,7 @@ func (o *DedicatedServerPricePrice) GetDiscountsOk() (*DedicatedServerPricePrice
 }
 
 // HasDiscounts returns a boolean if a field has been set.
-func (o *DedicatedServerPricePrice) HasDiscounts() bool {
+func (o *ProductPricePrice) HasDiscounts() bool {
 	if o != nil && !IsNil(o.Discounts) {
 		return true
 	}
@@ -245,13 +249,13 @@ func (o *DedicatedServerPricePrice) HasDiscounts() bool {
 	return false
 }
 
-// SetDiscounts gets a reference to the given DedicatedServerPricePriceDiscounts and assigns it to the Discounts field.
-func (o *DedicatedServerPricePrice) SetDiscounts(v DedicatedServerPricePriceDiscounts) {
+// SetDiscounts gets a reference to the given ProductDiscounts and assigns it to the Discounts field.
+func (o *ProductPricePrice) SetDiscounts(v ProductDiscounts) {
 	o.Discounts = &v
 }
 
 // GetTotal returns the Total field value if set, zero value otherwise.
-func (o *DedicatedServerPricePrice) GetTotal() float32 {
+func (o *ProductPricePrice) GetTotal() float32 {
 	if o == nil || IsNil(o.Total) {
 		var ret float32
 		return ret
@@ -261,7 +265,7 @@ func (o *DedicatedServerPricePrice) GetTotal() float32 {
 
 // GetTotalOk returns a tuple with the Total field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DedicatedServerPricePrice) GetTotalOk() (*float32, bool) {
+func (o *ProductPricePrice) GetTotalOk() (*float32, bool) {
 	if o == nil || IsNil(o.Total) {
 		return nil, false
 	}
@@ -269,7 +273,7 @@ func (o *DedicatedServerPricePrice) GetTotalOk() (*float32, bool) {
 }
 
 // HasTotal returns a boolean if a field has been set.
-func (o *DedicatedServerPricePrice) HasTotal() bool {
+func (o *ProductPricePrice) HasTotal() bool {
 	if o != nil && !IsNil(o.Total) {
 		return true
 	}
@@ -278,12 +282,76 @@ func (o *DedicatedServerPricePrice) HasTotal() bool {
 }
 
 // SetTotal gets a reference to the given float32 and assigns it to the Total field.
-func (o *DedicatedServerPricePrice) SetTotal(v float32) {
+func (o *ProductPricePrice) SetTotal(v float32) {
 	o.Total = &v
 }
 
+// GetContractTerm returns the ContractTerm field value if set, zero value otherwise.
+func (o *ProductPricePrice) GetContractTerm() string {
+	if o == nil || IsNil(o.ContractTerm) {
+		var ret string
+		return ret
+	}
+	return *o.ContractTerm
+}
+
+// GetContractTermOk returns a tuple with the ContractTerm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductPricePrice) GetContractTermOk() (*string, bool) {
+	if o == nil || IsNil(o.ContractTerm) {
+		return nil, false
+	}
+	return o.ContractTerm, true
+}
+
+// HasContractTerm returns a boolean if a field has been set.
+func (o *ProductPricePrice) HasContractTerm() bool {
+	if o != nil && !IsNil(o.ContractTerm) {
+		return true
+	}
+
+	return false
+}
+
+// SetContractTerm gets a reference to the given string and assigns it to the ContractTerm field.
+func (o *ProductPricePrice) SetContractTerm(v string) {
+	o.ContractTerm = &v
+}
+
+// GetContractTerms returns the ContractTerms field value if set, zero value otherwise.
+func (o *ProductPricePrice) GetContractTerms() []ContractTermItem {
+	if o == nil || IsNil(o.ContractTerms) {
+		var ret []ContractTermItem
+		return ret
+	}
+	return o.ContractTerms
+}
+
+// GetContractTermsOk returns a tuple with the ContractTerms field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductPricePrice) GetContractTermsOk() ([]ContractTermItem, bool) {
+	if o == nil || IsNil(o.ContractTerms) {
+		return nil, false
+	}
+	return o.ContractTerms, true
+}
+
+// HasContractTerms returns a boolean if a field has been set.
+func (o *ProductPricePrice) HasContractTerms() bool {
+	if o != nil && !IsNil(o.ContractTerms) {
+		return true
+	}
+
+	return false
+}
+
+// SetContractTerms gets a reference to the given []ContractTermItem and assigns it to the ContractTerms field.
+func (o *ProductPricePrice) SetContractTerms(v []ContractTermItem) {
+	o.ContractTerms = v
+}
+
 // GetBillingCycle returns the BillingCycle field value if set, zero value otherwise.
-func (o *DedicatedServerPricePrice) GetBillingCycle() string {
+func (o *ProductPricePrice) GetBillingCycle() string {
 	if o == nil || IsNil(o.BillingCycle) {
 		var ret string
 		return ret
@@ -293,7 +361,7 @@ func (o *DedicatedServerPricePrice) GetBillingCycle() string {
 
 // GetBillingCycleOk returns a tuple with the BillingCycle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DedicatedServerPricePrice) GetBillingCycleOk() (*string, bool) {
+func (o *ProductPricePrice) GetBillingCycleOk() (*string, bool) {
 	if o == nil || IsNil(o.BillingCycle) {
 		return nil, false
 	}
@@ -301,7 +369,7 @@ func (o *DedicatedServerPricePrice) GetBillingCycleOk() (*string, bool) {
 }
 
 // HasBillingCycle returns a boolean if a field has been set.
-func (o *DedicatedServerPricePrice) HasBillingCycle() bool {
+func (o *ProductPricePrice) HasBillingCycle() bool {
 	if o != nil && !IsNil(o.BillingCycle) {
 		return true
 	}
@@ -310,43 +378,43 @@ func (o *DedicatedServerPricePrice) HasBillingCycle() bool {
 }
 
 // SetBillingCycle gets a reference to the given string and assigns it to the BillingCycle field.
-func (o *DedicatedServerPricePrice) SetBillingCycle(v string) {
+func (o *ProductPricePrice) SetBillingCycle(v string) {
 	o.BillingCycle = &v
 }
 
-// GetContractTerms returns the ContractTerms field value if set, zero value otherwise.
-func (o *DedicatedServerPricePrice) GetContractTerms() []ContractTerm {
-	if o == nil || IsNil(o.ContractTerms) {
-		var ret []ContractTerm
+// GetBillingCycles returns the BillingCycles field value if set, zero value otherwise.
+func (o *ProductPricePrice) GetBillingCycles() []BillingCycleItem {
+	if o == nil || IsNil(o.BillingCycles) {
+		var ret []BillingCycleItem
 		return ret
 	}
-	return o.ContractTerms
+	return o.BillingCycles
 }
 
-// GetContractTermsOk returns a tuple with the ContractTerms field value if set, nil otherwise
+// GetBillingCyclesOk returns a tuple with the BillingCycles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DedicatedServerPricePrice) GetContractTermsOk() ([]ContractTerm, bool) {
-	if o == nil || IsNil(o.ContractTerms) {
+func (o *ProductPricePrice) GetBillingCyclesOk() ([]BillingCycleItem, bool) {
+	if o == nil || IsNil(o.BillingCycles) {
 		return nil, false
 	}
-	return o.ContractTerms, true
+	return o.BillingCycles, true
 }
 
-// HasContractTerms returns a boolean if a field has been set.
-func (o *DedicatedServerPricePrice) HasContractTerms() bool {
-	if o != nil && !IsNil(o.ContractTerms) {
+// HasBillingCycles returns a boolean if a field has been set.
+func (o *ProductPricePrice) HasBillingCycles() bool {
+	if o != nil && !IsNil(o.BillingCycles) {
 		return true
 	}
 
 	return false
 }
 
-// SetContractTerms gets a reference to the given []ContractTerm and assigns it to the ContractTerms field.
-func (o *DedicatedServerPricePrice) SetContractTerms(v []ContractTerm) {
-	o.ContractTerms = v
+// SetBillingCycles gets a reference to the given []BillingCycleItem and assigns it to the BillingCycles field.
+func (o *ProductPricePrice) SetBillingCycles(v []BillingCycleItem) {
+	o.BillingCycles = v
 }
 
-func (o DedicatedServerPricePrice) MarshalJSON() ([]byte, error) {
+func (o ProductPricePrice) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -354,7 +422,7 @@ func (o DedicatedServerPricePrice) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o DedicatedServerPricePrice) ToMap() (map[string]interface{}, error) {
+func (o ProductPricePrice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
@@ -377,11 +445,17 @@ func (o DedicatedServerPricePrice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
 	}
-	if !IsNil(o.BillingCycle) {
-		toSerialize["billingCycle"] = o.BillingCycle
+	if !IsNil(o.ContractTerm) {
+		toSerialize["contractTerm"] = o.ContractTerm
 	}
 	if !IsNil(o.ContractTerms) {
 		toSerialize["contractTerms"] = o.ContractTerms
+	}
+	if !IsNil(o.BillingCycle) {
+		toSerialize["billingCycle"] = o.BillingCycle
+	}
+	if !IsNil(o.BillingCycles) {
+		toSerialize["billingCycles"] = o.BillingCycles
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -391,16 +465,16 @@ func (o DedicatedServerPricePrice) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DedicatedServerPricePrice) UnmarshalJSON(data []byte) (err error) {
-	varDedicatedServerPricePrice := _DedicatedServerPricePrice{}
+func (o *ProductPricePrice) UnmarshalJSON(data []byte) (err error) {
+	varProductPricePrice := _ProductPricePrice{}
 
-	err = json.Unmarshal(data, &varDedicatedServerPricePrice)
+	err = json.Unmarshal(data, &varProductPricePrice)
 
 	if err != nil {
 		return err
 	}
 
-	*o = DedicatedServerPricePrice(varDedicatedServerPricePrice)
+	*o = ProductPricePrice(varProductPricePrice)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -412,46 +486,48 @@ func (o *DedicatedServerPricePrice) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "fee")
 		delete(additionalProperties, "discounts")
 		delete(additionalProperties, "total")
-		delete(additionalProperties, "billingCycle")
+		delete(additionalProperties, "contractTerm")
 		delete(additionalProperties, "contractTerms")
+		delete(additionalProperties, "billingCycle")
+		delete(additionalProperties, "billingCycles")
 		o.AdditionalProperties = additionalProperties
 	}
 
 	return err
 }
 
-type NullableDedicatedServerPricePrice struct {
-	value *DedicatedServerPricePrice
+type NullableProductPricePrice struct {
+	value *ProductPricePrice
 	isSet bool
 }
 
-func (v NullableDedicatedServerPricePrice) Get() *DedicatedServerPricePrice {
+func (v NullableProductPricePrice) Get() *ProductPricePrice {
 	return v.value
 }
 
-func (v *NullableDedicatedServerPricePrice) Set(val *DedicatedServerPricePrice) {
+func (v *NullableProductPricePrice) Set(val *ProductPricePrice) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDedicatedServerPricePrice) IsSet() bool {
+func (v NullableProductPricePrice) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDedicatedServerPricePrice) Unset() {
+func (v *NullableProductPricePrice) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDedicatedServerPricePrice(val *DedicatedServerPricePrice) *NullableDedicatedServerPricePrice {
-	return &NullableDedicatedServerPricePrice{value: val, isSet: true}
+func NewNullableProductPricePrice(val *ProductPricePrice) *NullableProductPricePrice {
+	return &NullableProductPricePrice{value: val, isSet: true}
 }
 
-func (v NullableDedicatedServerPricePrice) MarshalJSON() ([]byte, error) {
+func (v NullableProductPricePrice) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDedicatedServerPricePrice) UnmarshalJSON(src []byte) error {
+func (v *NullableProductPricePrice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

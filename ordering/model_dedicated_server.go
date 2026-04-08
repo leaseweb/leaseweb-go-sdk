@@ -33,7 +33,7 @@ type DedicatedServer struct {
 	Ram *Ram `json:"ram,omitempty"`
 	// Location of the server
 	Location []string `json:"location,omitempty"`
-	Price *DedicatedServerPricePrice `json:"price,omitempty"`
+	Price *ProductPricePrice `json:"price,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -313,9 +313,9 @@ func (o *DedicatedServer) SetLocation(v []string) {
 }
 
 // GetPrice returns the Price field value if set, zero value otherwise.
-func (o *DedicatedServer) GetPrice() DedicatedServerPricePrice {
+func (o *DedicatedServer) GetPrice() ProductPricePrice {
 	if o == nil || IsNil(o.Price) {
-		var ret DedicatedServerPricePrice
+		var ret ProductPricePrice
 		return ret
 	}
 	return *o.Price
@@ -323,7 +323,7 @@ func (o *DedicatedServer) GetPrice() DedicatedServerPricePrice {
 
 // GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DedicatedServer) GetPriceOk() (*DedicatedServerPricePrice, bool) {
+func (o *DedicatedServer) GetPriceOk() (*ProductPricePrice, bool) {
 	if o == nil || IsNil(o.Price) {
 		return nil, false
 	}
@@ -339,8 +339,8 @@ func (o *DedicatedServer) HasPrice() bool {
 	return false
 }
 
-// SetPrice gets a reference to the given DedicatedServerPricePrice and assigns it to the Price field.
-func (o *DedicatedServer) SetPrice(v DedicatedServerPricePrice) {
+// SetPrice gets a reference to the given ProductPricePrice and assigns it to the Price field.
+func (o *DedicatedServer) SetPrice(v ProductPricePrice) {
 	o.Price = &v
 }
 

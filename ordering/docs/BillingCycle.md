@@ -1,4 +1,4 @@
-# ContractTerm
+# BillingCycle
 
 ## Enum
 
@@ -10,10 +10,6 @@
 * `_6_MONTHS` (value: `"6_MONTHS"`)
 
 * `_1_YEAR` (value: `"1_YEAR"`)
-
-* `_2_YEARS` (value: `"2_YEARS"`)
-
-* `_3_YEARS` (value: `"3_YEARS"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

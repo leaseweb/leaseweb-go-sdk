@@ -1,52 +1,52 @@
-# DedicatedServerPrice
+# ProductPrice
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Price** | Pointer to [**DedicatedServerPricePrice**](DedicatedServerPricePrice.md) |  | [optional] 
+**Price** | Pointer to [**ProductPricePrice**](ProductPricePrice.md) |  | [optional] 
 
 ## Methods
 
-### NewDedicatedServerPrice
+### NewProductPrice
 
-`func NewDedicatedServerPrice() *DedicatedServerPrice`
+`func NewProductPrice() *ProductPrice`
 
-NewDedicatedServerPrice instantiates a new DedicatedServerPrice object
+NewProductPrice instantiates a new ProductPrice object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewDedicatedServerPriceWithDefaults
+### NewProductPriceWithDefaults
 
-`func NewDedicatedServerPriceWithDefaults() *DedicatedServerPrice`
+`func NewProductPriceWithDefaults() *ProductPrice`
 
-NewDedicatedServerPriceWithDefaults instantiates a new DedicatedServerPrice object
+NewProductPriceWithDefaults instantiates a new ProductPrice object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPrice
 
-`func (o *DedicatedServerPrice) GetPrice() DedicatedServerPricePrice`
+`func (o *ProductPrice) GetPrice() ProductPricePrice`
 
 GetPrice returns the Price field if non-nil, zero value otherwise.
 
 ### GetPriceOk
 
-`func (o *DedicatedServerPrice) GetPriceOk() (*DedicatedServerPricePrice, bool)`
+`func (o *ProductPrice) GetPriceOk() (*ProductPricePrice, bool)`
 
 GetPriceOk returns a tuple with the Price field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrice
 
-`func (o *DedicatedServerPrice) SetPrice(v DedicatedServerPricePrice)`
+`func (o *ProductPrice) SetPrice(v ProductPricePrice)`
 
 SetPrice sets Price field to given value.
 
 ### HasPrice
 
-`func (o *DedicatedServerPrice) HasPrice() bool`
+`func (o *ProductPrice) HasPrice() bool`
 
 HasPrice returns a boolean if a field has been set.
 
