@@ -1,5 +1,5 @@
 /*
-Public Clouds
+Public Cloud
 
 Testing PubliccloudAPIService
 

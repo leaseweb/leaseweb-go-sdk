@@ -348,7 +348,7 @@ paths:
   /products/dedicatedServers/{dedicatedServerId}/order:
     post:
       description: |
-        Dedicated Server ordering.
+        Dedicated Server ordering. Only verified existing customers who do not need to do prepayment while placing an order via website can place orders via API. If you are a new customer, Know Your Customer (KYC) process needs to be done first.
       operationId: orderDedicatedServer
       parameters:
       - description: The ID of a dedicated server
@@ -907,7 +907,7 @@ paths:
   /products/vps/{vpsId}/order:
     post:
       description: |
-        Order a VPS
+        Order a VPS. Only verified existing customers who do not need to do prepayment while placing an order via website can place orders via API. If you are a new customer, Know Your Customer (KYC) process needs to be done first.
       operationId: orderVps
       parameters:
       - description: The VPS ID

@@ -87,7 +87,7 @@ type OrderingAPI interface {
 	/*
 	OrderDedicatedServer Dedicated Server ordering.
 
-	Dedicated Server ordering.
+	Dedicated Server ordering. Only verified existing customers who do not need to do prepayment while placing an order via website can place orders via API. If you are a new customer, Know Your Customer (KYC) process needs to be done first.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -103,7 +103,7 @@ type OrderingAPI interface {
 	/*
 	OrderVps VPS ordering.
 
-	Order a VPS
+	Order a VPS. Only verified existing customers who do not need to do prepayment while placing an order via website can place orders via API. If you are a new customer, Know Your Customer (KYC) process needs to be done first.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -974,7 +974,7 @@ func (r ApiOrderDedicatedServerRequest) Execute() (*Order, *http.Response, error
 /*
 OrderDedicatedServer Dedicated Server ordering.
 
-Dedicated Server ordering.
+Dedicated Server ordering. Only verified existing customers who do not need to do prepayment while placing an order via website can place orders via API. If you are a new customer, Know Your Customer (KYC) process needs to be done first.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1154,7 +1154,7 @@ func (r ApiOrderVpsRequest) Execute() (*Order, *http.Response, error) {
 /*
 OrderVps VPS ordering.
 
-Order a VPS
+Order a VPS. Only verified existing customers who do not need to do prepayment while placing an order via website can place orders via API. If you are a new customer, Know Your Customer (KYC) process needs to be done first.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

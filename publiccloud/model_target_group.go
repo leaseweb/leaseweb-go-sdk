@@ -1,5 +1,5 @@
 /*
-Public Clouds
+Public Cloud
 
 > The base URL for this API is: **https://api.leaseweb.com/publicCloud/v1/_**  This API provides ways to launch and manage Public Cloud instances.
 

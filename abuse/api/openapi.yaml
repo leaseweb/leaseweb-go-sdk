@@ -113,25 +113,36 @@ paths:
                 - id: "000000"
                   subject: Report description
                   status: OPEN
+                  tags:
+                  - Copyright
+                  - Infringement
                   reportedAt: 2015-01-01T00:00:00+00:00
                   updatedAt: 2015-01-01T00:00:00+00:00
+                  notifiedAt: 2015-01-01T00:00:00+00:00
                   notifier: REDACTED_FOR_PRIVACY
+                  owner: john.doe@example.com
                   customerId: "10000001"
                   legalEntityId: "2000"
                   deadline: 2015-01-01T00:00:00+00:00
                   detectedIpAddresses:
                   - 127.0.0.1
+                  isNullRouted: true
                 - id: "000001"
                   subject: Report description
                   status: CLOSED
+                  tags:
+                  - SLM
                   reportedAt: 2015-01-01T00:00:00+00:00
                   updatedAt: 2015-01-01T00:00:00+00:00
+                  notifiedAt: 2015-01-01T00:00:00+00:00
                   notifier: REDACTED_FOR_PRIVACY
+                  owner: jane.doe@example.com
                   customerId: "10000001"
                   legalEntityId: "2600"
                   deadline: 2015-01-01T00:00:00+00:00
                   detectedIpAddresses:
                   - 127.0.0.1
+                  isNullRouted: false
               schema:
                 $ref: '#/components/schemas/getReportListResult'
           description: |
@@ -217,6 +228,17 @@ paths:
                   mimeType: part/xml
                   filename: 000001.xml
                 body: string with content
+                headers:
+                - |-
+                  From: notifier@example.com
+                  To: abuse@example.com
+                  Subject: Copyright infringement notice
+                  Date: Thu, 01 Jan 2015 00:00:00 +0000
+                - |-
+                  From: notifier2@example.com
+                  To: abuse@example.com
+                  Subject: Copyright infringement notice
+                  Date: Fri, 02 Jan 2015 00:00:00 +0000
                 customerId: "10000001"
                 deadline: 2015-01-01T00:00:00+0100
                 detectedDomainNames:
@@ -239,12 +261,23 @@ paths:
                     filename: notification.png
                 legalEntityId: "2000"
                 notifier: notifier@email.com
+                owner: john.doe@example.com
                 reopened: false
                 reportedAt: 2015-01-01T00:00:00+0100
                 status: CLOSED
+                tags:
+                - Copyright
+                - Infringement
                 subject: Report description
                 totalMessagesCount: 2
                 updatedAt: 2015-01-01T00:00:00+0100
+                isBodyOverridden: false
+                isNullRouted: true
+                shouldApplyRuleEngine: true
+                customerCommunicationFlag: true
+                isWaitingOnCustomer: false
+                notifierCommunicationFlag: true
+                isWaitingOnNotifier: false
               schema:
                 $ref: '#/components/schemas/getReportResult'
           description: |
