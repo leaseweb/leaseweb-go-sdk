@@ -994,6 +994,7 @@ func (a *DnsAPIService) GetQueryMetricsExecute(r ApiGetQueryMetricsRequest) (*Ge
 		parameterAddToHeaderOrQuery(localVarQueryParams, "aggregation", r.aggregation, "form", "")
 	} else {
 		var defaultValue string = "SUM"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "aggregation", defaultValue, "form", "")
 		r.aggregation = &defaultValue
 	}
 	// to determine the Content-Type header

@@ -35,7 +35,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {
@@ -105,7 +105,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {
@@ -179,7 +179,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {
@@ -245,7 +245,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {
@@ -312,7 +312,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {
@@ -388,7 +388,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {
@@ -462,7 +462,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {
@@ -530,12 +530,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {
 	domainName := "example.com" // string | Domain name
-	importResourceRecordSetsOpts := *openapiclient.NewImportResourceRecordSetsOpts("["$ORIGIN example.com. \\r\\n$TTL 86400 \\r\\n\\tIN\\tMX\\t10\\tmail.example.com.       \\r\\n\\r\\n\\t\\r\\ndns1\\tIN\\tA\\t10.0.1.1"]") // ImportResourceRecordSetsOpts |  (optional)
+	importResourceRecordSetsOpts := *openapiclient.NewImportResourceRecordSetsOpts("[\"$ORIGIN example.com. \\\\r\\\\n$TTL 86400 \\\\r\\\\n\\\\tIN\\\\tMX\\\\t10\\\\tmail.example.com.       \\\\r\\\\n\\\\r\\\\n\\\\t\\\\r\\\\ndns1\\\\tIN\\\\tA\\\\t10.0.1.1\"]") // ImportResourceRecordSetsOpts |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -602,7 +602,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {
@@ -672,7 +672,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {
@@ -750,7 +750,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {
@@ -822,7 +822,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {
@@ -894,7 +894,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func main() {

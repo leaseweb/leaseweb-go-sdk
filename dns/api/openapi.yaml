@@ -9,7 +9,7 @@ info:
   version: v2
   x-logo:
     altText: Leaseweb developer documentation
-    backgroundColor: '#5484c6'
+    backgroundColor: "#5484c6"
     href: https://developer.leaseweb.com
     url: https://developer.leaseweb.com/images/logo.png
 servers:
@@ -117,7 +117,7 @@ paths:
                   - timestamp: 2016-09-03T10:00:00Z
                     value: 150
               schema:
-                $ref: '#/components/schemas/getQueryMetricsResult'
+                $ref: "#/components/schemas/getQueryMetricsResult"
           description: ""
         "401":
           content:
@@ -127,7 +127,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -137,7 +137,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -147,7 +147,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -157,7 +157,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Show Dns Query Metrics
       tags:
@@ -186,7 +186,7 @@ paths:
             example:
               type: ZSK
             schema:
-              $ref: '#/components/schemas/rolloverKeyOpts'
+              $ref: "#/components/schemas/rolloverKeyOpts"
         required: true
       responses:
         "202":
@@ -195,7 +195,7 @@ paths:
               example:
                 infoMessage: Resource record set is valid.
               schema:
-                $ref: '#/components/schemas/infoMessageResult'
+                $ref: "#/components/schemas/infoMessageResult"
           description: |
             Accepted.
         "400":
@@ -207,7 +207,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -217,7 +217,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -227,7 +227,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "409":
           content:
@@ -238,7 +238,7 @@ paths:
                 errorMessage: ZSK key rollover for example.com is in progress please
                   wait for 50 hour
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: "If there is a conflict (for example item is already in processing\
             \ state), you will receive a 409 Conflict."
         "500":
@@ -249,7 +249,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -259,7 +259,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Key Rollover
       tags:
@@ -292,7 +292,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -302,7 +302,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -312,7 +312,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -322,7 +322,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -332,7 +332,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Delete all DNS records
       tags:
@@ -515,7 +515,7 @@ paths:
                     collection:
                       href: /domains/example.com/resourceRecordSets
               schema:
-                $ref: '#/components/schemas/getResourceRecordSetListResult'
+                $ref: "#/components/schemas/getResourceRecordSetListResult"
             application/ld+json:
               example:
                 _links:
@@ -543,7 +543,7 @@ paths:
                     collection:
                       href: /domains/example.com/resourceRecordSets
               schema:
-                $ref: '#/components/schemas/getResourceRecordSetListLdResult'
+                $ref: "#/components/schemas/getResourceRecordSetListLdResult"
           description: ""
         "401":
           content:
@@ -553,7 +553,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -563,7 +563,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -573,7 +573,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -583,7 +583,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -593,7 +593,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: List resource record sets
       tags:
@@ -622,7 +622,7 @@ paths:
               ttl: 3600
               type: A
             schema:
-              $ref: '#/components/schemas/resourceRecordSet'
+              $ref: "#/components/schemas/resourceRecordSet"
           application/ld+json:
             example:
               geoContent:
@@ -633,7 +633,7 @@ paths:
               ttl: 3600
               type: A+GEO
             schema:
-              $ref: '#/components/schemas/ldResourceRecordSet'
+              $ref: "#/components/schemas/ldResourceRecordSet"
       responses:
         "201":
           content:
@@ -653,7 +653,7 @@ paths:
                 ttl: 3600
                 type: A
               schema:
-                $ref: '#/components/schemas/resourceRecordSetDetails'
+                $ref: "#/components/schemas/resourceRecordSetDetails"
             application/ld+json:
               example:
                 _links:
@@ -670,7 +670,7 @@ paths:
                 ttl: 3600
                 type: A+GEO
               schema:
-                $ref: '#/components/schemas/ldResourceRecordSetDetails'
+                $ref: "#/components/schemas/ldResourceRecordSetDetails"
           description: ""
         "400":
           content:
@@ -681,7 +681,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -691,7 +691,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -701,7 +701,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -711,7 +711,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -721,7 +721,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -731,7 +731,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Create a resource record set
       tags:
@@ -821,7 +821,7 @@ paths:
                 - 63708 13 2 ce46cb792d263081fe23c7245a1ccce4d59e3e501db22932edf59d858c03fd6e
                 ttl: 14400
             schema:
-              $ref: '#/components/schemas/resultRecordSets'
+              $ref: "#/components/schemas/resultRecordSets"
           application/ld+json:
             example:
               resourceRecordSets:
@@ -833,7 +833,7 @@ paths:
                   - 5.6.7.8
                 ttl: 300
             schema:
-              $ref: '#/components/schemas/updateResourceRecordSetsLdOpts'
+              $ref: "#/components/schemas/updateResourceRecordSetsLdOpts"
       responses:
         "200":
           content:
@@ -853,7 +853,7 @@ paths:
                 ttl: 3600
                 type: A
               schema:
-                $ref: '#/components/schemas/resourceRecordSetDetails'
+                $ref: "#/components/schemas/resourceRecordSetDetails"
             application/ld+json:
               example:
                 _links:
@@ -870,7 +870,7 @@ paths:
                 ttl: 3600
                 type: A+GEO
               schema:
-                $ref: '#/components/schemas/ldResourceRecordSetDetails'
+                $ref: "#/components/schemas/ldResourceRecordSetDetails"
           description: ""
         "400":
           content:
@@ -881,7 +881,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -891,7 +891,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -901,7 +901,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -911,7 +911,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -921,7 +921,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -931,7 +931,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Update all DNS records
       tags:
@@ -990,7 +990,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1000,7 +1000,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -1010,7 +1010,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -1020,7 +1020,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1030,7 +1030,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Delete a specific DNS record
       tags:
@@ -1096,7 +1096,7 @@ paths:
                 ttl: 3600
                 type: A
               schema:
-                $ref: '#/components/schemas/resourceRecordSetDetails'
+                $ref: "#/components/schemas/resourceRecordSetDetails"
             application/ld+json:
               example:
                 _links:
@@ -1113,7 +1113,7 @@ paths:
                 ttl: 3600
                 type: A+GEO
               schema:
-                $ref: '#/components/schemas/ldResourceRecordSetDetails'
+                $ref: "#/components/schemas/ldResourceRecordSetDetails"
           description: ""
         "401":
           content:
@@ -1123,7 +1123,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1133,7 +1133,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -1143,7 +1143,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -1153,7 +1153,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1163,7 +1163,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Inspect resource record set
       tags:
@@ -1220,7 +1220,7 @@ paths:
               - 85.17.150.53
               ttl: 3600
             schema:
-              $ref: '#/components/schemas/updateResourceRecordSetOpts'
+              $ref: "#/components/schemas/updateResourceRecordSetOpts"
           application/ld+json:
             example:
               geoContent:
@@ -1229,7 +1229,7 @@ paths:
                 - 5.6.7.8
               ttl: 3600
             schema:
-              $ref: '#/components/schemas/updateResourceRecordSetLdOpts'
+              $ref: "#/components/schemas/updateResourceRecordSetLdOpts"
       responses:
         "200":
           content:
@@ -1249,7 +1249,7 @@ paths:
                 ttl: 3600
                 type: A
               schema:
-                $ref: '#/components/schemas/resourceRecordSetDetails'
+                $ref: "#/components/schemas/resourceRecordSetDetails"
             application/ld+json:
               example:
                 _links:
@@ -1266,7 +1266,7 @@ paths:
                 ttl: 3600
                 type: A+GEO
               schema:
-                $ref: '#/components/schemas/ldResourceRecordSetDetails'
+                $ref: "#/components/schemas/ldResourceRecordSetDetails"
           description: ""
         "400":
           content:
@@ -1277,7 +1277,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -1287,7 +1287,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1297,7 +1297,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -1307,7 +1307,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -1317,7 +1317,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1327,7 +1327,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Update a specific DNS record
       tags:
@@ -1352,7 +1352,7 @@ paths:
               content: "$ORIGIN example.com. \r\n$TTL 86400 \r\n\tIN\tMX\t10\tmail.example.com.\
                 \       \r\n\r\n\t\r\ndns1\tIN\tA\t10.0.1.1"
             schema:
-              $ref: '#/components/schemas/importResourceRecordSetsOpts'
+              $ref: "#/components/schemas/importResourceRecordSetsOpts"
       responses:
         "200":
           content:
@@ -1382,7 +1382,7 @@ paths:
                     collection:
                       href: /domains/example.com/resourceRecordSets
               schema:
-                $ref: '#/components/schemas/importResourceRecordSetsResult'
+                $ref: "#/components/schemas/importResourceRecordSetsResult"
           description: ""
         "400":
           content:
@@ -1393,7 +1393,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -1403,7 +1403,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1413,7 +1413,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -1423,7 +1423,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -1433,7 +1433,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1443,7 +1443,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Import dns records from bind file content
       tags:
@@ -1479,7 +1479,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -1489,7 +1489,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1499,7 +1499,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -1509,7 +1509,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -1519,7 +1519,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1529,7 +1529,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Export dns records as a bind file content
       tags:
@@ -1561,7 +1561,7 @@ paths:
               ttl: 3600
               type: A
             schema:
-              $ref: '#/components/schemas/resourceRecordSet'
+              $ref: "#/components/schemas/resourceRecordSet"
           application/json - Validate resource with geo content:
             example:
               geoContent:
@@ -1572,7 +1572,7 @@ paths:
               ttl: 3600
               type: A+GEO
             schema:
-              $ref: '#/components/schemas/ldResourceRecordSet'
+              $ref: "#/components/schemas/ldResourceRecordSet"
       responses:
         "200":
           content:
@@ -1580,7 +1580,7 @@ paths:
               example:
                 infoMessage: Resource record set is valid.
               schema:
-                $ref: '#/components/schemas/infoMessageResult'
+                $ref: "#/components/schemas/infoMessageResult"
           description: ""
         "400":
           content:
@@ -1591,7 +1591,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -1601,7 +1601,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1611,7 +1611,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -1621,7 +1621,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -1631,7 +1631,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1641,7 +1641,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Validate a resource record set
       tags:
@@ -1732,7 +1732,7 @@ paths:
                 - 63708 13 2 ce46cb792d263081fe23c7245a1ccce4d59e3e501db22932edf59d858c03fd6e
                 ttl: 14400
             schema:
-              $ref: '#/components/schemas/resultRecordSets'
+              $ref: "#/components/schemas/resultRecordSets"
       responses:
         "200":
           content:
@@ -1740,7 +1740,7 @@ paths:
               example:
                 infoMessage: Zone example.com is valid.
               schema:
-                $ref: '#/components/schemas/validateZoneResult'
+                $ref: "#/components/schemas/validateZoneResult"
           description: ""
         "400":
           content:
@@ -1751,7 +1751,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -1761,7 +1761,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1771,7 +1771,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -1781,7 +1781,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -1791,7 +1791,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1801,7 +1801,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Validate zone
       tags:
@@ -1886,7 +1886,7 @@ components:
             errorDetails: {}
             errorMessage: The API could not interpret your request correctly.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Bad Request.
     "401":
       content:
@@ -1896,7 +1896,7 @@ components:
             errorCode: "401"
             errorMessage: You are not authorized to view this resource.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Not Authorized.
     "403":
       content:
@@ -1906,7 +1906,7 @@ components:
             errorCode: "403"
             errorMessage: Access to the requested resource is forbidden.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Forbidden.
     "404":
       content:
@@ -1916,7 +1916,7 @@ components:
             errorCode: "404"
             errorMessage: Resource not found
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Not Found.
     "409":
       content:
@@ -1927,7 +1927,7 @@ components:
             errorMessage: ZSK key rollover for example.com is in progress please wait
               for 50 hour
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: "If there is a conflict (for example item is already in processing\
         \ state), you will receive a 409 Conflict."
     "500":
@@ -1938,7 +1938,7 @@ components:
             errorCode: "500"
             errorMessage: '''The API could not handle your request at this time.'
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Internal Server Error.
     "503":
       content:
@@ -1948,7 +1948,7 @@ components:
             errorCode: "503"
             errorMessage: The API is not available at the moment.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Service Unavailable.
   schemas:
     aggregation:
@@ -1979,9 +1979,9 @@ components:
           to: 2000-01-23T04:56:07.000+00:00
       properties:
         dnsQuery:
-          $ref: '#/components/schemas/dnsQuery'
+          $ref: "#/components/schemas/dnsQuery"
         _metadata:
-          $ref: '#/components/schemas/metricsMetaData'
+          $ref: "#/components/schemas/metricsMetaData"
       required:
       - _metadata
       - dnsQuery
@@ -2022,7 +2022,7 @@ components:
     rolloverKeyOpts:
       properties:
         type:
-          $ref: '#/components/schemas/rolloverType'
+          $ref: "#/components/schemas/rolloverType"
       required:
       - type
       type: object
@@ -2067,9 +2067,9 @@ components:
           href: /domains/example.com/resourceRecordSets
       properties:
         self:
-          $ref: '#/components/schemas/self'
+          $ref: "#/components/schemas/self"
         collection:
-          $ref: '#/components/schemas/collection'
+          $ref: "#/components/schemas/collection"
       required:
       - collection
       - self
@@ -2121,7 +2121,7 @@ components:
           example: example.com.
           type: string
         type:
-          $ref: '#/components/schemas/resourceRecordSetType'
+          $ref: "#/components/schemas/resourceRecordSetType"
         content:
           description: Array of resource record set content entries
           items:
@@ -2131,7 +2131,7 @@ components:
           title: resourceRecordSetContent
           type: array
         ttl:
-          $ref: '#/components/schemas/ttl'
+          $ref: "#/components/schemas/ttl"
       required:
       - content
       - name
@@ -2143,15 +2143,15 @@ components:
       allOf:
       - properties:
           editable:
-            $ref: '#/components/schemas/editable'
+            $ref: "#/components/schemas/editable"
           _links:
-            $ref: '#/components/schemas/ldLinks'
+            $ref: "#/components/schemas/ldLinks"
         required:
         - _links
         - editable
         title: resourceRecordSetDetails
         type: object
-      - $ref: '#/components/schemas/resourceRecordSet'
+      - $ref: "#/components/schemas/resourceRecordSet"
       example:
         _links:
           self:
@@ -2176,11 +2176,11 @@ components:
           href: /domains/example.com/resourceRecordSets/example.com./A+GEO
       properties:
         self:
-          $ref: '#/components/schemas/self'
+          $ref: "#/components/schemas/self"
         parent:
-          $ref: '#/components/schemas/parent'
+          $ref: "#/components/schemas/parent"
         validateSet:
-          $ref: '#/components/schemas/validateSet'
+          $ref: "#/components/schemas/validateSet"
       required:
       - parent
       - self
@@ -2195,7 +2195,7 @@ components:
             \ create a DNS record first so we can add your domain."
           type: string
         _links:
-          $ref: '#/components/schemas/links'
+          $ref: "#/components/schemas/links"
       required:
       - _links
       type: object
@@ -2205,12 +2205,12 @@ components:
           resourceRecordSets:
             description: Array of resource record sets
             items:
-              $ref: '#/components/schemas/resourceRecordSetDetails'
+              $ref: "#/components/schemas/resourceRecordSetDetails"
             type: array
         required:
         - resourceRecordSets
         type: object
-      - $ref: '#/components/schemas/baseResourceRecordSetList'
+      - $ref: "#/components/schemas/baseResourceRecordSetList"
       example:
         _links:
           parent:
@@ -2272,11 +2272,11 @@ components:
           example: example.com.
           type: string
         type:
-          $ref: '#/components/schemas/ldResourceRecordSetType'
+          $ref: "#/components/schemas/ldResourceRecordSetType"
         geoContent:
-          $ref: '#/components/schemas/geoContent'
+          $ref: "#/components/schemas/geoContent"
         ttl:
-          $ref: '#/components/schemas/ttl'
+          $ref: "#/components/schemas/ttl"
       required:
       - geoContent
       - name
@@ -2288,33 +2288,33 @@ components:
       allOf:
       - properties:
           editable:
-            $ref: '#/components/schemas/editable'
+            $ref: "#/components/schemas/editable"
           _links:
-            $ref: '#/components/schemas/ldLinks'
+            $ref: "#/components/schemas/ldLinks"
         required:
         - _links
         - editable
         title: ldResourceRecordSetDetails
         type: object
-      - $ref: '#/components/schemas/ldResourceRecordSet'
+      - $ref: "#/components/schemas/ldResourceRecordSet"
     getResourceRecordSetListLdResult:
       allOf:
       - properties:
           resourceRecordSets:
             description: Array of resource record sets
             items:
-              $ref: '#/components/schemas/ldResourceRecordSetDetails'
+              $ref: "#/components/schemas/ldResourceRecordSetDetails"
             type: array
         required:
         - resourceRecordSets
         type: object
-      - $ref: '#/components/schemas/baseResourceRecordSetList'
+      - $ref: "#/components/schemas/baseResourceRecordSetList"
     resultRecordSets:
       properties:
         resourceRecordSets:
           description: Array of resource record sets
           items:
-            $ref: '#/components/schemas/resourceRecordSet'
+            $ref: "#/components/schemas/resourceRecordSet"
           type: array
       required:
       - resourceRecordSets
@@ -2324,7 +2324,7 @@ components:
         resourceRecordSets:
           description: Array of resource record sets
           items:
-            $ref: '#/components/schemas/ldResourceRecordSet'
+            $ref: "#/components/schemas/ldResourceRecordSet"
           type: array
       required:
       - resourceRecordSets
@@ -2340,7 +2340,7 @@ components:
           title: resourceRecordSetContent
           type: array
         ttl:
-          $ref: '#/components/schemas/ttl'
+          $ref: "#/components/schemas/ttl"
       required:
       - content
       - ttl
@@ -2348,9 +2348,9 @@ components:
     updateResourceRecordSetLdOpts:
       properties:
         geoContent:
-          $ref: '#/components/schemas/geoContent'
+          $ref: "#/components/schemas/geoContent"
         ttl:
-          $ref: '#/components/schemas/ttl'
+          $ref: "#/components/schemas/ttl"
       required:
       - geoContent
       - ttl
@@ -2411,10 +2411,10 @@ components:
         resourceRecordSets:
           description: Array of resource record sets
           items:
-            $ref: '#/components/schemas/resourceRecordSetDetails'
+            $ref: "#/components/schemas/resourceRecordSetDetails"
           type: array
         _links:
-          $ref: '#/components/schemas/links'
+          $ref: "#/components/schemas/links"
       type: object
     validateZoneResult:
       example:
@@ -2459,7 +2459,7 @@ components:
           type: string
         values:
           items:
-            $ref: '#/components/schemas/metricValue'
+            $ref: "#/components/schemas/metricValue"
           type: array
       required:
       - unit
@@ -2475,13 +2475,13 @@ components:
         to: 2000-01-23T04:56:07.000+00:00
       properties:
         aggregation:
-          $ref: '#/components/schemas/aggregation'
+          $ref: "#/components/schemas/aggregation"
         from:
           description: Start of date interval in ISO-8601 format
           format: date-time
           type: string
         granularity:
-          $ref: '#/components/schemas/granularity'
+          $ref: "#/components/schemas/granularity"
         to:
           description: End of date interval in ISO-8601 format
           format: date-time

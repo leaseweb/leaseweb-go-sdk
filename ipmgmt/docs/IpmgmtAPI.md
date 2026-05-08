@@ -33,7 +33,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt/v2"
 )
 
 func main() {
@@ -124,7 +124,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt/v2"
 )
 
 func main() {
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ## GetNullRoutedList
 
-> GetNullRoutedListResult GetNullRoutedList(ctx, ip).Limit(limit).Offset(offset).Execute()
+> GetNullRoutedListResult GetNullRoutedList(ctx, ip).Ip2(ip2).Limit(limit).Offset(offset).Execute()
 
 List null routed IPv6
 
@@ -212,17 +212,18 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt/v2"
 )
 
 func main() {
 	ip := "192.0.2.1" // string | IP address or IP address with prefixLength {ip}_{prefix}. If prefixLength is not given, then we assume 32 (for IPv4) or 128 (for IPv6). PrefixLength is mandatory for IP range, for example, the IPv6 address range with prefixLength = 112
+	ip2 := "ip_example" // string | Filter the list by IP address (optional)
 	limit := int32(20) // int32 | Limit the number of results returned. (optional)
 	offset := int32(10) // int32 | Return results starting from the given offset. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IpmgmtAPI.GetNullRoutedList(context.Background(), ip).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.IpmgmtAPI.GetNullRoutedList(context.Background(), ip).Ip2(ip2).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IpmgmtAPI.GetNullRoutedList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -248,6 +249,7 @@ Other parameters are passed through a pointer to a apiGetNullRoutedListRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **ip2** | **string** | Filter the list by IP address | 
  **limit** | **int32** | Limit the number of results returned. | 
  **offset** | **int32** | Return results starting from the given offset. | 
 
@@ -271,7 +273,7 @@ Name | Type | Description  | Notes
 
 ## GetReverseLookupRecordList
 
-> GetReverseLookupRecordListResult GetReverseLookupRecordList(ctx, ip).ReverseLookup(reverseLookup).Limit(limit).Offset(offset).Execute()
+> GetReverseLookupRecordListResult GetReverseLookupRecordList(ctx, ip).Ip2(ip2).ReverseLookup(reverseLookup).Limit(limit).Offset(offset).Execute()
 
 List reverse lookup records for an IPv6 range
 
@@ -286,18 +288,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt/v2"
 )
 
 func main() {
 	ip := "192.0.2.1" // string | IP address or IP address with prefixLength {ip}_{prefix}. If prefixLength is not given, then we assume 32 (for IPv4) or 128 (for IPv6). PrefixLength is mandatory for IP range, for example, the IPv6 address range with prefixLength = 112
+	ip2 := "ip_example" // string | Filter the list by IP address (optional)
 	reverseLookup := "mydomain1.example.com" // string | Filter by reverse lookup. (optional)
 	limit := int32(20) // int32 | Limit the number of results returned. (optional)
 	offset := int32(10) // int32 | Return results starting from the given offset. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IpmgmtAPI.GetReverseLookupRecordList(context.Background(), ip).ReverseLookup(reverseLookup).Limit(limit).Offset(offset).Execute()
+	resp, r, err := apiClient.IpmgmtAPI.GetReverseLookupRecordList(context.Background(), ip).Ip2(ip2).ReverseLookup(reverseLookup).Limit(limit).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IpmgmtAPI.GetReverseLookupRecordList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -323,6 +326,7 @@ Other parameters are passed through a pointer to a apiGetReverseLookupRecordList
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **ip2** | **string** | Filter the list by IP address | 
  **reverseLookup** | **string** | Filter by reverse lookup. | 
  **limit** | **int32** | Limit the number of results returned. | 
  **offset** | **int32** | Return results starting from the given offset. | 
@@ -360,7 +364,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt/v2"
 )
 
 func main() {
@@ -428,7 +432,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt/v2"
 )
 
 func main() {
@@ -496,7 +500,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt/v2"
 )
 
 func main() {
@@ -566,7 +570,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt/v2"
 )
 
 func main() {
@@ -634,7 +638,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt/v2"
 )
 
 func main() {
@@ -704,7 +708,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt/v2"
 )
 
 func main() {
@@ -776,7 +780,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt/v2"
 )
 
 func main() {

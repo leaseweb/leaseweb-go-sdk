@@ -11,7 +11,7 @@ info:
   version: v1
   x-logo:
     altText: Leaseweb developer documentation
-    backgroundColor: '#5484c6'
+    backgroundColor: "#5484c6"
     href: https://developer.leaseweb.com
     url: https://developer.leaseweb.com/images/logo.png
 servers:
@@ -148,7 +148,7 @@ paths:
                   offset: 0
                   totalCount: 3
               schema:
-                $ref: '#/components/schemas/getInvoicesResult'
+                $ref: "#/components/schemas/getInvoicesResult"
           description: Ok.
         "401":
           content:
@@ -158,7 +158,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -168,7 +168,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -178,7 +178,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -188,7 +188,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: List Invoices
       tags:
@@ -233,7 +233,7 @@ paths:
                 12341235,2025-10-01T08:30:00+00:00,OPEN,50.50,200.50
                 12341236,2025-11-01T08:30:00+00:00,OPEN,10.99,220.99
               schema:
-                $ref: '#/components/schemas/getInvoicesExportCsvResult'
+                $ref: "#/components/schemas/getInvoicesExportCsvResult"
           description: CSV file with invoices.
         "401":
           content:
@@ -243,7 +243,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -253,7 +253,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -263,7 +263,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -273,7 +273,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Export Invoices (CSV)
       tags:
@@ -322,7 +322,7 @@ paths:
                   contractId: "12345678"
                   quantity: 1
               schema:
-                $ref: '#/components/schemas/getInvoiceResult'
+                $ref: "#/components/schemas/getInvoiceResult"
           description: Ok.
         "401":
           content:
@@ -332,7 +332,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -342,7 +342,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -352,7 +352,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -362,7 +362,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -372,7 +372,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Inspect a invoice
       tags:
@@ -396,7 +396,7 @@ paths:
             application/pdf:
               example: (binary PDF content omitted)
               schema:
-                $ref: '#/components/schemas/getInvoicePdfResult'
+                $ref: "#/components/schemas/getInvoicePdfResult"
           description: Successful file download (PDF)
         "401":
           content:
@@ -406,7 +406,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -416,7 +416,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -426,7 +426,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -436,7 +436,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -446,7 +446,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Get Invoice PDF
       tags:
@@ -490,7 +490,7 @@ paths:
                   offset: 0
                   totalCount: 2
               schema:
-                $ref: '#/components/schemas/getProformaResult'
+                $ref: "#/components/schemas/getProformaResult"
           description: Ok.
         "401":
           content:
@@ -500,7 +500,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -510,7 +510,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -520,7 +520,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -530,7 +530,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -540,7 +540,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Pro Forma
       tags:
@@ -658,7 +658,7 @@ components:
             errorCode: "401"
             errorMessage: You are not authorized to view this resource.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Not Authorized.
     "403":
       content:
@@ -668,7 +668,7 @@ components:
             errorCode: "403"
             errorMessage: Access to the requested resource is forbidden.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Forbidden.
     "404":
       content:
@@ -678,7 +678,7 @@ components:
             errorCode: "404"
             errorMessage: Resource not found
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Not Found.
     "500":
       content:
@@ -688,7 +688,7 @@ components:
             errorCode: "500"
             errorMessage: '''The API could not handle your request at this time.'
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Internal Server Error.
     "503":
       content:
@@ -698,7 +698,7 @@ components:
             errorCode: "503"
             errorMessage: The API is not available at the moment.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Service Unavailable.
   schemas:
     _metadata:
@@ -762,10 +762,10 @@ components:
         invoices:
           description: Array of Invoices
           items:
-            $ref: '#/components/schemas/invoice'
+            $ref: "#/components/schemas/invoice"
           type: array
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
       type: object
     errorResult:
       example:
@@ -902,12 +902,12 @@ components:
         credits:
           description: Array of Credits
           items:
-            $ref: '#/components/schemas/credit'
+            $ref: "#/components/schemas/credit"
           type: array
         lineItems:
           description: All the line items attached to the invoice
           items:
-            $ref: '#/components/schemas/lineItem'
+            $ref: "#/components/schemas/lineItem"
           type: array
       type: object
     getInvoicePdfResult:
@@ -979,10 +979,10 @@ components:
         contractItems:
           description: Array of contract items
           items:
-            $ref: '#/components/schemas/lineItem_1'
+            $ref: "#/components/schemas/lineItem_1"
           type: array
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
       type: object
     invoice:
       example:

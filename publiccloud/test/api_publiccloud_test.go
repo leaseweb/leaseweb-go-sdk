@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
@@ -195,7 +195,7 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var instanceId string
-		var type_ CredentialType
+		var type_ openapiclient.CredentialType
 		var username string
 
 		httpRes, err := apiClient.PubliccloudAPI.DeleteCredential(context.Background(), instanceId, type_, username).Execute()
@@ -452,7 +452,7 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var instanceId string
-		var type_ CredentialType
+		var type_ openapiclient.CredentialType
 		var username string
 
 		resp, httpRes, err := apiClient.PubliccloudAPI.GetCredential(context.Background(), instanceId, type_, username).Execute()
@@ -482,7 +482,7 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var instanceId string
-		var type_ CredentialType
+		var type_ openapiclient.CredentialType
 
 		resp, httpRes, err := apiClient.PubliccloudAPI.GetCredentialListByType(context.Background(), instanceId, type_).Execute()
 
@@ -1394,7 +1394,7 @@ func Test_publiccloud_PubliccloudAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var instanceId string
-		var type_ CredentialType
+		var type_ openapiclient.CredentialType
 		var username string
 
 		resp, httpRes, err := apiClient.PubliccloudAPI.UpdateCredential(context.Background(), instanceId, type_, username).Execute()

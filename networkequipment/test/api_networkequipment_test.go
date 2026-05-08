@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func Test_networkequipment_NetworkequipmentAPIService(t *testing.T) {
@@ -41,7 +41,7 @@ func Test_networkequipment_NetworkequipmentAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var networkEquipmentId string
-		var type_ CredentialType
+		var type_ openapiclient.CredentialType
 		var username string
 
 		httpRes, err := apiClient.NetworkequipmentAPI.DeleteCredential(context.Background(), networkEquipmentId, type_, username).Execute()
@@ -56,7 +56,7 @@ func Test_networkequipment_NetworkequipmentAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var networkEquipmentId string
-		var type_ CredentialType
+		var type_ openapiclient.CredentialType
 		var username string
 
 		resp, httpRes, err := apiClient.NetworkequipmentAPI.GetCredential(context.Background(), networkEquipmentId, type_, username).Execute()
@@ -86,7 +86,7 @@ func Test_networkequipment_NetworkequipmentAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var networkEquipmentId string
-		var type_ CredentialType
+		var type_ openapiclient.CredentialType
 
 		resp, httpRes, err := apiClient.NetworkequipmentAPI.GetCredentialListByType(context.Background(), networkEquipmentId, type_).Execute()
 
@@ -253,7 +253,7 @@ func Test_networkequipment_NetworkequipmentAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var networkEquipmentId string
-		var type_ CredentialType
+		var type_ openapiclient.CredentialType
 		var username string
 
 		resp, httpRes, err := apiClient.NetworkequipmentAPI.UpdateCredential(context.Background(), networkEquipmentId, type_, username).Execute()

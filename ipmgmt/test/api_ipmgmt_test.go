@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/ipmgmt/v2"
 )
 
 func Test_ipmgmt_IpmgmtAPIService(t *testing.T) {

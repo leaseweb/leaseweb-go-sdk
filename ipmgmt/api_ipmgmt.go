@@ -749,8 +749,15 @@ type ApiGetNullRoutedListRequest struct {
 	ctx context.Context
 	ApiService IpmgmtAPI
 	ip string
+	ip2 *string
 	limit *int32
 	offset *int32
+}
+
+// Filter the list by IP address
+func (r ApiGetNullRoutedListRequest) Ip2(ip2 string) ApiGetNullRoutedListRequest {
+	r.ip2 = &ip2
+	return r
 }
 
 // Limit the number of results returned.
@@ -808,6 +815,9 @@ func (a *IpmgmtAPIService) GetNullRoutedListExecute(r ApiGetNullRoutedListReques
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.ip2 != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ip", r.ip2, "form", "")
+	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
@@ -940,9 +950,16 @@ type ApiGetReverseLookupRecordListRequest struct {
 	ctx context.Context
 	ApiService IpmgmtAPI
 	ip string
+	ip2 *string
 	reverseLookup *string
 	limit *int32
 	offset *int32
+}
+
+// Filter the list by IP address
+func (r ApiGetReverseLookupRecordListRequest) Ip2(ip2 string) ApiGetReverseLookupRecordListRequest {
+	r.ip2 = &ip2
+	return r
 }
 
 // Filter by reverse lookup.
@@ -1006,6 +1023,9 @@ func (a *IpmgmtAPIService) GetReverseLookupRecordListExecute(r ApiGetReverseLook
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.ip2 != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ip", r.ip2, "form", "")
+	}
 	if r.reverseLookup != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "reverseLookup", r.reverseLookup, "form", "")
 	}

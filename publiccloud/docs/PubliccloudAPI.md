@@ -135,7 +135,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -203,7 +203,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -273,7 +273,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -343,7 +343,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -413,7 +413,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -481,7 +481,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -547,7 +547,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -613,7 +613,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -685,7 +685,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -760,7 +760,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -826,7 +826,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -896,7 +896,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -962,7 +962,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1028,7 +1028,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1100,7 +1100,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1168,7 +1168,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1237,7 +1237,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1308,7 +1308,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1374,7 +1374,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1445,7 +1445,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1513,7 +1513,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1585,7 +1585,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1655,7 +1655,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1723,7 +1723,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1793,7 +1793,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1861,7 +1861,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1929,7 +1929,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -1999,7 +1999,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2073,7 +2073,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2152,7 +2152,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2227,7 +2227,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2303,7 +2303,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2371,7 +2371,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2445,7 +2445,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2513,7 +2513,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2585,7 +2585,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2660,7 +2660,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2735,7 +2735,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2807,7 +2807,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2891,7 +2891,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -2960,7 +2960,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3035,7 +3035,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3111,7 +3111,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3184,7 +3184,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3260,7 +3260,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3348,7 +3348,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3418,7 +3418,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3492,7 +3492,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3562,7 +3562,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3630,7 +3630,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3699,7 +3699,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3774,7 +3774,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3850,7 +3850,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3923,7 +3923,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -3999,7 +3999,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4083,7 +4083,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4156,7 +4156,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4230,7 +4230,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4300,7 +4300,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4359,7 +4359,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4430,7 +4430,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4502,7 +4502,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4568,7 +4568,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4645,7 +4645,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4720,7 +4720,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4795,7 +4795,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4870,7 +4870,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -4944,7 +4944,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5014,7 +5014,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5088,7 +5088,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5156,7 +5156,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5229,7 +5229,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5303,7 +5303,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5373,7 +5373,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5451,7 +5451,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5525,7 +5525,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5597,7 +5597,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5667,7 +5667,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5733,7 +5733,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5799,7 +5799,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5874,7 +5874,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -5949,7 +5949,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6017,7 +6017,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6085,7 +6085,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6153,7 +6153,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6225,7 +6225,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6295,7 +6295,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6365,7 +6365,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6433,7 +6433,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6506,7 +6506,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6579,7 +6579,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6645,7 +6645,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6716,7 +6716,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6786,7 +6786,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6854,7 +6854,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6922,7 +6922,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -6990,7 +6990,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7056,7 +7056,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7128,7 +7128,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7198,7 +7198,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7268,7 +7268,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7338,7 +7338,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7416,7 +7416,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7488,7 +7488,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7560,7 +7560,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7635,7 +7635,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7707,7 +7707,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7780,7 +7780,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7853,7 +7853,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -7928,7 +7928,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {
@@ -8000,7 +8000,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/publiccloud/v2"
 )
 
 func main() {

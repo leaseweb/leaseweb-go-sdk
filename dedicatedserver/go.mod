@@ -1,6 +1,6 @@
-module github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2
+module github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v3
 
-go 1.18
+go 1.26
 
 require (
 	github.com/stretchr/testify v1.11.1

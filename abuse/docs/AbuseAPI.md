@@ -32,7 +32,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse/v2"
 )
 
 func main() {
@@ -104,7 +104,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse/v2"
 )
 
 func main() {
@@ -174,7 +174,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse/v2"
 )
 
 func main() {
@@ -245,15 +245,15 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse/v2"
 )
 
 func main() {
 	limit := int32(20) // int32 | Limit the number of results returned. (optional)
 	offset := int32(10) // int32 | Return results starting from the given offset. (optional)
-	status := "OPEN,WAITING,CLOSED" // string | Comma separated list of report statuses to filter on.  (optional) (default to "OPEN,WAITING,CLOSED")
+	status := openapiclient.statusValue("OPEN") // StatusValue | Filter reports by their status (`?status=OPEN,CLOSED`): returns reports that have any of the listed statuses. Defaults to `OPEN,WAITING,CLOSED` if not provided.  (optional)
 	ticketId := "ticketId_example" // string | Optional ticket ID to filter results (optional)
-	ip := "ip_example" // string | Optional IP address to filter results (optional)
+	ip := "ip_example" // string | Filter reports by IP addresses (`?ip=1.2.3.4,1.2.3.5`): returns reports that match any of the listed IP addresses.  (optional)
 	sort := "deadline,-reportedAt,-updatedAt" // string | Comma-separated list of sort field names. Prepend the field name with '-' for descending order. Sortable field names are deadline, reportedAt and updatedAt  (optional) (default to "The list is sorted in descending order by reportedAt")
 
 	configuration := openapiclient.NewConfiguration()
@@ -281,9 +281,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int32** | Limit the number of results returned. | 
  **offset** | **int32** | Return results starting from the given offset. | 
- **status** | **string** | Comma separated list of report statuses to filter on.  | [default to &quot;OPEN,WAITING,CLOSED&quot;]
+ **status** | [**StatusValue**](StatusValue.md) | Filter reports by their status (&#x60;?status&#x3D;OPEN,CLOSED&#x60;): returns reports that have any of the listed statuses. Defaults to &#x60;OPEN,WAITING,CLOSED&#x60; if not provided.  | 
  **ticketId** | **string** | Optional ticket ID to filter results | 
- **ip** | **string** | Optional IP address to filter results | 
+ **ip** | **string** | Filter reports by IP addresses (&#x60;?ip&#x3D;1.2.3.4,1.2.3.5&#x60;): returns reports that match any of the listed IP addresses.  | 
  **sort** | **string** | Comma-separated list of sort field names. Prepend the field name with &#39;-&#39; for descending order. Sortable field names are deadline, reportedAt and updatedAt  | [default to &quot;The list is sorted in descending order by reportedAt&quot;]
 
 ### Return type
@@ -321,7 +321,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse/v2"
 )
 
 func main() {
@@ -392,7 +392,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse/v2"
 )
 
 func main() {
@@ -466,7 +466,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse/v2"
 )
 
 func main() {
@@ -536,12 +536,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse/v2"
 )
 
 func main() {
 	reportId := "abc123" // string | Report Id
-	resolveReportResult := *openapiclient.NewResolveReportResult([]string{"["CONTENT_REMOVED","SUSPENDED"]"}) // ResolveReportResult |  (optional)
+	resolveReportResult := *openapiclient.NewResolveReportResult([]string{"[\"CONTENT_REMOVED\",\"SUSPENDED\"]"}) // ResolveReportResult |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

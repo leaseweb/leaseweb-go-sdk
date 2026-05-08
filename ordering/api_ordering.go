@@ -190,6 +190,7 @@ func (a *OrderingAPIService) GetDedicatedServerExecute(r ApiGetDedicatedServerRe
 		parameterAddToHeaderOrQuery(localVarQueryParams, "connectedToAggregationPool", r.connectedToAggregationPool, "form", "")
 	} else {
 		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "connectedToAggregationPool", defaultValue, "form", "")
 		r.connectedToAggregationPool = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -636,12 +637,14 @@ func (a *OrderingAPIService) GetVpsExecute(r ApiGetVpsRequest) (*Vps, *http.Resp
 		parameterAddToHeaderOrQuery(localVarQueryParams, "contractTerm", r.contractTerm, "form", "")
 	} else {
 		var defaultValue ContractTerm = "1_YEAR"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contractTerm", defaultValue, "form", "")
 		r.contractTerm = &defaultValue
 	}
 	if r.billingCycle != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "billingCycle", r.billingCycle, "form", "")
 	} else {
 		var defaultValue BillingCycle = "1_MONTH"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "billingCycle", defaultValue, "form", "")
 		r.billingCycle = &defaultValue
 	}
 	if r.serviceLevelAgreement != nil {

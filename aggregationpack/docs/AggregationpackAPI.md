@@ -26,7 +26,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/aggregationpack"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/aggregationpack/v2"
 )
 
 func main() {
@@ -96,7 +96,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/aggregationpack"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/aggregationpack/v2"
 )
 
 func main() {

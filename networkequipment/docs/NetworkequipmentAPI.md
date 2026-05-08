@@ -43,7 +43,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -115,7 +115,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -189,7 +189,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -265,7 +265,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -339,7 +339,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -416,7 +416,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -489,7 +489,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -571,7 +571,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -641,7 +641,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -723,7 +723,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -797,7 +797,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -867,7 +867,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -940,7 +940,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -1008,7 +1008,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -1076,7 +1076,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -1144,7 +1144,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -1217,7 +1217,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -1295,7 +1295,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {
@@ -1370,7 +1370,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2"
 )
 
 func main() {

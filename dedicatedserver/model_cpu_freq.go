@@ -12,8 +12,8 @@ package dedicatedserver
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // CpuFreq - struct for CpuFreq
@@ -112,6 +112,20 @@ func (obj *CpuFreq) GetActualInstance() (interface{}) {
 
 	if obj.String != nil {
 		return obj.String
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj CpuFreq) GetActualInstanceValue() (interface{}) {
+	if obj.Bool != nil {
+		return *obj.Bool
+	}
+
+	if obj.String != nil {
+		return *obj.String
 	}
 
 	// all schemas are nil

@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v2"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dedicatedserver/v3"
 )
 
 func Test_dedicatedserver_DedicatedserverAPIService(t *testing.T) {
@@ -55,7 +55,7 @@ func Test_dedicatedserver_DedicatedserverAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var serverId string
-		var networkTypeURL NetworkTypeURL
+		var networkTypeURL openapiclient.NetworkTypeURL
 
 		httpRes, err := apiClient.DedicatedserverAPI.CloseNetworkInterface(context.Background(), serverId, networkTypeURL).Execute()
 
@@ -151,7 +151,7 @@ func Test_dedicatedserver_DedicatedserverAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var serverId string
-		var type_ CredentialType
+		var type_ openapiclient.CredentialType
 		var username string
 
 		httpRes, err := apiClient.DedicatedserverAPI.DeleteCredential(context.Background(), serverId, type_, username).Execute()
@@ -304,7 +304,7 @@ func Test_dedicatedserver_DedicatedserverAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var serverId string
-		var type_ CredentialType
+		var type_ openapiclient.CredentialType
 		var username string
 
 		resp, httpRes, err := apiClient.DedicatedserverAPI.GetCredential(context.Background(), serverId, type_, username).Execute()
@@ -334,7 +334,7 @@ func Test_dedicatedserver_DedicatedserverAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var serverId string
-		var type_ CredentialType
+		var type_ openapiclient.CredentialType
 
 		resp, httpRes, err := apiClient.DedicatedserverAPI.GetCredentialListByType(context.Background(), serverId, type_).Execute()
 
@@ -518,7 +518,7 @@ func Test_dedicatedserver_DedicatedserverAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var serverId string
-		var networkTypeURL NetworkTypeURL
+		var networkTypeURL openapiclient.NetworkTypeURL
 
 		resp, httpRes, err := apiClient.DedicatedserverAPI.GetNetworkInterface(context.Background(), serverId, networkTypeURL).Execute()
 
@@ -682,7 +682,7 @@ func Test_dedicatedserver_DedicatedserverAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var serverId string
-		var networkTypeURL NetworkTypeURL
+		var networkTypeURL openapiclient.NetworkTypeURL
 
 		httpRes, err := apiClient.DedicatedserverAPI.OpenNetworkInterface(context.Background(), serverId, networkTypeURL).Execute()
 
@@ -807,7 +807,7 @@ func Test_dedicatedserver_DedicatedserverAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var serverId string
-		var type_ CredentialType
+		var type_ openapiclient.CredentialType
 		var username string
 
 		resp, httpRes, err := apiClient.DedicatedserverAPI.UpdateCredential(context.Background(), serverId, type_, username).Execute()

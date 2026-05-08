@@ -12,8 +12,8 @@ package dedicatedserver
 
 import (
 	"encoding/json"
-	"gopkg.in/validator.v2"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // Smartctl - struct for Smartctl
@@ -112,6 +112,20 @@ func (obj *Smartctl) GetActualInstance() (interface{}) {
 
 	if obj.Bool != nil {
 		return obj.Bool
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj Smartctl) GetActualInstanceValue() (interface{}) {
+	if obj.Smartctl != nil {
+		return *obj.Smartctl
+	}
+
+	if obj.Bool != nil {
+		return *obj.Bool
 	}
 
 	// all schemas are nil

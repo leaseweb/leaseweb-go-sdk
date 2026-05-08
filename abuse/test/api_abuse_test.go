@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/abuse/v2"
 )
 
 func Test_abuse_AbuseAPIService(t *testing.T) {

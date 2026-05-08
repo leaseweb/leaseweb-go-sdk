@@ -20,6 +20,7 @@ docs/Metadata.md
 docs/Report.md
 docs/ResolutionList.md
 docs/ResolveReportResult.md
+docs/StatusValue.md
 git_push.sh
 go.mod
 go.sum
@@ -36,6 +37,7 @@ model_message.go
 model_report.go
 model_resolution_list.go
 model_resolve_report_result.go
+model_status_value.go
 response.go
 test/api_abuse_test.go
 utils.go

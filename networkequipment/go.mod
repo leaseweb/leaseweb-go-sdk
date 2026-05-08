@@ -1,6 +1,6 @@
-module github.com/leaseweb/leaseweb-go-sdk/networkequipment
+module github.com/leaseweb/leaseweb-go-sdk/networkequipment/v2
 
-go 1.18
+go 1.26
 
 require github.com/stretchr/testify v1.11.1
 

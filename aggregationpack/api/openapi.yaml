@@ -9,7 +9,7 @@ info:
   version: v2
   x-logo:
     altText: Leaseweb developer documentation
-    backgroundColor: '#5484c6'
+    backgroundColor: "#5484c6"
     href: https://developer.leaseweb.com
     url: https://developer.leaseweb.com/images/logo.png
 servers:
@@ -101,7 +101,7 @@ paths:
                   networkPerformanceType: VOLUME
                   aggregationType: Hybrid
               schema:
-                $ref: '#/components/schemas/getAggregationPackListResult'
+                $ref: "#/components/schemas/getAggregationPackListResult"
           description: Ok.
         "401":
           content:
@@ -111,7 +111,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -121,7 +121,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -131,7 +131,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -141,7 +141,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: List aggregation packs
       tags:
@@ -177,7 +177,7 @@ paths:
                 networkPerformanceType: VOLUME
                 salesOrgId: "2000"
               schema:
-                $ref: '#/components/schemas/aggregationPack'
+                $ref: "#/components/schemas/aggregationPack"
           description: Ok.
         "401":
           content:
@@ -187,7 +187,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -197,7 +197,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -207,7 +207,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -217,7 +217,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -227,7 +227,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Get aggregation pack
       tags:
@@ -272,7 +272,7 @@ components:
             errorCode: "401"
             errorMessage: You are not authorized to view this resource.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Not Authorized.
     "403":
       content:
@@ -282,7 +282,7 @@ components:
             errorCode: "403"
             errorMessage: Access to the requested resource is forbidden.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Forbidden.
     "404":
       content:
@@ -292,7 +292,7 @@ components:
             errorCode: "404"
             errorMessage: Resource not found
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Not Found.
     "500":
       content:
@@ -302,7 +302,7 @@ components:
             errorCode: "500"
             errorMessage: '''The API could not handle your request at this time.'
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Internal Server Error.
     "503":
       content:
@@ -312,7 +312,7 @@ components:
             errorCode: "503"
             errorMessage: The API is not available at the moment.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Service Unavailable.
   schemas:
     _metadata:
@@ -393,11 +393,11 @@ components:
         dataTrafficCommit:
           type: integer
         dataTrafficCommitUnit:
-          $ref: '#/components/schemas/dataTrafficCommitUnit'
+          $ref: "#/components/schemas/dataTrafficCommitUnit"
         networkPerformanceType:
-          $ref: '#/components/schemas/networkPerformanceType'
+          $ref: "#/components/schemas/networkPerformanceType"
         aggregationType:
-          $ref: '#/components/schemas/aggregationType'
+          $ref: "#/components/schemas/aggregationType"
       required:
       - aggregationType
       - billingType
@@ -442,11 +442,11 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         connectContractItems:
           description: An array of aggregation packs
           items:
-            $ref: '#/components/schemas/aggregationPack'
+            $ref: "#/components/schemas/aggregationPack"
           type: array
       type: object
     errorResult:

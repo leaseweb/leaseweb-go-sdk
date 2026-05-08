@@ -69,7 +69,7 @@ func (dst *JobPayload) UnmarshalJSON(data []byte) error {
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *JobPayload) MarshalJSON() ([]byte, error) {
+func (src JobPayload) MarshalJSON() ([]byte, error) {
 	if src.GenericPayload != nil {
 		return json.Marshal(&src.GenericPayload)
 	}

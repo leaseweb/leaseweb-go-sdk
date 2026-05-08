@@ -12,7 +12,7 @@ info:
   version: v2
   x-logo:
     altText: Leaseweb developer documentation
-    backgroundColor: '#5484c6'
+    backgroundColor: "#5484c6"
     href: https://developer.leaseweb.com
     url: https://developer.leaseweb.com/images/logo.png
 servers:
@@ -109,7 +109,7 @@ paths:
         name: macAddress
         required: false
         schema:
-          $ref: '#/components/schemas/macAddress'
+          $ref: "#/components/schemas/macAddress"
         style: form
       - description: Filter the list of servers by site (location).
         example: FRA-10
@@ -255,7 +255,7 @@ paths:
                   rack:
                     type: SHARED
               schema:
-                $ref: '#/components/schemas/getServerListResult'
+                $ref: "#/components/schemas/getServerListResult"
           description: Ok.
         "401":
           content:
@@ -265,7 +265,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -275,7 +275,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -285,7 +285,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -295,7 +295,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: List servers
       tags:
@@ -430,7 +430,7 @@ paths:
                     performanceType: WRITE_INTENSIVE
                   pciCards: []
               schema:
-                $ref: '#/components/schemas/server'
+                $ref: "#/components/schemas/server"
           description: Ok.
         "401":
           content:
@@ -440,7 +440,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -450,7 +450,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -460,7 +460,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -470,7 +470,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -480,7 +480,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Get server
       tags:
@@ -504,7 +504,7 @@ paths:
             example:
               reference: database-server
             schema:
-              $ref: '#/components/schemas/updateReferenceOpts'
+              $ref: "#/components/schemas/updateReferenceOpts"
         required: true
       responses:
         "204":
@@ -517,7 +517,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -527,7 +527,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -537,7 +537,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -547,7 +547,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -557,7 +557,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Update server
       tags:
@@ -582,7 +582,7 @@ paths:
         name: networkType
         required: false
         schema:
-          $ref: '#/components/schemas/networkType'
+          $ref: "#/components/schemas/networkType"
         style: form
       - description: Filter the collection by ip version
         explode: true
@@ -660,7 +660,7 @@ paths:
                   reverseLookup: domain.example.com
                   version: 6
               schema:
-                $ref: '#/components/schemas/ipList'
+                $ref: "#/components/schemas/ipList"
           description: Ok.
         "401":
           content:
@@ -670,7 +670,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -680,7 +680,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -690,7 +690,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -700,7 +700,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: List IPs
       tags:
@@ -745,7 +745,7 @@ paths:
                 reverseLookup: domain.example.com
                 version: 4
               schema:
-                $ref: '#/components/schemas/ip'
+                $ref: "#/components/schemas/ip"
           description: Ok.
         "400":
           content:
@@ -756,7 +756,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -766,7 +766,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -776,7 +776,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -786,7 +786,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -796,7 +796,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show a server IP
       tags:
@@ -836,7 +836,7 @@ paths:
               detectionProfile: ADVANCED_LOW_UDP
               reverseLookup: domain.example.com
             schema:
-              $ref: '#/components/schemas/updateIpProfileOpts'
+              $ref: "#/components/schemas/updateIpProfileOpts"
       responses:
         "200":
           content:
@@ -854,7 +854,7 @@ paths:
                 reverseLookup: domain.example.com
                 version: 4
               schema:
-                $ref: '#/components/schemas/ip'
+                $ref: "#/components/schemas/ip"
           description: Ok.
         "400":
           content:
@@ -865,7 +865,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -875,7 +875,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -885,7 +885,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -895,7 +895,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -905,7 +905,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Update an IP
       tags:
@@ -952,7 +952,7 @@ paths:
                 reverseLookup: domain.example.com
                 version: 4
               schema:
-                $ref: '#/components/schemas/ip'
+                $ref: "#/components/schemas/ip"
           description: Accepted.
         "400":
           content:
@@ -963,7 +963,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -973,7 +973,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -983,7 +983,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -993,7 +993,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1003,7 +1003,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Null route an IP
       tags:
@@ -1050,7 +1050,7 @@ paths:
                 reverseLookup: domain.example.com
                 version: 4
               schema:
-                $ref: '#/components/schemas/ip'
+                $ref: "#/components/schemas/ip"
           description: Accepted.
         "400":
           content:
@@ -1061,7 +1061,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -1071,7 +1071,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1081,7 +1081,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -1091,7 +1091,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1101,7 +1101,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Remove a null route
       tags:
@@ -1155,7 +1155,7 @@ paths:
                   nulledAt: 2016-08-12T07:40:27+00:00
                   ticketId: "282912"
               schema:
-                $ref: '#/components/schemas/nullRouteList'
+                $ref: "#/components/schemas/nullRouteList"
           description: Ok.
         "401":
           content:
@@ -1165,7 +1165,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1175,7 +1175,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -1185,7 +1185,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1195,7 +1195,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show null route history
       tags:
@@ -1243,7 +1243,7 @@ paths:
                 errorCode: "400"
                 errorMessage: Equipment 27072 is not part of private network 3943
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -1253,7 +1253,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1263,7 +1263,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -1273,7 +1273,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -1283,7 +1283,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1293,7 +1293,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Delete a server from a private network
       tags:
@@ -1333,7 +1333,7 @@ paths:
             example:
               linkSpeed: 100
             schema:
-              $ref: '#/components/schemas/addToPrivateNetworkOpts'
+              $ref: "#/components/schemas/addToPrivateNetworkOpts"
       responses:
         "204":
           description: No Content.
@@ -1345,7 +1345,7 @@ paths:
                 errorCode: "400"
                 errorMessage: Equipment 27072 is not part of private network 3943
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -1355,7 +1355,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1365,7 +1365,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -1375,7 +1375,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -1385,7 +1385,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1395,7 +1395,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Add a server to private network
       tags:
@@ -1432,7 +1432,7 @@ paths:
                   switchName: EVO-AA11-1
                   type: PUBLIC
               schema:
-                $ref: '#/components/schemas/getNetworkInterfaceListResult'
+                $ref: "#/components/schemas/getNetworkInterfaceListResult"
           description: Ok.
         "401":
           content:
@@ -1442,7 +1442,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1452,7 +1452,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -1462,7 +1462,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1472,7 +1472,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: List network interfaces
       tags:
@@ -1502,7 +1502,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1512,7 +1512,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -1522,7 +1522,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1532,7 +1532,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Close all network interfaces
       tags:
@@ -1562,7 +1562,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1572,7 +1572,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -1582,7 +1582,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1592,7 +1592,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Open all network interfaces
       tags:
@@ -1617,7 +1617,7 @@ paths:
         name: networkTypeURL
         required: true
         schema:
-          $ref: '#/components/schemas/networkTypeURL'
+          $ref: "#/components/schemas/networkTypeURL"
         style: simple
       responses:
         "200":
@@ -1631,7 +1631,7 @@ paths:
                 switchName: EVO-JV12-1
                 type: PUBLIC
               schema:
-                $ref: '#/components/schemas/operationNetworkInterface'
+                $ref: "#/components/schemas/operationNetworkInterface"
           description: Ok.
         "401":
           content:
@@ -1641,7 +1641,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1651,7 +1651,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -1661,7 +1661,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1671,7 +1671,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show a network interface
       tags:
@@ -1695,7 +1695,7 @@ paths:
         name: networkTypeURL
         required: true
         schema:
-          $ref: '#/components/schemas/networkTypeURL'
+          $ref: "#/components/schemas/networkTypeURL"
         style: simple
       responses:
         "204":
@@ -1708,7 +1708,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1718,7 +1718,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -1728,7 +1728,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1738,7 +1738,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Close network interface
       tags:
@@ -1762,7 +1762,7 @@ paths:
         name: networkTypeURL
         required: true
         schema:
-          $ref: '#/components/schemas/networkTypeURL'
+          $ref: "#/components/schemas/networkTypeURL"
         style: simple
       responses:
         "204":
@@ -1775,7 +1775,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1785,7 +1785,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -1795,7 +1795,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1805,7 +1805,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Open network interface
       tags:
@@ -1835,7 +1835,7 @@ paths:
                 nulling: ENABLED
                 scrubbing: DISABLED
               schema:
-                $ref: '#/components/schemas/getDdosNotificationSettingResult'
+                $ref: "#/components/schemas/getDdosNotificationSettingResult"
           description: Ok.
         "400":
           content:
@@ -1846,7 +1846,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -1856,7 +1856,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1866,7 +1866,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -1876,7 +1876,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1886,7 +1886,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Inspect DDoS notification settings
       tags:
@@ -1911,7 +1911,7 @@ paths:
               nulling: DISABLED
               scrubbing: ENABLED
             schema:
-              $ref: '#/components/schemas/updateDdosNotificationSettingOpts'
+              $ref: "#/components/schemas/updateDdosNotificationSettingOpts"
       responses:
         "204":
           description: No Content.
@@ -1924,7 +1924,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -1934,7 +1934,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -1944,7 +1944,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -1954,7 +1954,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -1964,7 +1964,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Update DDoS notification settings
       tags:
@@ -2061,7 +2061,7 @@ paths:
                     - timestamp: 2016-10-20T10:00:00Z
                       value: 12342929
               schema:
-                $ref: '#/components/schemas/metrics'
+                $ref: "#/components/schemas/metrics"
           description: Ok.
         "400":
           content:
@@ -2072,7 +2072,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -2082,7 +2082,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -2092,7 +2092,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -2102,7 +2102,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -2112,7 +2112,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show bandwidth metrics
       tags:
@@ -2204,7 +2204,7 @@ paths:
                     - timestamp: 2016-10-20T10:00:00Z
                       value: 12342929
               schema:
-                $ref: '#/components/schemas/metrics'
+                $ref: "#/components/schemas/metrics"
           description: Ok.
         "400":
           content:
@@ -2215,7 +2215,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -2225,7 +2225,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -2235,7 +2235,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -2245,7 +2245,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -2255,7 +2255,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show datatraffic metrics
       tags:
@@ -2321,7 +2321,7 @@ paths:
                   thresholdExceededAt: 2021-03-16T01:01:41+00:00
                   unit: Mbps
               schema:
-                $ref: '#/components/schemas/getBandwidthNotificationSettingListResult'
+                $ref: "#/components/schemas/getBandwidthNotificationSettingListResult"
           description: Ok.
         "401":
           content:
@@ -2331,7 +2331,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -2341,7 +2341,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -2351,7 +2351,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -2361,7 +2361,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: List bandwidth notification settings
       tags:
@@ -2387,7 +2387,7 @@ paths:
               threshold: "1"
               unit: Gbps
             schema:
-              $ref: '#/components/schemas/bandwidthNotificationSettingOpts'
+              $ref: "#/components/schemas/bandwidthNotificationSettingOpts"
       responses:
         "201":
           content:
@@ -2403,7 +2403,7 @@ paths:
                 thresholdExceededAt: 2021-03-16T01:01:41+00:00
                 unit: Gbps
               schema:
-                $ref: '#/components/schemas/bandwidthNotificationSetting'
+                $ref: "#/components/schemas/bandwidthNotificationSetting"
           description: Created.
         "400":
           content:
@@ -2414,7 +2414,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -2424,7 +2424,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -2434,7 +2434,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -2444,7 +2444,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -2454,7 +2454,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Create a bandwidth notification setting
       tags:
@@ -2493,7 +2493,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -2503,7 +2503,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -2513,7 +2513,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -2523,7 +2523,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Delete a bandwidth notification setting
       tags:
@@ -2565,7 +2565,7 @@ paths:
                 thresholdExceededAt: 2021-03-16T01:01:41+00:00
                 unit: Gbps
               schema:
-                $ref: '#/components/schemas/bandwidthNotificationSetting'
+                $ref: "#/components/schemas/bandwidthNotificationSetting"
           description: Ok.
         "401":
           content:
@@ -2575,7 +2575,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -2585,7 +2585,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -2595,7 +2595,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -2605,7 +2605,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show a bandwidth notification setting
       tags:
@@ -2640,7 +2640,7 @@ paths:
               threshold: "1"
               unit: Gbps
             schema:
-              $ref: '#/components/schemas/bandwidthNotificationSettingOpts'
+              $ref: "#/components/schemas/bandwidthNotificationSettingOpts"
       responses:
         "200":
           content:
@@ -2656,7 +2656,7 @@ paths:
                 thresholdExceededAt: 2021-03-16T01:01:41+00:00
                 unit: Gbps
               schema:
-                $ref: '#/components/schemas/bandwidthNotificationSetting'
+                $ref: "#/components/schemas/bandwidthNotificationSetting"
           description: Ok.
         "401":
           content:
@@ -2666,7 +2666,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -2676,7 +2676,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -2686,7 +2686,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -2696,7 +2696,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Update a bandwidth notification setting
       tags:
@@ -2762,7 +2762,7 @@ paths:
                   - type: EMAIL
                     lastTriggeredAt: null
               schema:
-                $ref: '#/components/schemas/getDataTrafficNotificationSettingListResult'
+                $ref: "#/components/schemas/getDataTrafficNotificationSettingListResult"
           description: Ok.
         "401":
           content:
@@ -2772,7 +2772,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -2782,7 +2782,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -2792,7 +2792,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -2802,7 +2802,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: List data traffic notification settings
       tags:
@@ -2828,7 +2828,7 @@ paths:
               threshold: "1"
               unit: MB
             schema:
-              $ref: '#/components/schemas/dataTrafficNotificationSettingOpts'
+              $ref: "#/components/schemas/dataTrafficNotificationSettingOpts"
       responses:
         "201":
           content:
@@ -2844,7 +2844,7 @@ paths:
                 thresholdExceededAt: 2021-03-16T01:01:41+00:00
                 unit: GB
               schema:
-                $ref: '#/components/schemas/dataTrafficNotificationSetting'
+                $ref: "#/components/schemas/dataTrafficNotificationSetting"
           description: Created.
         "400":
           content:
@@ -2855,7 +2855,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -2865,7 +2865,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -2875,7 +2875,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -2885,7 +2885,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -2895,7 +2895,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Create a data traffic notification setting
       tags:
@@ -2934,7 +2934,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -2944,7 +2944,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -2954,7 +2954,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -2964,7 +2964,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Delete a data traffic notification setting
       tags:
@@ -3006,7 +3006,7 @@ paths:
                 thresholdExceededAt: 2021-03-16T01:01:41+00:00
                 unit: GB
               schema:
-                $ref: '#/components/schemas/dataTrafficNotificationSetting'
+                $ref: "#/components/schemas/dataTrafficNotificationSetting"
           description: Ok.
         "401":
           content:
@@ -3016,7 +3016,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -3026,7 +3026,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -3036,7 +3036,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -3046,7 +3046,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show a data traffic notification setting
       tags:
@@ -3081,7 +3081,7 @@ paths:
               threshold: "1"
               unit: GB
             schema:
-              $ref: '#/components/schemas/dataTrafficNotificationSettingOpts'
+              $ref: "#/components/schemas/dataTrafficNotificationSettingOpts"
       responses:
         "200":
           content:
@@ -3091,7 +3091,7 @@ paths:
                 threshold: "1"
                 unit: MB
               schema:
-                $ref: '#/components/schemas/dataTrafficNotificationSettingOpts'
+                $ref: "#/components/schemas/dataTrafficNotificationSettingOpts"
           description: Ok.
         "401":
           content:
@@ -3101,7 +3101,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -3111,7 +3111,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -3121,7 +3121,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -3131,7 +3131,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Update a data traffic notification setting
       tags:
@@ -3307,7 +3307,7 @@ paths:
                 scannedAt: 2017-09-27T14:21:01Z
                 serverId: "62264"
               schema:
-                $ref: '#/components/schemas/getHardwareResult'
+                $ref: "#/components/schemas/getHardwareResult"
           description: Ok.
         "400":
           content:
@@ -3318,7 +3318,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -3328,7 +3328,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -3338,7 +3338,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -3348,7 +3348,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -3358,7 +3358,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show hardware information
       tags:
@@ -3560,7 +3560,7 @@ paths:
                     name: null
                     value: "1"
               schema:
-                $ref: '#/components/schemas/getHardwareMonitoringListResult'
+                $ref: "#/components/schemas/getHardwareMonitoringListResult"
           description: Ok.
         "401":
           content:
@@ -3570,7 +3570,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -3580,7 +3580,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -3590,7 +3590,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -3600,7 +3600,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -3610,7 +3610,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show hardware monitoring data for all servers
       tags:
@@ -3772,7 +3772,7 @@ paths:
                 scrapedAt: 2026-01-12T12:00:00+00:00
                 serverId: "123"
               schema:
-                $ref: '#/components/schemas/getHardwareMonitoringResult'
+                $ref: "#/components/schemas/getHardwareMonitoringResult"
           description: Ok.
         "401":
           content:
@@ -3782,7 +3782,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -3792,7 +3792,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -3802,7 +3802,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -3812,7 +3812,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -3822,7 +3822,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show hardware monitoring data for a server
       tags:
@@ -3880,7 +3880,7 @@ paths:
                 - id: VESTA
                   name: Vesta CP
               schema:
-                $ref: '#/components/schemas/controlPanelList'
+                $ref: "#/components/schemas/controlPanelList"
           description: Ok.
         "401":
           content:
@@ -3890,7 +3890,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -3900,7 +3900,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -3910,7 +3910,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -3920,7 +3920,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: List control panels
       tags:
@@ -4020,7 +4020,7 @@ paths:
                 - id: FREEBSD_12_64BIT
                   name: FreeBSD 12.3 (amd64)
               schema:
-                $ref: '#/components/schemas/getOperatingSystemListResult'
+                $ref: "#/components/schemas/getOperatingSystemListResult"
           description: Ok.
         "401":
           content:
@@ -4030,7 +4030,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -4040,7 +4040,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -4050,7 +4050,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -4060,7 +4060,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: List Operating Systems
       tags:
@@ -4141,7 +4141,7 @@ paths:
                 type: linux
                 version: "7"
               schema:
-                $ref: '#/components/schemas/getOperatingSystemResult'
+                $ref: "#/components/schemas/getOperatingSystemResult"
           description: Ok.
         "401":
           content:
@@ -4151,7 +4151,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -4161,7 +4161,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -4171,7 +4171,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -4181,7 +4181,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show an operating system
       tags:
@@ -4199,6 +4199,15 @@ paths:
         `operatingSystemId` query string parameter to filter this list.
       operationId: getControlPanelListByOperatingSystemId
       parameters:
+      - description: Operating system ID
+        explode: false
+        in: path
+        name: operatingSystemId
+        required: true
+        schema:
+          example: UBUNTU_22_04_64BIT
+          type: string
+        style: simple
       - description: Limit the number of results returned.
         example: 20
         explode: true
@@ -4217,15 +4226,14 @@ paths:
         schema:
           type: integer
         style: form
-      - description: Operating system ID
-        explode: false
-        in: path
+      - description: Filter control panels by operating system id
+        explode: true
+        in: query
         name: operatingSystemId
-        required: true
+        required: false
         schema:
-          example: UBUNTU_22_04_64BIT
           type: string
-        style: simple
+        style: form
       responses:
         "200":
           content:
@@ -4253,7 +4261,7 @@ paths:
                 - id: VESTA
                   name: Vesta CP
               schema:
-                $ref: '#/components/schemas/controlPanelList'
+                $ref: "#/components/schemas/controlPanelList"
           description: Ok.
         "401":
           content:
@@ -4263,7 +4271,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -4273,7 +4281,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -4283,7 +4291,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -4293,7 +4301,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: List control panels by Operating System
       tags:
@@ -4312,6 +4320,12 @@ paths:
 
         Note that launching rescue mode does not modify any data on the disks of your
         server. It will require your server to be rebooted.
+
+        The optional `chassis` query parameter can be used to filter the list to only
+        rescue images supported by a specific server chassis. Images that are not
+        compatible with the given chassis will be excluded from the response. For
+        example, FreeBSD is not available for ARM servers (HPE RL300 series) and will
+        be omitted when the chassis of an ARM server is provided.
       operationId: getRescueImageList
       parameters:
       - description: Limit the number of results returned.
@@ -4332,6 +4346,16 @@ paths:
         schema:
           type: integer
         style: form
+      - description: Filter rescue images by server chassis. Images listed as unsupported
+          for the given chassis will be excluded from the response.
+        example: HPE RL300 Gen11
+        explode: true
+        in: query
+        name: chassis
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -4349,7 +4373,7 @@ paths:
                 - id: FREEBSD
                   name: FreeBSD Rescue Image (amd64)
               schema:
-                $ref: '#/components/schemas/getRescueImageListResult'
+                $ref: "#/components/schemas/getRescueImageListResult"
           description: Ok.
         "401":
           content:
@@ -4359,7 +4383,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -4369,7 +4393,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -4379,7 +4403,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -4389,7 +4413,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Rescue Images
       tags:
@@ -4547,7 +4571,7 @@ paths:
                 updatedAt: 2025-03-17T13:24:34+00:00
                 uuid: a1234567-ab0b-4ff1-af43-c4ca551ee3ff
               schema:
-                $ref: '#/components/schemas/job'
+                $ref: "#/components/schemas/job"
           description: Ok.
         "401":
           content:
@@ -4557,7 +4581,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -4567,7 +4591,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -4577,7 +4601,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -4587,7 +4611,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Cancel active job
       tags:
@@ -4665,7 +4689,7 @@ paths:
                 - type: DATABASE
                   username: user
               schema:
-                $ref: '#/components/schemas/credentialList'
+                $ref: "#/components/schemas/credentialList"
           description: Ok.
         "401":
           content:
@@ -4675,7 +4699,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -4685,7 +4709,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -4695,7 +4719,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -4705,7 +4729,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: List server credentials
       tags:
@@ -4734,7 +4758,7 @@ paths:
               type: OPERATING_SYSTEM
               username: root
             schema:
-              $ref: '#/components/schemas/createCredentialOpts'
+              $ref: "#/components/schemas/createCredentialOpts"
       responses:
         "200":
           content:
@@ -4744,7 +4768,7 @@ paths:
                 type: OPERATING_SYSTEM
                 username: root
               schema:
-                $ref: '#/components/schemas/credential'
+                $ref: "#/components/schemas/credential"
           description: Ok.
         "401":
           content:
@@ -4754,7 +4778,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -4764,7 +4788,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -4774,7 +4798,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -4784,7 +4808,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Create new server credentials
       tags:
@@ -4810,7 +4834,7 @@ paths:
         name: type
         required: true
         schema:
-          $ref: '#/components/schemas/credentialType'
+          $ref: "#/components/schemas/credentialType"
         style: simple
       - description: Limit the number of results returned.
         example: 20
@@ -4845,7 +4869,7 @@ paths:
                 - type: OPERATING_SYSTEM
                   username: user
               schema:
-                $ref: '#/components/schemas/credentialList'
+                $ref: "#/components/schemas/credentialList"
           description: Ok.
         "401":
           content:
@@ -4855,7 +4879,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -4865,7 +4889,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -4875,7 +4899,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -4885,7 +4909,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: List server credentials by type
       tags:
@@ -4912,7 +4936,7 @@ paths:
         name: type
         required: true
         schema:
-          $ref: '#/components/schemas/credentialType'
+          $ref: "#/components/schemas/credentialType"
         style: simple
       - description: Username
         explode: false
@@ -4934,7 +4958,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -4944,7 +4968,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -4954,7 +4978,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -4964,7 +4988,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Delete server credentials
       tags:
@@ -4991,7 +5015,7 @@ paths:
         name: type
         required: true
         schema:
-          $ref: '#/components/schemas/credentialType'
+          $ref: "#/components/schemas/credentialType"
         style: simple
       - description: Username
         explode: false
@@ -5011,7 +5035,7 @@ paths:
                 type: OPERATING_SYSTEM
                 username: root
               schema:
-                $ref: '#/components/schemas/credential'
+                $ref: "#/components/schemas/credential"
           description: Ok.
         "401":
           content:
@@ -5021,7 +5045,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -5031,7 +5055,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -5041,7 +5065,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -5051,7 +5075,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show server credentials
       tags:
@@ -5080,7 +5104,7 @@ paths:
         name: type
         required: true
         schema:
-          $ref: '#/components/schemas/credentialType'
+          $ref: "#/components/schemas/credentialType"
         style: simple
       - description: Username
         explode: false
@@ -5097,7 +5121,7 @@ paths:
             example:
               password: mys3cr3tp@ssw0rd
             schema:
-              $ref: '#/components/schemas/updateCredentialOpts'
+              $ref: "#/components/schemas/updateCredentialOpts"
       responses:
         "200":
           content:
@@ -5107,7 +5131,7 @@ paths:
                 type: OPERATING_SYSTEM
                 username: root
               schema:
-                $ref: '#/components/schemas/credential'
+                $ref: "#/components/schemas/credential"
           description: Ok.
         "400":
           content:
@@ -5118,7 +5142,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -5128,7 +5152,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -5138,7 +5162,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -5148,7 +5172,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -5158,7 +5182,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Update server credentials
       tags:
@@ -5318,7 +5342,7 @@ paths:
                 updatedAt: 2025-03-17T13:33:37+00:00
                 uuid: a1b28bfd1-da4c-451b-b82e-b382b9063d94
               schema:
-                $ref: '#/components/schemas/job'
+                $ref: "#/components/schemas/job"
           description: Ok.
         "401":
           content:
@@ -5328,7 +5352,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -5338,7 +5362,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -5348,7 +5372,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -5358,7 +5382,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Expire active job
       tags:
@@ -5388,7 +5412,7 @@ paths:
             example:
               powerCycle: false
             schema:
-              $ref: '#/components/schemas/scanHardwareOpts'
+              $ref: "#/components/schemas/scanHardwareOpts"
       responses:
         "202":
           content:
@@ -5474,7 +5498,7 @@ paths:
                 updatedAt: 2025-03-17T13:37:19+00:00
                 uuid: 43758e50-fb34-4c0a-9ab5-772c4e47208c
               schema:
-                $ref: '#/components/schemas/job'
+                $ref: "#/components/schemas/job"
           description: Accepted.
         "400":
           content:
@@ -5485,7 +5509,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -5495,7 +5519,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -5505,7 +5529,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -5515,7 +5539,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -5525,7 +5549,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Launch hardware scan
       tags:
@@ -5585,7 +5609,7 @@ paths:
                 size: '*'
               sshKeys: ssh-rsa AAAAB3NzaC1y... user@domain.com
             schema:
-              $ref: '#/components/schemas/installOperatingSystemOpts'
+              $ref: "#/components/schemas/installOperatingSystemOpts"
       responses:
         "202":
           content:
@@ -5726,7 +5750,7 @@ paths:
                 updatedAt: 2025-03-17T13:44:47+00:00
                 uuid: a1b22827-b6aa-47ce-abad-6bc28a70223d
               schema:
-                $ref: '#/components/schemas/serverJob'
+                $ref: "#/components/schemas/serverJob"
           description: Accepted.
         "400":
           content:
@@ -5737,7 +5761,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -5747,7 +5771,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -5757,7 +5781,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -5767,7 +5791,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -5777,7 +5801,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Launch installation
       tags:
@@ -5808,7 +5832,7 @@ paths:
             example:
               callbackUrl: https://callbacks.example.org
             schema:
-              $ref: '#/components/schemas/ipmiResetOpts'
+              $ref: "#/components/schemas/ipmiResetOpts"
       responses:
         "202":
           content:
@@ -5894,7 +5918,7 @@ paths:
                 updatedAt: 2025-03-17T13:48:15+00:00
                 uuid: 101e3a46-e878-4807-bf03-d3d796f42ecf
               schema:
-                $ref: '#/components/schemas/job'
+                $ref: "#/components/schemas/job"
           description: Accepted.
         "400":
           content:
@@ -5905,7 +5929,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -5915,7 +5939,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -5925,7 +5949,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -5935,7 +5959,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -5945,7 +5969,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Launch IPMI reset
       tags:
@@ -6030,7 +6054,7 @@ paths:
                   node: 00:11:22:AA:BB:CC
                   createdAt: 2025-03-11T09:53:49+00:00
                   updatedAt: 2025-03-11T09:54:46+00:00
-                  flow: '#stop'
+                  flow: "#stop"
                   currentTask: null
                   progress:
                     total: 13
@@ -6132,7 +6156,7 @@ paths:
                     serverHardwareRaid: true
                     doEmailNotification: true
               schema:
-                $ref: '#/components/schemas/jobList'
+                $ref: "#/components/schemas/jobList"
           description: Ok.
         "401":
           content:
@@ -6142,7 +6166,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -6152,7 +6176,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -6162,7 +6186,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -6172,7 +6196,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: List jobs
       tags:
@@ -6342,7 +6366,7 @@ paths:
                 updatedAt: 2025-03-17T13:44:51+00:00
                 uuid: 42df2827-b6aa-47ce-abad-6bc28a70223d
               schema:
-                $ref: '#/components/schemas/currentJob'
+                $ref: "#/components/schemas/currentJob"
           description: Ok.
         "401":
           content:
@@ -6352,7 +6376,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -6362,7 +6386,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -6372,7 +6396,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -6382,7 +6406,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show a job
       tags:
@@ -6544,7 +6568,7 @@ paths:
                 updatedAt: 2025-03-17T14:01:43+00:00
                 uuid: 80d991c8-1bf5-40b9-8b99-cb65255065a5
               schema:
-                $ref: '#/components/schemas/currentJob'
+                $ref: "#/components/schemas/currentJob"
           description: Ok.
         "400":
           content:
@@ -6555,7 +6579,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -6565,7 +6589,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -6575,7 +6599,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -6585,7 +6609,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -6595,7 +6619,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -6605,7 +6629,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Retry a job
       tags:
@@ -6635,7 +6659,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -6645,7 +6669,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -6655,7 +6679,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -6665,7 +6689,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Delete a DHCP reservation
       tags:
@@ -6708,7 +6732,7 @@ paths:
                   site: AMS-01
                   updatedAt: 2019-11-18T19:29:01+00:00
               schema:
-                $ref: '#/components/schemas/getDhcpReservationListResult'
+                $ref: "#/components/schemas/getDhcpReservationListResult"
           description: Ok.
         "401":
           content:
@@ -6718,7 +6742,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -6728,7 +6752,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -6738,7 +6762,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -6748,7 +6772,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: List DHCP reservations
       tags:
@@ -6777,7 +6801,7 @@ paths:
               bootfile: http://example.com/bootme.ipxe
               hostname: my-server
             schema:
-              $ref: '#/components/schemas/createDhcpReservationOpts'
+              $ref: "#/components/schemas/createDhcpReservationOpts"
       responses:
         "204":
           description: No Content.
@@ -6790,7 +6814,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -6800,7 +6824,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -6810,7 +6834,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -6820,7 +6844,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -6830,7 +6854,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Create a DHCP reservation
       tags:
@@ -6861,7 +6885,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -6871,7 +6895,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -6881,7 +6905,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -6891,7 +6915,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -6901,7 +6925,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Power cycle a server
       tags:
@@ -6943,7 +6967,7 @@ paths:
                 pdu:
                   status: "on"
               schema:
-                $ref: '#/components/schemas/getPowerStatusResult'
+                $ref: "#/components/schemas/getPowerStatusResult"
           description: Ok.
         "400":
           content:
@@ -6954,7 +6978,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -6964,7 +6988,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -6974,7 +6998,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -6984,7 +7008,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -6994,7 +7018,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Show power status
       tags:
@@ -7025,7 +7049,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -7035,7 +7059,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -7045,7 +7069,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -7055,7 +7079,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -7065,7 +7089,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Power off server
       tags:
@@ -7096,7 +7120,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -7106,7 +7130,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -7116,7 +7140,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -7126,7 +7150,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -7136,7 +7160,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Power on server
       tags:
@@ -7178,7 +7202,7 @@ paths:
               rescueImageId: GRML
               sshKeys: ssh-rsa AAAAB3NzaC1y... user@domain.com
             schema:
-              $ref: '#/components/schemas/enableRescueModeOpts'
+              $ref: "#/components/schemas/enableRescueModeOpts"
       responses:
         "202":
           content:
@@ -7268,7 +7292,7 @@ paths:
                 updatedAt: 2025-03-17T14:06:12+00:00
                 uuid: 7f869a99-2c26-4281-bd75-a45786a8c2d2
               schema:
-                $ref: '#/components/schemas/job'
+                $ref: "#/components/schemas/job"
           description: Accepted.
         "400":
           content:
@@ -7279,7 +7303,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -7289,7 +7313,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -7299,7 +7323,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -7309,7 +7333,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -7319,7 +7343,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
       summary: Launch rescue mode
       tags:
@@ -7382,7 +7406,7 @@ components:
       name: networkTypeURL
       required: true
       schema:
-        $ref: '#/components/schemas/networkTypeURL'
+        $ref: "#/components/schemas/networkTypeURL"
       style: simple
     notificationSettingId:
       description: The ID of a notification setting
@@ -7411,7 +7435,7 @@ components:
       name: type
       required: true
       schema:
-        $ref: '#/components/schemas/credentialType'
+        $ref: "#/components/schemas/credentialType"
       style: simple
     credentialsUsername:
       description: Username
@@ -7435,7 +7459,7 @@ components:
             errorDetails: {}
             errorMessage: The API could not interpret your request correctly.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Bad Request.
     "401":
       content:
@@ -7445,7 +7469,7 @@ components:
             errorCode: "401"
             errorMessage: You are not authorized to view this resource.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Not Authorized.
     "403":
       content:
@@ -7455,7 +7479,7 @@ components:
             errorCode: "403"
             errorMessage: Access to the requested resource is forbidden.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Forbidden.
     "404":
       content:
@@ -7465,7 +7489,7 @@ components:
             errorCode: "404"
             errorMessage: Resource not found
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Not Found.
     "500":
       content:
@@ -7475,7 +7499,7 @@ components:
             errorCode: "500"
             errorMessage: '''The API could not handle your request at this time.'
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Internal Server Error.
     "503":
       content:
@@ -7485,7 +7509,7 @@ components:
             errorCode: "503"
             errorMessage: The API is not available at the moment.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Service Unavailable.
   schemas:
     macAddress:
@@ -7599,7 +7623,7 @@ components:
           type: number
         subnets:
           items:
-            $ref: '#/components/schemas/subnet'
+            $ref: "#/components/schemas/subnet"
           type: array
         status:
           type: string
@@ -7632,10 +7656,10 @@ components:
           example: USD
           type: string
         networkTraffic:
-          $ref: '#/components/schemas/networkTraffic'
+          $ref: "#/components/schemas/networkTraffic"
         softwareLicenses:
           items:
-            $ref: '#/components/schemas/softwareLicense'
+            $ref: "#/components/schemas/softwareLicense"
           type: array
         managedServices:
           items:
@@ -7728,7 +7752,7 @@ components:
           type: string
         ports:
           items:
-            $ref: '#/components/schemas/port'
+            $ref: "#/components/schemas/port"
           type: array
         locationId:
           nullable: true
@@ -7773,11 +7797,11 @@ components:
           gateway: gateway
       properties:
         public:
-          $ref: '#/components/schemas/networkInterface'
+          $ref: "#/components/schemas/networkInterface"
         internal:
-          $ref: '#/components/schemas/networkInterface'
+          $ref: "#/components/schemas/networkInterface"
         remoteManagement:
-          $ref: '#/components/schemas/networkInterface'
+          $ref: "#/components/schemas/networkInterface"
       title: networkInterfaces
       type: object
     linkSpeed:
@@ -7816,7 +7840,7 @@ components:
           description: Rack capacity
           type: string
         type:
-          $ref: '#/components/schemas/rackType'
+          $ref: "#/components/schemas/rackType"
       title: rack
       type: object
     server:
@@ -7969,9 +7993,9 @@ components:
           description: The Asset Id of the server
           type: string
         contract:
-          $ref: '#/components/schemas/contract'
+          $ref: "#/components/schemas/contract"
         featureAvailability:
-          $ref: '#/components/schemas/featureAvailability'
+          $ref: "#/components/schemas/featureAvailability"
         id:
           description: Id of the server
           type: string
@@ -7985,26 +8009,26 @@ components:
           description: Whether capable of redundant private network or not
           type: boolean
         location:
-          $ref: '#/components/schemas/location'
+          $ref: "#/components/schemas/location"
         networkInterfaces:
-          $ref: '#/components/schemas/networkInterfaces'
+          $ref: "#/components/schemas/networkInterfaces"
         powerPorts:
           description: List of ports that can be used to manage power of the server
           items:
-            $ref: '#/components/schemas/port'
+            $ref: "#/components/schemas/port"
           type: array
         privateNetworks:
           description: An array of private networks
           items:
-            $ref: '#/components/schemas/privateNetwork'
+            $ref: "#/components/schemas/privateNetwork"
           type: array
         rack:
-          $ref: '#/components/schemas/rack'
+          $ref: "#/components/schemas/rack"
         serialNumber:
           description: Serial number of server
           type: string
         specs:
-          $ref: '#/components/schemas/serverSpecs'
+          $ref: "#/components/schemas/serverSpecs"
       type: object
     getServerListResult:
       example:
@@ -8301,11 +8325,11 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         servers:
           description: An array of servers
           items:
-            $ref: '#/components/schemas/server'
+            $ref: "#/components/schemas/server"
           type: array
       type: object
     errorResult:
@@ -8358,7 +8382,7 @@ components:
         gateway: gateway
       properties:
         ddos:
-          $ref: '#/components/schemas/dDos'
+          $ref: "#/components/schemas/dDos"
         floatingIp:
           description: Indicates if the IP is a Floating IP
           type: boolean
@@ -8372,7 +8396,7 @@ components:
           description: IP address is main
           type: boolean
         networkType:
-          $ref: '#/components/schemas/networkType'
+          $ref: "#/components/schemas/networkType"
         nullRouted:
           description: IP address null routed
           type: boolean
@@ -8414,11 +8438,11 @@ components:
           gateway: gateway
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         ips:
           description: An array of IP addresses
           items:
-            $ref: '#/components/schemas/ip'
+            $ref: "#/components/schemas/ip"
           type: array
       type: object
     updateIpProfileOpts:
@@ -8486,17 +8510,17 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         nullRoutes:
           description: An array of server null route events
           items:
-            $ref: '#/components/schemas/nullRoute'
+            $ref: "#/components/schemas/nullRoute"
           type: array
       type: object
     addToPrivateNetworkOpts:
       properties:
         linkSpeed:
-          $ref: '#/components/schemas/linkSpeed'
+          $ref: "#/components/schemas/linkSpeed"
       required:
       - linkSpeed
       type: object
@@ -8549,11 +8573,11 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         networkInterfaces:
           description: An array of network interfaces
           items:
-            $ref: '#/components/schemas/operationNetworkInterface'
+            $ref: "#/components/schemas/operationNetworkInterface"
           type: array
       type: object
     networkTypeURL:
@@ -8605,7 +8629,7 @@ components:
           type: string
         values:
           items:
-            $ref: '#/components/schemas/metricValue'
+            $ref: "#/components/schemas/metricValue"
           type: array
       title: metric
       type: object
@@ -8633,15 +8657,15 @@ components:
           to: 2000-01-23T04:56:07.000+00:00
       properties:
         _metadata:
-          $ref: '#/components/schemas/metricsMetadata'
+          $ref: "#/components/schemas/metricsMetadata"
         metrics:
-          $ref: '#/components/schemas/metricValues'
+          $ref: "#/components/schemas/metricValues"
     notificationSetting:
       properties:
         actions:
           description: An array of notification setting actions
           items:
-            $ref: '#/components/schemas/actions'
+            $ref: "#/components/schemas/actions"
           type: array
         frequency:
           description: Frequency
@@ -8673,7 +8697,7 @@ components:
       type: object
     bandwidthNotificationSetting:
       allOf:
-      - $ref: '#/components/schemas/notificationSetting'
+      - $ref: "#/components/schemas/notificationSetting"
       - properties:
           unit:
             description: Unit
@@ -8725,11 +8749,11 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         bandwidthNotificationSettings:
           description: An array of Bandwidth Notification Settings
           items:
-            $ref: '#/components/schemas/bandwidthNotificationSetting'
+            $ref: "#/components/schemas/bandwidthNotificationSetting"
           type: array
       type: object
     bandwidthNotificationSettingOpts:
@@ -8757,7 +8781,7 @@ components:
       type: object
     dataTrafficNotificationSetting:
       allOf:
-      - $ref: '#/components/schemas/notificationSetting'
+      - $ref: "#/components/schemas/notificationSetting"
       - properties:
           unit:
             description: Unit
@@ -8810,11 +8834,11 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         datatrafficNotificationSettings:
           description: An array of Data traffic Notification Settings
           items:
-            $ref: '#/components/schemas/dataTrafficNotificationSetting'
+            $ref: "#/components/schemas/dataTrafficNotificationSetting"
           type: array
       type: object
     dataTrafficNotificationSettingOpts:
@@ -9090,7 +9114,7 @@ components:
           description: Version of the parser used for this hardware info
           type: string
         result:
-          $ref: '#/components/schemas/result'
+          $ref: "#/components/schemas/result"
         scannedAt:
           description: "Timestamp of hardware scan, the ISO-8601 format"
           example: 2017-09-27T14:21:01Z
@@ -9127,11 +9151,11 @@ components:
           format: date-time
           type: string
         ipmiInfo:
-          $ref: '#/components/schemas/ipmiInfo'
+          $ref: "#/components/schemas/ipmiInfo"
         metrics:
           description: IPMI monitoring metrics
           items:
-            $ref: '#/components/schemas/ipmiMonitoringMetric'
+            $ref: "#/components/schemas/ipmiMonitoringMetric"
           title: ipmiMonitoringMetrics
           type: array
       title: hardwareMonitoringMetrics
@@ -9173,11 +9197,11 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         servers:
           description: An array of servers with hardware monitoring metrics
           items:
-            $ref: '#/components/schemas/getHardwareMonitoringResult'
+            $ref: "#/components/schemas/getHardwareMonitoringResult"
           title: hardwareMonitoringMetricsServers
           type: array
       type: object
@@ -9194,11 +9218,11 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         controlPanels:
           description: A list of control panels
           items:
-            $ref: '#/components/schemas/controlPanel'
+            $ref: "#/components/schemas/controlPanel"
           type: array
       type: object
     getOperatingSystemListResult:
@@ -9214,11 +9238,11 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         operatingSystems:
           description: A list of operating systems
           items:
-            $ref: '#/components/schemas/operatingSystem'
+            $ref: "#/components/schemas/operatingSystem"
           type: array
       type: object
     partition:
@@ -9281,7 +9305,7 @@ components:
           description: If the default options are configurable or not
           type: boolean
         defaults:
-          $ref: '#/components/schemas/defaults'
+          $ref: "#/components/schemas/defaults"
         family:
           description: The operating system family
           type: string
@@ -9327,11 +9351,11 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         rescueImages:
           description: A list of operating systems
           items:
-            $ref: '#/components/schemas/rescueImage'
+            $ref: "#/components/schemas/rescueImage"
           type: array
       type: object
     jobType:
@@ -9399,7 +9423,7 @@ components:
           description: The flow this task is part of
           type: string
         statusTimestamps:
-          $ref: '#/components/schemas/statusTimestamps'
+          $ref: "#/components/schemas/statusTimestamps"
         type:
           description: The type of the task
           type: string
@@ -9425,7 +9449,7 @@ components:
       nullable: true
       properties:
         task:
-          $ref: '#/components/schemas/task'
+          $ref: "#/components/schemas/task"
       title: currentTask
       type: object
     payload:
@@ -9435,7 +9459,7 @@ components:
             before the job is started
           type: boolean
         network:
-          $ref: '#/components/schemas/defaultPayloadNetwork'
+          $ref: "#/components/schemas/defaultPayloadNetwork"
         site:
           description: Location of the server
           type: string
@@ -9465,12 +9489,12 @@ components:
       type: string
     installOperatingSystemPayload:
       allOf:
-      - $ref: '#/components/schemas/payload'
+      - $ref: "#/components/schemas/payload"
       - properties:
           os:
-            $ref: '#/components/schemas/os'
+            $ref: "#/components/schemas/os"
           raid:
-            $ref: '#/components/schemas/raidPayload'
+            $ref: "#/components/schemas/raidPayload"
           device:
             description: The installation device
             type: string
@@ -9483,7 +9507,7 @@ components:
             type: string
           partitions:
             items:
-              $ref: '#/components/schemas/partition'
+              $ref: "#/components/schemas/partition"
             type: array
           operatingSystemId:
             description: The ID of the operating system
@@ -9499,9 +9523,9 @@ components:
               type: string
             type: array
           sshKeys:
-            $ref: '#/components/schemas/sshKeys'
+            $ref: "#/components/schemas/sshKeys"
           database:
-            $ref: '#/components/schemas/database'
+            $ref: "#/components/schemas/database"
           aiFrameworks:
             description: The AI frameworks that are being installed on the server
             items:
@@ -9588,18 +9612,18 @@ components:
       type: object
     genericPayload:
       allOf:
-      - $ref: '#/components/schemas/payload'
+      - $ref: "#/components/schemas/payload"
       title: genericPayload
       type: object
     rescueModePayload:
       allOf:
-      - $ref: '#/components/schemas/payload'
+      - $ref: "#/components/schemas/payload"
       - properties:
           rescueImageId:
             description: The ID of the rescue image if job is for rescue mode
             type: string
           sshKeys:
-            $ref: '#/components/schemas/sshKeys'
+            $ref: "#/components/schemas/sshKeys"
           callbackUrl:
             description: The URL to be called when the job is finished
             nullable: true
@@ -9758,7 +9782,7 @@ components:
           description: Unique identifier of the job
           type: string
         type:
-          $ref: '#/components/schemas/jobType'
+          $ref: "#/components/schemas/jobType"
         serverId:
           description: Id of the server
           type: string
@@ -9782,20 +9806,20 @@ components:
           type: string
         currentTask:
           allOf:
-          - $ref: '#/components/schemas/currentTask'
+          - $ref: "#/components/schemas/currentTask"
         progress:
-          $ref: '#/components/schemas/progress'
+          $ref: "#/components/schemas/progress"
         isRunning:
           description: Describes whether the job is running
           type: boolean
         metadata:
-          $ref: '#/components/schemas/metadata'
+          $ref: "#/components/schemas/metadata"
         payload:
-          $ref: '#/components/schemas/jobPayload'
+          $ref: "#/components/schemas/jobPayload"
         tasks:
           description: List of tasks in the job
           items:
-            $ref: '#/components/schemas/task'
+            $ref: "#/components/schemas/task"
           title: tasks
           type: array
       type: object
@@ -9822,7 +9846,7 @@ components:
         username: username
       properties:
         type:
-          $ref: '#/components/schemas/credentialType'
+          $ref: "#/components/schemas/credentialType"
         username:
           description: The username
           type: string
@@ -9844,11 +9868,11 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         credentials:
           description: An array of credentials
           items:
-            $ref: '#/components/schemas/credentialWithoutPassword'
+            $ref: "#/components/schemas/credentialWithoutPassword"
           type: array
       type: object
     createCredentialOpts:
@@ -9857,7 +9881,7 @@ components:
           description: The password for the credentials
           type: string
         type:
-          $ref: '#/components/schemas/credentialType'
+          $ref: "#/components/schemas/credentialType"
         username:
           description: The username for the credentials
           type: string
@@ -9876,7 +9900,7 @@ components:
           description: The password
           type: string
         type:
-          $ref: '#/components/schemas/credentialType'
+          $ref: "#/components/schemas/credentialType"
         username:
           description: The username
           type: string
@@ -9946,7 +9970,7 @@ components:
         partitions:
           description: Array of partition objects that should be installed per partition
           items:
-            $ref: '#/components/schemas/partition'
+            $ref: "#/components/schemas/partition"
           type: array
         password:
           description: "Server root password. If not provided, it would be automatically\
@@ -9961,7 +9985,7 @@ components:
             \ the process. Otherwise, you should do them manually"
           type: boolean
         raid:
-          $ref: '#/components/schemas/raid'
+          $ref: "#/components/schemas/raid"
         sshKeys:
           description: "List of public sshKeys to be setup in your installation, separated\
             \ by new lines"
@@ -10122,7 +10146,7 @@ components:
           description: Unique identifier of the job
           type: string
         type:
-          $ref: '#/components/schemas/jobType'
+          $ref: "#/components/schemas/jobType"
         serverId:
           description: Id of the server
           example: "62264"
@@ -10147,20 +10171,20 @@ components:
           type: string
         currentTask:
           allOf:
-          - $ref: '#/components/schemas/currentTask'
+          - $ref: "#/components/schemas/currentTask"
         progress:
-          $ref: '#/components/schemas/progress'
+          $ref: "#/components/schemas/progress"
         isRunning:
           description: Describes whether the job is running
           type: boolean
         metadata:
-          $ref: '#/components/schemas/metadata'
+          $ref: "#/components/schemas/metadata"
         payload:
-          $ref: '#/components/schemas/jobPayload'
+          $ref: "#/components/schemas/jobPayload"
         tasks:
           description: List of tasks in the job
           items:
-            $ref: '#/components/schemas/task'
+            $ref: "#/components/schemas/task"
           title: tasks
           type: array
       type: object
@@ -10453,16 +10477,16 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         jobs:
           description: An array of jobs
           items:
-            $ref: '#/components/schemas/serverJob'
+            $ref: "#/components/schemas/serverJob"
           type: array
       type: object
     currentJob:
       allOf:
-      - $ref: '#/components/schemas/serverJob'
+      - $ref: "#/components/schemas/serverJob"
       example:
         metadata:
           BATCH_ID: BATCH_ID
@@ -10633,11 +10657,11 @@ components:
           totalCount: 2
       properties:
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
         leases:
           description: An array of active DHCP reservations
           items:
-            $ref: '#/components/schemas/lease'
+            $ref: "#/components/schemas/lease"
           type: array
       type: object
     createDhcpReservationOpts:
@@ -10669,9 +10693,9 @@ components:
           status: status
       properties:
         ipmi:
-          $ref: '#/components/schemas/ipmi'
+          $ref: "#/components/schemas/ipmi"
         pdu:
-          $ref: '#/components/schemas/pdu'
+          $ref: "#/components/schemas/pdu"
       type: object
     enableRescueModeOpts:
       properties:
@@ -10714,7 +10738,7 @@ components:
         subnetSize:
           type: string
         networkType:
-          $ref: '#/components/schemas/networkType'
+          $ref: "#/components/schemas/networkType"
       title: subnet
       type: object
     networkTraffic:
@@ -10781,7 +10805,7 @@ components:
           example: "892"
           type: string
         linkSpeed:
-          $ref: '#/components/schemas/linkSpeed'
+          $ref: "#/components/schemas/linkSpeed"
         status:
           description: Configuration status
           type: string
@@ -10902,22 +10926,22 @@ components:
           description: The chassis description of the server
           type: string
         cpu:
-          $ref: '#/components/schemas/cpu'
+          $ref: "#/components/schemas/cpu"
         hardwareRaidCapable:
           description: Hardware RAID capability of the server
           type: boolean
         hdd:
           description: List of hard disk drives of the server
           items:
-            $ref: '#/components/schemas/hdd'
+            $ref: "#/components/schemas/hdd"
           type: array
         pciCards:
           description: List of PCI cards of the server
           items:
-            $ref: '#/components/schemas/pciCard'
+            $ref: "#/components/schemas/pciCard"
           type: array
         ram:
-          $ref: '#/components/schemas/ram'
+          $ref: "#/components/schemas/ram"
       title: serverSpecs
       type: object
     dDos:
@@ -11000,9 +11024,9 @@ components:
             timestamp: 2000-01-23T04:56:07.000+00:00
       properties:
         UP_PUBLIC:
-          $ref: '#/components/schemas/metric'
+          $ref: "#/components/schemas/metric"
         DOWN_PUBLIC:
-          $ref: '#/components/schemas/metric'
+          $ref: "#/components/schemas/metric"
       title: metricValues
       type: object
     actions:
@@ -11079,9 +11103,9 @@ components:
         description:
           type: string
         firmware:
-          $ref: '#/components/schemas/firmware'
+          $ref: "#/components/schemas/firmware"
         motherboard:
-          $ref: '#/components/schemas/motherboard'
+          $ref: "#/components/schemas/motherboard"
         product:
           type: string
         serial:
@@ -11107,7 +11131,7 @@ components:
         ht: ht
       properties:
         cpufreq:
-          $ref: '#/components/schemas/cpuFreq'
+          $ref: "#/components/schemas/cpuFreq"
         ht:
           type: string
         vmx:
@@ -11148,7 +11172,7 @@ components:
         slot: slot
       properties:
         capabilities:
-          $ref: '#/components/schemas/cpuCapabilities'
+          $ref: "#/components/schemas/cpuCapabilities"
         description:
           type: string
         hz:
@@ -11158,7 +11182,7 @@ components:
           example: CZ33109CHV
           type: string
         settings:
-          $ref: '#/components/schemas/cpuSettings'
+          $ref: "#/components/schemas/cpuSettings"
         slot:
           type: string
         vendor:
@@ -11169,9 +11193,9 @@ components:
     attributes:
       properties:
         Power_On_Hours:
-          $ref: '#/components/schemas/attribute'
+          $ref: "#/components/schemas/attribute"
         Reallocated_Sector_Ct:
-          $ref: '#/components/schemas/attribute'
+          $ref: "#/components/schemas/attribute"
       title: attributes
       type: object
     smartSupport:
@@ -11184,7 +11208,7 @@ components:
       type: object
     smartctl:
       oneOf:
-      - $ref: '#/components/schemas/smartctl'
+      - $ref: "#/components/schemas/smartctl"
       - type: boolean
       title: smartctl
     disk:
@@ -11212,7 +11236,7 @@ components:
         size:
           type: string
         smartctl:
-          $ref: '#/components/schemas/smartctl'
+          $ref: "#/components/schemas/smartctl"
         vendor:
           description: Vendor of the server
           example: HP
@@ -11328,7 +11352,7 @@ components:
         ethernet:
           type: string
         link_speeds:
-          $ref: '#/components/schemas/linkSpeeds'
+          $ref: "#/components/schemas/linkSpeeds"
         msi:
           type: string
         msix:
@@ -11387,7 +11411,7 @@ components:
           supported: "yes"
       properties:
         auto_negotiation:
-          $ref: '#/components/schemas/autoNegotiation'
+          $ref: "#/components/schemas/autoNegotiation"
         description:
           type: string
       title: hardwarePort
@@ -11423,11 +11447,11 @@ components:
           description: description
       properties:
         chassis:
-          $ref: '#/components/schemas/lldpChassis'
+          $ref: "#/components/schemas/lldpChassis"
         port:
-          $ref: '#/components/schemas/hardwarePort'
+          $ref: "#/components/schemas/hardwarePort"
         vlan:
-          $ref: '#/components/schemas/vlan'
+          $ref: "#/components/schemas/vlan"
       title: lldp
       type: object
     networkSettings:
@@ -11538,9 +11562,9 @@ components:
             description: description
       properties:
         capabilities:
-          $ref: '#/components/schemas/networkCapabilities'
+          $ref: "#/components/schemas/networkCapabilities"
         lldp:
-          $ref: '#/components/schemas/lldp'
+          $ref: "#/components/schemas/lldp"
         logical_name:
           type: string
         mac_address:
@@ -11553,7 +11577,7 @@ components:
         product:
           type: string
         settings:
-          $ref: '#/components/schemas/networkSettings'
+          $ref: "#/components/schemas/networkSettings"
         vendor:
           description: Vendor of the server
           example: HP
@@ -11738,26 +11762,26 @@ components:
               description: description
       properties:
         chassis:
-          $ref: '#/components/schemas/chassis'
+          $ref: "#/components/schemas/chassis"
         cpu:
           items:
-            $ref: '#/components/schemas/hardwareCpu'
+            $ref: "#/components/schemas/hardwareCpu"
           type: array
         disks:
           items:
-            $ref: '#/components/schemas/disk'
+            $ref: "#/components/schemas/disk"
           minItems: 1
           type: array
         ipmi:
-          $ref: '#/components/schemas/hardwareIpmi'
+          $ref: "#/components/schemas/hardwareIpmi"
         memory:
           items:
-            $ref: '#/components/schemas/memoryBank'
+            $ref: "#/components/schemas/memoryBank"
           minItems: 1
           type: array
         network:
           items:
-            $ref: '#/components/schemas/network'
+            $ref: "#/components/schemas/network"
           title: network
           type: array
       title: result
@@ -11860,7 +11884,7 @@ components:
           type: string
         partitions:
           items:
-            $ref: '#/components/schemas/partition'
+            $ref: "#/components/schemas/partition"
           type: array
       title: defaults
       type: object
@@ -12007,9 +12031,9 @@ components:
           network: network
       properties:
         public:
-          $ref: '#/components/schemas/public'
+          $ref: "#/components/schemas/public"
         internal:
-          $ref: '#/components/schemas/internal'
+          $ref: "#/components/schemas/internal"
       title: defaultPayloadNetwork
       type: object
     os:
@@ -12153,21 +12177,21 @@ components:
       type: object
     jobPayload:
       anyOf:
-      - $ref: '#/components/schemas/installOperatingSystemPayload'
-      - $ref: '#/components/schemas/genericPayload'
-      - $ref: '#/components/schemas/rescueModePayload'
+      - $ref: "#/components/schemas/installOperatingSystemPayload"
+      - $ref: "#/components/schemas/genericPayload"
+      - $ref: "#/components/schemas/rescueModePayload"
       title: jobPayload
     raid:
       description: Contains RAID related information about the installation request
       properties:
         level:
-          $ref: '#/components/schemas/raidLevel'
+          $ref: "#/components/schemas/raidLevel"
         numberOfDisks:
           description: The number of disks you want to apply RAID on. If not specified
             all disks are used
           type: integer
         type:
-          $ref: '#/components/schemas/raidType'
+          $ref: "#/components/schemas/raidType"
       title: raid
       type: object
     lastClientRequest:
@@ -12225,7 +12249,7 @@ components:
           format: ipv4
           type: string
         lastClientRequest:
-          $ref: '#/components/schemas/lastClientRequest'
+          $ref: "#/components/schemas/lastClientRequest"
         mac:
           description: Represents a MAC Address in the standard colon delimited format.
             Eg. `01:23:45:67:89:0A`

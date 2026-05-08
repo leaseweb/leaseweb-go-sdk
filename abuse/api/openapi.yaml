@@ -10,7 +10,7 @@ info:
   version: v1
   x-logo:
     altText: Leaseweb developer documentation
-    backgroundColor: '#5484c6'
+    backgroundColor: "#5484c6"
     href: https://developer.leaseweb.com
     url: https://developer.leaseweb.com/images/logo.png
 servers:
@@ -62,15 +62,14 @@ paths:
           type: integer
         style: form
       - description: |
-          Comma separated list of report statuses to filter on.
-        example: "OPEN,WAITING,CLOSED"
+          Filter reports by their status (`?status=OPEN,CLOSED`): returns reports that have any of the listed statuses. Defaults to `OPEN,WAITING,CLOSED` if not provided.
+        example: "OPEN,CLOSED"
         explode: true
         in: query
         name: status
         required: false
         schema:
-          default: "OPEN,WAITING,CLOSED"
-          type: string
+          $ref: "#/components/schemas/statusValue"
         style: form
       - description: Optional ticket ID to filter results
         explode: true
@@ -80,13 +79,16 @@ paths:
         schema:
           type: string
         style: form
-      - description: Optional IP address to filter results
+      - description: |
+          Filter reports by IP addresses (`?ip=1.2.3.4,1.2.3.5`): returns reports that match any of the listed IP addresses.
+        examples:
+          default:
+            $ref: "#/components/examples/ipAddresses"
         explode: true
         in: query
         name: ip
         required: false
         schema:
-          format: ipv4
           type: string
         style: form
       - description: |
@@ -144,7 +146,7 @@ paths:
                   - 127.0.0.1
                   isNullRouted: false
               schema:
-                $ref: '#/components/schemas/getReportListResult'
+                $ref: "#/components/schemas/getReportListResult"
           description: |
             OK.
         "400":
@@ -156,7 +158,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -166,7 +168,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -176,7 +178,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -186,7 +188,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -196,7 +198,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       security:
       - X-LSW-Auth: []
@@ -279,7 +281,7 @@ paths:
                 notifierCommunicationFlag: true
                 isWaitingOnNotifier: false
               schema:
-                $ref: '#/components/schemas/getReportResult'
+                $ref: "#/components/schemas/getReportResult"
           description: |
             OK.
         "401":
@@ -290,7 +292,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -300,7 +302,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -310,7 +312,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -320,7 +322,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       security:
       - X-LSW-Auth: []
@@ -380,7 +382,7 @@ paths:
                     mimeType: image/png
                     filename: notification.png
               schema:
-                $ref: '#/components/schemas/getReportMessageListResult'
+                $ref: "#/components/schemas/getReportMessageListResult"
           description: |
             OK.
         "401":
@@ -391,7 +393,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -401,7 +403,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -411,7 +413,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -421,7 +423,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -431,7 +433,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       security:
       - X-LSW-Auth: []
@@ -458,7 +460,7 @@ paths:
             example:
               body: "Hello, this is my first message."
             schema:
-              $ref: '#/components/schemas/createReportMessageOpts'
+              $ref: "#/components/schemas/createReportMessageOpts"
       responses:
         "202":
           content:
@@ -467,7 +469,7 @@ paths:
               - To make sure the request has been processed please see if the message
                 is added to the list.
               schema:
-                $ref: '#/components/schemas/createReportMessageResult'
+                $ref: "#/components/schemas/createReportMessageResult"
           description: |
             Accepted.
         "401":
@@ -478,7 +480,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -488,7 +490,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -498,7 +500,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -508,7 +510,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -518,7 +520,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       security:
       - X-LSW-Auth: []
@@ -561,7 +563,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -571,7 +573,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -581,7 +583,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -591,7 +593,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -601,7 +603,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       security:
       - X-LSW-Auth: []
@@ -644,7 +646,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -654,7 +656,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -664,7 +666,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -674,7 +676,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -684,7 +686,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       security:
       - X-LSW-Auth: []
@@ -725,7 +727,7 @@ paths:
                   description: This is either a duplicate or old notification and
                     has already been resolved.
               schema:
-                $ref: '#/components/schemas/getReportResolutionListResult'
+                $ref: "#/components/schemas/getReportResolutionListResult"
           description: |
             OK.
         "401":
@@ -736,7 +738,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -746,7 +748,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -756,7 +758,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -766,7 +768,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -776,7 +778,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       security:
       - X-LSW-Auth: []
@@ -808,7 +810,7 @@ paths:
               - CONTENT_REMOVED
               - SUSPENDED
             schema:
-              $ref: '#/components/schemas/resolveReportResult'
+              $ref: "#/components/schemas/resolveReportResult"
       responses:
         "204":
           description: |
@@ -822,7 +824,7 @@ paths:
                 errorDetails: {}
                 errorMessage: The API could not interpret your request correctly.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Bad Request.
         "401":
           content:
@@ -832,7 +834,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -842,7 +844,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -852,7 +854,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -862,7 +864,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -872,7 +874,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       security:
       - X-LSW-Auth: []
@@ -880,6 +882,10 @@ paths:
       tags:
       - abuse
 components:
+  examples:
+    ipAddresses:
+      summary: Filter by IP addresses
+      value: "1.2.3.4,1.2.3.5,1.2.3.6"
   parameters:
     limit:
       description: Limit the number of results returned.
@@ -903,15 +909,14 @@ components:
       style: form
     status:
       description: |
-        Comma separated list of report statuses to filter on.
-      example: "OPEN,WAITING,CLOSED"
+        Filter reports by their status (`?status=OPEN,CLOSED`): returns reports that have any of the listed statuses. Defaults to `OPEN,WAITING,CLOSED` if not provided.
+      example: "OPEN,CLOSED"
       explode: true
       in: query
       name: status
       required: false
       schema:
-        default: "OPEN,WAITING,CLOSED"
-        type: string
+        $ref: "#/components/schemas/statusValue"
       style: form
     ticketId:
       description: Optional ticket ID to filter results
@@ -923,13 +928,16 @@ components:
         type: string
       style: form
     ip:
-      description: Optional IP address to filter results
+      description: |
+        Filter reports by IP addresses (`?ip=1.2.3.4,1.2.3.5`): returns reports that match any of the listed IP addresses.
+      examples:
+        default:
+          $ref: "#/components/examples/ipAddresses"
       explode: true
       in: query
       name: ip
       required: false
       schema:
-        format: ipv4
         type: string
       style: form
     sort:
@@ -974,7 +982,7 @@ components:
             errorDetails: {}
             errorMessage: The API could not interpret your request correctly.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Bad Request.
     "401":
       content:
@@ -984,7 +992,7 @@ components:
             errorCode: "401"
             errorMessage: You are not authorized to view this resource.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Not Authorized.
     "403":
       content:
@@ -994,7 +1002,7 @@ components:
             errorCode: "403"
             errorMessage: Access to the requested resource is forbidden.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Forbidden.
     "404":
       content:
@@ -1004,7 +1012,7 @@ components:
             errorCode: "404"
             errorMessage: Resource not found
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Not Found.
     "500":
       content:
@@ -1014,7 +1022,7 @@ components:
             errorCode: "500"
             errorMessage: '''The API could not handle your request at this time.'
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Internal Server Error.
     "503":
       content:
@@ -1024,9 +1032,15 @@ components:
             errorCode: "503"
             errorMessage: The API is not available at the moment.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Service Unavailable.
   schemas:
+    statusValue:
+      enum:
+      - OPEN
+      - WAITING
+      - CLOSED
+      type: string
     _metadata:
       description: Metadata about the collection
       example:
@@ -1092,10 +1106,10 @@ components:
         reports:
           description: An array of abuse reports.
           items:
-            $ref: '#/components/schemas/report'
+            $ref: "#/components/schemas/report"
           type: array
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
       type: object
     errorResult:
       example:
@@ -1171,7 +1185,7 @@ components:
           example: I have resolved this issue.
           type: string
         attachment:
-          $ref: '#/components/schemas/attachment'
+          $ref: "#/components/schemas/attachment"
       title: message
       type: object
     getReportResult:
@@ -1289,12 +1303,12 @@ components:
         detectedDomainNames:
           description: The domains detected in the report body.
           items:
-            $ref: '#/components/schemas/detectedDomainNameList'
+            $ref: "#/components/schemas/detectedDomainNameList"
           type: array
         attachments:
           description: All the files attached to the report.
           items:
-            $ref: '#/components/schemas/attachment'
+            $ref: "#/components/schemas/attachment"
           type: array
         totalMessagesCount:
           description: Total amount of messages in the report.
@@ -1303,7 +1317,7 @@ components:
         latestMessages:
           description: Array of the last 5 messages in the report.
           items:
-            $ref: '#/components/schemas/message'
+            $ref: "#/components/schemas/message"
           type: array
       type: object
     getReportMessageListResult:
@@ -1331,10 +1345,10 @@ components:
         messages:
           description: An array of the posted messages.
           items:
-            $ref: '#/components/schemas/message'
+            $ref: "#/components/schemas/message"
           type: array
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
       type: object
     createReportMessageOpts:
       properties:
@@ -1367,7 +1381,7 @@ components:
         resolutions:
           description: Possible resolutions to resolve this report with.
           items:
-            $ref: '#/components/schemas/resolutionList'
+            $ref: "#/components/schemas/resolutionList"
           type: array
         isMessageRequired:
           description: "`true`, if any of the IP(s) related to this report are null\

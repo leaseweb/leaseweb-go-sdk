@@ -748,6 +748,12 @@ installation.
 Note that launching rescue mode does not modify any data on the disks of your
 server. It will require your server to be rebooted.
 
+The optional `chassis` query parameter can be used to filter the list to only
+rescue images supported by a specific server chassis. Images that are not
+compatible with the given chassis will be excluded from the response. For
+example, FreeBSD is not available for ARM servers (HPE RL300 series) and will
+be omitted when the chassis of an ARM server is provided.
+
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiGetRescueImageListRequest
@@ -4351,6 +4357,7 @@ type ApiGetControlPanelListByOperatingSystemIdRequest struct {
 	operatingSystemId string
 	limit *int32
 	offset *int32
+	operatingSystemId2 *string
 }
 
 // Limit the number of results returned.
@@ -4362,6 +4369,12 @@ func (r ApiGetControlPanelListByOperatingSystemIdRequest) Limit(limit int32) Api
 // Return results starting from the given offset.
 func (r ApiGetControlPanelListByOperatingSystemIdRequest) Offset(offset int32) ApiGetControlPanelListByOperatingSystemIdRequest {
 	r.offset = &offset
+	return r
+}
+
+// Filter control panels by operating system id
+func (r ApiGetControlPanelListByOperatingSystemIdRequest) OperatingSystemId2(operatingSystemId2 string) ApiGetControlPanelListByOperatingSystemIdRequest {
+	r.operatingSystemId2 = &operatingSystemId2
 	return r
 }
 
@@ -4421,6 +4434,9 @@ func (a *DedicatedserverAPIService) GetControlPanelListByOperatingSystemIdExecut
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	if r.operatingSystemId2 != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "operatingSystemId", r.operatingSystemId2, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -8343,6 +8359,7 @@ type ApiGetRescueImageListRequest struct {
 	ApiService DedicatedserverAPI
 	limit *int32
 	offset *int32
+	chassis *string
 }
 
 // Limit the number of results returned.
@@ -8354,6 +8371,12 @@ func (r ApiGetRescueImageListRequest) Limit(limit int32) ApiGetRescueImageListRe
 // Return results starting from the given offset.
 func (r ApiGetRescueImageListRequest) Offset(offset int32) ApiGetRescueImageListRequest {
 	r.offset = &offset
+	return r
+}
+
+// Filter rescue images by server chassis. Images listed as unsupported for the given chassis will be excluded from the response.
+func (r ApiGetRescueImageListRequest) Chassis(chassis string) ApiGetRescueImageListRequest {
+	r.chassis = &chassis
 	return r
 }
 
@@ -8375,6 +8398,12 @@ installation.
 
 Note that launching rescue mode does not modify any data on the disks of your
 server. It will require your server to be rebooted.
+
+The optional `chassis` query parameter can be used to filter the list to only
+rescue images supported by a specific server chassis. Images that are not
+compatible with the given chassis will be excluded from the response. For
+example, FreeBSD is not available for ARM servers (HPE RL300 series) and will
+be omitted when the chassis of an ARM server is provided.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -8413,6 +8442,9 @@ func (a *DedicatedserverAPIService) GetRescueImageListExecute(r ApiGetRescueImag
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
+	}
+	if r.chassis != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "chassis", r.chassis, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

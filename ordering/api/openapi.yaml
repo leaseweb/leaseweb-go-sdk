@@ -10,7 +10,7 @@ info:
   version: v1
   x-logo:
     altText: Leaseweb developer documentation
-    backgroundColor: '#5484c6'
+    backgroundColor: "#5484c6"
     href: https://developer.leaseweb.com
     url: https://developer.leaseweb.com/images/logo.png
 servers:
@@ -31,28 +31,28 @@ paths:
         name: location
         required: false
         schema:
-          $ref: '#/components/schemas/location'
+          $ref: "#/components/schemas/location"
         style: form
       - explode: true
         in: query
         name: ram
         required: false
         schema:
-          $ref: '#/components/schemas/ramQuery'
+          $ref: "#/components/schemas/ramQuery"
         style: form
       - explode: true
         in: query
         name: diskSize
         required: false
         schema:
-          $ref: '#/components/schemas/diskSize'
+          $ref: "#/components/schemas/diskSize"
         style: form
       - explode: true
         in: query
         name: diskAmount
         required: false
         schema:
-          $ref: '#/components/schemas/diskAmount'
+          $ref: "#/components/schemas/diskAmount"
         style: form
       - description: Limit the number of results returned.
         example: 20
@@ -122,7 +122,7 @@ paths:
                   location:
                   - AMS-01
               schema:
-                $ref: '#/components/schemas/dedicatedServerList'
+                $ref: "#/components/schemas/dedicatedServerList"
           description: Ok.
         "401":
           content:
@@ -132,7 +132,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -142,7 +142,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -152,7 +152,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -162,7 +162,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: List available dedicated server configurations.
       tags:
@@ -187,14 +187,14 @@ paths:
         name: location
         required: true
         schema:
-          $ref: '#/components/schemas/location'
+          $ref: "#/components/schemas/location"
         style: form
       - explode: true
         in: query
         name: connectedToAggregationPool
         required: false
         schema:
-          $ref: '#/components/schemas/connectedToAggregationPool'
+          $ref: "#/components/schemas/connectedToAggregationPool"
         style: form
       responses:
         "200":
@@ -290,7 +290,7 @@ paths:
                   size: "32"
                   unit: GB
               schema:
-                $ref: '#/components/schemas/dedicatedServer'
+                $ref: "#/components/schemas/dedicatedServer"
           description: Ok.
         "401":
           content:
@@ -300,7 +300,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -310,7 +310,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -320,7 +320,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -330,7 +330,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -340,7 +340,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Get a single dedicated server and its price.
       tags:
@@ -368,7 +368,7 @@ paths:
               contractTerm: 1_MONTH
               location: AMS-01
             schema:
-              $ref: '#/components/schemas/orderDedicatedServerOpts'
+              $ref: "#/components/schemas/orderDedicatedServerOpts"
       responses:
         "201":
           content:
@@ -376,7 +376,7 @@ paths:
               example:
                 orderId: 44011723
               schema:
-                $ref: '#/components/schemas/order'
+                $ref: "#/components/schemas/order"
           description: Created.
         "401":
           content:
@@ -386,7 +386,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -396,7 +396,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -406,7 +406,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -416,7 +416,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -426,7 +426,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Dedicated Server ordering.
       tags:
@@ -442,7 +442,7 @@ paths:
         name: location
         required: false
         schema:
-          $ref: '#/components/schemas/location'
+          $ref: "#/components/schemas/location"
         style: form
       - description: Limit the number of results returned.
         example: 20
@@ -539,7 +539,7 @@ paths:
                     discount: -11.88
                     total: 47.51
               schema:
-                $ref: '#/components/schemas/vpsList'
+                $ref: "#/components/schemas/vpsList"
           description: Ok.
         "401":
           content:
@@ -549,7 +549,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -559,7 +559,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "500":
           content:
@@ -569,7 +569,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -579,7 +579,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Get a list of available VPS products and their prices.
       tags:
@@ -604,49 +604,49 @@ paths:
         name: location
         required: true
         schema:
-          $ref: '#/components/schemas/location'
+          $ref: "#/components/schemas/location"
         style: form
       - explode: true
         in: query
         name: diskUpgrade
         required: false
         schema:
-          $ref: '#/components/schemas/diskUpgrade'
+          $ref: "#/components/schemas/diskUpgrade"
         style: form
       - explode: true
         in: query
         name: operatingSystem
         required: false
         schema:
-          $ref: '#/components/schemas/operatingSystem'
+          $ref: "#/components/schemas/operatingSystem"
         style: form
       - explode: true
         in: query
         name: controlPanel
         required: false
         schema:
-          $ref: '#/components/schemas/controlPanel'
+          $ref: "#/components/schemas/controlPanel"
         style: form
       - explode: true
         in: query
         name: contractTerm
         required: false
         schema:
-          $ref: '#/components/schemas/contractTerm'
+          $ref: "#/components/schemas/contractTerm"
         style: form
       - explode: true
         in: query
         name: billingCycle
         required: false
         schema:
-          $ref: '#/components/schemas/billingCycle'
+          $ref: "#/components/schemas/billingCycle"
         style: form
       - explode: true
         in: query
         name: serviceLevelAgreement
         required: false
         schema:
-          $ref: '#/components/schemas/serviceLevelAgreement'
+          $ref: "#/components/schemas/serviceLevelAgreement"
         style: form
       responses:
         "200":
@@ -849,7 +849,7 @@ paths:
                 vCpu: "4"
                 vRam: "6"
               schema:
-                $ref: '#/components/schemas/vps'
+                $ref: "#/components/schemas/vps"
           description: Ok.
         "401":
           content:
@@ -859,7 +859,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -869,7 +869,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -879,7 +879,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -889,7 +889,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -899,7 +899,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: Get a single VPS and its price.
       tags:
@@ -931,7 +931,7 @@ paths:
               operatingSystem: Ubuntu 24.04
               serviceLevelAgreement: Basic
             schema:
-              $ref: '#/components/schemas/orderVpsOpts'
+              $ref: "#/components/schemas/orderVpsOpts"
       responses:
         "201":
           content:
@@ -939,7 +939,7 @@ paths:
               example:
                 orderId: 44011723
               schema:
-                $ref: '#/components/schemas/order'
+                $ref: "#/components/schemas/order"
           description: Created.
         "401":
           content:
@@ -949,7 +949,7 @@ paths:
                 errorCode: "401"
                 errorMessage: You are not authorized to view this resource.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Authorized.
         "403":
           content:
@@ -959,7 +959,7 @@ paths:
                 errorCode: "403"
                 errorMessage: Access to the requested resource is forbidden.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Forbidden.
         "404":
           content:
@@ -969,7 +969,7 @@ paths:
                 errorCode: "404"
                 errorMessage: Resource not found
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Not Found.
         "500":
           content:
@@ -979,7 +979,7 @@ paths:
                 errorCode: "500"
                 errorMessage: '''The API could not handle your request at this time.'
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Internal Server Error.
         "503":
           content:
@@ -989,7 +989,7 @@ paths:
                 errorCode: "503"
                 errorMessage: The API is not available at the moment.
               schema:
-                $ref: '#/components/schemas/errorResult'
+                $ref: "#/components/schemas/errorResult"
           description: Service Unavailable.
       summary: VPS ordering.
       tags:
@@ -1045,7 +1045,7 @@ components:
             errorCode: "401"
             errorMessage: You are not authorized to view this resource.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Not Authorized.
     "403":
       content:
@@ -1055,7 +1055,7 @@ components:
             errorCode: "403"
             errorMessage: Access to the requested resource is forbidden.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Forbidden.
     "404":
       content:
@@ -1065,7 +1065,7 @@ components:
             errorCode: "404"
             errorMessage: Resource not found
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Not Found.
     "500":
       content:
@@ -1075,7 +1075,7 @@ components:
             errorCode: "500"
             errorMessage: '''The API could not handle your request at this time.'
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Internal Server Error.
     "503":
       content:
@@ -1085,7 +1085,7 @@ components:
             errorCode: "503"
             errorMessage: The API is not available at the moment.
           schema:
-            $ref: '#/components/schemas/errorResult'
+            $ref: "#/components/schemas/errorResult"
       description: Service Unavailable.
   schemas:
     location:
@@ -1138,17 +1138,17 @@ components:
           description: Chassis of the server
           type: string
         cpu:
-          $ref: '#/components/schemas/cpu'
+          $ref: "#/components/schemas/cpu"
         deliveryMethod:
           description: Time to get the server ready
           type: string
         hdd:
           description: HDD info of the server
           items:
-            $ref: '#/components/schemas/hdd'
+            $ref: "#/components/schemas/hdd"
           type: array
         ram:
-          $ref: '#/components/schemas/ram'
+          $ref: "#/components/schemas/ram"
         location:
           description: Location of the server
           items:
@@ -1237,10 +1237,10 @@ components:
       properties:
         dedicatedServers:
           items:
-            $ref: '#/components/schemas/dedicatedServerDetail'
+            $ref: "#/components/schemas/dedicatedServerDetail"
           type: array
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
       type: object
     errorResult:
       example:
@@ -1277,11 +1277,11 @@ components:
     productPrice:
       properties:
         price:
-          $ref: '#/components/schemas/productPrice_price'
+          $ref: "#/components/schemas/productPrice_price"
     dedicatedServer:
       allOf:
-      - $ref: '#/components/schemas/dedicatedServerDetail'
-      - $ref: '#/components/schemas/productPrice'
+      - $ref: "#/components/schemas/dedicatedServerDetail"
+      - $ref: "#/components/schemas/productPrice"
       example:
         deliveryMethod: deliveryMethod
         price:
@@ -1409,7 +1409,7 @@ components:
           description: Traffic allowance
           type: string
         price:
-          $ref: '#/components/schemas/vpsListItemPrice'
+          $ref: "#/components/schemas/vpsListItemPrice"
       type: object
     vpsList:
       example:
@@ -1443,10 +1443,10 @@ components:
       properties:
         vpss:
           items:
-            $ref: '#/components/schemas/vpsListItem'
+            $ref: "#/components/schemas/vpsListItem"
           type: array
         _metadata:
-          $ref: '#/components/schemas/_metadata'
+          $ref: "#/components/schemas/_metadata"
       type: object
     diskUpgrade:
       description: Disk upgrade option
@@ -1541,13 +1541,13 @@ components:
     vpsConfigurationOptions:
       properties:
         configurationOptions:
-          $ref: '#/components/schemas/configurationOptions'
+          $ref: "#/components/schemas/configurationOptions"
       type: object
     vps:
       allOf:
-      - $ref: '#/components/schemas/vpsDetail'
-      - $ref: '#/components/schemas/productPrice'
-      - $ref: '#/components/schemas/vpsConfigurationOptions'
+      - $ref: "#/components/schemas/vpsDetail"
+      - $ref: "#/components/schemas/productPrice"
+      - $ref: "#/components/schemas/vpsConfigurationOptions"
       example:
         vCpu: vCpu
         price:
@@ -1652,11 +1652,11 @@ components:
           example: Plesk Web Pro Edition (30 Domains) for VPS
           type: string
         serviceLevelAgreement:
-          $ref: '#/components/schemas/serviceLevelAgreement'
+          $ref: "#/components/schemas/serviceLevelAgreement"
         contractTerm:
-          $ref: '#/components/schemas/contractTerm'
+          $ref: "#/components/schemas/contractTerm"
         billingCycle:
-          $ref: '#/components/schemas/billingCycle'
+          $ref: "#/components/schemas/billingCycle"
       required:
       - location
       type: object
@@ -1743,7 +1743,7 @@ components:
         details:
           description: Discount details
           items:
-            $ref: '#/components/schemas/discountItems'
+            $ref: "#/components/schemas/discountItems"
           type: array
       title: productDiscounts
       type: object
@@ -1866,7 +1866,7 @@ components:
           description: Fee amount
           type: number
         discounts:
-          $ref: '#/components/schemas/productDiscounts'
+          $ref: "#/components/schemas/productDiscounts"
         total:
           description: Final price
           type: number
@@ -1883,7 +1883,7 @@ components:
         contractTerms:
           description: Available contract terms
           items:
-            $ref: '#/components/schemas/contractTermItem'
+            $ref: "#/components/schemas/contractTermItem"
           title: contractTerms
           type: array
         billingCycle:
@@ -1897,7 +1897,7 @@ components:
         billingCycles:
           description: Available billing cycles
           items:
-            $ref: '#/components/schemas/billingCycleItem'
+            $ref: "#/components/schemas/billingCycleItem"
           title: billingCycles
           type: array
       type: object
@@ -1967,22 +1967,22 @@ components:
           description: "Available disk upgrade options. Note: This will add additional\
             \ storage on top of the base NVMe Storage included with your package"
           items:
-            $ref: '#/components/schemas/vpsConfigurationOption'
+            $ref: "#/components/schemas/vpsConfigurationOption"
           type: array
         operatingSystem:
           description: Available operating system options
           items:
-            $ref: '#/components/schemas/vpsConfigurationOption'
+            $ref: "#/components/schemas/vpsConfigurationOption"
           type: array
         controlPanel:
           description: Available control panel options
           items:
-            $ref: '#/components/schemas/vpsConfigurationOption'
+            $ref: "#/components/schemas/vpsConfigurationOption"
           type: array
         serviceLevelAgreement:
           description: Available SLA options
           items:
-            $ref: '#/components/schemas/vpsConfigurationOption'
+            $ref: "#/components/schemas/vpsConfigurationOption"
           type: array
       title: configurationOptions
       type: object

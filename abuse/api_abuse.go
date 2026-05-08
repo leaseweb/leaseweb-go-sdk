@@ -652,7 +652,7 @@ type ApiGetReportListRequest struct {
 	ApiService AbuseAPI
 	limit *int32
 	offset *int32
-	status *string
+	status *StatusValue
 	ticketId *string
 	ip *string
 	sort *string
@@ -670,8 +670,8 @@ func (r ApiGetReportListRequest) Offset(offset int32) ApiGetReportListRequest {
 	return r
 }
 
-// Comma separated list of report statuses to filter on. 
-func (r ApiGetReportListRequest) Status(status string) ApiGetReportListRequest {
+// Filter reports by their status (&#x60;?status&#x3D;OPEN,CLOSED&#x60;): returns reports that have any of the listed statuses. Defaults to &#x60;OPEN,WAITING,CLOSED&#x60; if not provided. 
+func (r ApiGetReportListRequest) Status(status StatusValue) ApiGetReportListRequest {
 	r.status = &status
 	return r
 }
@@ -682,7 +682,7 @@ func (r ApiGetReportListRequest) TicketId(ticketId string) ApiGetReportListReque
 	return r
 }
 
-// Optional IP address to filter results
+// Filter reports by IP addresses (&#x60;?ip&#x3D;1.2.3.4,1.2.3.5&#x60;): returns reports that match any of the listed IP addresses. 
 func (r ApiGetReportListRequest) Ip(ip string) ApiGetReportListRequest {
 	r.ip = &ip
 	return r
@@ -742,9 +742,6 @@ func (a *AbuseAPIService) GetReportListExecute(r ApiGetReportListRequest) (*GetR
 	}
 	if r.status != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
-	} else {
-		var defaultValue string = "OPEN,WAITING,CLOSED"
-		r.status = &defaultValue
 	}
 	if r.ticketId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ticketId", r.ticketId, "form", "")
@@ -756,6 +753,7 @@ func (a *AbuseAPIService) GetReportListExecute(r ApiGetReportListRequest) (*GetR
 		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "form", "")
 	} else {
 		var defaultValue string = "The list is sorted in descending order by reportedAt"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "")
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header

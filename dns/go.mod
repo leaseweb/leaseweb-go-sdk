@@ -1,6 +1,6 @@
-module github.com/leaseweb/leaseweb-go-sdk/dns
+module github.com/leaseweb/leaseweb-go-sdk/dns/v2
 
-go 1.18
+go 1.26
 
 require github.com/stretchr/testify v1.11.1
 

@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/aggregationpack"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/aggregationpack/v2"
 )
 
 func Test_aggregationpack_AggregationpackAPIService(t *testing.T) {

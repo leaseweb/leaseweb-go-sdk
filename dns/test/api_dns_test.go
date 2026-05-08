@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns"
+	openapiclient "github.com/leaseweb/leaseweb-go-sdk/dns/v2"
 )
 
 func Test_dns_DnsAPIService(t *testing.T) {
