@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **ContractTerms** | Pointer to [**[]ContractTermItem**](ContractTermItem.md) | Available contract terms | [optional] 
 **BillingCycle** | Pointer to **string** | Selected billing cycle | [optional] 
 **BillingCycles** | Pointer to [**[]BillingCycleItem**](BillingCycleItem.md) | Available billing cycles | [optional] 
+**Details** | Pointer to **map[string]map[string]string** | Per-component price breakdown grouped by section (e.g. Server, Connectivity, Software, Services, Discounts). Each section maps a line description to its formatted price (e.g. \&quot;incl.\&quot; or \&quot;€ 513.00\&quot;). | [optional] 
 
 ## Methods
 
@@ -309,6 +310,31 @@ SetBillingCycles sets BillingCycles field to given value.
 `func (o *ProductPricePrice) HasBillingCycles() bool`
 
 HasBillingCycles returns a boolean if a field has been set.
+
+### GetDetails
+
+`func (o *ProductPricePrice) GetDetails() map[string]map[string]string`
+
+GetDetails returns the Details field if non-nil, zero value otherwise.
+
+### GetDetailsOk
+
+`func (o *ProductPricePrice) GetDetailsOk() (*map[string]map[string]string, bool)`
+
+GetDetailsOk returns a tuple with the Details field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDetails
+
+`func (o *ProductPricePrice) SetDetails(v map[string]map[string]string)`
+
+SetDetails sets Details field to given value.
+
+### HasDetails
+
+`func (o *ProductPricePrice) HasDetails() bool`
+
+HasDetails returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

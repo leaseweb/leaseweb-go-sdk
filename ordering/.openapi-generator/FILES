@@ -13,6 +13,10 @@ docs/ContractTerm.md
 docs/ContractTermItem.md
 docs/Cpu.md
 docs/DedicatedServer.md
+docs/DedicatedServerConfiguration.md
+docs/DedicatedServerConfigurationOption.md
+docs/DedicatedServerConfigurationOptions.md
+docs/DedicatedServerConfigurationOptions1.md
 docs/DedicatedServerDetail.md
 docs/DedicatedServerList.md
 docs/DiscountItems.md
@@ -46,6 +50,10 @@ model_contract_term.go
 model_contract_term_item.go
 model_cpu.go
 model_dedicated_server.go
+model_dedicated_server_configuration.go
+model_dedicated_server_configuration_option.go
+model_dedicated_server_configuration_options.go
+model_dedicated_server_configuration_options_1.go
 model_dedicated_server_detail.go
 model_dedicated_server_list.go
 model_discount_items.go

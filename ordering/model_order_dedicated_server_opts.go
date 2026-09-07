@@ -26,6 +26,8 @@ type OrderDedicatedServerOpts struct {
 	ConnectedToAggregationPool *bool `json:"connectedToAggregationPool,omitempty"`
 	// The contract term of the server
 	ContractTerm *string `json:"contractTerm,omitempty"`
+	// Operating system option. Defaults to no OS when omitted.
+	OperatingSystem *string `json:"operatingSystem,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -145,6 +147,38 @@ func (o *OrderDedicatedServerOpts) SetContractTerm(v string) {
 	o.ContractTerm = &v
 }
 
+// GetOperatingSystem returns the OperatingSystem field value if set, zero value otherwise.
+func (o *OrderDedicatedServerOpts) GetOperatingSystem() string {
+	if o == nil || IsNil(o.OperatingSystem) {
+		var ret string
+		return ret
+	}
+	return *o.OperatingSystem
+}
+
+// GetOperatingSystemOk returns a tuple with the OperatingSystem field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrderDedicatedServerOpts) GetOperatingSystemOk() (*string, bool) {
+	if o == nil || IsNil(o.OperatingSystem) {
+		return nil, false
+	}
+	return o.OperatingSystem, true
+}
+
+// HasOperatingSystem returns a boolean if a field has been set.
+func (o *OrderDedicatedServerOpts) HasOperatingSystem() bool {
+	if o != nil && !IsNil(o.OperatingSystem) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperatingSystem gets a reference to the given string and assigns it to the OperatingSystem field.
+func (o *OrderDedicatedServerOpts) SetOperatingSystem(v string) {
+	o.OperatingSystem = &v
+}
+
 func (o OrderDedicatedServerOpts) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -161,6 +195,9 @@ func (o OrderDedicatedServerOpts) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ContractTerm) {
 		toSerialize["contractTerm"] = o.ContractTerm
+	}
+	if !IsNil(o.OperatingSystem) {
+		toSerialize["operatingSystem"] = o.OperatingSystem
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -208,6 +245,7 @@ func (o *OrderDedicatedServerOpts) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "location")
 		delete(additionalProperties, "connectedToAggregationPool")
 		delete(additionalProperties, "contractTerm")
+		delete(additionalProperties, "operatingSystem")
 		o.AdditionalProperties = additionalProperties
 	}
 

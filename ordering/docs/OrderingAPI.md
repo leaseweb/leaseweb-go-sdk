@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## GetDedicatedServer
 
-> DedicatedServer GetDedicatedServer(ctx, dedicatedServerId).Location(location).ConnectedToAggregationPool(connectedToAggregationPool).Execute()
+> DedicatedServer GetDedicatedServer(ctx, dedicatedServerId).Location(location).ConnectedToAggregationPool(connectedToAggregationPool).ContractTerm(contractTerm).BillingCycle(billingCycle).OperatingSystem(operatingSystem).Execute()
 
 Get a single dedicated server and its price.
 
@@ -37,10 +37,13 @@ func main() {
 	dedicatedServerId := "27f38ef06cf3bf62e21e75401feac6cd" // string | The ID of a dedicated server
 	location := "location_example" // string | 
 	connectedToAggregationPool := true // bool |  (optional) (default to false)
+	contractTerm := openapiclient.contractTerm("1_MONTH") // ContractTerm |  (optional) (default to "1_YEAR")
+	billingCycle := openapiclient.billingCycle("1_MONTH") // BillingCycle |  (optional) (default to "1_MONTH")
+	operatingSystem := "operatingSystem_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrderingAPI.GetDedicatedServer(context.Background(), dedicatedServerId).Location(location).ConnectedToAggregationPool(connectedToAggregationPool).Execute()
+	resp, r, err := apiClient.OrderingAPI.GetDedicatedServer(context.Background(), dedicatedServerId).Location(location).ConnectedToAggregationPool(connectedToAggregationPool).ContractTerm(contractTerm).BillingCycle(billingCycle).OperatingSystem(operatingSystem).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrderingAPI.GetDedicatedServer``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -68,6 +71,9 @@ Name | Type | Description  | Notes
 
  **location** | **string** |  | 
  **connectedToAggregationPool** | **bool** |  | [default to false]
+ **contractTerm** | [**ContractTerm**](ContractTerm.md) |  | [default to &quot;1_YEAR&quot;]
+ **billingCycle** | [**BillingCycle**](BillingCycle.md) |  | [default to &quot;1_MONTH&quot;]
+ **operatingSystem** | **string** |  | 
 
 ### Return type
 

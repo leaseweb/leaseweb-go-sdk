@@ -40,6 +40,8 @@ type ProductPricePrice struct {
 	BillingCycle *string `json:"billingCycle,omitempty"`
 	// Available billing cycles
 	BillingCycles []BillingCycleItem `json:"billingCycles,omitempty"`
+	// Per-component price breakdown grouped by section (e.g. Server, Connectivity, Software, Services, Discounts). Each section maps a line description to its formatted price (e.g. \"incl.\" or \"€ 513.00\").
+	Details *map[string]map[string]string `json:"details,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -414,6 +416,38 @@ func (o *ProductPricePrice) SetBillingCycles(v []BillingCycleItem) {
 	o.BillingCycles = v
 }
 
+// GetDetails returns the Details field value if set, zero value otherwise.
+func (o *ProductPricePrice) GetDetails() map[string]map[string]string {
+	if o == nil || IsNil(o.Details) {
+		var ret map[string]map[string]string
+		return ret
+	}
+	return *o.Details
+}
+
+// GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProductPricePrice) GetDetailsOk() (*map[string]map[string]string, bool) {
+	if o == nil || IsNil(o.Details) {
+		return nil, false
+	}
+	return o.Details, true
+}
+
+// HasDetails returns a boolean if a field has been set.
+func (o *ProductPricePrice) HasDetails() bool {
+	if o != nil && !IsNil(o.Details) {
+		return true
+	}
+
+	return false
+}
+
+// SetDetails gets a reference to the given map[string]map[string]string and assigns it to the Details field.
+func (o *ProductPricePrice) SetDetails(v map[string]map[string]string) {
+	o.Details = &v
+}
+
 func (o ProductPricePrice) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -457,6 +491,9 @@ func (o ProductPricePrice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BillingCycles) {
 		toSerialize["billingCycles"] = o.BillingCycles
 	}
+	if !IsNil(o.Details) {
+		toSerialize["details"] = o.Details
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -490,6 +527,7 @@ func (o *ProductPricePrice) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "contractTerms")
 		delete(additionalProperties, "billingCycle")
 		delete(additionalProperties, "billingCycles")
+		delete(additionalProperties, "details")
 		o.AdditionalProperties = additionalProperties
 	}
 

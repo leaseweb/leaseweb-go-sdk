@@ -33,6 +33,31 @@ type DedicatedServer struct {
 	Ram *Ram `json:"ram,omitempty"`
 	// Location of the server
 	Location []string `json:"location,omitempty"`
+	// Selected operating system
+	OperatingSystem *string `json:"operatingSystem,omitempty"`
+	// Disk set where the OS is installed
+	InstallOsOnHdd *string `json:"installOsOnHdd,omitempty"`
+	// Selected control panel
+	ControlPanel *string `json:"controlPanel,omitempty"`
+	// IP connectivity type
+	IpConnectivityType *string `json:"ipConnectivityType,omitempty"`
+	// Data pack configuration
+	DataPackConfiguration *string `json:"dataPackConfiguration,omitempty"`
+	// Uplink port speed
+	UplinkPortSpeed *string `json:"uplinkPortSpeed,omitempty"`
+	// Private network configuration
+	PrivateNetwork1xvlan *string `json:"privateNetwork1xvlan,omitempty"`
+	// IPv4 configuration
+	IpV4Configuration *string `json:"ipV4Configuration,omitempty"`
+	// Additional services
+	AdditionalServices []string `json:"additionalServices,omitempty"`
+	// Monitoring type
+	MonitoringType *string `json:"monitoringType,omitempty"`
+	// DDoS IP protection
+	DdosIpProtection *string `json:"ddosIpProtection,omitempty"`
+	// Service level agreement
+	ServiceLevelAgreement *string `json:"serviceLevelAgreement,omitempty"`
+	ConfigurationOptions *DedicatedServerConfigurationOptions1 `json:"configurationOptions,omitempty"`
 	Price *ProductPricePrice `json:"price,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -312,6 +337,422 @@ func (o *DedicatedServer) SetLocation(v []string) {
 	o.Location = v
 }
 
+// GetOperatingSystem returns the OperatingSystem field value if set, zero value otherwise.
+func (o *DedicatedServer) GetOperatingSystem() string {
+	if o == nil || IsNil(o.OperatingSystem) {
+		var ret string
+		return ret
+	}
+	return *o.OperatingSystem
+}
+
+// GetOperatingSystemOk returns a tuple with the OperatingSystem field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetOperatingSystemOk() (*string, bool) {
+	if o == nil || IsNil(o.OperatingSystem) {
+		return nil, false
+	}
+	return o.OperatingSystem, true
+}
+
+// HasOperatingSystem returns a boolean if a field has been set.
+func (o *DedicatedServer) HasOperatingSystem() bool {
+	if o != nil && !IsNil(o.OperatingSystem) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperatingSystem gets a reference to the given string and assigns it to the OperatingSystem field.
+func (o *DedicatedServer) SetOperatingSystem(v string) {
+	o.OperatingSystem = &v
+}
+
+// GetInstallOsOnHdd returns the InstallOsOnHdd field value if set, zero value otherwise.
+func (o *DedicatedServer) GetInstallOsOnHdd() string {
+	if o == nil || IsNil(o.InstallOsOnHdd) {
+		var ret string
+		return ret
+	}
+	return *o.InstallOsOnHdd
+}
+
+// GetInstallOsOnHddOk returns a tuple with the InstallOsOnHdd field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetInstallOsOnHddOk() (*string, bool) {
+	if o == nil || IsNil(o.InstallOsOnHdd) {
+		return nil, false
+	}
+	return o.InstallOsOnHdd, true
+}
+
+// HasInstallOsOnHdd returns a boolean if a field has been set.
+func (o *DedicatedServer) HasInstallOsOnHdd() bool {
+	if o != nil && !IsNil(o.InstallOsOnHdd) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstallOsOnHdd gets a reference to the given string and assigns it to the InstallOsOnHdd field.
+func (o *DedicatedServer) SetInstallOsOnHdd(v string) {
+	o.InstallOsOnHdd = &v
+}
+
+// GetControlPanel returns the ControlPanel field value if set, zero value otherwise.
+func (o *DedicatedServer) GetControlPanel() string {
+	if o == nil || IsNil(o.ControlPanel) {
+		var ret string
+		return ret
+	}
+	return *o.ControlPanel
+}
+
+// GetControlPanelOk returns a tuple with the ControlPanel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetControlPanelOk() (*string, bool) {
+	if o == nil || IsNil(o.ControlPanel) {
+		return nil, false
+	}
+	return o.ControlPanel, true
+}
+
+// HasControlPanel returns a boolean if a field has been set.
+func (o *DedicatedServer) HasControlPanel() bool {
+	if o != nil && !IsNil(o.ControlPanel) {
+		return true
+	}
+
+	return false
+}
+
+// SetControlPanel gets a reference to the given string and assigns it to the ControlPanel field.
+func (o *DedicatedServer) SetControlPanel(v string) {
+	o.ControlPanel = &v
+}
+
+// GetIpConnectivityType returns the IpConnectivityType field value if set, zero value otherwise.
+func (o *DedicatedServer) GetIpConnectivityType() string {
+	if o == nil || IsNil(o.IpConnectivityType) {
+		var ret string
+		return ret
+	}
+	return *o.IpConnectivityType
+}
+
+// GetIpConnectivityTypeOk returns a tuple with the IpConnectivityType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetIpConnectivityTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.IpConnectivityType) {
+		return nil, false
+	}
+	return o.IpConnectivityType, true
+}
+
+// HasIpConnectivityType returns a boolean if a field has been set.
+func (o *DedicatedServer) HasIpConnectivityType() bool {
+	if o != nil && !IsNil(o.IpConnectivityType) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpConnectivityType gets a reference to the given string and assigns it to the IpConnectivityType field.
+func (o *DedicatedServer) SetIpConnectivityType(v string) {
+	o.IpConnectivityType = &v
+}
+
+// GetDataPackConfiguration returns the DataPackConfiguration field value if set, zero value otherwise.
+func (o *DedicatedServer) GetDataPackConfiguration() string {
+	if o == nil || IsNil(o.DataPackConfiguration) {
+		var ret string
+		return ret
+	}
+	return *o.DataPackConfiguration
+}
+
+// GetDataPackConfigurationOk returns a tuple with the DataPackConfiguration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetDataPackConfigurationOk() (*string, bool) {
+	if o == nil || IsNil(o.DataPackConfiguration) {
+		return nil, false
+	}
+	return o.DataPackConfiguration, true
+}
+
+// HasDataPackConfiguration returns a boolean if a field has been set.
+func (o *DedicatedServer) HasDataPackConfiguration() bool {
+	if o != nil && !IsNil(o.DataPackConfiguration) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataPackConfiguration gets a reference to the given string and assigns it to the DataPackConfiguration field.
+func (o *DedicatedServer) SetDataPackConfiguration(v string) {
+	o.DataPackConfiguration = &v
+}
+
+// GetUplinkPortSpeed returns the UplinkPortSpeed field value if set, zero value otherwise.
+func (o *DedicatedServer) GetUplinkPortSpeed() string {
+	if o == nil || IsNil(o.UplinkPortSpeed) {
+		var ret string
+		return ret
+	}
+	return *o.UplinkPortSpeed
+}
+
+// GetUplinkPortSpeedOk returns a tuple with the UplinkPortSpeed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetUplinkPortSpeedOk() (*string, bool) {
+	if o == nil || IsNil(o.UplinkPortSpeed) {
+		return nil, false
+	}
+	return o.UplinkPortSpeed, true
+}
+
+// HasUplinkPortSpeed returns a boolean if a field has been set.
+func (o *DedicatedServer) HasUplinkPortSpeed() bool {
+	if o != nil && !IsNil(o.UplinkPortSpeed) {
+		return true
+	}
+
+	return false
+}
+
+// SetUplinkPortSpeed gets a reference to the given string and assigns it to the UplinkPortSpeed field.
+func (o *DedicatedServer) SetUplinkPortSpeed(v string) {
+	o.UplinkPortSpeed = &v
+}
+
+// GetPrivateNetwork1xvlan returns the PrivateNetwork1xvlan field value if set, zero value otherwise.
+func (o *DedicatedServer) GetPrivateNetwork1xvlan() string {
+	if o == nil || IsNil(o.PrivateNetwork1xvlan) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateNetwork1xvlan
+}
+
+// GetPrivateNetwork1xvlanOk returns a tuple with the PrivateNetwork1xvlan field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetPrivateNetwork1xvlanOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateNetwork1xvlan) {
+		return nil, false
+	}
+	return o.PrivateNetwork1xvlan, true
+}
+
+// HasPrivateNetwork1xvlan returns a boolean if a field has been set.
+func (o *DedicatedServer) HasPrivateNetwork1xvlan() bool {
+	if o != nil && !IsNil(o.PrivateNetwork1xvlan) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateNetwork1xvlan gets a reference to the given string and assigns it to the PrivateNetwork1xvlan field.
+func (o *DedicatedServer) SetPrivateNetwork1xvlan(v string) {
+	o.PrivateNetwork1xvlan = &v
+}
+
+// GetIpV4Configuration returns the IpV4Configuration field value if set, zero value otherwise.
+func (o *DedicatedServer) GetIpV4Configuration() string {
+	if o == nil || IsNil(o.IpV4Configuration) {
+		var ret string
+		return ret
+	}
+	return *o.IpV4Configuration
+}
+
+// GetIpV4ConfigurationOk returns a tuple with the IpV4Configuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetIpV4ConfigurationOk() (*string, bool) {
+	if o == nil || IsNil(o.IpV4Configuration) {
+		return nil, false
+	}
+	return o.IpV4Configuration, true
+}
+
+// HasIpV4Configuration returns a boolean if a field has been set.
+func (o *DedicatedServer) HasIpV4Configuration() bool {
+	if o != nil && !IsNil(o.IpV4Configuration) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpV4Configuration gets a reference to the given string and assigns it to the IpV4Configuration field.
+func (o *DedicatedServer) SetIpV4Configuration(v string) {
+	o.IpV4Configuration = &v
+}
+
+// GetAdditionalServices returns the AdditionalServices field value if set, zero value otherwise.
+func (o *DedicatedServer) GetAdditionalServices() []string {
+	if o == nil || IsNil(o.AdditionalServices) {
+		var ret []string
+		return ret
+	}
+	return o.AdditionalServices
+}
+
+// GetAdditionalServicesOk returns a tuple with the AdditionalServices field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetAdditionalServicesOk() ([]string, bool) {
+	if o == nil || IsNil(o.AdditionalServices) {
+		return nil, false
+	}
+	return o.AdditionalServices, true
+}
+
+// HasAdditionalServices returns a boolean if a field has been set.
+func (o *DedicatedServer) HasAdditionalServices() bool {
+	if o != nil && !IsNil(o.AdditionalServices) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalServices gets a reference to the given []string and assigns it to the AdditionalServices field.
+func (o *DedicatedServer) SetAdditionalServices(v []string) {
+	o.AdditionalServices = v
+}
+
+// GetMonitoringType returns the MonitoringType field value if set, zero value otherwise.
+func (o *DedicatedServer) GetMonitoringType() string {
+	if o == nil || IsNil(o.MonitoringType) {
+		var ret string
+		return ret
+	}
+	return *o.MonitoringType
+}
+
+// GetMonitoringTypeOk returns a tuple with the MonitoringType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetMonitoringTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.MonitoringType) {
+		return nil, false
+	}
+	return o.MonitoringType, true
+}
+
+// HasMonitoringType returns a boolean if a field has been set.
+func (o *DedicatedServer) HasMonitoringType() bool {
+	if o != nil && !IsNil(o.MonitoringType) {
+		return true
+	}
+
+	return false
+}
+
+// SetMonitoringType gets a reference to the given string and assigns it to the MonitoringType field.
+func (o *DedicatedServer) SetMonitoringType(v string) {
+	o.MonitoringType = &v
+}
+
+// GetDdosIpProtection returns the DdosIpProtection field value if set, zero value otherwise.
+func (o *DedicatedServer) GetDdosIpProtection() string {
+	if o == nil || IsNil(o.DdosIpProtection) {
+		var ret string
+		return ret
+	}
+	return *o.DdosIpProtection
+}
+
+// GetDdosIpProtectionOk returns a tuple with the DdosIpProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetDdosIpProtectionOk() (*string, bool) {
+	if o == nil || IsNil(o.DdosIpProtection) {
+		return nil, false
+	}
+	return o.DdosIpProtection, true
+}
+
+// HasDdosIpProtection returns a boolean if a field has been set.
+func (o *DedicatedServer) HasDdosIpProtection() bool {
+	if o != nil && !IsNil(o.DdosIpProtection) {
+		return true
+	}
+
+	return false
+}
+
+// SetDdosIpProtection gets a reference to the given string and assigns it to the DdosIpProtection field.
+func (o *DedicatedServer) SetDdosIpProtection(v string) {
+	o.DdosIpProtection = &v
+}
+
+// GetServiceLevelAgreement returns the ServiceLevelAgreement field value if set, zero value otherwise.
+func (o *DedicatedServer) GetServiceLevelAgreement() string {
+	if o == nil || IsNil(o.ServiceLevelAgreement) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceLevelAgreement
+}
+
+// GetServiceLevelAgreementOk returns a tuple with the ServiceLevelAgreement field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetServiceLevelAgreementOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceLevelAgreement) {
+		return nil, false
+	}
+	return o.ServiceLevelAgreement, true
+}
+
+// HasServiceLevelAgreement returns a boolean if a field has been set.
+func (o *DedicatedServer) HasServiceLevelAgreement() bool {
+	if o != nil && !IsNil(o.ServiceLevelAgreement) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceLevelAgreement gets a reference to the given string and assigns it to the ServiceLevelAgreement field.
+func (o *DedicatedServer) SetServiceLevelAgreement(v string) {
+	o.ServiceLevelAgreement = &v
+}
+
+// GetConfigurationOptions returns the ConfigurationOptions field value if set, zero value otherwise.
+func (o *DedicatedServer) GetConfigurationOptions() DedicatedServerConfigurationOptions1 {
+	if o == nil || IsNil(o.ConfigurationOptions) {
+		var ret DedicatedServerConfigurationOptions1
+		return ret
+	}
+	return *o.ConfigurationOptions
+}
+
+// GetConfigurationOptionsOk returns a tuple with the ConfigurationOptions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DedicatedServer) GetConfigurationOptionsOk() (*DedicatedServerConfigurationOptions1, bool) {
+	if o == nil || IsNil(o.ConfigurationOptions) {
+		return nil, false
+	}
+	return o.ConfigurationOptions, true
+}
+
+// HasConfigurationOptions returns a boolean if a field has been set.
+func (o *DedicatedServer) HasConfigurationOptions() bool {
+	if o != nil && !IsNil(o.ConfigurationOptions) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigurationOptions gets a reference to the given DedicatedServerConfigurationOptions1 and assigns it to the ConfigurationOptions field.
+func (o *DedicatedServer) SetConfigurationOptions(v DedicatedServerConfigurationOptions1) {
+	o.ConfigurationOptions = &v
+}
+
 // GetPrice returns the Price field value if set, zero value otherwise.
 func (o *DedicatedServer) GetPrice() ProductPricePrice {
 	if o == nil || IsNil(o.Price) {
@@ -378,6 +819,45 @@ func (o DedicatedServer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Location) {
 		toSerialize["location"] = o.Location
 	}
+	if !IsNil(o.OperatingSystem) {
+		toSerialize["operatingSystem"] = o.OperatingSystem
+	}
+	if !IsNil(o.InstallOsOnHdd) {
+		toSerialize["installOsOnHdd"] = o.InstallOsOnHdd
+	}
+	if !IsNil(o.ControlPanel) {
+		toSerialize["controlPanel"] = o.ControlPanel
+	}
+	if !IsNil(o.IpConnectivityType) {
+		toSerialize["ipConnectivityType"] = o.IpConnectivityType
+	}
+	if !IsNil(o.DataPackConfiguration) {
+		toSerialize["dataPackConfiguration"] = o.DataPackConfiguration
+	}
+	if !IsNil(o.UplinkPortSpeed) {
+		toSerialize["uplinkPortSpeed"] = o.UplinkPortSpeed
+	}
+	if !IsNil(o.PrivateNetwork1xvlan) {
+		toSerialize["privateNetwork1xvlan"] = o.PrivateNetwork1xvlan
+	}
+	if !IsNil(o.IpV4Configuration) {
+		toSerialize["ipV4Configuration"] = o.IpV4Configuration
+	}
+	if !IsNil(o.AdditionalServices) {
+		toSerialize["additionalServices"] = o.AdditionalServices
+	}
+	if !IsNil(o.MonitoringType) {
+		toSerialize["monitoringType"] = o.MonitoringType
+	}
+	if !IsNil(o.DdosIpProtection) {
+		toSerialize["ddosIpProtection"] = o.DdosIpProtection
+	}
+	if !IsNil(o.ServiceLevelAgreement) {
+		toSerialize["serviceLevelAgreement"] = o.ServiceLevelAgreement
+	}
+	if !IsNil(o.ConfigurationOptions) {
+		toSerialize["configurationOptions"] = o.ConfigurationOptions
+	}
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price
 	}
@@ -411,6 +891,19 @@ func (o *DedicatedServer) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "hdd")
 		delete(additionalProperties, "ram")
 		delete(additionalProperties, "location")
+		delete(additionalProperties, "operatingSystem")
+		delete(additionalProperties, "installOsOnHdd")
+		delete(additionalProperties, "controlPanel")
+		delete(additionalProperties, "ipConnectivityType")
+		delete(additionalProperties, "dataPackConfiguration")
+		delete(additionalProperties, "uplinkPortSpeed")
+		delete(additionalProperties, "privateNetwork1xvlan")
+		delete(additionalProperties, "ipV4Configuration")
+		delete(additionalProperties, "additionalServices")
+		delete(additionalProperties, "monitoringType")
+		delete(additionalProperties, "ddosIpProtection")
+		delete(additionalProperties, "serviceLevelAgreement")
+		delete(additionalProperties, "configurationOptions")
 		delete(additionalProperties, "price")
 		o.AdditionalProperties = additionalProperties
 	}

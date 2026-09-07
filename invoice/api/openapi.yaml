@@ -451,7 +451,7 @@ paths:
       summary: Get Invoice PDF
       tags:
       - invoice
-  /proforma:
+  /invoices/proforma:
     get:
       description: This endpoint will return an overview of contract items that will
         be invoiced as of the 1st of the upcoming month.

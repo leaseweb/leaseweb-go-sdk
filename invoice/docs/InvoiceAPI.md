@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**GetInvoicePdf**](InvoiceAPI.md#GetInvoicePdf) | **Get** /invoices/{Id}/pdf | Get Invoice PDF
 [**GetInvoices**](InvoiceAPI.md#GetInvoices) | **Get** /invoices | List Invoices
 [**GetInvoicesExportCsv**](InvoiceAPI.md#GetInvoicesExportCsv) | **Get** /invoices/export/csv | Export Invoices (CSV)
-[**GetProforma**](InvoiceAPI.md#GetProforma) | **Get** /proforma | Pro Forma
+[**GetProforma**](InvoiceAPI.md#GetProforma) | **Get** /invoices/proforma | Pro Forma
 
 
 

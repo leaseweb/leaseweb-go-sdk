@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **VRam** | Pointer to **string** | Virtual RAM in GB | [optional] 
 **NvmeStorage** | Pointer to **string** | Included NVMe storage | [optional] 
 **Traffic** | Pointer to **string** | Traffic allowance | [optional] 
-**Location** | Pointer to **[]string** | Available locations for the VPS | [optional] 
+**Location** | Pointer to **[]string** | All locations where the VPS is available, regardless of the API key&#39;s entity | [optional] 
 
 ## Methods
 

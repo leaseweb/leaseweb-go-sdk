@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Location** | **string** | The datacenter location | 
 **DiskUpgrade** | Pointer to **string** | Disk upgrade option | [optional] 
-**OperatingSystem** | Pointer to **string** | Operating system option | [optional] 
+**OperatingSystem** | Pointer to **string** | Operating system option. Matched case-insensitively and ignoring the licensing/core suffix, so \&quot;windows server 2022 datacenter\&quot; matches \&quot;Windows Server 2022 Datacenter (2-Cores)\&quot;. | [optional] 
 **ControlPanel** | Pointer to **string** | Control panel option | [optional] 
 **ServiceLevelAgreement** | Pointer to [**ServiceLevelAgreement**](ServiceLevelAgreement.md) |  | [optional] 
 **ContractTerm** | Pointer to [**ContractTerm**](ContractTerm.md) |  | [optional] [default to CONTRACTTERM__1_YEAR]

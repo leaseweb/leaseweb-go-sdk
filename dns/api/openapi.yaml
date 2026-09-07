@@ -234,9 +234,8 @@ paths:
             application/json:
               example:
                 correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
-                errorCode: Conflict
-                errorMessage: ZSK key rollover for example.com is in progress please
-                  wait for 50 hour
+                errorCode: "409"
+                errorMessage: action is progressing please wait for 50 hour
               schema:
                 $ref: "#/components/schemas/errorResult"
           description: "If there is a conflict (for example item is already in processing\
@@ -1923,9 +1922,8 @@ components:
         application/json:
           example:
             correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
-            errorCode: Conflict
-            errorMessage: ZSK key rollover for example.com is in progress please wait
-              for 50 hour
+            errorCode: "409"
+            errorMessage: action is progressing please wait for 50 hour
           schema:
             $ref: "#/components/schemas/errorResult"
       description: "If there is a conflict (for example item is already in processing\

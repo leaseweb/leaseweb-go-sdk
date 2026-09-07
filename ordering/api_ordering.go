@@ -87,7 +87,7 @@ type OrderingAPI interface {
 	/*
 	OrderDedicatedServer Dedicated Server ordering.
 
-	Dedicated Server ordering. Only verified existing customers who do not need to do prepayment while placing an order via website can place orders via API. If you are a new customer, Know Your Customer (KYC) process needs to be done first.
+	The Ordering API can only be used by existing, verified Leaseweb customers who are on invoice payment with no prepayment obligation. If you are a new customer, you must first complete the Know Your Customer (KYC) process before you can place orders via API. If you are already on invoice payment but receive an error when placing an order via API, this is likely due to a prepayment requirement on your account. Please contact Leaseweb Sales or Support to have the prepayment obligation removed.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -103,7 +103,7 @@ type OrderingAPI interface {
 	/*
 	OrderVps VPS ordering.
 
-	Order a VPS. Only verified existing customers who do not need to do prepayment while placing an order via website can place orders via API. If you are a new customer, Know Your Customer (KYC) process needs to be done first.
+	The Ordering API can only be used by existing, verified Leaseweb customers who are on invoice payment with no prepayment obligation. If you are a new customer, you must first complete the Know Your Customer (KYC) process before you can place orders via API. If you are already on invoice payment but receive an error when placing an order via API, this is likely due to a prepayment requirement on your account. Please contact Leaseweb Sales or Support to have the prepayment obligation removed.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -126,6 +126,9 @@ type ApiGetDedicatedServerRequest struct {
 	dedicatedServerId string
 	location *string
 	connectedToAggregationPool *bool
+	contractTerm *ContractTerm
+	billingCycle *BillingCycle
+	operatingSystem *string
 }
 
 func (r ApiGetDedicatedServerRequest) Location(location string) ApiGetDedicatedServerRequest {
@@ -135,6 +138,21 @@ func (r ApiGetDedicatedServerRequest) Location(location string) ApiGetDedicatedS
 
 func (r ApiGetDedicatedServerRequest) ConnectedToAggregationPool(connectedToAggregationPool bool) ApiGetDedicatedServerRequest {
 	r.connectedToAggregationPool = &connectedToAggregationPool
+	return r
+}
+
+func (r ApiGetDedicatedServerRequest) ContractTerm(contractTerm ContractTerm) ApiGetDedicatedServerRequest {
+	r.contractTerm = &contractTerm
+	return r
+}
+
+func (r ApiGetDedicatedServerRequest) BillingCycle(billingCycle BillingCycle) ApiGetDedicatedServerRequest {
+	r.billingCycle = &billingCycle
+	return r
+}
+
+func (r ApiGetDedicatedServerRequest) OperatingSystem(operatingSystem string) ApiGetDedicatedServerRequest {
+	r.operatingSystem = &operatingSystem
 	return r
 }
 
@@ -192,6 +210,23 @@ func (a *OrderingAPIService) GetDedicatedServerExecute(r ApiGetDedicatedServerRe
 		var defaultValue bool = false
 		parameterAddToHeaderOrQuery(localVarQueryParams, "connectedToAggregationPool", defaultValue, "form", "")
 		r.connectedToAggregationPool = &defaultValue
+	}
+	if r.contractTerm != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contractTerm", r.contractTerm, "form", "")
+	} else {
+		var defaultValue ContractTerm = "1_YEAR"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contractTerm", defaultValue, "form", "")
+		r.contractTerm = &defaultValue
+	}
+	if r.billingCycle != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "billingCycle", r.billingCycle, "form", "")
+	} else {
+		var defaultValue BillingCycle = "1_MONTH"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "billingCycle", defaultValue, "form", "")
+		r.billingCycle = &defaultValue
+	}
+	if r.operatingSystem != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "operatingSystem", r.operatingSystem, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -977,7 +1012,7 @@ func (r ApiOrderDedicatedServerRequest) Execute() (*Order, *http.Response, error
 /*
 OrderDedicatedServer Dedicated Server ordering.
 
-Dedicated Server ordering. Only verified existing customers who do not need to do prepayment while placing an order via website can place orders via API. If you are a new customer, Know Your Customer (KYC) process needs to be done first.
+The Ordering API can only be used by existing, verified Leaseweb customers who are on invoice payment with no prepayment obligation. If you are a new customer, you must first complete the Know Your Customer (KYC) process before you can place orders via API. If you are already on invoice payment but receive an error when placing an order via API, this is likely due to a prepayment requirement on your account. Please contact Leaseweb Sales or Support to have the prepayment obligation removed.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1157,7 +1192,7 @@ func (r ApiOrderVpsRequest) Execute() (*Order, *http.Response, error) {
 /*
 OrderVps VPS ordering.
 
-Order a VPS. Only verified existing customers who do not need to do prepayment while placing an order via website can place orders via API. If you are a new customer, Know Your Customer (KYC) process needs to be done first.
+The Ordering API can only be used by existing, verified Leaseweb customers who are on invoice payment with no prepayment obligation. If you are a new customer, you must first complete the Know Your Customer (KYC) process before you can place orders via API. If you are already on invoice payment but receive an error when placing an order via API, this is likely due to a prepayment requirement on your account. Please contact Leaseweb Sales or Support to have the prepayment obligation removed.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1248,6 +1283,17 @@ func (a *OrderingAPIService) OrderVpsExecute(r ApiOrderVpsRequest) (*Order, *htt
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResult
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ErrorResult

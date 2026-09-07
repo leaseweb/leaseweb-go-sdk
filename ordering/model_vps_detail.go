@@ -31,7 +31,7 @@ type VpsDetail struct {
 	NvmeStorage *string `json:"nvmeStorage,omitempty"`
 	// Traffic allowance
 	Traffic *string `json:"traffic,omitempty"`
-	// Available locations for the VPS
+	// All locations where the VPS is available, regardless of the API key's entity
 	Location []string `json:"location,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

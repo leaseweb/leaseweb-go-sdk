@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Location** | **string** | The location of the server | 
 **ConnectedToAggregationPool** | Pointer to **bool** | Whether the server is connected to an aggregation pool | [optional] [default to false]
 **ContractTerm** | Pointer to **string** | The contract term of the server | [optional] [default to "1_MONTH"]
+**OperatingSystem** | Pointer to **string** | Operating system option. Defaults to no OS when omitted. | [optional] 
 
 ## Methods
 
@@ -96,6 +97,31 @@ SetContractTerm sets ContractTerm field to given value.
 `func (o *OrderDedicatedServerOpts) HasContractTerm() bool`
 
 HasContractTerm returns a boolean if a field has been set.
+
+### GetOperatingSystem
+
+`func (o *OrderDedicatedServerOpts) GetOperatingSystem() string`
+
+GetOperatingSystem returns the OperatingSystem field if non-nil, zero value otherwise.
+
+### GetOperatingSystemOk
+
+`func (o *OrderDedicatedServerOpts) GetOperatingSystemOk() (*string, bool)`
+
+GetOperatingSystemOk returns a tuple with the OperatingSystem field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperatingSystem
+
+`func (o *OrderDedicatedServerOpts) SetOperatingSystem(v string)`
+
+SetOperatingSystem sets OperatingSystem field to given value.
+
+### HasOperatingSystem
+
+`func (o *OrderDedicatedServerOpts) HasOperatingSystem() bool`
+
+HasOperatingSystem returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -24,7 +24,7 @@ type OrderVpsOpts struct {
 	Location string `json:"location"`
 	// Disk upgrade option
 	DiskUpgrade *string `json:"diskUpgrade,omitempty"`
-	// Operating system option
+	// Operating system option. Matched case-insensitively and ignoring the licensing/core suffix, so \"windows server 2022 datacenter\" matches \"Windows Server 2022 Datacenter (2-Cores)\".
 	OperatingSystem *string `json:"operatingSystem,omitempty"`
 	// Control panel option
 	ControlPanel *string `json:"controlPanel,omitempty"`

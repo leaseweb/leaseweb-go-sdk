@@ -196,99 +196,156 @@ paths:
         schema:
           $ref: "#/components/schemas/connectedToAggregationPool"
         style: form
+      - explode: true
+        in: query
+        name: contractTerm
+        required: false
+        schema:
+          $ref: "#/components/schemas/contractTerm"
+        style: form
+      - explode: true
+        in: query
+        name: billingCycle
+        required: false
+        schema:
+          $ref: "#/components/schemas/billingCycle"
+        style: form
+      - explode: true
+        in: query
+        name: operatingSystem
+        required: false
+        schema:
+          $ref: "#/components/schemas/operatingSystem"
+        style: form
       responses:
         "200":
           content:
             application/json:
               example:
-                chassis: Dell R730XD (12xLFF)
+                additionalServices:
+                - Monitoring
+                - Remote Management
+                chassis: Dell R630 (8xSFF)
+                configurationOptions:
+                  operatingSystem:
+                  - name: no OS
+                    selected: false
+                    price: 0
+                    currency: EUR
+                  - name: Ubuntu 22.04
+                    selected: true
+                    price: 0
+                    currency: EUR
+                  - name: Windows Server 2022 Standard
+                    selected: false
+                    price: 513
+                    currency: EUR
+                controlPanel: No Control Panel
                 cpu:
                   coresPerCPU: "12"
                   totalCores: "24"
                   quantity: Dual
-                  speed: "2,2 GHz"
-                  type: Intel Xeon E5-2650v4
+                  speed: "2,3 GHz"
+                  type: Intel Xeon E5-2670v3
+                dataPackConfiguration: 30 TB|Metered|Volume
+                ddosIpProtection: DDOS IP Protection Standard
                 deliveryMethod: 1 hour
                 hdd:
                 - amount: "2"
                   size: SSD480GB
-                id: dd41f6fa95aa88bcea58eddd15eb0fa0
+                id: WyJERURTRVIwMl9ORVdfT1JERVJfQlVTSU5FU1NfUjYzMC04U0ZGLUU1MjY3MHYzIiwiMiIsIjQ4MEdCIFNTRCBXSSIsIjEyOCBHQiJd
+                installOsOnHdd: Set 1
+                ipConnectivityType: Direct Connectivity
+                ipV4Configuration: 1 x IP V4
                 location:
                 - AMS-01
-                name: Dell R730XD (12xLFF) 2x Intel Xeon E5-2650v4
+                monitoringType: Leaseweb Monitoring
+                name: Dell R630 (8xSFF) 2x Intel Xeon E5-2670v3
+                operatingSystem: Windows Server 2025 Standard (2-Cores)
                 price:
                   currency: EUR
-                  basePrice: 147.5
-                  tax: 1
-                  setupFee: 2
-                  fee: 3
+                  basePrice: 170.55
+                  tax: 0
+                  setupFee: 0
+                  fee: 219.36
                   discounts:
-                    total: -30
+                    total: -7.28
                     details:
-                    - description: Black Friday
-                      value: -20
-                    - description: Reseller
-                      value: -10
-                    - description: 1 year (-5%)
-                      value: -6.175
-                  total: 117.32
+                    - description: Contract and Billing Term Discount
+                      value: -7.28
+                  total: 219.36
+                  contractTerm: 6 months
+                  contractTerms:
+                  - key: 1_MONTH
+                    description: 1 month
+                    discountText: 0%
+                    discountValue: 0
+                    total: 230.91
+                  - key: 3_MONTHS
+                    description: 3 months
+                    discountText: -3%
+                    discountValue: -3
+                    total: 223.98
+                  - key: 6_MONTHS
+                    description: 6 months
+                    discountText: -5%
+                    discountValue: -5
+                    total: 219.36
+                  - key: 1_YEAR
+                    description: 1 year
+                    discountText: -10%
+                    discountValue: -10
+                    total: 207.81
+                  - key: 2_YEARS
+                    description: 2 years
+                    discountText: -20%
+                    discountValue: -20
+                    total: 184.72
+                  - key: 3_YEARS
+                    description: 3 years
+                    discountText: -25%
+                    discountValue: -25
+                    total: 173.18
                   billingCycle: 1 month
                   billingCycles:
                   - key: 1_MONTH
                     description: 1 month
                     discountText: 0%
                     discountValue: 0
-                    total: 123.5
+                    total: 219.36
                   - key: 3_MONTHS
                     description: 3 months
-                    discountText: -1%
-                    discountValue: -1.23
-                    total: 122.26
+                    discountText: -2%
+                    discountValue: -2
+                    total: 214.97
                   - key: 6_MONTHS
                     description: 6 months
                     discountText: -3%
-                    discountValue: -3.7
-                    total: 120.93
-                  - key: 1_YEAR
-                    description: 1 year
-                    discountText: -5%
-                    discountValue: -6.17
-                    total: 117.32
-                  contractTerm: 1 year
-                  contractTerms:
-                  - key: 1_MONTH
-                    description: 1 month
-                    discountText: 0%
-                    discountValue: 0
-                    total: 123.5
-                  - key: 3_MONTHS
-                    description: 3 months
-                    discountText: -1%
-                    discountValue: -1.23
-                    total: 122.26
-                  - key: 6_MONTHS
-                    description: 6 months
-                    discountText: -3%
-                    discountValue: -3.7
-                    total: 120.93
-                  - key: 1_YEAR
-                    description: 1 year
-                    discountText: -5%
-                    discountValue: -6.17
-                    total: 117.32
-                  - key: 2_YEARS
-                    description: 2 years
-                    discountText: -10%
-                    discountValue: -12.35
-                    total: 113.59
-                  - key: 3_YEARS
-                    description: 3 years
-                    discountText: -15%
-                    discountValue: -18.52
-                    total: 109.86
+                    discountValue: -3
+                    total: 212.78
+                  details:
+                    Server:
+                      Dell R630 (8xSFF) Intel E5-2670v3: incl.
+                      "128GB RAM": incl.
+                      "2 x SSD480GB (set 1)": incl.
+                    Connectivity:
+                      Metered Volume 30TB: incl.
+                      "1 X GE port UTP": incl.
+                      "1 x IPv4 address (Individual)": incl.
+                    Software:
+                      "1 x No control panel": incl.
+                      "12 x Windows Server 2025 Standard 2-cores": € 81.00
+                    Services:
+                      Basic: incl.
+                      DDOS IP Protection Standard: incl.
+                    Delivery discount:
+                      Automatic delivery (-20.0%): '- € 24.91'
+                privateNetwork1xvlan: No Private Network
                 ram:
-                  size: "32"
+                  size: "128"
                   unit: GB
+                serviceLevelAgreement: Basic
+                uplinkPortSpeed: 1 x GE port UTP
               schema:
                 $ref: "#/components/schemas/dedicatedServer"
           description: Ok.
@@ -348,7 +405,7 @@ paths:
   /products/dedicatedServers/{dedicatedServerId}/order:
     post:
       description: |
-        Dedicated Server ordering. Only verified existing customers who do not need to do prepayment while placing an order via website can place orders via API. If you are a new customer, Know Your Customer (KYC) process needs to be done first.
+        The Ordering API can only be used by existing, verified Leaseweb customers who are on invoice payment with no prepayment obligation. If you are a new customer, you must first complete the Know Your Customer (KYC) process before you can place orders via API. If you are already on invoice payment but receive an error when placing an order via API, this is likely due to a prepayment requirement on your account. Please contact Leaseweb Sales or Support to have the prepayment obligation removed.
       operationId: orderDedicatedServer
       parameters:
       - description: The ID of a dedicated server
@@ -656,60 +713,44 @@ paths:
                 configurationOptions:
                   diskUpgrade:
                   - name: 0 GB
-                    selected: true
-                    price: 0
+                    selected: false
+                    price: -1.5
                     currency: EUR
                   - name: 100 GB
                     selected: false
-                    price: 3
+                    price: 1.5
                     currency: EUR
                   - name: 200 GB
                     selected: false
-                    price: 6
+                    price: 4.5
                     currency: EUR
                   - name: 300 GB
                     selected: false
-                    price: 9
+                    price: 7.5
                     currency: EUR
                   - name: 500 GB
                     selected: false
-                    price: 15
+                    price: 13.5
                     currency: EUR
                   - name: 1000 GB
                     selected: false
-                    price: 30
+                    price: 28.5
                     currency: EUR
                   - name: 50 GB
-                    selected: false
-                    price: 1.5
+                    selected: true
+                    price: 0
                     currency: EUR
                   operatingSystem:
-                  - name: Ubuntu 20.04
-                    selected: false
-                    price: 0
-                    currency: EUR
-                  - name: FreeBSD 13
-                    selected: false
-                    price: 0
-                    currency: EUR
                   - name: AlmaLinux 8
                     selected: false
                     price: 0
                     currency: EUR
-                  - name: Debian 11
-                    selected: false
-                    price: 0
-                    currency: EUR
-                  - name: RockyLinux 8
+                  - name: Rocky Linux 8
                     selected: false
                     price: 0
                     currency: EUR
                   - name: Ubuntu 22.04
-                    selected: false
-                    price: 0
-                    currency: EUR
-                  - name: Rocky Linux 9
-                    selected: false
+                    selected: true
                     price: 0
                     currency: EUR
                   - name: AlmaLinux 9
@@ -720,38 +761,46 @@ paths:
                     selected: false
                     price: 0
                     currency: EUR
-                  - name: FreeBSD 14
-                    selected: false
-                    price: 0
-                    currency: EUR
                   - name: Ubuntu 24.04
-                    selected: true
-                    price: 0
-                    currency: EUR
-                  - name: Rockylinux 10
                     selected: false
                     price: 0
                     currency: EUR
-                  - name: Almalinux 10
+                  - name: Debian 13
+                    selected: false
+                    price: 0
+                    currency: EUR
+                  - name: AlmaLinux 10
                     selected: false
                     price: 0
                     currency: EUR
                   controlPanel:
                   - name: No Control Panel
+                    selected: false
+                    price: -15.75
+                    currency: EUR
+                  - name: Plesk Web Pro Edition (30 Domains) for VPS
                     selected: true
                     price: 0
                     currency: EUR
-                  - name: Plesk Web Pro Edition (30 Domains) for VPS
+                  - name: cPanel Premier Cloud 100
                     selected: false
-                    price: 15.75
+                    price: 26
                     currency: EUR
                   - name: Plesk Web Admin Edition (10 Domains) for VPS
                     selected: false
-                    price: 9
+                    price: -6.75
                     currency: EUR
                   - name: Plesk Web Host Edition - Unlimited Domains
                     selected: false
-                    price: 28.75
+                    price: 13
+                    currency: EUR
+                  - name: cPanel Admin 5
+                    selected: false
+                    price: 1.75
+                    currency: EUR
+                  - name: cPanel Pro 30
+                    selected: false
+                    price: 8.25
                     currency: EUR
                   serviceLevelAgreement:
                   - name: Basic
@@ -777,6 +826,15 @@ paths:
                 id: VPS02_1
                 location:
                 - AMS-01
+                - FRA-01
+                - LAX-12
+                - LON-01
+                - MTL-02
+                - SFO-12
+                - SIN-01
+                - SYD-12
+                - TYO-11
+                - WDC-02
                 name: Leaseweb VPS 1
                 nvmeStorage: 100 GB
                 price:
@@ -784,67 +842,91 @@ paths:
                   basePrice: 3.99
                   tax: 0
                   setupFee: 0
-                  fee: 3.59
+                  fee: 4.12
                   discounts:
-                    total: -0.4
+                    total: -1.37
                     details:
                     - description: Contract and Billing Term Discount
-                      value: -0.4
-                  total: 3.59
-                  contractTerm: 1 year
+                      value: -1.37
+                  total: 4.12
+                  contractTerm: 3 years
                   contractTerms:
                   - key: 1_MONTH
                     description: 1 month
                     discountText: 0%
                     discountValue: 0
-                    total: 3.99
+                    total: 5.49
                   - key: 3_MONTHS
                     description: 3 months
                     discountText: -3%
                     discountValue: -3
-                    total: 3.87
+                    total: 5.33
                   - key: 6_MONTHS
                     description: 6 months
                     discountText: -5%
                     discountValue: -5
-                    total: 3.79
+                    total: 5.22
                   - key: 1_YEAR
                     description: 1 year
                     discountText: -10%
                     discountValue: -10
-                    total: 3.59
+                    total: 4.94
                   - key: 2_YEARS
                     description: 2 years
                     discountText: -20%
                     discountValue: -20
-                    total: 3.19
+                    total: 4.39
                   - key: 3_YEARS
                     description: 3 years
                     discountText: -25%
                     discountValue: -25
-                    total: 2.99
+                    total: 4.12
                   billingCycle: 1 month
                   billingCycles:
                   - key: 1_MONTH
                     description: 1 month
                     discountText: 0%
                     discountValue: 0
-                    total: 3.99
+                    total: 4.12
                   - key: 3_MONTHS
                     description: 3 months
                     discountText: -2%
                     discountValue: -2
-                    total: 3.91
+                    total: 4.04
                   - key: 6_MONTHS
                     description: 6 months
                     discountText: -3%
                     discountValue: -3
-                    total: 3.87
+                    total: 4
                   - key: 1_YEAR
                     description: 1 year
                     discountText: -5%
                     discountValue: -5
-                    total: 3.79
+                    total: 3.91
+                  - key: 2_YEARS
+                    description: 2 years
+                    discountText: -10%
+                    discountValue: -10
+                    total: 3.71
+                  - key: 3_YEARS
+                    description: 3 years
+                    discountText: -15%
+                    discountValue: -15
+                    total: 3.5
+                  details:
+                    Connectivity:
+                      "30 TB Volume": incl.
+                      "1 X 10GE port Virtual": incl.
+                      "1 x IPv4 address (Individual)": incl.
+                    Cloud Instance:
+                      "1 x 4 vCPU - 6 GB vRAM - 100 GB NVMe Disk": incl.
+                      "1 x Disk upgrade 50 GB": € 1.50
+                    Software:
+                      "1 x Parallels Plesk Panel Web Pro for VPS": incl.
+                      "1 x Ubuntu 22.04": incl.
+                    Services:
+                      Basic: incl.
+                      DDOS IP Protection Standard: incl.
                 traffic: 30 TB Volume
                 vCpu: "4"
                 vRam: "6"
@@ -907,7 +989,7 @@ paths:
   /products/vps/{vpsId}/order:
     post:
       description: |
-        Order a VPS. Only verified existing customers who do not need to do prepayment while placing an order via website can place orders via API. If you are a new customer, Know Your Customer (KYC) process needs to be done first.
+        The Ordering API can only be used by existing, verified Leaseweb customers who are on invoice payment with no prepayment obligation. If you are a new customer, you must first complete the Know Your Customer (KYC) process before you can place orders via API. If you are already on invoice payment but receive an error when placing an order via API, this is likely due to a prepayment requirement on your account. Please contact Leaseweb Sales or Support to have the prepayment obligation removed.
       operationId: orderVps
       parameters:
       - description: The VPS ID
@@ -941,6 +1023,17 @@ paths:
               schema:
                 $ref: "#/components/schemas/order"
           description: Created.
+        "400":
+          content:
+            application/json:
+              example:
+                correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+                errorCode: "400"
+                errorDetails: {}
+                errorMessage: The API could not interpret your request correctly.
+              schema:
+                $ref: "#/components/schemas/errorResult"
+          description: Bad Request.
         "401":
           content:
             application/json:
@@ -1037,6 +1130,17 @@ components:
         type: string
       style: simple
   responses:
+    "400":
+      content:
+        application/json:
+          example:
+            correlationId: 289346a1-3eaf-4da4-b707-62ef12eb08be
+            errorCode: "400"
+            errorDetails: {}
+            errorMessage: The API could not interpret your request correctly.
+          schema:
+            $ref: "#/components/schemas/errorResult"
+      description: Bad Request.
     "401":
       content:
         application/json:
@@ -1274,6 +1378,81 @@ components:
       description: To add the dedicated server in the connectivity aggregation pool
       example: true
       type: boolean
+    contractTerm:
+      default: 1_YEAR
+      description: Order contract term
+      enum:
+      - 1_MONTH
+      - 3_MONTHS
+      - 6_MONTHS
+      - 1_YEAR
+      - 2_YEARS
+      - 3_YEARS
+      example: 3_YEARS
+      type: string
+    billingCycle:
+      default: 1_MONTH
+      description: Billing cycle period
+      enum:
+      - 1_MONTH
+      - 3_MONTHS
+      - 6_MONTHS
+      - 1_YEAR
+      example: 1_MONTH
+      type: string
+    operatingSystem:
+      description: "Operating system option. Matched case-insensitively and ignoring\
+        \ the licensing/core suffix, so \"windows server 2022 datacenter\" matches\
+        \ \"Windows Server 2022 Datacenter (2-Cores)\"."
+      example: Windows Server 2022 Datacenter
+      type: string
+    dedicatedServerConfiguration:
+      description: Selected configuration of the server
+      properties:
+        operatingSystem:
+          description: Selected operating system
+          type: string
+        installOsOnHdd:
+          description: Disk set where the OS is installed
+          type: string
+        controlPanel:
+          description: Selected control panel
+          type: string
+        ipConnectivityType:
+          description: IP connectivity type
+          type: string
+        dataPackConfiguration:
+          description: Data pack configuration
+          type: string
+        uplinkPortSpeed:
+          description: Uplink port speed
+          type: string
+        privateNetwork1xvlan:
+          description: Private network configuration
+          type: string
+        ipV4Configuration:
+          description: IPv4 configuration
+          type: string
+        additionalServices:
+          description: Additional services
+          items:
+            type: string
+          type: array
+        monitoringType:
+          description: Monitoring type
+          type: string
+        ddosIpProtection:
+          description: DDoS IP protection
+          type: string
+        serviceLevelAgreement:
+          description: Service level agreement
+          type: string
+      type: object
+    dedicatedServerConfigurationOptions:
+      properties:
+        configurationOptions:
+          $ref: "#/components/schemas/dedicatedServerConfigurationOptions_1"
+      type: object
     productPrice:
       properties:
         price:
@@ -1281,48 +1460,16 @@ components:
     dedicatedServer:
       allOf:
       - $ref: "#/components/schemas/dedicatedServerDetail"
+      - $ref: "#/components/schemas/dedicatedServerConfiguration"
+      - $ref: "#/components/schemas/dedicatedServerConfigurationOptions"
       - $ref: "#/components/schemas/productPrice"
       example:
+        controlPanel: controlPanel
+        additionalServices:
+        - additionalServices
+        - additionalServices
+        ipV4Configuration: ipV4Configuration
         deliveryMethod: deliveryMethod
-        price:
-          contractTerms:
-          - total: 3.616076749251911
-            description: description
-            discountValue: 9.301444243932576
-            key: 1_MONTH
-            discountText: discountText
-          - total: 3.616076749251911
-            description: description
-            discountValue: 9.301444243932576
-            key: 1_MONTH
-            discountText: discountText
-          total: 7.061401241503109
-          discounts:
-            total: 5.637376656633329
-            details:
-            - description: description
-              value: 2.3021358869347655
-            - description: description
-              value: 2.3021358869347655
-          billingCycles:
-          - total: 4.145608029883936
-            description: description
-            discountValue: 2.027123023002322
-            key: 1_MONTH
-            discountText: discountText
-          - total: 4.145608029883936
-            description: description
-            discountValue: 2.027123023002322
-            key: 1_MONTH
-            discountText: discountText
-          billingCycle: 1 month
-          fee: 5.962133916683182
-          contractTerm: 1 month
-          currency: currency
-          tax: 6.027456183070403
-          setupFee: 1.4658129805029452
-          basePrice: 0.8008281904610115
-        name: name
         cpu:
           coresPerCPU: coresPerCPU
           quantity: quantity
@@ -1334,14 +1481,75 @@ components:
           size: size
         - amount: amount
           size: size
+        configurationOptions:
+          operatingSystem:
+          - price: 0.8008281904610115
+            name: name
+            currency: currency
+            selected: true
+          - price: 0.8008281904610115
+            name: name
+            currency: currency
+            selected: true
+        chassis: chassis
+        serviceLevelAgreement: serviceLevelAgreement
+        operatingSystem: operatingSystem
+        installOsOnHdd: installOsOnHdd
+        privateNetwork1xvlan: privateNetwork1xvlan
+        monitoringType: monitoringType
+        ipConnectivityType: ipConnectivityType
+        dataPackConfiguration: dataPackConfiguration
+        ddosIpProtection: ddosIpProtection
+        price:
+          contractTerms:
+          - total: 2.027123023002322
+            description: description
+            discountValue: 3.616076749251911
+            key: 1_MONTH
+            discountText: discountText
+          - total: 2.027123023002322
+            description: description
+            discountValue: 3.616076749251911
+            key: 1_MONTH
+            discountText: discountText
+          total: 9.301444243932576
+          discounts:
+            total: 2.3021358869347655
+            details:
+            - description: description
+              value: 7.061401241503109
+            - description: description
+              value: 7.061401241503109
+          billingCycles:
+          - total: 7.386281948385884
+            description: description
+            discountValue: 4.145608029883936
+            key: 1_MONTH
+            discountText: discountText
+          - total: 7.386281948385884
+            description: description
+            discountValue: 4.145608029883936
+            key: 1_MONTH
+            discountText: discountText
+          billingCycle: 1 month
+          fee: 5.637376656633329
+          contractTerm: 1 month
+          currency: currency
+          tax: 1.4658129805029452
+          setupFee: 5.962133916683182
+          details:
+            key:
+              key: details
+          basePrice: 6.027456183070403
+        name: name
         location:
         - location
         - location
         id: id
-        chassis: chassis
         ram:
           unit: unit
           size: size
+        uplinkPortSpeed: uplinkPortSpeed
     orderDedicatedServerOpts:
       properties:
         location:
@@ -1364,6 +1572,10 @@ components:
           - 2_YEARS
           - 3_YEARS
           example: 2_YEARS
+          type: string
+        operatingSystem:
+          description: Operating system option. Defaults to no OS when omitted.
+          example: Windows Server 2022 Standard
           type: string
       required:
       - location
@@ -1452,35 +1664,9 @@ components:
       description: Disk upgrade option
       example: 100 GB
       type: string
-    operatingSystem:
-      description: Operating system option
-      example: Ubuntu 24.04
-      type: string
     controlPanel:
       description: Control panel option
       example: Plesk Web Pro Edition (30 Domains) for VPS
-      type: string
-    contractTerm:
-      default: 1_YEAR
-      description: Order contract term
-      enum:
-      - 1_MONTH
-      - 3_MONTHS
-      - 6_MONTHS
-      - 1_YEAR
-      - 2_YEARS
-      - 3_YEARS
-      example: 3_YEARS
-      type: string
-    billingCycle:
-      default: 1_MONTH
-      description: Billing cycle period
-      enum:
-      - 1_MONTH
-      - 3_MONTHS
-      - 6_MONTHS
-      - 1_YEAR
-      example: 1_MONTH
       type: string
     serviceLevelAgreement:
       description: Service level agreement option
@@ -1513,7 +1699,8 @@ components:
           description: Traffic allowance
           type: string
         location:
-          description: Available locations for the VPS
+          description: "All locations where the VPS is available, regardless of the\
+            \ API key's entity"
           items:
             type: string
           type: array
@@ -1552,42 +1739,45 @@ components:
         vCpu: vCpu
         price:
           contractTerms:
-          - total: 3.616076749251911
+          - total: 2.027123023002322
             description: description
-            discountValue: 9.301444243932576
+            discountValue: 3.616076749251911
             key: 1_MONTH
             discountText: discountText
-          - total: 3.616076749251911
+          - total: 2.027123023002322
             description: description
-            discountValue: 9.301444243932576
+            discountValue: 3.616076749251911
             key: 1_MONTH
             discountText: discountText
-          total: 7.061401241503109
+          total: 9.301444243932576
           discounts:
-            total: 5.637376656633329
+            total: 2.3021358869347655
             details:
             - description: description
-              value: 2.3021358869347655
+              value: 7.061401241503109
             - description: description
-              value: 2.3021358869347655
+              value: 7.061401241503109
           billingCycles:
-          - total: 4.145608029883936
+          - total: 7.386281948385884
             description: description
-            discountValue: 2.027123023002322
+            discountValue: 4.145608029883936
             key: 1_MONTH
             discountText: discountText
-          - total: 4.145608029883936
+          - total: 7.386281948385884
             description: description
-            discountValue: 2.027123023002322
+            discountValue: 4.145608029883936
             key: 1_MONTH
             discountText: discountText
           billingCycle: 1 month
-          fee: 5.962133916683182
+          fee: 5.637376656633329
           contractTerm: 1 month
           currency: currency
-          tax: 6.027456183070403
-          setupFee: 1.4658129805029452
-          basePrice: 0.8008281904610115
+          tax: 1.4658129805029452
+          setupFee: 5.962133916683182
+          details:
+            key:
+              key: details
+          basePrice: 6.027456183070403
         name: name
         nvmeStorage: nvmeStorage
         location:
@@ -1644,8 +1834,10 @@ components:
           example: 100 GB
           type: string
         operatingSystem:
-          description: Operating system option
-          example: Ubuntu 24.04
+          description: "Operating system option. Matched case-insensitively and ignoring\
+            \ the licensing/core suffix, so \"windows server 2022 datacenter\" matches\
+            \ \"Windows Server 2022 Datacenter (2-Cores)\"."
+          example: Windows Server 2022 Datacenter
           type: string
         controlPanel:
           description: Control panel option
@@ -1714,10 +1906,51 @@ components:
           type: string
       title: ram
       type: object
+    dedicatedServerConfigurationOption:
+      example:
+        price: 0.8008281904610115
+        name: name
+        currency: currency
+        selected: true
+      properties:
+        name:
+          description: Option name
+          type: string
+        selected:
+          description: Whether this option is selected
+          type: boolean
+        price:
+          description: Price for this option
+          type: number
+        currency:
+          description: Currency for the price
+          type: string
+      title: dedicatedServerConfigurationOption
+      type: object
+    dedicatedServerConfigurationOptions_1:
+      description: Available configuration options for the dedicated server
+      example:
+        operatingSystem:
+        - price: 0.8008281904610115
+          name: name
+          currency: currency
+          selected: true
+        - price: 0.8008281904610115
+          name: name
+          currency: currency
+          selected: true
+      properties:
+        operatingSystem:
+          description: Available operating system options with their price
+          items:
+            $ref: "#/components/schemas/dedicatedServerConfigurationOption"
+          type: array
+      title: dedicatedServerConfigurationOptions
+      type: object
     discountItems:
       example:
         description: description
-        value: 2.3021358869347655
+        value: 7.061401241503109
       properties:
         description:
           description: Discount description
@@ -1730,12 +1963,12 @@ components:
     productDiscounts:
       description: Discounts details
       example:
-        total: 5.637376656633329
+        total: 2.3021358869347655
         details:
         - description: description
-          value: 2.3021358869347655
+          value: 7.061401241503109
         - description: description
-          value: 2.3021358869347655
+          value: 7.061401241503109
       properties:
         total:
           description: Total discounts
@@ -1749,9 +1982,9 @@ components:
       type: object
     contractTermItem:
       example:
-        total: 3.616076749251911
+        total: 2.027123023002322
         description: description
-        discountValue: 9.301444243932576
+        discountValue: 3.616076749251911
         key: 1_MONTH
         discountText: discountText
       properties:
@@ -1781,9 +2014,9 @@ components:
       type: object
     billingCycleItem:
       example:
-        total: 4.145608029883936
+        total: 7.386281948385884
         description: description
-        discountValue: 2.027123023002322
+        discountValue: 4.145608029883936
         key: 1_MONTH
         discountText: discountText
       properties:
@@ -1794,6 +2027,8 @@ components:
           - 3_MONTHS
           - 6_MONTHS
           - 1_YEAR
+          - 2_YEARS
+          - 3_YEARS
           type: string
         description:
           description: Billing cycle description
@@ -1813,42 +2048,45 @@ components:
       description: Price details of the product
       example:
         contractTerms:
-        - total: 3.616076749251911
+        - total: 2.027123023002322
           description: description
-          discountValue: 9.301444243932576
+          discountValue: 3.616076749251911
           key: 1_MONTH
           discountText: discountText
-        - total: 3.616076749251911
+        - total: 2.027123023002322
           description: description
-          discountValue: 9.301444243932576
+          discountValue: 3.616076749251911
           key: 1_MONTH
           discountText: discountText
-        total: 7.061401241503109
+        total: 9.301444243932576
         discounts:
-          total: 5.637376656633329
+          total: 2.3021358869347655
           details:
           - description: description
-            value: 2.3021358869347655
+            value: 7.061401241503109
           - description: description
-            value: 2.3021358869347655
+            value: 7.061401241503109
         billingCycles:
-        - total: 4.145608029883936
+        - total: 7.386281948385884
           description: description
-          discountValue: 2.027123023002322
+          discountValue: 4.145608029883936
           key: 1_MONTH
           discountText: discountText
-        - total: 4.145608029883936
+        - total: 7.386281948385884
           description: description
-          discountValue: 2.027123023002322
+          discountValue: 4.145608029883936
           key: 1_MONTH
           discountText: discountText
         billingCycle: 1 month
-        fee: 5.962133916683182
+        fee: 5.637376656633329
         contractTerm: 1 month
         currency: currency
-        tax: 6.027456183070403
-        setupFee: 1.4658129805029452
-        basePrice: 0.8008281904610115
+        tax: 1.4658129805029452
+        setupFee: 5.962133916683182
+        details:
+          key:
+            key: details
+        basePrice: 6.027456183070403
       properties:
         currency:
           description: Price's currency
@@ -1893,6 +2131,8 @@ components:
           - 3 months
           - 6 months
           - 1 year
+          - 2 years
+          - 3 years
           type: string
         billingCycles:
           description: Available billing cycles
@@ -1900,6 +2140,16 @@ components:
             $ref: "#/components/schemas/billingCycleItem"
           title: billingCycles
           type: array
+        details:
+          additionalProperties:
+            additionalProperties:
+              type: string
+            type: object
+          description: "Per-component price breakdown grouped by section (e.g. Server,\
+            \ Connectivity, Software, Services, Discounts). Each section maps a line\
+            \ description to its formatted price (e.g. \"incl.\" or \"€ 513.00\")."
+          title: priceDetails
+          type: object
       type: object
     vpsListItemPrice:
       description: Price summary of the VPS

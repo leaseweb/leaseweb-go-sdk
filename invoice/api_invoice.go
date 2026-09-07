@@ -873,7 +873,7 @@ func (a *InvoiceAPIService) GetProformaExecute(r ApiGetProformaRequest) (*GetPro
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/proforma"
+	localVarPath := localBasePath + "/invoices/proforma"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
