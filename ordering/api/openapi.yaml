@@ -1398,6 +1398,8 @@ components:
       - 3_MONTHS
       - 6_MONTHS
       - 1_YEAR
+      - 2_YEARS
+      - 3_YEARS
       example: 1_MONTH
       type: string
     operatingSystem:

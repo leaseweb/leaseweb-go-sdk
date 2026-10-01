@@ -24,6 +24,8 @@ const (
 	BILLINGCYCLE__3_MONTHS BillingCycle = "3_MONTHS"
 	BILLINGCYCLE__6_MONTHS BillingCycle = "6_MONTHS"
 	BILLINGCYCLE__1_YEAR BillingCycle = "1_YEAR"
+	BILLINGCYCLE__2_YEARS BillingCycle = "2_YEARS"
+	BILLINGCYCLE__3_YEARS BillingCycle = "3_YEARS"
 )
 
 // All allowed values of BillingCycle enum
@@ -32,6 +34,8 @@ var AllowedBillingCycleEnumValues = []BillingCycle{
 	"3_MONTHS",
 	"6_MONTHS",
 	"1_YEAR",
+	"2_YEARS",
+	"3_YEARS",
 }
 
 func (v *BillingCycle) UnmarshalJSON(src []byte) error {
