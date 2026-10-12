@@ -636,6 +636,10 @@ paths:
             application/json:
               example:
                 keys:
+                - accountId: "58053652363364670478"
+                  displayName: '****************ser'
+                  expiresAt: 2026-07-10T13:14:42Z
+                  id: SGKH6ZNxutUyt5e-WRxE8XiT2KiSGAkwPP1nJoyXAg==
                 - accountId: "000000000000"
                   displayName: Root
                   expiresAt: null
@@ -728,7 +732,7 @@ paths:
         content:
           application/json:
             example:
-              expiresAt: 1975-07-10T13:14:42Z
+              expiresAt: 2026-07-10T13:14:42Z
             schema:
               $ref: "#/components/schemas/createObjectStorageAccessKeyOpts"
       responses:
@@ -920,11 +924,11 @@ paths:
             application/json:
               example:
                 groups:
-                - id: 9576bc36-84e2-4ed7-92ff-6bb8fa25a2d5
+                - id: 3f8fad42-73c1-4b5a-9d23-8e1f2c47b890
                   displayName: allPowerful
                   uniqueName: group/allPowerful
-                  s3Policies: "{\"Statement\": [{\"Effect\": \"Allow\",\"Action\"\
-                    : \"s3:*\",\"Resource\": \"arn:aws:s3:::*\"}]}"
+                  s3Policies: "{\"Statement\": [{\"Effect\": \"Deny\",\"Action\":\
+                    \ \"s3:*\",\"Resource\": \"arn:aws:s3:::*\"}]}"
                 - id: 5e479608-e62d-4936-9095-6f3be82b564e
                   displayName: NoAccess
                   uniqueName: group/NoAccess
@@ -1004,9 +1008,10 @@ paths:
         content:
           application/json:
             example:
-              displayName: testGroup
-              s3Policies: null
-              uniqueName: testGroup
+              displayName: allPowerful
+              s3Policies: "{\"Statement\": [{\"Effect\": \"Deny\",\"Action\": \"s3:*\"\
+                ,\"Resource\": \"arn:aws:s3:::*\"}]}"
+              uniqueName: group/allPowerful
             schema:
               $ref: "#/components/schemas/createObjectStorageGroupOpts"
       responses:
@@ -1197,7 +1202,8 @@ paths:
               example:
                 displayName: allPowerful
                 id: 3f8fad42-73c1-4b5a-9d23-8e1f2c47b890
-                s3Policies: null
+                s3Policies: "{\"Statement\": [{\"Effect\": \"Deny\",\"Action\": \"\
+                  s3:*\",\"Resource\": \"arn:aws:s3:::*\"}]}"
                 uniqueName: group/allPowerful
               schema:
                 $ref: "#/components/schemas/group"
@@ -1283,7 +1289,7 @@ paths:
         content:
           application/json:
             example:
-              displayName: testGroup
+              displayName: allPowerful
               s3Policies: "{\"Statement\": [{\"Effect\": \"Deny\",\"Action\": \"s3:*\"\
                 ,\"Resource\": \"arn:aws:s3:::*\"}]}"
             schema:
@@ -1295,7 +1301,8 @@ paths:
               example:
                 displayName: allPowerful
                 id: 3f8fad42-73c1-4b5a-9d23-8e1f2c47b890
-                s3Policies: null
+                s3Policies: "{\"Statement\": [{\"Effect\": \"Deny\",\"Action\": \"\
+                  s3:*\",\"Resource\": \"arn:aws:s3:::*\"}]}"
                 uniqueName: group/allPowerful
               schema:
                 $ref: "#/components/schemas/group"
@@ -1386,6 +1393,18 @@ paths:
             application/json:
               example:
                 buckets:
+                - name: test-bucket-01
+                  region: nl-01
+                  isVersioningEnabled: true
+                  quota:
+                    value: 1000
+                    unit: GB
+                  objectCount: 0
+                  used:
+                    value: 0
+                    unit: GB
+                  creationTime: null
+                  isBeingDeleted: false
                 - name: abcdef
                   region: nl-01
                   isVersioningEnabled: true

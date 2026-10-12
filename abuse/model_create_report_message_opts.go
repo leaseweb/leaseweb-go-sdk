@@ -22,6 +22,8 @@ var _ MappedNullable = &CreateReportMessageOpts{}
 type CreateReportMessageOpts struct {
 	// Plain text body of the message, for newlines use ' '.
 	Body string `json:"body"`
+	// Found in the response after ulpoading a file
+	UploadId *string `json:"uploadId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -69,6 +71,38 @@ func (o *CreateReportMessageOpts) SetBody(v string) {
 	o.Body = v
 }
 
+// GetUploadId returns the UploadId field value if set, zero value otherwise.
+func (o *CreateReportMessageOpts) GetUploadId() string {
+	if o == nil || IsNil(o.UploadId) {
+		var ret string
+		return ret
+	}
+	return *o.UploadId
+}
+
+// GetUploadIdOk returns a tuple with the UploadId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateReportMessageOpts) GetUploadIdOk() (*string, bool) {
+	if o == nil || IsNil(o.UploadId) {
+		return nil, false
+	}
+	return o.UploadId, true
+}
+
+// HasUploadId returns a boolean if a field has been set.
+func (o *CreateReportMessageOpts) HasUploadId() bool {
+	if o != nil && !IsNil(o.UploadId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUploadId gets a reference to the given string and assigns it to the UploadId field.
+func (o *CreateReportMessageOpts) SetUploadId(v string) {
+	o.UploadId = &v
+}
+
 func (o CreateReportMessageOpts) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -80,6 +114,9 @@ func (o CreateReportMessageOpts) MarshalJSON() ([]byte, error) {
 func (o CreateReportMessageOpts) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["body"] = o.Body
+	if !IsNil(o.UploadId) {
+		toSerialize["uploadId"] = o.UploadId
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -124,6 +161,7 @@ func (o *CreateReportMessageOpts) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "body")
+		delete(additionalProperties, "uploadId")
 		o.AdditionalProperties = additionalProperties
 	}
 

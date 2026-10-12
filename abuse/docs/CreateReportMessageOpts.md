@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Body** | **string** | Plain text body of the message, for newlines use &#39; &#39;. | 
+**UploadId** | Pointer to **string** | Found in the response after ulpoading a file | [optional] 
 
 ## Methods
 
@@ -44,6 +45,31 @@ and a boolean to check if the value has been set.
 
 SetBody sets Body field to given value.
 
+
+### GetUploadId
+
+`func (o *CreateReportMessageOpts) GetUploadId() string`
+
+GetUploadId returns the UploadId field if non-nil, zero value otherwise.
+
+### GetUploadIdOk
+
+`func (o *CreateReportMessageOpts) GetUploadIdOk() (*string, bool)`
+
+GetUploadIdOk returns a tuple with the UploadId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUploadId
+
+`func (o *CreateReportMessageOpts) SetUploadId(v string)`
+
+SetUploadId sets UploadId field to given value.
+
+### HasUploadId
+
+`func (o *CreateReportMessageOpts) HasUploadId() bool`
+
+HasUploadId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

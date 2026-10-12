@@ -1325,6 +1325,9 @@ components:
             '.
           example: I have resolved this issue.
           type: string
+        uploadId:
+          description: Found in the response after ulpoading a file
+          type: string
       required:
       - body
       type: object
